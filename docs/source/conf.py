@@ -6,6 +6,44 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
+import logging
+import os
+dirname = os.path.abspath(os.path.dirname(__file__))
+logging.basicConfig(filename=os.path.join(dirname, 'sphinx.log'))
+
+"""" !!!! modifed by coco"""
+
+from docutils.readers import Reader
+
+def replace_double_equalsymbol(text):
+    import re
+    pattern = r'\s?==(?P<defi_text>[^=]+)==\s'
+    tag = 'defi_text'
+    def to_defi(matched):
+        value = matched.group(tag)
+        return f' :defi:`{value}` '
+    return re.sub(pattern, to_defi, text)
+        
+
+def pre_process(text):
+    text = replace_double_equalsymbol(text)
+    #print(f'dewdwaaaaaaaaaaaaaaaaaaaaa\n{text}')
+    return text
+    
+    
+def parse(self):
+    """Parse `self.input` into a document tree."""
+    print('HHHHHHHHHHHHHHHHHHHHHHHHHere')
+    self.document = document = self.new_document()
+    print(self.input)
+    self.input = pre_process(self.input)
+    print(self.input)
+    self.parser.parse(self.input, document)
+    document.current_source = document.current_line = None
+
+Reader.parse = parse
+
+
 project = 'cocobook'
 copyright = '2024, coconut'
 author = 'coconut'
@@ -28,6 +66,13 @@ html_static_path = ['_static']
 
 html_css_files = ['css/def.css']
 
+
+keep_warnings = True
+
 rst_prolog = """
 .. role:: defi
 """
+
+
+suppress_warnings = ["config.cache"]  # https://github.com/sphinx-doc/sphinx/issues/12300
+# pickling environment... WARNING: cannot cache unpickable configuration value: 'html_context' (because it contains a function, class, or module object)

@@ -24,4 +24,29 @@
 # print(document.pformat())
 
 
-import sphinx, sphinx-autobuild
+from docutils.readers import Reader
+
+def replace_double_equalsymbol(text):
+    import re
+    pattern = r'\s*==(?P<defi_text>\w+)==\s'
+    tag = 'defi_text'
+    def to_defi(matched):
+        value = matched.group(tag)
+        return f' :defi:`{value}` '
+    return re.sub(pattern, to_defi, text)
+        
+
+def pre_process(text):
+    text = replace_double_equalsymbol(text)
+    return text
+    
+    
+def parse(self):
+    """Parse `self.input` into a document tree."""
+    self.document = document = self.new_document()
+    self.input = pre_process(self.input)
+    print(self.input)
+    self.parser.parse(self.input, document)
+    document.current_source = document.current_line = None
+
+Reader.parse = parse
