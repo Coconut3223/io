@@ -7,6 +7,8 @@ Artificial Intelligence, AI
 
 Some :defi:`colored text` at last!
 
+Some :defi:`colored text` at last!
+
 .. highlights::
 
    No matter where you go, there you are.
