@@ -11,6 +11,15 @@ import os
 dirname = os.path.abspath(os.path.dirname(__file__))
 logging.basicConfig(filename=os.path.join(dirname, 'sphinx.log'))
 
+
+
+
+"""
+hex(ord('#')) == '0x23'
+True
+"""
+
+
 """" !!!! modifed by coco"""
 
 from docutils.readers import Reader
@@ -27,10 +36,25 @@ def replace_double_equalsymbol(text):
             return f':defi:`{value[2:-3]}` '
     return re.sub(pattern, to_defi, text)
         
+def replace_title(text):
+    import re
+    pattern = r'(?P<title>\#+\s[^\n]+\n)'
+    tag = 'title'
+    def add_title(matched):
+        level_symbal = {
+            1:'=',  2:'-',  3:'~',
+            4:'^',  5:'+',  6:'\''
+            }
+        value = matched.group(tag)
+        split_ = value.split('#')
+        level, size = len(split_)-1, len(split_[-1])-1
+        return f'{split_[-1][1:]}{level_symbal[level]*size*2}\n'
+    return re.sub(pattern, add_title, text)
 
 def pre_process(text):
     text = replace_double_equalsymbol(text)
-    #print(f'dewdwaaaaaaaaaaaaaaaaaaaaa\n{text}')
+    text = replace_title(text)
+    print(f'dewdwaaaaaaaaaaaaaaaaaaaaa\n{text}')
     return text
     
     
@@ -75,6 +99,7 @@ keep_warnings = True
 rst_prolog = """
 .. role:: defi
 """
+
 
 
 suppress_warnings = ["config.cache"]  # https://github.com/sphinx-doc/sphinx/issues/12300

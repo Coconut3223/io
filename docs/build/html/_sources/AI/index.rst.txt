@@ -1,9 +1,7 @@
 
 .. (https://bitbucket.org/lbesson/web-sphinx/src/master/.static/hacks.css)
 
-
-Artificial Intelligence, AI
-=============================================
+# Artificial Intelligence, AI
 
 .. admonition:: data_drived的这个概念
     :class: note
@@ -17,6 +15,7 @@ AI is intelligence exhibited by machines, rather than humans or other animals
 
     ffewflpw
 
+D
 
 .. admonition:: ==AI== is a big concept, ==ML== is just one subarea of AI. ==DL== is just a part of ML, which uses DNN mapping function.
     :class: note
@@ -48,8 +47,8 @@ AI is intelligence exhibited by machines, rather than humans or other animals
     |      model capacity       |         low         |       high       |
     +---------------------------+---------------------+------------------+
 
-Terminology
---------------
+## Terminology
+
 
 - records 记录 = instance 实例 = sample 样本 = feature vector  特征向量 = example 样例(严格：有了 label 的 sample)
 - attribute 属性 = feature 特征

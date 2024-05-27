@@ -197,17 +197,41 @@
         </li>
         <li class="md-nav__item"><a href="#assumption" class="md-nav__link">Assumption</a>
         </li>
+        <li class="md-nav__item"><a href="#identifiability-of-model" class="md-nav__link">identifiability of model 模型的可识别性</a>
+        </li>
         <li class="md-nav__item"><a href="#dnn" class="md-nav__link">DNN</a>
         </li>
         <li class="md-nav__item"><a href="#condition" class="md-nav__link">condition</a>
         </li>
-        <li class="md-nav__item"><a href="#search" class="md-nav__link">search</a>
+        <li class="md-nav__item"><a href="#search" class="md-nav__link">search</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#j" class="md-nav__link">j</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#best-first-search" class="md-nav__link">Best-first search</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#bnn-bayesian-belief-net" class="md-nav__link">BNN, Bayesian Belief Net</a>
+        </li>
+        <li class="md-nav__item"><a href="#breadth-firth-search" class="md-nav__link">Breadth-firth search</a>
+        </li></ul>
+            </nav>
         </li>
         <li class="md-nav__item"><a href="#id2" class="md-nav__link">离散</a>
         </li>
         <li class="md-nav__item"><a href="#kmeans" class="md-nav__link">kmeans</a>
         </li>
-        <li class="md-nav__item"><a href="#parameter-tuning" class="md-nav__link">parameter tuning</a>
+        <li class="md-nav__item"><a href="#parameter-tuning" class="md-nav__link">parameter tuning</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#guess" class="md-nav__link">Guess</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#grid-search" class="md-nav__link">Grid Search</a>
+        </li>
+        <li class="md-nav__item"><a href="#random-search" class="md-nav__link">Random Search</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
         </li>
         <li class="md-nav__item"><a href="#tuning-parameter-work" class="md-nav__link">tuning parameter work</a>
         </li></ul>
@@ -239,6 +263,7 @@
 <p>[title]</p>
 <p>ffewflpw</p>
 </div>
+<p>D</p>
 <div class="note admonition">
 <p class="admonition-title"><span class="defi">AI</span> is a big concept, <span class="defi">ML</span> is just one subarea of AI. <span class="defi">DL</span> is just a part of ML, which uses DNN mapping function.</p>
 <p>C</p>
@@ -436,7 +461,9 @@
 &lt;figure markdown=”span”&gt;![](./pics/classi_3.png)&lt;p&gt;贝叶斯 长这样&lt;/p&gt;&lt;/figure&gt;
 &lt;figure markdown=”span”&gt;![](./pics/classi_2.png){width=70%}&lt;p&gt;SVM 长这样，这个其实也是一个分布&lt;/p&gt;&lt;/figure&gt;
 &lt;/div&gt;</p>
-<p>## identifiability of model 模型的可识别性</p>
+</section>
+<section id="identifiability-of-model">
+<h2 id="identifiability-of-model">identifiability of model 模型的可识别性<a class="headerlink" href="#identifiability-of-model" title="Link to this heading">¶</a></h2>
 <p>[Statistical Modelling and Identifiability of Parameters](<a class="reference external" href="https://www.analyticsvidhya.com/blog/2021/05/statistical-modelling-and-identifiability-of-parameters/">https://www.analyticsvidhya.com/blog/2021/05/statistical-modelling-and-identifiability-of-parameters/</a>)</p>
 <p>参数的 <span class="defi">可识别性 identifiability</span> 使我们能够获得该参数值的精确估计值。在没有可识别性的情况下，即使有无限次观测，我们也无法估计参数θ的真实值。</p>
 <blockquote class="pull-quote">
@@ -484,7 +511,8 @@ D:={Diseased person}; H={Healthy Persons}, +I ={Persons with positive results wi
 <section id="search">
 <h2 id="search">search<a class="headerlink" href="#search" title="Link to this heading">¶</a></h2>
 <p>!!! p “A search algorithm is admissible if it is guaranteed to find a minimal path to a solution whenever such a path exists.”</p>
-<p>### j</p>
+<section id="j">
+<h3 id="j">j<a class="headerlink" href="#j" title="Link to this heading">¶</a></h3>
 <dl class="simple">
 <dt>!!! p “Q4. the motivations of employing heuristics in solving AI problems?”</dt><dd><p>1.A problem may not have an exact solution because of ambiguities in problem statement or available data
 2.A problem may have an exact solution, but the computational cost (time and space) of finding it may be prohibitive.</p>
@@ -492,14 +520,15 @@ D:={Diseased person}; H={Healthy Persons}, +I ={Persons with positive results wi
 <dt>!!! p “informed search method”</dt><dd><p>Hill-climbing search; A* algorithm; Best-first.</p>
 </dd>
 </dl>
-<p>#### Best-first search</p>
+<section id="best-first-search">
+<h4 id="best-first-search">Best-first search<a class="headerlink" href="#best-first-search" title="Link to this heading">¶</a></h4>
 <p>Best-first search is neither complete nor optimal ✅</p>
 <p>![](./pics/BestFS_1.png){width=40%}</p>
 <div class="line-block">
 <div class="line">step | open         | closed                      | notes                                                 |</div>
 </div>
 <aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/index.rst</span>, line 241)</p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/index.rst</span>, line 245)</p>
 <p>Line block ends without a blank line.</p>
 </aside>
 <p><a href="#id3"><span class="problematic" id="id4">|------|</span></a>————–<a href="#id5"><span class="problematic" id="id6">|-----------------------------|</span></a>——————————————————-|
@@ -521,7 +550,10 @@ G| 0 | = | 0
 &gt; All h(n)&lt;=h*(n),so it is an A* algorithm and it is admissible. The path S-B-G is the shortest path.</p>
 </dd>
 </dl>
-<p>### BNN, Bayesian Belief Net</p>
+</section>
+</section>
+<section id="bnn-bayesian-belief-net">
+<h3 id="bnn-bayesian-belief-net">BNN, Bayesian Belief Net<a class="headerlink" href="#bnn-bayesian-belief-net" title="Link to this heading">¶</a></h3>
 <p>A Bayesian Belief Net consists of a graph and some local conditional probabilities.</p>
 <dl class="simple">
 <dt>!!! p “”</dt><dd><p>Serial connection:      $P(AVB)=P(B|V)P(V|A)P(A)$
@@ -542,7 +574,9 @@ Modus Ponens rule $cfrac{a,aimplies b}{b}$</p>
 &gt; $P(D|neg B)=P(D|neg BC)P(C)+(PD|neg Bneg C)P(neg C)=.1*.7+.1*.3=.1$
 &gt; $P(B|D)=cfrac{P(BD)}{P(D)}=cfrac{P(D|B)P(B)}{P(D|B)P(B)+P(D|neg B)P(neg B)}=cfrac{.62*.8}{.62*.8+.1*.2}=.9612$
 &gt; $P(B|neg D)=cfrac{P(Bneg D)}{P(neg D)}=cfrac{P(neg D|B)P(B)}{1-P(D)}=cfrac{(1-P(D|B))P(B)}{1-P(D)}=.6281$</p>
-<p>### Breadth-firth search</p>
+</section>
+<section id="breadth-firth-search">
+<h3 id="breadth-firth-search">Breadth-firth search<a class="headerlink" href="#breadth-firth-search" title="Link to this heading">¶</a></h3>
 <dl>
 <dt>!!! danger “If the search space contains very deep branches without solution, breadth-first search will be a better choice than depth-first search.  T”</dt><dd><p>搜索空间包含非常深的分支 $neq$ 目标在很深的分支里。
 &lt;u&gt;contains very deep branches without solution&lt;/u&gt; 这个深的支是没有解，那么解在浅层的节点里 $implies$ BFS better</p>
@@ -559,6 +593,7 @@ $$sum_{i=0}^db^itimes s$$
 $$b^{d+1}$$</p>
 </dd>
 </dl>
+</section>
 </section>
 <section id="id2">
 <h2 id="id2">离散<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
@@ -585,7 +620,7 @@ interpretation.</p>
 <a class="reference internal image-reference" href="../_images/image.png"><img alt="../_images/image.png" src="../_images/image.png" style="width: 361.6px; height: 138.4px;"/>
 </a>
 <aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/index.rst</span>, line 331)</p>
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/index.rst</span>, line 337)</p>
 <p>Error parsing content block for the “table” directive: exactly one table expected.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">table</span><span class="p">::</span>
     <span class="p">:</span><span class="n">align</span><span class="p">:</span> <span class="n">center</span>
@@ -621,10 +656,12 @@ interpretation.</p>
 </section>
 <section id="parameter-tuning">
 <h2 id="parameter-tuning">parameter tuning<a class="headerlink" href="#parameter-tuning" title="Link to this heading">¶</a></h2>
-<p>### Guess</p>
+<section id="guess">
+<h3 id="guess">Guess<a class="headerlink" href="#guess" title="Link to this heading">¶</a></h3>
 <a class="reference internal image-reference" href="../_images/paramT_1.png"><img alt="../_images/paramT_1.png" src="../_images/paramT_1.png" style="width: 370.40000000000003px; height: 215.60000000000002px;"/>
 </a>
-<p>#### Grid Search</p>
+<section id="grid-search">
+<h4 id="grid-search">Grid Search<a class="headerlink" href="#grid-search" title="Link to this heading">¶</a></h4>
 <ol class="arabic simple">
 <li><p>specify a <strong>list</strong> of possible hyperparameter values 需要人为设定超参数的范围</p></li>
 <li><p><strong>Grid Search</strong> will train models with every possible combination of the provided hyperparameter values and assess the performance of each trained model using a specified metric (e.g., the accuracy of predictions on a test data set). <strong>Grid Search</strong> 就会用设定区间内的**各种组合**进行训练并根据人为指定的metric进行assess</p></li>
@@ -634,7 +671,9 @@ interpretation.</p>
 <li><p>事先很难知道最优是在哪里，所以是否找到最优很依赖人为选择的范围，并且只是进行范围内的compare，并不确定是否全局最小</p></li>
 <li><p>容易loss control，如果是2个hyper-parameter，每个有3个备选都要训练$3^2$个model</p></li>
 </ol>
-<p>#### Random Search</p>
+</section>
+<section id="random-search">
+<h4 id="random-search">Random Search<a class="headerlink" href="#random-search" title="Link to this heading">¶</a></h4>
 <div class="line-block">
 <div class="line"><strong>Idea</strong> <span class="defi">Monte Carlo method，蒙特卡洛法，统计模拟法</span></div>
 <div class="line">所求解问题可以转化为某种随机分布的特征数，比如随机事件出现的概率，或者随机变量的期望值。通过随机抽样的方法，以随机事件出现的频率估计其概率，或者以抽样的数字特征估算随机变量的数字特征，并将其作为问题的解。这种方法多用于求解复杂的多维积分问题。</div>
@@ -650,6 +689,8 @@ interpretation.</p>
 <li><p>找到这些显性超参数的最佳值将比获得所有超参数的最佳组合更有性价比</p></li>
 <li><p>重要的超参数因数据集而异。网格搜索就会很难具体制定某一个</p></li>
 </ol>
+</section>
+</section>
 </section>
 <section id="tuning-parameter-work">
 <h2 id="tuning-parameter-work">tuning parameter work<a class="headerlink" href="#tuning-parameter-work" title="Link to this heading">¶</a></h2>

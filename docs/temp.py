@@ -50,3 +50,5 @@ def parse(self):
     document.current_source = document.current_line = None
 
 Reader.parse = parse
+
+import mkdocs
