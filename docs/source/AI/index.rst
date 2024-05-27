@@ -20,8 +20,9 @@ AI is intelligence exhibited by machines, rather than humans or other animals
 
 .. admonition:: ==AI== is a big concept, ==ML== is just one subarea of AI. ==DL== is just a part of ML, which uses DNN mapping function.
     :class: note
-    
-    fk;kf
+
+    C
+
 
 .. image:: ./pics/AI_1.png
     :scale: 40%
@@ -105,57 +106,64 @@ ML
 
 ==Supervised learning== 。learning :math:`x \xrightarrow{P(y|x)} y` with labels｜targets.
 
-.. admonition:: `生成模型 & 判别模型 $\in$ Supervised learning`
+.. admonition:: 生成模型 & 判别模型 :math: `\in` Supervised learning
     :class: warning
 
-- ==生成模型== 学习得到**联合概率分布** $P(x,y)$ 然后求条件概率分布。以 统计学 & bayes 为理论基础。
-    > 朴素贝叶斯，混合高斯模型，隐马尔可夫模型
-- ==判别模型== 学习得到**条件概率分布** $P(y|x)$
-    > SVM，决策树。LR，。。。。
+    dff
 
-==Unsupervised learning==: learning $P(x)$ without labels.
+- ==生成模型== 学习得到 **联合概率分布** $P(x,y)$ 然后求条件概率分布。以 统计学 & bayes 为理论基础。
+    .. pull-quote:: 
+        朴素贝叶斯，混合高斯模型，隐马尔可夫模型
+- ==判别模型== 学习得到**条件概率分布** $P(y|x)$
+    .. pull-quote:: 
+        SVM，决策树。LR，。。。。
+
+==Unsupervised learning== 。learning $P(x)$ without labels.
 
 - ==clustering 聚类==
 - representation
 - self-supervised
 - generative models/AIGC
 
-!!! p "监督学习 & 无监督学习 界限是模糊的。"
+.. admonit监督学习 & 无监督学习 界限是模糊的。"
     因为没有客观的判断来区分监督者提供的值**是 feature｜target**。通俗地说，无监督学习的大多数尝试是指从不需要人为注释的样本的分布中抽取信息。
-    > $p(x)=\prod\limits_{i=1}^np(x_i|x_1,\dots,x_{i-1})$ 无监督学习 $p(x)$ 可被分解成 n 个监督学习问题。
+    .. pull-quote:: 
+        .. math:: `p(x)=\prod\limits_{i=1}^np(x_i|x_1,\dots,x_{i-1})` 无监督学习 $p(x)$ 可被分解成 n 个监督学习问题。
     > $p(y|x)=\cfrac{p(x,y)}{\sum\limits_{y'}p(xy')}$ 有监督学习 $p(y|x)$ 用无监督学习的法子先学习联合分布。
 
-==Semi-supervised learning 半监督学习== 。一些样本有，一些样本没有。
-==Reinforcement learning 强化学习== 。machine takes an action; teacher provides rewards
+| ==Semi-supervised learning 半监督学习== 。一些样本有，一些样本没有。
+| ==Reinforcement learning 强化学习== 。machine takes an action; teacher provides rewards
 
 - control
 - pricing
-- games
+- games 
 
-![](./pics/reinforcementL_1.png){width=80%}
+.. image:: ./pics/reinforcementL_1.png
+    :scale: 40%
 
 ==Semi-supervised / active learning==
 
-Evaluation  words
-**Representation**: how to encode the raw data?
-**Generalization**: how well can we do on unseen data?
-**Interpretation**: how to explain the findings?
-**Complexity**: how much time and space?
-**Efficiency**: how many samples?
-**Privacy**: how to respect data privacy?
-**Robustness**: how to degrade gracefully under (malicious) error?
+| Evaluation  words
+| **Representation**: how to encode the raw data?
+| **Generalization**: how well can we do on unseen data?
+| **Interpretation**: how to explain the findings?
+| **Complexity**: how much time and space?
+| **Efficiency**: how many samples?
+| **Privacy**: how to respect data privacy?
+| **Robustness**: how to degrade gracefully under (malicious) error?
 
 ==Big data== is a collection of data sets so large and  complex that it becomes difficult to process using on-  hand database management tools or traditional data  processing applications.
 
 **Characteristics of Big Data:** **4V**
-Volume
-Velocity
-Variaty
-Veracity
+| Volume
+| Velocity
+| Variaty
+| Veracity
 
 ![](./pics/BigData_1.png){width=80%}
 
-## Assumption
+Assumption
+-------------
 
 ==独立同分布 independent & identically $(i.i.d.)$== 。假设样本空间中全体样本服从一个未知 “分布 distribution” $D$，现有的每个 sample 都是独立地从这个分布上采样得到的。
 
@@ -173,37 +181,46 @@ Veracity
 [Statistical Modelling and Identifiability of Parameters](https://www.analyticsvidhya.com/blog/2021/05/statistical-modelling-and-identifiability-of-parameters/)
 
 参数的 ==可识别性 identifiability== 使我们能够获得该参数值的精确估计值。在没有可识别性的情况下，即使有无限次观测，我们也无法估计参数θ的真实值。
-> X～N(a+b, σ) is not identifiable
-> X～N(μ, σ) is identifiable
-> 每个不同的 μ 都指向一个不同的期望，指向不同的正态分布，同样地每一个拥有不同期望的正态分布都能唯一求出一个 μ。但是对不同的 a 和 b 来说，a+b 也许是相同的，意味着一个正态分布并不能唯一推断出 (a, b, σ)的值。（e.g. (1, 1, σ) = (0, 2, σ)
 
-## DNN
+.. pull-quote:: 
+    X～N(a+b, σ) is not identifiable
+    X～N(μ, σ) is identifiable
+    每个不同的 μ 都指向一个不同的期望，指向不同的正态分布，同样地每一个拥有不同期望的正态分布都能唯一求出一个 μ。但是对不同的 a 和 b 来说，a+b 也许是相同的，意味着一个正态分布并不能唯一推断出 (a, b, σ)的值。（e.g. (1, 1, σ) = (0, 2, σ)
 
-!!!p "why it is difficult for neural networks to be deep before 2010s."
+DNN
+-----------
+
+.. admonition:: why it is difficult for neural networks to be deep before 2010s.
+    :class: note
+
     1. No enough computation resources,
     2. No enough training data,
     3. Gradient vanish problem and no advanced optimization techniques
 
-## condition
+condition
+-----------
 
-!!! p "Product Rule, Chain Rule and Bayes’ Rule?"
-    Product Rule: P(y)P(x|y)=P(x,y)
-    Chain Rule: P(A1A2A3…An)= P(A1|A2A3…An) P(A2|A3A4…An)… P(An-1| An) P(An)
-    Bayes’ Rule: $P(F|E)=\cfrac{P(E|F)P(F)}{P(E|F)P(F)+ P(E|\neg F)P(\neg F)}$
+.. admonition:: Product Rule, Chain Rule and Bayes’ Rule?
+    :class: note
 
-> ❓Suppose 1 in 1000 persons has a certain disease. We have two test methods: 1️⃣  detect the disease (produce positive results) in 99% of the diseased persons and in 5% of the healthy persons (false alarm). 2️⃣ : detect the disease (produce positive results) in 90% of the diseased persons and in 1% of the healthy persons (false alarm). Which test method is better? Give the reason.
->
-> 💡
->
-> D:={Diseased person}; H={Healthy Persons}, +I ={Persons with positive results with Test method I}, +II ={Persons with positive results with Test method II }
-$P(D)=0.001,\\ P(+I|D)=0.99, P(+I|H)=0.05,\\ P(+II|D)=0.90, P(+II|H)=0.01$
-We compute the probability of a diseased person that can be detect by Test method I or Test method II, repectively, which is|
-$P(D|+I)= \cfrac{P(+I|D)P(D)}{P(+I|D) P(D)+ P(+I|H) P(H)}=\frac{0.99\times 0.001}{0.99\times0.001+0.05\times0.999}=0.0194$
-$P(D|+II)= \cfrac{P(+II|D)P(D)}{P(+II|D) P(D)+ P(+II|H) P(H)}=\frac{0.90\times 0.001}{0.90\times0.001+0.01\times0.999}=0.0826$
->
-> $P(D|+ I)< P(D|+ II)$ It means if a person has the disease, it has more chance of being detected by Test Method II. So Test method II is better.
+    | Product Rule: P(y)P(x|y)=P(x,y)
+    | Chain Rule: P(A1A2A3…An)= P(A1|A2A3…An) P(A2|A3A4…An)… P(An-1| An) P(An)
+    | Bayes’ Rule: :math:`P(F|E)=\cfrac{P(E|F)P(F)}{P(E|F)P(F)+ P(E|\neg F)P(\neg F)}`
 
-## search
+.. pull-quote:: 
+    | ❓Suppose 1 in 1000 persons has a certain disease. We have two test methods: 
+    | 1️⃣  detect the disease (produce positive results) in 99% of the diseased persons and in 5% of the healthy persons (false alarm). 
+    | 2️⃣ : detect the disease (produce positive results) in 90% of the diseased persons and in 1% of the healthy persons (false alarm). Which test method is better? Give the reason.
+    | 💡
+     D:={Diseased person}; H={Healthy Persons}, +I ={Persons with positive results with Test method I}, +II ={Persons with positive results with Test method II }
+    | :math:`P(D)=0.001,\\ P(+I|D)=0.99, P(+I|H)=0.05,\\ P(+II|D)=0.90, P(+II|H)=0.01`
+    | We compute the probability of a diseased person that can be detect by Test method I or Test method II, repectively, which is|
+    | :math:`P(D|+I)= \cfrac{P(+I|D)P(D)}{P(+I|D) P(D)+ P(+I|H) P(H)}=\frac{0.99\times 0.001}{0.99\times0.001+0.05\times0.999}=0.0194`
+    | :math:`P(D|+II)= \cfrac{P(+II|D)P(D)}{P(+II|D) P(D)+ P(+II|H) P(H)}=\frac{0.90\times 0.001}{0.90\times0.001+0.01\times0.999}=0.0826`
+    | :math:`P(D|+ I)< P(D|+ II)` It means if a person has the disease, it has more chance of being detected by Test Method II. So Test method II is better.
+
+search
+-----------
 
 !!! p "A search algorithm is admissible if it is guaranteed to find a minimal path to a solution whenever such a path exists."
 
@@ -288,7 +305,8 @@ A Bayesian Belief Net consists of a graph and some local conditional probabiliti
     - goal depth $d$
     $$b^{d+1}$$
 
-## 离散
+离散
+-----------
 
 !!! p "Why in some cases we need to use First Order Logic (FOL) rather than Propositional Logic (PL)?"
     1.Propositional logic (PL) is too “coarse” to easily describe properties of objects.
@@ -308,30 +326,48 @@ Unsatisfiable: A sentence is unsatisfiable if there is no interpretation for whi
 Valid: A sentence is valid if it is true for every
 interpretation.
 
-> Compute the loss of eight-puzzle
-> ![](./pics/image.png){width=80%}
->
+.. pull-quote::
+    Compute the loss of eight-puzzle
+
+    .. image:: ./pics/image.png
+        :scale: 40%
+
+    .. table::
+        :align: center
+
+        +--------+------------------------------------+--------------------------------------------------+
+        |        |  Tiles out of place 不对的有几个    |  Sum of distances out of places   改回来需要几步  |
+        +========+====================================+==================================================+
+        | State1 |               5                    |                     6                            |
+        +--------+------------------------------------+--------------------------------------------------+
+        | State2 |               3                    |                     4                            |
+        +--------+------------------------------------+--------------------------------------------------+
+
+
 > ||1|2|3|4|5|6|7|8|
 > |--|--|--|--|--|--|--|--|--|
 > |State1|❌ 1|❌ 1|✔️|||❌ 1|❌ 1|❌ 2|
 > |State2|❌ 1|❌ 1|✔️|||||❌ 2|
 > ---
 >
-> ||Tiles out of place<br> 不对的有几个|Sum of distances out of places<br> 改回来需要几步|
+> ||||
 > |--|--|--|
 > |State1|5|6|
 > |State2|3|4|
 
-## kmeans
+kmeans
+-----------
 
 !!! danger "Manhattan distance is <u>usually</u> larger than Euclidean distance. ✔️"
     当存在三角形形状，斜边比直角边加和要小
 
-## parameter tuning
+parameter tuning
+----------------------
 
 ### Guess
 
-![](./pics/paramT_1.png){width=80%}
+.. image:: ./pics/paramT_1.png
+    :scale: 40%
 
 #### Grid Search
 
@@ -345,8 +381,8 @@ interpretation.
 
 #### Random Search
 
-**Idea** ==Monte Carlo method，蒙特卡洛法，统计模拟法==.
-所求解问题可以转化为某种随机分布的特征数，比如随机事件出现的概率，或者随机变量的期望值。通过随机抽样的方法，以随机事件出现的频率估计其概率，或者以抽样的数字特征估算随机变量的数字特征，并将其作为问题的解。这种方法多用于求解复杂的多维积分问题。
+| **Idea** ==Monte Carlo method，蒙特卡洛法，统计模拟法== 
+| 所求解问题可以转化为某种随机分布的特征数，比如随机事件出现的概率，或者随机变量的期望值。通过随机抽样的方法，以随机事件出现的频率估计其概率，或者以抽样的数字特征估算随机变量的数字特征，并将其作为问题的解。这种方法多用于求解复杂的多维积分问题。
 
 **Loop: 1. Random guess 2. Check and compare 3. Update.**
 
@@ -359,8 +395,12 @@ interpretation.
 2. 找到这些显性超参数的最佳值将比获得所有超参数的最佳组合更有性价比
 3. 重要的超参数因数据集而异。网格搜索就会很难具体制定某一个
 
-## tuning parameter work
+tuning parameter work
+---------------------------------
 
-![](./pics/LRs_12.png)
-![](./pics/LRs_13.png)
+.. image:: ./pics/LRs_12.png
+    :scale: 40%
+
+.. image:: ./pics/LRs_13.png
+    :scale: 40%
 

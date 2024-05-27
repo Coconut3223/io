@@ -17,11 +17,14 @@ from docutils.readers import Reader
 
 def replace_double_equalsymbol(text):
     import re
-    pattern = r'\s?==(?P<defi_text>[^=]+)==\s'
+    pattern = r'(?P<defi_text>\x20?==[^=]+==\s)'
     tag = 'defi_text'
     def to_defi(matched):
         value = matched.group(tag)
-        return f' :defi:`{value}` '
+        if value.startswith('\x20'):
+            return f'\x20:defi:`{value[3:-3]}` '
+        else: 
+            return f':defi:`{value[2:-3]}` '
     return re.sub(pattern, to_defi, text)
         
 
@@ -35,9 +38,9 @@ def parse(self):
     """Parse `self.input` into a document tree."""
     print('HHHHHHHHHHHHHHHHHHHHHHHHHere')
     self.document = document = self.new_document()
-    print(self.input)
+    #print(self.input)
     self.input = pre_process(self.input)
-    print(self.input)
+    #print(self.input)
     self.parser.parse(self.input, document)
     document.current_source = document.current_line = None
 
