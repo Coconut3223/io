@@ -77,7 +77,7 @@ author = 'coconut'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
-extensions =[]
+extensions =['sphinxemoji.sphinxemoji',]
 # extensions = ["myst_parser"]
 
 templates_path = ['_templates']
