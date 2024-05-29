@@ -1,12 +1,4 @@
-.. role:: defi
-
-Lucy
-=======
-
-我 **最喜歡的** 語言是 Python_。
-
-==mark==
-
-.._Python：https://www.python.org/
-
-Some :defi:`colored text` at last!
+||1|2|3|4|5|6|7|8|
+|--|--|--|--|--|--|--|--|--|
+|State1|❌ 1|❌ 1|✔️|||❌ 1|❌ 1|❌ 2|
+|State2|❌ 1|❌ 1|✔️|||||❌ 2|

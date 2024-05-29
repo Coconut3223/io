@@ -10,18 +10,8 @@
 
 AI is intelligence exhibited by machines, rather than humans or other animals (natural intelligence, NI).
 
-
-.. note:: [title]
-
-    ffewflpw
-
-D
-
 .. admonition:: ==AI== is a big concept, ==ML== is just one subarea of AI. ==DL== is just a part of ML, which uses DNN mapping function.
     :class: note
-
-    C
-
 
 .. image:: ./pics/AI_1.png
     :scale: 40%
@@ -31,6 +21,12 @@ D
 | **the differences between traditional ML & DL?**
 
 
+.. note::
+    dllfff
+        efwefcw
+            efcjli
+        
+    
 .. image:: ./pics/AI_2.png
     :scale: 40%
 
@@ -108,14 +104,15 @@ ML
 .. admonition:: 生成模型 & 判别模型 :math: `\in` Supervised learning
     :class: warning
 
-    dff
+
+dff
 
 - ==生成模型== 学习得到 **联合概率分布** $P(x,y)$ 然后求条件概率分布。以 统计学 & bayes 为理论基础。
     .. pull-quote:: 
         朴素贝叶斯，混合高斯模型，隐马尔可夫模型
 - ==判别模型== 学习得到**条件概率分布** $P(y|x)$
     .. pull-quote:: 
-        SVM，决策树。LR，。。。。
+        SVM，决策树。LR，。。。
 
 ==Unsupervised learning== 。learning $P(x)$ without labels.
 
@@ -343,13 +340,26 @@ interpretation.
 
     .. table::
 
-        +--------+-----+-----+----+---+---+-----+-----+------+
-        |        | 1    | 2     | 3  | 4 | 5 | 6     | 7    | 8      |
-        +========+=======+=======+====+===+===+=====+=====+======+
-        | State1 | ❌  1  | ❌ 1 | ✔️ |   |   | ❌ 1 | ❌ 1 | ❌ 2  |
-        +--------+-----+-----+----+---+---+-----+-----+------+
-        | State2 | ❌ 1 | ❌ 1 | ✔️ |   |   |       |      | ❌ 2  |
-        +--------+-------+-----+----+---+---+-----+-----+--------------+
+        +------+----+----+--+-+-+----+----+----+
+        |      |1   |2   |3 |4|5|6   |7   |8   |
+        +======+====+====+==+=+=+====+====+====+
+        |State1|❌ 1|❌ 1|✅| | |❌ 1|❌ 1|❌ 2|
+        +------+----+----+--+-+-+----+----+----+
+        |State2|❌ 1|❌ 1|✅| | |    |    |❌ 2|
+        +------+----+----+--+-+-+----+----+----+
+    
+    .. table::
+
+        +------+-+-+
+        |      | | |
+        +======+=+=+
+        |State1|5|6|
+        +------+-+-+
+        |State2|3|4|
+        +------+-+-+
+
+
+
 
 This text includes a smiley face |:smile:| and a snake too! |:snake:| |:x:|
 
@@ -366,26 +376,14 @@ This text includes a smiley face |:smile:| and a snake too! |:snake:| |:x:|
         +---------+---------------------------+-----------------------------------------+
 
 
+## kmeans
 
-> ||1|2|3|4|5|6|7|8|
-> |--|--|--|--|--|--|--|--|--|
-> |State1|❌ 1|❌ 1|✔️|||❌ 1|❌ 1|❌ 2|
-> |State2|❌ 1|❌ 1|✔️|||||❌ 2|
-> ---
->
-> ||||
-> |--|--|--|
-> |State1|5|6|
-> |State2|3|4|
-
-kmeans
------------
 
 !!! danger "Manhattan distance is <u>usually</u> larger than Euclidean distance. ✔️"
     当存在三角形形状，斜边比直角边加和要小
 
-parameter tuning
-----------------------
+## parameter tuning
+
 
 ### Guess
 
@@ -418,8 +416,8 @@ parameter tuning
 2. 找到这些显性超参数的最佳值将比获得所有超参数的最佳组合更有性价比
 3. 重要的超参数因数据集而异。网格搜索就会很难具体制定某一个
 
-tuning parameter work
----------------------------------
+## tuning parameter work
+
 
 .. image:: ./pics/LRs_12.png
     :scale: 40%
