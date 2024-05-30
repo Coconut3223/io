@@ -3,15 +3,13 @@
 
 # Artificial Intelligence, AI
 
-.. admonition:: data_drived的这个概念
-    :class: note
+.. note:: data_drived的这个概念
 
     世界瞬息万变，如何使AI具有人脑的智能从而处理千变万化的问题，定死一个定义和写死一个程序永远不是 best。我们需要数据驱动。==ML和DL正是同出这一脉== 。
 
 AI is intelligence exhibited by machines, rather than humans or other animals (natural intelligence, NI).
 
-.. admonition:: ==AI== is a big concept, ==ML== is just one subarea of AI. ==DL== is just a part of ML, which uses DNN mapping function.
-    :class: note
+.. note:: ==AI== is a big concept, ==ML== is just one subarea of AI. ==DL== is just a part of ML, which uses DNN mapping function.
 
 .. image:: ./pics/AI_1.png
     :scale: 40%
@@ -101,8 +99,7 @@ ML
 
 ==Supervised learning== 。learning :math:`x \xrightarrow{P(y|x)} y` with labels｜targets.
 
-.. admonition:: 生成模型 & 判别模型 :math: `\in` Supervised learning
-    :class: warning
+.. warning:: 生成模型 & 判别模型 :math: `\in` Supervised learning
 
 
 dff
@@ -186,9 +183,7 @@ Assumption
 DNN
 -----------
 
-.. admonition:: why it is difficult for neural networks to be deep before 2010s.
-    :class: note
-
+.. note:: why it is difficult for neural networks to be deep before 2010s.
     1. No enough computation resources,
     2. No enough training data,
     3. Gradient vanish problem and no advanced optimization techniques
@@ -196,8 +191,7 @@ DNN
 condition
 -----------
 
-.. admonition:: Product Rule, Chain Rule and Bayes’ Rule?
-    :class: note
+.. note:: Product Rule, Chain Rule and Bayes’ Rule?
 
     | Product Rule: P(y)P(x|y)=P(x,y)
     | Chain Rule: P(A1A2A3…An)= P(A1|A2A3…An) P(A2|A3A4…An)… P(An-1| An) P(An)
