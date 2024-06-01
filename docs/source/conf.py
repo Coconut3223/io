@@ -134,17 +134,13 @@ def visit_admonition_hideNodename(self, node: Element, name: str = '') -> None:
 HTML5Translator.visit_admonition = visit_admonition_hideNodename
 
 
-
-
-
-
 project = 'cocobook'
 copyright = '2024, coconut'
 author = 'coconut'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
-extensions =['sphinxemoji.sphinxemoji',]
+extensions =['sphinx_design']#'sphinxemoji.sphinxemoji',]
 # extensions = ["myst_parser"]
 
 templates_path = ['_templates']

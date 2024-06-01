@@ -17,13 +17,6 @@ AI is intelligence exhibited by machines, rather than humans or other animals
 | **List six subareas of AI:**
 | Knowledge Data science, Reasoning, Statistics, Nature Language Process (NLP), Planning, Computer Vision (CV), Neuroscience, Machine Learning (ML), Robotics and so on.
 | **the differences between traditional ML & DL?**
-
-
-.. note::
-    dllfff
-        efwefcw
-            efcjli
-        
     
 .. image:: ./pics/AI_2.png
     :scale: 40%
@@ -102,8 +95,6 @@ ML
 .. warning:: 生成模型 & 判别模型 :math: `\in` Supervised learning
 
 
-dff
-
 - ==生成模型== 学习得到 **联合概率分布** $P(x,y)$ 然后求条件概率分布。以 统计学 & bayes 为理论基础。
     .. pull-quote:: 
         朴素贝叶斯，混合高斯模型，隐马尔可夫模型
@@ -118,21 +109,21 @@ dff
 - self-supervised
 - generative models/AIGC
 
-.. admonit监督学习 & 无监督学习 界限是模糊的。"
+.. note:: 监督学习 & 无监督学习 界限是模糊的。
     因为没有客观的判断来区分监督者提供的值**是 feature｜target**。通俗地说，无监督学习的大多数尝试是指从不需要人为注释的样本的分布中抽取信息。
     .. pull-quote:: 
         .. math:: `p(x)=\prod\limits_{i=1}^np(x_i|x_1,\dots,x_{i-1})` 无监督学习 $p(x)$ 可被分解成 n 个监督学习问题。
-    > $p(y|x)=\cfrac{p(x,y)}{\sum\limits_{y'}p(xy')}$ 有监督学习 $p(y|x)$ 用无监督学习的法子先学习联合分布。
+        $p(y|x)=\cfrac{p(x,y)}{\sum\limits_{y'}p(xy')}$ 有监督学习 $p(y|x)$ 用无监督学习的法子先学习联合分布。
 
 | ==Semi-supervised learning 半监督学习== 。一些样本有，一些样本没有。
 | ==Reinforcement learning 强化学习== 。machine takes an action; teacher provides rewards
 
-- control
-- pricing
-- games 
+  - control
+  - pricing
+  - games 
 
 .. image:: ./pics/reinforcementL_1.png
-    :scale: 40%
+    :scale: 30%
 
 ==Semi-supervised / active learning==
 
@@ -147,13 +138,14 @@ dff
 
 ==Big data== is a collection of data sets so large and  complex that it becomes difficult to process using on-  hand database management tools or traditional data  processing applications.
 
-**Characteristics of Big Data:** **4V**
+| **Characteristics of Big Data:** **4V**
 | Volume
 | Velocity
 | Variaty
 | Veracity
 
-![](./pics/BigData_1.png){width=80%}
+.. image:: ./pics/BigData_1.png
+    :scale: 40%
 
 Assumption
 -------------
@@ -164,10 +156,17 @@ Assumption
 
 有很多的分类模型，他们各自有各自的作用原理，也有各自的几何表示。但归根其本质还是estimate distribution.
 
-<div class="grid" markdown>
-<figure markdown="span">![](./pics/classi_3.png)<p>贝叶斯 长这样</p></figure>
-<figure markdown="span">![](./pics/classi_2.png){width=70%}<p>SVM 长这样，这个其实也是一个分布</p></figure>
-</div>
+.. grid::
+
+    .. grid-item::
+        .. figure:: ./pics/classi_3.png
+
+            贝叶斯 长这样
+    
+    .. grid-item::
+        .. figure:: ./pics/classi_2.png
+
+            SVM 长这样，这个其实也是一个分布
 
 ## identifiability of model 模型的可识别性
 
@@ -180,16 +179,15 @@ Assumption
     X～N(μ, σ) is identifiable
     每个不同的 μ 都指向一个不同的期望，指向不同的正态分布，同样地每一个拥有不同期望的正态分布都能唯一求出一个 μ。但是对不同的 a 和 b 来说，a+b 也许是相同的，意味着一个正态分布并不能唯一推断出 (a, b, σ)的值。（e.g. (1, 1, σ) = (0, 2, σ)
 
-DNN
------------
+## DNN
 
 .. note:: why it is difficult for neural networks to be deep before 2010s.
     1. No enough computation resources,
     2. No enough training data,
     3. Gradient vanish problem and no advanced optimization techniques
 
-condition
------------
+## condition
+
 
 .. note:: Product Rule, Chain Rule and Bayes’ Rule?
 
@@ -212,14 +210,14 @@ condition
 search
 -----------
 
-!!! p "A search algorithm is admissible if it is guaranteed to find a minimal path to a solution whenever such a path exists."
+.. note:: A search algorithm is admissible if it is guaranteed to find a minimal path to a solution whenever such a path exists.
 
 
-!!! p "Q4. the motivations of employing heuristics in solving AI problems?"
+.. note:: Q4. the motivations of employing heuristics in solving AI problems?
     1.A problem may not have an exact solution because of ambiguities in problem statement or available data
     2.A problem may have an exact solution, but the computational cost (time and space) of finding it may be prohibitive.
 
-!!! p "informed search method"
+.. note:: informed search method"
     Hill-climbing search; A* algorithm; Best-first.
 
 #### Best-first search
@@ -249,7 +247,7 @@ Best-first search is neither complete nor optimal ✅
 
 Solution path : S-B-G
 
-!!! danger "Best-first $\xRightarrow{\forall n, h(n)\leq h^*(n)}$ A \*algorithm<br> Algorithm A* is a special best-first search algorithm ✔️"
+.. danger:: Best-first $\xRightarrow{\forall n, h(n)\leq h^*(n)}$ A \*algorithm<br> Algorithm A* is a special best-first search algorithm ✔️
     > example1
 
     |$n$|$h(n)$<br>heuristic estimation|?|$h^*(n)$<br> actual n$\rightarrow$ goal G|
@@ -265,58 +263,59 @@ Solution path : S-B-G
 
 A Bayesian Belief Net consists of a graph and some local conditional probabilities.
 
-!!! p ""
+.. note::
     Serial connection:      $P(AVB)=P(B|V)P(V|A)P(A)$
     Diverging Connection:   $P(AVB)=P(B|V)P(A|V)P(V)$
     Converging Connection: $P(AVB)=P(V|AB)P(A)P(B)$
     Modus Ponens rule $\cfrac{a,a\implies b}{b}$
 
-> ![](./pics/BNN_1.png){width=40%}
->
-> $P(ABC)=P(AB)P(C)=.6*.8*.7=.336$
->
-> $P(A)=.6*.8+.4*.2=.56$
->
-> $P(AC)=P(A)P(C)=.56*.7=.392$
->
-> $P(D|B)=P(D|BC)P(C)+(PD|B\neg C)P(\neg C)=.8*.7+.2*.3=.62$
-> $P(D|\neg B)=P(D|\neg BC)P(C)+(PD|\neg B\neg C)P(\neg C)=.1*.7+.1*.3=.1$
-> $P(B|D)=\cfrac{P(BD)}{P(D)}=\cfrac{P(D|B)P(B)}{P(D|B)P(B)+P(D|\neg B)P(\neg B)}=\cfrac{.62*.8}{.62*.8+.1*.2}=.9612$
-> $P(B|\neg D)=\cfrac{P(B\neg D)}{P(\neg D)}=\cfrac{P(\neg D|B)P(B)}{1-P(D)}=\cfrac{(1-P(D|B))P(B)}{1-P(D)}=.6281$
+.. pull-quote::
+
+    .. image:: ./pics/BNN_1.png
+        :scale: 30%
+
+    | $P(ABC)=P(AB)P(C)=.6*.8*.7=.336$
+    | $P(A)=.6*.8+.4*.2=.56$
+    | $P(AC)=P(A)P(C)=.56*.7=.392$
+    | $P(D|B)=P(D|BC)P(C)+(PD|B\neg C)P(\neg C)=.8*.7+.2*.3=.62$
+    | $P(D|\neg B)=P(D|\neg BC)P(C)+(PD|\neg B\neg C)P(\neg C)=.1*.7+.1*.3=.1$
+    | $P(B|D)=\cfrac{P(BD)}{P(D)}=\cfrac{P(D|B)P(B)}{P(D|B)P(B)+P(D|\neg B)P(\neg B)}=\cfrac{.62*.8}{.62*.8+.1*.2}=.9612$
+    | $P(B|\neg D)=\cfrac{P(B\neg D)}{P(\neg D)}=\cfrac{P(\neg D|B)P(B)}{1-P(D)}=\cfrac{(1-P(D|B))P(B)}{1-P(D)}=.6281$
 
 ### Breadth-firth search
 
-!!! danger "If the search space contains very deep branches without solution, breadth-first search will be a better choice than depth-first search.  T"
+.. danger:: If the search space contains very deep branches without solution, breadth-first search will be a better choice than depth-first search.  T"
     搜索空间包含非常深的分支 $\neq$ 目标在很深的分支里。
     <u>contains very deep branches without solution</u> 这个深的支是没有解，那么解在浅层的节点里 $\implies$ BFS better
 
-!!! p "breadth-first search"
+.. note:: breadth-first search"
     ==storage cost==
     - branch factor $b$
     - storage cost $s$ bytes/node
     - search speed $v$ nodes/second
     - goal depth $d$
     $$\sum_{i=0}^db^i\times s$$
-    > ❓ For a searching tree, assume that the branch factor is b=10, the storage cost is 1000 bytes/node and the searching speed is 10,000 nodes/second. With breadth-first search, what is the required storage space at depth 3?
-    💡 At depth 3, the number of created nodes is 1+10+100+1000=111,1, and thus the storage space is 111,11000=11,11K bytes.
+    
+    .. note::
+        ❓ For a searching tree, assume that the branch factor is b=10, the storage cost is 1000 bytes/node and the searching speed is 10,000 nodes/second. With breadth-first search, what is the required storage space at depth 3?
+        💡 At depth 3, the number of created nodes is 1+10+100+1000=111,1, and thus the storage space is 111,11000=11,11K bytes.
 
     ==time complxity==
     - branch factor $b$
     - goal depth $d$
     $$b^{d+1}$$
 
-离散
------------
+## 离散
 
-!!! p "Why in some cases we need to use First Order Logic (FOL) rather than Propositional Logic (PL)?"
+.. note:: Why in some cases we need to use First Order Logic (FOL) rather than Propositional Logic (PL)?"
     1.Propositional logic (PL) is too “coarse” to easily describe properties of objects.
     2.First order logic (FOL) is to extend the expressiveness of PL.
 
-!!! p ""
+.. note::
     Forward chaining in first order logic is a data-driven algorithm.
     Backwards chaining in first order logic is a goal-driven algorithm.
 
-!!! p "$\forall$ & $\exist$"
+.. note:: $\forall$ & $\exist$
     - $\forall x\forall y=\forall y\forall x$
     - $\exist x, y = \neg \forall x\neg y$
     - $\exist x\forall y\neq \forall y \exist x$
@@ -352,9 +351,6 @@ interpretation.
         |State2|3|4|
         +------+-+-+
 
-
-
-
 This text includes a smiley face |:smile:| and a snake too! |:snake:| |:x:|
 
     .. table::
@@ -373,7 +369,7 @@ This text includes a smiley face |:smile:| and a snake too! |:snake:| |:x:|
 ## kmeans
 
 
-!!! danger "Manhattan distance is <u>usually</u> larger than Euclidean distance. ✔️"
+.. danger:: Manhattan distance is <u>usually</u> larger than Euclidean distance. ✔️
     当存在三角形形状，斜边比直角边加和要小
 
 ## parameter tuning

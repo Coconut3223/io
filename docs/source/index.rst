@@ -7,8 +7,10 @@ Welcome to cocobook's documentation!
 ====================================
 
 .. toctree::
+   :titlesonly:
    :maxdepth: 2
    :caption: Contents:
+   
 
    AI/index
 

@@ -49,11 +49,13 @@
     <title>Artificial Intelligence, AI &#8212; cocobook  文档</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=83e35b93" />
     <link rel="stylesheet" type="text/css" href="../_static/material.css?v=79c92029" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="../_static/css/def.css?v=5a9d86bd" />
     <script src="../_static/documentation_options.js?v=7d86a446"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/translations.js?v=beaddf03"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
@@ -262,15 +264,6 @@
 <div class="line">Knowledge Data science, Reasoning, Statistics, Nature Language Process (NLP), Planning, Computer Vision (CV), Neuroscience, Machine Learning (ML), Robotics and so on.</div>
 <div class="line"><strong>the differences between traditional ML &amp; DL?</strong></div>
 </div>
-<div class="admonition-dllfff admonition note">
-<p class="admonition-title">dllfff</p>
-<blockquote>
-<div><dl class="simple">
-<dt>efwefcw</dt><dd><p>efcjli</p>
-</dd>
-</dl>
-</div></blockquote>
-</div>
 <a class="reference internal image-reference" href="../_images/AI_2.png"><img alt="../_images/AI_2.png" src="../_images/AI_2.png" style="width: 680.0px; height: 346.40000000000003px;"/>
 </a>
 <table>
@@ -396,7 +389,6 @@
 <div class="admonition-math-in-supervised-learning admonition warning">
 <p class="admonition-title">生成模型 &amp; 判别模型 :math: <cite>in</cite> Supervised learning</p>
 </div>
-<p>dff</p>
 <ul>
 <li><dl>
 <dt><span class="defi">生成模型</span> 学习得到 <strong>联合概率分布</strong> $P(x,y)$ 然后求条件概率分布。以 统计学 &amp; bayes 为理论基础。</dt><dd><blockquote class="pull-quote">
@@ -419,16 +411,31 @@
 <li><p>self-supervised</p></li>
 <li><p>generative models/AIGC</p></li>
 </ul>
+<div class="admonition- admonition note">
+<p class="admonition-title">监督学习 &amp; 无监督学习 界限是模糊的。</p>
+<p>因为没有客观的判断来区分监督者提供的值**是 feature｜target**。通俗地说，无监督学习的大多数尝试是指从不需要人为注释的样本的分布中抽取信息。
+.. pull-quote:</p>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/index.rst</span>, line 116)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.. math:: `p(x)=\prod\limits_{i=1}^np(x_i|x_1,\dots,x_{i-1})` 无监督学习 $p(x)$ 可被分解成 n 个监督学习问题。
+$p(y|x)=\cfrac{p(x,y)}{\sum\limits_{y'}p(xy')}$ 有监督学习 $p(y|x)$ 用无监督学习的法子先学习联合分布。
+</pre></div>
+</div>
+</div>
 <div class="line-block">
 <div class="line"><span class="defi">Semi-supervised learning 半监督学习</span> 。一些样本有，一些样本没有。</div>
 <div class="line"><span class="defi">Reinforcement learning 强化学习</span> 。machine takes an action; teacher provides rewards</div>
 </div>
-<ul class="simple">
+<blockquote>
+<div><ul class="simple">
 <li><p>control</p></li>
 <li><p>pricing</p></li>
 <li><p>games</p></li>
 </ul>
-<a class="reference internal image-reference" href="../_images/reinforcementL_1.png"><img alt="../_images/reinforcementL_1.png" src="../_images/reinforcementL_1.png" style="width: 750.4000000000001px; height: 413.6px;"/>
+</div></blockquote>
+<a class="reference internal image-reference" href="../_images/reinforcementL_1.png"><img alt="../_images/reinforcementL_1.png" src="../_images/reinforcementL_1.png" style="width: 562.8px; height: 310.2px;"/>
 </a>
 <p><span class="defi">Semi-supervised / active learning</span>
 | Evaluation  words
@@ -440,12 +447,15 @@
 | <strong>Privacy</strong>: how to respect data privacy?
 | <strong>Robustness</strong>: how to degrade gracefully under (malicious) error?</p>
 <p><span class="defi">Big data</span> is a collection of data sets so large and  complex that it becomes difficult to process using on-  hand database management tools or traditional data  processing applications.</p>
-<p><strong>Characteristics of Big Data:</strong> <strong>4V</strong>
-| Volume
-| Velocity
-| Variaty
-| Veracity</p>
-<p>![](./pics/BigData_1.png){width=80%}</p>
+<div class="line-block">
+<div class="line"><strong>Characteristics of Big Data:</strong> <strong>4V</strong></div>
+<div class="line">Volume</div>
+<div class="line">Velocity</div>
+<div class="line">Variaty</div>
+<div class="line">Veracity</div>
+</div>
+<a class="reference internal image-reference" href="../_images/BigData_1.png"><img alt="../_images/BigData_1.png" src="../_images/BigData_1.png" style="width: 556.8000000000001px; height: 345.6px;"/>
+</a>
 </section>
 </section>
 <section id="assumption">
@@ -453,10 +463,26 @@
 <p><span class="defi">独立同分布 independent &amp; identically $(i.i.d.)$</span> 。假设样本空间中全体样本服从一个未知 “分布 distribution” $D$，现有的每个 sample 都是独立地从这个分布上采样得到的。</p>
 <p>关于分类</p>
 <p>有很多的分类模型，他们各自有各自的作用原理，也有各自的几何表示。但归根其本质还是estimate distribution.</p>
-<p>&lt;div class=”grid” markdown&gt;
-&lt;figure markdown=”span”&gt;![](./pics/classi_3.png)&lt;p&gt;贝叶斯 长这样&lt;/p&gt;&lt;/figure&gt;
-&lt;figure markdown=”span”&gt;![](./pics/classi_2.png){width=70%}&lt;p&gt;SVM 长这样，这个其实也是一个分布&lt;/p&gt;&lt;/figure&gt;
-&lt;/div&gt;</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<figure class="align-default" id="id3">
+<img alt="../_images/classi_3.png" src="../_images/classi_3.png"/>
+<figcaption>
+<p><span class="caption-text">贝叶斯 长这样</span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<figure class="align-default" id="id4">
+<img alt="../_images/classi_2.png" src="../_images/classi_2.png"/>
+<figcaption>
+<p><span class="caption-text">SVM 长这样，这个其实也是一个分布</span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="identifiability-of-model">
 <h2 id="identifiability-of-model">identifiability of model 模型的可识别性<a class="headerlink" href="#identifiability-of-model" title="Link to this heading">¶</a></h2>
@@ -506,16 +532,20 @@ D:={Diseased person}; H={Healthy Persons}, +I ={Persons with positive results wi
 </section>
 <section id="search">
 <h2 id="search">search<a class="headerlink" href="#search" title="Link to this heading">¶</a></h2>
-<p>!!! p “A search algorithm is admissible if it is guaranteed to find a minimal path to a solution whenever such a path exists.”</p>
-<dl class="simple">
-<dt>!!! p “Q4. the motivations of employing heuristics in solving AI problems?”</dt><dd><p>1.A problem may not have an exact solution because of ambiguities in problem statement or available data
+<div class="admonition-a-search-algorithm-is-admissible-if-it-is-guaranteed-to-find-a-minimal-path-to-a-solution-whenever-such-a-path-exists admonition note">
+<p class="admonition-title">A search algorithm is admissible if it is guaranteed to find a minimal path to a solution whenever such a path exists.</p>
+</div>
+<div class="admonition-q4-the-motivations-of-employing-heuristics-in-solving-ai-problems admonition note">
+<p class="admonition-title">Q4. the motivations of employing heuristics in solving AI problems?</p>
+<p>1.A problem may not have an exact solution because of ambiguities in problem statement or available data
 2.A problem may have an exact solution, but the computational cost (time and space) of finding it may be prohibitive.</p>
-</dd>
-<dt>!!! p “informed search method”</dt><dd><p>Hill-climbing search; A* algorithm; Best-first.</p>
-</dd>
-</dl>
+</div>
+<div class="admonition-informed-search-method admonition note">
+<p class="admonition-title">informed search method”</p>
+<p>Hill-climbing search; A* algorithm; Best-first.</p>
+</div>
 <aside class="system-message">
-<p class="system-message-title">System Message: SEVERE/4 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/index.rst</span>, line 226)</p>
+<p class="system-message-title">System Message: SEVERE/4 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/index.rst</span>, line 226)</p>
 <p>Title level inconsistent:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Best</span><span class="o">-</span><span class="n">first</span> <span class="n">search</span>
 <span class="o">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
@@ -562,77 +592,84 @@ D:={Diseased person}; H={Healthy Persons}, +I ={Persons with positive results wi
 </tbody>
 </table>
 <p>Solution path : S-B-G</p>
-<dl>
-<dt>!!! danger “Best-first $xRightarrow{forall n, h(n)leq h^*(n)}$ A *algorithm&lt;br&gt; Algorithm A* is a special best-first search algorithm ✔️”</dt><dd><p>&gt; example1</p>
-<p><a href="#id3"><span class="problematic" id="id4">|$n$|$h(n)$&lt;br&gt;heuristic estimation|</span></a>?|$h^*(n)$&lt;br&gt; actual n$rightarrow$ goal G|
-<a href="#id5"><span class="problematic" id="id6">|--|</span></a>–<a href="#id7"><span class="problematic" id="id8">|--|</span></a>–|
+<div class="admonition-best-first-xrightarrow-forall-n-h-n-leq-h-n-a-algorithm-br-algorithm-a-is-a-special-best-first-search-algorithm admonition danger">
+<p class="admonition-title">Best-first $xRightarrow{forall n, h(n)leq h^*(n)}$ A *algorithm&lt;br&gt; Algorithm A* is a special best-first search algorithm ✔️</p>
+<p>&gt; example1</p>
+<p><a href="#id5"><span class="problematic" id="id6">|$n$|$h(n)$&lt;br&gt;heuristic estimation|</span></a>?|$h^*(n)$&lt;br&gt; actual n$rightarrow$ goal G|
+<a href="#id7"><span class="problematic" id="id8">|--|</span></a>–<a href="#id9"><span class="problematic" id="id10">|--|</span></a>–|
 S| 70 | &lt; | 55 +45
 A| 35 | &lt; | 25 + 35
 B| 30 | &lt; | 45
 C| 30 | &lt; | 35
 G| 0 | = | 0
 &gt; All h(n)&lt;=h*(n),so it is an A* algorithm and it is admissible. The path S-B-G is the shortest path.</p>
-</dd>
-</dl>
+</div>
 <section id="bnn-bayesian-belief-net">
 <h3 id="bnn-bayesian-belief-net">BNN, Bayesian Belief Net<a class="headerlink" href="#bnn-bayesian-belief-net" title="Link to this heading">¶</a></h3>
 <p>A Bayesian Belief Net consists of a graph and some local conditional probabilities.</p>
-<dl class="simple">
-<dt>!!! p “”</dt><dd><p>Serial connection:      $P(AVB)=P(B|V)P(V|A)P(A)$
-Diverging Connection:   $P(AVB)=P(B|V)P(A|V)P(V)$
+<div class="admonition-serial-connection-p-avb-p-b-v-p-v-a-p-a admonition note">
+<p class="admonition-title">Serial connection:      $P(AVB)=P(B|V)P(V|A)P(A)$</p>
+<p>Diverging Connection:   $P(AVB)=P(B|V)P(A|V)P(V)$
 Converging Connection: $P(AVB)=P(V|AB)P(A)P(B)$
 Modus Ponens rule $cfrac{a,aimplies b}{b}$</p>
-</dd>
-</dl>
-<p>&gt; ![](./pics/BNN_1.png){width=40%}
-&gt;
-&gt; $P(ABC)=P(AB)P(C)=.6*.8*.7=.336$
-&gt;
-&gt; $P(A)=.6*.8+.4*.2=.56$
-&gt;
-&gt; $P(AC)=P(A)P(C)=.56*.7=.392$
-&gt;
-&gt; $P(D|B)=P(D|BC)P(C)+(PD|Bneg C)P(neg C)=.8*.7+.2*.3=.62$
-&gt; $P(D|neg B)=P(D|neg BC)P(C)+(PD|neg Bneg C)P(neg C)=.1*.7+.1*.3=.1$
-&gt; $P(B|D)=cfrac{P(BD)}{P(D)}=cfrac{P(D|B)P(B)}{P(D|B)P(B)+P(D|neg B)P(neg B)}=cfrac{.62*.8}{.62*.8+.1*.2}=.9612$
-&gt; $P(B|neg D)=cfrac{P(Bneg D)}{P(neg D)}=cfrac{P(neg D|B)P(B)}{1-P(D)}=cfrac{(1-P(D|B))P(B)}{1-P(D)}=.6281$</p>
+</div>
+<blockquote class="pull-quote">
+<div><a class="reference internal image-reference" href="../_images/BNN_1.png"><img alt="../_images/BNN_1.png" src="../_images/BNN_1.png" style="width: 300.9px; height: 229.5px;"/>
+</a>
+<div class="line-block">
+<div class="line">$P(ABC)=P(AB)P(C)=.6*.8*.7=.336$</div>
+<div class="line">$P(A)=.6*.8+.4*.2=.56$</div>
+<div class="line">$P(AC)=P(A)P(C)=.56*.7=.392$</div>
+<div class="line">$P(D|B)=P(D|BC)P(C)+(PD|Bneg C)P(neg C)=.8*.7+.2*.3=.62$</div>
+<div class="line">$P(D|neg B)=P(D|neg BC)P(C)+(PD|neg Bneg C)P(neg C)=.1*.7+.1*.3=.1$</div>
+<div class="line">$P(B|D)=cfrac{P(BD)}{P(D)}=cfrac{P(D|B)P(B)}{P(D|B)P(B)+P(D|neg B)P(neg B)}=cfrac{.62*.8}{.62*.8+.1*.2}=.9612$</div>
+<div class="line">$P(B|neg D)=cfrac{P(Bneg D)}{P(neg D)}=cfrac{P(neg D|B)P(B)}{1-P(D)}=cfrac{(1-P(D|B))P(B)}{1-P(D)}=.6281$</div>
+</div>
+</div></blockquote>
 </section>
 <section id="breadth-firth-search">
 <h3 id="breadth-firth-search">Breadth-firth search<a class="headerlink" href="#breadth-firth-search" title="Link to this heading">¶</a></h3>
-<dl>
-<dt>!!! danger “If the search space contains very deep branches without solution, breadth-first search will be a better choice than depth-first search.  T”</dt><dd><p>搜索空间包含非常深的分支 $neq$ 目标在很深的分支里。
+<div class="admonition-if-the-search-space-contains-very-deep-branches-without-solution-breadth-first-search-will-be-a-better-choice-than-depth-first-search-t admonition danger">
+<p class="admonition-title">If the search space contains very deep branches without solution, breadth-first search will be a better choice than depth-first search.  T”</p>
+<p>搜索空间包含非常深的分支 $neq$ 目标在很深的分支里。
 &lt;u&gt;contains very deep branches without solution&lt;/u&gt; 这个深的支是没有解，那么解在浅层的节点里 $implies$ BFS better</p>
-</dd>
-<dt>!!! p “breadth-first search”</dt><dd><p><span class="defi">storage cost</span>     - branch factor $b$
+</div>
+<div class="admonition-breadth-first-search admonition note">
+<p class="admonition-title">breadth-first search”</p>
+<p><span class="defi">storage cost</span>     - branch factor $b$
 - storage cost $s$ bytes/node
 - search speed $v$ nodes/second
 - goal depth $d$
-$$sum_{i=0}^db^itimes s$$
-&gt; ❓ For a searching tree, assume that the branch factor is b=10, the storage cost is 1000 bytes/node and the searching speed is 10,000 nodes/second. With breadth-first search, what is the required storage space at depth 3?
-💡 At depth 3, the number of created nodes is 1+10+100+1000=111,1, and thus the storage space is 111,11000=11,11K bytes.</p>
+$$sum_{i=0}^db^itimes s$$</p>
+<div class="admonition-for-a-searching-tree-assume-that-the-branch-factor-is-b-10-the-storage-cost-is-1000-bytes-node-and-the-searching-speed-is-10-000-nodes-second-with-breadth-first-search-what-is-the-required-storage-space-at-depth-3 admonition note">
+<p class="admonition-title">❓ For a searching tree, assume that the branch factor is b=10, the storage cost is 1000 bytes/node and the searching speed is 10,000 nodes/second. With breadth-first search, what is the required storage space at depth 3?</p>
+<p>💡 At depth 3, the number of created nodes is 1+10+100+1000=111,1, and thus the storage space is 111,11000=11,11K bytes.</p>
+</div>
 <p><span class="defi">time complxity</span>     - branch factor $b$
 - goal depth $d$
 $$b^{d+1}$$</p>
-</dd>
-</dl>
+</div>
 </section>
 </section>
 <section id="id2">
 <h2 id="id2">离散<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
-<dl class="simple">
-<dt>!!! p “Why in some cases we need to use First Order Logic (FOL) rather than Propositional Logic (PL)?”</dt><dd><p>1.Propositional logic (PL) is too “coarse” to easily describe properties of objects.
+<div class="admonition-why-in-some-cases-we-need-to-use-first-order-logic-fol-rather-than-propositional-logic-pl admonition note">
+<p class="admonition-title">Why in some cases we need to use First Order Logic (FOL) rather than Propositional Logic (PL)?”</p>
+<p>1.Propositional logic (PL) is too “coarse” to easily describe properties of objects.
 2.First order logic (FOL) is to extend the expressiveness of PL.</p>
-</dd>
-<dt>!!! p “”</dt><dd><p>Forward chaining in first order logic is a data-driven algorithm.
-Backwards chaining in first order logic is a goal-driven algorithm.</p>
-</dd>
-<dt>!!! p “$forall$ &amp; $exist$”</dt><dd><ul class="simple">
+</div>
+<div class="admonition-forward-chaining-in-first-order-logic-is-a-data-driven-algorithm admonition note">
+<p class="admonition-title">Forward chaining in first order logic is a data-driven algorithm.</p>
+<p>Backwards chaining in first order logic is a goal-driven algorithm.</p>
+</div>
+<div class="admonition-forall-exist admonition note">
+<p class="admonition-title">$forall$ &amp; $exist$</p>
+<ul class="simple">
 <li><p>$forall xforall y=forall yforall x$</p></li>
 <li><p>$exist x, y = neg forall xneg y$</p></li>
 <li><p>$exist xforall yneq forall y exist x$</p></li>
 </ul>
-</dd>
-</dl>
+</div>
 <p>Satisfiable: A sentence is satisfiable if there is some interpretation for which it is true.
 Unsatisfiable: A sentence is unsatisfiable if there is no interpretation for which it is true.
 Valid: A sentence is valid if it is true for every
@@ -696,7 +733,7 @@ interpretation.</p>
 </tbody>
 </table>
 </div></blockquote>
-<p>This text includes a smiley face 😄 and a snake too! 🐍 ❌</p>
+<p>This text includes a smiley face <a href="#id11"><span class="problematic" id="id12">|:smile:|</span></a> and a snake too! <a href="#id13"><span class="problematic" id="id14">|:snake:|</span></a> <a href="#id15"><span class="problematic" id="id16">|:x:|</span></a></p>
 <blockquote>
 <div><table>
 <thead>
@@ -724,10 +761,10 @@ interpretation.</p>
 </section>
 <section id="kmeans">
 <h2 id="kmeans">kmeans<a class="headerlink" href="#kmeans" title="Link to this heading">¶</a></h2>
-<dl class="simple">
-<dt>!!! danger “Manhattan distance is &lt;u&gt;usually&lt;/u&gt; larger than Euclidean distance. ✔️”</dt><dd><p>当存在三角形形状，斜边比直角边加和要小</p>
-</dd>
-</dl>
+<div class="admonition-manhattan-distance-is-u-usually-u-larger-than-euclidean-distance admonition danger">
+<p class="admonition-title">Manhattan distance is &lt;u&gt;usually&lt;/u&gt; larger than Euclidean distance. ✔️</p>
+<p>当存在三角形形状，斜边比直角边加和要小</p>
+</div>
 </section>
 <section id="parameter-tuning">
 <h2 id="parameter-tuning">parameter tuning<a class="headerlink" href="#parameter-tuning" title="Link to this heading">¶</a></h2>
