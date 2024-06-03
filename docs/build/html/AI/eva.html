@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>模型评估与选择 &#8212; cocobook  文档</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=83e35b93" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css?v=79c92029" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/katex-math.css?v=91adb8b6" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/def.css?v=5a9d86bd" />
+    <script src="../_static/documentation_options.js?v=7d86a446"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/translations.js?v=beaddf03"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#AI/eva" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../index.html" title="cocobook  文档"
+           class="md-header-nav__button md-logo">
+          
+            &nbsp;
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">cocobook  文档</span>
+          <span class="md-header-nav__topic"> 模型评估与选择 </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder=""Search""
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+      
+  
+  <script src="../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../"versions.json"",
+        target_loc = "../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">cocobook  文档</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="cocobook 文档" class="md-nav__button md-logo">
+      
+        <img src="../_static/" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../index.html"
+       title="cocobook 文档">cocobook  文档</a>
+  </label>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#ai-eva--page-root" class="md-nav__link">模型评估与选择</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id2" class="md-nav__link">数据划分</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id5" class="md-nav__link">数据采样</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#id6" class="md-nav__link">评估指标</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id7" class="md-nav__link">分类</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#precision-recall" class="md-nav__link">precision & recall</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#p-r-precision-recall" class="md-nav__link">P-R 曲线, Precision-Recall</a>
+        </li>
+        <li class="md-nav__item"><a href="#roc-auc" class="md-nav__link">ROC & AUC</a>
+        </li>
+        <li class="md-nav__item"><a href="#id8" class="md-nav__link">代价敏感错误率 & 代价曲线</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#mse" class="md-nav__link">MSE 系列</a>
+        </li>
+        <li class="md-nav__item"><a href="#mae" class="md-nav__link">MAE</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#mape-mean-absolute-percent-error" class="md-nav__link">MAPE, Mean Absolute Percent Error, 平均绝对百分比误差</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#id9" class="md-nav__link">排序问题</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#id10" class="md-nav__link">比较检验</a>
+        </li>
+        <li class="md-nav__item"><a href="#generalization" class="md-nav__link">generalization 泛化性能</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id13" class="md-nav__link">MSE</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#bias" class="md-nav__link">bias, 偏差</a>
+        </li>
+        <li class="md-nav__item"><a href="#variance" class="md-nav__link">variance, 方差</a>
+        </li>
+        <li class="md-nav__item"><a href="#noise" class="md-nav__link">noise, 噪聲</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#bias-variance-dilemma" class="md-nav__link">bias-variance dilemma, 偏差-方差窘境</a>
+        </li>
+        <li class="md-nav__item"><a href="#underfitting" class="md-nav__link">underfitting 欠拟合</a>
+        </li>
+        <li class="md-nav__item"><a href="#overfitting" class="md-nav__link">overfitting, 过拟合 - 高方差</a>
+        </li>
+        <li class="md-nav__item"><a href="#of-vs-uf" class="md-nav__link">OF vs UF</a>
+        </li>
+        <li class="md-nav__item"><a href="#id14" class="md-nav__link">解决方法</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#capacity" class="md-nav__link">capacity 容量</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../_sources/AI/eva.rst.txt">显示源代码</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="id1">
+<h1 id="ai-eva--page-root">模型评估与选择<a class="headerlink" href="#ai-eva--page-root" title="Link to this heading">¶</a></h1>
+<p>![](./pics/RES_fit_6.png){width=60%}</p>
+<dl class="simple">
+<dt>!!! danger “训练误差 $xrightarrow{近似}$ 测试误差&lt;br&gt; 测试误差 $xrightarrow{近似}$  泛化误差。”</dt><dd><p>依据：训练集 &amp; 测试集 <strong>独立同分布</strong> 地在数据空间中采样形成。
+通过降低**训练误差**来让**测试误差**⬇️，通过测量**测试误差**来衡量在整个数据集的**泛化性能**。</p>
+</dd>
+</dl>
+<section id="id2">
+<h2 id="id2">数据划分<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p><a href="#id3"><span class="problematic" id="id4">**</span></a>留出法和k折交叉验证**最常用。</p>
+<aside class="system-message" id="id3">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/eva.rst</span>, line 13); <em><a href="#id4">backlink</a></em></p>
+<p>Inline strong start-string without end-string.</p>
+</aside>
+<p>dataset $D$；training set $S$；testing set $T$</p>
+<p>![](./pics/validation_1.png)</p>
+<p>==hold-out 留出法==。直接分成互斥大小不一两份，多次取误差平均。比例一般是
+$$D=Scup T, Scap T=empty, S:T=2:1 ～4:1$$
+==k-fold cross- validation k折交叉验证==。分成k个大小相似，多次取误差平均。 p次k折交叉验证
+$$D=D_1cup D_2cupdotscup D_k, D_icap D_j=empty(ineq j),k=10|5|20\T=D_i, S=D-D_i,i=1dots k$$
+==Leave-One-Out LOO 留一法==。n折交叉验证，k=n=样本数量。$D-S=1$ 比较准确但计算成本大。
+==================================================
+<span class="defi">bootstrapping 自助法</span> 有放回采样n次。从 n 个样本的数据集 $D$ <strong>有放回采样</strong> n 次得到 $D’$
+$$S=D’, T=Dsetminus D’$$
+对样本而言，在 n 次采样中始终找不到：$limlimits_{mrightarrowinfin}(1-frac{1}{m})^m=frac{1}{e}approx0.368implies S:T=2:1$</p>
+<section id="id5">
+<h3 id="id5">数据采样<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p>==stratified sampling 分层采样==。保留类比比例</p>
+</section>
+</section>
+<section id="id6">
+<h2 id="id6">评估指标<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>分类</p></li>
+</ul>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/eva.rst</span>, line 38)</p>
+<p>Bullet list ends without a blank line; unexpected unindent.</p>
+</aside>
+<p>准确率 Accuracy，错误率 Error rate
+精确率 Precision，召回率 Recall
+- 回归</p>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/eva.rst</span>, line 41)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><ul class="simple">
+<li><p>MAE系列，即由 Mean Absolute Error 衍生得到的指标；</p></li>
+<li><dl class="simple">
+<dt>MSE系列，即由 Mean Squared Error 衍生得到的指标；</dt><dd><ul>
+<li><p>均方根误差（Root Mean Square Error，RMSE）</p></li>
+<li><p>$R^2$</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<p>在英语中，error 和deviation 的含义是一样的，所以Mean Absolute Error 也可以叫做 Mean Absolute Deviation(MAD)</p>
+<p>[机器学习基础，回归模型评估指标]
+[机器学习笔记_混淆矩阵（Confusion Matrix]</p>
+<section id="id7">
+<h3 id="id7">分类<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<p>![](./pics/TP.jpeg){width=35%}
+![](./pics/confusionM_1.png){width=80%}</p>
+<p>==accuracy 准确率==. 分类正确的样本占总样本个数的比例.【正负一样重要】$$cfrac{TP+TN}{all}$$</p>
+<p>!!! warning “类别极度不平衡慎用(单纯准确率容易傻瓜判别)-&gt; 类准确率”</p>
+<dl class="simple">
+<dt>!!! p “当有别的需要我们特殊关注：”</dt><dd><p>“&lt;u&gt;搜索结果(判定为 P )&lt;/u&gt;中有多少是用户感兴趣？” $frac{TP}{TP+FP}=$ precision
+“&lt;u&gt;用户感兴趣(真实为 P )&lt;/u&gt;有多少出现在搜索结果中？” $frac{TP}{TP+FN}=$recall</p>
+</dd>
+</dl>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/eva.rst</span>, line 64)</p>
+<p>Definition list ends without a blank line; unexpected unindent.</p>
+</aside>
+<p>==precision 精确率 查准率==。分类正确的正样本个数占**判定为正**的样本个数的比例
+$$cfrac{TP}{TP+FP=～P}$$
+==recall sensitivity Sensitivity 召回率，灵敏度，TPR， 查全率==。分类正确的正样本个数占**真正的正样本**个数的比例。【正重要】
+$$cfrac{TP}{TP+FN}$$</p>
+<p>==Specificity特异性==。分类正确的负样本个数占**真正的负样本**个数的比例。【负重要】
+$$cfrac{TN}{TN+FP}$$</p>
+<p>==False Positive Rate, FPR==。 分类错误的负样本个数占真正的负样本个数的比例。
+$$cfrac{FP}{TN+FP}$$</p>
+<dl class="simple">
+<dt>!!! p “有多个二分类混淆矩阵 (多次训练测试 ｜ 不同子数据集｜multi-class)”</dt><dd><p>==macro- 宏==。先各混淆矩阵分别计算，再平均。$text{macro-P}=overline{P}=cfrac{1}{n}sumlimits_{i=1}^nP_i$
+==micro- 微==。先平均混淆矩阵，再一起计算 $text{micro-P}=cfrac{overline{TP}}{overline{TP}+overline{FP}}$</p>
+</dd>
+</dl>
+<section id="precision-recall">
+<h4 id="precision-recall">precision &amp; recall<a class="headerlink" href="#precision-recall" title="Link to this heading">¶</a></h4>
+<dl>
+<dt>!!! danger “定义经常记错”</dt><dd><ul class="simple">
+<li><p>precision 是==说多错多==。高 prec 值需要在&lt;u&gt;很有把握的时候&lt;/u&gt;预测为正 $implies$ &lt;u&gt;过于保守&lt;/u&gt;，漏掉很多正样本，recall↓</p></li>
+</ul>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/eva.rst</span>, line 84)</p>
+<p>Bullet list ends without a blank line; unexpected unindent.</p>
+</aside>
+<blockquote>
+<div><p>“&lt;u&gt;搜索结果(判定为 P )&lt;/u&gt;中有多少是用户感兴趣？”</p>
+</div></blockquote>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/eva.rst</span>, line 85)</p>
+<p>Block quote ends without a blank line; unexpected unindent.</p>
+</aside>
+<ul class="simple">
+<li><p>recall 是==人有多大胆地有多大产==。只要我全说正，那么 recall = 1.  $implies$ &lt;u&gt;过于冒险&lt;/u&gt;，错判很多负样本，precision↓</p></li>
+</ul>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/eva.rst</span>, line 86)</p>
+<p>Bullet list ends without a blank line; unexpected unindent.</p>
+</aside>
+<p>“&lt;u&gt;用户感兴趣(真实为 P )&lt;/u&gt;有多少出现在搜索结果中？”</p>
+<p>需要综合考虑 precision 和 recall</p>
+</dd>
+</dl>
+<p>||P-R（Precision-Recall）|ROC|
+<a href="#id15"><span class="problematic" id="id16">|--|</span></a>–<a href="#id17"><span class="problematic" id="id18">|--|</span></a>
+<a href="#id19"><span class="problematic" id="id20">|X|Recall = TP/(TP+FN) [0,1]|</span></a> FPR = FP/(FP+TN)，假阳性率|
+<a href="#id21"><span class="problematic" id="id22">|Y|Precision = TP/(-P) [0,1]|TPR = TP/(TP+FN)，真阳性率|</span></a>
+<a href="#id23"><span class="problematic" id="id24">|正负样本的分布变化|较剧烈的变化|基本保持不变&lt;br&gt;降低不同测试集带来的干扰|</span></a>
+||更直观看见特定数据集的表现|适用场景更多，被广泛用于排序、推荐、广告等领域|</p>
+<dl class="simple">
+<dt>!!! p “==socre-based classifier==.”</dt><dd><p>For a specified $lambda$, let $f_C(x) = begin{cases}P&amp;f_z(x) ≥ λ\N&amp;f_z(x) &lt; λend{cases}$.
+点的表示:在某一**阈值 λ**下，大于该阈值的样本会被判为正例 P，小于该阈值的样本会被判为负例 N。
+$λrightarrow-infin$, the classifier predicts <strong>everything as positive</strong>.
+$λrightarrowinfin$, the classifier predicts <strong>everything as negative</strong>.</p>
+</dd>
+</dl>
+<section id="p-r-precision-recall">
+<h5 id="p-r-precision-recall">P-R 曲线, Precision-Recall<a class="headerlink" href="#p-r-precision-recall" title="Link to this heading">¶</a></h5>
+<dl>
+<dt>!!! quote “socre-based classifier”</dt><dd><p>$λrightarrowinfin, P(infin)=1,R(-infin) =0$. an useless predictor.
+$λrightarrow-infin, P(-infin)=0,R(-infin) =1$. an useless predictor</p>
+<p>As $λ=∞rightarrow−∞, P(λ)downarrow, R(λ)uparrow$</p>
+</dd>
+</dl>
+<p>$$x:text{recall}；y:text{precision}$$</p>
+<p>&lt;div class=”grid” markdown&gt;
+&lt;figure markdown=”span”&gt;![](./pics/PR_2.png)&lt;/figure&gt;
+&lt;p&gt;通常情况下，&lt;b&gt;P-R曲线下的面积越大，模型性能越好&lt;/b&gt;：即图中曲线B完全包住了曲线C，所以曲线B一定优于C。&lt;br&gt; 但像A和B这样发生了交叉，不能断言孰优孰劣，只能在具体的P或R条件下分析。&lt;br&gt;另设别的性能度量：&lt;br&gt; &lt;b&gt;BEP&lt;/b&gt;: B=0.72 &lt; A=0.8，A优于B&lt;/p&gt;
+&lt;/div&gt;</p>
+<p>==Break-Event Point 平衡点 BEP==。是“查准率==查全率”的点。该点代表模型的能力在两者表现都处于一个相对优秀的状态。(但是太简化)</p>
+<p>==F1调和平均 和更一般 $F_beta$==。更重视偏小值。适用于需要对查准率或查全率的某一项有偏好。</p>
+<p>$$F1=cfrac{2times text{precision}timestext{recall}}{ text{precision}+text{recall}}\
+<a href="#id75"><span class="problematic" id="id76">F_</span></a>beta=cfrac{(1+beta^2)times text{precision}timestext{recall}}{ beta^2timestext{precision}+text{recall}},betabegin{cases}=1&amp;F1\=2&gt;1&amp;text{偏recall}\=0.5&lt;1&amp;text{偏precision}end{cases}$$</p>
+<dl class="simple">
+<dt>!!! quote “F1调和平均更重视偏小值。”</dt><dd><p>$frac{1}{F1}=frac{1}{2}(frac{1}{P}+frac{1}{R})=frac{P+R}{2PR}implies F1=cfrac{2PR}{P+R}$
+Assume $Prightarrow 0, Rrightarrow 1$ 极度不平衡
+$F1=cfrac{2PR}{P+R}=cfrac{rightarrow0}{rightarrow 1}rightarrow0$（很糟）
+$F1=cfrac{P+R}{2}=cfrac{rightarrow1}{2}rightarrow0.5$（中等）
+Btw $frac{1}{<a href="#id77"><span class="problematic" id="id78">F_</span></a>beta}=frac{1}{1+beta^2}(frac{1}{P}+frac{beta^2}{R})$</p>
+</dd>
+</dl>
+<p>&gt; 5 个样本按分数排列 （gt, score）
+&gt; （1，0.9）（1，0.8）（0，0.7）（1，0.6）（0，0.4）</p>
+<p><a href="#id25"><span class="problematic" id="id26">|λ|(1，0.9)|(1，0.8)|(0，0.7)|(1，0.6)|(0，0.4)|P|R|</span></a>
+<a href="#id27"><span class="problematic" id="id28">|--|</span></a>–<a href="#id29"><span class="problematic" id="id30">|--|</span></a>–<a href="#id31"><span class="problematic" id="id32">|--|</span></a>–<a href="#id33"><span class="problematic" id="id34">|--|</span></a>–|
+<a href="#id35"><span class="problematic" id="id36">|0.9|1|0|0|0|0|$\frac{1}{1+0}$|$\frac{1}{1+2}$|</span></a>
+<a href="#id37"><span class="problematic" id="id38">|0.8|1|1|0|0|0|$\frac{2}{2+0}$|$\frac{2}{2+1}$|</span></a>
+<a href="#id39"><span class="problematic" id="id40">|0.7|1|1|1|0|0|$\frac{2}{2+1}$|$\frac{2}{2+1}$|</span></a>
+<a href="#id41"><span class="problematic" id="id42">|0.6|1|1|1|1|0|$\frac{3}{3+1}$|$\frac{3}{3+0}$|</span></a>
+<a href="#id43"><span class="problematic" id="id44">|0.4|1|1|1|1|1|$\frac{3}{3+2}$|$\frac{3}{3+0}$|</span></a></p>
+<p>![](./pics/PR_1.png){width=50%}</p>
+</section>
+<section id="roc-auc">
+<h5 id="roc-auc">ROC &amp; AUC<a class="headerlink" href="#roc-auc" title="Link to this heading">¶</a></h5>
+<p>==ROC, the Receiver Operating Characteristics curve 受试者工作特征曲线==。
+$$x=FPR=cfrac{FP}{TN+FP}; y=TPR=cfrac{TP}{TP+FN}$$</p>
+<dl>
+<dt>!!! quote “socre-based classifier”</dt><dd><p>$λrightarrowinfin, TPR(infin)=0,FPR(-infin) =0$. an useless predictor.
+$λrightarrow-infin, TPR(-infin)=1,FPR(-infin) =1$. an useless predictor</p>
+<p>As $λ=∞rightarrow−∞, FPR(λ): &amp;: TPR(λ)uparrow$</p>
+</dd>
+</dl>
+<p>&lt;div class=”grid” markdown&gt;
+&lt;figure markdown=”span”&gt;![](./pics/ROC_1.png){width=80%}&lt;/figure&gt;
+&lt;p&gt;&lt;mark&gt;5 ROC curves&lt;/mark&gt;&lt;br&gt;&lt;u&gt;Curve I&lt;/u&gt; is typical. 一般在 y=x 上面。&lt;br&gt;&lt;u&gt;Curve II&lt;/u&gt; 随机预测 ☹️ &lt;br&gt;&lt;u&gt;Curve III&lt;/u&gt; is kind of useful in the sense that one benefits by using it reversely. &lt;br&gt;&lt;u&gt;IV&lt;/u&gt; perfect classifier 👍 &lt;br&gt;so is &lt;u&gt;V&lt;/u&gt;.预测对调后翻转完👍&lt;/p&gt;
+&lt;/div&gt;</p>
+<p>&lt;figure markdown=”span”&gt;![](./pics/ROC_2.png){width=80%}&lt;p&gt;AUC, ROC曲线下的面积大小&lt;/p&gt;&lt;/figure&gt;</p>
+<p>==AUC Area Under ROC Curve==。 量化地反映基于ROC曲线衡量出的模型性能 $AUCin[0,1]$ 一般在0.5-1之间，↑👍</p>
+<ul class="simple">
+<li><p>$AUCrightarrow1$ &lt;u&gt;Good&lt;/u&gt;</p></li>
+<li><p>$AUCrightarrow0$ &lt;u&gt;Good&lt;/u&gt; yet one should use it <strong>reversely</strong>.</p></li>
+<li><p>$AUCrightarrow0.5$ &lt;u&gt;**BAD**&lt;/u&gt; <strong>like a random guess</strong>.</p></li>
+</ul>
+<p>&gt; 5 个样本按分数排列 （gt, score）
+&gt; （1，0.9）（1，0.8）（0，0.7）（1，0.6）（0，0.4）</p>
+<p><a href="#id45"><span class="problematic" id="id46">|λ|(1，0.9)|(1，0.8)|(0，0.7)|(1，0.6)|(0，0.4)|TPR|FPR|</span></a>
+<a href="#id47"><span class="problematic" id="id48">|--|</span></a>–<a href="#id49"><span class="problematic" id="id50">|--|</span></a>–<a href="#id51"><span class="problematic" id="id52">|--|</span></a>–<a href="#id53"><span class="problematic" id="id54">|--|</span></a>–|
+<a href="#id55"><span class="problematic" id="id56">|0.9|1|0|0|0|0|$\frac{1}{1+2}$|$\frac{0}{2+0}$|</span></a>
+<a href="#id57"><span class="problematic" id="id58">|0.8|1|1|0|0|0|$\frac{2}{2+2}$|$\frac{0}{2+0}$|</span></a>
+<a href="#id59"><span class="problematic" id="id60">|0.7|1|1|1|0|0|$\frac{2}{2+1}$|$\frac{1}{1+1}$|</span></a>
+<a href="#id61"><span class="problematic" id="id62">|0.6|1|1|1|1|0|$\frac{3}{3+0}$|$\frac{1}{1+1}$|</span></a>
+<a href="#id63"><span class="problematic" id="id64">|0.4|1|1|1|1|1|$\frac{3}{3+0}$|$\frac{2}{0+2}$|</span></a></p>
+</section>
+<section id="id8">
+<h5 id="id8">代价敏感错误率 &amp; 代价曲线<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h5>
+<p>为权衡不同类型错误所造成的损失，将错误赋予“非均等代价”。上述的那些其实是**默认均等代价, target：最小错误次数**.
+==Cost Matrix 代价矩阵==。 $text{cost}_{ij}:=$ 将 i 类 误认为 j 类的代价。<strong>target：最小总体代价 total cost</strong>.</p>
+<p>==cost curve 代价曲线==。反映出期望总体代价。（ROC不能反映）</p>
+</section>
+</section>
+<section id="mse">
+<h4 id="mse">MSE 系列<a class="headerlink" href="#mse" title="Link to this heading">¶</a></h4>
+<p>==MSE==。$$MSE=cfrac{sumlimits_{i=1}^n(hat{y}-y)^2}{n}$$</p>
+<p><span class="defi">RMSE, Root Mean Square Error, 均方根误差</span></p>
+<p>$$RMSE=sqrt{cfrac{sumlimits_{i=1}^n(hat{y}-y)^2}{n}}$$</p>
+<dl>
+<dt>!!! danger “RMSE很高但是在95%预测误差都小于1%”</dt><dd><p>是否存在 ==outliers==。是 noise 还是正常的样本多样性。
+1. noises: 预处理时过滤
+2. 正常样本的多样性：</p>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/eva.rst</span>, line 203)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><ul class="simple">
+<li><p>增加关于 outliers 建模</p></li>
+<li><p>选择更鲁棒的 metrics ：MAPE</p></li>
+</ul>
+</div></blockquote>
+</dd>
+</dl>
+</section>
+<section id="mae">
+<h4 id="mae">MAE<a class="headerlink" href="#mae" title="Link to this heading">¶</a></h4>
+<p>$$MAPE=cfrac{1}{n}sumlimits_{i=1}^nverthat{y_i}-y_ivert times100%$$</p>
+<section id="mape-mean-absolute-percent-error">
+<h5 id="mape-mean-absolute-percent-error">MAPE, Mean Absolute Percent Error, 平均绝对百分比误差<a class="headerlink" href="#mape-mean-absolute-percent-error" title="Link to this heading">¶</a></h5>
+<p>$$MAPE=cfrac{1}{n}sumlimits_{i=1}^nvertcfrac{hat{y_i}-y_i}{y_i}vert times100%$$</p>
+<p>相比RMSE，MAPE相当于==把每个点的误差进行了归一化==，降低了个别离群点带来的绝对误差的影响
+相当于加权版的 MAE
+MAPE 可以看做是 MAE 和 MPE (Mean Percentage Error) 综合而成的指标</p>
+</section>
+</section>
+<section id="id9">
+<h4 id="id9">排序问题<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h4>
+<dl class="simple">
+<dt>!!! question “”</dt><dd><p>在排序问题中，通常没有一个确定的阈值把得到的结果直接判定为正样本或负样本，而是采用Top N返回结果的Precision值和Recall值来衡量排序模型的性能，即认为模型返回的Top N的结果就是模型判定的正样本，然后计算前N个位置上的准确率Precision@N和前N个位置上的召回率Recall@N</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+<section id="id10">
+<h2 id="id10">比较检验<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+<dl>
+<dt>!!! warning “直接数值比较吗？”</dt><dd><p>❌。需要测的是泛化性能，但是在选出的 testing set 上测的。（两者不等价，且后者受测试集的大小和选择影响）
+✏️ ==统计假设检验 hypothesis test==。&lt;u&gt;若在测试集上观察到 A 比 B 好，则 A 的泛化性能是否在统计意义上优于 B？以及这个结论的把握有多大？&lt;/u&gt;</p>
+<p>!!! danger “但实际上极少人用 [为什么做机器学习的很少使用假设检验？]”</p>
+</dd>
+<dt>!!! quote “”</dt><dd><p>以 错误率 $epsilon$ 举例。
+测试集的测试错误率 $hat{epsilon}$ 是对泛化性能的泛化错误率 $epsilon$ 的一个**预测**。可从 $hat{epsilon}$ 推测 $epsilon$ 的分布。
+$epsilon:=$ 算法在**一个样本上**犯错的概率是 $epsilon$
+$hat{epsilon}:=$ 是在 m 个测试样本中，<a href="#id11"><span class="problematic" id="id12">**</span></a>恰好**有 $mtimeshat{epsilon}$ 个样本被误分类。</p>
+<aside class="system-message" id="id11">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/eva.rst</span>, line 236); <em><a href="#id12">backlink</a></em></p>
+<p>Inline strong start-string without end-string.</p>
+</aside>
+</dd>
+</dl>
+<p>在包含 m 个样本上的测试集上，泛化错误率🟰$epsilon$ 的算法被测得测试错误率🟰$hat{epsilon}$的概率：
+$$P(hat{epsilon};epsilon)={mchoose mtimeshat{epsilon}}epsilon^{mtimeshat{epsilon}}(1-epsilon)^{m(1-hat{epsilon})}～Bin(m, epsilon)$$
+满足二项分布(伯努利分布).
+使用二项检验 binomial test 来对 $epsilonleepsilon_0$ 的假设进行检验。使用:defi:<cite>置信度 confidence $1-alpha$</cite>
+在 $1-alpha$ 的概率所能观测的最大错误率=:临界值 $1-overline{epsilon}$：
+$$text{临界值 }overline{epsilon}=max_{epsilon} epsilon\text{s.t.} sum_{i=mtimesepsilon+1}^m{mchoose i}epsilon^i(1-epsilon)^{m-i}lealpha$$</p>
+<ul class="simple">
+<li><p>$hat{epsilon}&lt;overline{epsilon}$: 在 α 的显著度下，假设 $epsilonleepsilon_0$ 不能被拒绝 🟰 在 1-α 的置信度认为，$epsilonleepsilon_0$</p></li>
+<li><p>$hat{epsilon}geoverline{epsilon}$: 在 α 的显著度下，假设 $epsilonleepsilon_0$ 被拒绝 🟰 在 1-α 的置信度认为，$epsilongtepsilon_0$</p></li>
+</ul>
+<dl class="simple">
+<dt>!!! p “确定一个显著度 α 即 置信度 1-α，在测试集上测出 $hat{epsilon}$，算出临界值 $overline{epsilon}$， $epsilonxlongequal{SET}overline{epsilon}$”</dt><dd><p>α 一般是 0.05， 0.1</p>
+</dd>
+</dl>
+<p>!!! p “我们多次重复留出法｜交叉验证法，获得多次测试错误率。&lt;br&gt;✏️ ==t检验 t-test==。双边假设。”</p>
+<p>k 次测试，k 个测试错误率 $hat{epsilon}_1,dots,hat{epsilon}_k$
+$implies$ 平均测试错误率 $mu=frac{1}{k}sumlimits_{i=1}^khat{epsilon}_i$, 方差 $sigma^2=frac{1}{k-1}sumlimits_{i=1}^k(hat{epsilon}_i-mu)^2$。$hat{epsilon}_1,dots,hat{epsilon}_k$ 是对泛化错误率 $epsilon$ 的独立采样。
+$implies tau_t=cfrac{sqrt{k}(mu-epsilon)}{sigma}～t(k-1)$，自由度=k-1
+对假设“$epsilon=epsilon_0$” 和显著度 α ,</p>
+<p>[机器学习基础，回归模型评估指标]: <a class="reference external" href="https://zhuanlan.zhihu.com/p/73330018">https://zhuanlan.zhihu.com/p/73330018</a>
+[机器学习笔记_混淆矩阵（Confusion Matrix]: <a class="reference external" href="https://blog.csdn.net/seagal890/article/details/105059498">https://blog.csdn.net/seagal890/article/details/105059498</a></p>
+</section>
+<section id="generalization">
+<h2 id="generalization">generalization 泛化性能<a class="headerlink" href="#generalization" title="Link to this heading">¶</a></h2>
+<p>==generalization error, 泛化误差==。训练数据集的损失与一般化的数据集的损失之间的差异</p>
+<p>泛化误差可以分解为 <strong>Bias 偏差</strong>、<strong>Variance 方差、Noise 噪声</strong>
+<strong>期望泛化误差 = 偏差 + 方差
+偏差=学习器的拟合能力
+方差=学习器稳定性</strong></p>
+<p>==bias-variance decomposition, 偏差-方差分解==，就是从偏差和方差的角度来解释学习算法泛化性能的一种重要工具。</p>
+<section id="id13">
+<h3 id="id13">MSE<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<p>==Mean Squared Error, MSE==. one of evaluations of an estimator of parameter.</p>
+<dl class="simple">
+<dt>$$</dt><dd><p>begin{align*}MSE(hatmu)=mathbb EVert mu-hatmu Vert^2&amp;=mathbb E{red{(mu-hatmu)^T(mu-hatmu)_{inR}}}\&amp;=mathbb Etr{ red{(mu-hatmu)(mu-hatmu)^T_{in S^n}}}\&amp;=tr{Var(hatmu)}+Vert Bias(hatmu)Vert^2\&amp;=tr{Var(hatmu)}+Bias(hatmu)^TBias(hatmu)end{align*}</p>
+</dd>
+</dl>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/eva.rst</span>, line 283)</p>
+<p>Definition list ends without a blank line; unexpected unindent.</p>
+</aside>
+<p>$$</p>
+<dl class="simple">
+<dt>!!! p “为什么MSE常用?”</dt><dd><p>因为MSE可以化成 variance of estimate + bias of variance。
+- 前者我们希望越小越好，因为方差就是随机变量的分散程度
+- 后者我们希望越小越好，甚至希望他能达到0→ unbiased estimate, 因为偏差是 estimate 和ground truth 之间的期望距离</p>
+</dd>
+</dl>
+<p>==UMVUE, uniformly minimum-variance unbiased estimator==, 在无偏估计器中进行最佳选择的标准：如果它们都是无偏的，则选择方差最小的那个！更通俗的说法就是就是“<strong>如果有两个具有相同偏差的估计器，我们选择方差较小的一个</strong>”</p>
+<p>assume that $Y=f(X)+ε,ε～N(0,σ_ε)$</p>
+<p>$$
+begin{align*}MSE&amp;=mathbb E{(Y-hat Y)^2}=mathbb E{(f_X-hat f_X)^2}\&amp;=(mathbb Ehat f- f)^2+mathbb E{(hat f-mathbb E hat f)^2}+sigma_epsilon^2\&amp;=Bias^2+Var+text{Irreducible Error}end{align*}
+$$</p>
+<section id="bias">
+<h4 id="bias">bias, 偏差<a class="headerlink" href="#bias" title="Link to this heading">¶</a></h4>
+<p>==Bias==. $=mathbb Ehat f- f$
+用所有可能的训练数据集训练出的**所有模型**的输出**值**与**真实模型**的输出值之间的差异。度量了学习算法的期望预测与真实结果的偏离程度，即刻画了**学习算法本身的拟合能力。**
+Bias的对象是**单个模型**，是期望输出与真实标记的差别。它描述了**模型对本训练集的拟合程度**。</p>
+</section>
+<section id="variance">
+<h4 id="variance">variance, 方差<a class="headerlink" href="#variance" title="Link to this heading">¶</a></h4>
+<p>==Variance==$=mathbb E{(hat f-mathbb E hat f)^2}$
+数据的离散程度，不同的训练数据集训练出的模型**输出值之间的差异**.度量了同样大小的训练集的变动所导致的学习性能的变化，即刻画了**数据扰动所造成的影响。**
+Variance的对象是**多个模型**，是相同分布的不同数据集训练出模型的输出值之间的差异。它刻画的是数据扰动对模型的影响。</p>
+</section>
+<section id="noise">
+<h4 id="noise">noise, 噪聲<a class="headerlink" href="#noise" title="Link to this heading">¶</a></h4>
+<p>==Noise==. $=ε～N(0,σ_ε)$
+学习算法所无法解决的问题，数据的质量决定了学习的上限。我们要做的就是尽可能的接近这个上限。表达了在当前任务上任何学习算法所能达到的**期望泛化误差的下界**，即刻画了学习问题本身的难度</p>
+</section>
+</section>
+<section id="bias-variance-dilemma">
+<h3 id="bias-variance-dilemma">bias-variance dilemma, 偏差-方差窘境<a class="headerlink" href="#bias-variance-dilemma" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>!!! p “训练误差 $xrightarrow{近似}$ 测试误差$xrightarrow{近似}$  泛化误差。”</dt><dd><p>决定机器学习算法效果是否好的因素：
+- 降低训练误差
+- 缩小 训练误差 &amp; 测试误差的差距。</p>
+</dd>
+</dl>
+<p>&lt;div class=”grid” markdown&gt;
+&lt;figure&gt;![](./pics/RES_fit_3.png)&lt;/figure&gt;
+&lt;p&gt;&lt;u&gt;训练不足时&lt;/u&gt;：学习器的拟合能力不够强，训练数据的扰动不足以使学习器产生显著变化，此时&lt;b&gt;偏差主导了泛化错误率。模型在训练集上不能获得足够低的误差&lt;/b&gt;；&lt;br&gt;&lt;u&gt;训练程度充足后&lt;/u&gt;：学习器的拟合能力已经非常强，训练数据发生的轻微扰动都会导致学习器发生显著变化，&lt;b&gt;方差主导了泛化错误率，训练误差和测试误差的差距&lt;/b&gt;。若训练数据自身的、非全局的特性被学习器学到了，则将发生过拟合&lt;/p&gt;
+&lt;/div&gt;</p>
+<p>[Understanding the Bias-Variance Tradeoff]
+[Understanding the Bias-Variance Tradeoff]:<a class="reference external" href="https://link.zhihu.com/?target=http%3A//scott.fortmann-roe.com/docs/BiasVariance.html">https://link.zhihu.com/?target=http%3A//scott.fortmann-roe.com/docs/BiasVariance.html</a></p>
+</section>
+<section id="underfitting">
+<h3 id="underfitting">underfitting 欠拟合<a class="headerlink" href="#underfitting" title="Link to this heading">¶</a></h3>
+<p>表示模型不懂数据，无法学到数据之间内在的规律，忽略数据特征。忽略了多少数据</p>
+<p><strong>Methods to Prevent Underfitting：</strong></p>
+<p>1、寻找更好的特征 – 具有代表性。
+2、用更多的特征 – 增大输入向量的维度。（增加模型复杂度）</p>
+<dl class="simple">
+<dt>!!! danger “欠拟合： 单纯增加训练数据集没有用。核心是模型太拉学不到东西。增加模型复杂度才是正道。”</dt><dd><p>即使增加数据的数量，无论是使用训练数据还是测试数据，精度也都会很差的状态</p>
+</dd>
+</dl>
+</section>
+<section id="overfitting">
+<h3 id="overfitting">overfitting, 过拟合 - 高方差<a class="headerlink" href="#overfitting" title="Link to this heading">¶</a></h3>
+<p>是指模型对数据的依赖程度.</p>
+<p><strong>Methods to Prevent Overfitting:</strong></p>
+<ol class="arabic simple">
+<li><p>more training examples 增大数据集合 – 使用更多的数据，减少数据扰动所造成的影响</p></li>
+<li><p>smaller  sets of features, 减少数据特征 – 减少数据维度，减少模型复杂度</p></li>
+<li><p>increasing regularization hyperparameter lambda. decrease model complexity 正则化方法</p></li>
+<li><p>交叉验证法</p></li>
+</ol>
+</section>
+<section id="of-vs-uf">
+<h3 id="of-vs-uf">OF vs UF<a class="headerlink" href="#of-vs-uf" title="Link to this heading">¶</a></h3>
+<p>&lt;div class=”grid” markdown&gt;
+&lt;figure markdown=”span”&gt;![](./pics/RES_fit_4.png)&lt;/figure&gt;
+&lt;p&gt;假设红色的靶心区域是学习算法完美的正确预测值，蓝色点为训练数据集所训练出的模型对样本的预测值&lt;br&gt;左边一列的蓝色点比较集中——方差较小，右边一列的蓝色点比较分散——方差较大&lt;br&gt;上边一行的蓝色点比较靠近红色靶心——偏差较小，下边一行的蓝色点比较远离靶心——偏差较大&lt;/p&gt;
+&lt;figure markdown=”span”&gt;![](./pics/RES_fit_5.jpeg)&lt;/figure&gt;
+&lt;p&gt;点到拟合直线距离和的大小作为偏差的大小&lt;br&gt;选出&lt;u&gt;拟合曲线上的点&lt;/u&gt;，然后计算这些点的方差，方差越大表示越离散，拟合直线穿过的点越多，方差往往越大，越容易过拟合&lt;/p&gt;
+&lt;/div&gt;</p>
+<p>我们以数据的数量为横轴、以精度为纵轴，然后把用于训练的数据和用于测试的数据画成学习曲线.</p>
+<p>==学习曲线==, 以**数据的数量**为横轴、以**精度**为纵轴，比较用于训练的数据和用于测试的数据。</p>
+<p>&lt;div class=”grid” markdown&gt;
+&lt;figure markdown=”span”&gt;![](./pics/RES_fit_2.png)&lt;/figure&gt;
+&lt;figure markdown=”span”&gt;![](./pics/RES_fit_1.png)&lt;p&gt;过拟合&lt;br&gt;只对训练数据拟合得较好&lt;/p&gt;&lt;/figure&gt;
+&lt;/div&gt;</p>
+</section>
+<section id="id14">
+<h3 id="id14">解决方法<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
+<p>||underfitting|overfitting|
+<a href="#id65"><span class="problematic" id="id66">|--|</span></a>–<a href="#id67"><span class="problematic" id="id68">|--|</span></a>
+<a href="#id69"><span class="problematic" id="id70">|performace|**high** training error&lt;br&gt; high testing error|**low** training error&lt;br&gt; high testing error|</span></a>
+<a href="#id71"><span class="problematic" id="id72">|^|high bias 高偏差&lt;br&gt;low variance|low bias&lt;br&gt;high variance 高方差|</span></a>
+<a href="#id73"><span class="problematic" id="id74">|stategies|**increase model complexity**==根本==|1. more training examples,&lt;br&gt; 2. smaller  sets of features,&lt;br&gt; 3. increasing regularization hyperparameter lambda. &lt;br&gt; decrease model complexity|</span></a></p>
+<p>✏️ 通过调整模型的容量，控制模型是否偏向 UF｜OF</p>
+<section id="capacity">
+<h4 id="capacity">capacity 容量<a class="headerlink" href="#capacity" title="Link to this heading">¶</a></h4>
+<p>==模型的容量 capacity==。其拟合各种函数的能力。
+容量低的模型可能很难拟合训练集，容量高的模型可能会过拟合，因为记住了不适用于测试集的训练集性质。</p>
+<p>==表示容量 representational capacity==。模型规定了调整参数降低训练目标函数时，学习算法可以从函数族中选择那个具体函数。
+==有效容量 effective capacity==。学习算法并不会真的选到最优函数，而是受限于额外的限制因素，选择一个可以大大降低训练误差的函数。</p>
+<dl class="simple">
+<dt>!!! p “”</dt><dd><p>表示容量（最优函数） &gt; 有效含量（最终选择的函数）</p>
+</dd>
+</dl>
+<p>!!! warning “但是容量理论很少应用于实际的深度学习算法”</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>选择 ==假设空间 hypothesis space==。学习算法可以选择为解决方案的**函数集**。</dt><dd><p>&gt; 线性回归函数 ➡️ 所有线性函数
+&gt; 广义线性回归 ➡️ 所有线性函数+多项式函数</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>[为什么做机器学习的很少使用假设检验？]:<a class="reference external" href="https://www.zhihu.com/question/55420602/answer/394028426">https://www.zhihu.com/question/55420602/answer/394028426</a></p>
+</section>
+</section>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2024, coconut.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>
