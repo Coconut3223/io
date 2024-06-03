@@ -36,9 +36,12 @@ import re
 
 
 input_ = """
-||||
-|State1|5|6|
-|State2|3|4|
+|$n$|$h(n)$<br>heuristic estimation|?|$h^*(n)$<br> actual n$\rightarrow$ goal G|
+|S| 70 | < | 55 +45|
+|A| 35 | < | 25 + 35|
+|B| 30 | < | 45|
+|C| 30 | < | 35|
+|G| 0 | = | 0|
 """
 
 data_list = input_.split('\n')[1:-1]

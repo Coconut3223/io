@@ -16,7 +16,8 @@ AI is intelligence exhibited by machines, rather than humans or other animals
 
 | **List six subareas of AI:**
 | Knowledge Data science, Reasoning, Statistics, Nature Language Process (NLP), Planning, Computer Vision (CV), Neuroscience, Machine Learning (ML), Robotics and so on.
-| **the differences between traditional ML & DL?**
+
+**the differences between traditional ML & DL?**
     
 .. image:: ./pics/AI_2.png
     :scale: 40%
@@ -40,7 +41,7 @@ AI is intelligence exhibited by machines, rather than humans or other animals
 - records 记录 = instance 实例 = sample 样本 = feature vector  特征向量 = example 样例(严格：有了 label 的 sample)
 - attribute 属性 = feature 特征
     | attribute value 属性值
-    | attribute space 属性空间 = sample space 样本空间（维数 dimension $d$
+    | attribute space 属性空间 = sample space 样本空间（维数 dimension :math:`d`
 - label 标签 prediction 预测
     label space 标签空间
 - training：training sample - training set
@@ -78,7 +79,7 @@ Task
         | 视频游戏自动生成大型物体或风景的纹理
         | 语音合成【结构化输出】
 - ==缺失值填补== 。给定一个新样本，填补样本中缺失的元素。
-- ==去噪== 。输入 🟰 经过未知损坏过程后的**损坏样本** $\tilde{x}$；输出 🟰 干净样本 $x$｜条件概率 $p(x|\tilde{x})$
+- ==去噪== 。输入 🟰 经过未知损坏过程后的 **损坏样本** :math:`\tilde{x}`；输出 🟰 干净样本 :math:`x`｜条件概率 :math:`p(x|\tilde{x})`
 - ==密度估计｜概率质量函数估计== 。。。。。
   
 ML
@@ -90,19 +91,19 @@ ML
 分类
 ~~~~
 
-==Supervised learning== 。learning :math:`x \xrightarrow{P(y|x)} y` with labels｜targets.
+==Supervised learning== 。learning :math:`x \xRightarrow{P(y|x)} y` with labels｜targets.
 
-.. warning:: 生成模型 & 判别模型 :math: `\in` Supervised learning
+.. warning:: 生成模型 & 判别模型 :math:`\in` Supervised learning
 
 
-- ==生成模型== 学习得到 **联合概率分布** $P(x,y)$ 然后求条件概率分布。以 统计学 & bayes 为理论基础。
+- ==生成模型== 学习得到 **联合概率分布** :math:`P(x,y)` 然后求条件概率分布。以 统计学 & bayes 为理论基础。
     .. pull-quote:: 
         朴素贝叶斯，混合高斯模型，隐马尔可夫模型
-- ==判别模型== 学习得到**条件概率分布** $P(y|x)$
+- ==判别模型== 学习得到 **条件概率分布** :math:`P(y|x)`
     .. pull-quote:: 
-        SVM，决策树。LR，。。。
+        SVM，决策树。LR，。
 
-==Unsupervised learning== 。learning $P(x)$ without labels.
+==Unsupervised learning== 。learning :math:`P(x)` without labels.
 
 - ==clustering 聚类==
 - representation
@@ -110,10 +111,11 @@ ML
 - generative models/AIGC
 
 .. note:: 监督学习 & 无监督学习 界限是模糊的。
-    因为没有客观的判断来区分监督者提供的值**是 feature｜target**。通俗地说，无监督学习的大多数尝试是指从不需要人为注释的样本的分布中抽取信息。
+    因为没有客观的判断来区分监督者提供的值 **是 feature｜target**。通俗地说，无监督学习的大多数尝试是指从不需要人为注释的样本的分布中抽取信息。
+
     .. pull-quote:: 
-        .. math:: `p(x)=\prod\limits_{i=1}^np(x_i|x_1,\dots,x_{i-1})` 无监督学习 $p(x)$ 可被分解成 n 个监督学习问题。
-        $p(y|x)=\cfrac{p(x,y)}{\sum\limits_{y'}p(xy')}$ 有监督学习 $p(y|x)$ 用无监督学习的法子先学习联合分布。
+        | :math:`p(x)=\prod\limits_{i=1}^np(x_i|x_1,\dots,x_{i-1})` 无监督学习 :math:`p(x)` 可被分解成 n 个监督学习问题。
+        | :math:`p(y|x)=\cfrac{p(x,y)}{\sum\limits_{y'}p(xy')}` 有监督学习 :math:`p(y|x)` 用无监督学习的法子先学习联合分布。
 
 | ==Semi-supervised learning 半监督学习== 。一些样本有，一些样本没有。
 | ==Reinforcement learning 强化学习== 。machine takes an action; teacher provides rewards
@@ -125,7 +127,7 @@ ML
 .. image:: ./pics/reinforcementL_1.png
     :scale: 30%
 
-==Semi-supervised / active learning==
+| ==Semi-supervised / active learning==
 
 | Evaluation  words
 | **Representation**: how to encode the raw data?
@@ -147,14 +149,12 @@ ML
 .. image:: ./pics/BigData_1.png
     :scale: 40%
 
-Assumption
--------------
+## Assumption
 
-==独立同分布 independent & identically $(i.i.d.)$== 。假设样本空间中全体样本服从一个未知 “分布 distribution” $D$，现有的每个 sample 都是独立地从这个分布上采样得到的。
+==独立同分布 independent & identically :math:`(i.i.d.)`  == 。假设样本空间中全体样本服从一个未知 “分布 distribution” :math:`D` ，现有的每个 sample 都是独立地从这个分布上采样得到的。
 
-关于分类
-
-有很多的分类模型，他们各自有各自的作用原理，也有各自的几何表示。但归根其本质还是estimate distribution.
+| 关于分类
+| 有很多的分类模型，他们各自有各自的作用原理，也有各自的几何表示。但归根其本质还是estimate distribution.
 
 .. grid::
 
@@ -170,14 +170,14 @@ Assumption
 
 ## identifiability of model 模型的可识别性
 
-[Statistical Modelling and Identifiability of Parameters](https://www.analyticsvidhya.com/blog/2021/05/statistical-modelling-and-identifiability-of-parameters/)
+`Statistical Modelling and Identifiability of Parameters <https://www.analyticsvidhya.com/blog/2021/05/statistical-modelling-and-identifiability-of-parameters/>`_
 
 参数的 ==可识别性 identifiability== 使我们能够获得该参数值的精确估计值。在没有可识别性的情况下，即使有无限次观测，我们也无法估计参数θ的真实值。
 
 .. pull-quote:: 
-    X～N(a+b, σ) is not identifiable
-    X～N(μ, σ) is identifiable
-    每个不同的 μ 都指向一个不同的期望，指向不同的正态分布，同样地每一个拥有不同期望的正态分布都能唯一求出一个 μ。但是对不同的 a 和 b 来说，a+b 也许是相同的，意味着一个正态分布并不能唯一推断出 (a, b, σ)的值。（e.g. (1, 1, σ) = (0, 2, σ)
+    | X～N(a+b, σ) is not identifiable
+    | X～N(μ, σ) is identifiable
+    | 每个不同的 μ 都指向一个不同的期望，指向不同的正态分布，同样地每一个拥有不同期望的正态分布都能唯一求出一个 μ。但是对不同的 a 和 b 来说，a+b 也许是相同的，意味着一个正态分布并不能唯一推断出 (a, b, σ)的值。（e.g. (1, 1, σ) = (0, 2, σ)
 
 ## DNN
 
@@ -187,7 +187,6 @@ Assumption
     3. Gradient vanish problem and no advanced optimization techniques
 
 ## condition
-
 
 .. note:: Product Rule, Chain Rule and Bayes’ Rule?
 
@@ -207,20 +206,19 @@ Assumption
     | :math:`P(D|+II)= \cfrac{P(+II|D)P(D)}{P(+II|D) P(D)+ P(+II|H) P(H)}=\frac{0.90\times 0.001}{0.90\times0.001+0.01\times0.999}=0.0826`
     | :math:`P(D|+ I)< P(D|+ II)` It means if a person has the disease, it has more chance of being detected by Test Method II. So Test method II is better.
 
-search
------------
+## search
 
 .. note:: A search algorithm is admissible if it is guaranteed to find a minimal path to a solution whenever such a path exists.
 
 
 .. note:: Q4. the motivations of employing heuristics in solving AI problems?
-    1.A problem may not have an exact solution because of ambiguities in problem statement or available data
-    2.A problem may have an exact solution, but the computational cost (time and space) of finding it may be prohibitive.
+    1. A problem may not have an exact solution because of ambiguities in problem statement or available data
+    2. A problem may have an exact solution, but the computational cost (time and space) of finding it may be prohibitive.
 
 .. note:: informed search method"
     Hill-climbing search; A* algorithm; Best-first.
 
-#### Best-first search
+### Best-first search
 
 Best-first search is neither complete nor optimal ✅
 
@@ -247,83 +245,103 @@ Best-first search is neither complete nor optimal ✅
 
 Solution path : S-B-G
 
-.. danger:: Best-first $\xRightarrow{\forall n, h(n)\leq h^*(n)}$ A \*algorithm<br> Algorithm A* is a special best-first search algorithm ✔️
-    > example1
+.. danger:: Best-first :math:`\xRightarrow{\forall n, h(n)\leq h^*(n)}` A \*algorithm<br> Algorithm A* is a special best-first search algorithm ✔️
+    
+    .. pull-quote::
 
-    |$n$|$h(n)$<br>heuristic estimation|?|$h^*(n)$<br> actual n$\rightarrow$ goal G|
-    |--|--|--|--|
-    S| 70 | < | 55 +45
-    A| 35 | < | 25 + 35
-    B| 30 | < | 45
-    C| 30 | < | 35
-    G| 0 | = | 0
-    > All h(n)<=h*(n),so it is an A* algorithm and it is admissible. The path S-B-G is the shortest path.
+        example1
 
-### BNN, Bayesian Belief Net
+        .. table::
+
+            +---+------------------------------+---+----------------------------------------+
+            |n  |h(n)<br>heuristic estimation  |?  | $h^*(n)$<br>actual n$\rightarrow$goal G|
+            +===+==============================+===+========================================+
+            |S  | 70                           | < | 55 +45                                 |
+            +---+------------------------------+---+----------------------------------------+
+            |A  | 35                           | < | 25 + 35                                |
+            +---+------------------------------+---+----------------------------------------+
+            |B  | 30                           | < | 45                                     |
+            +---+------------------------------+---+----------------------------------------+
+            |C  | 30                           | < | 35                                     |
+            +---+------------------------------+---+----------------------------------------+
+            |G  | 0                            | = | 0                                      |
+            +---+------------------------------+---+----------------------------------------+
+
+
+        All h(n)<=h*(n),so it is an A* algorithm and it is admissible. The path S-B-G is the shortest path.
+
+### BNN, Bayesian Belief networkd
 
 A Bayesian Belief Net consists of a graph and some local conditional probabilities.
 
-.. note::
-    Serial connection:      $P(AVB)=P(B|V)P(V|A)P(A)$
-    Diverging Connection:   $P(AVB)=P(B|V)P(A|V)P(V)$
-    Converging Connection: $P(AVB)=P(V|AB)P(A)P(B)$
-    Modus Ponens rule $\cfrac{a,a\implies b}{b}$
+.. note:: ""
+    | Serial connection:      :math:`P(AVB)=P(B|V)P(V|A)P(A)`
+    | Diverging Connection:   :math:`P(AVB)=P(B|V)P(A|V)P(V)`
+    | Converging Connection: :math:`P(AVB)=P(V|AB)P(A)P(B)`
+    | Modus Ponens rule :math:`\cfrac{a,a\implies b}{b}`
 
 .. pull-quote::
 
     .. image:: ./pics/BNN_1.png
         :scale: 30%
 
-    | $P(ABC)=P(AB)P(C)=.6*.8*.7=.336$
-    | $P(A)=.6*.8+.4*.2=.56$
-    | $P(AC)=P(A)P(C)=.56*.7=.392$
-    | $P(D|B)=P(D|BC)P(C)+(PD|B\neg C)P(\neg C)=.8*.7+.2*.3=.62$
-    | $P(D|\neg B)=P(D|\neg BC)P(C)+(PD|\neg B\neg C)P(\neg C)=.1*.7+.1*.3=.1$
-    | $P(B|D)=\cfrac{P(BD)}{P(D)}=\cfrac{P(D|B)P(B)}{P(D|B)P(B)+P(D|\neg B)P(\neg B)}=\cfrac{.62*.8}{.62*.8+.1*.2}=.9612$
-    | $P(B|\neg D)=\cfrac{P(B\neg D)}{P(\neg D)}=\cfrac{P(\neg D|B)P(B)}{1-P(D)}=\cfrac{(1-P(D|B))P(B)}{1-P(D)}=.6281$
+    | :math:`P(ABC)=P(AB)P(C)=.6*.8*.7=.336`
+    | :math:`P(A)=.6*.8+.4*.2=.56`
+    | :math:`P(AC)=P(A)P(C)=.56*.7=.392`
+    | :math:`P(D|B)=P(D|BC)P(C)+(PD|B\neg C)P(\neg C)=.8*.7+.2*.3=.62`
+    | :math:`P(D|\neg B)=P(D|\neg BC)P(C)+(PD|\neg B\neg C)P(\neg C)=.1*.7+.1*.3=.1`
+    | :math:`P(B|D)=\cfrac{P(BD)}{P(D)}=\cfrac{P(D|B)P(B)}{P(D|B)P(B)+P(D|\neg B)P(\neg B)}=\cfrac{.62*.8}{.62*.8+.1*.2}=.9612`
+    | :math:`P(B|\neg D)=\cfrac{P(B\neg D)}{P(\neg D)}=\cfrac{P(\neg D|B)P(B)}{1-P(D)}=\cfrac{(1-P(D|B))P(B)}{1-P(D)}=.6281`
 
 ### Breadth-firth search
 
 .. danger:: If the search space contains very deep branches without solution, breadth-first search will be a better choice than depth-first search.  T"
-    搜索空间包含非常深的分支 $\neq$ 目标在很深的分支里。
-    <u>contains very deep branches without solution</u> 这个深的支是没有解，那么解在浅层的节点里 $\implies$ BFS better
+    | 搜索空间包含非常深的分支 :math:`\neq` 目标在很深的分支里。
+    | contains very deep branches without solution 这个深的支是没有解，那么解在浅层的节点里 :math:`\implies` BFS better
 
-.. note:: breadth-first search"
+.. note:: breadth-first search
     ==storage cost==
-    - branch factor $b$
-    - storage cost $s$ bytes/node
-    - search speed $v$ nodes/second
-    - goal depth $d$
-    $$\sum_{i=0}^db^i\times s$$
+
+    - branch factor :math:`b`
+    - storage cost :math:`s` bytes/node
+    - search speed :math:`v` nodes/second
+    - goal depth :math:`d`
     
-    .. note::
-        ❓ For a searching tree, assume that the branch factor is b=10, the storage cost is 1000 bytes/node and the searching speed is 10,000 nodes/second. With breadth-first search, what is the required storage space at depth 3?
-        💡 At depth 3, the number of created nodes is 1+10+100+1000=111,1, and thus the storage space is 111,11000=11,11K bytes.
+    .. math::
+        
+        \sum_{i=0}^db^i\times s
+    
+    .. note:: ""
+        | ❓ For a searching tree, assume that the branch factor is b=10, the storage cost is 1000 bytes/node and the searching speed is 10,000 nodes/second. With breadth-first search, what is the required storage space at depth 3?
+        | 💡 At depth 3, the number of created nodes is 1+10+100+1000=111,1, and thus the storage space is 111,11000=11,11K bytes.
+
 
     ==time complxity==
-    - branch factor $b$
-    - goal depth $d$
-    $$b^{d+1}$$
+
+    - branch factor :math:`b`
+    - goal depth :math:`d`
+
+    .. math::
+        b^{d+1}
 
 ## 离散
 
 .. note:: Why in some cases we need to use First Order Logic (FOL) rather than Propositional Logic (PL)?"
-    1.Propositional logic (PL) is too “coarse” to easily describe properties of objects.
-    2.First order logic (FOL) is to extend the expressiveness of PL.
+    1. Propositional logic (PL) is too “coarse” to easily describe properties of objects.
+    2. First order logic (FOL) is to extend the expressiveness of PL.
 
-.. note::
-    Forward chaining in first order logic is a data-driven algorithm.
-    Backwards chaining in first order logic is a goal-driven algorithm.
+.. note:: ""
+    | Forward chaining in first order logic is a data-driven algorithm.
+    | Backwards chaining in first order logic is a goal-driven algorithm.
 
-.. note:: $\forall$ & $\exist$
-    - $\forall x\forall y=\forall y\forall x$
-    - $\exist x, y = \neg \forall x\neg y$
-    - $\exist x\forall y\neq \forall y \exist x$
+.. note:: :math:`\forall` & :math:`\exists`
+    - :math:`\forall x\forall y=\forall y\forall x`
+    - :math:`\exists x, y = \neg \forall x\neg y`
+    - :math:`\exists x\forall y\neq \forall y \exists x`
 
-Satisfiable: A sentence is satisfiable if there is some interpretation for which it is true.
-Unsatisfiable: A sentence is unsatisfiable if there is no interpretation for which it is true.
-Valid: A sentence is valid if it is true for every
-interpretation.
+| Satisfiable: A sentence is satisfiable if there is some interpretation for which it is true.
+| Unsatisfiable: A sentence is unsatisfiable if there is no interpretation for which it is true.
+| Valid: A sentence is valid if it is true for every interpretation.
 
 .. pull-quote::
     Compute the loss of eight-puzzle
@@ -332,6 +350,7 @@ interpretation.
         :scale: 40%
 
     .. table::
+        :widths: auto
 
         +------+----+----+--+-+-+----+----+----+
         |      |1   |2   |3 |4|5|6   |7   |8   |
@@ -351,8 +370,6 @@ interpretation.
         |State2|3|4|
         +------+-+-+
 
-This text includes a smiley face |:smile:| and a snake too! |:snake:| |:x:|
-
     .. table::
 
         +---------+---------------------------+-----------------------------------------+
@@ -368,12 +385,10 @@ This text includes a smiley face |:smile:| and a snake too! |:snake:| |:x:|
 
 ## kmeans
 
-
 .. danger:: Manhattan distance is <u>usually</u> larger than Euclidean distance. ✔️
     当存在三角形形状，斜边比直角边加和要小
 
 ## parameter tuning
-
 
 ### Guess
 
@@ -388,7 +403,7 @@ This text includes a smiley face |:smile:| and a snake too! |:snake:| |:x:|
 **Limitation：**
 
 1. 事先很难知道最优是在哪里，所以是否找到最优很依赖人为选择的范围，并且只是进行范围内的compare，并不确定是否全局最小
-2. 容易loss control，如果是2个hyper-parameter，每个有3个备选都要训练$3^2$个model
+2. 容易loss control，如果是2个hyper-parameter，每个有3个备选都要训练 :math:`3^2` 个model
 
 #### Random Search
 
