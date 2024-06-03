@@ -1,20 +1,19 @@
 # 模型评估与选择
 
-..
+.. image:: ./pics/RES_fit_6.png
+    :scale: 40%
 
-![](./pics/RES_fit_6.png){width=60%}
-
-!!! danger "训练误差 $\xrightarrow{近似}$ 测试误差<br> 测试误差 $\xrightarrow{近似}$  泛化误差。"
+.. danger:: 训练误差 $\xrightarrow{近似}$ 测试误差<br> 测试误差 $\xrightarrow{近似}$  泛化误差。
     依据：训练集 & 测试集 **独立同分布** 地在数据空间中采样形成。
     通过降低**训练误差**来让**测试误差**⬇️，通过测量**测试误差**来衡量在整个数据集的**泛化性能**。
 
 ## 数据划分
 
-**留出法和k折交叉验证**最常用。
+**留出法和k折交叉验证** 最常用。
 
 dataset $D$；training set $S$；testing set $T$
 
-![](./pics/validation_1.png)
+.. image:: ./pics/validation_1.png
 
 ==hold-out 留出法==。直接分成互斥大小不一两份，多次取误差平均。比例一般是
 $$D=S\cup T, S\cap T=\empty, S:T=2:1 ～4:1$$
@@ -50,13 +49,15 @@ $$S=D', T=D\setminus D'$$
 ![](./pics/TP.jpeg){width=35%}
 ![](./pics/confusionM_1.png){width=80%}
 
-==accuracy 准确率==. 分类正确的样本占总样本个数的比例.【正负一样重要】$$\cfrac{TP+TN}{all}$$
+==accuracy 准确率== 。 分类正确的样本占总样本个数的比例.【正负一样重要】$$\cfrac{TP+TN}{all}$$
 
-!!! warning "类别极度不平衡慎用(单纯准确率容易傻瓜判别)-> 类准确率"
+.. warning:: 类别极度不平衡慎用(单纯准确率容易傻瓜判别)-> 类准确率
 
-!!! p "当有别的需要我们特殊关注："
+
+.. note:: 当有别的需要我们特殊关注：
     “<u>搜索结果(判定为 P )</u>中有多少是用户感兴趣？” $\frac{TP}{TP+FP}=$ precision
     “<u>用户感兴趣(真实为 P )</u>有多少出现在搜索结果中？” $\frac{TP}{TP+FN}=$recall
+
 ==precision 精确率 查准率==。分类正确的正样本个数占**判定为正**的样本个数的比例
 $$\cfrac{TP}{TP+FP=～P}$$
 ==recall sensitivity Sensitivity 召回率，灵敏度，TPR， 查全率==。分类正确的正样本个数占**真正的正样本**个数的比例。【正重要】
@@ -68,13 +69,13 @@ $$\cfrac{TN}{TN+FP}$$
 ==False Positive Rate, FPR==。 分类错误的负样本个数占真正的负样本个数的比例。
 $$\cfrac{FP}{TN+FP}$$
 
-!!! p "有多个二分类混淆矩阵 (多次训练测试 ｜ 不同子数据集｜multi-class)"
+.. note:: 有多个二分类混淆矩阵 (多次训练测试 ｜ 不同子数据集｜multi-class)
     ==macro- 宏==。先各混淆矩阵分别计算，再平均。$\text{macro-P}=\overline{P}=\cfrac{1}{n}\sum\limits_{i=1}^nP_i$
     ==micro- 微==。先平均混淆矩阵，再一起计算 $\text{micro-P}=\cfrac{\overline{TP}}{\overline{TP}+\overline{FP}}$
 
 #### precision & recall
 
-!!! danger "定义经常记错"
+.. danger:: "定义经常记错"
     - precision 是==说多错多==。高 prec 值需要在<u>很有把握的时候</u>预测为正 $\implies$ <u>过于保守</u>，漏掉很多正样本，recall↓
      “<u>搜索结果(判定为 P )</u>中有多少是用户感兴趣？”
     - recall 是==人有多大胆地有多大产==。只要我全说正，那么 recall = 1.  $\implies$ <u>过于冒险</u>，错判很多负样本，precision↓
@@ -89,7 +90,7 @@ $$\cfrac{FP}{TN+FP}$$
 |正负样本的分布变化|较剧烈的变化|基本保持不变<br>降低不同测试集带来的干扰|
 ||更直观看见特定数据集的表现|适用场景更多，被广泛用于排序、推荐、广告等领域|
 
-!!! p "==socre-based classifier==."
+.. note:: ==socre-based classifier==
     For a specified $\lambda$, let $f_C(x) = \begin{cases}P&f_z(x) ≥ λ\\N&f_z(x) < λ\end{cases}$.
     点的表示:在某一**阈值 λ**下，大于该阈值的样本会被判为正例 P，小于该阈值的样本会被判为负例 N。
     $λ\rightarrow-\infin$, the classifier predicts **everything as positive**.
@@ -187,7 +188,7 @@ $$x=FPR=\cfrac{FP}{TN+FP}; y=TPR=\cfrac{TP}{TP+FN}$$
 
 $$RMSE=\sqrt{\cfrac{\sum\limits_{i=1}^n(\hat{y}-y)^2}{n}}$$
 
-!!! danger "RMSE很高但是在95%预测误差都小于1%"
+.. danger:: RMSE很高但是在95%预测误差都小于1%
     是否存在 ==outliers==。是 noise 还是正常的样本多样性。
     1. noises: 预处理时过滤
     2. 正常样本的多样性：
