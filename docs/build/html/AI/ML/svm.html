@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>SVM &#8212; cocobook  文档</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=83e35b93" />
+    <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/katex-math.css?v=91adb8b6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/def.css?v=5a9d86bd" />
+    <script src="../../_static/documentation_options.js?v=7d86a446"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/translations.js?v=beaddf03"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#AI/ML/svm" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../index.html" title="cocobook  文档"
+           class="md-header-nav__button md-logo">
+          
+            &nbsp;
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">cocobook  文档</span>
+          <span class="md-header-nav__topic"> SVM </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../../search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder=""Search""
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+      
+  
+  <script src="../../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../../"versions.json"",
+        target_loc = "../../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">cocobook  文档</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../index.html" title="cocobook 文档" class="md-nav__button md-logo">
+      
+        <img src="../../_static/" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../../index.html"
+       title="cocobook 文档">cocobook  文档</a>
+  </label>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#ai-ml-svm--page-root" class="md-nav__link">SVM</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id1" class="md-nav__link">理论</a>
+        </li>
+        <li class="md-nav__item"><a href="#linear-svm" class="md-nav__link">linear SVM</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id2" class="md-nav__link">最大边缘推导</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#non-linear-svm-kernel-trick" class="md-nav__link">Non-linear SVM + kernel trick</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#kernel-trick" class="md-nav__link">核函数 kernel trick</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id3" class="md-nav__link">核函数设计</a>
+        </li>
+        <li class="md-nav__item"><a href="#id4" class="md-nav__link">常见核函数</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#id5" class="md-nav__link">软间隔 SVM</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#hinge" class="md-nav__link">hinge</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../../_sources/AI/ML/svm.rst.txt">显示源代码</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="svm">
+<h1 id="ai-ml-svm--page-root">SVM<a class="headerlink" href="#ai-ml-svm--page-root" title="Link to this heading">¶</a></h1>
+<p>SVM maps training examples to points in space so as to maximise the width of the gap between the two categories. New examples are then mapped into that same space and predicted to belong to a category based on which side of the gap they fall.</p>
+<dl class="simple">
+<dt>!!! p “find a best hyperplane with the largest margin to separate different class samples.”</dt><dd><p><code class="docutils literal notranslate"><span class="pre">`mermaid</span>
+<span class="pre">graph</span>  <span class="pre">LR</span>
+<span class="pre">A[Linear</span> <span class="pre">SVM]</span>
+<span class="pre">B[soft</span> <span class="pre">margined</span> <span class="pre">]</span>
+<span class="pre">C[kernel</span> <span class="pre">trick&lt;br&gt;低维完成运算]</span>
+<span class="pre">D[non-linear</span> <span class="pre">SVM&lt;br&gt;投射高维]</span>
+<span class="pre">E{线性可分}</span>
+<span class="pre">F{噪声存在&lt;br&gt;泛化⬇️}</span>
+<span class="pre">G[hard</span> <span class="pre">margined]</span>
+<span class="pre">Z[SVM&lt;br&gt;线性超平面&lt;br&gt;噪声敏感]</span> <span class="pre">--&gt;</span> <span class="pre">E</span> <span class="pre">--Y--&gt;A</span>
+<span class="pre">E</span> <span class="pre">--N--&gt;</span> <span class="pre">D</span> <span class="pre">--计算内积困难--&gt;</span> <span class="pre">C</span>
+<span class="pre">Z</span> <span class="pre">--&gt;</span> <span class="pre">F</span> <span class="pre">--N--&gt;</span> <span class="pre">G</span>
+<span class="pre">F</span> <span class="pre">--Y--&gt;</span> <span class="pre">B</span>
+<span class="pre">`</span></code></p>
+</dd>
+</dl>
+<section id="id1">
+<h2 id="id1">理论<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<p>==最大间隔超平面, Maximal Margin Hyperplan, Optimal Hyperplane==，在样本空间找一个超平面，将不同类别的样本分开。
+==决策边界间隔, margin, $gamma$==，$B_{-1}$ 和 $B_{1}$之间的间隔 $=$ 两个异类决策向量到决策边界的距离之和。具有较大间隔的决策便捷具有**更大的泛化误差**。
+==支持向量, support vector==，距离决策边界最近的训练样本 $(x_{-1},-1),(x_1, 1)$ 分别位于超平面$B_{-1}$ 和 $B_{1}$上,令等式成立。$begin{cases}
+B_{-1}:&amp; w^Tx_{-1}+b=-1\B_1:&amp;w^Tx_{1}+b=1
+end{cases}$</p>
+<p>![](./pics/SVM_4.png){width=60%}</p>
+<p><strong>SVM 对噪声敏感的原因</strong>
+SVM 的目的：求出与支持向量有最大化距离的直线，以每个样本为圆心，该距离为半径作圆，可以近似为圆内的点与该样本属于相同分类。如果出现了噪声，那么这个噪声所带来的错误分类将最大化。</p>
+</section>
+<section id="linear-svm">
+<h2 id="linear-svm">linear SVM<a class="headerlink" href="#linear-svm" title="Link to this heading">¶</a></h2>
+<p>Assumption：样本线性可分，根据**结构风险最小化原理**，最大化决策边界的间隔 $Leftrightarrow$ 最坏情况下泛化误差最小。</p>
+<dl>
+<dt>!!! p “对偶问题”</dt><dd><p>$min fxRightarrow{转化}max log f$
+- <strong>优点</strong></p>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/svm.rst</span>, line 44)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><ul class="simple">
+<li><p>更容易求解</p></li>
+<li><p>求解出现了向量内积的形式，更容易引出核函数的概念。</p></li>
+</ul>
+</div></blockquote>
+</dd>
+</dl>
+<section id="id2">
+<h3 id="id2">最大边缘推导<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<p>$$begin{align*}
+B_{1}:&amp;w^Tx_{1}+b=-1\B_2:&amp;w^Tx_2+b=1end{align*}implies
+w^T(x_2-x_1)=2=w^Toverrightarrow{x_2x_1}\
+w^Toverrightarrow{x_2x_1}=Vert w^TVert*Vertoverrightarrow{x_2x_1}Vert*cos&lt;w^T, overrightarrow{x_2x_1}&gt;=Vert w^TVert * VertgammaVert=2\
+implies VertgammaVert=cfrac{2}{Vert wVert} $$</p>
+<p>$$text{Question:} max gamma = max_{w^T,b}cfrac{2}{Vert w^TVert}, text{s.t.}begin{cases} w^Tx_i+bgt1&amp;y_i=+1\w^Tx_i+ble-1&amp;y_i=-1
+end{cases}\
+Leftrightarrow min_{w^T,b}cfrac{1}{2}Vert w^TVert, text{ s.t. }space y_i(w^Tx_i+b)ge 1,  forall i
+$$</p>
+<p>$(x_i,y_i)$ is a sample, which y is its actual type, $w^Tx+b$ is its prediction.</p>
+<p>为了&lt;u&gt;在求导的时候方便约调系数 + 使用 KKT 条件&lt;/u&gt;，$min_{w^T,b}cfrac{1}{2}{w^T}^{red{2}}, text{ s.t. }space red{-}(y_i(w^Tx_i+b)-1)red{le} 0,  forall i$</p>
+<p>!!! danger “<strong>希望</strong>：找到一个 $f(x):=w^Tx+b$ 使得所有属于类别 1 的算出来是 $ge 1$的，所有属于类别 -1 的算出来是 $le -1$的。但是不满足于此，还希望找到在所有符合以上条件的 $f$中，$Vert wVert$ 最小。”</p>
+<dl class="simple">
+<dt>!!! p “拉格朗日乘子法：将条件融入到目标函数当中”</dt><dd><p>$$min_{x} f(x) spacetext{ s.t} begin{cases} h(x)=0\g(x)red{le}0
+end{cases}Leftrightarrow min_{w^T,x}f+lambda h + mu g=:mathcal{L}(x, lambda, mu)$$
+To solve, $cfrac{partialmathcal{L}}{partial x}=cfrac{partialmathcal{L}}{partial lambda}=cfrac{partialmathcal{L}}{partial mu}xlongequal{SET}0$
+To achive optimal value, $begin{cases} frac{partialmathcal{L}}{partial x}=0\h(x)=0\mu g(x)=0
+end{cases}$</p>
+</dd>
+</dl>
+<p>$$mathcal{L}(w^T,b, alpha):= cfrac{1}{2} {w^T}^2-sum_{i=1}^nalpha_i(y_i(w^Tx_i+b)-1)\space\min_{w^T,b}max_{alpha}mathcal{L}(w^T,b, alpha)$$</p>
+<p>根据拉格朗日的对偶性，</p>
+<p>$$max_{alpha}min_{w^T, b}mathcal{L}(w^T,b, alpha)$$
+求 $cfrac{partialmathcal{L}}{partial w^T}=cfrac{partialmathcal{L}}{partial b}xlongequal{SET}0$</p>
+<p>$$begin{align*}cfrac{partialmathcal{L}}{partial w^T}&amp;=w^T-sum_{i=0}^nalpha_iy_ix_i&amp;=0\
+cfrac{partialmathcal{L}}{partial b}&amp;=-sum_{i=0}^nalpha_iy_i&amp;=0
+end{align*}$$</p>
+<p>得到 ${w^T}^*=sumlimits_{i=0}^nalpha_iy_ix_i$ 回代 $mathcal{L}(w^T,b, alpha)$, 消掉 $w^T, b$</p>
+<p>$$begin{align*}
+mathcal{L}(w^T,b, alpha)&amp;=frac{1}{2} {w^T}^2-sum_{i=1}^nalpha_i(y_i(w^Tx_i+b)-1)\
+&amp;=frac{1}{2}Big(sum_{i=0}^nalpha_iy_ix_iBig)^2
+-sum_{i=1}^nalpha_iy_icdotbig(sumlimits_{j=0}^nalpha_jy_jx_jbig)cdot x_i+sum_{i=1}^nalpha_i\
+&amp;=-frac{1}{2}Big(sum_{i=0}^nalpha_iy_ix_iBig)^2+sum_{i=1}^nalpha_i\
+&amp;=-frac{1}{2}sum_{i=0}^nsum_{j=0}^nalpha_ialpha_jy_iy_jx_i^Tx_j+sum_{i=1}^nalpha_iend{align*}$$</p>
+<p>$$max_{alpha}-frac{1}{2}Big(sum_{i=0}^nalpha_iy_ix_iBig)^2+sum_{i=1}^nalpha_i$$</p>
+<p>求 $cfrac{partialmathcal{L}}{partial alpha}xlongequal{SET}0$</p>
+<p>$$cfrac{partialmathcal{L}}{partial alpha_i}=-(sum_{i=0}^nalpha_iy_ix_i)cdot y_ix_i+1=0$$</p>
+<p>解得</p>
+<p>$$begin{align*}
+{w^T}^*&amp;=sum_{i=0}^nalpha_iy_ix_i\
+b^*&amp;=frac{1}{2}Big[max_{i:y=1}{w^T}^*x_i+min_{i:y=-1}{w^T}^*x_iBig]\
+f(x)&amp;=Big(sum_{i=0}^nalpha_iy_ix_iBig)cdot x+b\
+&amp;=sum_{i=0}^nalpha_iy_i&lt;x_i, x&gt; + b
+end{align*}$$</p>
+<p>而以上的过程需要满足 <strong>KKT 条件</strong> $begin{cases}
+a_ige0&amp;text{可行性}\y_i(w^Tx+b)-1ge0&amp;text{可行性}\alpha_icdot(y_i(w^Tx+b)-1)=0  &amp;text{互补松弛性}
+end{cases}$</p>
+<p>$implies forall (x_i,y_i), begin{cases}
+alpha_i=0 &amp;text{样本对函数无影响}\
+alpha_ineq 0, y_i(w^Tx+b)=1&amp;text{支持向量，样本位于决策边界上}
+end{cases}$
+$implies$ 训练完成后，大部分的训练样本都不需要保留，&lt;u&gt;最终模型仅与决策向量有关&lt;/u&gt;。</p>
+<p>&gt; &gt;已知一个训练数据集，正例点 $x_1=(3,3)^T,x_2=(4,3)^T$，负例点 $x_3=(1,1)^T$， 求最大间隔分离平面。
+&gt;
+&gt; $xinR^2, f(x)=w_1x_1+w_2x_2+b$
+&gt; $$minfrac{1}{2}(w_1^2+w_2^2), text{ s.t. }begin{cases}1*(3w_1+3w_2+b)ge1\1*(4w_1+3w_2+b)ge1\-1*(1w_1+1w_2+b)ge1end{cases}$$
+&gt; 构造对偶问题
+&gt; $$maxlimits_alpha-cfrac{1}{2}sumlimits_{i=1}^3sumlimits_{j=1}^3alpha_ialpha_jy_iy_jx_i^Tx_j+sumlimits_{i=0}^3alpha_i\text{s.t.}alpha_ige0,sumlimits_{i=1}^3alpha_iy_i=alpha_1+alpha_2-alpha_3=0$$
+&gt; 代入数据得：
+&gt; $mathcal{L}(alpha)=alpha_1+alpha_2+alpha_3-frac{1}{2}(18alpha_1^2+25alpha_2^2+2alpha_3^2+2*21alpha_1alpha_2-2*7alpha_2alpha_3-2*6alpha_1alpha_3)\=alpha_1+alpha_2+alpha_3-9alpha_1^2-frac{25}{2}alpha_2^2-alpha_3^2-21alpha_1alpha_2+7alpha_2alpha_3+6alpha_1alpha_3$
+&gt; 代入 $alpha_3=alpha_1+alpha_2$
+&gt; $$mathcal{L}(alpha)=2alpha_1+2alpha_2-4alpha_1^2-frac{13}{2}alpha_2^2-10alpha_1alpha_2$$
+&gt; 求导 $cfrac{partialmathcal{L}}{alpha_1}=cfrac{partialmathcal{L}}{alpha_2}xlongequal{SET}0$
+&gt; $$begin{cases}2-8alpha_1-10alpha_2=0\2-13alpha_2-10alpha_1=0end{cases}impliesbegin{cases}alpha_1=1.5\alpha_2=-1&amp;alpha_ige0times
+end{cases}$$
+&gt; 极值在边界中取得
+&gt; 当 $alpha_1=0, mathcal{L}(alpha)=2alpha_2-cfrac{13}{2}alpha_2^2$ 在 $(0, frac{2}{13})$ 取最大值 0.1538
+&gt; 当 $alpha_2=0, mathcal{L}(alpha)=2alpha_1-4alpha_2^2$ 在 $(frac{1}{4}, 0)$ 取最大值 0.25
+&gt; $implies alpha_3=frac{1}{4}+0=frac{1}{4}$
+&gt; $alpha_1=alpha_3&gt;0implies x_1,x_3$是支持向量
+&gt; 代入公式：
+&gt; $$begin{cases}w^*=sum_{i=1}^3alpha_iy_ix_i=cfrac{1}{4}cdot1cdotbegin{bmatrix}3\3end{bmatrix}+0+cfrac{1}{4}cdot-1cdotbegin{bmatrix}1\1end{bmatrix}=begin{bmatrix}1/2\1/2end{bmatrix}\b=-frac{1}{2}(3cdotfrac{1}{2}+3cdotfrac{1}{2}+1cdotfrac{1}{2}+cdotfrac{1}{2})=-2end{cases}$$
+&gt; $f(x)=cfrac{1}{2}x_1+cfrac{1}{2}x_2-2$
+&gt; &lt;u&gt;超平面&lt;/u&gt;=$cfrac{1}{2}x_1+cfrac{1}{2}x_2-2=0$</p>
+<p>–</p>
+<p>&gt; &gt;已知一个训练数据集，负例点 $x_1=(1,0)^T,x_2=(0,1)^T$，正例点 $x_3=(2,1)^T$， 求最大间隔分离平面。
+&gt;
+&gt; <span class="defi">对偶问题解法</span>
+&gt; $xinR^2, f(x)=begin{bmatrix}w_1\w_2end{bmatrix}^Tbegin{bmatrix}x_1\x_2end{bmatrix}+b$
+&gt; $$min_{w^T,b}frac{1}{2}(w_1^2+w_2^2)text{ s.t. }begin{cases}-1*(w_1+b)ge1\-1*(w_2+b)ge1\1*(2w_1+w_2)ge1end{cases}$$
+&gt; 构造对偶问题
+&gt;$$max_alpha-frac{1}{2}sum_{i,j=1}^3alpha_ialpha_jy_iy_jx_i^Tx_j+sum_{i=1}^3alpha_itext{ s.t. }alpha_ige0, sum_{i=0}^3alpha_iy_i=-alpha_1-alpha_2+alpha_3=0$$
+&gt; $mathcal{L}(alpha)=-frac{1}{2}(alpha_1^1+alpha_2^2+5alpha_3^2+2*2alpha_1alpha_3+2*2alpha_2alpha_3)+sumlimits_{i=1}^3alpha_i$
+&gt; 代入 $alpha_3=alpha_1+alpha_2$
+&gt; $$mathcal{L}(alpha)=2alpha_1+2alpha_2-alpha_1^2-2alpha_2^2-3alpha_1alpha_2$$
+&gt; 求偏导 $frac{partialmathcal{L}(alpha)}{partialalpha_1}=frac{partialmathcal{L}(alpha)}{partialalpha_2}xlongequal{SET}0$
+&gt; $$begin{cases}2-2alpha_1-3alpha_2=0\2-4alpha_2-3alpha_1=0end{cases}begin{cases}alpha_1=-2lt0times\alpha_2=2 end{cases}$$
+&gt; 极值在边界取得 $begin{cases}alpha_1=0&amp;mathcal{L}=2alpha_2-2alpha_2^2, max_{(0, 1/2)}=1/2\alpha_2=0&amp;mathcal{L}=2alpha_1-alpha_1^2,max_{(1,0)}=1end{cases}$
+&gt; $(alpha_1,alpha_2,alpha_3)=(1,0,1), alpha_1=alpha_3&gt;0, x_1,x_3$支持向量
+&gt; 代入公式：
+&gt; $$begin{cases}w^*=1*-1*begin{bmatrix}1\0end{bmatrix}+0+1*1*begin{bmatrix}2\1end{bmatrix}=begin{bmatrix}1\1end{bmatrix}\b^*=frac{1}{2}(1*1+0+1*2+1*1)=-2
+end{cases}$$
+&gt; $f(x)=begin{bmatrix}1\1end{bmatrix}^Tbegin{bmatrix}x_1\x_2end{bmatrix}-2$
+&gt; 分离超平面 $begin{bmatrix}1&amp;1end{bmatrix}begin{bmatrix}x_1\x_2end{bmatrix}-2=x_1+x_2-2=0$
+&gt;
+—
+&gt; &gt; Consider the classification problem with data ${(x_i,y_i)}_{i=1}^m$ , where for each i $x_iinR, y_iin{±1}$. Recall the hinge loss $φ_h(x) = max{0, 1−x}$. Consider the SVM on $R^1$.
+&gt; &gt; In particular, we set $λ = 1, m = 2, (x_1,y_1)=(1,−1), (x_2,y_2)=(-2,1)$ Find $(c^*, b^*)$
+&gt; &gt;
+&gt; &gt; $$begin{align*}(c^*,b^*)&amp;=min_{c,binR}Epsilon_lambda(c,b)\Epsilon_lambda(c,b)&amp;=frac{1}{m}sum_{i=1}^mphi_h(y_i(cx_i+b))+lambda_c^2
+end{align*}$$
+&gt;
+&gt; $max{0,1-x}=frac{1}{2}(1-x)+frac{1}{2}|1-x|$
+&gt; $y_i(cx_i+b)=begin{cases}-1(c+b)\1(-2c+b)end{cases}$
+&gt; $Epsilon_lambda(c,b)=frac{1}{4}timesfrac{1}{2}timesBig((1+c+b)+|1+c+b|+(1+2c-b)+|1+2c-b|Big)+c^2\
+=frac{1}{8}Big((2+3c)+|1+c+b|+|1+2c-b|Big)+c^2$
+&gt; $f(c,b):=|1+c+b|+|1+2c-b|$
+&gt; $implies b^*in[-1-c,1+2c], f(c,b)=|1+c+b+1+2c-b|=|2+3c|xlongequal{SET}0implies c^*=-frac{2}{3}$
+&gt; $Epsilon_lambda(c,b)=frac{1}{8}Big(2+3c+|2+3c|Big)+c^2$
+&gt; case 1 $2+3c&lt;0$</p>
+<p>!!! question “后面不太知道”</p>
+<p>&gt; &gt; 考虑使用 linear SVM 对如下两类可分的数据进行分类：$begin{cases}+1:&amp;(1,1)(2,2),(2,0)\-1&amp;(0,0),(1,0),(0,1)end{cases}$
+&gt; &gt; 1.在图中作出6个样本点，构造具有最优超平面和最优间隔的权重向量。哪些是支持向量？&lt;br&gt;2.通过寻找拉格朗日乘子 $alpha$ 来构造在对偶空间上的解，并与(1)求的结果进行比较。</p>
+</section>
+</section>
+<section id="non-linear-svm-kernel-trick">
+<h2 id="non-linear-svm-kernel-trick">Non-linear SVM + kernel trick<a class="headerlink" href="#non-linear-svm-kernel-trick" title="Link to this heading">¶</a></h2>
+<p>如果原始空间是有限维，即数目有限，那么一定存在一个==更高维==的特征空间使样本线性可分。</p>
+<dl class="simple">
+<dt>!!! danger “将样本从原始空间映射到一个==更高维==的特征空间，使得样本在映射的高维空间内线性可分。&lt;br&gt; 低维 $xinchirightarrow phi(x)inmathcal{F}$ 高维”</dt><dd><p>💡 a <strong>best</strong> <strong>hyperplane</strong> with <strong>the largest margin</strong> in <strong>transformed feature space</strong>
+1. the largest margin 是在 <strong>transformed feature space</strong> 里的计算
+2. 在 <strong>transformed</strong> : <strong>hyperplane(Linear)</strong>; <strong>original</strong>: non-linear
+1. 这个 <strong>transformed feature space 可以是同维度，也可以更高维</strong></p>
+</dd>
+</dl>
+<p>设 $begin{cases}(x, y)xrightarrow{text{red{高维映射}}}(phi(x), y)\
+f(x)xrightarrow{text{red{高维映射}}}f(phi(x))=w^Tphi(x)+b=sumlimits_{i=1}^nalpha_iy_i&lt;phi(x_i), phi(x)&gt;+b
+end{cases}$</p>
+<p>原始问题：$minlimits_{w^T,b}frac{1}{2}{w^T}^2, text{ s.t.}space y_i(w^Tphi(x_i)+b)ge 1,  forall i$
+对偶问题：$maxlimits_alpha-cfrac{1}{2}sumlimits_{i=0}^nsumlimits_{j=0}^nalpha_ialpha_jy_iy_jred{&lt;phi(x_i)^Tphi(x_j)&gt;}+sumlimits_{i=1}^nalpha_i, text{ s.t. }begin{cases}
+sumlimits_{i=1}^nalpha_iy_i=0\alpha_ige0
+end{cases}$</p>
+<p>![](./pics/SVM_1.png){width=60%}
+![](./pics/SVM_2.png){width=60%}
+![](./pics/SVM_3.png){width=60%}</p>
+<p>!!! p “$red{&lt;phi(x_i)^Tphi(x_j)&gt;}$ 是 $x_i, x_j$ 映射到高维空间之后的内积。由于维度很高计算困难，所以提出 <span class="defi">核函数</span> $kappa(x_i,x_j)$”</p>
+<section id="kernel-trick">
+<h3 id="kernel-trick">核函数 kernel trick<a class="headerlink" href="#kernel-trick" title="Link to this heading">¶</a></h3>
+<p>So we need kernel tricks to complete the inner product of vectors in the low-dimensional space to reduce the computation cost.
+不显式地设计映射 $phi(x)$，而是设计一个核函数 $kappa(x_i,x_j)$，来解决映射到高维度空间后出现的&lt;u&gt;计算&lt;/u&gt;上维度爆炸的问题，<strong>减少计算代价</strong>。
+$$kappa(x_i,x_j)=&lt;phi(x_i),phi(x_j)&gt;= phi(x_i)^Tphi(x_j), forall xinchi, phi(x)inmathcal{F} $$</p>
+<dl class="simple">
+<dt>!!! p “$kappa(x_i,x_j)$ 在&lt;u&gt;原始空间&lt;/u&gt;的计算 $Leftrightarrow x_i,x_j$ 在高维空间的内积。”</dt><dd><dl class="simple">
+<dt>!!! danger “==高维表现,低维计算==”</dt><dd><p>特征是==从低维转到高维==！！！！&lt;br&gt; 核技巧是在低维空间完成高维空间向量内积的==计算==。只是在计算上取巧了一下。</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>重写：
+- 对偶问题： $maxlimits_alpha-cfrac{1}{2}sumlimits_{i=0}^nsumlimits_{j=0}^nalpha_ialpha_jy_iy_jred{kappa(x_i,x_j)}+sumlimits_{i=1}^nalpha_i, text{ s.t. }begin{cases}
+sumlimits_{i=1}^nalpha_iy_i=0\alpha_ige0end{cases}$
+- 函数 $f(x)=sumlimits_{i=1}^nalpha_iy_ired{kappa(x_i,x)}+b$</p>
+<section id="id3">
+<h4 id="id3">核函数设计<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h4>
+<p>满足：
+$$begin{bmatrix}
+kappa(x_1,x_1)&amp; dotsb&amp;kappa(x_1,x_n)\
+vdots&amp; ddots&amp;vdots\
+kappa(x_n,x_1)&amp; dotsb&amp;kappa(x_n,x_n)end{bmatrix}succeq0$$
+- 对称
+- 核矩阵半正定</p>
+<p><strong>错误的核函数</strong>， 将样本映射到了一个不合适的特征空间，导致性能不佳。</p>
+</section>
+<section id="id4">
+<h4 id="id4">常见核函数<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
+<p><a href="#id6"><span class="problematic" id="id7">|名|$\kappa(x_i, x_j)$|notes
+|--|</span></a>–<a href="#id8"><span class="problematic" id="id9">|--|</span></a>
+线性核|$x_i^Tx_j$|for 线性可分
+多项式核|$(x_i^Tx_j)^d$|$dge1$
+高斯核|$exp(-cfrac{Vert x_i-x_jVert^2}{2sigma^2})$|$sigma$ := 带宽
+拉普拉斯核|$exp(-cfrac{Vert x_i-x_jVert}{sigma})$|$sigma&gt;0$
+Sigmoid核|$tanh(beta x_i^Tx_j+theta)$|$beta&gt;0,theta&lt;0$</p>
+</section>
+</section>
+<section id="id5">
+<h3 id="id5">软间隔 SVM<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<dl>
+<dt>!!! p Q：”噪声数据 outlier”</dt><dd><p>SVM 要求所有的样本都满足约束。当数据中存在噪声数据，本身就偏离了正常位置， 导致划分的超平面被挤歪了，降低了 SVM 的泛化性能。（甚至说使得找不到 SVM</p>
+<dl class="simple">
+<dt>!!! danger “Unfortunately, SVM is allergic to the noises so the robustness of the algorithm is not good.”</dt><dd><p>we need to add the slack variables $xi_i$ to allow all training examples not satisfying the constraints strictly. Meanwhile, we set a small C to control the deviation of examples and constraints</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>==软间隔 SVM==：
+1. 允许一些数据点不满足约束 $y_i(w^Tx_i+b)ge1$，即可以在一定程度上偏移超平面。
+2. 同时使得不满足约束的数据点尽可能少。&lt;/u&gt;</p>
+<p>$$mathcal{L}(w^T,b, alpha):= frac{1}{2} {w^T}^2red{+C}sum_{i=1}^nred{l_{0|1}(}y_i(w^Tx_i+b)-1red{)}\space\min_{w^T,b}max_{alpha}mathcal{L}(w^T,b, alpha)\
+red{C&gt;0,l_{0|1}(z)=begin{cases}0&amp;text{otherwise}\1&amp;z&lt;0
+end{cases}}$$</p>
+<p>$red{C}$ 控制着目标函数与引入正则项之间的权重。当 $Crightarrowinfin$ 会迫使所有样本满足约束。
+$$Leftrightarrow mathcal{L}(w^T,b, alpha):= frac{1}{2} {w^T}^2spacetext{s.t.} y_i(w^Tx_i+b)ge1$$</p>
+<p>$red{l_{0|1}(z)}$ 0-1损失函数，表现效果最好，但是非凸、非连续、数学性质不好，使得求解困难，因此也可使用其他函数作为替换。</p>
+<p>特点|凸的、连续、是 $l_{0｜1}(z)$ 上界
+<a href="#id10"><span class="problematic" id="id11">|--|</span></a>–|
+hinge | $max(0, 1-z)$
+exponential | $exp(-z)$
+logistic | $log(1+exp(-z))$</p>
+<section id="hinge">
+<h4 id="hinge">hinge<a class="headerlink" href="#hinge" title="Link to this heading">¶</a></h4>
+<p>$$mathcal{L}(w^T,b, alpha):= frac{1}{2} {w^T}^2red{+C}sum_{i=1}^nred{max(0, 1-}y_i(w^Tx_i+b)red{)}$$
+引入松弛变量 $xi$</p>
+<p>$$frac{1}{2} {w^T}^2+Csum_{i=0}^nred{xi_i}\
+text{s.t.} y_i(w^Tx_i+b)gered{1-xi_i},space xi_igt0$$</p>
+<p>$red{xi_i}$, 每个样本都有一个对应的**松弛变量**，来表示该样本不满足约束的程度。
+使用**拉格朗日乘子法**：</p>
+<p>$$mathcal{L}(w^T,b,xi, alpha,beta):= frac{1}{2} {w^T}^2+Csum_{i=0}^nred{xi_i}-sum_{i=0}^nalpha_i(y_i(w^Tx_i+b)-1+xi_i)-sum_{i=0}^nbeta_ixi_i\
+alpha_i, beta_ige0, text{拉格朗日乘子}$$</p>
+<p>求 $cfrac{partialmathcal{L}(cdot)}{partial w^T}=cfrac{partialmathcal{L}(cdot)}{partial b}=cfrac{partialmathcal{L}(cdot)}{partial xi}xlongequal{SET}0$</p>
+<p>$$begin{align*}
+cfrac{partialmathcal{L}(cdot)}{partial w^T}&amp;=w^T-sum_{i=0}^nalpha_iy_ix_i&amp;=0 &amp;implies w^T=sum_{i=0}^nalpha_iy_ix_i \
+cfrac{partialmathcal{L}(cdot)}{partial b}&amp;=sum_{i=0}^n
+alpha_iy_i&amp;=0\
+cfrac{partialmathcal{L}(cdot)}{partial xi_i}&amp;=C-alpha_i-beta_i&amp;=0&amp;implies C=alpha_i+beta_i
+end{align*}$$</p>
+<dl class="simple">
+<dt>!!! p “唯一的差别在于对对偶变量的约束不同”</dt><dd><p><a href="#id12"><span class="problematic" id="id13">|软间隔|硬间隔|</span></a>
+<a href="#id14"><span class="problematic" id="id15">|--|</span></a>–|
+$0lealpha_ired{le C}$|$0lealpha_i$</p>
+</dd>
+</dl>
+<p>&gt; &gt; 根据 KKT 对偶互补条件，分析带松弛变量的 SVM 优化问题中，图上所示的 $ABCDEFGHIJKL$这几个点的松弛变量 $xi_i$, 拉格朗日因子$(alpha_i,mu_i)$,正则化变量 $C$之间的关系。注意：$0lealpha_ile C,mu_ige0,xi_ige0,$ 对偶互补条件为 $alpha_i(1-y_i(w^Tx_i)-xi_i)=0,mu_ixi_i=0$</p>
+</section>
+</section>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2024, coconut.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>

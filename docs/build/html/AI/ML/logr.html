@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>Logistics Regression &#8212; cocobook  文档</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=83e35b93" />
+    <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/katex-math.css?v=91adb8b6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/def.css?v=5a9d86bd" />
+    <script src="../../_static/documentation_options.js?v=7d86a446"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/translations.js?v=beaddf03"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#AI/ML/logr" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../index.html" title="cocobook  文档"
+           class="md-header-nav__button md-logo">
+          
+            &nbsp;
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">cocobook  文档</span>
+          <span class="md-header-nav__topic"> Logistics Regression </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../../search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder=""Search""
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+      
+  
+  <script src="../../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../../"versions.json"",
+        target_loc = "../../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">cocobook  文档</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../index.html" title="cocobook 文档" class="md-nav__button md-logo">
+      
+        <img src="../../_static/" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../../index.html"
+       title="cocobook 文档">cocobook  文档</a>
+  </label>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#ai-ml-logr--page-root" class="md-nav__link">Logistics Regression</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#background" class="md-nav__link">Background</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#lr" class="md-nav__link">LR 的角度</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#sigmoid" class="md-nav__link">Sigmoid</a>
+        </li>
+        <li class="md-nav__item"><a href="#threshold" class="md-nav__link">threshold α</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#content" class="md-nav__link">Content</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id1" class="md-nav__link">极大似然角度去估计</a>
+        </li>
+        <li class="md-nav__item"><a href="#compared-with-linear-r" class="md-nav__link">compared with Linear R</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../../_sources/AI/ML/logr.rst.txt">显示源代码</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="logistics-regression">
+<h1 id="ai-ml-logr--page-root">Logistics Regression<a class="headerlink" href="#ai-ml-logr--page-root" title="Link to this heading">¶</a></h1>
+<dl class="simple">
+<dt>!!! p “Logistic (Linear Regression)”</dt><dd><p>&lt;u&gt;Sigmoid Function (S型函数，在机器学习特指 Logstic Function)&lt;/u&gt;
+<code class="docutils literal notranslate"><span class="pre">`mermaid</span>
+<span class="pre">graph</span> <span class="pre">LR</span>
+<span class="pre">A[Linear</span> <span class="pre">R&lt;br&gt;regression]--Sigmoid+threshold--&gt;</span> <span class="pre">B[Logistics</span> <span class="pre">R&lt;br&gt;classification]</span>
+<span class="pre">`</span></code>
+![](./pics/LogR_2.png){width=”60%”}</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><dl class="simple">
+<dt>📑 ref</dt><dd><ul>
+<li><p>[浅析机器学习：线性回归 &amp; 逻辑回归]</p></li>
+<li><p>[Link Functions and Errors in Logistic Regression - The Analysis Factor]</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<section id="background">
+<h2 id="background">Background<a class="headerlink" href="#background" title="Link to this heading">¶</a></h2>
+<p>在二分类 0-1 问题. Y 随机服从 <strong>the binomial distribution</strong>.</p>
+<p>$$
+Y ∼B(p(X,tilde β)),quadbegin{cases}P(Y =1|X)=p(X,tilde β)\  P(Y =0|X)=1−p(X,tildeβ)end{cases}\
+begin{align*}
+E(Y|X)&amp;=1*P(Y=1|X)+0*P(Y=0|X)\
+&amp;=p(X,tildebeta) = P(Y=1|X)
+end{align*}
+$$</p>
+<p><strong>How to build $p(X, tilde beta)$?</strong>
+既然 Y 服从这么一个二项分布，那么 $p(X,tildebeta)$ 是什么？很显然它是关于一个 X 的函数，同时it is characterized by a custom $beta$. So roughly speaking, it’s like we have a set of X, but the event happens with a certain probability and this probability can be captured by a function of X and the function of X is also characterized by sudden beta.</p>
+<p>💡 : 最简单的 linear regression，但</p>
+<p>||linear regression|$p(X,tildebeta)$要求| Logistic Regression|
+<a href="#id2"><span class="problematic" id="id3">|--|</span></a>–<a href="#id4"><span class="problematic" id="id5">|--|</span></a>–|
+<a href="#id6"><span class="problematic" id="id7">|1️⃣ 取值范围|infinity to infinity|$\in[0,1]$|Sigmoid|</span></a>
+<a href="#id8"><span class="problematic" id="id9">|2️⃣ output|continuous|categorical|Threshold【based on LSM】|</span></a></p>
+<section id="lr">
+<h3 id="lr">LR 的角度<a class="headerlink" href="#lr" title="Link to this heading">¶</a></h3>
+<section id="sigmoid">
+<h4 id="sigmoid">Sigmoid<a class="headerlink" href="#sigmoid" title="Link to this heading">¶</a></h4>
+<p>==Logistic Function(Sigmoid)==。 $y=cfrac{1}{1+e^{-x}}begin{cases}limlimits_{xrightarrow-infin}=0\limlimits_{xrightarrow+infin}=1end{cases}$</p>
+<p>$logcfrac{p}{1-p}=a+X^Tbeta\implies p(X,tildebeta) =cfrac{exp(a+X^Tbeta)}{1+exp(a+X^Tbeta)},tildebeta=(a,beta)$</p>
+<ul class="simple">
+<li><p>why Sigmoid?
+我们想 <strong>map the continuous output space into a new 离散的 categorical 的 output space。</strong>
+我们自然想到了 unit-step Function 单位跃迁函数。但是单位跃迁函数不连续不可微。所以我们又往前走了走，想到 &lt;u&gt;Sigmoid Function (S型函数，在机器学习特指 Logstic Function)&lt;/u&gt;。
+至于为什么要使用 Sigmoid 函数中的对数几率函数，这涉及到伯努利分布的指数族形式，最大熵理论等</p></li>
+</ul>
+<p>&lt;figure class=”span”&gt;![](./pics/LogR_1.png)&lt;p&gt; add sigmoid&lt;/p&gt;&lt;/figure&gt;</p>
+<p>所以 <strong>A regularized Regression：
+Linear Regression + LSM -》 Logistic Regression + 0.5</strong></p>
+</section>
+<section id="threshold">
+<h4 id="threshold">threshold α<a class="headerlink" href="#threshold" title="Link to this heading">¶</a></h4>
+<dl>
+<dt>!!! p “Based on LSM.”</dt><dd><p>==Least Minimum Method==。$mathcal{L}_i=Vert Y_i-f(X_i,theta)Vert^2,$ with target : condition Mean $E{Y|X}$</p>
+<p>in classification : $small E{Y|X}=P{Y=1|X}$</p>
+<p>就是说这个 estimation 的生成的 estimator 其实就是E{Y|X}，在同等概率的01二分类里的 meaning 是 label=1 的概率，所以我们将 threshold 定位0.5。但是当不是两者不是同等概率，就需要使用 ==MLE==进行估计</p>
+</dd>
+</dl>
+<p>$$hat{y}=begin{cases}0&amp;P{Y=1|X}&lt;0.5\1&amp;P{Y=1|X}&gt;0.5end{cases}$$</p>
+</section>
+</section>
+</section>
+<section id="content">
+<h2 id="content">Content<a class="headerlink" href="#content" title="Link to this heading">¶</a></h2>
+<p>==Logistic Regression==.
+$$P(Y=1|X)=p(X,tildebeta) =cfrac{exp(a+X^Tbeta)}{1+exp(a+X^Tbeta)},tildebeta=(a,beta)$$</p>
+<section id="id1">
+<h3 id="id1">极大似然角度去估计<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<p>$begin{cases}P(Y = 1|X = X_i) = p(X_i,tildeβ),\ P (Y = 0 | X = X_i ) = 1−p( X_i , tildeβ )end{cases}xrightarrow{text{unified as}}$
+$$P(Y=Y_i|X=X_i)={p(X_i,tildebeta)}^{Y_i}{1-p(X_i,tildebeta)}^{1-Y_i}$$</p>
+<p>当样本独立 + $tildebeta=(1 ,beta_1,dots,beta_p)$</p>
+<p>the likelihood function $L(tilde β) = prodlimits_{i=1}^n p(X_i,tilde β)^{Y_i}{1−p(X_i,tilde β)}^{1−Y_i}$</p>
+<p>log-likelihood function $l(tilde β)=log L(tilde β) = sumlimits_{i=1}^n {Y_itildebeta^Ttilde X_i-log(1+exp(tildebeta^Ttilde X_i))}$</p>
+<p>Using MLE, $hatbeta = maxlimits_{tildebeta} mathcal{L}(tildebeta) = minlimits_{tildebeta} -l(tildebeta)$</p>
+</section>
+<section id="compared-with-linear-r">
+<h3 id="compared-with-linear-r">compared with Linear R<a class="headerlink" href="#compared-with-linear-r" title="Link to this heading">¶</a></h3>
+<p>==Linear R==$. Y=X^Tbeta+redepsilon=beta_0+beta_1X_1+dots+beta_pX_p+redepsilon$
+==Logistic==. $mathbb E(Y|X)=X^Tbeta=beta_0+beta_1X_1+dots+beta_pX_p$
+<strong>Logistic regression does not have error ε, but Linear regression</strong>. Logistic 不是用预测均值加一个误差项对Y的每个值进行建模，而是简单地对预测均值进行建模，换言之是在给定值X处的均值。这是回归线上的值。</p>
+<p><a href="#id10"><span class="problematic" id="id11">|比较|Linear R&lt;br&gt;$y=X^T\beta+\epsilon$ | Logistic R|</span></a>
+<a href="#id12"><span class="problematic" id="id13">|--|</span></a>–<a href="#id14"><span class="problematic" id="id15">|--|</span></a>
+<a href="#id16"><span class="problematic" id="id17">|Q|回归|分类|</span></a>
+<a href="#id18"><span class="problematic" id="id19">|建模的角度|测Y的每个单独值 | 只预测平均值 $P(Y=1\|X)$|</span></a>
+<a href="#id20"><span class="problematic" id="id21">|从计算的角度说|$\mathbb{E}\epsilon = 0$|</span></a> $p(X,tildebeta)=P(Y=1|X)=mathbb{E}(Y|X)$|
+<a href="#id22"><span class="problematic" id="id23">|参数估计方法|最小二乘法MSE|极大似然法MLE|</span></a></p>
+<ul class="simple">
+<li><p>线性回归和逻辑回归都是**广义线性回归模型的特例**</p></li>
+<li><p>线性回归无联系函数或不起作用，逻辑回归的联系函数是**对数几率函数**，属于Sigmoid 函数</p></li>
+</ul>
+<p>[浅析机器学习：线性回归 &amp; 逻辑回归]:<a class="reference external" href="https://zhuanlan.zhihu.com/p/39363869">https://zhuanlan.zhihu.com/p/39363869</a></p>
+<p>[Link Functions and Errors in Logistic Regression - The Analysis Factor]:<a class="reference external" href="https://www.theanalysisfactor.com/link-functions-and-errors-in-logistic-regression/">https://www.theanalysisfactor.com/link-functions-and-errors-in-logistic-regression/</a></p>
+</section>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2024, coconut.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>

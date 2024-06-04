@@ -35,13 +35,13 @@ import re
 # parser.parse(input, document)
 
 
-input_ = """
-|$n$|$h(n)$<br>heuristic estimation|?|$h^*(n)$<br> actual n$\rightarrow$ goal G|
-|S| 70 | < | 55 +45|
-|A| 35 | < | 25 + 35|
-|B| 30 | < | 45|
-|C| 30 | < | 35|
-|G| 0 | = | 0|
+input_ = r"""
+|λ|(1，0.9)|(1，0.8)|(0，0.7)|(1，0.6)|(0，0.4)|TPR|FPR|
+|0.9|1|0|0|0|0|:math:`\frac{1}{1+2}`|:math:`\frac{0}{2+0}`|
+|0.8|1|1|0|0|0|:math:`\frac{2}{2+2}`|:math:`\frac{0}{2+0}`|
+|0.7|1|1|1|0|0|:math:`\frac{2}{2+1}`|:math:`\frac{1}{1+1}`|
+|0.6|1|1|1|1|0|:math:`\frac{3}{3+0}`|:math:`\frac{1}{1+1}`|
+|0.4|1|1|1|1|1|:math:`\frac{3}{3+0}`|:math:`\frac{2}{0+2}`|
 """
 
 data_list = input_.split('\n')[1:-1]

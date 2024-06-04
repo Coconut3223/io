@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>聚类, Clustering &#8212; cocobook  文档</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=83e35b93" />
+    <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/katex-math.css?v=91adb8b6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/def.css?v=5a9d86bd" />
+    <script src="../../_static/documentation_options.js?v=7d86a446"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/translations.js?v=beaddf03"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#AI/ML/clustering" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../index.html" title="cocobook  文档"
+           class="md-header-nav__button md-logo">
+          
+            &nbsp;
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">cocobook  文档</span>
+          <span class="md-header-nav__topic"> 聚类, Clustering </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../../search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder=""Search""
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+      
+  
+  <script src="../../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../../"versions.json"",
+        target_loc = "../../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">cocobook  文档</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../index.html" title="cocobook 文档" class="md-nav__button md-logo">
+      
+        <img src="../../_static/" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../../index.html"
+       title="cocobook 文档">cocobook  文档</a>
+  </label>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#ai-ml-clustering--page-root" class="md-nav__link">聚类, Clustering</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#similarities-and-distances" class="md-nav__link">similarities and distances</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#point-level" class="md-nav__link">point level</a>
+        </li>
+        <li class="md-nav__item"><a href="#class-level" class="md-nav__link">class level</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#methods" class="md-nav__link">methods</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#em" class="md-nav__link">EM</a>
+        </li>
+        <li class="md-nav__item"><a href="#hierarchical-methods" class="md-nav__link">Hierarchical methods</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#agglomerative-hierarchical-algorithms-start-with-n-clusters" class="md-nav__link">Agglomerative hierarchical algorithms (start with n clusters)</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#k-means" class="md-nav__link">K-means</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#evaluating-the-choice-of-k" class="md-nav__link">Evaluating the choice of K</a>
+        </li>
+        <li class="md-nav__item"><a href="#mathematical" class="md-nav__link">Mathematical</a>
+        </li>
+        <li class="md-nav__item"><a href="#steps" class="md-nav__link">Steps</a>
+        </li>
+        <li class="md-nav__item"><a href="#programming" class="md-nav__link">Programming</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#collecting-the-distortions-into-list" class="md-nav__link">Collecting the distortions into list</a>
+        </li>
+        <li class="md-nav__item"><a href="#plotting-the-distortions" class="md-nav__link">Plotting the distortions</a>
+        </li>
+        <li class="md-nav__item"><a href="#plotting-the-centroids-of-the-clusters" class="md-nav__link">Plotting the centroids of the clusters</a>
+        </li>
+        <li class="md-nav__item"><a href="#id25" class="md-nav__link">Plotting the centroids of the clusters</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#ref" class="md-nav__link">ref</a>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../../_sources/AI/ML/clustering.rst.txt">显示源代码</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="clustering">
+<h1 id="ai-ml-clustering--page-root">聚类, Clustering<a class="headerlink" href="#ai-ml-clustering--page-root" title="Link to this heading">¶</a></h1>
+<p>==upsupervised==, <span class="defi">distance sensitive</span></p>
+<p>Clustering is the process of dividing the entire data into clusters based on the patterns in the data.</p>
+<ol class="arabic simple">
+<li><p>all the data points <strong>in a cluster</strong> should be <strong>similar</strong> to each other.</p></li>
+<li><p>the data points <strong>from different clusters</strong> should be as <strong>different</strong> as possible.</p></li>
+</ol>
+<p>![](./pics/cluster_2.png){width=60%}</p>
+<p><strong>application:</strong>
+根据付款历史的时间序列对现有客户进行分组/聚类，使类似的客户处于同一聚类中。</p>
+<p>Maximize Inter-cluster distance
+Minimize Intra-cluster distance
+==Centroid==. 中心点</p>
+<section id="similarities-and-distances">
+<h2 id="similarities-and-distances">similarities and distances<a class="headerlink" href="#similarities-and-distances" title="Link to this heading">¶</a></h2>
+<section id="point-level">
+<h3 id="point-level">point level<a class="headerlink" href="#point-level" title="Link to this heading">¶</a></h3>
+<p>$d(X_i,X_j),quad XinR^{p},i,j=1,dots,n$</p>
+<p><strong>requirements and properties:</strong></p>
+<ol class="arabic simple">
+<li><p>Symmetry $d(X_i,X_j)=d(X_j,X_i)$.</p></li>
+<li><p>Positivity $d(X_i,X_j) &gt; 0, X_i≠X_j$.</p></li>
+<li><p>Identity $d(X_i, X_i) = 0$.</p></li>
+<li><p>Triangle inequality $d(X_i , X_j ) ≤ d(X_i,X_k ) + d(X_k,X_j ).$</p></li>
+</ol>
+<p>==Euclidean Distance==. $sqrt{sumlimits_{k=1}^p(X_{ik}-X_{jk})^2}$</p>
+<p>==Canberra Metric==. $sumlimits_{k=1}^pcfrac{<a href="#id30"><span class="problematic" id="id31">|X_{ik}-X_{jk}|</span></a>}{X_{ik}+X_{jk}}$</p>
+<p>==Minkowski Distance==. $Big[sumlimits_{k=1}^p|X_{ik}-X_{jk}|^mBig]^{1/m}$</p>
+<p>==Czekanowski Coefficient: signal-to-noise==.$1-cfrac{sumlimits_{k=1}^pmin(X_{ik},X_{jk})}{sumlimits_{k=1}^p(X_{ik}+X_{jk})}$</p>
+</section>
+<section id="class-level">
+<h3 id="class-level">class level<a class="headerlink" href="#class-level" title="Link to this heading">¶</a></h3>
+<p><a href="#id32"><span class="problematic" id="id33">|类簇 similarity||notes|</span></a>
+<a href="#id34"><span class="problematic" id="id35">|--|</span></a>–<a href="#id36"><span class="problematic" id="id37">|--|</span></a>
+<a href="#id38"><span class="problematic" id="id39">|单链接 single-linkage|$\min\limits_{x\in C_1, z\in C_2}\text{dis}(x,z)$|可以处理非椭圆形&lt;br&gt;对噪声和孤立点敏感|</span></a>
+<a href="#id40"><span class="problematic" id="id41">|全链接 complete-linkage|$\max\limits_{x\in C_1, z\in C_2}\text{dis}(x,z)$|不易收到噪声和孤立点影响&lt;br&gt;趋向分裂为更大尺寸的类&lt;br&gt;偏向球形类|</span></a>
+<a href="#id42"><span class="problematic" id="id43">|组平均 average-linkage|$\cfrac{1}{C_1C_2}\sum\limits_{x\in C_1}\sum\limits_{ z\in C_2}\text{dis}(x,z)$|^|</span></a></p>
+<p>![](./pics/dis_1.jpg){width=60%}</p>
+<dl class="simple">
+<dt>!!! danger “可不可以在监督性学习使用聚类？”</dt><dd><p>✅。可以创建聚类，在不同集群上构建单独的机器学习模型</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="methods">
+<h2 id="methods">methods<a class="headerlink" href="#methods" title="Link to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">Non-hierarchical methods | K-means |  |</div>
+<div class="line">— | — | — |</div>
+<div class="line">Hierarchical methods | Divisive hierarchical algorithms  | (start with a single cluster). |</div>
+<div class="line">^ | Agglomerative hierarchical algorithms |  (start with n clusters) |</div>
+<div class="line">Gaussian mixture. |  |  |</div>
+</div>
+<section id="em">
+<h3 id="em">EM<a class="headerlink" href="#em" title="Link to this heading">¶</a></h3>
+<p>!!! danger “EM不会陷于局部极小值 ❌”</p>
+</section>
+<section id="hierarchical-methods">
+<h3 id="hierarchical-methods">Hierarchical methods<a class="headerlink" href="#hierarchical-methods" title="Link to this heading">¶</a></h3>
+<section id="agglomerative-hierarchical-algorithms-start-with-n-clusters">
+<h4 id="agglomerative-hierarchical-algorithms-start-with-n-clusters">Agglomerative hierarchical algorithms (start with n clusters)<a class="headerlink" href="#agglomerative-hierarchical-algorithms-start-with-n-clusters" title="Link to this heading">¶</a></h4>
+<ol class="arabic simple">
+<li><p>Compute the proximity matrix ! Let each data point be a cluster. <strong>Repeat</strong>:</p></li>
+<li><p>Merge the two closest clusters ! Update the <span class="defi">proximity matrix</span> which defines the distances between each point</p></li>
+<li><p><strong>Until</strong>: only one single cluster remains.</p></li>
+</ol>
+<p>![](./pics/HeCluster_1.png){width=60%}</p>
+<p>&gt; &gt; Consider the following hypothetical distances matrix with group order (1); (2); (3); (4); (5), $D = (d_{ij}) = begin{bmatrix}0\9&amp;0\3&amp;7&amp;0\6&amp;5&amp;9&amp;0\11&amp;10&amp;2&amp;8&amp;0end{bmatrix}$</p>
+</section>
+</section>
+<section id="k-means">
+<h3 id="k-means">K-means<a class="headerlink" href="#k-means" title="Link to this heading">¶</a></h3>
+<p>==centroid-based==, ==distance-based==, <span class="defi">a blind guess k clusters</span></p>
+<p>![](./pics/cluster_1.png){width=60%}</p>
+<p>&lt;div class=”grid” markdown&gt;
+&lt;figure markdown=”span”&gt;![](./pics/KMeans_6.png){width=80%}&lt;/figure&gt;
+&lt;figure markdown=”span”&gt;![](./pics/KMeans_7.png){width=80%}&lt;/figure&gt;
+&lt;figure markdown=”span”&gt;![](./pics/KMeans_8.png){width=80%}&lt;/figure&gt;
+&lt;figure markdown=”span”&gt;![](./pics/KMeans_9.png){width=80%}&lt;/figure&gt;
+&lt;/div&gt;</p>
+<dl class="simple">
+<dt>!!! p “能否保证找到最优解？”</dt><dd><p>❌。因为 Kmeans本身是一个NP问题，而且是非凸的，容易陷入局部最优。所以需要多次随机初始化中心点，然后选效果最好的，</p>
+</dd>
+</dl>
+<p><strong>Target:</strong>
+minimize the distance between the points <strong>within a cluster</strong>.
+minimize the sum of distances <strong>between the points and their respective cluster centroid</strong>.</p>
+<p><strong>drawback:</strong></p>
+<ol class="arabic simple">
+<li><p>计算量高，只能求到 local minimizer，不确定是不是 global</p></li>
+</ol>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 109)</p>
+<p>Enumerated list ends without a blank line; unexpected unindent.</p>
+</aside>
+<p>2. 根据原始随机的 centoid, different initials generate different solutions
+because the local minimizer will be found for K-Means, some initials may converge at the same point, but some may converge in different local minimizers
+3. May get bad results when points are distributed on manifold yet ambient distance is used.</p>
+<p>![](./pics/KMeans_4.png){width=60%}</p>
+<section id="evaluating-the-choice-of-k">
+<h4 id="evaluating-the-choice-of-k">Evaluating the choice of K<a class="headerlink" href="#evaluating-the-choice-of-k" title="Link to this heading">¶</a></h4>
+<p><span class="defi">Within Cluster Sum of Squares, WCSS</span>
+$$WCSS = sum_{i=1}^ksum_{x_iin C_i}text{dist}(text{Centoid}_i, x_i)^2$$
+Then the <span class="defi">Elbow Method</span> is then used to choose the best K value based on WCSS</p>
+<p>![](./pics/KMeans_5.png){width=70%}</p>
+</section>
+<section id="mathematical">
+<h4 id="mathematical">Mathematical<a class="headerlink" href="#mathematical" title="Link to this heading">¶</a></h4>
+<p>$Vert A Vert_{F}=sqrt{Tr(AA^T)}=sqrt{sumlimits_{i=1}^nsumlimits_{j=1}^nvert a_{ij}vert^2}$</p>
+<p>$M_{n,q}={MinR^{ntimes p} : M text{ has q distinct rows}}$
+<strong>n</strong>: #observation rows; <strong>p</strong>: #dimension; <strong>q</strong>: #clusters</p>
+<p>$(c_1,dots,c_n)^T=minlimits_{Min M_{n,p}}Vert X_{n,p}-MVert_F^2xleftarrow{大概}begin{bmatrix}X_{n,p}\x_1in(1)\x_2in(2)\vdots\x_nin(1)\end{bmatrix}-begin{bmatrix}M_{n,p}\c(1)\c(2)\vdots\c(1)\end{bmatrix},(i):=text{cluster i}$</p>
+<p>Each row of Xn,p (i.e., each observation) can be viewed as a noisy version of some centroid ci. Final results rely on</p>
+<ol class="arabic simple">
+<li><p>how far away are the centroids from each other, and</p></li>
+<li><p>how noisy are the observations from the centroid.</p></li>
+</ol>
+<p>写起来数学公式很简单，但是我们并不知道哪个是属于哪个cluster的，如果有 k 个cluster的话，每个 observation 有 k 个选择，那么就会有 $k^n$ 种可能，在计算上是属于 high computational cost，这就是它的 drawback。所以我们就不会遍历所有的可能，我们往往就在 initial 的时 random 选择，这就导致我们极有可能走进 local minimizer</p>
+</section>
+<section id="steps">
+<h4 id="steps">Steps<a class="headerlink" href="#steps" title="Link to this heading">¶</a></h4>
+<p>![](./pics/KMeans_1.png){width=80%}</p>
+<ol class="arabic simple">
+<li><p>Pre-specifies the number of clusters K</p></li>
+<li><p>Select k points as the initial centroids</p>
+<ul class="simple">
+<li><p>==random partitioning==. random nature will avoid bias. 对整个k-均值算法进行几次初始化，并从SSE最低的初始化中选择集群分配。</p></li>
+<li><p>start with an additional set of starting points |</p></li>
+</ul>
+</li>
+</ol>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 151)</p>
+<p>Enumerated list ends without a blank line; unexpected unindent.</p>
+</aside>
+<p>3. Re-assign and Re-calculate
+Scan through the list of n items, assigning each item to the cluster <strong>whose centroid (mean)</strong> is closest. Each time the n items are reassigned we will <strong>recalculate the cluster mean or centroid for the clusters.</strong>
+4. Repeat 2 until convergence.</p>
+<p>![](./pics/KMeans_3.png){width=50%}</p>
+<p><strong>Stopping Criteria:</strong></p>
+<ol class="arabic simple">
+<li><p>Centroids of newly formed clusters do not change（理想，不仅分好了类，还找到中心</p></li>
+<li><p>Points remain in the same cluster（完成任务，分好类才是我的核心任务</p></li>
+<li><p>The maximum number of iterations is reached（没办法，已经尽人事了</p></li>
+</ol>
+<p>![](./pics/KMeans_2.png){width=80%}</p>
+</section>
+<section id="programming">
+<h4 id="programming">Programming<a class="headerlink" href="#programming" title="Link to this heading">¶</a></h4>
+<p><cite>kmeanModel.inertia_</cite> Sum of squared distances of samples to their closest cluster centre, weighted by the sample weights if provided. 样本到其最近的聚类中心的平方距离之和，如果提供的话，用样本权重进行加权。</p>
+<p><cite>KMeans(n_clusters=k, random_state=r)</cite></p>
+<p><cite>KMeans.fit(X).labels_</cite> = <cite>KMeans.fit_predict(X)</cite></p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>python
+<a class="reference external" href="mailto:#%40title">#<span>@</span>title</a> 纯K-means
+from sklearn.cluster import KMeans</p>
+<aside class="system-message" id="id1">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 174); <em><a href="#id2">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id3">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 174); <em><a href="#id4">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+<p>kmeans_model = KMeans(n_clusters=k, random_state=)
+kmeans_model = kmeans_model.fit(X)
+y = <a href="#id44"><span class="problematic" id="id45">kmeans_model.labels_</span></a>
+new_y = kmeans_model.predict(new_x)
+cen = <a href="#id46"><span class="problematic" id="id47">means.cluster_centers_</span></a>
+<a href="#id5"><span class="problematic" id="id6">``</span></a><a href="#id7"><span class="problematic" id="id8">`</span></a></p>
+<aside class="system-message" id="id5">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 178); <em><a href="#id6">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id7">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 178); <em><a href="#id8">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+<p><a href="#id9"><span class="problematic" id="id10">``</span></a><a href="#id11"><span class="problematic" id="id12">`</span></a>python
+<a class="reference external" href="mailto:#%40title">#<span>@</span>title</a> elbow to determine which k 肘部法</p>
+<aside class="system-message" id="id9">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 185); <em><a href="#id10">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id11">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 185); <em><a href="#id12">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+</section>
+</section>
+</section>
+</section>
+<section id="collecting-the-distortions-into-list">
+<h1 id="collecting-the-distortions-into-list">Collecting the distortions into list<a class="headerlink" href="#collecting-the-distortions-into-list" title="Link to this heading">¶</a></h1>
+<p>distortions = []
+K = range(1,10)
+for k in K:</p>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 193)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><p>kmeanModel = KMeans(n_clusters=k)
+kmeanModel.fit(x)
+distortions.append(<a href="#id48"><span class="problematic" id="id49">kmeanModel.inertia_</span></a>)</p>
+</div></blockquote>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 196)</p>
+<p>Block quote ends without a blank line; unexpected unindent.</p>
+</aside>
+</section>
+<section id="plotting-the-distortions">
+<h1 id="plotting-the-distortions">Plotting the distortions<a class="headerlink" href="#plotting-the-distortions" title="Link to this heading">¶</a></h1>
+<p>plt.figure(figsize=(16,8))
+plt.plot(K, distortions, ‘bx-‘)
+plt.xlabel(‘k’)
+plt.ylabel(‘Distortion’)
+plt.title(‘The Elbow Method showing the optimal clusters’)
+plt.show()
+<a href="#id13"><span class="problematic" id="id14">``</span></a><a href="#id15"><span class="problematic" id="id16">`</span></a></p>
+<aside class="system-message" id="id13">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 198); <em><a href="#id14">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id15">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 198); <em><a href="#id16">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+<p><a href="#id17"><span class="problematic" id="id18">``</span></a><cite>python
+#@title scatter plot 2D
+Visualising the clusters
+==================================================
+plt.scatter(x[kmeans_predict :defi:</cite> 0, 0], x[kmeans_predict ` 0, 1], s = 100, c = ‘red’, label = ‘Setosa’)
+plt.scatter(x[kmeans_predict :defi:` 1, 0], x[kmeans_predict ` 1, 1], s = 100, c = ‘blue’, label = ‘Versicolour’)
+plt.scatter(x[kmeans_predict :defi:` 2, 0], x[kmeans_predict ` 2, 1], s = 100, c = ‘green’, label = ‘Virginica’)
+plt.scatter(x[kmeans_predict :defi:` 3, 0], x[kmeans_predict ` 3, 1], s = 100, c = ‘black’, label = ‘Another species’)
+==============================================================================================================================================================================================================================================
+print(<a href="#id50"><span class="problematic" id="id51">kmeans_model.cluster_centers_</span></a>)
+==========================================================================</p>
+<aside class="system-message" id="id17">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 206); <em><a href="#id18">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+</section>
+<section id="plotting-the-centroids-of-the-clusters">
+<h1 id="plotting-the-centroids-of-the-clusters">Plotting the centroids of the clusters<a class="headerlink" href="#plotting-the-centroids-of-the-clusters" title="Link to this heading">¶</a></h1>
+<p>plt.scatter(kmeans_model.cluster_centers_[:, 0], kmeans_model.cluster_centers_[:,1], s = 100, c = ‘yellow’, label = ‘Centroids’)</p>
+<p>plt.legend()
+plt.show()
+<a href="#id19"><span class="problematic" id="id20">``</span></a><a href="#id21"><span class="problematic" id="id22">`</span></a></p>
+<aside class="system-message" id="id19">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 222); <em><a href="#id20">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id21">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 222); <em><a href="#id22">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+<p><a href="#id23"><span class="problematic" id="id24">``</span></a><cite>python
+#@title scatter plot 3D
+Visualising the clusters
+==================================================
+fig = plt.figure()
+ax = Axes3D(fig)
+ax.scatter(x[kmeans_predict :defi:</cite> 0, 0], x[kmeans_predict ` 0, 1], x[kmeans_predict == 0, 2], s = 10, c = ‘red’, label = ‘Setosa’)
+ax.scatter(x[kmeans_predict :defi:` 1, 0], x[kmeans_predict ` 1, 1], x[kmeans_predict == 1, 2], s = 10, c = ‘blue’, label = ‘Versicolour’)
+ax.scatter(x[kmeans_predict :defi:` 2, 0], x[kmeans_predict ` 2, 1], x[kmeans_predict == 2, 2], s = 10, c = ‘green’, label = ‘Virginica’)
+ax.scatter(x[kmeans_predict :defi:` 3, 0], x[kmeans_predict ` 3, 1], x[kmeans_predict == 3, 2], s = 10, c = ‘black’, label = ‘Another species’)
+================================================================================================================================================================================================================================================================================================</p>
+<aside class="system-message" id="id23">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 226); <em><a href="#id24">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<p>print(<a href="#id52"><span class="problematic" id="id53">kmeans_model.cluster_centers_</span></a>)</p>
+</section>
+<section id="id25">
+<h1 id="id25">Plotting the centroids of the clusters<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h1>
+<p>ax.scatter(kmeans_model.cluster_centers_[:, 0], kmeans_model.cluster_centers_[:,1], kmeans_model.cluster_centers_[:,2], s = 100, c = ‘yellow’, label = ‘Centroids’)</p>
+<p>plt.legend()
+plt.show()
+<a href="#id26"><span class="problematic" id="id27">``</span></a><a href="#id28"><span class="problematic" id="id29">`</span></a></p>
+<aside class="system-message" id="id26">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 244); <em><a href="#id27">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id28">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 244); <em><a href="#id29">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+<section id="ref">
+<h2 id="ref">ref<a class="headerlink" href="#ref" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>[K-Means Clustering in Python: A Practical Guide – Real Python]</p></li>
+<li><p>[sklearn.cluster.KMeans]</p></li>
+<li><p>[The Ultimate Guide to K-Means Clustering: Definition, Methods and Applications]</p></li>
+</ul>
+<p>[sklearn.cluster.KMeans]: <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html">https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html</a></p>
+<p>[K-Means Clustering in Python: A Practical Guide – Real Python]: <a class="reference external" href="https://realpython.com/k-means-clustering-python/">https://realpython.com/k-means-clustering-python/</a></p>
+<p>[The Ultimate Guide to K-Means Clustering: Definition, Methods and Applications]:<a class="reference external" href="https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/">https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/</a></p>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2024, coconut.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>

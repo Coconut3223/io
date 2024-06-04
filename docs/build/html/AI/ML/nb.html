@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>Naive Bayes classifier &#8212; cocobook  文档</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=83e35b93" />
+    <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/katex-math.css?v=91adb8b6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/def.css?v=5a9d86bd" />
+    <script src="../../_static/documentation_options.js?v=7d86a446"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/translations.js?v=beaddf03"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#AI/ML/nb" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../index.html" title="cocobook  文档"
+           class="md-header-nav__button md-logo">
+          
+            &nbsp;
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">cocobook  文档</span>
+          <span class="md-header-nav__topic"> Naive Bayes classifier </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../../search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder=""Search""
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+      
+  
+  <script src="../../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../../"versions.json"",
+        target_loc = "../../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">cocobook  文档</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../index.html" title="cocobook 文档" class="md-nav__button md-logo">
+      
+        <img src="../../_static/" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../../index.html"
+       title="cocobook 文档">cocobook  文档</a>
+  </label>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#ai-ml-nb--page-root" class="md-nav__link">Naive Bayes classifier</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#background" class="md-nav__link">Background</a>
+        </li>
+        <li class="md-nav__item"><a href="#content" class="md-nav__link">Content</a>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../../_sources/AI/ML/nb.rst.txt">显示源代码</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="naive-bayes-classifier">
+<h1 id="ai-ml-nb--page-root">Naive Bayes classifier<a class="headerlink" href="#ai-ml-nb--page-root" title="Link to this heading">¶</a></h1>
+<p>In statistics, <span class="defi">naive Bayes classifiers</span> are a family of simple “<strong>probabilistic classifiers</strong>” based on applying Bayes’ theorem with <strong>strong (naive) independence assumptions</strong> between the features.</p>
+<section id="background">
+<h2 id="background">Background<a class="headerlink" href="#background" title="Link to this heading">¶</a></h2>
+<p>==Conditional probability==。 $P(A|B)=frac{P(AB)}{P(B)}, P(B|A)=frac{P(AB)}{P(A)}$
+<span class="defi">Bayes’ Theorem</span> Suppose $B_1, · · · , B_n$ form a partition of the sample space $S$ (mutually exclusive and collectively exhaustive), then for any $k = 1, · · · n$ and any event $A$
+$$P(B_k|A) =frac{P(B_kA)}{P(A)}=cfrac{P(A|B_k)P(B_k)}{P(A|B_1)P(B_1)+dots+P(A|B_k)P(B_k)}$$</p>
+<p>&gt; &gt; <strong>cancer diagnostic testing.</strong>
+&gt; &gt; C denote the event that a patient has a cancer.
+&gt; &gt; B denote the event that the test reports “positive” for the patient
+&gt; &gt; Some laboratory studies show that $P (C) = 0.001, P (B|C)=0.99, P(B|C) = 0.01$.
+&gt;
+&gt; We apply the Bayes’ Theorem to give
+$P (C|B) = cfrac{P (C)P (B|C)}{P (C)P (B|C) + P (C)P (B|C)}=cfrac{0.001 × 0.99}{0.999 × 0.01 + 0.001 × 0.99}= 0.09016393$
+&gt;
+&gt; So for the rare disease, even though the test is very precise, a positive report may still have an overwhelming probability to be a mistake.</p>
+</section>
+<section id="content">
+<h2 id="content">Content<a class="headerlink" href="#content" title="Link to this heading">¶</a></h2>
+<p>==Bayesian Classifiers, Idiot’s Bayes==.
+Choose value of $C$ that maximizes $P (C|A_1, A_2, … , A_n)$</p>
+<p>$$begin{align*}C&amp;:=max_CP(C|A_1,…,A_n)\
+&amp;=max_Ccfrac{P(A_1,…,A_n|C)P(C)}{P(A_1,…,A_n)}\
+&amp;proptomax_CP(A_1,…,A_n|C)P(C)
+end{align*}$$</p>
+<p><strong>how to estimate $P (A_1, … , An|C)$ ?</strong></p>
+<dl class="simple">
+<dt>!!! warning “Assume independence among attributes $A_i$ when class is given $P(A_1,…,A_n|C_j) =prodlimits_{i=1}^nP(A_i|C_j)$”</dt><dd><p>$$begin{align*}C&amp;:=max_CP(C|A_1,…,A_n)\&amp;=max_Ccfrac{P(A_1,…,A_n|C)P(C)}{P(A_1,…,A_n)}\&amp;proptomax_CP(A_1,…,A_n|C)P(C)\
+&amp;xlongequal{text{Independent}}max_Cprodlimits_{i=1}^nP(A_i|C)P(C)end{align*}$$</p>
+</dd>
+</dl>
+<p><strong>Wrong when lack represent data.</strong>
+如果在 C 类样本中在 i-th 特征上没有存在第 k 个值。那么按照原来的计算，只要 i-th = k，那么永远不可能是C，因为算出来直接为0. $P(A_{i:k}|C)=cfrac{N_{i:k,C}}{N_C}xlongequal{N_{k,C}=0}0impliesprodlimits_{i=1}^nP(A_i|C)P(C)=0$</p>
+<p>引入:defi:<cite>Laplace smoothing</cite>
+$$P(A_i|C) = cfrac{N_{i,C}+alpha}{N_C+alphatimes(#A_i)}$$
+$#A_i:=$ the total number of classes that Ai possibly belong to
+$alphagt0$ is a parameter. Usually set as 1.</p>
+<p>&gt; &gt; New sample: Name=human; GiveBirth=yes; LayEggs=no; CanFly=no; HaveLegs=yes; Class=?
+&gt; ![](./pics/nb_1.png)
+&gt; mammal=5; Non-mammal=10, $alpha=1$
+&gt; calculate $P(A_i|C)$
+&gt;
+&gt; <a href="#id3"><span class="problematic" id="id4">|class|GiveB.=Y|LayE.=N|CanF.=N|HaveL.=Y|$P(C)$
+&gt; |--|</span></a>–<a href="#id5"><span class="problematic" id="id6">|--|</span></a>–<a href="#id7"><span class="problematic" id="id8">|--|</span></a>–|
+&gt; Mammal|$frac{5+1}{5+2}$|$frac{5+1}{5+2}$|$frac{4+1}{5+2}$|$frac{3+1}{5+2}$|$frac{5+1}{15+2}$
+&gt; Non-<a href="#id1"><span class="problematic" id="id2">|</span></a>$frac{1+1}{10+2}$|$frac{1+1}{10+2}$|$frac{7+1}{10+2}$|$frac{7+1}{10+2}$|$frac{10+1}{15+2}$
+&gt;
+&gt; $P(C=M|A_i)proptoprodlimits_{i=1}^4P(A_i|C=M)P(C=M)=frac{6}{17}timesfrac{6}{7}timesfrac{6}{7}timesfrac{5}{7}timesfrac{4}{7}=0.1058$ (bigger)$implies$ mammal
+&gt;
+&gt; $P(C=N|A_i)proptoprodlimits_{i=1}^4P(A_i|C=N)P(C=N)=frac{11}{17}timesfrac{1}{6}timesfrac{1}{6}timesfrac{2}{3}timesfrac{2}{3}=0.0080$</p>
+<aside class="system-message" id="id1">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/nb.rst</span>, line 49); <em><a href="#id2">backlink</a></em></p>
+<p>Inline substitution_reference start-string without end-string.</p>
+</aside>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2024, coconut.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>

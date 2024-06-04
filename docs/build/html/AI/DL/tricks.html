@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>部件 &#8212; cocobook  文档</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=83e35b93" />
+    <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/katex-math.css?v=91adb8b6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/def.css?v=5a9d86bd" />
+    <script src="../../_static/documentation_options.js?v=7d86a446"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/translations.js?v=beaddf03"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#AI/DL/tricks" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../index.html" title="cocobook  文档"
+           class="md-header-nav__button md-logo">
+          
+            &nbsp;
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">cocobook  文档</span>
+          <span class="md-header-nav__topic"> 部件 </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../../search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder=""Search""
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+      
+  
+  <script src="../../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../../"versions.json"",
+        target_loc = "../../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">cocobook  文档</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../index.html" title="cocobook 文档" class="md-nav__button md-logo">
+      
+        <img src="../../_static/" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../../index.html"
+       title="cocobook 文档">cocobook  文档</a>
+  </label>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#ai-dl-tricks--page-root" class="md-nav__link">部件</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#activation-function" class="md-nav__link">activation function</a>
+        </li>
+        <li class="md-nav__item"><a href="#regularization" class="md-nav__link">Regularization</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id6" class="md-nav__link">参数范数惩罚</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#l2" class="md-nav__link">L2 参数正则化</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#dropout" class="md-nav__link">Dropout</a>
+        </li>
+        <li class="md-nav__item"><a href="#parameters-initialization" class="md-nav__link">Parameters Initialization</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#naive-initialization" class="md-nav__link">Naive Initialization</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#random" class="md-nav__link">完全random</a>
+        </li>
+        <li class="md-nav__item"><a href="#guss-distribution" class="md-nav__link">Guss Distribution</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#normal-distribution" class="md-nav__link">normal distribution</a>
+        </li>
+        <li class="md-nav__item"><a href="#uniform-distribution" class="md-nav__link">Uniform Distribution</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#xavier-initialization" class="md-nav__link">Xavier Initialization</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#var-w-k-1-cfrac-1-n-k-1-qquad-n-k-1-text-input-neurons" class="md-nav__link">$Var(w^{k-1})=cfrac{1}{n_{k-1}},qquad n_{k-1}:=\text{input neurons}$</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#data-augmentation" class="md-nav__link">Data Augmentation</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#for-image" class="md-nav__link">for image</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#gradient-disappears" class="md-nav__link">gradient disappears</a>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../../_sources/AI/DL/tricks.rst.txt">显示源代码</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="id1">
+<h1 id="ai-dl-tricks--page-root">部件<a class="headerlink" href="#ai-dl-tricks--page-root" title="Link to this heading">¶</a></h1>
+<p>![](./pics/tricks_1.png){width=60%}</p>
+<section id="activation-function">
+<h2 id="activation-function">activation function<a class="headerlink" href="#activation-function" title="Link to this heading">¶</a></h2>
+<p>Non-linearity is introduced by activation functions <strong>but non-polynomial !!</strong></p>
+<p>[深度学习中saturation是什么意思？]</p>
+<p>==saturated 饱和的==. 饱和的激活函数的值接近其边界(上下边界)的时候，接近临界值变化不大，会导致算法在反向传播时梯度消失。</p>
+<p>$sigma$ is ==non-saturated 不饱和的==. $limlimits_{xrightarrowinfin}=infin$</p>
+<p><a href="#id15"><span class="problematic" id="id16">|Saturated Nonlinearity |Non-saturated Nonlinearity|</span></a>
+<a href="#id17"><span class="problematic" id="id18">|--|</span></a>–|
+| Sigmoid| Rectified Linear Unit (ReLU) 线性整流函数|
+<a href="#id2"><span class="problematic" id="id3">|</span></a>Tanh <a href="#id4"><span class="problematic" id="id5">|</span></a>Leaky ReLU 修正线性单元 |</p>
+<aside class="system-message" id="id2">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/DL/tricks.rst</span>, line 17); <em><a href="#id3">backlink</a></em></p>
+<p>Inline substitution_reference start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id4">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/DL/tricks.rst</span>, line 17); <em><a href="#id5">backlink</a></em></p>
+<p>Inline substitution_reference start-string without end-string.</p>
+</aside>
+<p>!!! p “<strong>ReLU</strong> is a good default choice for most problems.”</p>
+<p>![](./pics/act_1.png){width=90%}</p>
+<p>[深度学习中saturation是什么意思？]: <a class="reference external" href="https://www.zhihu.com/question/48010350">https://www.zhihu.com/question/48010350</a></p>
+</section>
+<section id="regularization">
+<h2 id="regularization">Regularization<a class="headerlink" href="#regularization" title="Link to this heading">¶</a></h2>
+<p>算法的性能，一是允许使用的函数种类，二是这些函数的数量。在假设空间中，相比于某一个学习算法，我们可能更偏好另一个学习算法。这意味着两个函数都是符合条件的，但是我们更偏好其中一个。只有非偏好函数比偏好函数在训练数据集上效果明显好很多时，我们才会考虑非偏好函数。</p>
+<p>例如，可以加入权重衰减(weight decay)来修改线性回归的训练标准。带权重衰减的线性回归最小化训练集上的均方误差和正则项的和
+可以看作拟合训练数据和偏好小权重范数之间的权衡。这会使得解决方案的斜率最小，或是将权重放在较少的特征上。我们可以训练具有不同
+λ值的高次多项式回归模型。</p>
+<p>更一般地，正则化一个学习函数的模型，我们可以给代价函数添加被称为 <span class="defi">正则化项 regularizer</span> 的惩罚。在权重衰减的例子中，正则化项是。表示对函数的偏好是比增减假设空间的成员函数更一般地控制模型容量的方法。我们可以将去掉假设空间中的某个函数看作对不赞成这个函数的无限偏好。在权重衰减的示例中，通过在最小化的空间中额外增加一项，我们明确地表示了偏好权重较小的线性函数。</p>
+<p>机器学习中的一个核心问题是设计不仅在训练数据上表现好，而且能在新输入上泛化的算法。在机器学习中，许多策略被显示地设计来减少测试误差(可能会增加训练误差为代价)。这些策略被统称为==正则化==。在实践中，过于复杂的模型族不一定包括目标函数或真实数据生成的过程，甚至也不包括近似过程。我们几乎从未知晓真实数据的生成过程，所以我们永远不知道被估计的模型族是否包含生成过程。然而，深度学习算法的大多数应用都是针对这样的情况，其中真实数据的生成过程几乎肯定在模型族之外。深度学习算法通常应用于记为复杂的领域，如图像、音频序列和文本，本质上这些领域的真实生成过程涉及模拟整个宇宙。从某种程度上来说，我们总是持方枘(数据生成过程)而欲内圆凿(模型族)。</p>
+<p>这意味着控制模型的复杂度不是找到合适规模的模型(带有正则的参数个数)这样一个简单的事情。相反，我们可能会发现，或者说在实际的深度学习场景中我们几乎总是会发现，最好的拟合模型(从最小泛化误差的意义上)是一个适当正则化的大型模型</p>
+<p>!!! p “原始目标函数 $mathcal{J}(theta;X,y)$”</p>
+<dl class="simple">
+<dt>!!! p “参数值的偏好”</dt><dd><p>更一般地，可以将参数正则化为 参数空间任意的特定点，而这个偏好的特定点越接近真实值越好。
+而当我们并不知道正确的值是正还是负时，<strong>0 是有意义的默认值。</strong>
+舍弃数值比拟合一个数值更简单。（类噪声）</p>
+</dd>
+</dl>
+<section id="id6">
+<h3 id="id6">参数范数惩罚<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<p>$$tilde{mathcal{J}}(theta;X,y)=mathcal{J}(theta;X,y)+COmega(theta)\[1em]mintilde{mathcal{J}}$$</p>
+<p>$Omega(theta):=$ 范数惩罚项。选择不同参数范数项 $Omega(theta)$ 会偏好不同的解。
+$C:=$ 权衡范数惩罚</p>
+<dl>
+<dt>!!! warning “不对偏置做正则惩罚”</dt><dd><p>在神经网络中，<strong>参数 $theta$ 包括每一层放射变换的权重 $w$ 和偏置 $b$，通常只对 $w$ 做惩罚而不对 $b$ 做正则惩罚。</strong>
+<strong>原因：</strong>
+- 精确拟合 $b$ 所需的数据通常比拟合 $w$ 少得多。$w$ 通常和两个变量相关，每个 $b$ 仅控制一个单变量。$implies$ 不对 $b$ 进行正则化也不会导致太大的方差。</p>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/DL/tricks.rst</span>, line 62)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><p>&gt; in LR: $w=cfrac{partial y}{partial x}; bpropto y$</p>
+</div></blockquote>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/DL/tricks.rst</span>, line 63)</p>
+<p>Block quote ends without a blank line; unexpected unindent.</p>
+</aside>
+<ul class="simple">
+<li><p>正则化偏置参数可能会导致明显的欠拟合。</p></li>
+</ul>
+</dd>
+</dl>
+<section id="l2">
+<h4 id="l2">L2 参数正则化<a class="headerlink" href="#l2" title="Link to this heading">¶</a></h4>
+<p><span class="defi">weight decay 权重递减</span> <span class="defi">岭回归</span> <span class="defi">Tikhonov 正则化</span></p>
+<p>$$Omega(w)=frac{1}{2}Vert wVert_2^2\[1em]tilde{mathcal{J}}(w;X,y)=mathcal{J}(w;X,y)+cfrac{C}{2}w^Tw\[1em]mintilde{mathcal{J}}$$</p>
+<ul class="simple">
+<li><p><strong>使权重更加接近原点</strong></p></li>
+</ul>
+<p>与之对应的梯度为 $nabla_wtilde{mathcal{J}}=nabla_wmathcal{J}+C w$
+使用单步梯度下降更新权重，即执行以下更新：$wleftarrow w-alpha(nabla_wmathcal{J}+C w)=(1-alpha C)w-alphanabla_wmathcal{J}$（$alpha:=$ 步长）：加入权重衰减后会引起学习规则的修改，即在每部执行通常的梯度更新之前先收缩权重向量(将权重向量乘以一个常数因子)。</p>
+<ul class="simple">
+<li><p><strong>为什么有效：</strong></p></li>
+</ul>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/DL/tricks.rst</span>, line 78)</p>
+<p>Bullet list ends without a blank line; unexpected unindent.</p>
+</aside>
+<p>&lt;u&gt;不含正则化的目标函数&lt;/u&gt;: 令 $w^*:=minlimits_{w}red{mathcal{J}}$
+并在 $w^*$ 的邻域对 $mathcal{J}$ 做**二次近似**：$hat{mathcal{J}}(w)=mathcal{J}(w^*)+nablamathcal{J}(w^*)(w-w^*)+frac{1}{2}(w-w^*)H(w-w^*)$ （$H:=nabla^2mathcal{J}(w^*)$ Hessian 矩阵=二阶导数, $nablamathcal{J}(w)=H(w-w^*)$）（如果目标函数确实是二次的(如以均方误差拟合线性回归模型的情况)，则该近似是完美的。）
+$w^*:=minlimits_{w}red{mathcal{J}}impliesbegin{cases}nablamathcal{J}(w^*)=0\Hsucceq0
+end{cases}$
+&lt;u&gt;含正则化的目标函数&lt;/u&gt;: 令 $tilde{w}:=minlimits_{w}red{tilde{mathcal{J}}}$
+$nablatilde{mathcal{J}}(tilde{w})=nablamathcal{J}(tilde{w})+Ctilde{w}=H(tilde{w}-w^*)+Ctilde{w}=0$
+$rightarrow (H+CI)tilde{w}=Hw^*implies tilde{w}=(H+CI)^{-1}Hw^*$：</p>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/DL/tricks.rst</span>, line 85)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><ul class="simple">
+<li><p>当 $Crightarrow0, tilde{w}rightarrow w^*$；</p></li>
+<li><p>当 $Cuparrow, Hxlongequal{可分解为}QLambda Q^Timplies $</p></li>
+</ul>
+</div></blockquote>
+<p>$$begin{align*}
+tilde{w}&amp;=(H+CI)^{-1}Hw^*\&amp;=(QLambda Q^T+CI)^{-1}QLambda Q^Tw^*\&amp;=[Q(Lambda+CI)Q^T]^{-1}QLambda Q^Tw^*\&amp;=Q(Lambda+CI)^{-1}Lambda Q^Tw^*end{align*}$$</p>
+</section>
+</section>
+</section>
+<section id="dropout">
+<h2 id="dropout">Dropout<a class="headerlink" href="#dropout" title="Link to this heading">¶</a></h2>
+<p><span class="defi">A dropout layer</span> randomly sets input elements to zero with a given probability.</p>
+<p>&gt; AlexNet uses dropout layers with a probability of 0.5.</p>
+<p>Dropout is an approach used for regularization in neural networks. It is a technique where randomly chosen nodes are ignored in network during training phase at each stage.</p>
+<p>This dropout rate is usually 0.5 and dropout can be tuned to produce best results and also improves training speed. This method of regularization reduces node-to-node interactions in the network which leads to learning of important features and also helps in generalizing new data better</p>
+</section>
+<section id="parameters-initialization">
+<h2 id="parameters-initialization">Parameters Initialization<a class="headerlink" href="#parameters-initialization" title="Link to this heading">¶</a></h2>
+<p><strong>Assumption:</strong></p>
+<ol class="arabic">
+<li><p>同一层的 X、W、b 相同独立；</p></li>
+<li><p>不同层的权重 X, W, b 各自独立同分布</p></li>
+<li><p>$mathbb EW = mathbb EX=0$</p></li>
+<li><p>$Var(b) =0$</p>
+<blockquote>
+<div><p>$$
+begin{align*}Var(WX+b)&amp;=Var(WX) + Var(b)\&amp;=mathbb E(X)^2Var(W)+mathbb E(W)^2Var(X) + Var(W)Var(X)+Var(b)\&amp;=Var(W)Var(X)+Var(b)end{align*}
+$$</p>
+</div></blockquote>
+</li>
+</ol>
+<p><strong>Requirements:</strong>
+Xavier Glorot 认为：优秀的初始化应该使得各层的激活值和状态梯度在传播过程中的方差保持一致。即==方差一致性==。需要同时考虑正向传播和反向传播的输入输出的方差相同。</p>
+<ul class="simple">
+<li><p><span class="defi">随机初始化</span></p></li>
+</ul>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/DL/tricks.rst</span>, line 120)</p>
+<p>Bullet list ends without a blank line; unexpected unindent.</p>
+</aside>
+<p>有不顾梯度死活的完全 random
+也有将参数视为随机变量，给定一定分布的抽样
+- <span class="defi">固定值初始化</span>
+是指将模型参数初始化为一个固定的常数，这意味着所有单元具有相同的初始化状态，所有的神经元都具有相同的输出和更新梯度，并进行完全相同的更新，这种初始化方法使得神经元间不存在非对称性，从而使得模型效果大打折扣
+- <span class="defi">预训练初始化</span>
+比较早期的方法是使用 greedy layerwise auto-encoder 做无监督学习的预训练，经典代表为 Deep Belief Network；
+而现在更为常见的是有监督的预训练+模型微调。 |</p>
+<p>[【DL】初始化：你真的了解我吗？]
+[神经网络之权重初始化 - 康行天下 - 博客园]</p>
+<section id="naive-initialization">
+<h3 id="naive-initialization">Naive Initialization<a class="headerlink" href="#naive-initialization" title="Link to this heading">¶</a></h3>
+<section id="random">
+<h4 id="random">完全random<a class="headerlink" href="#random" title="Link to this heading">¶</a></h4>
+</section>
+<section id="guss-distribution">
+<h4 id="guss-distribution">Guss Distribution<a class="headerlink" href="#guss-distribution" title="Link to this heading">¶</a></h4>
+<section id="normal-distribution">
+<h5 id="normal-distribution">normal distribution<a class="headerlink" href="#normal-distribution" title="Link to this heading">¶</a></h5>
+<p>$W～N(μ,σ^2)$</p>
+<p>Consider a 10-layer DNN with <strong>tanh activation function.</strong> If we initialize all the weights with normal distribution <strong>N(0, 0.01)</strong>.</p>
+</section>
+<section id="uniform-distribution">
+<h5 id="uniform-distribution">Uniform Distribution<a class="headerlink" href="#uniform-distribution" title="Link to this heading">¶</a></h5>
+<p>$W～U(a,b), n:=$ #input neurons of layer i</p>
+<p>$$
+W_i～U(-cfrac{1}{n},cfrac{1}{n})
+$$</p>
+<p>output i $h_i=sumlimits_{j=1}^n(w_jx_j+b_j)$</p>
+<p>$Var(W) = mathbb E{(W-mathbb E W)^2}=cfrac{1}{3n^2}$</p>
+<p>$Var(h) = sumlimits_{j=1}^n {Var(w_j)Var(x_j)+Var(b_j)}$</p>
+<p>Assume: 输入均值为 0，方差为 1 $mathbb EX = 0, Var(X)=1$</p>
+<p>$Var(h) = cfrac{1}{3n}+cfrac{1}{3}rightarrowlimlimits_{nrightarrowinfin}Var(h)=cfrac{1}{3}rightarrow std(h)=cfrac{1}{sqrt{3}}approx 0.5733&lt;1$</p>
+<p>通过上式进行计算，每一层神经元的标准差都将会是前一层神经元的$cfrac{1}{sqrt{3}}approx 0.5733 &lt;1$ 倍</p>
+<p>当层数到达一定程度，标准差也将会是0</p>
+<p><a href="#id7"><span class="problematic" id="id8">``</span></a><a href="#id9"><span class="problematic" id="id10">`</span></a>python
+class MLP(nn.Module):</p>
+<aside class="system-message" id="id7">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/DL/tricks.rst</span>, line 170); <em><a href="#id8">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id9">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/DL/tricks.rst</span>, line 170); <em><a href="#id10">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/DL/tricks.rst</span>, line 172)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><dl>
+<dt>def __init__(self, neurals, layers):</dt><dd><p>super(MLP, self).__init__()
+self.linears = nn.ModuleList(</p>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/DL/tricks.rst</span>, line 175)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><p>[nn.Linear(neurals, neurals, bias=False) for i in range(layers)])</p>
+</div></blockquote>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/DL/tricks.rst</span>, line 176)</p>
+<p>Block quote ends without a blank line; unexpected unindent.</p>
+</aside>
+<p>self.neurals = neurals</p>
+</dd>
+<dt>def forward(self, x):</dt><dd><dl>
+<dt>for (i, linear) in enumerate(self.linears):</dt><dd><p>x = linear(x)
+print(“layer:{}, std:{}”.format(i+1, x.std()))
+if torch.isnan(x.std()):</p>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/DL/tricks.rst</span>, line 183)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><p>break</p>
+</div></blockquote>
+</dd>
+</dl>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/DL/tricks.rst</span>, line 184)</p>
+<p>Definition list ends without a blank line; unexpected unindent.</p>
+</aside>
+<p>return x</p>
+</dd>
+<dt>def initialize(self):</dt><dd><p>a = np.sqrt(1/self.neurals)
+for m in self.modules():</p>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/DL/tricks.rst</span>, line 189)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><dl class="simple">
+<dt>if isinstance(m, nn.Linear):</dt><dd><p>nn.init.uniform_(m.weight.data, -a, a)</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd>
+</dl>
+</div></blockquote>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/DL/tricks.rst</span>, line 191)</p>
+<p>Block quote ends without a blank line; unexpected unindent.</p>
+</aside>
+<p><a href="#id11"><span class="problematic" id="id12">``</span></a><a href="#id13"><span class="problematic" id="id14">`</span></a></p>
+<aside class="system-message" id="id11">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/DL/tricks.rst</span>, line 191); <em><a href="#id12">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id13">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/DL/tricks.rst</span>, line 191); <em><a href="#id14">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+</section>
+</section>
+</section>
+<section id="xavier-initialization">
+<h3 id="xavier-initialization">Xavier Initialization<a class="headerlink" href="#xavier-initialization" title="Link to this heading">¶</a></h3>
+<p>Forward propagation</p>
+<p>$text{layer k:  } h^k=sumlimits_{i=1}^{n_{k-1}}(w_i^{k-1}h_i^{k-1}+b_i^{k-1})$</p>
+<p>$Var(h^k)=n_{k-1}cdot Var(w^{k-1})cdot Var(h^{k-1})xlongequal{SET}Var(h^{k-1})$</p>
+</section>
+</section>
+</section>
+<section id="var-w-k-1-cfrac-1-n-k-1-qquad-n-k-1-text-input-neurons">
+<h1 id="var-w-k-1-cfrac-1-n-k-1-qquad-n-k-1-text-input-neurons">$Var(w^{k-1})=cfrac{1}{n_{k-1}},qquad n_{k-1}:=\text{input neurons}$<a class="headerlink" href="#var-w-k-1-cfrac-1-n-k-1-qquad-n-k-1-text-input-neurons" title="Link to this heading">¶</a></h1>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/DL/tricks.rst</span>, line 203)</p>
+<p>Title underline too short.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$Var(w^{k-1})=\cfrac{1}{n_{k-1}},\qquad n_{k-1}:=\\text{input neurons}$
+============================================
+</pre></div>
+</div>
+</aside>
+<p>Backwards propagation</p>
+<p>$cfrac{partial text{ cost }}{partial h^{k}}=sumlimits_{i=1}^{n_{k+1}}w_i^{k+1}cfrac{partial text{ cost }}{partial h_i^{k+1}}$</p>
+<p>$Var(h^{k})=n_{k+1}cdot Var(w^{k+1})cdot Var(h^{k+1})xlongequal{SET} Var(h^{k+1})$</p>
+<p>$Var(w^k)=cfrac{1}{n_{k+1}},qquad n_{k+1}:= #text{output neurons}$</p>
+<p>通常不相等，所以这两个方差无法同时满足，作为一种折中的方案 Take an average</p>
+<p>$Var(w^k)=cfrac{2}{n_{k-1}+n_{k+1}}$</p>
+<p>据均匀分布的方差，反推出W的均匀分布由于 [-b,b] 区间的均匀分布的方差为：</p>
+<p>$cfrac{b^2}{3}xlongequal{SET} cfrac{2}{n_{k-1}+n_{k+1}}implies b = cfrac{sqrt 6}{sqrt{n_{k-1}+{n_k+1}}}$</p>
+<p>$W～U[-cfrac{sqrt 6}{sqrt{n_{k-1}+{n_k+1}}}, cfrac{sqrt 6}{sqrt{n_{k-1}+{n_k+1}}}]$</p>
+<p>xavier权重初始化的作用，使得信号在经过多层神经元后保持在合理的范围（不至于太小或太大）。</p>
+<p>[【DL】初始化：你真的了解我吗？]: <a class="reference external" href="https://mp.weixin.qq.com/s/S733ojKWA4Kk9kIL7mkPlA">https://mp.weixin.qq.com/s/S733ojKWA4Kk9kIL7mkPlA</a>
+[神经网络之权重初始化 - 康行天下 - 博客园]:<a class="reference external" href="https://www.cnblogs.com/makefile/p/init-weight.html">https://www.cnblogs.com/makefile/p/init-weight.html</a></p>
+<section id="data-augmentation">
+<h2 id="data-augmentation">Data Augmentation<a class="headerlink" href="#data-augmentation" title="Link to this heading">¶</a></h2>
+<p>相关的数据</p>
+<ol class="arabic simple">
+<li><p>generate some <strong>Gaussian noise</strong> and add the Gaussian noise to the image</p></li>
+<li><p>用 <strong>generative models</strong> to generate similar data</p></li>
+</ol>
+<section id="for-image">
+<h3 id="for-image">for image<a class="headerlink" href="#for-image" title="Link to this heading">¶</a></h3>
+<p>[深度学习训练中为什么要将图片随机剪裁（random crop）_随机裁剪__pinnacle_的博客-CSDN博客]
+1️⃣
+&gt; 以下来自2012 paper
+&gt; 因为这是一个大型的图像分类数据集，里面图像并不是固定大小，但是算法需要一个 constant input, 所以作者进行了data resize，设定imput image <a class="reference external" href="mailto:$3%40254">$3<span>@</span>254</a>times254$。对于不满足要求的图形
+&gt;
+&gt; 1. 等比缩小，使其最短边等于254
+&gt; 2. 其他还是大于254的边就进行crop 剪裁（细节不知道）</p>
+<p>2️⃣
+&gt; 以下来自ppt
+&gt; 作者进行了一个data  augmentation. 设定 imput image <a class="reference external" href="mailto:$3%40257">$3<span>@</span>257</a>times257$
+&gt; 还是上面的方法，但是这里加入了 random crop，再加一点 mirror image 和 rotation</p>
+<p>&lt;div class=”grid” markdown&gt;
+&lt;figure markdown=”span”&gt; ![](./pics/DAug_2.png)&lt;/figure&gt;
+&lt;figure markdown=”span”&gt; ![](./pics/DAug_3.png)&lt;/figure&gt;
+&lt;figure markdown=”span”&gt; ![](./pics/DAug_1.png)&lt;/figure&gt;
+&lt;/div&gt;</p>
+<p>[深度学习训练中为什么要将图片随机剪裁（random crop）_随机裁剪__pinnacle_的博客-CSDN博客]: <a class="reference external" href="https://blog.csdn.net/u010165147/article/details/78633858">https://blog.csdn.net/u010165147/article/details/78633858</a></p>
+</section>
+</section>
+<section id="gradient-disappears">
+<h2 id="gradient-disappears">gradient disappears<a class="headerlink" href="#gradient-disappears" title="Link to this heading">¶</a></h2>
+<p>&gt; Resnet</p>
+<p>越深不一定越好</p>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2024, coconut.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>

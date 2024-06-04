@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>MLP &#8212; cocobook  文档</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=83e35b93" />
+    <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/katex-math.css?v=91adb8b6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/def.css?v=5a9d86bd" />
+    <script src="../../_static/documentation_options.js?v=7d86a446"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/translations.js?v=beaddf03"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#AI/DL/mlp" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../index.html" title="cocobook  文档"
+           class="md-header-nav__button md-logo">
+          
+            &nbsp;
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">cocobook  文档</span>
+          <span class="md-header-nav__topic"> MLP </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../../search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder=""Search""
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+      
+  
+  <script src="../../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../../"versions.json"",
+        target_loc = "../../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">cocobook  文档</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../index.html" title="cocobook 文档" class="md-nav__button md-logo">
+      
+        <img src="../../_static/" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../../index.html"
+       title="cocobook 文档">cocobook  文档</a>
+  </label>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#ai-dl-mlp--page-root" class="md-nav__link">MLP</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#architecture" class="md-nav__link">architecture</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#perceptron" class="md-nav__link">Perceptron, 感知机</a>
+        </li>
+        <li class="md-nav__item"><a href="#mathematical-definition" class="md-nav__link">Mathematical Definition</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#back-propagation" class="md-nav__link">Back Propagation</a>
+        </li>
+        <li class="md-nav__item"><a href="#in-classification-problem" class="md-nav__link">in classification problem</a>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../../_sources/AI/DL/mlp.rst.txt">显示源代码</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="mlp">
+<h1 id="ai-dl-mlp--page-root">MLP<a class="headerlink" href="#ai-dl-mlp--page-root" title="Link to this heading">¶</a></h1>
+<ul>
+<li><p>==Deep Non-parametric Regression==。之前都是 function-assumed 出来的结果是closed-formed， 但是现在就是 <strong>Nonparametric regression</strong> 不在乎它是什么 the shape of the functional relationships is not predetermined ，就是用 deep learning 去 approximate 它。</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>为什么能 <strong>approximate？</strong></p></li>
+</ul>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/DL/mlp.rst</span>, line 7)</p>
+<p>Bullet list ends without a blank line; unexpected unindent.</p>
+</aside>
+<p>Non-linearity is introduced by activation functions.
+Any <strong>continuous functions</strong> defined on <strong>a compact set</strong> can be approximated <strong>arbitrarily</strong> well by a shallow neural network if <strong>the shallow neural network is arbitrarily wide. 如果浅神经网络是任意宽的，那么在紧集上定义的任何连续函数都可以被浅神经网络任意近似。(有理论证明)</strong>
+神经网络因为涉及到更深层就是2*3个参数，但是一般就是2+3个参数，所以神经网络会更强，在一些确实复杂的数据分布上。</p>
+</div></blockquote>
+</li>
+</ul>
+<section id="architecture">
+<h2 id="architecture">architecture<a class="headerlink" href="#architecture" title="Link to this heading">¶</a></h2>
+<p><strong>Feedforward Neural Networks</strong> FNN 前向回馈 <strong>Layers in MLP are fully connected</strong></p>
+<section id="perceptron">
+<h3 id="perceptron">Perceptron, 感知机<a class="headerlink" href="#perceptron" title="Link to this heading">¶</a></h3>
+<p>&lt;div class=”grid” markdown&gt;
+&lt;p&gt;&lt;mark&gt;Perceptron&lt;/mark&gt;, 感知机是接受多个输入后将每个值与各自的权重&lt;b&gt;相乘，最后输出总和&lt;/b&gt;的模型&lt;/p&gt;
+&lt;figure markdown=”span”&gt;![](./pics/MLP_1.png){width=60%}&lt;/figure&gt;
+&lt;/div&gt;</p>
+</section>
+<section id="mathematical-definition">
+<h3 id="mathematical-definition">Mathematical Definition<a class="headerlink" href="#mathematical-definition" title="Link to this heading">¶</a></h3>
+<p>The architecture of an MLP is expressed as <strong>a composition of a series of functions</strong></p>
+<p>$$
+begin{align*}f_theta(x)=&amp;mathcal{A_Lcircsigma circ A_{L-1}circsigma circcdotscirc sigma circ A_1(x) }\&amp;mathcal{A_i}(x)=W_ix+b_i\&amp;theta=(W_1,b_1,…dots,W_L,b_L)end{align*}
+$$</p>
+<p>![](./pics/MLP_2.png){width=60%}</p>
+<div class="line-block">
+<div class="line-block">
+<div class="line">| Neural Network |</div>
+</div>
+<div class="line">— | — |</div>
+<div class="line">Input x | $large xinR^{d_0}$ at 0-th layer |</div>
+<div class="line">Output | at L-th layer |</div>
+<div class="line">layers | L |</div>
+<div class="line">hidden layer | $h_i(x)=mathcal{A_i circ A_{i-1}circsigma circcdotscirc sigma circ A_1(x) },i=1…L-1$ |</div>
+<div class="line">$theta$ | $(W_1,b_1,…dots,W_L,b_L)$ |</div>
+<div class="line">the depth of network | L-1 (number of hidden layers. |</div>
+<div class="line">the width of  network | $max{d_1 , … , d_{L-1}}.$ |</div>
+<div class="line">the size of  network | $text{num}( theta)$ |</div>
+<div class="line-block">
+<div class="line">| the i-th Layer |</div>
+</div>
+<div class="line">linear transformation | $mathcal{A_i}(x)=W_ix+b_i$ |</div>
+<div class="line">Input x | $large xinR^{d_{i-1}}$ |</div>
+<div class="line">weigth matrix | $ W_iinlarge R^{d_itimes d_{i-1}}$ |</div>
+<div class="line">bias vector | $b_iinlargeR^{d_i}$ |</div>
+<div class="line">activation function |  $sigma$ |</div>
+<div class="line">The width of the i-th layer | $d_i$ |</div>
+</div>
+</section>
+</section>
+<section id="back-propagation">
+<h2 id="back-propagation">Back Propagation<a class="headerlink" href="#back-propagation" title="Link to this heading">¶</a></h2>
+<p>Loop over instances:</p>
+<p>1. The forward steps
+Given the input, make predictions layer-by-layer, starting from the first layer)
+2. The backward steps
+Calculate <strong>the error in the output</strong>
+Update the weights layer-by-layer, starting from the final layer</p>
+<p>&gt; &gt; The neuron is modelled by a unit connected by weighted links $w_i$ to other units 𝑖. Suppose $W=(w_0,w_1,w_2,w_3)=(-0.4336,0.8622,0.3188,-1.0377),: z(w)=w_0+sumlimits_{i=1}^nw_ix_i,:o(w)=text{sigmoid}(z(w)),: L(w)=cfrac{1}{2}(o(w)-y)^2.$
+&gt; &gt; Now we have a sample (x,y) with $x = (x_1,x_2,x_3)^T = (0.5377,1.8339,-2.2588)^T, y = 0$.
+&gt; &gt; ![](./pics/MLP_3.png)</p>
+</section>
+<section id="in-classification-problem">
+<h2 id="in-classification-problem">in classification problem<a class="headerlink" href="#in-classification-problem" title="Link to this heading">¶</a></h2>
+<p>$begin{cases}text{Data: }(X_i,Y_i),i=1,dots,n,X_iinR^p,Y_i text{ is categorical }\text{classifier: }mathcal F={f:f(cdot)text{ is categorical }}end{cases}$</p>
+<p><strong>难点：</strong></p>
+<ol class="arabic simple">
+<li><p>分类是label类型，输出的是label， 而 output of NN is a continuous value</p></li>
+<li><p>怎么应用 multi-classification， how to represent Y   $rightarrow$ Matrix</p></li>
+</ol>
+<p><strong>How to represent Y and</strong> $hat{Y}$</p>
+<p>从一维的1，2，3，4，…，到二维的 0-1 bool 矩阵</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Example</dt><dd><ol class="arabic simple">
+<li><p>#category = 2: $Y_iin{+1,-1}, Y_ibegin{cases}+1rightarrow (1,0)\-1rightarrow (0,1)end{cases}$</p></li>
+<li><p>#category = 4: $Y_iin{1,2,3,4}, Y_ibegin{cases}1rightarrow (1,0,0,0)\2rightarrow (0,1,0,0)\3rightarrow (0,0,1,0)\4rightarrow (0,0,0,1)end{cases}$</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+<p>一般最后输出层，神经元的数量就刚好是 category 的数量，并且是每一个神经元 model class probabilities. SO</p>
+<ol class="arabic simple">
+<li><p>$z_i=h(X_i,theta)in[0,1]$ $rightarrow$ h = Sigmoid</p></li>
+<li><p>$sumlimits_{i=1}^{#category}hat{y}_i=sumlimits_{i=1}^{#category}g(z_i)=1rightarrow$  g = Softmax</p></li>
+</ol>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2024, coconut.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>

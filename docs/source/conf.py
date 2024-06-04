@@ -54,9 +54,19 @@ def replace_title(text):
         return f'{split_[-1][1:]}{level_symbal[level]*size*2}\n'
     return re.sub(pattern, add_title, text)
 
+def replace_br(text):
+    import re
+    pattern = r'(?P<br>\<br\>)'
+    tag = 'br'
+    def br_2_n(matched):
+        value = matched.group(tag)
+        return f'\n'
+    return re.sub(pattern, br_2_n, text)
+
 def pre_process(text):
     text = replace_double_equalsymbol(text)
     text = replace_title(text)
+    text = replace_br(text)
     #print(f'dewdwaaaaaaaaaaaaaaaaaaaaa\n{text}')
     return text
     
