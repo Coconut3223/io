@@ -12,7 +12,7 @@ Welcome to cocobook's documentation!
    :caption: Contents:
    
 
-   AI/eva
+   AI/loss_1
 
 
 

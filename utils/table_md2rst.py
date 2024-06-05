@@ -36,12 +36,10 @@ import re
 
 
 input_ = r"""
-|λ|(1，0.9)|(1，0.8)|(0，0.7)|(1，0.6)|(0，0.4)|TPR|FPR|
-|0.9|1|0|0|0|0|:math:`\frac{1}{1+2}`|:math:`\frac{0}{2+0}`|
-|0.8|1|1|0|0|0|:math:`\frac{2}{2+2}`|:math:`\frac{0}{2+0}`|
-|0.7|1|1|1|0|0|:math:`\frac{2}{2+1}`|:math:`\frac{1}{1+1}`|
-|0.6|1|1|1|1|0|:math:`\frac{3}{3+0}`|:math:`\frac{1}{1+1}`|
-|0.4|1|1|1|1|1|:math:`\frac{3}{3+0}`|:math:`\frac{2}{0+2}`|
+|～|最大似然|最大后验估计|
+|目标函数| math:`P(x\vert w)` | :math:`P(w\vert x)=\cfrac{P(x\vert w)P(w)}{P(x)}` |
+|假设| :math:`\epsilon～N(0,\sigma^2)` 高斯噪声| :math:`\epsilon～N(0,\sigma_\epsilon^2)` 高斯噪声|
+|^|^| :math:`w～N(0,\sigma_w^2)` 高斯先验|
 """
 
 data_list = input_.split('\n')[1:-1]
