@@ -6,14 +6,12 @@
 Welcome to cocobook's documentation!
 ====================================
 
+
 .. toctree::
-   :titlesonly:
-   :maxdepth: 2
-   :caption: Contents:
-   
+   :caption: AI
+   :maxdepth: 1
 
-   AI/loss_1
-
+   AI/main
 
 
 Indices and tables
@@ -24,8 +22,4 @@ Indices and tables
 * :ref:`search`
 
 
-.. note:: Title_note
-   
-   content12ee6eddffddds
-      ifjsedDddddfdddd
 

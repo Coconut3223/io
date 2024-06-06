@@ -46,7 +46,7 @@
   
   
   
-    <title>模型评估与选择 &#8212; cocobook  文档</title>
+    <title>模型评估与选择 &#8212; HomePage</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=83e35b93" />
     <link rel="stylesheet" type="text/css" href="../_static/material.css?v=79c92029" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
@@ -60,7 +60,8 @@
     <script src="../_static/design-tabs.js?v=36754332"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="prev" title="Welcome to cocobook’s documentation!" href="../index.html" />
+    <link rel="next" title="high dimentional DA" href="highd.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="index.html" />
   
    
 
@@ -84,10 +85,10 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../index.html" title="cocobook  文档"
+        <a href="../index.html" title="HomePage"
            class="md-header-nav__button md-logo">
           
-            &nbsp;
+            <i class="md-icon">&#xe869</i>
           
         </a>
       </div>
@@ -96,7 +97,7 @@
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          <span class="md-header-nav__topic">cocobook  文档</span>
+          <span class="md-header-nav__topic">Cocobook</span>
           <span class="md-header-nav__topic"> 模型评估与选择 </span>
         </div>
       </div>
@@ -153,7 +154,9 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">cocobook  文档</a></li>
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">HomePage</a></li>
+            
+            <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">AI</a></li>
       </ul>
     </div>
   </nav>
@@ -165,14 +168,130 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../index.html" title="cocobook 文档" class="md-nav__button md-logo">
+    <a href="../index.html" title="HomePage" class="md-nav__button md-logo">
       
-        <img src="../_static/" alt=" logo" width="48" height="48">
+        <i class="md-icon">&#xe869</i>
       
     </a>
     <a href="../index.html"
-       title="cocobook 文档">cocobook  文档</a>
+       title="HomePage">Cocobook</a>
   </label>
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">AI</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <label class="md-nav__link md-nav__link--active" for="__toc"> 模型评估与选择 </label>
+    
+      <a href="#" class="md-nav__link md-nav__link--active">模型评估与选择</a>
+      
+        
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#ai-eva--page-root" class="md-nav__link">模型评估与选择</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id2" class="md-nav__link">数据划分</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id3" class="md-nav__link">数据采样</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#id4" class="md-nav__link">评估指标</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id5" class="md-nav__link">分类</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#precision-recall" class="md-nav__link">precision & recall</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#p-r-precision-recall" class="md-nav__link">P-R 曲线, Precision-Recall</a>
+        </li>
+        <li class="md-nav__item"><a href="#roc-auc" class="md-nav__link">ROC & AUC</a>
+        </li>
+        <li class="md-nav__item"><a href="#id12" class="md-nav__link">代价敏感错误率 & 代价曲线</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#mse" class="md-nav__link">MSE 系列</a>
+        </li>
+        <li class="md-nav__item"><a href="#mae" class="md-nav__link">MAE</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#mape-mean-absolute-percent-error" class="md-nav__link">MAPE, Mean Absolute Percent Error, 平均绝对百分比误差</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#id13" class="md-nav__link">排序问题</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#id14" class="md-nav__link">比较检验</a>
+        </li>
+        <li class="md-nav__item"><a href="#generalization" class="md-nav__link">generalization 泛化性能</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id15" class="md-nav__link">MSE</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#bias" class="md-nav__link">bias, 偏差</a>
+        </li>
+        <li class="md-nav__item"><a href="#variance" class="md-nav__link">variance, 方差</a>
+        </li>
+        <li class="md-nav__item"><a href="#noise" class="md-nav__link">noise, 噪聲</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#bias-variance-dilemma" class="md-nav__link">bias-variance dilemma, 偏差-方差窘境</a>
+        </li>
+        <li class="md-nav__item"><a href="#underfitting" class="md-nav__link">underfitting 欠拟合</a>
+        </li>
+        <li class="md-nav__item"><a href="#overfitting" class="md-nav__link">overfitting, 过拟合 - 高方差</a>
+        </li>
+        <li class="md-nav__item"><a href="#of-vs-uf" class="md-nav__link">OF vs UF</a>
+        </li>
+        <li class="md-nav__item"><a href="#id16" class="md-nav__link">解决方法</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#capacity" class="md-nav__link">capacity 容量</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+  </ul>
+</nav>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="highd.html" class="md-nav__link">high dimentional DA</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="loss.html" class="md-nav__link">Loss</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="pre_1.html" class="md-nav__link">预处理</a>
+      
+    
+    </li>
+  </ul>
   
 
 </nav>
@@ -254,11 +373,6 @@
         </li></ul>
             </nav>
         </li>
-    
-<li class="md-nav__item"><a class="md-nav__extra_link" href="../_sources/AI/eva.rst.txt">显示源代码</a> </li>
-
-<li id="searchbox" class="md-nav__item"></li>
-
   </ul>
 </nav>
               </div>
@@ -1031,7 +1145,7 @@ M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
-            <a href="../index.html" title="Welcome to cocobook’s documentation!"
+            <a href="index.html" title="&lt;no title&gt;"
                class="md-flex md-footer-nav__link md-footer-nav__link--prev"
                rel="prev">
               <div class="md-flex__cell md-flex__cell--shrink">
@@ -1040,10 +1154,21 @@ M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> "Previous" </span> Welcome to cocobook’s documentation! </span>
+                      class="md-footer-nav__direction"> "Previous" </span> &lt;no title&gt; </span>
               </div>
             </a>
           
+          
+            <a href="highd.html" title="high dimentional DA"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> "Next" </span> high dimentional DA </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
           
         </a>
         

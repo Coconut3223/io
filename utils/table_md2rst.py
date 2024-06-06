@@ -36,11 +36,9 @@ import re
 
 
 input_ = r"""
-||单变量 DT| 多变量 DT|
-|分类边界| 轴平行<br> 分类边界由若干个【与坐标轴平行的分段】组成|斜的，曲线|
-|分类指标：|单个属性|属性的线性组合|
-|^|为每个非叶结点找一个最优划分属性| :math:`\sum\limits_{i=1}^dw_ia_i` |
-|表现|在真实分类边界较为复杂的情况下，需要大量的属性测试和很深的决策树才能获得较好的近似|模型简单，但较难解释|
+|  ==Generator==  |  ==Discriminator==  |
+|learns the probability distribution of a dataset and generates new samples that are similar to the original data |learn the decision boundary between different classes.|
+|takes in random noise and returns generated a fake image| takes in both real and fake images and returns probabilities with 1 representing authenticity and 0 fake|
 """
 
 data_list = input_.split('\n')[1:-1]

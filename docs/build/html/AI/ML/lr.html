@@ -46,7 +46,7 @@
   
   
   
-    <title>LRs &#8212; cocobook  文档</title>
+    <title>LRs &#8212; HomePage</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=83e35b93" />
     <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
@@ -83,10 +83,10 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../../index.html" title="cocobook  文档"
+        <a href="../../index.html" title="HomePage"
            class="md-header-nav__button md-logo">
           
-            &nbsp;
+            <i class="md-icon">&#xe869</i>
           
         </a>
       </div>
@@ -95,7 +95,7 @@
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          <span class="md-header-nav__topic">cocobook  文档</span>
+          <span class="md-header-nav__topic">Cocobook</span>
           <span class="md-header-nav__topic"> LRs </span>
         </div>
       </div>
@@ -152,7 +152,9 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">cocobook  文档</a></li>
+          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">HomePage</a></li>
+            
+            <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">AI</a></li>
       </ul>
     </div>
   </nav>
@@ -164,14 +166,52 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../../index.html" title="cocobook 文档" class="md-nav__button md-logo">
+    <a href="../../index.html" title="HomePage" class="md-nav__button md-logo">
       
-        <img src="../../_static/" alt=" logo" width="48" height="48">
+        <i class="md-icon">&#xe869</i>
       
     </a>
     <a href="../../index.html"
-       title="cocobook 文档">cocobook  文档</a>
+       title="HomePage">Cocobook</a>
   </label>
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">AI</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../eva.html" class="md-nav__link">模型评估与选择</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../highd.html" class="md-nav__link">high dimentional DA</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../loss.html" class="md-nav__link">Loss</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../pre_1.html" class="md-nav__link">预处理</a>
+      
+    
+    </li>
+  </ul>
   
 
 </nav>
@@ -239,11 +279,6 @@
         </li></ul>
             </nav>
         </li>
-    
-<li class="md-nav__item"><a class="md-nav__extra_link" href="../../_sources/AI/ML/lr.rst.txt">显示源代码</a> </li>
-
-<li id="searchbox" class="md-nav__item"></li>
-
   </ul>
 </nav>
               </div>
@@ -409,8 +444,10 @@ This means 0 is included in the band at $x_k=1$. On the other hand, (0,0) is inc
 We can draw these functions and get the confidence band. 就是所有的置信区间值都画出来</p>
 <p>!!! warning “不同于 conformal prediction interval（这个是囊括百分之九十五的数据点）,  confidence band 是说预测的数据 fitted value 有百分之九十五的可能被囊括”</p>
 <p>&lt;div class=”grid” markdown&gt;
-&lt;figure markdown=”span”&gt;![](pics/LRs_2.png){width=80%}&lt;p&gt;uncentralized&lt;br&gt;$hat{EY}=hatbeta_0+hatbeta_1x$&lt;/p&gt;&lt;/figure&gt;</p>
-<p>&lt;figure markdown=”span”&gt;![](pics/LRs_3.png){width=80%}&lt;p&gt;centralized&lt;br&gt;$hat{EY}=hatbeta_0+hatbeta_1x$&lt;/p&gt;&lt;/figure&gt;
+&lt;figure markdown=”span”&gt;![](pics/LRs_2.png){width=80%}&lt;p&gt;uncentralized
+$hat{EY}=hatbeta_0+hatbeta_1x$&lt;/p&gt;&lt;/figure&gt;</p>
+<p>&lt;figure markdown=”span”&gt;![](pics/LRs_3.png){width=80%}&lt;p&gt;centralized
+$hat{EY}=hatbeta_0+hatbeta_1x$&lt;/p&gt;&lt;/figure&gt;
 &lt;/div&gt;</p>
 <p>![](pics/LRs_4.png){width=80%}</p>
 <p>==causal inference 因果推断==.是在一个较大系统内部确定指定现象的实际、独立效果的过程。因果推断和相关性推断的主要区别是前者分析结果变量在其原因变量变化时发生的回应。</p>
@@ -518,7 +555,7 @@ end{align*}$$</p>
 <li><p><strong>controls</strong> the <strong>size</strong> of the coefficients, 它仅仅是调整参数的大小，并没有删去特征</p></li>
 </ol>
 <aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/lr.rst</span>, line 281)</p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/lr.rst</span>, line 283)</p>
 <p>Enumerated list ends without a blank line; unexpected unindent.</p>
 </aside>
 <p>2. <strong>controls</strong> the amount of regularization
@@ -528,7 +565,10 @@ $lambda rightarrow begin{cases}0&amp;hatbeta_{ridge} =hatbeta_{LSE}\infin&amp;ha
 对每一个 lambda 我们都能 画出它的 ==solution path==.  λs trace out <strong>a path of solutions</strong></p>
 <p>&lt;div class=”grid” markdown&gt;
 &lt;figure markdown=”span”&gt;![](pics/LRs_5.png){width=60%}&lt;p&gt;coefficients paths&lt;/p&gt;&lt;/figure&gt;</p>
-<p>右图是根据课上 centralized and standardized diabetes data 画出来的&lt;br&gt;$y=beta_1x_1+dots+beta_{10}x_{10}+epsilon$&lt;br&gt;一共有10个 $β_i$, 每一条线对应的是一个 $β_i$ &lt;br&gt;随着 λ 增大，logλ 增大，每一个 β 的绝对值都有不同程度的减少。当 λ 到达一个绝对大的值，所有的 β 都被收缩至 0.
+<p>右图是根据课上 centralized and standardized diabetes data 画出来的
+$y=beta_1x_1+dots+beta_{10}x_{10}+epsilon$
+一共有10个 $β_i$, 每一条线对应的是一个 $β_i$
+随着 λ 增大，logλ 增大，每一个 β 的绝对值都有不同程度的减少。当 λ 到达一个绝对大的值，所有的 β 都被收缩至 0.
 &lt;/div&gt;</p>
 <p>&lt;div class=”grid” markdown&gt;
 &lt;figure markdown=”span”&gt;![](pics/LRs_6.png){width=80%}&lt;p&gt;coefficients paths&lt;/p&gt;&lt;/figure&gt;</p>
@@ -575,11 +615,11 @@ plot(mycv)
 to plot the CV values against lambda
 ==========================================================================</p>
 <aside class="system-message" id="id2">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/lr.rst</span>, line 343); <em><a href="#id3">backlink</a></em></p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/lr.rst</span>, line 348); <em><a href="#id3">backlink</a></em></p>
 <p>Inline literal start-string without end-string.</p>
 </aside>
 <aside class="system-message" id="id4">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/lr.rst</span>, line 343); <em><a href="#id5">backlink</a></em></p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/lr.rst</span>, line 348); <em><a href="#id5">backlink</a></em></p>
 <p>Inline interpreted text or phrase reference start-string without end-string.</p>
 </aside>
 <dl class="simple">
@@ -587,7 +627,7 @@ to plot the CV values against lambda
 </dd>
 </dl>
 <aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/lr.rst</span>, line 351)</p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/lr.rst</span>, line 356)</p>
 <p>Definition list ends without a blank line; unexpected unindent.</p>
 </aside>
 <p>plot(mylasso):
@@ -596,11 +636,11 @@ to plot the path of the estimated coefficients against t
 <p>mypred = predict(mylasso, newx, type=c(”link”,”response”, ”coefficients”,”nonzero”,”class”))
 <a href="#id6"><span class="problematic" id="id7">``</span></a><a href="#id8"><span class="problematic" id="id9">`</span></a></p>
 <aside class="system-message" id="id6">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/lr.rst</span>, line 355); <em><a href="#id7">backlink</a></em></p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/lr.rst</span>, line 360); <em><a href="#id7">backlink</a></em></p>
 <p>Inline literal start-string without end-string.</p>
 </aside>
 <aside class="system-message" id="id8">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/lr.rst</span>, line 355); <em><a href="#id9">backlink</a></em></p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/lr.rst</span>, line 360); <em><a href="#id9">backlink</a></em></p>
 <p>Inline interpreted text or phrase reference start-string without end-string.</p>
 </aside>
 <p><cite>mycv = cv.glmnet(x, y, lambda, type.measure, nfolds)</cite></p>
@@ -646,7 +686,7 @@ to plot the path of the estimated coefficients against t
 <li><p><cite>alpha</cite>: The elasticnet mixing parameter, with 0 ≤ α ≤ 1. The penalty is defined as</p></li>
 </ul>
 <aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/lr.rst</span>, line 383)</p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/lr.rst</span>, line 388)</p>
 <p>Bullet list ends without a blank line; unexpected unindent.</p>
 </aside>
 <p>$(1-alpha)/2VertbetaVert_2+alphaVertbetaVert_1rightarrowalpha = begin{cases}1&amp;text{ lasso(default)}\0 &amp;text{ ridge}end{cases}$
@@ -713,7 +753,7 @@ $hatbeta_{net}:=minlimits_betasumlimits_{i=1}^n{Y_i-beta_1x_{i1}-beta_2x_{i2}}^2
 <div class="line">Variance | $(mathbb X^Tmathbb X)^{-1}sigma^2$ | $(mathbb X^Tmathbb X+lambda I)^{-1}mathbb X^Tmathbb X(mathbb X^Tmathbb X+lambda I)^{-1}sigma^2$ (smaller) <a href="#id10"><span class="problematic" id="id11">|</span></a>?</div>
 </div>
 <aside class="system-message" id="id10">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/lr.rst</span>, line 424); <em><a href="#id11">backlink</a></em></p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/lr.rst</span>, line 429); <em><a href="#id11">backlink</a></em></p>
 <p>Inline substitution_reference start-string without end-string.</p>
 </aside>
 <p>!!! warning “Obviously, $|text{bias}(hatbeta_text{LSE})|le|text{bias}(hatbeta_text{ridge})|$, but $Var(hatbeta_text{LSE})ge Var(hatbeta_text{ridge})$. But how do we know which is better?”</p>
@@ -725,7 +765,7 @@ $hatbeta_{net}:=minlimits_betasumlimits_{i=1}^n{Y_i-beta_1x_{i1}-beta_2x_{i2}}^2
 <li><p>Case 1 If X is orthonormal, then  $mathbb X^Tmathbb X = I_p,$</p></li>
 </ul>
 <aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/lr.rst</span>, line 436)</p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/lr.rst</span>, line 441)</p>
 <p>Bullet list ends without a blank line; unexpected unindent.</p>
 </aside>
 <p>$begin{cases}hatbeta_{text{ridge}}= (mathbb X^Tmathbb X+lambda I)^{-1}mathbb X^Tmathbb Y= (1+lambda)^{-1}mathbb X^Tmathbb Y\hatbeta_{LSE}=mathbb X^T mathbb Yend{cases}implies hatbeta_{ridge}=cfrac{1}{1+lambda}hatbeta_{LSE}$
@@ -803,7 +843,8 @@ end{cases}=hat{beta}_{LSE}+text{sgn}(hat{beta}_{LSE})tilde{lambda}$$</p>
 </div>
 <p>&lt;div class=”grid” markdown&gt;
 &lt;figure markdown=”span”&gt;![](pics/LRs_8.png)&lt;p&gt;the lasso (left) and ridge regression (right)&lt;/p&gt;&lt;/figure&gt;</p>
-<p>The solid blue areas are the constraint regions.&lt;br&gt;the red ellipses are the contours of the least squares error function
+<p>The solid blue areas are the constraint regions.
+the red ellipses are the contours of the least squares error function
 &lt;/div&gt;</p>
 <p><strong>Same:</strong>
 很明显，它被迫限制 search in the constraint area

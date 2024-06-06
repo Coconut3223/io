@@ -98,6 +98,9 @@ def BaseAdmonition_run(self):
         [content]
     """
     set_classes(self.options)
+    if not self.content:
+        print(f'NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN{self.options}')
+        return
     if self.content[0] != '""':
         self.arguments.append(self.content[0])
     else:
@@ -150,7 +153,8 @@ def visit_admonition_hideNodename(self, node: Element, name: str = '') -> None:
 HTML5Translator.visit_admonition = visit_admonition_hideNodename
 
 
-project = 'cocobook'
+project = 'Cocobook'
+html_title = "HomePage"
 copyright = '2024, coconut'
 author = 'coconut'
 
@@ -170,6 +174,17 @@ language = 'zh_CN'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = 'sphinx_material'
+html_theme_options = {
+    'nav_title': 'Cocobook',
+    'logo_icon': '&#xe869',
+    "nav_links": [
+        {
+            "href": "AI/index",
+            "internal": True,
+            "title": "AI",
+        },
+    ],  
+}
 html_static_path = ['_static']
 
 html_css_files = ['css/def.css']
@@ -181,7 +196,12 @@ rst_prolog = """
 .. role:: defi
 """
 
+# 是否显示查看源码链接
+html_show_sourcelink = False
 
+html_sidebars = {
+    "**": ["logo-text.html", "globaltoc.html", "localtoc.html", "searchbox.html"]
+}
 
 suppress_warnings = ["config.cache"]  # https://github.com/sphinx-doc/sphinx/issues/12300
 # pickling environment... WARNING: cannot cache unpickable configuration value: 'html_context' (because it contains a function, class, or module object)

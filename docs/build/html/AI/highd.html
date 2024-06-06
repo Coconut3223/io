@@ -46,7 +46,7 @@
   
   
   
-    <title>high dimentional DA &#8212; cocobook  文档</title>
+    <title>high dimentional DA &#8212; HomePage</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=83e35b93" />
     <link rel="stylesheet" type="text/css" href="../_static/material.css?v=79c92029" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
@@ -60,6 +60,8 @@
     <script src="../_static/design-tabs.js?v=36754332"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Loss" href="loss.html" />
+    <link rel="prev" title="模型评估与选择" href="eva.html" />
   
    
 
@@ -83,10 +85,10 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../index.html" title="cocobook  文档"
+        <a href="../index.html" title="HomePage"
            class="md-header-nav__button md-logo">
           
-            &nbsp;
+            <i class="md-icon">&#xe869</i>
           
         </a>
       </div>
@@ -95,7 +97,7 @@
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          <span class="md-header-nav__topic">cocobook  文档</span>
+          <span class="md-header-nav__topic">Cocobook</span>
           <span class="md-header-nav__topic"> high dimentional DA </span>
         </div>
       </div>
@@ -152,7 +154,9 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">cocobook  文档</a></li>
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">HomePage</a></li>
+            
+            <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">AI</a></li>
       </ul>
     </div>
   </nav>
@@ -164,14 +168,116 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../index.html" title="cocobook 文档" class="md-nav__button md-logo">
+    <a href="../index.html" title="HomePage" class="md-nav__button md-logo">
       
-        <img src="../_static/" alt=" logo" width="48" height="48">
+        <i class="md-icon">&#xe869</i>
       
     </a>
     <a href="../index.html"
-       title="cocobook 文档">cocobook  文档</a>
+       title="HomePage">Cocobook</a>
   </label>
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">AI</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="eva.html" class="md-nav__link">模型评估与选择</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <label class="md-nav__link md-nav__link--active" for="__toc"> high dimentional DA </label>
+    
+      <a href="#" class="md-nav__link md-nav__link--active">high dimentional DA</a>
+      
+        
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#ai-highd--page-root" class="md-nav__link">high dimentional DA</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#some-special-notation" class="md-nav__link">some special notation</a>
+        </li>
+        <li class="md-nav__item"><a href="#special-matrix" class="md-nav__link">Special Matrix</a>
+        </li>
+        <li class="md-nav__item"><a href="#variable-selection" class="md-nav__link">Variable Selection</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#filter-screening" class="md-nav__link">Filter, Screening, 过滤法</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#perfect-models-with-general-variables" class="md-nav__link">Perfect Models with General Variables</a>
+        </li>
+        <li class="md-nav__item"><a href="#working-model-with-more-redundant-variables" class="md-nav__link">Working Model with More Redundant Variables</a>
+        </li>
+        <li class="md-nav__item"><a href="#working-model-with-less-important-variables" class="md-nav__link">Working Model with Less Important Variables</a>
+        </li>
+        <li class="md-nav__item"><a href="#candidate-models-for-p-1-predictor-1-x-1-x-p" class="md-nav__link">Candidate Models for p+1 predictor  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mtext>，</mtext><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><msub><mi>x</mi><mi>p</mi></msub></mrow><annotation encoding="application/x-tex">1， x_1, ..., x_p</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord">1</span><span class="mord cjk_fallback">，</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">...</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></span></a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#model-selection-for-lr" class="md-nav__link">Model Selection for LR</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#dimensionality-reduction" class="md-nav__link">Dimensionality Reduction，数据降维</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#principal-component-analysis-pca" class="md-nav__link">Principal Component Analysis, PCA, 主成分分析</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#key-maximize-the-variance" class="md-nav__link">KEY: Maximize the variance</a>
+        </li>
+        <li class="md-nav__item"><a href="#pca-transformation" class="md-nav__link">PCA Transformation</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#practical-use" class="md-nav__link">Practical Use</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#graphical-rotate-the-data-without-scaling" class="md-nav__link">Graphical: Rotate the data without scaling</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#linear-discriminant-analysis-lda" class="md-nav__link">Linear Discriminant Analysis, LDA, 线性判别分析</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#fishers-lda" class="md-nav__link">Fisher’s LDA</a>
+        </li>
+        <li class="md-nav__item"><a href="#bayes-lda" class="md-nav__link">Bayes’ LDA</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#quadratic-discriminant-analysis-qda" class="md-nav__link">Quadratic Discriminant Analysis, QDA</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+  </ul>
+</nav>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="loss.html" class="md-nav__link">Loss</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="pre_1.html" class="md-nav__link">预处理</a>
+      
+    
+    </li>
+  </ul>
   
 
 </nav>
@@ -239,11 +345,6 @@
         </li></ul>
             </nav>
         </li>
-    
-<li class="md-nav__item"><a class="md-nav__extra_link" href="../_sources/AI/highd.rst.txt">显示源代码</a> </li>
-
-<li id="searchbox" class="md-nav__item"></li>
-
   </ul>
 </nav>
               </div>
@@ -1021,6 +1122,30 @@ M0 50 h400000 v40H0z m0 194h40000v40H0z"></path></svg></span></span><span style=
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
+            <a href="eva.html" title="模型评估与选择"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> "Previous" </span> 模型评估与选择 </span>
+              </div>
+            </a>
+          
+          
+            <a href="loss.html" title="Loss"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> "Next" </span> Loss </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
           
         </a>
         

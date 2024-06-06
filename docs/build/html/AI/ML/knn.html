@@ -46,7 +46,7 @@
   
   
   
-    <title>KNN, K近邻 &#8212; cocobook  文档</title>
+    <title>KNN, K近邻 &#8212; HomePage</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=83e35b93" />
     <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
@@ -83,10 +83,10 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../../index.html" title="cocobook  文档"
+        <a href="../../index.html" title="HomePage"
            class="md-header-nav__button md-logo">
           
-            &nbsp;
+            <i class="md-icon">&#xe869</i>
           
         </a>
       </div>
@@ -95,7 +95,7 @@
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          <span class="md-header-nav__topic">cocobook  文档</span>
+          <span class="md-header-nav__topic">Cocobook</span>
           <span class="md-header-nav__topic"> KNN, K近邻 </span>
         </div>
       </div>
@@ -152,7 +152,9 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">cocobook  文档</a></li>
+          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">HomePage</a></li>
+            
+            <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">AI</a></li>
       </ul>
     </div>
   </nav>
@@ -164,14 +166,52 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../../index.html" title="cocobook 文档" class="md-nav__button md-logo">
+    <a href="../../index.html" title="HomePage" class="md-nav__button md-logo">
       
-        <img src="../../_static/" alt=" logo" width="48" height="48">
+        <i class="md-icon">&#xe869</i>
       
     </a>
     <a href="../../index.html"
-       title="cocobook 文档">cocobook  文档</a>
+       title="HomePage">Cocobook</a>
   </label>
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">AI</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../eva.html" class="md-nav__link">模型评估与选择</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../highd.html" class="md-nav__link">high dimentional DA</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../loss.html" class="md-nav__link">Loss</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../pre_1.html" class="md-nav__link">预处理</a>
+      
+    
+    </li>
+  </ul>
   
 
 </nav>
@@ -207,15 +247,10 @@
         </li></ul>
             </nav>
         </li>
-        <li class="md-nav__item"><a href="#id2" class="md-nav__link">实现</a>
+        <li class="md-nav__item"><a href="#id4" class="md-nav__link">实现</a>
         </li></ul>
             </nav>
         </li>
-    
-<li class="md-nav__item"><a class="md-nav__extra_link" href="../../_sources/AI/ML/knn.rst.txt">显示源代码</a> </li>
-
-<li id="searchbox" class="md-nav__item"></li>
-
   </ul>
 </nav>
               </div>
@@ -242,9 +277,9 @@
 </dl>
 <section id="similarity-d-hat-x-x-i">
 <h2 id="similarity-d-hat-x-x-i">距离 - similarity $d(hat{x},x_i)$<a class="headerlink" href="#similarity-d-hat-x-x-i" title="Link to this heading">¶</a></h2>
-<p><a href="#id9"><span class="problematic" id="id10">|关系型数据|文本数据|</span></a>
-<a href="#id11"><span class="problematic" id="id12">|--|</span></a>–|
-<a href="#id13"><span class="problematic" id="id14">|欧氏距离|余弦相似度(cosine similaritv)|</span></a></p>
+<p><a href="#id11"><span class="problematic" id="id12">|关系型数据|文本数据|</span></a>
+<a href="#id13"><span class="problematic" id="id14">|--|</span></a>–|
+<a href="#id15"><span class="problematic" id="id16">|欧氏距离|余弦相似度(cosine similaritv)|</span></a></p>
 <aside class="system-message">
 <p class="system-message-title">System Message: SEVERE/4 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/knn.rst</span>, line 24)</p>
 <p>Missing matching underline for section title overline.</p>
@@ -254,8 +289,8 @@
 </pre></div>
 </div>
 </aside>
-<p><a href="#id15"><span class="problematic" id="id16">|L2, Euclidian|$d_{L2}(a, b)=\sqrt{\sum\limits_{i=1}^n(a_i-b_i)^2}$||</span></a>
-<a href="#id17"><span class="problematic" id="id18">|Minkowski|$d_{Lp}(a, b)=\sqrt{\sum\limits_{i=1}^n(a_i-b_i)^2}$||</span></a>
+<p><a href="#id17"><span class="problematic" id="id18">|L2, Euclidian|$d_{L2}(a, b)=\sqrt{\sum\limits_{i=1}^n(a_i-b_i)^2}$||</span></a>
+<a href="#id19"><span class="problematic" id="id20">|Minkowski|$d_{Lp}(a, b)=\sqrt{\sum\limits_{i=1}^n(a_i-b_i)^2}$||</span></a>
 | inf-dis| $max|a_i-b_i|$||</p>
 <p>![](./pics/dis_2.png){width=”60%”}</p>
 <p><span class="defi">Hamming Distance</span></p>
@@ -287,11 +322,24 @@ $w_i:=$ considering the importance of distance</p>
 </section>
 <section id="list-of-k">
 <h2 id="list-of-k">list of K<a class="headerlink" href="#list-of-k" title="Link to this heading">¶</a></h2>
+<dl>
+<dt>!!! danger “k 很重要”</dt><dd><blockquote>
+<div><p><a href="#id21"><span class="problematic" id="id22">|too small|too large|</span></a>
+<a href="#id23"><span class="problematic" id="id24">|--|</span></a>–|
+<a href="#id2"><span class="problematic" id="id3">|</span></a>噪声敏感</p>
+<aside class="system-message" id="id2">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/knn.rst</span>, line 71); <em><a href="#id3">backlink</a></em></p>
+<p>Inline substitution_reference start-string without end-string.</p>
+</aside>
+</div></blockquote>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/knn.rst</span>, line 74)</p>
+<p>Block quote ends without a blank line; unexpected unindent.</p>
+</aside>
 <dl class="simple">
-<dt>!!! danger “k 很重要”</dt><dd><p><a href="#id19"><span class="problematic" id="id20">|too small|too large|</span></a>
-<a href="#id21"><span class="problematic" id="id22">|--|</span></a>–|
-<a href="#id23"><span class="problematic" id="id24">|噪声敏感 &lt;br&gt; allergic to noises|</span></a> the distance may be ignored so that the opposite points are included
-![](pics/KNN_1.png)</p>
+<dt>allergic to noises| the distance may be ignored so that the opposite points are included</dt><dd><p>![](pics/KNN_1.png)</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <ol class="arabic simple">
@@ -303,12 +351,12 @@ $w_i:=$ considering the importance of distance</p>
 <h3 id="parameter-tuning-k">Parameter tuning：k<a class="headerlink" href="#parameter-tuning-k" title="Link to this heading">¶</a></h3>
 </section>
 </section>
-<section id="id2">
-<h2 id="id2">实现<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
-<p><a href="#id3"><span class="problematic" id="id4">``</span></a>` python
+<section id="id4">
+<h2 id="id4">实现<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<p><a href="#id5"><span class="problematic" id="id6">``</span></a>` python
 import numpy as np</p>
-<aside class="system-message" id="id3">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/knn.rst</span>, line 87); <em><a href="#id4">backlink</a></em></p>
+<aside class="system-message" id="id5">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/knn.rst</span>, line 88); <em><a href="#id6">backlink</a></em></p>
 <p>Inline literal start-string without end-string.</p>
 </aside>
 <p>class NearestNeighbour():</p>
@@ -325,16 +373,16 @@ self.labels = labels</p>
 </dl>
 </div></blockquote>
 <aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/knn.rst</span>, line 102)</p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/knn.rst</span>, line 103)</p>
 <p>Block quote ends without a blank line; unexpected unindent.</p>
 </aside>
-<p><a href="#id5"><span class="problematic" id="id6">``</span></a><a href="#id7"><span class="problematic" id="id8">`</span></a></p>
-<aside class="system-message" id="id5">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/knn.rst</span>, line 102); <em><a href="#id6">backlink</a></em></p>
+<p><a href="#id7"><span class="problematic" id="id8">``</span></a><a href="#id9"><span class="problematic" id="id10">`</span></a></p>
+<aside class="system-message" id="id7">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/knn.rst</span>, line 103); <em><a href="#id8">backlink</a></em></p>
 <p>Inline literal start-string without end-string.</p>
 </aside>
-<aside class="system-message" id="id7">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/knn.rst</span>, line 102); <em><a href="#id8">backlink</a></em></p>
+<aside class="system-message" id="id9">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/knn.rst</span>, line 103); <em><a href="#id10">backlink</a></em></p>
 <p>Inline interpreted text or phrase reference start-string without end-string.</p>
 </aside>
 <p>[什么是 k 最近邻算法？ | IBM]:<a class="reference external" href="https://www.ibm.com/cn-zh/topics/knn">https://www.ibm.com/cn-zh/topics/knn</a></p>

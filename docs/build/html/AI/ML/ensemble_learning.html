@@ -46,7 +46,7 @@
   
   
   
-    <title>集成学习 &#8212; cocobook  文档</title>
+    <title>集成学习 &#8212; HomePage</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=83e35b93" />
     <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
@@ -83,10 +83,10 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../../index.html" title="cocobook  文档"
+        <a href="../../index.html" title="HomePage"
            class="md-header-nav__button md-logo">
           
-            &nbsp;
+            <i class="md-icon">&#xe869</i>
           
         </a>
       </div>
@@ -95,7 +95,7 @@
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          <span class="md-header-nav__topic">cocobook  文档</span>
+          <span class="md-header-nav__topic">Cocobook</span>
           <span class="md-header-nav__topic"> 集成学习 </span>
         </div>
       </div>
@@ -152,7 +152,9 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">cocobook  文档</a></li>
+          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">HomePage</a></li>
+            
+            <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">AI</a></li>
       </ul>
     </div>
   </nav>
@@ -164,14 +166,52 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../../index.html" title="cocobook 文档" class="md-nav__button md-logo">
+    <a href="../../index.html" title="HomePage" class="md-nav__button md-logo">
       
-        <img src="../../_static/" alt=" logo" width="48" height="48">
+        <i class="md-icon">&#xe869</i>
       
     </a>
     <a href="../../index.html"
-       title="cocobook 文档">cocobook  文档</a>
+       title="HomePage">Cocobook</a>
   </label>
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">AI</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../eva.html" class="md-nav__link">模型评估与选择</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../highd.html" class="md-nav__link">high dimentional DA</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../loss.html" class="md-nav__link">Loss</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../pre_1.html" class="md-nav__link">预处理</a>
+      
+    
+    </li>
+  </ul>
   
 
 </nav>
@@ -213,11 +253,6 @@
         </li></ul>
             </nav>
         </li>
-    
-<li class="md-nav__item"><a class="md-nav__extra_link" href="../../_sources/AI/ML/ensemble_learning.rst.txt">显示源代码</a> </li>
-
-<li id="searchbox" class="md-nav__item"></li>
-
   </ul>
 </nav>
               </div>
@@ -241,9 +276,9 @@
 <h3 id="stacking-voting">stacking &amp; voting<a class="headerlink" href="#stacking-voting" title="Link to this heading">¶</a></h3>
 <p><span class="defi">voting,投票</span></p>
 <p>||硬投票分类器|软投票分类器|
-<a href="#id6"><span class="problematic" id="id7">|--|</span></a>–<a href="#id8"><span class="problematic" id="id9">|--|</span></a>
-<a href="#id10"><span class="problematic" id="id11">|各个弱分类器结果|最终选择的类别|每个类别的估算概率|</span></a>
-<a href="#id12"><span class="problematic" id="id13">|最后结果|得票最多的|平均估算概率最大的|</span></a></p>
+<a href="#id8"><span class="problematic" id="id9">|--|</span></a>–<a href="#id10"><span class="problematic" id="id11">|--|</span></a>
+<a href="#id12"><span class="problematic" id="id13">|各个弱分类器结果|最终选择的类别|每个类别的估算概率|</span></a>
+<a href="#id14"><span class="problematic" id="id15">|最后结果|得票最多的|平均估算概率最大的|</span></a></p>
 <p><span class="defi">stacking,串行</span></p>
 <p>把前一个基分类器的结果输出到下一个分类器最终的输出
 将所有基分类器的输出结果相加（或用更复杂的算法融合，比如把各基分类器的输出作为特征，使用逻辑回归作为融合模型进行最后的结果预测）</p>
@@ -252,15 +287,36 @@
 <section id="bagging-boosting">
 <h2 id="bagging-boosting">Bagging &amp; Boosting<a class="headerlink" href="#bagging-boosting" title="Link to this heading">¶</a></h2>
 <p>||Bagging | Boosting|
-<a href="#id14"><span class="problematic" id="id15">|--|</span></a>–<a href="#id16"><span class="problematic" id="id17">|--|</span></a>
+<a href="#id16"><span class="problematic" id="id17">|--|</span></a>–<a href="#id18"><span class="problematic" id="id19">|--|</span></a>
 ||ramdom forest| Gradient Boosting Tree|
 ||单独学习，单独判断，投票决策|迭代思想，样本权重，加强学习|
-<a href="#id18"><span class="problematic" id="id19">|样本选择|训练集是在原始集里&lt;u&gt;有放回&lt;/u&gt;选取，随机相互独立|训练集&lt;u&gt;不变&lt;/u&gt;&lt;br&gt;每个样本的&lt;u&gt;权重根据上一轮的分类结果进行调整&lt;/u&gt;|</span></a>
-<a href="#id20"><span class="problematic" id="id21">|样本权重|均匀采样，权重相等|根据错误率来调整，错误率越多的样本权重越大|</span></a>
-<a href="#id22"><span class="problematic" id="id23">|每个弱分类器|权重相等=1|分类误差小的会有更大的权重|</span></a>
-<a href="#id24"><span class="problematic" id="id25">|训练方式|并行计算|串行训练&lt;br&gt; 只能顺序生成每个弱分类器，因为后一个的参数需要前一轮的结果|</span></a>
-<a href="#id26"><span class="problematic" id="id27">|消除基分类器的偏差和方差的角度来理|多次采样并分别训练出多个不同模型&lt;br&gt;减小方差。|提高分类器的表达能力&lt;br&gt;减小偏差|</span></a></p>
-<p>!!! warning “Boosting 的一个优点是不会过拟合 ❌ &lt;br&gt; boosting &amp; bagging 都是组合多个分类器投票的方法，两者都是根据单个分类器的正确率确定其权重 ❌”</p>
+<a href="#id20"><span class="problematic" id="id21">|样本选择|训练集是在原始集里&lt;u&gt;有放回&lt;/u&gt;选取，随机相互独立|训练集&lt;u&gt;不变&lt;/u&gt;
+每个样本的&lt;u&gt;权重根据上一轮的分类结果进行调整&lt;/u&gt;|</span></a>
+<a href="#id22"><span class="problematic" id="id23">|样本权重|均匀采样，权重相等|根据错误率来调整，错误率越多的样本权重越大|</span></a>
+<a href="#id24"><span class="problematic" id="id25">|每个弱分类器|权重相等=1|分类误差小的会有更大的权重|</span></a>
+<a href="#id2"><span class="problematic" id="id3">|</span></a>训练方式|并行计算|串行训练</p>
+<aside class="system-message" id="id2">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/ensemble_learning.rst</span>, line 34); <em><a href="#id3">backlink</a></em></p>
+<p>Inline substitution_reference start-string without end-string.</p>
+</aside>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/ensemble_learning.rst</span>, line 43)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><p>只能顺序生成每个弱分类器，因为后一个的参数需要前一轮的结果|</p>
+</div></blockquote>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/ensemble_learning.rst</span>, line 44)</p>
+<p>Block quote ends without a blank line; unexpected unindent.</p>
+</aside>
+<p><a href="#id26"><span class="problematic" id="id27">|消除基分类器的偏差和方差的角度来理|多次采样并分别训练出多个不同模型
+减小方差。|提高分类器的表达能力
+减小偏差|</span></a></p>
+<dl class="simple">
+<dt>!!! warning “Boosting 的一个优点是不会过拟合 ❌</dt><dd><p>boosting &amp; bagging 都是组合多个分类器投票的方法，两者都是根据单个分类器的正确率确定其权重 ❌”</p>
+</dd>
+</dl>
 <section id="bagging">
 <h3 id="bagging">Bagging<a class="headerlink" href="#bagging" title="Link to this heading">¶</a></h3>
 <p>训练集分为若干子集，每个基分类器单独学习，单独判断，投票集体决策
@@ -291,19 +347,28 @@
 <li><p>尝试稍微提高学习率</p></li>
 </ul>
 </dd>
+<dt>&gt; &gt; 考虑如下图的训练样本，用 Adaboost 进行分类，进行两轮迭代。在 Boosting 的每次迭代中，选择加权错误率最小的弱分类器。假设采用的弱分类器是为平行两个坐标轴的线性分类器。</dt><dd><ol class="arabic simple">
+<li><p>标出第一次迭代选择的弱分类器，用圆圈标出在第一次迭代后权重最大的样本，求出它的权重。</p></li>
+<li><p>第一次迭代后权重最大的样本在第二次迭代后权重变为多少？</p></li>
+<li><p>强分类器为弱分类器的加权组合，则在这些点中，存在被经过第二次迭代后的强分类器错分类的样本吗？给出简短理由。</p></li>
+</ol>
+</dd>
 </dl>
-<p>&gt; &gt; 考虑如下图的训练样本，用 Adaboost 进行分类，进行两轮迭代。在 Boosting 的每次迭代中，选择加权错误率最小的弱分类器。假设采用的弱分类器是为平行两个坐标轴的线性分类器。&lt;br&gt; 1. 标出第一次迭代选择的弱分类器，用圆圈标出在第一次迭代后权重最大的样本，求出它的权重。&lt;br&gt; 2. 第一次迭代后权重最大的样本在第二次迭代后权重变为多少？&lt;br&gt; 3. 强分类器为弱分类器的加权组合，则在这些点中，存在被经过第二次迭代后的强分类器错分类的样本吗？给出简短理由。
-&gt; &gt; 给定如图所示的训练数据假设弱分类器由 $x&lt;v,x&gt;v$ 产生，其阈值 $v$ 使该分类器在训练集上分类误差率最低。试用 Adaboost 学习一个强分类器。</p>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/ensemble_learning.rst</span>, line 90)</p>
+<p>Definition list ends without a blank line; unexpected unindent.</p>
+</aside>
+<p>&gt; &gt; 给定如图所示的训练数据假设弱分类器由 $x&lt;v,x&gt;v$ 产生，其阈值 $v$ 使该分类器在训练集上分类误差率最低。试用 Adaboost 学习一个强分类器。</p>
 </section>
 <section id="gbdt-gradient-boosted">
 <h4 id="gbdt-gradient-boosted">GBDT， Gradient Boosted，梯度提升决策树<a class="headerlink" href="#gbdt-gradient-boosted" title="Link to this heading">¶</a></h4>
-<p><a href="#id2"><span class="problematic" id="id3">**</span></a>核心思想:<a href="#id4"><span class="problematic" id="id5">**</span></a>每一棵树学的是之前所有树==结论和的残差==，这个残差就是一个加预测值后能得真实值的累加量。</p>
-<aside class="system-message" id="id2">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/ensemble_learning.rst</span>, line 87); <em><a href="#id3">backlink</a></em></p>
+<p><a href="#id4"><span class="problematic" id="id5">**</span></a>核心思想:<a href="#id6"><span class="problematic" id="id7">**</span></a>每一棵树学的是之前所有树==结论和的残差==，这个残差就是一个加预测值后能得真实值的累加量。</p>
+<aside class="system-message" id="id4">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/ensemble_learning.rst</span>, line 95); <em><a href="#id5">backlink</a></em></p>
 <p>Inline strong start-string without end-string.</p>
 </aside>
-<aside class="system-message" id="id4">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/ensemble_learning.rst</span>, line 87); <em><a href="#id5">backlink</a></em></p>
+<aside class="system-message" id="id6">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/ensemble_learning.rst</span>, line 95); <em><a href="#id7">backlink</a></em></p>
 <p>Inline strong start-string without end-string.</p>
 </aside>
 <p>使用残差继续学习，就是GBDT中Gradient Boosted所表达的意思。</p>

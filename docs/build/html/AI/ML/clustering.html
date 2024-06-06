@@ -46,7 +46,7 @@
   
   
   
-    <title>聚类, Clustering &#8212; cocobook  文档</title>
+    <title>聚类, Clustering &#8212; HomePage</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=83e35b93" />
     <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
@@ -83,10 +83,10 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../../index.html" title="cocobook  文档"
+        <a href="../../index.html" title="HomePage"
            class="md-header-nav__button md-logo">
           
-            &nbsp;
+            <i class="md-icon">&#xe869</i>
           
         </a>
       </div>
@@ -95,7 +95,7 @@
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          <span class="md-header-nav__topic">cocobook  文档</span>
+          <span class="md-header-nav__topic">Cocobook</span>
           <span class="md-header-nav__topic"> 聚类, Clustering </span>
         </div>
       </div>
@@ -152,7 +152,9 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">cocobook  文档</a></li>
+          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">HomePage</a></li>
+            
+            <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">AI</a></li>
       </ul>
     </div>
   </nav>
@@ -164,14 +166,52 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../../index.html" title="cocobook 文档" class="md-nav__button md-logo">
+    <a href="../../index.html" title="HomePage" class="md-nav__button md-logo">
       
-        <img src="../../_static/" alt=" logo" width="48" height="48">
+        <i class="md-icon">&#xe869</i>
       
     </a>
     <a href="../../index.html"
-       title="cocobook 文档">cocobook  文档</a>
+       title="HomePage">Cocobook</a>
   </label>
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">AI</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../eva.html" class="md-nav__link">模型评估与选择</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../highd.html" class="md-nav__link">high dimentional DA</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../loss.html" class="md-nav__link">Loss</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../pre_1.html" class="md-nav__link">预处理</a>
+      
+    
+    </li>
+  </ul>
   
 
 </nav>
@@ -233,11 +273,6 @@
         </li></ul>
             </nav>
         </li>
-    
-<li class="md-nav__item"><a class="md-nav__extra_link" href="../../_sources/AI/ML/clustering.rst.txt">显示源代码</a> </li>
-
-<li id="searchbox" class="md-nav__item"></li>
-
   </ul>
 </nav>
               </div>
@@ -282,8 +317,11 @@ Minimize Intra-cluster distance
 <h3 id="class-level">class level<a class="headerlink" href="#class-level" title="Link to this heading">¶</a></h3>
 <p><a href="#id32"><span class="problematic" id="id33">|类簇 similarity||notes|</span></a>
 <a href="#id34"><span class="problematic" id="id35">|--|</span></a>–<a href="#id36"><span class="problematic" id="id37">|--|</span></a>
-<a href="#id38"><span class="problematic" id="id39">|单链接 single-linkage|$\min\limits_{x\in C_1, z\in C_2}\text{dis}(x,z)$|可以处理非椭圆形&lt;br&gt;对噪声和孤立点敏感|</span></a>
-<a href="#id40"><span class="problematic" id="id41">|全链接 complete-linkage|$\max\limits_{x\in C_1, z\in C_2}\text{dis}(x,z)$|不易收到噪声和孤立点影响&lt;br&gt;趋向分裂为更大尺寸的类&lt;br&gt;偏向球形类|</span></a>
+<a href="#id38"><span class="problematic" id="id39">|单链接 single-linkage|$\min\limits_{x\in C_1, z\in C_2}\text{dis}(x,z)$|可以处理非椭圆形
+对噪声和孤立点敏感|</span></a>
+<a href="#id40"><span class="problematic" id="id41">|全链接 complete-linkage|$\max\limits_{x\in C_1, z\in C_2}\text{dis}(x,z)$|不易收到噪声和孤立点影响
+趋向分裂为更大尺寸的类
+偏向球形类|</span></a>
 <a href="#id42"><span class="problematic" id="id43">|组平均 average-linkage|$\cfrac{1}{C_1C_2}\sum\limits_{x\in C_1}\sum\limits_{ z\in C_2}\text{dis}(x,z)$|^|</span></a></p>
 <p>![](./pics/dis_1.jpg){width=60%}</p>
 <dl class="simple">
@@ -340,7 +378,7 @@ minimize the sum of distances <strong>between the points and their respective cl
 <li><p>计算量高，只能求到 local minimizer，不确定是不是 global</p></li>
 </ol>
 <aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 109)</p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 112)</p>
 <p>Enumerated list ends without a blank line; unexpected unindent.</p>
 </aside>
 <p>2. 根据原始随机的 centoid, different initials generate different solutions
@@ -380,7 +418,7 @@ Then the <span class="defi">Elbow Method</span> is then used to choose the best 
 </li>
 </ol>
 <aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 151)</p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 154)</p>
 <p>Enumerated list ends without a blank line; unexpected unindent.</p>
 </aside>
 <p>3. Re-assign and Re-calculate
@@ -404,11 +442,11 @@ Scan through the list of n items, assigning each item to the cluster <strong>who
 <a class="reference external" href="mailto:#%40title">#<span>@</span>title</a> 纯K-means
 from sklearn.cluster import KMeans</p>
 <aside class="system-message" id="id1">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 174); <em><a href="#id2">backlink</a></em></p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 177); <em><a href="#id2">backlink</a></em></p>
 <p>Inline literal start-string without end-string.</p>
 </aside>
 <aside class="system-message" id="id3">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 174); <em><a href="#id4">backlink</a></em></p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 177); <em><a href="#id4">backlink</a></em></p>
 <p>Inline interpreted text or phrase reference start-string without end-string.</p>
 </aside>
 <p>kmeans_model = KMeans(n_clusters=k, random_state=)
@@ -418,21 +456,21 @@ new_y = kmeans_model.predict(new_x)
 cen = <a href="#id46"><span class="problematic" id="id47">means.cluster_centers_</span></a>
 <a href="#id5"><span class="problematic" id="id6">``</span></a><a href="#id7"><span class="problematic" id="id8">`</span></a></p>
 <aside class="system-message" id="id5">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 178); <em><a href="#id6">backlink</a></em></p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 181); <em><a href="#id6">backlink</a></em></p>
 <p>Inline literal start-string without end-string.</p>
 </aside>
 <aside class="system-message" id="id7">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 178); <em><a href="#id8">backlink</a></em></p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 181); <em><a href="#id8">backlink</a></em></p>
 <p>Inline interpreted text or phrase reference start-string without end-string.</p>
 </aside>
 <p><a href="#id9"><span class="problematic" id="id10">``</span></a><a href="#id11"><span class="problematic" id="id12">`</span></a>python
 <a class="reference external" href="mailto:#%40title">#<span>@</span>title</a> elbow to determine which k 肘部法</p>
 <aside class="system-message" id="id9">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 185); <em><a href="#id10">backlink</a></em></p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 188); <em><a href="#id10">backlink</a></em></p>
 <p>Inline literal start-string without end-string.</p>
 </aside>
 <aside class="system-message" id="id11">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 185); <em><a href="#id12">backlink</a></em></p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 188); <em><a href="#id12">backlink</a></em></p>
 <p>Inline interpreted text or phrase reference start-string without end-string.</p>
 </aside>
 </section>
@@ -445,7 +483,7 @@ cen = <a href="#id46"><span class="problematic" id="id47">means.cluster_centers_
 K = range(1,10)
 for k in K:</p>
 <aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 193)</p>
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 196)</p>
 <p>Unexpected indentation.</p>
 </aside>
 <blockquote>
@@ -454,7 +492,7 @@ kmeanModel.fit(x)
 distortions.append(<a href="#id48"><span class="problematic" id="id49">kmeanModel.inertia_</span></a>)</p>
 </div></blockquote>
 <aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 196)</p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 199)</p>
 <p>Block quote ends without a blank line; unexpected unindent.</p>
 </aside>
 </section>
@@ -468,11 +506,11 @@ plt.title(‘The Elbow Method showing the optimal clusters’)
 plt.show()
 <a href="#id13"><span class="problematic" id="id14">``</span></a><a href="#id15"><span class="problematic" id="id16">`</span></a></p>
 <aside class="system-message" id="id13">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 198); <em><a href="#id14">backlink</a></em></p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 201); <em><a href="#id14">backlink</a></em></p>
 <p>Inline literal start-string without end-string.</p>
 </aside>
 <aside class="system-message" id="id15">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 198); <em><a href="#id16">backlink</a></em></p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 201); <em><a href="#id16">backlink</a></em></p>
 <p>Inline interpreted text or phrase reference start-string without end-string.</p>
 </aside>
 <p><a href="#id17"><span class="problematic" id="id18">``</span></a><cite>python
@@ -487,7 +525,7 @@ plt.scatter(x[kmeans_predict :defi:` 3, 0], x[kmeans_predict ` 3, 1], s = 100, c
 print(<a href="#id50"><span class="problematic" id="id51">kmeans_model.cluster_centers_</span></a>)
 ==========================================================================</p>
 <aside class="system-message" id="id17">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 206); <em><a href="#id18">backlink</a></em></p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 209); <em><a href="#id18">backlink</a></em></p>
 <p>Inline literal start-string without end-string.</p>
 </aside>
 </section>
@@ -498,11 +536,11 @@ print(<a href="#id50"><span class="problematic" id="id51">kmeans_model.cluster_c
 plt.show()
 <a href="#id19"><span class="problematic" id="id20">``</span></a><a href="#id21"><span class="problematic" id="id22">`</span></a></p>
 <aside class="system-message" id="id19">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 222); <em><a href="#id20">backlink</a></em></p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 225); <em><a href="#id20">backlink</a></em></p>
 <p>Inline literal start-string without end-string.</p>
 </aside>
 <aside class="system-message" id="id21">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 222); <em><a href="#id22">backlink</a></em></p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 225); <em><a href="#id22">backlink</a></em></p>
 <p>Inline interpreted text or phrase reference start-string without end-string.</p>
 </aside>
 <p><a href="#id23"><span class="problematic" id="id24">``</span></a><cite>python
@@ -517,7 +555,7 @@ ax.scatter(x[kmeans_predict :defi:` 2, 0], x[kmeans_predict ` 2, 1], x[kmeans_pr
 ax.scatter(x[kmeans_predict :defi:` 3, 0], x[kmeans_predict ` 3, 1], x[kmeans_predict == 3, 2], s = 10, c = ‘black’, label = ‘Another species’)
 ================================================================================================================================================================================================================================================================================================</p>
 <aside class="system-message" id="id23">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 226); <em><a href="#id24">backlink</a></em></p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 229); <em><a href="#id24">backlink</a></em></p>
 <p>Inline literal start-string without end-string.</p>
 </aside>
 <p>print(<a href="#id52"><span class="problematic" id="id53">kmeans_model.cluster_centers_</span></a>)</p>
@@ -529,11 +567,11 @@ ax.scatter(x[kmeans_predict :defi:` 3, 0], x[kmeans_predict ` 3, 1], x[kmeans_pr
 plt.show()
 <a href="#id26"><span class="problematic" id="id27">``</span></a><a href="#id28"><span class="problematic" id="id29">`</span></a></p>
 <aside class="system-message" id="id26">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 244); <em><a href="#id27">backlink</a></em></p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 247); <em><a href="#id27">backlink</a></em></p>
 <p>Inline literal start-string without end-string.</p>
 </aside>
 <aside class="system-message" id="id28">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 244); <em><a href="#id29">backlink</a></em></p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/ML/clustering.rst</span>, line 247); <em><a href="#id29">backlink</a></em></p>
 <p>Inline interpreted text or phrase reference start-string without end-string.</p>
 </aside>
 <section id="ref">
