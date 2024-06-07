@@ -41,7 +41,7 @@ def replace_double_equalsymbol(text):
         
 def replace_title(text):
     import re
-    pattern = r'(?P<title>\#+\s[^\n]+\n)'
+    pattern = r'\n(?P<title>\#+\s[^\n]+\n)'
     tag = 'title'
     def add_title(matched):
         level_symbal = {
@@ -51,7 +51,7 @@ def replace_title(text):
         value = matched.group(tag)
         split_ = value.split('#')
         level, size = len(split_)-1, len(split_[-1])-1
-        return f'{split_[-1][1:]}{level_symbal[level]*size*2}\n'
+        return f'\n{split_[-1][1:]}{level_symbal[level]*size*2}\n'
     return re.sub(pattern, add_title, text)
 
 def replace_br(text):
@@ -160,7 +160,12 @@ author = 'coconut'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
-extensions =['sphinx_design', 'sphinxcontrib.katex']#'sphinxemoji.sphinxemoji',]
+extensions =[
+    'sphinx_design', 
+    'sphinxcontrib.katex', 
+    'sphinxcontrib.mermaid',
+    'sphinx_copybutton'
+    ]#'sphinxemoji.sphinxemoji',]
 # extensions = ["myst_parser"]
 
 katex_prerender = True
@@ -183,7 +188,13 @@ html_theme_options = {
             "internal": True,
             "title": "AI",
         },
-    ],  
+        {
+            "href": "python/index",
+            "internal": True,
+            "title": "Python",
+        },
+    ], 
+
 }
 html_static_path = ['_static']
 
@@ -205,3 +216,5 @@ html_sidebars = {
 
 suppress_warnings = ["config.cache"]  # https://github.com/sphinx-doc/sphinx/issues/12300
 # pickling environment... WARNING: cannot cache unpickable configuration value: 'html_context' (because it contains a function, class, or module object)
+
+copybutton_exclude = '.linenos, .gp, .go'

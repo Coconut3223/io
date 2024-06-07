@@ -1,3 +1,4 @@
+
 # Loss
 
 **What do we care about？**
@@ -84,19 +85,28 @@
 4. 尽可能的 robust
 
 .. image:: ./pics/Loss_3.png
+    :align: center
+    :scale: 30%
 
 
 #### 0-1
 
-.. math::
-    
-    L_i=I(Y_i\neq f(X_i;\theta))
+.. grid:: 2
 
-.. figure:: ./pics/Loss_1.png
-    
-    non-continuous, non-smooth
+    .. grid-item:: 
+        .. math::
+            
+            L_i=I(Y_i\neq f(X_i;\theta))
 
-**extremely complicated ! The optimization problem is extremely hard !**
+        **extremely complicated ! The optimization problem is extremely hard !**
+
+    .. grid-item:: 
+        .. figure:: ./pics/Loss_1.png
+            :scale: 30%
+    
+            non-continuous, non-smooth
+
+    
 
 #### Least Squares Error, LSE, L2-loss —— conditional mean
 
@@ -134,6 +144,7 @@ Regression → Ordinary Least Squares (OLS) according to estimation 分类
 **Targets**: **conditional median**  :math:`\iff f^*(x)=\text{median}(Y|X=x)=\min\limits_f\mathbb E\{\vert Y-f(X)\vert\: |X=x\}` 
 
 .. image:: ./pics/Loss_6.jpeg
+    :scale: 40%
 
 - proof  :math:`f^*(x)=\text{median}(Y\vert X=x)=\min\limits_f\mathbb{E}\{\Vert Y-f(X)\Vert_1\vert X=x\}` 
     Assume:
@@ -162,13 +173,19 @@ Regression → Ordinary Least Squares (OLS) according to estimation 分类
 
     .. grid-item::
         .. image:: ./pics/Loss_7.png
+            :scale: 40%
+            :align: center
     
     .. grid-item::
         .. image:: ./pics/Loss_8.png
+            :scale: 35%
+            :align: center
 
 **Targets: conditional median**  :math:`\iff f^*(x)=τ-\text{th quantile of }(Y|X=x)=\argmin_f\mathbb\{\Vert Y-f(X)\Vert_1｜X=x\}` 
 
  .. image:: ./pics/Loss_9.png
+    :scale: 30%
+    :align: center
 
 - proof:
     Assume:
@@ -214,6 +231,7 @@ Y 是类别属性 without numerical meaning，我们只在乎 **whether sample i
 回归的时候处理的是误差，所以要最小化，而现在考虑的是联合概率，我们希望概率尽可能大，所以要最大化
 
 .. figure:: ./pics/classi_1.png
+    :scale: 30%
 
     多分类
     Adjust the output of neural network
@@ -237,10 +255,10 @@ Y 是类别属性 without numerical meaning，我们只在乎 **whether sample i
                 non-continuous, non-smooth
 
         .. grid-item::
-            | but we expect: <b>continuous, smooth</b>
+            | but we expect: **continuous, smooth** 
             | 💡 <u>Surrogate Loss function 代理损失函数</u>。Proper surrogate loss function will lead to a consistent classifier. 
 
-==Surrogate Loss function 代理损失函数== .  :math:`L_i=\phi(L_i) ` ,  :math:`\phi`  is continuous and <u>decreasing</u>.
+==Surrogate Loss function 代理损失函数== .  :math:`L_i=\phi(L_i)` ,  :math:`\phi`  is continuous and <u>decreasing</u>.
 
 **properties of**  :math:`\phi(\cdot):` 
 
@@ -262,26 +280,31 @@ Y 是类别属性 without numerical meaning，我们只在乎 **whether sample i
     .. grid-item::
         :math:`\min_f R(f) =\cfrac{1}{n}\sum\limits_{i=1}^n\phi(f(X_i,\theta)\times Y_i)`
 
-.. table::
+.. grid:: 2
 
-    +---------------------+--------------------------------+---------------------------------------------+
-    |                     | :math:`\phi(\cdot)`            | Loss Function                               |
-    +=====================+================================+=============================================+
-    | 0-1 loss:           |  :math:`I(\cdot)`              | :math:`I(y\cdot f(x,\theta)<0)`             |
-    +---------------------+--------------------------------+---------------------------------------------+
-    | Exponential loss    | :math:`e^{-(\cdot)}`           | :math:`e^{-y\cdot f(x,\theta)}`             |
-    +---------------------+                                +                                             +
-    | (AdaBoost)          |                                |                                             |
-    +---------------------+--------------------------------+---------------------------------------------+
-    | Logistic loss       | :math:`\log\{1+e^{-(\cdot)}\}` | :math:`\log\{1+\exp(-y\cdot f(x,\theta))\}` |
-    +---------------------+--------------------------------+---------------------------------------------+
-    | Hinge loss          | :math:`\max\{1-(\cdot),0\}`    | :math:`\max\{1-y\cdot f(x,\theta),0\}`      |
-    +---------------------+                                +                                             +
-    |  (SVM)              |                                |                                             |
-    +---------------------+--------------------------------+---------------------------------------------+
+    .. grid-item:: 
+        .. table::
 
+            +---------------------+--------------------------------+---------------------------------------------+
+            |                     | :math:`\phi(\cdot)`            | Loss Function                               |
+            +=====================+================================+=============================================+
+            | 0-1 loss:           |  :math:`I(\cdot)`              | :math:`I(y\cdot f(x,\theta)<0)`             |
+            +---------------------+--------------------------------+---------------------------------------------+
+            | Exponential loss    | :math:`e^{-(\cdot)}`           | :math:`e^{-y\cdot f(x,\theta)}`             |
+            +---------------------+                                +                                             +
+            | (AdaBoost)          |                                |                                             |
+            +---------------------+--------------------------------+---------------------------------------------+
+            | Logistic loss       | :math:`\log\{1+e^{-(\cdot)}\}` | :math:`\log\{1+\exp(-y\cdot f(x,\theta))\}` |
+            +---------------------+--------------------------------+---------------------------------------------+
+            | Hinge loss          | :math:`\max\{1-(\cdot),0\}`    | :math:`\max\{1-y\cdot f(x,\theta),0\}`      |
+            +---------------------+                                +                                             +
+            |  (SVM)              |                                |                                             |
+            +---------------------+--------------------------------+---------------------------------------------+
 
-.. image:: ./pics/Loss_2.png
+    .. grid-item::
+        .. image:: ./pics/Loss_2.png
+            :scale: 36%
+            :align: center
 
 ### The Likelihood 似然的角度
 

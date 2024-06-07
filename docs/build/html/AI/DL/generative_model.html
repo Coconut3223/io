@@ -46,9 +46,10 @@
   
   
   
-    <title>Generative models &#8212; cocobook  文档</title>
+    <title>Generative models &#8212; HomePage</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=83e35b93" />
     <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/katex-math.css?v=91adb8b6" />
@@ -56,6 +57,8 @@
     <script src="../../_static/documentation_options.js?v=7d86a446"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=6dbb43f8"></script>
     <script src="../../_static/translations.js?v=beaddf03"></script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
@@ -83,10 +86,10 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../../index.html" title="cocobook  文档"
+        <a href="../../index.html" title="HomePage"
            class="md-header-nav__button md-logo">
           
-            &nbsp;
+            <i class="md-icon">&#xe869</i>
           
         </a>
       </div>
@@ -95,7 +98,7 @@
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          <span class="md-header-nav__topic">cocobook  文档</span>
+          <span class="md-header-nav__topic">Cocobook</span>
           <span class="md-header-nav__topic"> Generative models </span>
         </div>
       </div>
@@ -152,7 +155,11 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">cocobook  文档</a></li>
+          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">HomePage</a></li>
+            
+            <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">AI</a></li>
+            
+            <li class="md-tabs__item"><a href="../../python/index.html" class="md-tabs__link">Python</a></li>
       </ul>
     </div>
   </nav>
@@ -164,14 +171,31 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../../index.html" title="cocobook 文档" class="md-nav__button md-logo">
+    <a href="../../index.html" title="HomePage" class="md-nav__button md-logo">
       
-        <img src="../../_static/" alt=" logo" width="48" height="48">
+        <i class="md-icon">&#xe869</i>
       
     </a>
     <a href="../../index.html"
-       title="cocobook 文档">cocobook  文档</a>
+       title="HomePage">Cocobook</a>
   </label>
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">AI</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../main.html" class="md-nav__link">Artificial Intelligence, AI</a>
+      
+    
+    </li>
+  </ul>
   
 
 </nav>
@@ -221,11 +245,6 @@
         </li></ul>
             </nav>
         </li>
-    
-<li class="md-nav__item"><a class="md-nav__extra_link" href="../../_sources/AI/DL/generative_model.rst.txt">显示源代码</a> </li>
-
-<li id="searchbox" class="md-nav__item"></li>
-
   </ul>
 </nav>
               </div>
@@ -238,31 +257,43 @@
   <section id="generative-models">
 <h1 id="ai-dl-generative-model--page-root">Generative models<a class="headerlink" href="#ai-dl-generative-model--page-root" title="Link to this heading">¶</a></h1>
 <p>A <span class="defi">generative model</span> is a type of machine learning model that <strong>learns the probability distribution</strong> of a dataset and <strong>generates new samples</strong> that are similar to the original data by modelling the underlying structure and patterns of the training data and can be used for tasks such as <strong>image generation, text generation, and speech synthesis.</strong></p>
-<p>&lt;figure markdown=”span”&gt;![](./pics/DL_1.png){width=80%}&lt;p&gt;生成学习&lt;/p&gt;&lt;/figure&gt;</p>
-<p><a href="#id3"><span class="problematic" id="id4">|==Generator==|==Discriminator==|</span></a>
-<a href="#id5"><span class="problematic" id="id6">|--|</span></a>–|
-<a href="#id7"><span class="problematic" id="id8">|learns the probability distribution of a dataset and generates new samples that are similar to the original data |learn the decision boundary between different classes.|</span></a>
-<a href="#id9"><span class="problematic" id="id10">|takes in random noise and returns generated a fake image|</span></a> takes in both real and fake images and returns probabilities with 1 representing authenticity and 0 fake|</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../../_images/DL_1.png"><img alt="../../_images/DL_1.png" src="../../_images/DL_1.png" style="width: 336.59999999999997px; height: 135.0px;"/>
+</a>
+<figcaption>
+<p><span class="caption-text">生成学习</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
 <section id="categories">
 <h2 id="categories">categories<a class="headerlink" href="#categories" title="Link to this heading">¶</a></h2>
-<p>&lt;figure markdown=”span”&gt;![](./pics/GM_1.png){width=90%}&lt;p&gt;生成学习&lt;/p&gt;&lt;/figure&gt;</p>
-<p>the reconstruction loss is the distance of the original data &amp; the reconstructed data.
-Target: the reconstruct the data = the Decoded latent features. So this laser feature comes from the encoding of the original data.</p>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../../_images/GM_1.png"><img alt="../../_images/GM_1.png" src="../../_images/GM_1.png" style="width: 532.8000000000001px; height: 285.6px;"/>
+</a>
+<figcaption>
+<p><span class="caption-text">生成学习</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<div class="line-block">
+<div class="line">the reconstruction loss is the distance of the original data &amp; the reconstructed data.</div>
+<div class="line">Target: the reconstruct the data = the Decoded latent features. So this laser feature comes from the encoding of the original data.</div>
+</div>
 <section id="generative-adversarial-networks-gan">
 <h3 id="generative-adversarial-networks-gan">Generative Adversarial Networks, GAN, 生成对抗网络<a class="headerlink" href="#generative-adversarial-networks-gan" title="Link to this heading">¶</a></h3>
-<dl>
-<dt>!!! p “Nash Equilibrium 纳什均衡思想”</dt><dd><p>相互对抗，无人胜出
-<strong>jointly train a strong discriminator and a generator</strong></p>
-</dd>
-<dt>!!! danger “minmax问题 ✅ maxmin问题 ❌”</dt><dd><p>GAN的理想训练模式是这样的：固定生成器G，迭代k次训练判别器D；然后固定判别器D，训练生成器G，两者依次交替使用梯度下降法进行更新。
-而且，通常情况下：$minlimits_Gmaxlimits_D V（G, D） neqmaxlimits_Dminlimits_G V（G, D）$
-- <strong>maxmin 先G后D</strong>: GAN的训练过程会产生mode collapse问题，就是指生成器生成的样本有大量的重复，<a href="#id1"><span class="problematic" id="id2">**</span></a>多样性非常差**（在实践中经常出现）一开始先迭代训练G的话，G学不了什么东西。因为告诉他的那个D还什么都不会，所以根本不知道对还是错，就只能胡乱生成</p>
-<aside class="system-message" id="id1">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/DL/generative_model.rst</span>, line 29); <em><a href="#id2">backlink</a></em></p>
-<p>Inline strong start-string without end-string.</p>
-</aside>
-</dd>
-</dl>
+<div class="admonition-nash-equilibrium admonition note">
+<p class="admonition-title">Nash Equilibrium 纳什均衡思想</p>
+<div class="line-block">
+<div class="line">相互对抗，无人胜出</div>
+<div class="line"><strong>jointly train a strong discriminator and a generator</strong></div>
+</div>
+</div>
+<div class="admonition-minmax-maxmin admonition danger">
+<p class="admonition-title">minmax问题 ✅ maxmin问题 ❌</p>
+<div class="line-block">
+<div class="line">GAN的理想训练模式是这样的：固定生成器G，迭代k次训练判别器D；然后固定判别器D，训练生成器G，两者依次交替使用梯度下降法进行更新。</div>
+<div class="line">而且，通常情况下： <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mrow><mi>min</mi><mo>⁡</mo></mrow><mi>G</mi></munder><munder><mrow><mi>max</mi><mo>⁡</mo></mrow><mi>D</mi></munder><mi>V</mi><mtext>（</mtext><mi>G</mi><mo separator="true">,</mo><mi>D</mi><mtext>）</mtext><mo mathvariant="normal">≠</mo><munder><mrow><mi>max</mi><mo>⁡</mo></mrow><mi>D</mi></munder><munder><mrow><mi>min</mi><mo>⁡</mo></mrow><mi>G</mi></munder><mi>V</mi><mtext>（</mtext><mi>G</mi><mo separator="true">,</mo><mi>D</mi><mtext>）</mtext></mrow><annotation encoding="application/x-tex">\min\limits_G\max\limits_D V（G, D） \neq\max\limits_D\min\limits_G V（G, D）</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1.4388em;vertical-align:-0.7443em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6679em;"><span style="top:-2.3557em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">G</span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop">min</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7443em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4306em;"><span style="top:-2.3557em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop">max</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7443em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord cjk_fallback">（</span><span class="mord mathnormal">G</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mord cjk_fallback">）</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.4277em;vertical-align:-0.7443em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4306em;"><span style="top:-2.3557em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop">max</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7443em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6679em;"><span style="top:-2.3557em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">G</span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop">min</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7443em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord cjk_fallback">（</span><span class="mord mathnormal">G</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mord cjk_fallback">）</span></span></span></span></span></div>
+<div class="line"><strong>maxmin 先G后D</strong>: GAN的训练过程会产生mode collapse问题，就是指生成器生成的样本有大量的重复， <strong>多样性非常差</strong> （在实践中经常出现）一开始先迭代训练G的话，G学不了什么东西。因为告诉他的那个D还什么都不会，所以根本不知道对还是错，就只能胡乱生成</div>
+</div>
+</div>
 <section id="main-idea">
 <h4 id="main-idea">Main idea<a class="headerlink" href="#main-idea" title="Link to this heading">¶</a></h4>
 <p><span class="defi">GAN</span> 由生成器 Generator 和判斷器 Discriminator 兩個神經網絡所組成. Discriminator D and Generator G <strong>play an adversarial minimax game</strong> to reach <strong>a Nash equilibrium</strong>. 因為之間的對抗關係，所以稱為生成對抗網絡.</p>
@@ -270,59 +301,84 @@ Target: the reconstruct the data = the Decoded latent features. So this laser fe
 <li><p><strong>Generator</strong> takes in random <strong>noise</strong> and returns a <strong>fake image</strong>.</p></li>
 <li><p><strong>Discriminator</strong> takes in both <strong>real and fake</strong> images and returns <strong>probabilities</strong> with 1 representing authenticity and 0 fake</p></li>
 </ul>
-<p>&gt; 很常聽到的形容是，<cite>Generator`是負責做假鈔的人，`Discriminator</cite> 是警察檢驗是否為假鈔。</p>
-<p>![](./pics/GAN_1.png){width=80%}
-![](./pics/GAN_2.png){width=70%}
-![](./pics/GAN_3.png){width=80%}</p>
+<p>很常聽到的形容是，<cite>Generator`是負責做假鈔的人，`Discriminator</cite> 是警察檢驗是否為假鈔。</p>
+<a class="reference internal image-reference" href="../../_images/GAN_1.png"><img alt="../../_images/GAN_1.png" src="../../_images/GAN_1.png" style="width: 656.0px; height: 248.0px;"/>
+</a>
+<a class="reference internal image-reference" href="../../_images/GAN_2.png"><img alt="../../_images/GAN_2.png" src="../../_images/GAN_2.png" style="width: 439.0px; height: 410.0px;"/>
+</a>
+<a class="reference internal image-reference" href="../../_images/GAN_3.png"><img alt="../../_images/GAN_3.png" src="../../_images/GAN_3.png" style="width: 517.6px; height: 344.0px;"/>
+</a>
 <ul class="simple">
-<li><p><strong>Model doesn’t converge</strong> G,D parameters may oscillate</p></li>
+<li><dl class="simple">
+<dt><strong>Model doesn’t converge</strong> G,D parameters may oscillate</dt><dd><p>Uneven progress between G, D</p>
+</dd>
+</dl>
+</li>
+<li><p><strong>Mode collapse (the Helvetica scenario)</strong> G will only generate samples from a single mode。当 generator 在生产 某一种类型 就很厉害到足以骗到 discriminator，他就可能光生产这一类去了所以导致很不平衡。</p></li>
+<li><p><strong>Samples lack global structure</strong> E.g., Some generated faces will have 3 eyes</p></li>
 </ul>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/DL/generative_model.rst</span>, line 48)</p>
-<p>Bullet list ends without a blank line; unexpected unindent.</p>
-</aside>
-<p>Uneven progress between G, D
-- <strong>Mode collapse (the Helvetica scenario)</strong> G will only generate samples from a single mode。当 generator 在生产 某一种类型 就很厉害到足以骗到 discriminator，他就可能光生产这一类去了所以导致很不平衡。
-- <strong>Samples lack global structure</strong> E.g., Some generated faces will have 3 eyes</p>
-<p>&lt;figure markdown=”span”&gt;![](./pics/GAN_4.png){width=70%}&lt;p&gt;(a) 光学习一种去了. (b) 缺少整体的结构&lt;/p&gt;&lt;/figure&gt;</p>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="../../_images/GAN_4.png"><img alt="../../_images/GAN_4.png" src="../../_images/GAN_4.png" style="width: 556.1999999999999px; height: 346.8px;"/>
+</a>
+<figcaption>
+<p><span class="caption-text">a 光学习一种去了. b 缺少整体的结构</span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="minimax-optimization">
 <h4 id="minimax-optimization">MiniMax Optimization<a class="headerlink" href="#minimax-optimization" title="Link to this heading">¶</a></h4>
-<p>$x～text{data}(x):=$  real x sampled form data
-$z～Z(z) :=$ noise z, $G(z):=$ fake generated by Generator</p>
+<div class="line-block">
+<div class="line"><span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mtext>～data</mtext><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>:</mo><mo>=</mo></mrow><annotation encoding="application/x-tex">x～\text{data}(x):=</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">x</span><span class="mord cjk_fallback">～</span><span class="mord text"><span class="mord">data</span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:=</span></span></span></span></span>   real x sampled form data</div>
+<div class="line"><span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mtext>～</mtext><mi>Z</mi><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo><mo>:</mo><mo>=</mo></mrow><annotation encoding="application/x-tex">z～Z(z) :=</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mord cjk_fallback">～</span><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:=</span></span></span></span></span>  noise z,  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo><mo>:</mo><mo>=</mo></mrow><annotation encoding="application/x-tex">G(z):=</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">G</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:=</span></span></span></span></span>  fake generated by Generator</div>
+</div>
 <section id="update-d-to-max-v-d-g-when-fixing-g">
 <h5 id="update-d-to-max-v-d-g-when-fixing-g">Update D to MAX V(D, G) when fixing G<a class="headerlink" href="#update-d-to-max-v-d-g-when-fixing-g" title="Link to this heading">¶</a></h5>
-<p><span class="defi">Cross-Entrophy</span>
-$maxlimits_DV(D, G)=mathbb {E}_{x～P_{data}(x)}log D(x) + underline{mathbb E_{x～P_{Z(z)}}log (1-D(G(z))) }\
-xrightarrow{text{forcing}}begin{cases}D(x)rightarrow1\D(G(x))rightarrow0end{cases}$</p>
+<p><span class="defi">Cross-Entrophy</span></p>
+<p><span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mrow><mi>max</mi><mo>⁡</mo></mrow><mi>D</mi></munder><mi>V</mi><mo stretchy="false">(</mo><mi>D</mi><mo separator="true">,</mo><mi>G</mi><mo stretchy="false">)</mo><mo>=</mo><msub><mi mathvariant="double-struck">E</mi><mrow><mi>x</mi><mtext>～</mtext><msub><mi>P</mi><mrow><mi>d</mi><mi>a</mi><mi>t</mi><mi>a</mi></mrow></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></msub><mi>log</mi><mo>⁡</mo><mi>D</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>+</mo><munder accentunder="true"><mrow><msub><mi mathvariant="double-struck">E</mi><mrow><mi>x</mi><mtext>～</mtext><msub><mi>P</mi><mrow><mi>Z</mi><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></msub></mrow></msub><mi>log</mi><mo>⁡</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>D</mi><mo stretchy="false">(</mo><mi>G</mi><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><mo stretchy="true">‾</mo></munder><mspace linebreak="newline"></mspace><mover><mo minsize="3.0em" stretchy="true">→</mo><mpadded lspace="0.3em" width="+0.6em"><mtext>forcing</mtext></mpadded></mover><mrow><mo fence="true">{</mo><mtable columnalign="left left" columnspacing="1em" rowspacing="0.36em"><mtr><mtd><mstyle displaystyle="false" scriptlevel="0"><mrow><mi>D</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>→</mo><mn>1</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle displaystyle="false" scriptlevel="0"><mrow><mi>D</mi><mo stretchy="false">(</mo><mi>G</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>→</mo><mn>0</mn></mrow></mstyle></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">\max\limits_DV(D, G)=\mathbb {E}_{x～P_{data}(x)}\log D(x) + \underline{\mathbb E_{x～P_{Z(z)}}\log (1-D(G(z))) }\\
+\xrightarrow{\text{forcing}}\begin{cases}D(x)\rightarrow1\\D(G(x))\rightarrow0\end{cases}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1.4943em;vertical-align:-0.7443em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4306em;"><span style="top:-2.3557em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop">max</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7443em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">G</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1052em;vertical-align:-0.3552em;"></span><span class="mord"><span class="mord mathbb">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="mord cjk_fallback mtight">～</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3488em;margin-left:-0.1389em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">d</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">a</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1512em;"><span></span></span></span></span></span></span><span class="mopen mtight">(</span><span class="mord mathnormal mtight">x</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3552em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.3586em;vertical-align:-0.6086em;"></span><span class="mord underline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.75em;"><span style="top:-2.4314em;"><span class="pstrut" style="height:3em;"></span><span class="underline-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathbb">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="mord cjk_fallback mtight">～</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3448em;margin-left:-0.1389em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5357em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">Z</span><span class="mopen mtight">(</span><span class="mord mathnormal mtight" style="margin-right:0.04398em;">z</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3695em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4086em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mopen">(</span><span class="mord mathnormal">G</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">)))</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.6086em;"><span></span></span></span></span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:1.1191em;vertical-align:-0.011em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1081em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">forcing</span></span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg height="0.522em" preserveaspectratio="xMaxYMin slice" viewbox="0 0 400000 522" width="400em" xmlns="http://www.w3.org/2000/svg"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:3em;vertical-align:-1.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.69em;"><span style="top:-3.69em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">1</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.008em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mopen">(</span><span class="mord mathnormal">G</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">))</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.19em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
 </section>
 <section id="update-g-to-min-v-d-g-when-fixing-d">
 <h5 id="update-g-to-min-v-d-g-when-fixing-d">Update G to MIN V(D, G)  when fixing D<a class="headerlink" href="#update-g-to-min-v-d-g-when-fixing-d" title="Link to this heading">¶</a></h5>
-<p>the proportion of fake  defined as real
-$minlimits_GV(D, G)=underline{mathbb E_{x～P_{Z(z)}}log (1-D(G(z)))}\
-xrightarrow{text{forcing}}D(G(x))rightarrow1$</p>
+<div class="line-block">
+<div class="line">the proportion of fake  defined as real</div>
+<div class="line"><span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mrow><mi>min</mi><mo>⁡</mo></mrow><mi>G</mi></munder><mi>V</mi><mo stretchy="false">(</mo><mi>D</mi><mo separator="true">,</mo><mi>G</mi><mo stretchy="false">)</mo><mo>=</mo><munder accentunder="true"><mrow><msub><mi mathvariant="double-struck">E</mi><mrow><mi>x</mi><mtext>～</mtext><msub><mi>P</mi><mrow><mi>Z</mi><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></msub></mrow></msub><mi>log</mi><mo>⁡</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>D</mi><mo stretchy="false">(</mo><mi>G</mi><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><mo stretchy="true">‾</mo></munder><mspace linebreak="newline"></mspace><mover><mo minsize="3.0em" stretchy="true">→</mo><mpadded lspace="0.3em" width="+0.6em"><mtext>forcing</mtext></mpadded></mover><mi>D</mi><mo stretchy="false">(</mo><mi>G</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>→</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\min\limits_GV(D, G)=\underline{\mathbb E_{x～P_{Z(z)}}\log (1-D(G(z)))}\\\xrightarrow{\text{forcing}}D(G(x))\rightarrow1</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1.4943em;vertical-align:-0.7443em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6679em;"><span style="top:-2.3557em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">G</span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop">min</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7443em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">G</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.3586em;vertical-align:-0.6086em;"></span><span class="mord underline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.75em;"><span style="top:-2.4314em;"><span class="pstrut" style="height:3em;"></span><span class="underline-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathbb">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="mord cjk_fallback mtight">～</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3448em;margin-left:-0.1389em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5357em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">Z</span><span class="mopen mtight">(</span><span class="mord mathnormal mtight" style="margin-right:0.04398em;">z</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3695em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4086em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mopen">(</span><span class="mord mathnormal">G</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">)))</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.6086em;"><span></span></span></span></span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:1.1191em;vertical-align:-0.011em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1081em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">forcing</span></span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg height="0.522em" preserveaspectratio="xMaxYMin slice" viewbox="0 0 400000 522" width="400em" xmlns="http://www.w3.org/2000/svg"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mopen">(</span><span class="mord mathnormal">G</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">))</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span></div>
+</div>
 </section>
 </section>
 </section>
 <section id="deep-convolutional-generative-adversarial-networks-dcgan">
 <h3 id="deep-convolutional-generative-adversarial-networks-dcgan">Deep Convolutional Generative Adversarial Networks, DCGAN<a class="headerlink" href="#deep-convolutional-generative-adversarial-networks-dcgan" title="Link to this heading">¶</a></h3>
-<p>!!! p “When reducing dimensionality, we want to keep the main structure there exists among the data.”</p>
+<div class="admonition-when-reducing-dimensionality-we-want-to-keep-the-main-structure-there-exists-among-the-data admonition note">
+<p class="admonition-title">When reducing dimensionality, we want to keep the main structure there exists among the data.</p>
+</div>
 <section id="auto-encoder">
 <h4 id="auto-encoder">Auto-encoder<a class="headerlink" href="#auto-encoder" title="Link to this heading">¶</a></h4>
 <p><span class="defi">Autoen-coding</span> is a data compression algorithm. The compression and decompression functions are</p>
 <ol class="arabic simple">
 <li><p>data-specific,</p></li>
-<li><p>lossy $l = Vert x-hat{x}Vert^2=Vert x-d(z)Vert^2=Vert x-d(e(x))Vert^2$</p></li>
+<li><p>lossy  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mo>=</mo><mi mathvariant="normal">∥</mi><mi>x</mi><mo>−</mo><mover accent="true"><mi>x</mi><mo>^</mo></mover><msup><mi mathvariant="normal">∥</mi><mn>2</mn></msup><mo>=</mo><mi mathvariant="normal">∥</mi><mi>x</mi><mo>−</mo><mi>d</mi><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo><msup><mi mathvariant="normal">∥</mi><mn>2</mn></msup><mo>=</mo><mi mathvariant="normal">∥</mi><mi>x</mi><mo>−</mo><mi>d</mi><mo stretchy="false">(</mo><mi>e</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><msup><mi mathvariant="normal">∥</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">l = \Vert x-\hat{x}\Vert^2=\Vert x-d(z)\Vert^2=\Vert x-d(e(x))\Vert^2</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∥</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">^</span></span></span></span></span></span></span><span class="mord"><span class="mord">∥</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∥</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">)</span><span class="mord"><span class="mord">∥</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∥</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mopen">(</span><span class="mord mathnormal">e</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">))</span><span class="mord"><span class="mord">∥</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></p></li>
 <li><p>learned <strong>automatically</strong> from examples rather than engineered by a human</p></li>
 </ol>
 </section>
 <section id="loss-v-s-information">
 <h4 id="loss-v-s-information">Loss v.s. Information<a class="headerlink" href="#loss-v-s-information" title="Link to this heading">¶</a></h4>
-<p>$$l = Vert x-hat{x}Vert^2=Vert x-d(z)Vert^2=Vert x-d(e(x))Vert^2$$</p>
-<ul class="simple">
+<div class="math">
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mo>=</mo><mi mathvariant="normal">∥</mi><mi>x</mi><mo>−</mo><mover accent="true"><mi>x</mi><mo>^</mo></mover><msup><mi mathvariant="normal">∥</mi><mn>2</mn></msup><mo>=</mo><mi mathvariant="normal">∥</mi><mi>x</mi><mo>−</mo><mi>d</mi><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo><msup><mi mathvariant="normal">∥</mi><mn>2</mn></msup><mo>=</mo><mi mathvariant="normal">∥</mi><mi>x</mi><mo>−</mo><mi>d</mi><mo stretchy="false">(</mo><mi>e</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><msup><mi mathvariant="normal">∥</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">l = \Vert x-\hat{x}\Vert^2=\Vert x-d(z)\Vert^2=\Vert x-d(e(x))\Vert^2</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∥</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">^</span></span></span></span></span></span></span><span class="mord"><span class="mord">∥</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∥</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">)</span><span class="mord"><span class="mord">∥</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∥</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mopen">(</span><span class="mord mathnormal">e</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">))</span><span class="mord"><span class="mord">∥</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></div><ul class="simple">
 <li><p>The <strong>more complex</strong> the architecture is, the more the auto-encoder can proceed to <strong>a high dimensionality reduction</strong> while <strong>keeping reconstruction loss low</strong>. 架构越复杂，自动编码器就越能进行高维度降低，同时保持较低的重建损失。</p></li>
 <li><p>An encoder with“infinite power” could theoretically takes our N initial data points and encodes them as 1, 2, 3, … up to N (or more generally, as an N integer on the real axis) and the associated decoder could make the reverse transformation, with no loss during the process.</p></li>
-<li><p>The lack of interpretable and exploitable structures in the latent space (lack of regularity)  没有重建损失的重要维度减少往往是有代价的：潜在空间中缺乏可解释和可利用的结构（<strong>缺乏规律性</strong>）</p></li>
+<li><p>The lack of interpretable and exploitable structures in the latent space (lack of regularity)  没有重建损失的重要维度减少往往是有代价的：潜在空间中缺乏可解释和可利用的结构（ <strong>缺乏规律性</strong> ）</p></li>
 </ul>
 </section>
 <section id="loss-function">
@@ -336,8 +392,14 @@ xrightarrow{text{forcing}}D(G(x))rightarrow1$</p>
 </section>
 <section id="variational-auto-encoder-vae">
 <h3 id="variational-auto-encoder-vae">Variational Auto-Encoder, VAE, 变体自动编码器<a class="headerlink" href="#variational-auto-encoder-vae" title="Link to this heading">¶</a></h3>
-<p>==Variational autoencoders, VAEs, 自动编码器==。是一个神经网络，旨在以无监督的方式学习身份函数，以重建原始输入，同时在此过程中压缩数据，从而发现更有效和压缩的表示。are autoencoders that tackle the problem of the <strong>latent space irregularity</strong>. VAE makes the encoder return <strong>a distribution over the latent space</strong> instead of a single point. VAE loss function includes <strong>a regularisation term</strong> over the returned distribution in order to ensure a better organisation of the latent space.</p>
-<p>&lt;figure markdown=”span”&gt;![](./pics/VAE_1.png){width=60%}&lt;p&gt;(a) 光学习一种去了. (b) 缺少整体的结构&lt;/p&gt;&lt;/figure&gt;</p>
+<p><span class="defi">Variational autoencoders, VAEs, 自动编码器</span> 。是一个神经网络，旨在以无监督的方式学习身份函数，以重建原始输入，同时在此过程中压缩数据，从而发现更有效和压缩的表示。are autoencoders that tackle the problem of the <strong>latent space irregularity</strong>. VAE makes the encoder return <strong>a distribution over the latent space</strong> instead of a single point. VAE loss function includes <strong>a regularisation term</strong> over the returned distribution in order to ensure a better organisation of the latent space.</p>
+<figure class="align-default" id="id4">
+<a class="reference internal image-reference" href="../../_images/VAE_1.png"><img alt="../../_images/VAE_1.png" src="../../_images/VAE_1.png" style="width: 488.0px; height: 311.0px;"/>
+</a>
+<figcaption>
+<p><span class="caption-text">a 光学习一种去了; b 缺少整体的结构</span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="conditional-variational-autoencoder-cvae">
 <h3 id="conditional-variational-autoencoder-cvae">Conditional variational autoencoder (CVAE)<a class="headerlink" href="#conditional-variational-autoencoder-cvae" title="Link to this heading">¶</a></h3>

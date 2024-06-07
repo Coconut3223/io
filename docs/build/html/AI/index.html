@@ -49,13 +49,16 @@
     <title>AI &#8212; HomePage</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=83e35b93" />
     <link rel="stylesheet" type="text/css" href="../_static/material.css?v=79c92029" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/katex-math.css?v=91adb8b6" />
     <link rel="stylesheet" type="text/css" href="../_static/css/def.css?v=5a9d86bd" />
     <script src="../_static/documentation_options.js?v=7d86a446"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=6dbb43f8"></script>
     <script src="../_static/translations.js?v=beaddf03"></script>
     <script src="../_static/design-tabs.js?v=36754332"></script>
     <link rel="index" title="索引" href="../genindex.html" />
@@ -155,6 +158,8 @@
           <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">HomePage</a></li>
             
             <li class="md-tabs__item"><a href="#" class="md-tabs__link">AI</a></li>
+            
+            <li class="md-tabs__item"><a href="../python/index.html" class="md-tabs__link">Python</a></li>
       </ul>
     </div>
   </nav>
@@ -202,7 +207,14 @@
               <div class="md-sidebar__inner">
                 
 <nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
   <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#ai-index--page-root" class="md-nav__link">AI</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#content" class="md-nav__link">Content</a>
+        </li></ul>
+            </nav>
+        </li>
   </ul>
 </nav>
               </div>
@@ -214,6 +226,9 @@
             
   <section id="ai">
 <h1 id="ai-index--page-root">AI<a class="headerlink" href="#ai-index--page-root" title="Link to this heading">¶</a></h1>
+<section id="content">
+<h2 id="content">Content<a class="headerlink" href="#content" title="Link to this heading">¶</a></h2>
+<p>DL &amp; ML also included</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Basic</span></p>
 <ul>
@@ -221,15 +236,38 @@
 <li class="toctree-l1"><a class="reference internal" href="eva.html">模型评估与选择</a></li>
 <li class="toctree-l1"><a class="reference internal" href="highd.html">high dimentional DA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="loss.html">Loss</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pre_1.html">预处理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pre.html">预处理</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">ML</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ML/association_analysis.html">Association Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ML/clustering.html">聚类, Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ML/dt.html">决策树</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ML/ensemble_learning.html">集成学习</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ML/knn.html">KNN, K近邻</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ML/lr.html">LRs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ML/logr.html">Logistics Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ML/nb.html">Naive Bayes classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ML/svm.html">SVM</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">DL</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="DL/index_1.html">DL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DL/index.html">DL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DL/mlp.html">MLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DL/cnn.html">CNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DL/rnn.html">Recurrent Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DL/transformer.html">Transformer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DL/transferlearning.html">Transfer learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DL/tricks.html">部件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DL/utils.html">utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DL/generative_model.html">Generative models</a></li>
 </ul>
 </div>
+</section>
 </section>
 
 

@@ -1,3 +1,4 @@
+
 # high dimentional DA
 
 ==Data mining== is the process of discovering new patterns from LARGE DATA sets using methods of artificial intelligence, machine learning, statistics and database systems.
@@ -233,12 +234,13 @@ Expected Square of Prediction Error
 
 - proof of
 
-    :math:`\implies`   If the working model does not include all the important variables (those with  :math:`β_{k}≠ 0,k=1,\dots,p_0` ), the prediction error (lower bound) is also bigger than the model with exactly the important variables.
-    :math:`\implies`  **样本数 n 再大也拯救不了这个error 因为 :math:`(\beta_{p+1}^2+\dots+\beta_{p_0^2})\lambda_{min}(\Sigma)`  is constant，而且这只是下界 lower bound**
+    | :math:`\implies`   If the working model does not include all the important variables (those with  :math:`β_{k}≠ 0,k=1,\dots,p_0` ), the prediction error (lower bound) is also bigger than the model with exactly the important variables.
+    | :math:`\implies`  **样本数 n 再大也拯救不了这个error 因为** :math:`(\beta_{p+1}^2+\dots+\beta_{p_0^2})\lambda_{min}(\Sigma)`  **is constant，而且这只是下界 lower bound**
 
 #### Candidate Models for p+1 predictor  :math:`1， x_1, ..., x_p` 
 
 .. figure:: ./pics/FS_1.png
+    :scale: 40%
     
     un-centralized
 
@@ -304,7 +306,8 @@ Look for <u>the linear transformations</u>:
 
 **Target:**
 
-:math:`` g=\max\limits_{\Vert g\Vert_2=1} Var(Y)=\max\limits_{\Vert g\Vert_2=1} g^T\Sigma g\tag{1} :math:`` 
+.. math::
+    g=\max\limits_{\Vert g\Vert_2=1} Var(Y)=\max\limits_{\Vert g\Vert_2=1} g^T\Sigma g\tag{1}
 
 ==eign about postive definite A== . :math:`\Sigma=\sum\limits_{i=1}^{p}\lambda_i\gamma_i^T\gamma_i=\Gamma^T\Lambda\Gamma`   specially suppose  :math:`\lambda_1>\dots>\lambda_p>0`  in <u>anascending order</u>
 
@@ -362,7 +365,7 @@ Look for <u>the linear transformations</u>:
 3. **Sort** the eigenvalues in descending order and choose the K largest eigenvectors (plots, the proportion of variances interpreted etc.)
 4. <u> **Linear Transform 变换** </u> X into Y(Dimension Reduction!)
 
-原来由线性相关变量表示的数据，通过正交变换变成由若干个线性无关的新变量表示的数据。新变量是可能的正交变换中变量的方差的和（信息保存）最大的，**方差表示在新变量上信息的大小** 。将新变量依次称为第一主成分、第二主成分等。
+原来由线性相关变量表示的数据，通过正交变换变成由若干个线性无关的新变量表示的数据。新变量是可能的正交变换中变量的方差的和（信息保存）最大的， **方差表示在新变量上信息的大小** 。将新变量依次称为第一主成分、第二主成分等。
 
 .. note:: how large dimensions we keep
     
@@ -472,6 +475,7 @@ Force  :math:`\begin{cases}S_B=(\mu_X-\mu_Y)(\mu_X-\mu_Y)^T&\text{ between-class
 2. the variance of two classes to be as **small** as possible   :math:`S_w \downarrow` 
 
 .. figure:: ./pics/LDA_1.png
+    :scale: 30%
 
     LDA:最佳的类别可分性 & 假设：正态分布
 

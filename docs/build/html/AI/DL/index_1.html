@@ -49,7 +49,7 @@
     <title>DL &#8212; HomePage</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=83e35b93" />
     <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/katex-math.css?v=91adb8b6" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/def.css?v=5a9d86bd" />
@@ -254,7 +254,8 @@
 <div class="line"><span class="defi">局部特征</span> 是指 信息由部分 input 产生。 比如说CNN，CNN是用卷积核和感受野做运算，每一个新产生特征数，也就是 output 的一个小小的数字，囊括的也只是一个小小的感受野的信息。对一个kernel 来说，虽然 output 是由所有的感受野 of input 卷积之后堆叠而成的一个 [L, W]矩阵，也就是这一个 kernel 和所有的感受野做运算的结果堆叠而成。但是 <strong>简单局部特征堆叠不等于全局特征。</strong> 这也是CNN稀疏链接的特点。</div>
 <div class="line">所以我们常说CNN对于那种长序列 long sequence input 不太友好，因为对于两个间隔比较远的 pixels 来说，要是想获得他们之间的关系特征，就需要堆叠很多个卷积层，才能获得他们的关系特征。</div>
 </div>
-<img alt="../../_images/CNN_25.jpeg" src="../../_images/CNN_25.jpeg"/>
+<a class="reference internal image-reference" href="../../_images/CNN_25.jpeg"><img alt="../../_images/CNN_25.jpeg" class="align-center" src="../../_images/CNN_25.jpeg" style="width: 544.5px; height: 292.8px;"/>
+</a>
 </section>
 </section>
 <section id="categories-of-neural-networks">
@@ -281,28 +282,22 @@
 </tr>
 </tbody>
 </table>
-<figure class="align-default" id="id2">
-<img alt="../../_images/DL_1.png" src="../../_images/DL_1.png"/>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../../_images/DL_1.png"><img alt="../../_images/DL_1.png" src="../../_images/DL_1.png" style="width: 336.59999999999997px; height: 135.0px;"/>
+</a>
 <figcaption>
 <p><span class="caption-text">生成学习</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <ul>
-<li><dl>
-<dt><strong>关于层与层神经元的连接</strong></dt><dd><p>从结构来说，排除 dropout 影响. <span class="defi">global features  🆚 local features</span>
-- fully connected NN (FCNN)</p>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/DL/index_1.rst</span>, line 53)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><p>“ <strong>完全连接</strong> ”或有时称为“ <strong>紧密连接</strong> ”。所有可能的连接层都存在到图层，这意味着输入向量的每个输入都会影响输出向量的每个输出。</p>
-</div></blockquote>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/DL/index_1.rst</span>, line 54)</p>
-<p>Block quote ends without a blank line; unexpected unindent.</p>
-</aside>
+<li><dl class="simple">
+<dt><strong>关于层与层神经元的连接</strong></dt><dd><p>从结构来说，排除 dropout 影响. <span class="defi">global features  🆚 local features</span></p>
 <ul class="simple">
+<li><dl class="simple">
+<dt>fully connected NN (FCNN)</dt><dd><p>“ <strong>完全连接</strong> ”或有时称为“ <strong>紧密连接</strong> ”。所有可能的连接层都存在到图层，这意味着输入向量的每个输入都会影响输出向量的每个输出。</p>
+</dd>
+</dl>
+</li>
 <li><dl class="simple">
 <dt>convolutional NN (CNNs)</dt><dd><p>并非所有输入节点都会影响所有输出节点。这使卷积层在学习中具有更大的灵活性。此外，每层的权重数量要小得多，这对图像数据等高维输入有很大帮助。</p>
 </dd>
@@ -350,7 +345,7 @@
 <h2 id="id1">科学计算<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><dl class="simple">
-<dt>为什么使用多维数组， <strong>为什么 batch 一般是64、128或256？</strong></dt><dd><p>现代计算机都是多核多处理器的，支持多线程和多进程，非常适合矩阵的并行计算。科学计算往往都是基于矩阵的计算，并且会指定一个适当的Batch。例如，<strong>PyTorch视觉处理中通常将Batch指定为64、128或256，这也是为了充分利用计算机资源而考虑的</strong></p>
+<dt>为什么使用多维数组， <strong>为什么 batch 一般是64、128或256？</strong></dt><dd><p>现代计算机都是多核多处理器的，支持多线程和多进程，非常适合矩阵的并行计算。科学计算往往都是基于矩阵的计算，并且会指定一个适当的Batch。例如， <strong>PyTorch视觉处理中通常将Batch指定为64、128或256，这也是为了充分利用计算机资源而考虑的</strong></p>
 </dd>
 </dl>
 </li>

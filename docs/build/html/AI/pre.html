@@ -49,13 +49,16 @@
     <title>预处理 &#8212; HomePage</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=83e35b93" />
     <link rel="stylesheet" type="text/css" href="../_static/material.css?v=79c92029" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/katex-math.css?v=91adb8b6" />
     <link rel="stylesheet" type="text/css" href="../_static/css/def.css?v=5a9d86bd" />
     <script src="../_static/documentation_options.js?v=7d86a446"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=6dbb43f8"></script>
     <script src="../_static/translations.js?v=beaddf03"></script>
     <script src="../_static/design-tabs.js?v=36754332"></script>
     <link rel="index" title="索引" href="../genindex.html" />
@@ -155,6 +158,8 @@
           <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">HomePage</a></li>
             
             <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">AI</a></li>
+            
+            <li class="md-tabs__item"><a href="../python/index.html" class="md-tabs__link">Python</a></li>
       </ul>
     </div>
   </nav>
@@ -208,17 +213,17 @@
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#duplicate-data" class="md-nav__link">duplicate data</a>
         </li>
-        <li class="md-nav__item"><a href="#id4" class="md-nav__link">缺失值处理</a>
+        <li class="md-nav__item"><a href="#id2" class="md-nav__link">缺失值处理</a>
         </li>
-        <li class="md-nav__item"><a href="#id5" class="md-nav__link">组合特征</a><nav class="md-nav">
+        <li class="md-nav__item"><a href="#id3" class="md-nav__link">组合特征</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#id6" class="md-nav__link">属性变量处理</a>
+        <li class="md-nav__item"><a href="#id4" class="md-nav__link">属性变量处理</a>
         </li>
-        <li class="md-nav__item"><a href="#id7" class="md-nav__link">连续变量处理</a>
+        <li class="md-nav__item"><a href="#id5" class="md-nav__link">连续变量处理</a>
         </li>
-        <li class="md-nav__item"><a href="#id8" class="md-nav__link">类别编码</a>
+        <li class="md-nav__item"><a href="#id6" class="md-nav__link">类别编码</a>
         </li>
-        <li class="md-nav__item"><a href="#id9" class="md-nav__link">高维度</a>
+        <li class="md-nav__item"><a href="#id7" class="md-nav__link">高维度</a>
         </li></ul>
             </nav>
         </li>
@@ -237,85 +242,89 @@
             
   <section id="id1">
 <h1 id="ai-pre--page-root">预处理<a class="headerlink" href="#ai-pre--page-root" title="Link to this heading">¶</a></h1>
-<dl class="simple">
-<dt>!!! p “”</dt><dd><p>“Garbage in，garbage out”
+<div class="admonition-notes admonition note">
+<p class="admonition-title">notes</p>
+<p>“Garbage in，garbage out”
 数据和特征往往决定了结果的上限，而模型、算法的选择及优化则是在逐步接近这个上限</p>
-</dd>
-</dl>
-<p><a href="#id10"><span class="problematic" id="id11">|数据|结构化数据|非结构化数据|</span></a>
-<a href="#id12"><span class="problematic" id="id13">|--|</span></a>–<a href="#id14"><span class="problematic" id="id15">|--|</span></a>
-||关系型数据库的一张表，每列都有清晰的定义|没有简单的清晰定义|
-||数值型,类别型|文本、图像、音频、视频数据|
-||有限，可列|?|</p>
+</div>
+<table>
+<thead>
+<tr class="row-odd"><th class="head"><p>数据</p></th>
+<th class="head"><p>结构化数据</p></th>
+<th class="head"><p>非结构化数据</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td><p>关系型数据库的一张表，每列都有清晰的定义</p></td>
+<td><p>没有简单的清晰定义</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>数值型,类别型</p></td>
+<td><p>文本、图像、音频、视频数据</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>有限，可列</p></td>
+<td><p>?</p></td>
+</tr>
+</tbody>
+</table>
 <p>数据预处理没有标准的流程，一般包括这几个步骤：
-<a href="#id2"><span class="problematic" id="id3">**</span></a>去除唯一属性→处理缺失值→属性编码→数据标准化→特征选择→主成分分析**等。
-特征工程中有很多处理数据的小技巧，如**多重共线性的分析、异常值的检测**等。
+<strong>去除唯一属性→处理缺失值→属性编码→数据标准化→特征选择→主成分分析</strong> 等。
+特征工程中有很多处理数据的小技巧，如 <strong>多重共线性的分析、异常值的检测</strong> 等。
 [ML 入门：归一化、标准化和正则化]</p>
-<aside class="system-message" id="id2">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/pre.rst</span>, line 14); <em><a href="#id3">backlink</a></em></p>
-<p>Inline strong start-string without end-string.</p>
-</aside>
 <section id="duplicate-data">
 <h2 id="duplicate-data">duplicate data<a class="headerlink" href="#duplicate-data" title="Link to this heading">¶</a></h2>
-<p>在异源, heterogeneous sources 比较容易出现。比如说一个人在不同的网站使用不同的邮箱
-Data cleaning Process</p>
+<div class="line-block">
+<div class="line">在异源, heterogeneous sources 比较容易出现。比如说一个人在不同的网站使用不同的邮箱</div>
+<div class="line">Data cleaning Process</div>
+</div>
 </section>
-<section id="id4">
-<h2 id="id4">缺失值处理<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<section id="id2">
+<h2 id="id2">缺失值处理<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
 <p>缺失值补全的方法有均值插补、同类均值插补、建模预测、高维映射、多重插补、极大似然估计、压缩感知和矩阵补全</p>
 <ul class="simple">
-<li><p><span class="defi">drop 缺失值的样本</span></p></li>
-</ul>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/pre.rst</span>, line 31)</p>
-<p>Bullet list ends without a blank line; unexpected unindent.</p>
-</aside>
-<p>适用于训练数据量较大并且缺失数据占总数据比例不超过2%的情况
-- <span class="defi">插补</span>
-样本属性的距离是可度量的值, 他的大小增减是具有意义的，numerical</p>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/pre.rst</span>, line 34)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><ul class="simple">
-<li><p>所有样本的众数</p></li>
-<li><p>同类样本的众数</p></li>
-</ul>
-</div></blockquote>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/pre.rst</span>, line 36)</p>
-<p>Block quote ends without a blank line; unexpected unindent.</p>
-</aside>
-<ul>
-<li><dl>
-<dt>计算</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt><span class="defi">drop 缺失值的样本</span></dt><dd><p>适用于训练数据量较大并且缺失数据占总数据比例不超过2%的情况</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="defi">插补</span></dt><dd><p>样本属性的距离是可度量的值, 他的大小增减是具有意义的，numerical
+- 所有样本的众数
+- 同类样本的众数</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>计算</dt><dd><ul>
 <li><p>对每个可能值计算概率</p></li>
-<li><p><span class="defi">建模预测</span></p></li>
+<li><dl class="simple">
+<dt><span class="defi">建模预测</span></dt><dd><p>用其他非空特征的数据训练一个模型，用模型预测缺失值的特征</p>
+</dd>
+</dl>
+</li>
 </ul>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/pre.rst</span>, line 39)</p>
-<p>Bullet list ends without a blank line; unexpected unindent.</p>
-</aside>
-<p>用其他非空特征的数据训练一个模型，用模型预测缺失值的特征</p>
 </dd>
 </dl>
 </li>
 </ul>
 </section>
-<section id="id5">
-<h2 id="id5">组合特征<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<section id="id3">
+<h2 id="id3">组合特征<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
 <p>为了提高复杂关系的拟合能力，在特征工程中经常会把&lt;u&gt;一阶离散特征两两组合&lt;/u&gt;，构成高阶组合特征</p>
 <ul class="simple">
 <li><p>基于决策树的特征组合寻找方法</p></li>
 </ul>
-<section id="id6">
-<h3 id="id6">属性变量处理<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
-<p>&gt; 【存在顺序关系】「高中低」= {1, .5, 0}
-&gt; 【不存在顺序关系】「男女」= {1, 0}</p>
+<section id="id4">
+<h3 id="id4">属性变量处理<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>【存在顺序关系】「高中低」= {1, .5, 0}
+【不存在顺序关系】「男女」= {1, 0}</p>
+</div></blockquote>
 </section>
-<section id="id7">
-<h3 id="id7">连续变量处理<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<section id="id5">
+<h3 id="id5">连续变量处理<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><dl class="simple">
 <dt>无监督</dt><dd><ul>
@@ -329,8 +338,8 @@ Data cleaning Process</p>
 <li><dl class="simple">
 <dt>有监督</dt><dd><ul>
 <li><p>二分法
-对连续取值的属性按选定的阈值 a 分割成 $xgt a, xle a$
-确定 a：$forall a$ 扫描数据集获得计数矩阵并计算基尼系数。穷举复杂度 $O(n^2)$</p></li>
+对连续取值的属性按选定的阈值 a 分割成  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mi>a</mi><mo separator="true">,</mo><mi>x</mi><mo>≤</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">x\gt a, x\le a</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8304em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span></span>
+确定 a： <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∀</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">\forall a</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">∀</span><span class="mord mathnormal">a</span></span></span></span></span>  扫描数据集获得计数矩阵并计算基尼系数。穷举复杂度  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p></li>
 <li><p>MDL, 最小描述长度
 二分法的拓展，多个区间</p></li>
 </ul>
@@ -339,84 +348,112 @@ Data cleaning Process</p>
 </li>
 </ul>
 </section>
-<section id="id8">
-<h3 id="id8">类别编码<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
-<p>==序号编码, Ordinal Encoding==。排序
-类别间具有大小关系，有优劣关系
-<strong>缺点:</strong> 稀疏向量，纬度高，占空间，</p>
-<dl class="simple">
-<dt>!!! p “优化”</dt><dd><ol class="arabic simple">
+<section id="id6">
+<h3 id="id6">类别编码<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<div class="line-block">
+<div class="line"><span class="defi">序号编码, Ordinal Encoding</span> 。排序</div>
+<div class="line">类别间具有大小关系，有优劣关系</div>
+<div class="line"><strong>缺点:</strong> 稀疏向量，纬度高，占空间，</div>
+</div>
+<div class="admonition- admonition note">
+<p class="admonition-title">优化</p>
+<ol class="arabic simple">
 <li><p>稀疏表示，节省空间</p></li>
 <li><p>特征选择，减少维度，合并特征</p></li>
 </ol>
-</dd>
-</dl>
-<p>==独热编码, One-hot Encoding==。只有某一维取值为1，其他都是0
-类别间不具有大小关系的特征，无分优劣</p>
-<p>==二进制编码,Binary Encoding==。1.序号编码2.转为类别ID对应的二进制编码。本质上是利用二进制对ID进行**哈希映射**，最终得到0/1特征向量，且**维数少于独热编码**，节省了存储空间。
+</div>
+<div class="line-block">
+<div class="line"><span class="defi">独热编码, One-hot Encoding</span> 。只有某一维取值为1，其他都是0</div>
+<div class="line">类别间不具有大小关系的特征，无分优劣</div>
+</div>
+<p><span class="defi">二进制编码,Binary Encoding</span> 。1.序号编码2.转为类别ID对应的二进制编码。本质上是利用二进制对ID进行 <strong>哈希映射</strong>，最终得到0/1特征向量，且**维数少于独热编码**，节省了存储空间。
 无要求</p>
-<p>&gt;&gt; 血型 A，B，AB，O
-&gt;
-&gt; <strong>One-hot Encoding</strong>
-&gt; A   (1, 0, 0, 0)， B   (0, 1, 0, 1)
-&gt; AB (0, 0, 1, 0)， O   (0, 0, 0, 1)
-&gt; <strong>Binary Encoding</strong>
-&gt; 0A, 1B, 2AB, 3O
-&gt; A 00； B 01；AB 10； O 11</p>
+<div class="admonition-a-b-ab-o admonition hint">
+<p class="admonition-title">血型 A，B，AB，O</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<div class="line-block">
+<div class="line"><strong>One-hot Encoding</strong></div>
+<div class="line">A   (1, 0, 0, 0)， B   (0, 1, 0, 1)</div>
+<div class="line">AB (0, 0, 1, 0)， O   (0, 0, 0, 1)</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<div class="line-block">
+<div class="line"><strong>Binary Encoding</strong></div>
+<div class="line">0A, 1B, 2AB, 3O</div>
+<div class="line">A 00； B 01；AB 10； O 11</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="id9">
-<h3 id="id9">高维度<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<section id="id7">
+<h3 id="id7">高维度<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
 <p><strong>问题:</strong></p>
 <ul class="simple">
-<li><p>==KNN==，高维空间下两点之间的距离很难得到有效的衡量；</p></li>
-<li><p>==Logistic Regression==，参数的数量会随着维度的增高而增加，容易引起过拟合问题；</p></li>
+<li><p><span class="defi">KNN</span> ，高维空间下两点之间的距离很难得到有效的衡量；</p></li>
+<li><p><span class="defi">Logistic Regression</span> ，参数的数量会随着维度的增高而增加，容易引起过拟合问题；</p></li>
 <li><p>通常只有部分维度是对分类、预测有帮助</p></li>
 </ul>
 </section>
 </section>
 <section id="normalization">
 <h2 id="normalization">去量纲 → Normalization 数据标准化<a class="headerlink" href="#normalization" title="Link to this heading">¶</a></h2>
-<p>==Normalization， 数据标准化==是将数据按比例缩放，使之落入&lt;u&gt;一个大致相同数值区间&lt;/u&gt;上，从而消除数据之间量纲的差异。通过标准化处理，可以使不同的特征具有相同的尺度（Scale）</p>
-<dl>
-<dt>!!! p “为什么要去量纲？”</dt><dd><ul>
-<li><p>数量级大的will dominate the signal →可能模型变差
-&gt; 比如样本中有两个属性（年龄、年收入），两个个体的属性值分别为（25、60000）和（55、61000），如果不进行数据的标准化，直接将两个属性的差异值（30, 1000）作为个体的差异程度，就会得出年收入的差异远大于年龄差异的结果，而实际上却明显是年龄的差异远大于年收入的差异</p></li>
-<li><p>数量级不一样可能会使收敛更慢. 模型会倾向于&lt;u&gt;数值差别比较大&lt;/u&gt;的特征，导致寻优变慢
-&gt; $z=ax+by,xin[0,10],yin[0,3]$
-&gt; 梯度下降法：$nabla w = -frac{partial f}{partial w}*alpha implies nabla a = -x*alpha, nabla b = -y*alpha$</p>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/pre.rst</span>, line 114)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><p>$because x&gt;&gt;y thereforenabla a&gt;nabla b$, a 参数容易跳跃</p>
-</div></blockquote>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/pre.rst</span>, line 115)</p>
-<p>Block quote ends without a blank line; unexpected unindent.</p>
-</aside>
-<p>![](./pics/normalization_1.webp)
-![](./pics/normalization_2.PNG)</p>
+<p><span class="defi">Normalization， 数据标准化</span> 是将数据按比例缩放，使之落入&lt;u&gt;一个大致相同数值区间&lt;/u&gt;上，从而消除数据之间量纲的差异。通过标准化处理，可以使不同的特征具有相同的尺度（Scale）</p>
+<div class="admonition- admonition note">
+<p class="admonition-title">为什么要去量纲？</p>
+<ul>
+<li><dl class="simple">
+<dt>数量级大的will dominate the signal →可能模型变差</dt><dd><p>比如样本中有两个属性（年龄、年收入），两个个体的属性值分别为（25、60000）和（55、61000），如果不进行数据的标准化，直接将两个属性的差异值（30, 1000）作为个体的差异程度，就会得出年收入的差异远大于年龄差异的结果，而实际上却明显是年龄的差异远大于年收入的差异</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>数量级不一样可能会使收敛更慢. 模型会倾向于&lt;u&gt;数值差别比较大&lt;/u&gt;的特征，导致寻优变慢</dt><dd><div class="line-block">
+<div class="line"><span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>a</mi><mi>x</mi><mo>+</mo><mi>b</mi><mi>y</mi><mo separator="true">,</mo><mi>x</mi><mo>∈</mo><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>10</mn><mo stretchy="false">]</mo><mo separator="true">,</mo><mi>y</mi><mo>∈</mo><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>3</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">z=ax+by,x\in[0,10],y\in[0,3]</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">a</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">10</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">3</span><span class="mclose">]</span></span></span></span></span></div>
+<div class="line">梯度下降法： <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∇</mi><mi>w</mi><mo>=</mo><mo>−</mo><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>f</mi></mrow><mrow><mi mathvariant="normal">∂</mi><mi>w</mi></mrow></mfrac><mo>∗</mo><mi>α</mi><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext><mi mathvariant="normal">∇</mi><mi>a</mi><mo>=</mo><mo>−</mo><mi>x</mi><mo>∗</mo><mi>α</mi><mo separator="true">,</mo><mi mathvariant="normal">∇</mi><mi>b</mi><mo>=</mo><mo>−</mo><mi>y</mi><mo>∗</mo><mi>α</mi></mrow><annotation encoding="application/x-tex">\nabla w = -\frac{\partial f}{\partial w}*\alpha \implies \nabla a = -x*\alpha, \nabla b = -y*\alpha</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">∇</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2772em;vertical-align:-0.345em;"></span><span class="mord">−</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9322em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4461em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">∇</span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">∇</span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em;"></span><span class="mord">−</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span></span></div>
+<div class="line"><span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∵</mo><mi>x</mi><mo>&gt;</mo><mo>&gt;</mo><mi>y</mi><mo>∴</mo><mi mathvariant="normal">∇</mi><mi>a</mi><mo>&gt;</mo><mi mathvariant="normal">∇</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">\because x&gt;&gt;y \therefore\nabla a&gt;\nabla b</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6922em;"></span><span class="mrel amsrm">∵</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8867em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">∴</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord">∇</span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">∇</span><span class="mord mathnormal">b</span></span></span></span></span> , a 参数容易跳跃</div>
+</div>
+<a class="reference internal image-reference" href="../_images/normalization_1.webp"><img alt="../_images/normalization_1.webp" src="../_images/normalization_1.webp" style="width: 374.14px; height: 210.34px;"/>
+</a>
+<a class="reference internal image-reference" href="../_images/normalization_2.PNG"><img alt="../_images/normalization_2.PNG" src="../_images/normalization_2.PNG" style="width: 302.4px; height: 224.4px;"/>
+</a>
 <p><strong>标准化后可以更加容易地得出最优参数以及计算出</strong> J(w,b) <strong>的最小值，从而达到加速收敛的效果</strong></p>
+</dd>
+</dl>
 </li>
 <li><p>单位不同会影响distance-sensitive的模型较大。依赖于样本距离的算法对于数量级非常敏感。</p></li>
 </ul>
-</dd>
-</dl>
+</div>
 <p>通过&lt;u&gt;梯度下降法&lt;/u&gt;求解的模型通常是需要归一化的，包括线性回归、逻辑回归、支持向量机、神经网络等模型。</p>
-<dl class="simple">
-<dt>!!! quote “数据归一化失效”</dt><dd><p>但对于决策树模型则并不适用，以C4.5为例，决策树在进行节点分裂时主要依据数据集D关于特征x的信息增益比，而信息增益比跟特征是否经过归一化是无关的，因为归一化并不会改变样本在特征x上的信息增益</p>
-</dd>
-</dl>
-<p>==线性函数归一化, Min-Max Scaling==. 对原始数据进行线性变换，使结果映射到[0, 1]. $x_i’=cfrac{x_i-min(A)}{max(A)-min(A)}$</p>
+<div class="admonition- admonition note">
+<p class="admonition-title">数据归一化失效</p>
+<p>但对于决策树模型则并不适用，以C4.5为例，决策树在进行节点分裂时主要依据数据集D关于特征x的信息增益比，而信息增益比跟特征是否经过归一化是无关的，因为归一化并不会改变样本在特征x上的信息增益</p>
+</div>
+<p><span class="defi">线性函数归一化, Min-Max Scaling</span> . 对原始数据进行线性变换，使结果映射到[0, 1].  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>x</mi><mi>i</mi><mo lspace="0em" mathvariant="normal" rspace="0em">′</mo></msubsup><mo>=</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>min</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow><mrow><mi>max</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo><mo>−</mo><mi>min</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow></mfrac></mstyle></mrow><annotation encoding="application/x-tex">x_i'=\cfrac{x_i-\min(A)}{\max(A)-\min(A)}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1.0106em;vertical-align:-0.2587em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-2.4413em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2587em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.526em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mop">max</span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mop">min</span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mop">min</span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span></span></span></span></span></span></span></p>
 <ol class="arabic simple">
-<li><p>新数据可能会导致 max 和 min 的值发生变化，需要**重新定义**。</p></li>
+<li><p>新数据可能会导致 max 和 min 的值发生变化，需要 <strong>重新定义</strong>。</p></li>
 <li><p><strong>对离群点敏感</strong>，因为离群点会导致最大值或最小值发生很大的变化，从而改变样本数据的统计分布规律</p></li>
 </ol>
-<p>==z-score==. 会将原始数据映射到 $N(0,1)$.$x_i’=cfrac{x_i-mu}{sigma},begin{cases}hatmu=cfrac{1}{n}sumlimits_{i=1}^nx_i\hatsigma=sqrt{cfrac{sumlimits_{i=1}^n(x_i-hatmu)^2}{red{n-1}}}end{cases}$</p>
-<p>!!! warning “要求样本属性值数据服从正态分布，这就要求**样本数量足够多**，&lt;u&gt;样本数量太少时无法保证能达到此要求&lt;/u&gt;，因此不适合使用Z-score标准化。”
-需要注意的是，这里除以 n-1 而不是 n，是因为使用样本对方差进行估计是有偏估计，除以n-1 <strong>是对这个偏差的修正</strong></p>
-<p>&lt;figure markdown=”span”&gt;![](./pics/normalization.png)&lt;p&gt;Z-score Normalization （a. origin; b. after extracting mean; c. after z-score Normalization）&lt;/p&gt;&lt;/figure&gt;</p>
+<p><span class="defi">z-score</span> . 会将原始数据映射到  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo stretchy="false">(</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">N(0,1)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mopen">(</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span> . <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>x</mi><mi>i</mi><mo lspace="0em" mathvariant="normal" rspace="0em">′</mo></msubsup><mo>=</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>μ</mi></mrow><mi>σ</mi></mfrac></mstyle><mo separator="true">,</mo><mrow><mo fence="true">{</mo><mtable columnalign="left left" columnspacing="1em" rowspacing="0.36em"><mtr><mtd><mstyle displaystyle="false" scriptlevel="0"><mrow><mover accent="true"><mi>μ</mi><mo>^</mo></mover><mo>=</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mn>1</mn><mi>n</mi></mfrac></mstyle><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><msub><mi>x</mi><mi>i</mi></msub></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle displaystyle="false" scriptlevel="0"><mrow><mover accent="true"><mi>σ</mi><mo>^</mo></mover><mo>=</mo><msqrt><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mover accent="true"><mi>μ</mi><mo>^</mo></mover><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mstyle mathcolor="#df0030"><mi>n</mi><mo>−</mo><mn>1</mn></mstyle></mfrac></mstyle></msqrt></mrow></mstyle></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">x_i'=\cfrac{x_i-\mu}{\sigma},\begin{cases}\hat\mu=\cfrac{1}{n}\sum\limits_{i=1}^nx_i\\\hat\sigma=\sqrt{\cfrac{\sum\limits_{i=1}^n(x_i-\hat\mu)^2}{\red{n-1}}}\end{cases}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1.0106em;vertical-align:-0.2587em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-2.4413em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2587em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:6.1861em;vertical-align:-2.843em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">μ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.25em;"><span style="top:-1.366em;"><span class="pstrut" style="height:3.216em;"></span><span class="delimsizinginner delim-size4"><span>⎩</span></span></span><span style="top:-1.358em;"><span class="pstrut" style="height:3.216em;"></span><span style="height:1.216em;width:0.8889em;"><svg height="1.216em" preserveaspectratio="xMinYMin" style="width:0.8889em" viewbox="0 0 888.89 1216" width="0.8889em" xmlns="http://www.w3.org/2000/svg"><path d="M384 0 H504 V1216 H384z M384 0 H504 V1216 H384z"></path></svg></span></span><span style="top:-3.216em;"><span class="pstrut" style="height:3.216em;"></span><span class="delimsizinginner delim-size4"><span>⎨</span></span></span><span style="top:-4.358em;"><span class="pstrut" style="height:3.216em;"></span><span style="height:1.216em;width:0.8889em;"><svg height="1.216em" preserveaspectratio="xMinYMin" style="width:0.8889em" viewbox="0 0 888.89 1216" width="0.8889em" xmlns="http://www.w3.org/2000/svg"><path d="M384 0 H504 V1216 H384z M384 0 H504 V1216 H384z"></path></svg></span></span><span style="top:-5.566em;"><span class="pstrut" style="height:3.216em;"></span><span class="delimsizinginner delim-size4"><span>⎧</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.75em;"><span></span></span></span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.343em;"><span style="top:-6.6021em;"><span class="pstrut" style="height:4.8491em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">μ</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">n</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3514em;"><span style="top:-2.1223em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop op-symbol small-op">∑</span></span></span><span style="top:-3.95em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.7754em;"><span class="pstrut" style="height:4.8491em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">^</span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.8491em;"><span class="svg-align" style="top:-5.5784em;"><span class="pstrut" style="height:5.5784em;"></span><span class="mord" style="padding-left:1.056em;"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.7191em;"><span style="top:-2.6654em;"><span class="pstrut" style="height:3.3514em;"></span><span class="mord"><span class="mord mathnormal" style="color:#df0030;">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin" style="color:#df0030;">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord" style="color:#df0030;">1</span></span></span><span style="top:-3.5814em;"><span class="pstrut" style="height:3.3514em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-4.7191em;"><span class="pstrut" style="height:3.3514em;"></span><span class="mord"><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3514em;"><span style="top:-2.1223em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop op-symbol small-op">∑</span></span></span><span style="top:-3.95em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9777em;"><span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">μ</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693em;"><span></span></span></span></span></span><span></span></span></span></span><span style="top:-4.8091em;"><span class="pstrut" style="height:5.5784em;"></span><span class="hide-tail" style="min-width:0.742em;height:3.6584em;"><svg height="3.6584em" preserveaspectratio="xMinYMin slice" viewbox="0 0 400000 3658" width="400em" xmlns="http://www.w3.org/2000/svg"><path d="M702 80H40000040
+H742v3524l-4 4-4 4c-.667.7 -2 1.5-4 2.5s-4.167 1.833-6.5 2.5-5.5 1-9.5 1
+h-12l-28-84c-16.667-52-96.667 -294.333-240-727l-212 -643 -85 170
+c-4-3.333-8.333-7.667-13 -13l-13-13l77-155 77-156c66 199.333 139 419.667
+219 661 l218 661zM702 80H400000v40H742z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693em;"><span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.843em;"><span></span></span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<div class="admonition-u-u-z-score admonition warning">
+<p class="admonition-title">要求样本属性值数据服从正态分布，这就要求 <strong>样本数量足够多</strong> ，&lt;u&gt;样本数量太少时无法保证能达到此要求&lt;/u&gt;，因此不适合使用Z-score标准化。</p>
+<p>需要注意的是，这里除以 n-1 而不是 n，是因为使用样本对方差进行估计是有偏估计，除以n-1 <strong>是对这个偏差的修正</strong></p>
+</div>
+<figure class="align-default" id="id8">
+<a class="reference internal image-reference" href="../_images/normalization.png"><img alt="../_images/normalization.png" src="../_images/normalization.png" style="width: 720.0px; height: 183.0px;"/>
+</a>
+<figcaption>
+<p><span class="caption-text">Z-score Normalization （a. origin; b. after extracting mean; c. after z-score Normalization）</span><a class="headerlink" href="#id8" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>[ML 入门：归一化、标准化和正则化]:<a class="reference external" href="https://zhuanlan.zhihu.com/p/29957294">https://zhuanlan.zhihu.com/p/29957294</a></p>
 </section>
 </section>

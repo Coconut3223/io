@@ -31,9 +31,9 @@
 缺失值补全的方法有均值插补、同类均值插补、建模预测、高维映射、多重插补、极大似然估计、压缩感知和矩阵补全
 
 - ==drop 缺失值的样本==
-适用于训练数据量较大并且缺失数据占总数据比例不超过2%的情况
+    适用于训练数据量较大并且缺失数据占总数据比例不超过2%的情况
 - ==插补==
-样本属性的距离是可度量的值, 他的大小增减是具有意义的，numerical
+    样本属性的距离是可度量的值, 他的大小增减是具有意义的，numerical
     - 所有样本的众数
     - 同类样本的众数
 - 计算
@@ -83,12 +83,18 @@
 
 .. hint:: 血型 A，B，AB，O
 
-    | **One-hot Encoding**
-    | A   (1, 0, 0, 0)， B   (0, 1, 0, 1)
-    | AB (0, 0, 1, 0)， O   (0, 0, 0, 1)
-    | **Binary Encoding**
-    | 0A, 1B, 2AB, 3O
-    | A 00； B 01；AB 10； O 11
+    .. grid:: 2
+
+        .. grid-item::
+
+            | **One-hot Encoding**
+            | A   (1, 0, 0, 0)， B   (0, 1, 0, 1)
+            | AB (0, 0, 1, 0)， O   (0, 0, 0, 1)
+
+        .. grid-item::
+            | **Binary Encoding**
+            | 0A, 1B, 2AB, 3O
+            | A 00； B 01；AB 10； O 11
 
 ### 高维度
 
@@ -111,8 +117,10 @@
         | :math:`\because x>>y \therefore\nabla a>\nabla b` , a 参数容易跳跃
 
         .. image:: ./pics/normalization_1.webp
+            :scale: 26%
       
         .. image:: ./pics/normalization_2.PNG
+            :scale: 60%
 
         **标准化后可以更加容易地得出最优参数以及计算出** J(w,b) **的最小值，从而达到加速收敛的效果** 
     - 单位不同会影响distance-sensitive的模型较大。依赖于样本距离的算法对于数量级非常敏感。
@@ -133,6 +141,8 @@
     需要注意的是，这里除以 n-1 而不是 n，是因为使用样本对方差进行估计是有偏估计，除以n-1 **是对这个偏差的修正**
 
 .. figure:: ./pics/normalization.png
+    :scale: 50%
+    
     Z-score Normalization （a. origin; b. after extracting mean; c. after z-score Normalization）
 
 [ML 入门：归一化、标准化和正则化]:https://zhuanlan.zhihu.com/p/29957294

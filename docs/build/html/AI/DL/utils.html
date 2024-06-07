@@ -46,9 +46,10 @@
   
   
   
-    <title>utils &#8212; cocobook  文档</title>
+    <title>utils &#8212; HomePage</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=83e35b93" />
     <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/katex-math.css?v=91adb8b6" />
@@ -56,6 +57,8 @@
     <script src="../../_static/documentation_options.js?v=7d86a446"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=6dbb43f8"></script>
     <script src="../../_static/translations.js?v=beaddf03"></script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
@@ -83,10 +86,10 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../../index.html" title="cocobook  文档"
+        <a href="../../index.html" title="HomePage"
            class="md-header-nav__button md-logo">
           
-            &nbsp;
+            <i class="md-icon">&#xe869</i>
           
         </a>
       </div>
@@ -95,7 +98,7 @@
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          <span class="md-header-nav__topic">cocobook  文档</span>
+          <span class="md-header-nav__topic">Cocobook</span>
           <span class="md-header-nav__topic"> utils </span>
         </div>
       </div>
@@ -152,7 +155,11 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">cocobook  文档</a></li>
+          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">HomePage</a></li>
+            
+            <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">AI</a></li>
+            
+            <li class="md-tabs__item"><a href="../../python/index.html" class="md-tabs__link">Python</a></li>
       </ul>
     </div>
   </nav>
@@ -164,14 +171,31 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../../index.html" title="cocobook 文档" class="md-nav__button md-logo">
+    <a href="../../index.html" title="HomePage" class="md-nav__button md-logo">
       
-        <img src="../../_static/" alt=" logo" width="48" height="48">
+        <i class="md-icon">&#xe869</i>
       
     </a>
     <a href="../../index.html"
-       title="cocobook 文档">cocobook  文档</a>
+       title="HomePage">Cocobook</a>
   </label>
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">AI</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../main.html" class="md-nav__link">Artificial Intelligence, AI</a>
+      
+    
+    </li>
+  </ul>
   
 
 </nav>
@@ -199,11 +223,6 @@
         </li></ul>
             </nav>
         </li>
-    
-<li class="md-nav__item"><a class="md-nav__extra_link" href="../../_sources/AI/DL/utils.rst.txt">显示源代码</a> </li>
-
-<li id="searchbox" class="md-nav__item"></li>
-
   </ul>
 </nav>
               </div>
@@ -217,45 +236,67 @@
 <h1 id="ai-dl-utils--page-root">utils<a class="headerlink" href="#ai-dl-utils--page-root" title="Link to this heading">¶</a></h1>
 <section id="gpu">
 <h2 id="gpu">GPU<a class="headerlink" href="#gpu" title="Link to this heading">¶</a></h2>
-<p>!!! p “某某神经网络参数量有多少，大概占用多大的显存”</p>
-<p>Estimating neural network memory consumption
-● Mini-batch sizes and gradient splitting trick
-● Estimating neural network computation (FLOP/s)
-● Calculating effective aperture sizes</p>
-<p>![](./pics/Memonry_2.webp){width=80%}
-![](./pics/Memonry_1.webp){width=80%}</p>
+<div class="admonition- admonition note">
+<p class="admonition-title">某某神经网络参数量有多少，大概占用多大的显存</p>
+</div>
+<div class="line-block">
+<div class="line">Estimating neural network memory consumption</div>
+</div>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/DL/utils.rst</span>, line 11)</p>
+<p>Line block ends without a blank line.</p>
+</aside>
+<ul class="simple">
+<li><p>Mini-batch sizes and gradient splitting trick</p></li>
+<li><p>Estimating neural network computation (FLOP/s)</p></li>
+<li><p>Calculating effective aperture sizes</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/Memonry_2.webp"><img alt="../../_images/Memonry_2.webp" class="align-center" src="../../_images/Memonry_2.webp" style="width: 614.4px; height: 345.59999999999997px;"/>
+</a>
+<a class="reference internal image-reference" href="../../_images/Memonry_1.webp"><img alt="../../_images/Memonry_1.webp" class="align-center" src="../../_images/Memonry_1.webp" style="width: 614.4px; height: 345.59999999999997px;"/>
+</a>
 <section id="model-size">
 <h3 id="model-size">Model size<a class="headerlink" href="#model-size" title="Link to this heading">¶</a></h3>
-<p>&gt; CNN
-&gt;
-&gt; !!! danger “per sample”
-&gt; ![](./pics/model_size_1.webp){width=80%}
-&gt;
-&gt; !!! p “一个 filter 的深度(通道数)要和 input 的深度(通道数)一样”
-&gt; <span class="defi">model size</span>
-&gt; 从下往上：
-&gt; Conv1: 32 个 filters * ((3 * 3 weight * 1 depth)  + 1 bias)  per filter = 320&lt;br&gt;
-&gt; Conv2: 32 个 filters * ((3 * 3 weight * 32 depth) + 1 bias) per filter = 9248&lt;br&gt;
-&gt; Fnn1: ((14 * 14) * 32 weight * + 1 bias) per layer * 128 layers = 802944&lt;br&gt;
-&gt; Fnn2: (128 weights + 1 bias) per layer* 10 layers = 1290&lt;br&gt;
-&gt; Total = 320 + 9248 + 802944 + 1290 = 813804&lt;br&gt;
-&gt; If use 32-bit float : $813804times4 text{(bytes/float32)} div1024div1024approx3.10M$&lt;br&gt;
-&gt; ==intermedia output(parse layer)==&lt;br&gt;
-&gt; Input: 28W * 28H * 1D = &lt;br&gt;
-&gt; after Conv1: 28W * 28H * 32D = 25088&lt;br&gt;
-&gt; after Conv2: 28W * 28H * 32D = 25088&lt;br&gt;
-&gt; after Maxpool： 14W * 14H * 32D = 6272&lt;br&gt;
-&gt; after Fnn1: 128&lt;br&gt;
-&gt; after Fnn2: 10 = output</p>
+<div class="admonition-cnn admonition hint">
+<p class="admonition-title">CNN</p>
+<div class="admonition-per-sample admonition danger">
+<p class="admonition-title">per sample</p>
+</div>
+<a class="reference internal image-reference" href="../../_images/model_size_1.webp"><img alt="../../_images/model_size_1.webp" class="align-center" src="../../_images/model_size_1.webp" style="width: 819.2px; height: 460.8px;"/>
+</a>
+<div class="admonition-filter-input admonition note">
+<p class="admonition-title">一个 filter 的深度(通道数)要和 input 的深度(通道数)一样</p>
+</div>
+<div class="line-block">
+<div class="line"><span class="defi">model size</span></div>
+<div class="line">从下往上：</div>
+<div class="line">Conv1: 32 个 filters * ((3 * 3 weight * 1 depth)  + 1 bias)  per filter = 320</div>
+<div class="line">Conv2: 32 个 filters * ((3 * 3 weight * 32 depth) + 1 bias) per filter = 9248</div>
+<div class="line">Fnn1: ((14 * 14) * 32 weight * + 1 bias) per layer * 128 layers = 802944</div>
+<div class="line">Fnn2: (128 weights + 1 bias) per layer* 10 layers = 1290</div>
+<div class="line">Total = 320 + 9248 + 802944 + 1290 = 813804</div>
+<div class="line">If use 32-bit float :  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>813804</mn><mo>×</mo><mn>4</mn><mtext>(bytes/float32)</mtext><mo>÷</mo><mn>1024</mn><mo>÷</mo><mn>1024</mn><mo>≈</mo><mn>3.10</mn><mi>M</mi></mrow><annotation encoding="application/x-tex">813804\times4 \text{(bytes/float32)} \div1024\div1024\approx3.10M</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">813804</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4</span><span class="mord text"><span class="mord">(bytes/float32)</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">÷</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1024</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">÷</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1024</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">3.10</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span></span></div>
+<div class="line"><span class="defi">intermedia output(parse layer)</span></div>
+<div class="line">Input: 28W * 28H * 1D =</div>
+<div class="line">after Conv1: 28W * 28H * 32D = 25088</div>
+<div class="line">after Conv2: 28W * 28H * 32D = 25088</div>
+<div class="line">after Maxpool： 14W * 14H * 32D = 6272</div>
+<div class="line">after Fnn1: 128</div>
+<div class="line">after Fnn2: 10 = output</div>
+</div>
+</div>
 </section>
 <section id="optimization">
 <h3 id="optimization">optimization<a class="headerlink" href="#optimization" title="Link to this heading">¶</a></h3>
-<p>In practice, we want to do mini-batch SGD:
-● More stable gradient estimates
-● Faster training on modern hardware
-Size of batch is limited by model architecture, model size, and hardware memory. May need to reduce batch size for training larger models.
-This may affect convergence if gradients are too noisy.</p>
-<p>![alt text](./pics/memory_3.png)</p>
+<div class="line-block">
+<div class="line">In practice, we want to do mini-batch SGD:</div>
+<div class="line">More stable gradient estimates</div>
+<div class="line">Faster training on modern hardware</div>
+<div class="line">Size of batch is limited by model architecture, model size, and hardware memory. May need to reduce batch size for training larger models.</div>
+<div class="line">This may affect convergence if gradients are too noisy.</div>
+</div>
+<a class="reference internal image-reference" href="../../_images/memory_3.png"><img alt="../../_images/memory_3.png" class="align-center" src="../../_images/memory_3.png" style="width: 570.6px; height: 304.8px;"/>
+</a>
 <p><strong>GPU momory size:</strong></p>
 <ul class="simple">
 <li><p>GTX 980: 4GB</p></li>
@@ -264,9 +305,11 @@ This may affect convergence if gradients are too noisy.</p>
 </ul>
 <p><strong>Estimating computational complexity:</strong></p>
 <p><span class="defi">FLOPS | flop/s, Floating point operations per second</span> 衡量运算时计算性能，在使用浮点数科学运算时很有用。</p>
-<p>在 deep NN 里的计算都被 FC &amp; conv layers 里的**加乘 multiply-adds** 主宰，所以我们在估算计算复杂度的时候，可以直接 estimate the number of FLOPs (multiply-adds) in the forward pass。而忽略掉 非线性的操作、dropout、normalization layers…</p>
-<p>![](./pics/memory_4.png)</p>
-<p>&gt; ![](./pics/memory_5.png)</p>
+<p>在 deep NN 里的计算都被 FC &amp; conv layers 里的 <strong>加乘 multiply-adds</strong> 主宰，所以我们在估算计算复杂度的时候，可以直接 estimate the number of FLOPs (multiply-adds) in the forward pass。而忽略掉 非线性的操作、dropout、normalization layers…</p>
+<a class="reference internal image-reference" href="../../_images/memory_4.png"><img alt="../../_images/memory_4.png" class="align-center" src="../../_images/memory_4.png" style="width: 592.1999999999999px; height: 221.4px;"/>
+</a>
+<a class="reference internal image-reference" href="../../_images/memory_5.png"><img alt="../../_images/memory_5.png" class="align-center" src="../../_images/memory_5.png" style="width: 708.0px; height: 356.4px;"/>
+</a>
 <p><strong>Refernce:</strong></p>
 <ul class="simple">
 <li><p>[Memory usage and computational considerations]</p></li>

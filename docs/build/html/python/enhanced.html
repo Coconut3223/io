@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>Script &amp; Module &amp; Package &#8212; HomePage</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=83e35b93" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css?v=79c92029" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/katex-math.css?v=91adb8b6" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/def.css?v=5a9d86bd" />
+    <script src="../_static/documentation_options.js?v=7d86a446"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+    <script src="../_static/translations.js?v=beaddf03"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#python/enhanced" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../index.html" title="HomePage"
+           class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">&#xe869</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">Cocobook</span>
+          <span class="md-header-nav__topic"> Script &amp; Module &amp; Package </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder=""Search""
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+      
+  
+  <script src="../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../"versions.json"",
+        target_loc = "../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">HomePage</a></li>
+            
+            <li class="md-tabs__item"><a href="../AI/index.html" class="md-tabs__link">AI</a></li>
+            
+            <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">Python</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="HomePage" class="md-nav__button md-logo">
+      
+        <i class="md-icon">&#xe869</i>
+      
+    </a>
+    <a href="../index.html"
+       title="HomePage">Cocobook</a>
+  </label>
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">AI</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../AI/main.html" class="md-nav__link">Artificial Intelligence, AI</a>
+      
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#python-enhanced--page-root" class="md-nav__link">Script & Module & Package</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id1" class="md-nav__link">顶层代码</a>
+        </li>
+        <li class="md-nav__item"><a href="#module" class="md-nav__link">Module</a>
+        </li>
+        <li class="md-nav__item"><a href="#package" class="md-nav__link">Package</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id12" class="md-nav__link">“””</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#init-py" class="md-nav__link"><cite>__init__.py</cite></a>
+        </li>
+        <li class="md-nav__item"><a href="#main-py" class="md-nav__link"><cite>__main__.py</cite></a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#import" class="md-nav__link">import</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#id33" class="md-nav__link">路径相关</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#import-module" class="md-nav__link">import - module 搜索路径</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#others" class="md-nav__link">Others</a>
+        </li>
+        <li class="md-nav__item"><a href="#todo" class="md-nav__link">Todo</a>
+        </li>
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <p># Enhanced Python</p>
+<section id="script-module-package">
+<h1 id="python-enhanced--page-root">Script &amp; Module &amp; Package<a class="headerlink" href="#python-enhanced--page-root" title="Link to this heading">¶</a></h1>
+<p>==script 脚本==。是一个包含可执行代码的文件，一个 py 文件，更多时候是指可以直接运行的 py 文件。为一个特定任务写成。
+==顶层代码==。由用户指定的最先开始运行的那一个 py 文件，是应用程序的入口点。<strong>它的`__name__` 被设为 `__main__`</strong>
+==module 模块==。主要是被引用，包含了**相关性较高**的程式码。
+==package 包==。包含了一个或多个的 Module ，并且拥有 <cite>__init__.py</cite>
+==library 库==。</p>
+<section id="id1">
+<h2 id="id1">顶层代码<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<p>==顶层代码==。由用户指定的最先开始运行的那一个 py 文件，是应用程序的入口点。</p>
+<dl>
+<dt>!!! p “顶层代码的`__name__` 被设为 <cite>__main__</cite>。”</dt><dd><p>module 如果是 被 import，它的 <cite>__name__</cite> 就会是它自己名字；如果是以**脚本方式执行**，会把 <cite>__name__ = “__main__”</cite>
+<a href="#id2"><span class="problematic" id="id3">``</span></a>` title=”dir”
++ A</p>
+<aside class="system-message" id="id2">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 18); <em><a href="#id3">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 21)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><p>A1.py
+A2.py
++ subA</p>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 24)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><p>a1.py</p>
+</div></blockquote>
+</div></blockquote>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 25)</p>
+<p>Block quote ends without a blank line; unexpected unindent.</p>
+</aside>
+<p><a href="#id4"><span class="problematic" id="id5">``</span></a><a href="#id6"><span class="problematic" id="id7">`</span></a></p>
+<aside class="system-message" id="id4">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 25); <em><a href="#id5">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id6">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 25); <em><a href="#id7">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+<p><code class="docutils literal notranslate"><span class="pre">`python</span> <span class="pre">title="A1.py"</span>
+<span class="pre">print(f'in</span> <span class="pre">A1:</span> <span class="pre">{__name__}')</span>
+<span class="pre">`</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span> <span class="pre">python</span> <span class="pre">title="A2.py"</span>
+<span class="pre">from</span> <span class="pre">A1</span> <span class="pre">import</span> <span class="pre">*</span>
+<span class="pre">from</span> <span class="pre">subA.a1</span> <span class="pre">import</span> <span class="pre">*</span>
+<span class="pre">print(f'in</span> <span class="pre">A2:</span> <span class="pre">{__name__}')</span>
+<span class="pre">`</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">`python</span> <span class="pre">title="a1.py"</span>
+<span class="pre">print(f'in</span> <span class="pre">a1:</span> <span class="pre">{__name__}')</span>
+<span class="pre">`</span></code>
+运行 <cite>python A2.py</cite>， A2 是被运行的顶层代码， A1 &amp; a1 时被 import 的module
+<code class="docutils literal notranslate"><span class="pre">`python</span>
+<span class="pre">#</span> <span class="pre">&gt;&gt;&gt;</span> <span class="pre">in</span> <span class="pre">A1:</span> <span class="pre">A1</span>
+<span class="pre">#</span> <span class="pre">&gt;&gt;&gt;</span> <span class="pre">in</span> <span class="pre">a2:</span> <span class="pre">subA.a2</span>  <span class="pre">#</span> <span class="pre">如果有上层，就会把上层文件也展示</span>
+<span class="pre">#</span> <span class="pre">&gt;&gt;&gt;</span> <span class="pre">in</span> <span class="pre">A2:</span> <span class="pre">__main__</span>  <span class="pre">#</span> <span class="pre">A2</span> <span class="pre">是被运行的顶层代码，被改为</span> <span class="pre">`__main__`</span>
+<span class="pre">`</span></code></p>
+<dl class="simple">
+<dt>!!! p “”</dt><dd><p>可以利用`if __name__ :defi:` ‘__main__’:<cite>来控制 **执行** 和 **被引用时** 的运行的代码内容。
+最好用 `main</cite> 进行封装，再调用。如果直接放在 <cite>if __name__ ` ‘__main__’:</cite> 下的变量会成为**全局变量**。</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>!!! quote “<cite>__main__.py</cite> in package 参见 package section”</p>
+</section>
+<section id="module">
+<h2 id="module">Module<a class="headerlink" href="#module" title="Link to this heading">¶</a></h2>
+<p>==module 模块==。主要是被引用，包含了**相关性较高**的程式码。</p>
+<ul class="simple">
+<li><p>在**模块内部**，模块名 通过全局变量 <cite>__name__</cite> 获取.</p></li>
+<li><p>每个模块都有自己的**私有命名空间**，它会被用作模块中定义的所有函数的全局命名空间。</p></li>
+</ul>
+</section>
+<section id="package">
+<h2 id="package">Package<a class="headerlink" href="#package" title="Link to this heading">¶</a></h2>
+<p>==package 包==。包含了一个或多个的 Module ，并且拥有 <cite>__init__.py</cite>。</p>
+<p>但是一个比较齐全的包是：</p>
+<p><a href="#id8"><span class="problematic" id="id9">``</span></a><a href="#id10"><span class="problematic" id="id11">`</span></a>python
+“””
++ package</p>
+<aside class="system-message" id="id8">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 68); <em><a href="#id9">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id10">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 68); <em><a href="#id11">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 71)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><p>__init__.py
+__main__.py
+module1.py</p>
+</div></blockquote>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 74)</p>
+<p>Block quote ends without a blank line; unexpected unindent.</p>
+</aside>
+<section id="id12">
+<h3 id="id12">“””<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<section id="init-py">
+<h4 id="init-py"><cite>__init__.py</cite><a class="headerlink" href="#init-py" title="Link to this heading">¶</a></h4>
+<p>!!! danger “需要有 <cite>__init__.py</cite> 文件才能让 Python 将包含该文件的目录当作包来处理”</p>
+<p>从一个 package 里面调用东西的时候，<cite>__init__.py</cite> 的代码会**被首先执行**.
+能帮助 package 完成 <strong>批量导入和规范化导入</strong></p>
+<dl>
+<dt>!!! warning “其可见性的维护是靠一套需要大家自觉遵守的”约定“”</dt><dd><p>[Python中的__all__]: 使用 <cite>from xxx import *</cite> 导入该文件时，只会导入 <cite>__all__</cite> 列出的成员，可以其他成员都被排除在外。
+但是直接定位到精确调用是可以的</p>
+<dl class="simple">
+<dt>!!! p “”</dt><dd><p>修改一个暴露的接口只修改一行，方便版本控制的时候看 diff</p>
+</dd>
+</dl>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 91)</p>
+<p>Definition list ends without a blank line; unexpected unindent.</p>
+</aside>
+<p><a href="#id13"><span class="problematic" id="id14">``</span></a>` title=”dir”
++ A</p>
+<aside class="system-message" id="id13">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 91); <em><a href="#id14">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 93)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><p>__init__.py
+A1.py
+A2.py
++ subA</p>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 97)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><p>a1.py
+__init___.py</p>
+</div></blockquote>
+</div></blockquote>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 99)</p>
+<p>Block quote ends without a blank line; unexpected unindent.</p>
+</aside>
+<p><a href="#id15"><span class="problematic" id="id16">``</span></a><a href="#id17"><span class="problematic" id="id18">`</span></a></p>
+<aside class="system-message" id="id15">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 99); <em><a href="#id16">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id17">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 99); <em><a href="#id18">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+<p><a href="#id19"><span class="problematic" id="id20">``</span></a><a href="#id21"><span class="problematic" id="id22">`</span></a>python title=”subA.a1.py”
+def f1():</p>
+<aside class="system-message" id="id19">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 101); <em><a href="#id20">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id21">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 101); <em><a href="#id22">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 103)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><p>print(“F1”)</p>
+</div></blockquote>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 104)</p>
+<p>Block quote ends without a blank line; unexpected unindent.</p>
+</aside>
+<dl class="simple">
+<dt>def f2():</dt><dd><p>print(“F2”)</p>
+</dd>
+</dl>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 106)</p>
+<p>Definition list ends without a blank line; unexpected unindent.</p>
+</aside>
+<p><a href="#id23"><span class="problematic" id="id24">``</span></a><a href="#id25"><span class="problematic" id="id26">`</span></a></p>
+<aside class="system-message" id="id23">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 106); <em><a href="#id24">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id25">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 106); <em><a href="#id26">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+<p><a href="#id27"><span class="problematic" id="id28">``</span></a><a href="#id29"><span class="problematic" id="id30">`</span></a>python title=”subA.__init__.py”
+# 在 package 级别暴露接口
+from sub.a1 import *
+__all__ = [</p>
+<aside class="system-message" id="id27">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 109); <em><a href="#id28">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id29">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 109); <em><a href="#id30">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 113)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><p>“f1”</p>
+</div></blockquote>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 114)</p>
+<p>Block quote ends without a blank line; unexpected unindent.</p>
+</aside>
+<aside class="system-message">
+<p class="system-message-title">System Message: SEVERE/4 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 115)</p>
+<p>Unexpected section title.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>]
+```
+</pre></div>
+</div>
+</aside>
+<p>在 package 级别暴露接口，module level 也类似。如果采用`from package import <a href="#id31"><span class="problematic" id="id32">*</span></a>`
+<code class="docutils literal notranslate"><span class="pre">`python</span> <span class="pre">title="A1.py"</span>
+<span class="pre">from</span> <span class="pre">subA</span> <span class="pre">import</span> <span class="pre">*</span>
+<span class="pre">f1()</span>
+<span class="pre">#</span> <span class="pre">&gt;&gt;&gt;</span> <span class="pre">F1</span>  <span class="pre">#</span> <span class="pre">成功了</span>
+<span class="pre">f2()</span>
+<span class="pre">#</span> <span class="pre">&gt;&gt;&gt;</span> <span class="pre">NameError:</span> <span class="pre">name</span> <span class="pre">'f2'</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">defined.</span> <span class="pre">Did</span> <span class="pre">you</span> <span class="pre">mean:</span> <span class="pre">'f1'?</span>
+<span class="pre">`</span></code>
+如果采用 <cite>from package.module import func</cite> 精确调用
+<code class="docutils literal notranslate"><span class="pre">`python</span> <span class="pre">title="A2.py"</span>
+<span class="pre">from</span> <span class="pre">subA.a1</span> <span class="pre">import</span> <span class="pre">f1,</span> <span class="pre">f2</span>
+<span class="pre">f1()</span>
+<span class="pre">#</span> <span class="pre">&gt;&gt;&gt;</span> <span class="pre">F1</span>
+<span class="pre">f2()</span>
+<span class="pre">#</span> <span class="pre">&gt;&gt;&gt;</span> <span class="pre">F2</span>
+<span class="pre">`</span></code></p>
+<aside class="system-message" id="id31">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 116); <em><a href="#id32">backlink</a></em></p>
+<p>Inline emphasis start-string without end-string.</p>
+</aside>
+</dd>
+</dl>
+</section>
+<section id="main-py">
+<h4 id="main-py"><cite>__main__.py</cite><a class="headerlink" href="#main-py" title="Link to this heading">¶</a></h4>
+<p><cite>python -m package</cite>。 使用 <cite>-m</cite> 从命令行直接调用软件包本身时，将执行 <cite>__main__.py</cite>。</p>
+<p><cite>__main__.py</cite> 的内容通常不会用 <cite>if __name__ :defi:</cite> ‘__main__’` 块围起来。相反，这些文件会保持简短**并从其他模块导入函数来执行。 这样其他模块就可以很容易地进行单元测试并可以适当地重用。**</p>
+<p>!!! p “package 里的 module 的单元测试是在 <cite>__main__.py</cite> 进行。”</p>
+</section>
+</section>
+</section>
+<section id="import">
+<h2 id="import">import<a class="headerlink" href="#import" title="Link to this heading">¶</a></h2>
+<p>为了**快速加载模块（不是加速执行）**，Python 把**模块的编译版本**缓存在 <cite>__pycache__ dir</cite> 中，文件名为 <cite>module.version.pyc，version</cite> 对编译文件格式进行编码
+&gt; CPython 的 3.3 发行版中，spam.py 的编译版本 ` <cite>__pycache__/spam.cpython-33.pyc</cite></p>
+<dl class="simple">
+<dt>!!! quote “为什么没有 运行脚本的已编译档案？”</dt><dd><p>运行脚本 当作程式的进入点，所以每一次执行 <cite>python xxx.py</cite> 指令时，Python编译器都要进行编译，所以没有将 <cite>xxx.py</cite> 进行快取的动作。</p>
+</dd>
+</dl>
+<aside class="system-message">
+<p class="system-message-title">System Message: SEVERE/4 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 151)</p>
+<p>Title level inconsistent:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">从内容区分</span>
+<span class="o">^^^^^^^^^^^^</span>
+</pre></div>
+</div>
+</aside>
+<ul class="simple">
+<li><p><cite>import module</cite> = 调用 》 <cite>module.specific_func()</cite></p></li>
+<li><p><cite>from module import specific_func</cite> = 调用 》 <cite>specific_func()</cite></p></li>
+<li><p><cite>from module import *</cite> = 调用 》 <cite>specific_func()</cite></p></li>
+</ul>
+<p>!!! warning “尽量不要用 <cite>from module import *</cite>，这种方式向解释器导入了一批未知的名称，可能会覆盖已经定义的名称。”</p>
+<p>!!! p “<cite>from module import *</cite> 会导入**所有不以下划线（_）开头**的名称。”</p>
+<dl class="simple">
+<dt>!!! danger “”</dt><dd><ul class="simple">
+<li><p><cite>from package import item</cite> 时，item 可以是包的子模块（或子包），也可以是包中定义的函数、类或变量等其他名称。</p></li>
+<li><p><cite>import item.subitem.subsubitem</cite> 时，除最后一项外，<strong>每个 item 都必须是包；最后一项可以是模块或包</strong>，但不能是上一项中定义的类、函数或变量。</p></li>
+</ul>
+</dd>
+</dl>
+<aside class="system-message">
+<p class="system-message-title">System Message: SEVERE/4 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 166)</p>
+<p>Title level inconsistent:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">从方式区分</span>
+<span class="o">^^^^^^^^^^^^</span>
+</pre></div>
+</div>
+</aside>
+<p>See 路径相关的 section</p>
+<ul class="simple">
+<li><p>绝对导入</p></li>
+<li><p>相对导入</p></li>
+</ul>
+</section>
+</section>
+<section id="id33">
+<h1 id="id33">路径相关<a class="headerlink" href="#id33" title="Link to this heading">¶</a></h1>
+<dl class="simple">
+<dt>!!! danger “如果不是从脚本所在路径 <cite>python ./xxx.py</cite> 运行脚本，就会有 working directory &amp; script path 区别”</dt><dd><p>用户在磁盘上寻找文件或子目录时，所历经的线路叫路径。
+目录和文件夹是一个意思</p>
+</dd>
+</dl>
+<p>==工作目录 working directory cwd==。用户当前目录。<cite>os.getcwd()</cite>
+==脚本路径 script path==。脚本文件所在的路径。 <cite>__file__</cite>
+==系统路径 system path sys:defi:<cite>。操作系统用来查找**可执行文件和库文件**的一组目录路径。`sys.path:List</cite></p>
+<ul class="simple">
+<li><p>加入sys <cite>sys.path.append(new_path)</cite></p></li>
+<li><p>查看 <cite>sys.path</cite></p></li>
+</ul>
+<p>【process】</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>程序将&lt;u&gt;脚本所在的目录&lt;/u&gt;加入到 &lt;u&gt;sys&lt;/u&gt; 中，用来查找**可执行文件和库文件**</dt><dd><p><cite>os.path.dirname(__file__) ` sys.path[0]</cite></p>
+</dd>
+</dl>
+</li>
+<li><p>程序会实行&lt;u&gt;脚本里的代码&lt;/u&gt;，在&lt;u&gt;cwd&lt;/u&gt; 进行查找创造文件。</p></li>
+</ul>
+<p>&lt;div class=”grid” style=”grid-template-columns: repeat(3, 1fr) !important;” markdown&gt;
+<a href="#id34"><span class="problematic" id="id35">``</span></a>` title=”dir”
++ A</p>
+<aside class="system-message" id="id34">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 194); <em><a href="#id35">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 197)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><p>A1.py
++ subA</p>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 199)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><p>a1.py</p>
+</div></blockquote>
+</div></blockquote>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 200)</p>
+<p>Block quote ends without a blank line; unexpected unindent.</p>
+</aside>
+<p><a href="#id36"><span class="problematic" id="id37">``</span></a><a href="#id38"><span class="problematic" id="id39">`</span></a></p>
+<aside class="system-message" id="id36">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 200); <em><a href="#id37">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id38">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 200); <em><a href="#id39">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+<p><a href="#id40"><span class="problematic" id="id41">``</span></a><a href="#id42"><span class="problematic" id="id43">`</span></a>python title=”A1.py”
+import os, sys</p>
+<aside class="system-message" id="id40">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 202); <em><a href="#id41">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id42">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 202); <em><a href="#id43">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+<dl>
+<dt>if __name__ == “__main__”:</dt><dd><p>print(f’working_directory = {os.getcwd()}’)
+print(f’script_path = {__file__}’ )
+print(f’system_path[0] = {sys.path[0]}’)
+with open(‘1.txt’, ‘w’):</p>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 210)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><p>…</p>
+</div></blockquote>
+</dd>
+</dl>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 211)</p>
+<p>Definition list ends without a blank line; unexpected unindent.</p>
+</aside>
+<p><a href="#id44"><span class="problematic" id="id45">``</span></a><a href="#id46"><span class="problematic" id="id47">`</span></a></p>
+<aside class="system-message" id="id44">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 211); <em><a href="#id45">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id46">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 211); <em><a href="#id47">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+<p>&lt;/div&gt;</p>
+<p>在 subA 底下运行 <cite>A1.py</cite> <cite>…/python.exe …/A/A1.py</cite></p>
+<p><code class="docutils literal notranslate"><span class="pre">`python</span>
+<span class="pre">&gt;&gt;&gt;</span> <span class="pre">working_directory</span> <span class="pre">=</span> <span class="pre">...\A\subA</span>
+<span class="pre">======================================================================</span>
+<span class="pre">#</span> <span class="pre">&gt;&gt;&gt;</span> <span class="pre">script_path</span> <span class="pre">=</span> <span class="pre">...\A\A1.py</span>
+<span class="pre">&gt;&gt;&gt;</span> <span class="pre">system_path[0]</span> <span class="pre">=</span> <span class="pre">...\A</span>
+<span class="pre">======================================================</span>
+<span class="pre">#</span> <span class="pre">&gt;&gt;&gt;</span> <span class="pre">1.txt</span> <span class="pre">在</span> <span class="pre">subA</span> <span class="pre">底下，</span> <span class="pre">#</span> <span class="pre">在工作目录对应进行创建</span>
+<span class="pre">`</span></code></p>
+<section id="import-module">
+<h2 id="import-module">import - module 搜索路径<a class="headerlink" href="#import-module" title="Link to this heading">¶</a></h2>
+<p>当 <cite>import spam</cite>，解释器：</p>
+<ol class="arabic simple">
+<li><p>搜索 <cite>spam</cite> 的内置模块。这些模块的名称在 <cite>sys.builtin_module_names</cite> 中列出。</p></li>
+<li><p>如果未找到，它将在变量 <cite>sys.path</cite> 所给出的目录列表中搜索</p></li>
+</ol>
+<p><strong>sys.path的初始化：</strong></p>
+<ul class="simple">
+<li><p>被**命令行直接运行的脚本所在的目录**。</p></li>
+<li><p>PYTHONPATH （目录列表，与 shell 变量 PATH 的语法一样）。</p></li>
+<li><p>依赖于安装的默认值（按照惯例包括一个 site-packages 目录，由 site 模块处理）。</p></li>
+</ul>
+<dl class="simple">
+<dt>!!! p  “”</dt><dd><p>程序将&lt;u&gt;`run.py` 脚本所在的目录&lt;/u&gt;加入到 &lt;u&gt;sys&lt;/u&gt; 中，用来查找**可执行文件和库文件**</p>
+</dd>
+</dl>
+<p>自己写的包注意 import 路径，从系统路径中能不能找到，能不能形成可到达的路径</p>
+<ol class="arabic simple">
+<li><p>通过 <cite>sys</cite> 添加搜索路径 <cite>sys.path.append(‘package path’)</cite></p></li>
+<li><p>绝对引用。当包由多个子包构成时，可以使用绝对导入来引用**同级包的子模块**。</p></li>
+<li><p>相对引用。</p></li>
+</ol>
+<dl class="simple">
+<dt>!!! danger “主模块始终使用 &lt;u&gt;绝对导入&lt;/u&gt;”</dt><dd><p>相对导入基于当前模块名`module.__name__`。
+- 模块作为**顶层文件被执行**时，<cite>__name__=”__main__”</cite>，不包含任何包的名字
+- 但作为**普通模块被 import**， 就会被包含包。</p>
+</dd>
+</dl>
+<p>!!! p “绝对引用 &amp; 相对引用”
+&lt;div class=”grid” markdown&gt;
+<a href="#id48"><span class="problematic" id="id49">``</span></a><a href="#id50"><span class="problematic" id="id51">`</span></a>title=”dir”
++ A</p>
+<aside class="system-message" id="id48">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 254); <em><a href="#id49">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id50">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 254); <em><a href="#id51">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 258)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><p>A1.py
+A2.py</p>
+</div></blockquote>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 260)</p>
+<p>Block quote ends without a blank line; unexpected unindent.</p>
+</aside>
+<p><a href="#id52"><span class="problematic" id="id53">``</span></a><a href="#id54"><span class="problematic" id="id55">`</span></a></p>
+<aside class="system-message" id="id52">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 260); <em><a href="#id53">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id54">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 260); <em><a href="#id55">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+<p><code class="docutils literal notranslate"><span class="pre">`python</span> <span class="pre">title="A1.py"</span>
+<span class="pre">import</span> <span class="pre">A2</span>  <span class="pre">#</span> <span class="pre">绝对引用</span>
+<span class="pre">import</span> <span class="pre">.A2</span>  <span class="pre">#</span> <span class="pre">相对引用</span>
+<span class="pre">`</span></code></p>
+<p>&lt;/div&gt;</p>
+<p>[import 问题浅谈]</p>
+</section>
+</section>
+<section id="others">
+<h1 id="others">Others<a class="headerlink" href="#others" title="Link to this heading">¶</a></h1>
+<ul>
+<li><dl>
+<dt>Magic Number 魔数（中性词）</dt><dd><p>[编程中的「魔数」（magic number）是什么意思？平时我们能接触到哪些魔数？]
+一般是指**硬写到代码里的整数常量**，数值是编程者自己指定的，其他人不知道数值有什么具体意义，表示不明觉厉，就称作magic number。编程教材书用magic number指代**初学者不定义常量直接写数的不良习惯。**</p>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\python/enhanced.rst</span>, line 277)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>贬义词</strong>: 指的是代码中出现的没有说明的数字。代码中突然出现一个没说明用途的数字会让其它阅读代码、维护代码的的人非常难受。
+&gt; 例如写3.1416这种数字，也应该改为数学库中的π常数，例如Unity中的Mathf.PI。</p></li>
+<li><p><strong>褒义词</strong>: 通过一些底层原理实现骚操作</p></li>
+<li><p><strong>中性词</strong>：
+&gt; . ELF文件头会写入一个magic number，检查这个数和自己预想的是否一致可以判断文件是否损坏。
+&gt; . 如果你用16进制编辑器打开一个文件，它的开头不是FFD8FF，那就不是jpg文件。这个魔数一般会在相关文件标准中进行规定，所有人都要遵守</p></li>
+</ul>
+</div></blockquote>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="todo">
+<h1 id="todo">Todo<a class="headerlink" href="#todo" title="Link to this heading">¶</a></h1>
+<p>[import雜談之三———sys.path的洪荒之時]</p>
+<p>[import雜談之三———sys.path的洪荒之時]: <a class="reference external" href="https://ithelp.ithome.com.tw/articles/10196901">https://ithelp.ithome.com.tw/articles/10196901</a>
+[Python中的__all__]:<a class="reference external" href="https://zhuanlan.zhihu.com/p/54274339">https://zhuanlan.zhihu.com/p/54274339</a>
+[import 问题浅谈]:<a class="reference external" href="https://zhuanlan.zhihu.com/p/69099185">https://zhuanlan.zhihu.com/p/69099185</a>
+[编程中的「魔数」（magic number）是什么意思？平时我们能接触到哪些魔数？]:<a class="reference external" href="https://www.zhihu.com/question/22018894">https://www.zhihu.com/question/22018894</a></p>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2024, coconut.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>

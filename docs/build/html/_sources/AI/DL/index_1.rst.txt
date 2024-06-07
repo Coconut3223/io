@@ -16,10 +16,14 @@ Deep learning is part of a broader family of machine learning methods based o
 | ==全局特征== 是指 信息由整块 input 产生
 | 比如说 MLP，第一层的每一个 input 都是全连接的，就是每一个 out put 都是全体 input 的运算，收获的也是全体 input 的信息
 
+
 | ==局部特征== 是指 信息由部分 input 产生。 比如说CNN，CNN是用卷积核和感受野做运算，每一个新产生特征数，也就是 output 的一个小小的数字，囊括的也只是一个小小的感受野的信息。对一个kernel 来说，虽然 output 是由所有的感受野 of input 卷积之后堆叠而成的一个 [L, W]矩阵，也就是这一个 kernel 和所有的感受野做运算的结果堆叠而成。但是 **简单局部特征堆叠不等于全局特征。** 这也是CNN稀疏链接的特点。
 | 所以我们常说CNN对于那种长序列 long sequence input 不太友好，因为对于两个间隔比较远的 pixels 来说，要是想获得他们之间的关系特征，就需要堆叠很多个卷积层，才能获得他们的关系特征。
 
+
 .. image:: ./pics/CNN_25.jpeg
+    :scale: 30%
+    :align: center
 
 ## categories of Neural Networks
 
@@ -40,11 +44,14 @@ Deep learning is part of a broader family of machine learning methods based o
     +------------------------------------------------+------------------------------------+
 
 .. figure:: ./pics/DL_1.png
+    :scale: 30%
+    :align: center
     
     生成学习
 
 - **关于层与层神经元的连接**
     从结构来说，排除 dropout 影响. ==global features  🆚 local features==
+
     - fully connected NN (FCNN)
         “ **完全连接** ”或有时称为“ **紧密连接** ”。所有可能的连接层都存在到图层，这意味着输入向量的每个输入都会影响输出向量的每个输出。
     - convolutional NN (CNNs)
@@ -78,7 +85,7 @@ Deep learning is part of a broader family of machine learning methods based o
 ## 科学计算
 
 - 为什么使用多维数组， **为什么 batch 一般是64、128或256？**
-    现代计算机都是多核多处理器的，支持多线程和多进程，非常适合矩阵的并行计算。科学计算往往都是基于矩阵的计算，并且会指定一个适当的Batch。例如，**PyTorch视觉处理中通常将Batch指定为64、128或256，这也是为了充分利用计算机资源而考虑的**
+    现代计算机都是多核多处理器的，支持多线程和多进程，非常适合矩阵的并行计算。科学计算往往都是基于矩阵的计算，并且会指定一个适当的Batch。例如， **PyTorch视觉处理中通常将Batch指定为64、128或256，这也是为了充分利用计算机资源而考虑的**
 
 ## parameter tuning
 

@@ -46,9 +46,10 @@
   
   
   
-    <title>Transfer learning &#8212; cocobook  文档</title>
+    <title>Transfer learning &#8212; HomePage</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=83e35b93" />
     <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/katex-math.css?v=91adb8b6" />
@@ -56,6 +57,8 @@
     <script src="../../_static/documentation_options.js?v=7d86a446"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=6dbb43f8"></script>
     <script src="../../_static/translations.js?v=beaddf03"></script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
@@ -83,10 +86,10 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../../index.html" title="cocobook  文档"
+        <a href="../../index.html" title="HomePage"
            class="md-header-nav__button md-logo">
           
-            &nbsp;
+            <i class="md-icon">&#xe869</i>
           
         </a>
       </div>
@@ -95,7 +98,7 @@
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          <span class="md-header-nav__topic">cocobook  文档</span>
+          <span class="md-header-nav__topic">Cocobook</span>
           <span class="md-header-nav__topic"> Transfer learning </span>
         </div>
       </div>
@@ -152,7 +155,11 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">cocobook  文档</a></li>
+          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">HomePage</a></li>
+            
+            <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">AI</a></li>
+            
+            <li class="md-tabs__item"><a href="../../python/index.html" class="md-tabs__link">Python</a></li>
       </ul>
     </div>
   </nav>
@@ -164,14 +171,31 @@
               <div class="md-sidebar__inner">
                 <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../../index.html" title="cocobook 文档" class="md-nav__button md-logo">
+    <a href="../../index.html" title="HomePage" class="md-nav__button md-logo">
       
-        <img src="../../_static/" alt=" logo" width="48" height="48">
+        <i class="md-icon">&#xe869</i>
       
     </a>
     <a href="../../index.html"
-       title="cocobook 文档">cocobook  文档</a>
+       title="HomePage">Cocobook</a>
   </label>
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">AI</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../main.html" class="md-nav__link">Artificial Intelligence, AI</a>
+      
+    
+    </li>
+  </ul>
   
 
 </nav>
@@ -195,11 +219,6 @@
         </li></ul>
             </nav>
         </li>
-    
-<li class="md-nav__item"><a class="md-nav__extra_link" href="../../_sources/AI/DL/transferlearning.rst.txt">显示源代码</a> </li>
-
-<li id="searchbox" class="md-nav__item"></li>
-
   </ul>
 </nav>
               </div>
@@ -211,15 +230,21 @@
             
   <section id="transfer-learning">
 <h1 id="ai-dl-transferlearning--page-root">Transfer learning<a class="headerlink" href="#ai-dl-transferlearning--page-root" title="Link to this heading">¶</a></h1>
-<p><span class="defi">Transfer learning</span> is a machine learning technique where knowledge gained from training a model on one task is applied to a different but related task. In transfer learning, a pre-trained model that has been trained on a large dataset is used as a starting point for a new task instead of training a model from scratch.
-The idea behind transfer learning is that the features learned by a model on one task can be valuable for solving a different task. Instead of randomly initializing the model’s parameters, the pre-trained model’s weights are used as a starting point. These pre-trained models are typically trained on large-scale datasets, such as ImageNet for image classification or Word2Vec for natural language processing, and have learned to extract meaningful and generalizable features.</p>
-<p>!!! question “If we have enough training data on a specific task, transfer learning can also be used to improve the performance of our DNN model. ❌”</p>
-<p>![](./pics/TrL_2.png){width=70%}
-![](./pics/TrL_3.png){width=70%}</p>
+<div class="line-block">
+<div class="line"><span class="defi">Transfer learning</span> is a machine learning technique where knowledge gained from training a model on one task is applied to a different but related task. In transfer learning, a pre-trained model that has been trained on a large dataset is used as a starting point for a new task instead of training a model from scratch.</div>
+<div class="line">The idea behind transfer learning is that the features learned by a model on one task can be valuable for solving a different task. Instead of randomly initializing the model’s parameters, the pre-trained model’s weights are used as a starting point. These pre-trained models are typically trained on large-scale datasets, such as ImageNet for image classification or Word2Vec for natural language processing, and have learned to extract meaningful and generalizable features.</div>
+</div>
+<div class="admonition-if-we-have-enough-training-data-on-a-specific-task-transfer-learning-can-also-be-used-to-improve-the-performance-of-our-dnn-model admonition hint">
+<p class="admonition-title">If we have enough training data on a specific task, transfer learning can also be used to improve the performance of our DNN model. ❌</p>
+</div>
+<a class="reference internal image-reference" href="../../_images/TrL_2.png"><img alt="../../_images/TrL_2.png" class="align-center" src="../../_images/TrL_2.png" style="width: 548.4px; height: 217.2px;"/>
+</a>
+<a class="reference internal image-reference" href="../../_images/TrL_3.png"><img alt="../../_images/TrL_3.png" class="align-center" src="../../_images/TrL_3.png" style="width: 543.6px; height: 228.0px;"/>
+</a>
 <ul class="simple">
 <li><dl class="simple">
 <dt><strong>Pre-training Stage</strong></dt><dd><ul>
-<li><p><span class="defi">Feature extractor layers, **backbone**</span> encode useful information of <strong>original data</strong>.</p></li>
+<li><p><span class="defi">Feature extractor layers</span> , <strong>backbone</strong> encode useful information of <strong>original data</strong> .</p></li>
 <li><p>Remove <span class="defi">original final layers</span> for the original image recognition purpose.</p></li>
 </ul>
 </dd>
@@ -227,7 +252,7 @@ The idea behind transfer learning is that the features learned by a model on one
 </li>
 <li><dl class="simple">
 <dt><strong>Fine-tuning Stage</strong></dt><dd><ul>
-<li><p>Add ==task-specific final layers==.</p></li>
+<li><p>Add <span class="defi">task-specific final layers</span> .</p></li>
 <li><p>Train this new model with <strong>task-specific data</strong>.</p></li>
 </ul>
 </dd>
@@ -236,31 +261,41 @@ The idea behind transfer learning is that the features learned by a model on one
 </ul>
 <p><strong>standard steps:</strong></p>
 <ul class="simple">
-<li><p>Pre-training stage
-1. Prepare large-scale training data $leftrightarrow$ Publicly available  dataset.
-2. Select and train  a deep model with</p></li>
-</ul>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/DL/transferlearning.rst</span>, line 24)</p>
-<p>Bullet list ends without a blank line; unexpected unindent.</p>
-</aside>
-<p>training data $implies$ backbone
-- Fine-tuning</p>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/DL/transferlearning.rst</span>, line 26)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><ol class="arabic simple">
+<li><dl class="simple">
+<dt>Pre-training stage</dt><dd><ol class="arabic simple">
+<li><p>Prepare large-scale training data  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>↔</mo></mrow><annotation encoding="application/x-tex">\leftrightarrow</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">↔</span></span></span></span></span>  Publicly available  dataset.</p></li>
+<li><p>Select and train  a deep model with training data  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\implies</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span></span>  backbone</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Fine-tuning</dt><dd><ol class="arabic simple">
 <li><p>Modify the  model for the target task</p></li>
 <li><p>Fine-tune the  target dataset</p></li>
 </ol>
-</div></blockquote>
-<p>&gt; $xrightarrow{text{on ImageNet-1K }} $ ResNet-50 $xrightarrow{text{Object detector}} $ MS-COCO detection</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p><span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mo minsize="3.0em" stretchy="true">→</mo><mpadded lspace="0.3em" width="+0.6em"><mtext>on ImageNet-1K </mtext></mpadded></mover></mrow><annotation encoding="application/x-tex">\xrightarrow{\text{on ImageNet-1K }}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1.1113em;vertical-align:-0.011em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1003em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">on ImageNet-1K </span></span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg height="0.522em" preserveaspectratio="xMaxYMin slice" viewbox="0 0 400000 522" width="400em" xmlns="http://www.w3.org/2000/svg"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span></span></span></span></span>  ResNet-50  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mo minsize="3.0em" stretchy="true">→</mo><mpadded lspace="0.3em" width="+0.6em"><mtext>Object detector</mtext></mpadded></mover></mrow><annotation encoding="application/x-tex">\xrightarrow{\text{Object detector}}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1.1191em;vertical-align:-0.011em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1081em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">Object detector</span></span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg height="0.522em" preserveaspectratio="xMaxYMin slice" viewbox="0 0 400000 522" width="400em" xmlns="http://www.w3.org/2000/svg"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span></span></span></span></span>  MS-COCO detection</p>
 <section id="backbone">
 <h2 id="backbone">Backbone （骨干网络）<a class="headerlink" href="#backbone" title="Link to this heading">¶</a></h2>
 <p>通常指的是在任务中用于 <strong>:defi:`提取特征` 的主干网络架构</strong>。用于从输入中提取高级特征表示。这些特征表示可以用于后续任务。共同目标是通过层次化的特征提取来提高任务表现。</p>
-<p>![](./pics/TrL_1.png){width=80%}</p>
+<a class="reference internal image-reference" href="../../_images/TrL_1.png"><img alt="../../_images/TrL_1.png" class="align-center" src="../../_images/TrL_1.png" style="width: 553.8px; height: 202.79999999999998px;"/>
+</a>
 <p>Strong backbone → Better performance on the new task!</p>
 <ul class="simple">
 <li><dl class="simple">

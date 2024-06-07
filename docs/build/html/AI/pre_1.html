@@ -49,7 +49,7 @@
     <title>预处理 &#8212; HomePage</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=83e35b93" />
     <link rel="stylesheet" type="text/css" href="../_static/material.css?v=79c92029" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/katex-math.css?v=91adb8b6" />
     <link rel="stylesheet" type="text/css" href="../_static/css/def.css?v=5a9d86bd" />
@@ -279,30 +279,18 @@
 <h2 id="id2">缺失值处理<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
 <p>缺失值补全的方法有均值插补、同类均值插补、建模预测、高维映射、多重插补、极大似然估计、压缩感知和矩阵补全</p>
 <ul class="simple">
-<li><p><span class="defi">drop 缺失值的样本</span></p></li>
-</ul>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/pre_1.rst</span>, line 37)</p>
-<p>Bullet list ends without a blank line; unexpected unindent.</p>
-</aside>
-<p>适用于训练数据量较大并且缺失数据占总数据比例不超过2%的情况
-- <span class="defi">插补</span>
-样本属性的距离是可度量的值, 他的大小增减是具有意义的，numerical</p>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/pre_1.rst</span>, line 40)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><ul class="simple">
-<li><p>所有样本的众数</p></li>
-<li><p>同类样本的众数</p></li>
-</ul>
-</div></blockquote>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/pre_1.rst</span>, line 42)</p>
-<p>Block quote ends without a blank line; unexpected unindent.</p>
-</aside>
-<ul class="simple">
+<li><dl class="simple">
+<dt><span class="defi">drop 缺失值的样本</span></dt><dd><p>适用于训练数据量较大并且缺失数据占总数据比例不超过2%的情况</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><span class="defi">插补</span></dt><dd><p>样本属性的距离是可度量的值, 他的大小增减是具有意义的，numerical
+- 所有样本的众数
+- 同类样本的众数</p>
+</dd>
+</dl>
+</li>
 <li><dl class="simple">
 <dt>计算</dt><dd><ul>
 <li><p>对每个可能值计算概率</p></li>
@@ -377,13 +365,23 @@
 无要求</p>
 <div class="admonition-a-b-ab-o admonition hint">
 <p class="admonition-title">血型 A，B，AB，O</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
 <div class="line-block">
 <div class="line"><strong>One-hot Encoding</strong></div>
 <div class="line">A   (1, 0, 0, 0)， B   (0, 1, 0, 1)</div>
 <div class="line">AB (0, 0, 1, 0)， O   (0, 0, 0, 1)</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<div class="line-block">
 <div class="line"><strong>Binary Encoding</strong></div>
 <div class="line">0A, 1B, 2AB, 3O</div>
 <div class="line">A 00； B 01；AB 10； O 11</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -414,8 +412,10 @@
 <div class="line">梯度下降法： <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∇</mi><mi>w</mi><mo>=</mo><mo>−</mo><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>f</mi></mrow><mrow><mi mathvariant="normal">∂</mi><mi>w</mi></mrow></mfrac><mo>∗</mo><mi>α</mi><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext><mi mathvariant="normal">∇</mi><mi>a</mi><mo>=</mo><mo>−</mo><mi>x</mi><mo>∗</mo><mi>α</mi><mo separator="true">,</mo><mi mathvariant="normal">∇</mi><mi>b</mi><mo>=</mo><mo>−</mo><mi>y</mi><mo>∗</mo><mi>α</mi></mrow><annotation encoding="application/x-tex">\nabla w = -\frac{\partial f}{\partial w}*\alpha \implies \nabla a = -x*\alpha, \nabla b = -y*\alpha</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">∇</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2772em;vertical-align:-0.345em;"></span><span class="mord">−</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9322em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal mtight" style="margin-right:0.02691em;">w</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4461em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">∇</span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">∇</span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em;"></span><span class="mord">−</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span></span></div>
 <div class="line"><span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∵</mo><mi>x</mi><mo>&gt;</mo><mo>&gt;</mo><mi>y</mi><mo>∴</mo><mi mathvariant="normal">∇</mi><mi>a</mi><mo>&gt;</mo><mi mathvariant="normal">∇</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">\because x&gt;&gt;y \therefore\nabla a&gt;\nabla b</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6922em;"></span><span class="mrel amsrm">∵</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8867em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel amsrm">∴</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord">∇</span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">∇</span><span class="mord mathnormal">b</span></span></span></span></span> , a 参数容易跳跃</div>
 </div>
-<img alt="../_images/normalization_1.webp" src="../_images/normalization_1.webp"/>
-<img alt="../_images/normalization_2.PNG" src="../_images/normalization_2.PNG"/>
+<a class="reference internal image-reference" href="../_images/normalization_1.webp"><img alt="../_images/normalization_1.webp" src="../_images/normalization_1.webp" style="width: 374.14px; height: 210.34px;"/>
+</a>
+<a class="reference internal image-reference" href="../_images/normalization_2.PNG"><img alt="../_images/normalization_2.PNG" src="../_images/normalization_2.PNG" style="width: 302.4px; height: 224.4px;"/>
+</a>
 <p><strong>标准化后可以更加容易地得出最优参数以及计算出</strong> J(w,b) <strong>的最小值，从而达到加速收敛的效果</strong></p>
 </dd>
 </dl>
@@ -442,8 +442,12 @@ c-4-3.333-8.333-7.667-13 -13l-13-13l77-155 77-156c66 199.333 139 419.667
 <p class="admonition-title">要求样本属性值数据服从正态分布，这就要求 <strong>样本数量足够多</strong> ，&lt;u&gt;样本数量太少时无法保证能达到此要求&lt;/u&gt;，因此不适合使用Z-score标准化。</p>
 <p>需要注意的是，这里除以 n-1 而不是 n，是因为使用样本对方差进行估计是有偏估计，除以n-1 <strong>是对这个偏差的修正</strong></p>
 </div>
-<figure class="align-default">
-<img alt="AI/pics/normalization.pngZ-scoreNormalization（a.origin;b.afterextractingmean;c.afterz-scoreNormalization）" src="AI/pics/normalization.pngZ-scoreNormalization（a.origin;b.afterextractingmean;c.afterz-scoreNormalization）"/>
+<figure class="align-default" id="id8">
+<a class="reference internal image-reference" href="../_images/normalization.png"><img alt="../_images/normalization.png" src="../_images/normalization.png" style="width: 720.0px; height: 183.0px;"/>
+</a>
+<figcaption>
+<p><span class="caption-text">Z-score Normalization （a. origin; b. after extracting mean; c. after z-score Normalization）</span><a class="headerlink" href="#id8" title="Link to this image">¶</a></p>
+</figcaption>
 </figure>
 <p>[ML 入门：归一化、标准化和正则化]:<a class="reference external" href="https://zhuanlan.zhihu.com/p/29957294">https://zhuanlan.zhihu.com/p/29957294</a></p>
 </section>

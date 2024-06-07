@@ -49,13 +49,16 @@
     <title>Association Analysis &#8212; HomePage</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=83e35b93" />
     <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/katex-math.css?v=91adb8b6" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/def.css?v=5a9d86bd" />
     <script src="../../_static/documentation_options.js?v=7d86a446"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=6dbb43f8"></script>
     <script src="../../_static/translations.js?v=beaddf03"></script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
@@ -155,6 +158,8 @@
           <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">HomePage</a></li>
             
             <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">AI</a></li>
+            
+            <li class="md-tabs__item"><a href="../../python/index.html" class="md-tabs__link">Python</a></li>
       </ul>
     </div>
   </nav>
@@ -231,77 +236,103 @@
             
   <section id="association-analysis">
 <h1 id="ai-ml-association-analysis--page-root">Association Analysis<a class="headerlink" href="#ai-ml-association-analysis--page-root" title="Link to this heading">¶</a></h1>
-<p>==Itemset==。A collection of one or more items. <strong>k-itemset</strong>: An itemset that contains k items.
-==Support count σ==。 Frequency of occurrence of an itemset.
-==Support s==。Fraction of transactions that contain an itemset.
-==Frequent itemset==。An itemset whose support is greater than or equal to a “minsup” threshold.
-==Confidence c==。Measures how often items in Y appear in records that contain X.</p>
-<dl class="simple">
-<dt>!!! p “Rules originating from the same itemset have identical support but can have different confidence.”</dt><dd><p>所以可以分开算。先算 support 后算 confidence。</p>
-</dd>
-</dl>
-<p>==Association Rule==。An implication expression of form X to Y where X and Y are itemsets.
-==Association Rule Mining Task==。Given a set of transactions T, the goal of association rule mining is to find all rules having</p>
+<div class="line-block">
+<div class="line"><span class="defi">Itemset</span> 。A collection of one or more items. <strong>k-itemset</strong>: An itemset that contains k items.</div>
+<div class="line"><span class="defi">Support count σ</span> 。 Frequency of occurrence of an itemset.</div>
+<div class="line"><span class="defi">Support s</span> 。Fraction of transactions that contain an itemset.</div>
+<div class="line"><span class="defi">Frequent itemset</span> 。An itemset whose support is greater than or equal to a “minsup” threshold.</div>
+<div class="line"><span class="defi">Confidence c</span> 。Measures how often items in Y appear in records that contain X.</div>
+</div>
+<div class="admonition-rules-originating-from-the-same-itemset-have-identical-support-but-can-have-different-confidence admonition note">
+<p class="admonition-title">Rules originating from the same itemset have identical support but can have different confidence.</p>
+<p>所以可以分开算。先算 support 后算 confidence。</p>
+</div>
+<div class="line-block">
+<div class="line"><span class="defi">Association Rule</span> 。An implication expression of form X to Y where X and Y are itemsets.</div>
+<div class="line"><span class="defi">Association Rule Mining Task</span> 。Given a set of transactions T, the goal of association rule mining is to find all rules having</div>
+</div>
 <ul class="simple">
 <li><p>support ≥ minsup threshold;</p></li>
 <li><p>confidence ≥ minconf threshold.</p></li>
 </ul>
-<p>&gt; &gt; ![](./pics/AssociaA_2.png){width=60%}
-&gt; &gt;
-&gt; &gt; Compute the support and confidence of the association rule {Milk, Diaper} → {Beer}.
-&gt;
-&gt; N = 5 = the total number of transactions
-&gt; σ({Milk, Bread, Diaper}) = 2.
-&gt; <strong>Support</strong> s({Milk, Bread, Diaper}) = $frac{sigma}{N}=frac{2}{5}$
-&gt; Association Rule = {Milk, Diaper} -&gt; {Beer}
-&gt; <strong>Confidence</strong> c=$cfrac{sigma(MDB)}{sigma(MD)}=frac{2}{3}$</p>
+<div class="admonition-notes admonition hint">
+<p class="admonition-title">notes</p>
+<a class="reference internal image-reference" href="../../_images/AssociaA_2.png"><img alt="../../_images/AssociaA_2.png" src="../../_images/AssociaA_2.png" style="width: 274.2px; height: 121.8px;"/>
+</a>
+<div class="line-block">
+<div class="line">Compute the support and confidence of the association rule {Milk, Diaper} → {Beer}.</div>
+<div class="line">N = 5 = the total number of transactions</div>
+<div class="line">σ({Milk, Bread, Diaper}) = 2.</div>
+<div class="line"><strong>Support</strong> s({Milk, Bread, Diaper}) =  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mi>σ</mi><mi>N</mi></mfrac><mo>=</mo><mfrac><mn>2</mn><mn>5</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\sigma}{N}=\frac{2}{5}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1.0404em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6954em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">σ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">5</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div>
+<div class="line">Association Rule = {Milk, Diaper} -&gt; {Beer}</div>
+<div class="line"><strong>Confidence</strong> c= <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mi>σ</mi><mo stretchy="false">(</mo><mi>M</mi><mi>D</mi><mi>B</mi><mo stretchy="false">)</mo></mrow><mrow><mi>σ</mi><mo stretchy="false">(</mo><mi>M</mi><mi>D</mi><mo stretchy="false">)</mo></mrow></mfrac></mstyle><mo>=</mo><mfrac><mn>2</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\cfrac{\sigma(MDB)}{\sigma(MD)}=\frac{2}{3}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:2.526em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div>
+</div>
+</div>
 <section id="approach">
 <h2 id="approach">approach<a class="headerlink" href="#approach" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><strong>Frequent Itemset Generation</strong>: Generate all itemsets whose &lt;u&gt;support ≥ minsup&lt;/u&gt;.</p></li>
+<li><dl class="simple">
+<dt><strong>Frequent Itemset Generation</strong>: Generate all itemsets whose &lt;u&gt;support ≥ minsup&lt;/u&gt;.</dt><dd><p>Given  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span></span>  items, there are  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>d</mi></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^d − 1</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.9324em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span>  possible candidate itemsets.</p>
+</dd>
+</dl>
+</li>
 </ul>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/ML/association_analysis.rst</span>, line 33)</p>
-<p>Bullet list ends without a blank line; unexpected unindent.</p>
-</aside>
-<p>Given $d$ items, there are $2^d − 1$ possible candidate itemsets.</p>
-<p>![](./pics/AssociaA_1.png){width=65%}</p>
+<a class="reference internal image-reference" href="../../_images/AssociaA_1.png"><img alt="../../_images/AssociaA_1.png" class="align-center" src="../../_images/AssociaA_1.png" style="width: 486.0px; height: 327.0px;"/>
+</a>
 <ul class="simple">
 <li><p><strong>Rule Generation</strong>: Generate &lt;u&gt;high confidence&lt;/u&gt; rules from each frequent itemset.</p></li>
 </ul>
-<p><span class="defi">Brute-force approach</span> 暴力解。列出并求出全部。Computationally prohibitive!
-Each frequent itemset of size $n$ leads to $2^n−2$ association rules X → Y. 每个item都有成为X和Y两种可能，然后减掉X或Y为空的两种情况。</p>
+<div class="line-block">
+<div class="line"><span class="defi">Brute-force approach</span> 暴力解。列出并求出全部。Computationally prohibitive!</div>
+<div class="line">Each frequent itemset of size  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span>  leads to  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2^n−2</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.7477em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span></span>  association rules X → Y. 每个item都有成为X和Y两种可能，然后减掉X或Y为空的两种情况。</div>
+</div>
 <p><span class="defi">Apriori principle</span></p>
 <ul class="simple">
-<li><p>{A} Non-frequenct, $implies$ {AB}, {AC} 更严苛的要求一定是 Non-frequent.【itemset】【support】</p></li>
+<li><p>{A} Non-frequenct,  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\implies</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span></span>  {AB}, {AC} 更严苛的要求一定是 Non-frequent.【itemset】【support】</p></li>
 </ul>
-<p>![](./pics/AssociaA_4.png){width=70%}</p>
+<a class="reference internal image-reference" href="../../_images/AssociaA_4.png"><img alt="../../_images/AssociaA_4.png" class="align-center" src="../../_images/AssociaA_4.png" style="width: 579.0px; height: 354.0px;"/>
+</a>
 <ul class="simple">
-<li><p>If a rule ${X} → {Y−X}$ does not satisfy the confidence threshold, then any rule ${X′} →{Y−X′}$ where ${X′}sub{X}$. must not satisfy the confidence threshold as well.【rule】【confidence】</p></li>
+<li><p>If a rule  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">{</mo><mi>X</mi><mo stretchy="false">}</mo><mo>→</mo><mo stretchy="false">{</mo><mi>Y</mi><mo>−</mo><mi>X</mi><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{X\} → \{Y−X\}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">}</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">}</span></span></span></span></span>  does not satisfy the confidence threshold, then any rule  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">{</mo><mi>X</mi><mtext>′</mtext><mo stretchy="false">}</mo><mo>→</mo><mo stretchy="false">{</mo><mi>Y</mi><mo>−</mo><mi>X</mi><mtext>′</mtext><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{X′\} →\{Y−X′\}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mord">′</span><span class="mclose">}</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mord">′</span><span class="mclose">}</span></span></span></span></span>  where  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">{</mo><mi>X</mi><mtext>′</mtext><mo stretchy="false">}</mo><mo>⊂</mo><mo stretchy="false">{</mo><mi>X</mi><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{X′\}\sub\{X\}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mord">′</span><span class="mclose">}</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⊂</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">}</span></span></span></span></span> . must not satisfy the confidence threshold as well.【rule】【confidence】</p></li>
 </ul>
-<p><span class="defi">Frequent Pattern (FP)-growth algorithm</span>
-Using the data structure <strong>FP-tree</strong> to extract frequent itemsets directly. An FP-tree is a compressed representation of the input. 将相同点连接，逆向找寻</p>
-<p>&gt; &gt; ![](./pics/AssociaA_3.png){width=80%}
-&gt;
-&gt; search A: A=7
-&gt; search AB: 找B再看有没有A =5
-&gt; search AE：先找E再看看有没有A=1+1=2</p>
+<div class="line-block">
+<div class="line"><span class="defi">Frequent Pattern (FP)-growth algorithm</span></div>
+<div class="line">Using the data structure <strong>FP-tree</strong> to extract frequent itemsets directly. An FP-tree is a compressed representation of the input. 将相同点连接，逆向找寻</div>
+</div>
+<div class="admonition-notes admonition hint">
+<p class="admonition-title">notes</p>
+<a class="reference internal image-reference" href="../../_images/AssociaA_3.png"><img alt="../../_images/AssociaA_3.png" class="align-center" src="../../_images/AssociaA_3.png" style="width: 532.0px; height: 351.0px;"/>
+</a>
+<div class="line-block">
+<div class="line">search A: A=7</div>
+<div class="line">search AB: 找B再看有没有A =5</div>
+<div class="line">search AE：先找E再看看有没有A=1+1=2</div>
+</div>
+</div>
 </section>
 <section id="da">
 <h2 id="da">Da<a class="headerlink" href="#da" title="Link to this heading">¶</a></h2>
-<div class="line-block">
-<div class="line-block">
-<div class="line">| Association Rule |</div>
-</div>
-<div class="line">— | — |</div>
-<div class="line">Antecedent | 前因 |</div>
-<div class="line">Consequent |  |</div>
-<div class="line">proximity | 近距离 |</div>
-<div class="line">Itemset Lattice |  |</div>
-<div class="line-block">
-<div class="line">|  |</div>
-</div>
-</div>
+<table>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Association Rule</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Antecedent</p></td>
+<td><p>前因</p></td>
+</tr>
+<tr class="row-odd"><td><p>Consequent</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>proximity</p></td>
+<td><p>近距离</p></td>
+</tr>
+<tr class="row-odd"><td><p>Itemset Lattice</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p>[comp9318 Association Rule Mining](<a class="reference external" href="https://zhuanlan.zhihu.com/p/65155693">https://zhuanlan.zhihu.com/p/65155693</a>)</p>
 </section>
 <section id="association-rule">
@@ -311,40 +342,28 @@ Using the data structure <strong>FP-tree</strong> to extract frequent itemsets d
 </section>
 <section id="support-confidence-framework">
 <h2 id="support-confidence-framework">Support-Confidence Framework<a class="headerlink" href="#support-confidence-framework" title="Link to this heading">¶</a></h2>
-<p>💡 support(itemset) 支持度 AB有关
-confidence(associate rule)置信度 A推B 而不是B推A</p>
-<p><cite>min_sup</cite> : a minimum support threshold $implies$ whether a frequent itemset $L_k$</p>
+<div class="line-block">
+<div class="line">💡 support(itemset) 支持度 AB有关</div>
+<div class="line">confidence(associate rule)置信度 A推B 而不是B推A</div>
+</div>
+<p><cite>min_sup</cite> : a minimum support threshold  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\implies</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span></span>  whether a frequent itemset  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">L_k</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
 <section id="how-to-develop">
 <h3 id="how-to-develop">How to develop<a class="headerlink" href="#how-to-develop" title="Link to this heading">¶</a></h3>
 <ol class="arabic simple">
-<li><p>设定一个minimum support threshold，找到 frequent itemset $L_k$</p></li>
+<li><p>设定一个 minimum support threshold，找到 frequent itemset  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">L_k</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p></li>
 <li><p>Generate Strong Association Rules from the Frequent Itemsets</p></li>
 </ol>
-<ul>
-<li><p>Example</p>
-<blockquote>
-<div><p>support_count({I1,I2})$=#T(I1cup I2)=4$</p>
-<p>(T100，T200，T400，T800</p>
-<p>support({I1,I2})=$frac{text{support_count}({ I1,I2})}{T}=frac{4}{9}$</p>
-</div></blockquote>
-</li>
-</ul>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/ML/association_analysis.rst</span>, line 100)</p>
-<p>Bullet list ends without a blank line; unexpected unindent.</p>
-</aside>
-<aside class="system-message">
-<p class="system-message-title">System Message: SEVERE/4 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/ML/association_analysis.rst</span>, line 100)</p>
-<p>Missing matching underline for section title overline.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>================================
-    $\#T=9$
-    Given min_sup$=\frac{2}{9}$, support({I1,I2})&gt;$\frac{2}{9}\implies$ {I1,I2} is a frequent itemset
-</pre></div>
+<div class="admonition-notes admonition hint">
+<p class="admonition-title">notes</p>
+<div class="line-block">
+<div class="line">support_count({I1,I2}) <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mi mathvariant="normal">#</mi><mi>T</mi><mo stretchy="false">(</mo><mi>I</mi><mn>1</mn><mo>∪</mo><mi>I</mi><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">=\#T(I1\cup I2)=4</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">#</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∪</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord">2</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span></span></div>
+<div class="line">(T100，T200，T400，T800</div>
+<div class="line">support({I1,I2})= <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mtext>support_count</mtext><mo stretchy="false">(</mo><mo stretchy="false">{</mo><mi>I</mi><mn>1</mn><mo separator="true">,</mo><mi>I</mi><mn>2</mn><mo stretchy="false">}</mo><mo stretchy="false">)</mo></mrow><mrow><mi mathvariant="normal">#</mi><mi>T</mi></mrow></mfrac><mo>=</mo><mfrac><mn>4</mn><mn>9</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{\text{support\_count}(\{ I1,I2\})}{\#T}=\frac{4}{9}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1.5331em;vertical-align:-0.4811em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.052em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">#</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.527em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">support_count</span></span><span class="mopen mtight">({</span><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span><span class="mord mtight">1</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span><span class="mord mtight">2</span><span class="mclose mtight">})</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4811em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">9</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></div>
+<div class="line"><span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">#</mi><mi>T</mi><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">\#T=9</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">#</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">9</span></span></span></span></span></div>
+<div class="line">Given min_sup <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mfrac><mn>2</mn><mn>9</mn></mfrac></mrow><annotation encoding="application/x-tex">=\frac{2}{9}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">9</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span> , support({I1,I2})&gt; <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>2</mn><mn>9</mn></mfrac><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\frac{2}{9}\implies</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">9</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span></span>  {I1,I2} is a frequent itemset</div>
 </div>
-</aside>
-<blockquote>
-<div><p>confidence({I1,I2}⇒{I3})$=frac{text{support}({I1,I2,I3})}{text{support}({I1,I2})}=frac{2/9}{4/9}=frac{1}{2}$</p>
-</div></blockquote>
+<p>confidence({I1,I2}⇒{I3}) <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mfrac><mrow><mtext>support</mtext><mo stretchy="false">(</mo><mo stretchy="false">{</mo><mi>I</mi><mn>1</mn><mo separator="true">,</mo><mi>I</mi><mn>2</mn><mo separator="true">,</mo><mi>I</mi><mn>3</mn><mo stretchy="false">}</mo><mo stretchy="false">)</mo></mrow><mrow><mtext>support</mtext><mo stretchy="false">(</mo><mo stretchy="false">{</mo><mi>I</mi><mn>1</mn><mo separator="true">,</mo><mi>I</mi><mn>2</mn><mo stretchy="false">}</mo><mo stretchy="false">)</mo></mrow></mfrac><mo>=</mo><mfrac><mrow><mn>2</mn><mi mathvariant="normal">/</mi><mn>9</mn></mrow><mrow><mn>4</mn><mi mathvariant="normal">/</mi><mn>9</mn></mrow></mfrac><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">=\frac{\text{support}(\{I1,I2,I3\})}{\text{support}(\{I1,I2\})}=\frac{2/9}{4/9}=\frac{1}{2}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.53em;vertical-align:-0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">support</span></span><span class="mopen mtight">({</span><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span><span class="mord mtight">1</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span><span class="mord mtight">2</span><span class="mclose mtight">})</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">support</span></span><span class="mopen mtight">({</span><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span><span class="mord mtight">1</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span><span class="mord mtight">2</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span><span class="mord mtight">3</span><span class="mclose mtight">})</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.53em;vertical-align:-0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4/9</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2/9</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+</div>
 </section>
 </section>
 </section>
