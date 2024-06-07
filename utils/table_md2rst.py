@@ -36,9 +36,10 @@ import re
 
 
 input_ = r"""
-|  ==Generator==  |  ==Discriminator==  |
-|learns the probability distribution of a dataset and generates new samples that are similar to the original data |learn the decision boundary between different classes.|
-|takes in random noise and returns generated a fake image| takes in both real and fake images and returns probabilities with 1 representing authenticity and 0 fake|
+|class|GiveB.=Y|LayE.=N|CanF.=N|HaveL.=Y| :math:`P(C)` |
+|--|--|--|--|--|--|
+|Mammal| :math:`\frac{5+1}{5+2}` | :math:`\frac{5+1}{5+2}` | :math:`\frac{4+1}{5+2}` | :math:`\frac{3+1}{5+2}` | :math:`\frac{5+1}{15+2}` |
+|Non-| :math:`\frac{1+1}{10+2}` | :math:`\frac{1+1}{10+2}` | :math:`\frac{7+1}{10+2}` | :math:`\frac{7+1}{10+2}` | :math:`\frac{10+1}{15+2}` |
 """
 
 data_list = input_.split('\n')[1:-1]

@@ -49,7 +49,7 @@
     <title>模型评估与选择 &#8212; HomePage</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=83e35b93" />
     <link rel="stylesheet" type="text/css" href="../_static/material.css?v=79c92029" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/katex-math.css?v=91adb8b6" />
     <link rel="stylesheet" type="text/css" href="../_static/css/def.css?v=5a9d86bd" />
@@ -60,8 +60,6 @@
     <script src="../_static/design-tabs.js?v=36754332"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="high dimentional DA" href="highd.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="index.html" />
   
    
 
@@ -188,106 +186,7 @@
     <li class="md-nav__item">
     
     
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    <label class="md-nav__link md-nav__link--active" for="__toc"> 模型评估与选择 </label>
-    
-      <a href="#" class="md-nav__link md-nav__link--active">模型评估与选择</a>
-      
-        
-<nav class="md-nav md-nav--secondary">
-    <label class="md-nav__title" for="__toc">"Contents"</label>
-  <ul class="md-nav__list" data-md-scrollfix="">
-        <li class="md-nav__item"><a href="#ai-eva--page-root" class="md-nav__link">模型评估与选择</a><nav class="md-nav">
-              <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#id2" class="md-nav__link">数据划分</a><nav class="md-nav">
-              <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#id3" class="md-nav__link">数据采样</a>
-        </li></ul>
-            </nav>
-        </li>
-        <li class="md-nav__item"><a href="#id4" class="md-nav__link">评估指标</a><nav class="md-nav">
-              <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#id5" class="md-nav__link">分类</a><nav class="md-nav">
-              <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#precision-recall" class="md-nav__link">precision & recall</a><nav class="md-nav">
-              <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#p-r-precision-recall" class="md-nav__link">P-R 曲线, Precision-Recall</a>
-        </li>
-        <li class="md-nav__item"><a href="#roc-auc" class="md-nav__link">ROC & AUC</a>
-        </li>
-        <li class="md-nav__item"><a href="#id12" class="md-nav__link">代价敏感错误率 & 代价曲线</a>
-        </li></ul>
-            </nav>
-        </li>
-        <li class="md-nav__item"><a href="#mse" class="md-nav__link">MSE 系列</a>
-        </li>
-        <li class="md-nav__item"><a href="#mae" class="md-nav__link">MAE</a><nav class="md-nav">
-              <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#mape-mean-absolute-percent-error" class="md-nav__link">MAPE, Mean Absolute Percent Error, 平均绝对百分比误差</a>
-        </li></ul>
-            </nav>
-        </li>
-        <li class="md-nav__item"><a href="#id13" class="md-nav__link">排序问题</a>
-        </li></ul>
-            </nav>
-        </li></ul>
-            </nav>
-        </li>
-        <li class="md-nav__item"><a href="#id14" class="md-nav__link">比较检验</a>
-        </li>
-        <li class="md-nav__item"><a href="#generalization" class="md-nav__link">generalization 泛化性能</a><nav class="md-nav">
-              <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#id15" class="md-nav__link">MSE</a><nav class="md-nav">
-              <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#bias" class="md-nav__link">bias, 偏差</a>
-        </li>
-        <li class="md-nav__item"><a href="#variance" class="md-nav__link">variance, 方差</a>
-        </li>
-        <li class="md-nav__item"><a href="#noise" class="md-nav__link">noise, 噪聲</a>
-        </li></ul>
-            </nav>
-        </li>
-        <li class="md-nav__item"><a href="#bias-variance-dilemma" class="md-nav__link">bias-variance dilemma, 偏差-方差窘境</a>
-        </li>
-        <li class="md-nav__item"><a href="#underfitting" class="md-nav__link">underfitting 欠拟合</a>
-        </li>
-        <li class="md-nav__item"><a href="#overfitting" class="md-nav__link">overfitting, 过拟合 - 高方差</a>
-        </li>
-        <li class="md-nav__item"><a href="#of-vs-uf" class="md-nav__link">OF vs UF</a>
-        </li>
-        <li class="md-nav__item"><a href="#id16" class="md-nav__link">解决方法</a><nav class="md-nav">
-              <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#capacity" class="md-nav__link">capacity 容量</a>
-        </li></ul>
-            </nav>
-        </li></ul>
-            </nav>
-        </li></ul>
-            </nav>
-        </li>
-  </ul>
-</nav>
-      
-    
-    </li>
-    <li class="md-nav__item">
-    
-    
-      <a href="highd.html" class="md-nav__link">high dimentional DA</a>
-      
-    
-    </li>
-    <li class="md-nav__item">
-    
-    
-      <a href="loss.html" class="md-nav__link">Loss</a>
-      
-    
-    </li>
-    <li class="md-nav__item">
-    
-    
-      <a href="pre_1.html" class="md-nav__link">预处理</a>
+      <a href="main.html" class="md-nav__link">Artificial Intelligence, AI</a>
       
     
     </li>
@@ -589,11 +488,11 @@
 <div class="line">Btw <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><msub><mi>F</mi><mi>β</mi></msub></mfrac><mo>=</mo><mfrac><mn>1</mn><mrow><mn>1</mn><mo>+</mo><msup><mi>β</mi><mn>2</mn></msup></mrow></mfrac><mo stretchy="false">(</mo><mfrac><mn>1</mn><mi>P</mi></mfrac><mo>+</mo><mfrac><msup><mi>β</mi><mn>2</mn></msup><mi>R</mi></mfrac><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\frac{1}{F_\beta}=\frac{1}{1+\beta^2}(\frac{1}{P}+\frac{\beta^2}{R})</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1.3932em;vertical-align:-0.5481em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3488em;margin-left:-0.1389em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05278em;">β</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2901em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.5481em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.3262em;vertical-align:-0.4811em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mbin mtight">+</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7463em;"><span style="top:-2.786em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4811em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.415em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.07em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4461em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8913em;"><span style="top:-2.931em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span></span></span></span></span></div>
 </div>
 <aside class="system-message" id="id6">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/eva.rst</span>, line 191); <em><a href="#id7">backlink</a></em></p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/eva.rst</span>, line 191); <em><a href="#id7">backlink</a></em></p>
 <p>Inline interpreted text or phrase reference start-string without end-string.</p>
 </aside>
 <aside class="system-message" id="id8">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/eva.rst</span>, line 192); <em><a href="#id9">backlink</a></em></p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/eva.rst</span>, line 192); <em><a href="#id9">backlink</a></em></p>
 <p>Inline interpreted text or phrase reference start-string without end-string.</p>
 </aside>
 </div>
@@ -743,7 +642,7 @@
 <td><p>0</p></td>
 <td><p>:math:<a href="#id10"><span class="problematic" id="id11">`</span></a>frac{2}{2+2}</p>
 <aside class="system-message" id="id10">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/eva.rst</span>, line 270); <em><a href="#id11">backlink</a></em></p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/eva.rst</span>, line 270); <em><a href="#id11">backlink</a></em></p>
 <p>Inline interpreted text or phrase reference start-string without end-string.</p>
 </aside>
 </td>
@@ -836,7 +735,7 @@ c-4-3.333-8.333-7.667-13 -13l-13-13l77-155 77-156c66 199.333 139 419.667
 <section id="id13">
 <h4 id="id13">排序问题<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h4>
 <aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/eva.rst</span>, line 329)</p>
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/eva.rst</span>, line 329)</p>
 <p>Unknown directive type “question”.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.. question:: ""
     在排序问题中，通常没有一个确定的阈值把得到的结果直接判定为正样本或负样本，而是采用Top N返回结果的Precision值和Recall值来衡量排序模型的性能，即认为模型返回的Top N的结果就是模型判定的正样本，然后计算前N个位置上的准确率Precision@N和前N个位置上的召回率Recall@N
@@ -1145,30 +1044,6 @@ M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
-            <a href="index.html" title="&lt;no title&gt;"
-               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
-               rel="prev">
-              <div class="md-flex__cell md-flex__cell--shrink">
-                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-              </div>
-              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-                <span class="md-flex__ellipsis">
-                  <span
-                      class="md-footer-nav__direction"> "Previous" </span> &lt;no title&gt; </span>
-              </div>
-            </a>
-          
-          
-            <a href="highd.html" title="high dimentional DA"
-               class="md-flex md-footer-nav__link md-footer-nav__link--next"
-               rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
-                class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> "Next" </span> high dimentional DA </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink"><i
-                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
           
         </a>
         

@@ -78,7 +78,7 @@
   <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
   <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
   <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-  <a href="#AI/ML/ensemble_learning" tabindex="1" class="md-skip"> Skip to content </a>
+  <a href="#AI/ML/ensemble_learning_1" tabindex="1" class="md-skip"> Skip to content </a>
   <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
@@ -204,7 +204,7 @@
 <nav class="md-nav md-nav--secondary">
     <label class="md-nav__title" for="__toc">"Contents"</label>
   <ul class="md-nav__list" data-md-scrollfix="">
-        <li class="md-nav__item"><a href="#ai-ml-ensemble-learning--page-root" class="md-nav__link">集成学习</a><nav class="md-nav">
+        <li class="md-nav__item"><a href="#ai-ml-ensemble-learning-1--page-root" class="md-nav__link">集成学习</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#content" class="md-nav__link">Content</a><nav class="md-nav">
               <ul class="md-nav__list">
@@ -242,68 +242,141 @@
           <article class="md-content__inner md-typeset" role="main">
             
   <section id="id1">
-<h1 id="ai-ml-ensemble-learning--page-root">集成学习<a class="headerlink" href="#ai-ml-ensemble-learning--page-root" title="Link to this heading">¶</a></h1>
+<h1 id="ai-ml-ensemble-learning-1--page-root">集成学习<a class="headerlink" href="#ai-ml-ensemble-learning-1--page-root" title="Link to this heading">¶</a></h1>
 <p>将多个分类器的结果统一成一个最终的决策。其中的每个单独的分类器称为 ==基分类器==， 有时又被称为 ==弱分类器==，因为基分类器的错误率要大于集成分类器</p>
 <section id="content">
 <h2 id="content">Content<a class="headerlink" href="#content" title="Link to this heading">¶</a></h2>
 <p><strong>步骤：</strong></p>
-<p>1. <strong>找到误差互相独立的基分类器</strong>
-任何分类模型都可以作为基分类器，但**树形模型**由于结构简单且较易产生随机性所以比较常用
-2. <strong>训练基分类器</strong>
-3. <strong>合并基分类器的结果</strong></p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt><strong>找到误差互相独立的基分类器</strong></dt><dd><p>任何分类模型都可以作为基分类器，但**树形模型**由于结构简单且较易产生随机性所以比较常用</p>
+</dd>
+</dl>
+</li>
+<li><p><strong>训练基分类器</strong></p></li>
+<li><p><strong>合并基分类器的结果</strong></p></li>
+</ol>
 <section id="stacking-voting">
 <h3 id="stacking-voting">stacking &amp; voting<a class="headerlink" href="#stacking-voting" title="Link to this heading">¶</a></h3>
 <p><span class="defi">voting,投票</span></p>
-<p>||硬投票分类器|软投票分类器|
-<a href="#id8"><span class="problematic" id="id9">|--|</span></a>–<a href="#id10"><span class="problematic" id="id11">|--|</span></a>
-<a href="#id12"><span class="problematic" id="id13">|各个弱分类器结果|最终选择的类别|每个类别的估算概率|</span></a>
-<a href="#id14"><span class="problematic" id="id15">|最后结果|得票最多的|平均估算概率最大的|</span></a></p>
+<table>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>硬投票分类器</p></th>
+<th class="head"><p>软投票分类器</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>各个弱分类器结果</p></td>
+<td><p>最终选择的类别</p></td>
+<td><p>每个类别的估算概率</p></td>
+</tr>
+<tr class="row-odd"><td><p>最后结果</p></td>
+<td><p>得票最多的</p></td>
+<td><p>平均估算概率最大的</p></td>
+</tr>
+</tbody>
+</table>
 <p><span class="defi">stacking,串行</span></p>
-<p>把前一个基分类器的结果输出到下一个分类器最终的输出
-将所有基分类器的输出结果相加（或用更复杂的算法融合，比如把各基分类器的输出作为特征，使用逻辑回归作为融合模型进行最后的结果预测）</p>
+<div class="line-block">
+<div class="line">把前一个基分类器的结果输出到下一个分类器最终的输出</div>
+<div class="line">将所有基分类器的输出结果相加（或用更复杂的算法融合，比如把各基分类器的输出作为特征，使用逻辑回归作为融合模型进行最后的结果预测）</div>
+</div>
 </section>
 </section>
 <section id="bagging-boosting">
 <h2 id="bagging-boosting">Bagging &amp; Boosting<a class="headerlink" href="#bagging-boosting" title="Link to this heading">¶</a></h2>
 <p>||Bagging | Boosting|
-<a href="#id16"><span class="problematic" id="id17">|--|</span></a>–<a href="#id18"><span class="problematic" id="id19">|--|</span></a>
+<a href="#id6"><span class="problematic" id="id7">|--|</span></a>–<a href="#id8"><span class="problematic" id="id9">|--|</span></a>
 ||ramdom forest| Gradient Boosting Tree|
 ||单独学习，单独判断，投票决策|迭代思想，样本权重，加强学习|
-<a href="#id20"><span class="problematic" id="id21">|样本选择|训练集是在原始集里&lt;u&gt;有放回&lt;/u&gt;选取，随机相互独立|训练集&lt;u&gt;不变&lt;/u&gt;
-每个样本的&lt;u&gt;权重根据上一轮的分类结果进行调整&lt;/u&gt;|</span></a>
-<a href="#id22"><span class="problematic" id="id23">|样本权重|均匀采样，权重相等|根据错误率来调整，错误率越多的样本权重越大|</span></a>
-<a href="#id24"><span class="problematic" id="id25">|每个弱分类器|权重相等=1|分类误差小的会有更大的权重|</span></a>
-<a href="#id2"><span class="problematic" id="id3">|</span></a>训练方式|并行计算|串行训练</p>
-<aside class="system-message" id="id2">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/ML/ensemble_learning.rst</span>, line 34); <em><a href="#id3">backlink</a></em></p>
-<p>Inline substitution_reference start-string without end-string.</p>
-</aside>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/ML/ensemble_learning.rst</span>, line 43)</p>
-<p>Unexpected indentation.</p>
-</aside>
+<a href="#id10"><span class="problematic" id="id11">|样本选择|训练集是在原始集里&lt;u&gt;有放回&lt;/u&gt;选取，随机相互独立|训练集&lt;u&gt;不变&lt;/u&gt;|</span></a>
+<a href="#id12"><span class="problematic" id="id13">|^|^|每个样本的&lt;u&gt;权重根据上一轮的分类结果进行调整&lt;/u&gt;|</span></a>
+<a href="#id14"><span class="problematic" id="id15">|样本权重|均匀采样，权重相等|根据错误率来调整，错误率越多的样本权重越大|</span></a>
+<a href="#id16"><span class="problematic" id="id17">|每个弱分类器|权重相等=1|分类误差小的会有更大的权重|</span></a>
+<a href="#id18"><span class="problematic" id="id19">|训练方式|并行计算|串行训练|</span></a>
+<a href="#id20"><span class="problematic" id="id21">|^|^|只能顺序生成每个弱分类器，因为后一个的参数需要前一轮的结果|</span></a>
+<a href="#id22"><span class="problematic" id="id23">|消除基分类器的偏差和方差的角度来理|多次采样并分别训练出多个不同模型|提高分类器的表达能力|</span></a>
+<a href="#id24"><span class="problematic" id="id25">|^|减小方差。|减小偏差|</span></a></p>
+<table>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Bagging</p></th>
+<th class="head"><p>Boosting</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td><p>ramdom forest</p></td>
+<td><p>Gradient Boosting Tree</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>单独学习，单独判断，投票决策</p></td>
+<td><p>迭代思想，样本权重，加强学习</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>样本选择</p></td>
+<td rowspan="2"><p>训练集是在原始集里 <strong>有放回</strong> 选取</p>
 <blockquote>
-<div><p>只能顺序生成每个弱分类器，因为后一个的参数需要前一轮的结果|</p>
+<div><p>随机相互独立</p>
 </div></blockquote>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/ML/ensemble_learning.rst</span>, line 44)</p>
-<p>Block quote ends without a blank line; unexpected unindent.</p>
-</aside>
-<p><a href="#id26"><span class="problematic" id="id27">|消除基分类器的偏差和方差的角度来理|多次采样并分别训练出多个不同模型
-减小方差。|提高分类器的表达能力
-减小偏差|</span></a></p>
-<dl class="simple">
-<dt>!!! warning “Boosting 的一个优点是不会过拟合 ❌</dt><dd><p>boosting &amp; bagging 都是组合多个分类器投票的方法，两者都是根据单个分类器的正确率确定其权重 ❌”</p>
-</dd>
-</dl>
+</td>
+<td><p>训练集 <strong>不变</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>每个样本的 <strong>权重根据上一轮的分类结果进行调整</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>样本权重</p></td>
+<td><p>均匀采样，权重相等</p></td>
+<td><p>根据错误率来调整，错误率越多的样本权重越大</p></td>
+</tr>
+<tr class="row-odd"><td><p>每个弱分类器</p></td>
+<td><p>权重相等=1</p></td>
+<td><p>分类误差小的会有更大的权重</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>训练方式</p></td>
+<td rowspan="2"><p>并行计算</p></td>
+<td><p>串行训练</p></td>
+</tr>
+<tr class="row-odd"><td><p>只能顺序生成每个弱分类器，因为后一个的参数需要前一轮的结果</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>消除基分类器的偏差和方差</p>
+<blockquote>
+<div><p>的角度来理</p>
+</div></blockquote>
+</td>
+<td><p>多次采样并分别训练出多个不同模型</p></td>
+<td><p>提高分类器的表达能力</p></td>
+</tr>
+<tr class="row-odd"><td><p>减小方差。</p></td>
+<td><p>减小偏差</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-boosting admonition warning">
+<p class="admonition-title">Boosting 的一个优点是不会过拟合 ❌</p>
+<p>boosting &amp; bagging 都是组合多个分类器投票的方法，两者都是根据单个分类器的正确率确定其权重 ❌</p>
+</div>
 <section id="bagging">
 <h3 id="bagging">Bagging<a class="headerlink" href="#bagging" title="Link to this heading">¶</a></h3>
-<p>训练集分为若干子集，每个基分类器单独学习，单独判断，投票集体决策
-当训练样本数量较少时，子集之间可能有交叠.学的内容可以重叠</p>
+<div class="line-block">
+<div class="line">训练集分为若干子集，每个基分类器单独学习，单独判断，投票集体决策</div>
+<div class="line">当训练样本数量较少时，子集之间可能有交叠.学的内容可以重叠</div>
+</div>
 <section id="rf">
 <h4 id="rf">RF<a class="headerlink" href="#rf" title="Link to this heading">¶</a></h4>
 <p><span class="defi">Random forest</span> is a classification algorithm consisting of many decisions trees. It creates an <strong>uncorrelated</strong> forest of trees whose prediction by <strong>committee</strong> is more accurate than that of any individual tree.
 <span class="defi">bagging</span> &amp; <span class="defi">feature randomness</span></p>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/ML/ensemble_learning_1.rst</span>, line 95)</p>
+<p>Error in “image” directive:
+1 argument(s) required, 0 supplied.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">image</span><span class="p">::</span>
+</pre></div>
+</div>
+</aside>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/ML/ensemble_learning_1.rst</span>, line 96)</p>
+<p>Explicit markup ends without a blank line; unexpected unindent.</p>
+</aside>
 <p>![](./pics/RF_1.png){width=50%}</p>
 </section>
 </section>
@@ -334,20 +407,20 @@
 </dd>
 </dl>
 <aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/ML/ensemble_learning.rst</span>, line 90)</p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/ML/ensemble_learning_1.rst</span>, line 123)</p>
 <p>Definition list ends without a blank line; unexpected unindent.</p>
 </aside>
-<p>&gt; &gt; 给定如图所示的训练数据假设弱分类器由 $x&lt;v,x&gt;v$ 产生，其阈值 $v$ 使该分类器在训练集上分类误差率最低。试用 Adaboost 学习一个强分类器。</p>
+<p>&gt; &gt; 给定如图所示的训练数据假设弱分类器由  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mi>v</mi><mo separator="true">,</mo><mi>x</mi><mo>&gt;</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">x&lt;v,x&gt;v</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span></span>  产生，其阈值  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span></span>  使该分类器在训练集上分类误差率最低。试用 Adaboost 学习一个强分类器。</p>
 </section>
 <section id="gbdt-gradient-boosted">
 <h4 id="gbdt-gradient-boosted">GBDT， Gradient Boosted，梯度提升决策树<a class="headerlink" href="#gbdt-gradient-boosted" title="Link to this heading">¶</a></h4>
-<p><a href="#id4"><span class="problematic" id="id5">**</span></a>核心思想:<a href="#id6"><span class="problematic" id="id7">**</span></a>每一棵树学的是之前所有树==结论和的残差==，这个残差就是一个加预测值后能得真实值的累加量。</p>
-<aside class="system-message" id="id4">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/ML/ensemble_learning.rst</span>, line 95); <em><a href="#id5">backlink</a></em></p>
+<p><a href="#id2"><span class="problematic" id="id3">**</span></a>核心思想:<a href="#id4"><span class="problematic" id="id5">**</span></a>每一棵树学的是之前所有树==结论和的残差==，这个残差就是一个加预测值后能得真实值的累加量。</p>
+<aside class="system-message" id="id2">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/ML/ensemble_learning_1.rst</span>, line 128); <em><a href="#id3">backlink</a></em></p>
 <p>Inline strong start-string without end-string.</p>
 </aside>
-<aside class="system-message" id="id6">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/ML/ensemble_learning.rst</span>, line 95); <em><a href="#id7">backlink</a></em></p>
+<aside class="system-message" id="id4">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/ML/ensemble_learning_1.rst</span>, line 128); <em><a href="#id5">backlink</a></em></p>
 <p>Inline strong start-string without end-string.</p>
 </aside>
 <p>使用残差继续学习，就是GBDT中Gradient Boosted所表达的意思。</p>
