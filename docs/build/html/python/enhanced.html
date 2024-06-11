@@ -46,7 +46,7 @@
   
   
   
-    <title>Script &amp; Module &amp; Package &#8212; HomePage</title>
+    <title>Enhanced Python &#8212; HomePage</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=83e35b93" />
     <link rel="stylesheet" type="text/css" href="../_static/material.css?v=79c92029" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -99,7 +99,7 @@
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           <span class="md-header-nav__topic">Cocobook</span>
-          <span class="md-header-nav__topic"> Script &amp; Module &amp; Package </span>
+          <span class="md-header-nav__topic"> Enhanced Python </span>
         </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
@@ -160,6 +160,8 @@
             <li class="md-tabs__item"><a href="../AI/index.html" class="md-tabs__link">AI</a></li>
             
             <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">Python</a></li>
+            
+            <li class="md-tabs__item"><a href="../NLP/index.html" class="md-tabs__link">NLP</a></li>
       </ul>
     </div>
   </nav>
@@ -209,7 +211,9 @@
 <nav class="md-nav md-nav--secondary">
     <label class="md-nav__title" for="__toc">"Contents"</label>
   <ul class="md-nav__list" data-md-scrollfix="">
-        <li class="md-nav__item"><a href="#python-enhanced--page-root" class="md-nav__link">Script & Module & Package</a><nav class="md-nav">
+        <li class="md-nav__item"><a href="#python-enhanced--page-root" class="md-nav__link">Enhanced Python</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#script-module-package" class="md-nav__link">Script & Module & Package</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#id1" class="md-nav__link">顶层代码</a>
         </li>
@@ -217,21 +221,23 @@
         </li>
         <li class="md-nav__item"><a href="#package" class="md-nav__link">Package</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#id12" class="md-nav__link">“””</a><nav class="md-nav">
+        <li class="md-nav__item"><a href="#init-py" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">__init__.py</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#main-py" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">__main__.py</span></code></a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#import" class="md-nav__link">import</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#init-py" class="md-nav__link"><cite>__init__.py</cite></a>
+        <li class="md-nav__item"><a href="#id2" class="md-nav__link">从内容区分</a>
         </li>
-        <li class="md-nav__item"><a href="#main-py" class="md-nav__link"><cite>__main__.py</cite></a>
+        <li class="md-nav__item"><a href="#id3" class="md-nav__link">从方式区分</a>
         </li></ul>
             </nav>
         </li></ul>
             </nav>
         </li>
-        <li class="md-nav__item"><a href="#import" class="md-nav__link">import</a>
-        </li></ul>
-            </nav>
-        </li>
-        <li class="md-nav__item"><a href="#id33" class="md-nav__link">路径相关</a><nav class="md-nav">
+        <li class="md-nav__item"><a href="#id4" class="md-nav__link">路径相关</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#import-module" class="md-nav__link">import - module 搜索路径</a>
         </li></ul>
@@ -240,6 +246,8 @@
         <li class="md-nav__item"><a href="#others" class="md-nav__link">Others</a>
         </li>
         <li class="md-nav__item"><a href="#todo" class="md-nav__link">Todo</a>
+        </li></ul>
+            </nav>
         </li>
   </ul>
 </nav>
@@ -250,309 +258,232 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  <p># Enhanced Python</p>
+  <section id="enhanced-python">
+<h1 id="python-enhanced--page-root">Enhanced Python<a class="headerlink" href="#python-enhanced--page-root" title="Link to this heading">¶</a></h1>
 <section id="script-module-package">
-<h1 id="python-enhanced--page-root">Script &amp; Module &amp; Package<a class="headerlink" href="#python-enhanced--page-root" title="Link to this heading">¶</a></h1>
-<p>==script 脚本==。是一个包含可执行代码的文件，一个 py 文件，更多时候是指可以直接运行的 py 文件。为一个特定任务写成。
-==顶层代码==。由用户指定的最先开始运行的那一个 py 文件，是应用程序的入口点。<strong>它的`__name__` 被设为 `__main__`</strong>
-==module 模块==。主要是被引用，包含了**相关性较高**的程式码。
-==package 包==。包含了一个或多个的 Module ，并且拥有 <cite>__init__.py</cite>
-==library 库==。</p>
+<h2 id="script-module-package">Script &amp; Module &amp; Package<a class="headerlink" href="#script-module-package" title="Link to this heading">¶</a></h2>
+<p><span class="defi">script 脚本</span> 。是一个包含可执行代码的文件，一个 py 文件，更多时候是指可以直接运行的 py 文件。为一个特定任务写成。
+<span class="defi">顶层代码</span> 。由用户指定的最先开始运行的那一个 py 文件，是应用程序的入口点。 它的 <code class="docutils literal notranslate"><span class="pre">__name__</span></code>  被设为  <code class="docutils literal notranslate"><span class="pre">__main__</span></code>
+<span class="defi">module 模块</span> 。主要是被引用，包含了 <strong>相关性较高</strong> 的程式码。
+<span class="defi">package 包</span> 。包含了一个或多个的 Module ，并且拥有  <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>
+<span class="defi">library 库</span> 。</p>
 <section id="id1">
-<h2 id="id1">顶层代码<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
-<p>==顶层代码==。由用户指定的最先开始运行的那一个 py 文件，是应用程序的入口点。</p>
-<dl>
-<dt>!!! p “顶层代码的`__name__` 被设为 <cite>__main__</cite>。”</dt><dd><p>module 如果是 被 import，它的 <cite>__name__</cite> 就会是它自己名字；如果是以**脚本方式执行**，会把 <cite>__name__ = “__main__”</cite>
-<a href="#id2"><span class="problematic" id="id3">``</span></a>` title=”dir”
-+ A</p>
-<aside class="system-message" id="id2">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 18); <em><a href="#id3">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 21)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><p>A1.py
-A2.py
-+ subA</p>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 24)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><p>a1.py</p>
-</div></blockquote>
-</div></blockquote>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 25)</p>
-<p>Block quote ends without a blank line; unexpected unindent.</p>
-</aside>
-<p><a href="#id4"><span class="problematic" id="id5">``</span></a><a href="#id6"><span class="problematic" id="id7">`</span></a></p>
-<aside class="system-message" id="id4">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 25); <em><a href="#id5">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message" id="id6">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 25); <em><a href="#id7">backlink</a></em></p>
-<p>Inline interpreted text or phrase reference start-string without end-string.</p>
-</aside>
-<p><code class="docutils literal notranslate"><span class="pre">`python</span> <span class="pre">title="A1.py"</span>
-<span class="pre">print(f'in</span> <span class="pre">A1:</span> <span class="pre">{__name__}')</span>
-<span class="pre">`</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">`</span> <span class="pre">python</span> <span class="pre">title="A2.py"</span>
-<span class="pre">from</span> <span class="pre">A1</span> <span class="pre">import</span> <span class="pre">*</span>
-<span class="pre">from</span> <span class="pre">subA.a1</span> <span class="pre">import</span> <span class="pre">*</span>
-<span class="pre">print(f'in</span> <span class="pre">A2:</span> <span class="pre">{__name__}')</span>
-<span class="pre">`</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">`python</span> <span class="pre">title="a1.py"</span>
-<span class="pre">print(f'in</span> <span class="pre">a1:</span> <span class="pre">{__name__}')</span>
-<span class="pre">`</span></code>
-运行 <cite>python A2.py</cite>， A2 是被运行的顶层代码， A1 &amp; a1 时被 import 的module
-<code class="docutils literal notranslate"><span class="pre">`python</span>
-<span class="pre">#</span> <span class="pre">&gt;&gt;&gt;</span> <span class="pre">in</span> <span class="pre">A1:</span> <span class="pre">A1</span>
-<span class="pre">#</span> <span class="pre">&gt;&gt;&gt;</span> <span class="pre">in</span> <span class="pre">a2:</span> <span class="pre">subA.a2</span>  <span class="pre">#</span> <span class="pre">如果有上层，就会把上层文件也展示</span>
-<span class="pre">#</span> <span class="pre">&gt;&gt;&gt;</span> <span class="pre">in</span> <span class="pre">A2:</span> <span class="pre">__main__</span>  <span class="pre">#</span> <span class="pre">A2</span> <span class="pre">是被运行的顶层代码，被改为</span> <span class="pre">`__main__`</span>
-<span class="pre">`</span></code></p>
-<dl class="simple">
-<dt>!!! p “”</dt><dd><p>可以利用`if __name__ :defi:` ‘__main__’:<cite>来控制 **执行** 和 **被引用时** 的运行的代码内容。
-最好用 `main</cite> 进行封装，再调用。如果直接放在 <cite>if __name__ ` ‘__main__’:</cite> 下的变量会成为**全局变量**。</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p>!!! quote “<cite>__main__.py</cite> in package 参见 package section”</p>
+<h3 id="id1">顶层代码<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<p><span class="defi">顶层代码</span> 。由用户指定的最先开始运行的那一个 py 文件，是应用程序的入口点。</p>
+<div class="admonition-name-main admonition note">
+<p class="admonition-title">顶层代码的 <code class="docutils literal notranslate"><span class="pre">__name__</span></code>  被设为  <code class="docutils literal notranslate"><span class="pre">__main__</span></code> 。”</p>
+<p>module 如果是 被 import，它的  <code class="docutils literal notranslate"><span class="pre">__name__</span></code>  就会是它自己名字；如果是以 <strong>脚本方式执行</strong>，会把  <code class="docutils literal notranslate"><span class="pre">__name__</span> <span class="pre">=</span> <span class="pre">"__main__"</span></code></p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">dir</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>+ A
+    A1.py
+    A2.py
+    + subA
+        a1.py
+</pre></div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">dirA1.py</span><a class="headerlink" href="#id6" title="Link to this code">¶</a></div>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'in A1: </span><span class="si">{</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">A2.py</span><a class="headerlink" href="#id7" title="Link to this code">¶</a></div>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">A1</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">subA.a1</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'in A2: </span><span class="si">{</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">a1.py</span><a class="headerlink" href="#id8" title="Link to this code">¶</a></div>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'in a1: </span><span class="si">{</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>运行  <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">A2.py</span></code> ， A2 是被运行的顶层代码， A1 &amp; a1 时被 import 的module</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">in A1: A1</span>
+<span class="go">in a2: subA.a2  # 如果有上层，就会把上层文件也展示</span>
+<span class="go">in A2: __main__  # A2 是被运行的顶层代码，被改为  ``__main__``</span>
+</pre></div>
+</div>
+<div class="admonition-notes admonition note">
+<p class="admonition-title">notes</p>
+<p>可以利用 <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">:defi:`</span> <span class="pre">'__main__':</span></code> 来控制 <strong>执行</strong> 和 <strong>被引用时</strong> 的运行的代码内容。
+最好用  <code class="docutils literal notranslate"><span class="pre">main</span></code>  进行封装，再调用。如果直接放在  <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">`</span> <span class="pre">'__main__':</span></code>  下的变量会成为 <strong>全局变量</strong>。</p>
+</div>
+</div>
+<div class="admonition-main-py-in-package-package-section admonition note">
+<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">__main__.py</span></code>  in package 参见 package section</p>
+</div>
 </section>
 <section id="module">
-<h2 id="module">Module<a class="headerlink" href="#module" title="Link to this heading">¶</a></h2>
-<p>==module 模块==。主要是被引用，包含了**相关性较高**的程式码。</p>
+<h3 id="module">Module<a class="headerlink" href="#module" title="Link to this heading">¶</a></h3>
+<p><span class="defi">module 模块</span> 。主要是被引用，包含了 <strong>相关性较高</strong> 的程式码。</p>
 <ul class="simple">
-<li><p>在**模块内部**，模块名 通过全局变量 <cite>__name__</cite> 获取.</p></li>
-<li><p>每个模块都有自己的**私有命名空间**，它会被用作模块中定义的所有函数的全局命名空间。</p></li>
+<li><p>在 <strong>模块内部</strong> ，模块名 通过全局变量  <code class="docutils literal notranslate"><span class="pre">__name__</span></code>  获取.</p></li>
+<li><p>每个模块都有自己的 <strong>私有命名空间</strong> ，它会被用作模块中定义的所有函数的全局命名空间。</p></li>
 </ul>
 </section>
 <section id="package">
-<h2 id="package">Package<a class="headerlink" href="#package" title="Link to this heading">¶</a></h2>
-<p>==package 包==。包含了一个或多个的 Module ，并且拥有 <cite>__init__.py</cite>。</p>
+<h3 id="package">Package<a class="headerlink" href="#package" title="Link to this heading">¶</a></h3>
+<p><span class="defi">package 包</span> 。包含了一个或多个的 Module ，并且拥有  <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> 。</p>
 <p>但是一个比较齐全的包是：</p>
-<p><a href="#id8"><span class="problematic" id="id9">``</span></a><a href="#id10"><span class="problematic" id="id11">`</span></a>python
-“””
-+ package</p>
-<aside class="system-message" id="id8">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 68); <em><a href="#id9">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message" id="id10">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 68); <em><a href="#id11">backlink</a></em></p>
-<p>Inline interpreted text or phrase reference start-string without end-string.</p>
-</aside>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 71)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><p>__init__.py
-__main__.py
-module1.py</p>
-</div></blockquote>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 74)</p>
-<p>Block quote ends without a blank line; unexpected unindent.</p>
-</aside>
-<section id="id12">
-<h3 id="id12">“””<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
-<section id="init-py">
-<h4 id="init-py"><cite>__init__.py</cite><a class="headerlink" href="#init-py" title="Link to this heading">¶</a></h4>
-<p>!!! danger “需要有 <cite>__init__.py</cite> 文件才能让 Python 将包含该文件的目录当作包来处理”</p>
-<p>从一个 package 里面调用东西的时候，<cite>__init__.py</cite> 的代码会**被首先执行**.
-能帮助 package 完成 <strong>批量导入和规范化导入</strong></p>
-<dl>
-<dt>!!! warning “其可见性的维护是靠一套需要大家自觉遵守的”约定“”</dt><dd><p>[Python中的__all__]: 使用 <cite>from xxx import *</cite> 导入该文件时，只会导入 <cite>__all__</cite> 列出的成员，可以其他成员都被排除在外。
-但是直接定位到精确调用是可以的</p>
-<dl class="simple">
-<dt>!!! p “”</dt><dd><p>修改一个暴露的接口只修改一行，方便版本控制的时候看 diff</p>
-</dd>
-</dl>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 91)</p>
-<p>Definition list ends without a blank line; unexpected unindent.</p>
-</aside>
-<p><a href="#id13"><span class="problematic" id="id14">``</span></a>` title=”dir”
-+ A</p>
-<aside class="system-message" id="id13">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 91); <em><a href="#id14">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 93)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><p>__init__.py
-A1.py
-A2.py
-+ subA</p>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 97)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><p>a1.py
-__init___.py</p>
-</div></blockquote>
-</div></blockquote>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 99)</p>
-<p>Block quote ends without a blank line; unexpected unindent.</p>
-</aside>
-<p><a href="#id15"><span class="problematic" id="id16">``</span></a><a href="#id17"><span class="problematic" id="id18">`</span></a></p>
-<aside class="system-message" id="id15">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 99); <em><a href="#id16">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message" id="id17">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 99); <em><a href="#id18">backlink</a></em></p>
-<p>Inline interpreted text or phrase reference start-string without end-string.</p>
-</aside>
-<p><a href="#id19"><span class="problematic" id="id20">``</span></a><a href="#id21"><span class="problematic" id="id22">`</span></a>python title=”subA.a1.py”
-def f1():</p>
-<aside class="system-message" id="id19">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 101); <em><a href="#id20">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message" id="id21">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 101); <em><a href="#id22">backlink</a></em></p>
-<p>Inline interpreted text or phrase reference start-string without end-string.</p>
-</aside>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 103)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><p>print(“F1”)</p>
-</div></blockquote>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 104)</p>
-<p>Block quote ends without a blank line; unexpected unindent.</p>
-</aside>
-<dl class="simple">
-<dt>def f2():</dt><dd><p>print(“F2”)</p>
-</dd>
-</dl>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 106)</p>
-<p>Definition list ends without a blank line; unexpected unindent.</p>
-</aside>
-<p><a href="#id23"><span class="problematic" id="id24">``</span></a><a href="#id25"><span class="problematic" id="id26">`</span></a></p>
-<aside class="system-message" id="id23">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 106); <em><a href="#id24">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message" id="id25">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 106); <em><a href="#id26">backlink</a></em></p>
-<p>Inline interpreted text or phrase reference start-string without end-string.</p>
-</aside>
-<p><a href="#id27"><span class="problematic" id="id28">``</span></a><a href="#id29"><span class="problematic" id="id30">`</span></a>python title=”subA.__init__.py”
-# 在 package 级别暴露接口
-from sub.a1 import *
-__all__ = [</p>
-<aside class="system-message" id="id27">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 109); <em><a href="#id28">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message" id="id29">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 109); <em><a href="#id30">backlink</a></em></p>
-<p>Inline interpreted text or phrase reference start-string without end-string.</p>
-</aside>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 113)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><p>“f1”</p>
-</div></blockquote>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 114)</p>
-<p>Block quote ends without a blank line; unexpected unindent.</p>
-</aside>
-<aside class="system-message">
-<p class="system-message-title">System Message: SEVERE/4 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 115)</p>
-<p>Unexpected section title.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>]
-```
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>+ package
+    __init__.py
+    __main__.py
+    module1.py
 </pre></div>
 </div>
-</aside>
-<p>在 package 级别暴露接口，module level 也类似。如果采用`from package import <a href="#id31"><span class="problematic" id="id32">*</span></a>`
-<code class="docutils literal notranslate"><span class="pre">`python</span> <span class="pre">title="A1.py"</span>
-<span class="pre">from</span> <span class="pre">subA</span> <span class="pre">import</span> <span class="pre">*</span>
-<span class="pre">f1()</span>
-<span class="pre">#</span> <span class="pre">&gt;&gt;&gt;</span> <span class="pre">F1</span>  <span class="pre">#</span> <span class="pre">成功了</span>
-<span class="pre">f2()</span>
-<span class="pre">#</span> <span class="pre">&gt;&gt;&gt;</span> <span class="pre">NameError:</span> <span class="pre">name</span> <span class="pre">'f2'</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">defined.</span> <span class="pre">Did</span> <span class="pre">you</span> <span class="pre">mean:</span> <span class="pre">'f1'?</span>
-<span class="pre">`</span></code>
-如果采用 <cite>from package.module import func</cite> 精确调用
-<code class="docutils literal notranslate"><span class="pre">`python</span> <span class="pre">title="A2.py"</span>
-<span class="pre">from</span> <span class="pre">subA.a1</span> <span class="pre">import</span> <span class="pre">f1,</span> <span class="pre">f2</span>
-<span class="pre">f1()</span>
-<span class="pre">#</span> <span class="pre">&gt;&gt;&gt;</span> <span class="pre">F1</span>
-<span class="pre">f2()</span>
-<span class="pre">#</span> <span class="pre">&gt;&gt;&gt;</span> <span class="pre">F2</span>
-<span class="pre">`</span></code></p>
-<aside class="system-message" id="id31">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 116); <em><a href="#id32">backlink</a></em></p>
-<p>Inline emphasis start-string without end-string.</p>
-</aside>
-</dd>
-</dl>
+<section id="init-py">
+<h4 id="init-py"><code class="docutils literal notranslate"><span class="pre">__init__.py</span></code><a class="headerlink" href="#init-py" title="Link to this heading">¶</a></h4>
+<div class="admonition-init-py-python admonition danger">
+<p class="admonition-title">需要有  <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>  文件才能让 Python 将包含该文件的目录当作包来处理</p>
+</div>
+<div class="line-block">
+<div class="line">从一个 package 里面调用东西的时候， <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>  的代码会 <strong>被首先执行</strong>.</div>
+<div class="line">能帮助 package 完成 <strong>批量导入和规范化导入</strong></div>
+</div>
+<div class="admonition- admonition warning">
+<p class="admonition-title">其可见性的维护是靠一套需要大家自觉遵守的”约定”</p>
+<div class="line-block">
+<div class="line">[Python中的__all__]: 使用  <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">xxx</span> <span class="pre">import</span> <span class="pre">*</span></code>  导入该文件时，只会导入  <code class="docutils literal notranslate"><span class="pre">__all__</span></code>  列出的成员，可以其他成员都被排除在外。</div>
+<div class="line">但是直接定位到精确调用是可以的</div>
+</div>
+<div class="admonition-notes admonition note">
+<p class="admonition-title">notes</p>
+<p>修改一个暴露的接口只修改一行，方便版本控制的时候看 diff</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">dir</span><a class="headerlink" href="#id9" title="Link to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>+ A
+    __init__.py
+    A1.py
+    A2.py
+    + subA
+        a1.py
+        __init___.py
+</pre></div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">subA.a1.py</span><a class="headerlink" href="#id10" title="Link to this code">¶</a></div>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f1</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"F1"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">f2</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"F2"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">subA.__init__.py</span><a class="headerlink" href="#id11" title="Link to this code">¶</a></div>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># 在 package 级别暴露接口</span>
+<span class="kn">from</span> <span class="nn">sub.a1</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"f1"</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>在 package 级别暴露接口，module level 也类似。</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<p>如果采用 <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">package</span> <span class="pre">import</span> <span class="pre">*</span></code></p>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-text">A1.py</span><a class="headerlink" href="#id12" title="Link to this code">¶</a></div>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">subA</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span><span class="p">()</span>
+<span class="go">F1  # 成功了</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span><span class="p">()</span>
+<span class="go">NameError: name 'f2' is not defined.</span>
+<span class="go">Did you mean: 'f1'?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<p>如果采用  <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">package.module</span> <span class="pre">import</span> <span class="pre">func</span></code>  精确调用</p>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-text">A2.py</span><a class="headerlink" href="#id13" title="Link to this code">¶</a></div>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">subA.a1</span> <span class="kn">import</span> <span class="n">f1</span><span class="p">,</span> <span class="n">f2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f1</span><span class="p">()</span>
+<span class="go">F1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f2</span><span class="p">()</span>
+<span class="go">F2</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="main-py">
-<h4 id="main-py"><cite>__main__.py</cite><a class="headerlink" href="#main-py" title="Link to this heading">¶</a></h4>
-<p><cite>python -m package</cite>。 使用 <cite>-m</cite> 从命令行直接调用软件包本身时，将执行 <cite>__main__.py</cite>。</p>
-<p><cite>__main__.py</cite> 的内容通常不会用 <cite>if __name__ :defi:</cite> ‘__main__’` 块围起来。相反，这些文件会保持简短**并从其他模块导入函数来执行。 这样其他模块就可以很容易地进行单元测试并可以适当地重用。**</p>
-<p>!!! p “package 里的 module 的单元测试是在 <cite>__main__.py</cite> 进行。”</p>
-</section>
+<h4 id="main-py"><code class="docutils literal notranslate"><span class="pre">__main__.py</span></code><a class="headerlink" href="#main-py" title="Link to this heading">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">package</span></code> 。 使用  <code class="docutils literal notranslate"><span class="pre">-m</span></code>  从命令行直接调用软件包本身时，将执行  <code class="docutils literal notranslate"><span class="pre">__main__.py</span></code> 。</p>
+<p><code class="docutils literal notranslate"><span class="pre">__main__.py</span></code>  的内容通常不会用  <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__＝＝'__main__'</span></code>  块围起来。相反，这些文件会保持简短 <strong>并从其他模块导入函数来执行。 这样其他模块就可以很容易地进行单元测试并可以适当地重用。</strong></p>
+<div class="admonition-package-module-main-py admonition note">
+<p class="admonition-title">package 里的 module 的单元测试是在  <code class="docutils literal notranslate"><span class="pre">__main__.py</span></code>  进行.</p>
+</div>
 </section>
 </section>
 <section id="import">
-<h2 id="import">import<a class="headerlink" href="#import" title="Link to this heading">¶</a></h2>
-<p>为了**快速加载模块（不是加速执行）**，Python 把**模块的编译版本**缓存在 <cite>__pycache__ dir</cite> 中，文件名为 <cite>module.version.pyc，version</cite> 对编译文件格式进行编码
-&gt; CPython 的 3.3 发行版中，spam.py 的编译版本 ` <cite>__pycache__/spam.cpython-33.pyc</cite></p>
-<dl class="simple">
-<dt>!!! quote “为什么没有 运行脚本的已编译档案？”</dt><dd><p>运行脚本 当作程式的进入点，所以每一次执行 <cite>python xxx.py</cite> 指令时，Python编译器都要进行编译，所以没有将 <cite>xxx.py</cite> 进行快取的动作。</p>
-</dd>
-</dl>
-<aside class="system-message">
-<p class="system-message-title">System Message: SEVERE/4 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 151)</p>
-<p>Title level inconsistent:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">从内容区分</span>
-<span class="o">^^^^^^^^^^^^</span>
-</pre></div>
+<h3 id="import">import<a class="headerlink" href="#import" title="Link to this heading">¶</a></h3>
+<p>为了 <strong>快速加载模块（不是加速执行）</strong> ，Python 把 <strong>模块的编译版本</strong> 缓存在  <code class="docutils literal notranslate"><span class="pre">__pycache__</span> <span class="pre">dir</span></code>  中，文件名为  <code class="docutils literal notranslate"><span class="pre">module.version.pyc，version</span></code>  对编译文件格式进行编码</p>
+<div class="admonition-notes admonition hint">
+<p class="admonition-title">notes</p>
+<p>CPython 的 3.3 发行版中，spam.py 的编译版本 ==  <code class="docutils literal notranslate"><span class="pre">__pycache__/spam.cpython-33.pyc</span></code></p>
 </div>
-</aside>
+<div class="admonition- admonition note">
+<p class="admonition-title">为什么没有 运行脚本的已编译档案？</p>
+<p>运行脚本 当作程式的进入点，所以每一次执行  <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">xxx.py</span></code>  指令时，Python编译器都要进行编译，所以没有将  <code class="docutils literal notranslate"><span class="pre">xxx.py</span></code>  进行快取的动作。</p>
+</div>
+<section id="id2">
+<h4 id="id2">从内容区分<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h4>
 <ul class="simple">
-<li><p><cite>import module</cite> = 调用 》 <cite>module.specific_func()</cite></p></li>
-<li><p><cite>from module import specific_func</cite> = 调用 》 <cite>specific_func()</cite></p></li>
-<li><p><cite>from module import *</cite> = 调用 》 <cite>specific_func()</cite></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">module</span></code>  = 调用 》  <code class="docutils literal notranslate"><span class="pre">module.specific_func()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">module</span> <span class="pre">import</span> <span class="pre">specific_func</span></code>  = 调用 》  <code class="docutils literal notranslate"><span class="pre">specific_func()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">module</span> <span class="pre">import</span> <span class="pre">*</span></code>  = 调用 》  <code class="docutils literal notranslate"><span class="pre">specific_func()</span></code></p></li>
 </ul>
-<p>!!! warning “尽量不要用 <cite>from module import *</cite>，这种方式向解释器导入了一批未知的名称，可能会覆盖已经定义的名称。”</p>
-<p>!!! p “<cite>from module import *</cite> 会导入**所有不以下划线（_）开头**的名称。”</p>
-<dl class="simple">
-<dt>!!! danger “”</dt><dd><ul class="simple">
-<li><p><cite>from package import item</cite> 时，item 可以是包的子模块（或子包），也可以是包中定义的函数、类或变量等其他名称。</p></li>
-<li><p><cite>import item.subitem.subsubitem</cite> 时，除最后一项外，<strong>每个 item 都必须是包；最后一项可以是模块或包</strong>，但不能是上一项中定义的类、函数或变量。</p></li>
-</ul>
-</dd>
-</dl>
-<aside class="system-message">
-<p class="system-message-title">System Message: SEVERE/4 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 166)</p>
-<p>Title level inconsistent:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">从方式区分</span>
-<span class="o">^^^^^^^^^^^^</span>
-</pre></div>
+<div class="admonition-from-module-import admonition warning">
+<p class="admonition-title">尽量不要用  <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">module</span> <span class="pre">import</span> <span class="pre">*</span></code> ，这种方式向解释器导入了一批未知的名称，可能会覆盖已经定义的名称。</p>
 </div>
-</aside>
+<div class="admonition-from-module-import admonition note">
+<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">module</span> <span class="pre">import</span> <span class="pre">*</span></code>  会导入 <strong>所有不以下划线（_）开头</strong> 的名称。</p>
+</div>
+<div class="admonition-notes admonition danger">
+<p class="admonition-title">notes</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">package</span> <span class="pre">import</span> <span class="pre">item</span></code>  时，item 可以是包的子模块（或子包），也可以是包中定义的函数、类或变量等其他名称。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">item.subitem.subsubitem</span></code>  时，除最后一项外， <strong>每个 item 都必须是包；最后一项可以是模块或包</strong> ，但不能是上一项中定义的类、函数或变量。</p></li>
+</ul>
+</div>
+</section>
+<section id="id3">
+<h4 id="id3">从方式区分<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h4>
 <p>See 路径相关的 section</p>
 <ul class="simple">
 <li><p>绝对导入</p></li>
@@ -560,199 +491,159 @@ __all__ = [</p>
 </ul>
 </section>
 </section>
-<section id="id33">
-<h1 id="id33">路径相关<a class="headerlink" href="#id33" title="Link to this heading">¶</a></h1>
-<dl class="simple">
-<dt>!!! danger “如果不是从脚本所在路径 <cite>python ./xxx.py</cite> 运行脚本，就会有 working directory &amp; script path 区别”</dt><dd><p>用户在磁盘上寻找文件或子目录时，所历经的线路叫路径。
-目录和文件夹是一个意思</p>
-</dd>
-</dl>
-<p>==工作目录 working directory cwd==。用户当前目录。<cite>os.getcwd()</cite>
-==脚本路径 script path==。脚本文件所在的路径。 <cite>__file__</cite>
-==系统路径 system path sys:defi:<cite>。操作系统用来查找**可执行文件和库文件**的一组目录路径。`sys.path:List</cite></p>
+</section>
+<section id="id4">
+<h2 id="id4">路径相关<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<div class="admonition-python-xxx-py-working-directory-script-path admonition danger">
+<p class="admonition-title">如果不是从脚本所在路径  <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">./xxx.py</span></code>  运行脚本，就会有 working directory &amp; script path 区别</p>
+<div class="line-block">
+<div class="line">用户在磁盘上寻找文件或子目录时，所历经的线路叫路径。</div>
+<div class="line">目录和文件夹是一个意思</div>
+</div>
+</div>
+<p><span class="defi">工作目录 working directory cwd</span> 。用户当前目录。 <code class="docutils literal notranslate"><span class="pre">os.getcwd()</span></code>
+<span class="defi">脚本路径 script path</span> 。脚本文件所在的路径。  <code class="docutils literal notranslate"><span class="pre">__file__</span></code>
+<span class="defi">系统路径 system path sys</span> 。操作系统用来查找 <strong>可执行文件和库文件</strong> 的一组目录路径。 <code class="docutils literal notranslate"><span class="pre">sys.path:List</span></code></p>
 <ul class="simple">
-<li><p>加入sys <cite>sys.path.append(new_path)</cite></p></li>
-<li><p>查看 <cite>sys.path</cite></p></li>
+<li><p>加入sys  <code class="docutils literal notranslate"><span class="pre">sys.path.append(new_path)</span></code></p></li>
+<li><p>查看  <code class="docutils literal notranslate"><span class="pre">sys.path</span></code></p></li>
 </ul>
 <p>【process】</p>
 <ul class="simple">
 <li><dl class="simple">
-<dt>程序将&lt;u&gt;脚本所在的目录&lt;/u&gt;加入到 &lt;u&gt;sys&lt;/u&gt; 中，用来查找**可执行文件和库文件**</dt><dd><p><cite>os.path.dirname(__file__) ` sys.path[0]</cite></p>
+<dt>程序将&lt;u&gt;脚本所在的目录&lt;/u&gt;加入到 &lt;u&gt;sys&lt;/u&gt; 中，用来查找 <strong>可执行文件和库文件</strong></dt><dd><p><code class="docutils literal notranslate"><span class="pre">os.path.dirname(__file__)</span> <span class="pre">==</span> <span class="pre">sys.path[0]</span></code></p>
 </dd>
 </dl>
 </li>
 <li><p>程序会实行&lt;u&gt;脚本里的代码&lt;/u&gt;，在&lt;u&gt;cwd&lt;/u&gt; 进行查找创造文件。</p></li>
 </ul>
-<p>&lt;div class=”grid” style=”grid-template-columns: repeat(3, 1fr) !important;” markdown&gt;
-<a href="#id34"><span class="problematic" id="id35">``</span></a>` title=”dir”
-+ A</p>
-<aside class="system-message" id="id34">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 194); <em><a href="#id35">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 197)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><p>A1.py
-+ subA</p>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 199)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><p>a1.py</p>
-</div></blockquote>
-</div></blockquote>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 200)</p>
-<p>Block quote ends without a blank line; unexpected unindent.</p>
-</aside>
-<p><a href="#id36"><span class="problematic" id="id37">``</span></a><a href="#id38"><span class="problematic" id="id39">`</span></a></p>
-<aside class="system-message" id="id36">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 200); <em><a href="#id37">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message" id="id38">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 200); <em><a href="#id39">backlink</a></em></p>
-<p>Inline interpreted text or phrase reference start-string without end-string.</p>
-</aside>
-<p><a href="#id40"><span class="problematic" id="id41">``</span></a><a href="#id42"><span class="problematic" id="id43">`</span></a>python title=”A1.py”
-import os, sys</p>
-<aside class="system-message" id="id40">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 202); <em><a href="#id41">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message" id="id42">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 202); <em><a href="#id43">backlink</a></em></p>
-<p>Inline interpreted text or phrase reference start-string without end-string.</p>
-</aside>
-<dl>
-<dt>if __name__ == “__main__”:</dt><dd><p>print(f’working_directory = {os.getcwd()}’)
-print(f’script_path = {__file__}’ )
-print(f’system_path[0] = {sys.path[0]}’)
-with open(‘1.txt’, ‘w’):</p>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 210)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><p>…</p>
-</div></blockquote>
-</dd>
-</dl>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 211)</p>
-<p>Definition list ends without a blank line; unexpected unindent.</p>
-</aside>
-<p><a href="#id44"><span class="problematic" id="id45">``</span></a><a href="#id46"><span class="problematic" id="id47">`</span></a></p>
-<aside class="system-message" id="id44">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 211); <em><a href="#id45">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message" id="id46">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 211); <em><a href="#id47">backlink</a></em></p>
-<p>Inline interpreted text or phrase reference start-string without end-string.</p>
-</aside>
-<p>&lt;/div&gt;</p>
-<p>在 subA 底下运行 <cite>A1.py</cite> <cite>…/python.exe …/A/A1.py</cite></p>
-<p><code class="docutils literal notranslate"><span class="pre">`python</span>
-<span class="pre">&gt;&gt;&gt;</span> <span class="pre">working_directory</span> <span class="pre">=</span> <span class="pre">...\A\subA</span>
-<span class="pre">======================================================================</span>
-<span class="pre">#</span> <span class="pre">&gt;&gt;&gt;</span> <span class="pre">script_path</span> <span class="pre">=</span> <span class="pre">...\A\A1.py</span>
-<span class="pre">&gt;&gt;&gt;</span> <span class="pre">system_path[0]</span> <span class="pre">=</span> <span class="pre">...\A</span>
-<span class="pre">======================================================</span>
-<span class="pre">#</span> <span class="pre">&gt;&gt;&gt;</span> <span class="pre">1.txt</span> <span class="pre">在</span> <span class="pre">subA</span> <span class="pre">底下，</span> <span class="pre">#</span> <span class="pre">在工作目录对应进行创建</span>
-<span class="pre">`</span></code></p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-text">dir</span><a class="headerlink" href="#id14" title="Link to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>+ A
+    A1.py
+    + subA
+        a1.py
+</pre></div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-text">A1.py</span><a class="headerlink" href="#id15" title="Link to this code">¶</a></div>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
+
+<span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'working_directory = </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'script_path = </span><span class="si">{</span><span class="vm">__file__</span><span class="si">}</span><span class="s1">'</span> <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'system_path[0] = </span><span class="si">{</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'1.txt'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">):</span>
+        <span class="o">...</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>在 subA 底下运行  <code class="docutils literal notranslate"><span class="pre">A1.py</span></code> <code class="docutils literal notranslate"><span class="pre">.../python.exe</span> <span class="pre">.../A/A1.py</span></code></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">working_directory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>...<span class="se">\A\s</span>ubA
+<span class="nv">script_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>...<span class="se">\A\A</span><span class="m">1</span>.py
+system_path<span class="o">[</span><span class="m">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>...<span class="se">\A</span>
+<span class="m">1</span>.txt<span class="w"> </span>在<span class="w"> </span>subA<span class="w"> </span>底下，<span class="w"> </span><span class="c1"># 在工作目录对应进行创建</span>
+</pre></div>
+</div>
 <section id="import-module">
-<h2 id="import-module">import - module 搜索路径<a class="headerlink" href="#import-module" title="Link to this heading">¶</a></h2>
-<p>当 <cite>import spam</cite>，解释器：</p>
+<h3 id="import-module">import - module 搜索路径<a class="headerlink" href="#import-module" title="Link to this heading">¶</a></h3>
+<p>当  <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">spam</span></code> ，解释器：</p>
 <ol class="arabic simple">
-<li><p>搜索 <cite>spam</cite> 的内置模块。这些模块的名称在 <cite>sys.builtin_module_names</cite> 中列出。</p></li>
-<li><p>如果未找到，它将在变量 <cite>sys.path</cite> 所给出的目录列表中搜索</p></li>
+<li><p>搜索  <code class="docutils literal notranslate"><span class="pre">spam</span></code>  的内置模块。这些模块的名称在  <code class="docutils literal notranslate"><span class="pre">sys.builtin_module_names</span></code>  中列出。</p></li>
+<li><p>如果未找到，它将在变量  <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>  所给出的目录列表中搜索</p></li>
 </ol>
 <p><strong>sys.path的初始化：</strong></p>
 <ul class="simple">
-<li><p>被**命令行直接运行的脚本所在的目录**。</p></li>
+<li><p>被 <strong>命令行直接运行的脚本所在的目录</strong>。</p></li>
 <li><p>PYTHONPATH （目录列表，与 shell 变量 PATH 的语法一样）。</p></li>
 <li><p>依赖于安装的默认值（按照惯例包括一个 site-packages 目录，由 site 模块处理）。</p></li>
 </ul>
-<dl class="simple">
-<dt>!!! p  “”</dt><dd><p>程序将&lt;u&gt;`run.py` 脚本所在的目录&lt;/u&gt;加入到 &lt;u&gt;sys&lt;/u&gt; 中，用来查找**可执行文件和库文件**</p>
-</dd>
-</dl>
+<div class="admonition-notes admonition note">
+<p class="admonition-title">notes</p>
+<p>程序将&lt;u&gt; <code class="docutils literal notranslate"><span class="pre">run.py</span></code>  脚本所在的目录&lt;/u&gt;加入到 &lt;u&gt;sys&lt;/u&gt; 中，用来查找 <strong>可执行文件和库文件</strong></p>
+</div>
 <p>自己写的包注意 import 路径，从系统路径中能不能找到，能不能形成可到达的路径</p>
 <ol class="arabic simple">
-<li><p>通过 <cite>sys</cite> 添加搜索路径 <cite>sys.path.append(‘package path’)</cite></p></li>
-<li><p>绝对引用。当包由多个子包构成时，可以使用绝对导入来引用**同级包的子模块**。</p></li>
+<li><p>通过  <code class="docutils literal notranslate"><span class="pre">sys</span></code>  添加搜索路径  <code class="docutils literal notranslate"><span class="pre">sys.path.append('package</span> <span class="pre">path')</span></code></p></li>
+<li><p>绝对引用。当包由多个子包构成时，可以使用绝对导入来引用 <strong>同级包的子模块</strong>。</p></li>
 <li><p>相对引用。</p></li>
 </ol>
-<dl class="simple">
-<dt>!!! danger “主模块始终使用 &lt;u&gt;绝对导入&lt;/u&gt;”</dt><dd><p>相对导入基于当前模块名`module.__name__`。
-- 模块作为**顶层文件被执行**时，<cite>__name__=”__main__”</cite>，不包含任何包的名字
-- 但作为**普通模块被 import**， 就会被包含包。</p>
-</dd>
-</dl>
-<p>!!! p “绝对引用 &amp; 相对引用”
-&lt;div class=”grid” markdown&gt;
-<a href="#id48"><span class="problematic" id="id49">``</span></a><a href="#id50"><span class="problematic" id="id51">`</span></a>title=”dir”
-+ A</p>
-<aside class="system-message" id="id48">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 254); <em><a href="#id49">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message" id="id50">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 254); <em><a href="#id51">backlink</a></em></p>
-<p>Inline interpreted text or phrase reference start-string without end-string.</p>
-</aside>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 258)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><p>A1.py
-A2.py</p>
-</div></blockquote>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 260)</p>
-<p>Block quote ends without a blank line; unexpected unindent.</p>
-</aside>
-<p><a href="#id52"><span class="problematic" id="id53">``</span></a><a href="#id54"><span class="problematic" id="id55">`</span></a></p>
-<aside class="system-message" id="id52">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 260); <em><a href="#id53">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message" id="id54">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 260); <em><a href="#id55">backlink</a></em></p>
-<p>Inline interpreted text or phrase reference start-string without end-string.</p>
-</aside>
-<p><code class="docutils literal notranslate"><span class="pre">`python</span> <span class="pre">title="A1.py"</span>
-<span class="pre">import</span> <span class="pre">A2</span>  <span class="pre">#</span> <span class="pre">绝对引用</span>
-<span class="pre">import</span> <span class="pre">.A2</span>  <span class="pre">#</span> <span class="pre">相对引用</span>
-<span class="pre">`</span></code></p>
-<p>&lt;/div&gt;</p>
+<div class="admonition-u-u admonition danger">
+<p class="admonition-title">主模块始终使用 &lt;u&gt;绝对导入&lt;/u&gt;</p>
+<p>相对导入基于当前模块名 <code class="docutils literal notranslate"><span class="pre">module.__name__</span></code> 。</p>
+<ul class="simple">
+<li><p>模块作为 <strong>顶层文件被执行</strong> 时， <code class="docutils literal notranslate"><span class="pre">__name__="__main__"</span></code> ，不包含任何包的名字</p></li>
+<li><p>但作为 <strong>普通模块被 import</strong>， 就会被包含包。</p></li>
+</ul>
+</div>
+<div class="admonition- admonition note">
+<p class="admonition-title">绝对引用 &amp; 相对引用</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-text">dir</span><a class="headerlink" href="#id16" title="Link to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>+ A
+    A1.py
+    A2.py
+</pre></div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-text">A1.py</span><a class="headerlink" href="#id17" title="Link to this code">¶</a></div>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">A2</span>  <span class="c1"># 绝对引用</span>
+<span class="kn">import</span> <span class="nn">.A2</span>  <span class="c1"># 相对引用</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <p>[import 问题浅谈]</p>
 </section>
 </section>
 <section id="others">
-<h1 id="others">Others<a class="headerlink" href="#others" title="Link to this heading">¶</a></h1>
+<h2 id="others">Others<a class="headerlink" href="#others" title="Link to this heading">¶</a></h2>
 <ul>
 <li><dl>
-<dt>Magic Number 魔数（中性词）</dt><dd><p>[编程中的「魔数」（magic number）是什么意思？平时我们能接触到哪些魔数？]
-一般是指**硬写到代码里的整数常量**，数值是编程者自己指定的，其他人不知道数值有什么具体意义，表示不明觉厉，就称作magic number。编程教材书用magic number指代**初学者不定义常量直接写数的不良习惯。**</p>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/enhanced.rst</span>, line 277)</p>
-<p>Unexpected indentation.</p>
-</aside>
+<dt>Magic Number 魔数（中性词）</dt><dd><div class="line-block">
+<div class="line">[编程中的「魔数」（magic number）是什么意思？平时我们能接触到哪些魔数？]</div>
+<div class="line">一般是指 <strong>硬写到代码里的整数常量</strong>，数值是编程者自己指定的，其他人不知道数值有什么具体意义，表示不明觉厉，就称作magic number。编程教材书用magic number指代 <strong>初学者不定义常量直接写数的不良习惯。</strong></div>
+</div>
 <blockquote>
-<div><ul class="simple">
-<li><p><strong>贬义词</strong>: 指的是代码中出现的没有说明的数字。代码中突然出现一个没说明用途的数字会让其它阅读代码、维护代码的的人非常难受。
-&gt; 例如写3.1416这种数字，也应该改为数学库中的π常数，例如Unity中的Mathf.PI。</p></li>
+<div><ul>
+<li><dl>
+<dt><strong>贬义词</strong>: 指的是代码中出现的没有说明的数字。代码中突然出现一个没说明用途的数字会让其它阅读代码、维护代码的的人非常难受。</dt><dd><div class="admonition-notes admonition hint">
+<p class="admonition-title">notes</p>
+<p>例如写3.1416这种数字，也应该改为数学库中的π常数，例如Unity中的Mathf.PI。</p>
+</div>
+</dd>
+</dl>
+</li>
 <li><p><strong>褒义词</strong>: 通过一些底层原理实现骚操作</p></li>
-<li><p><strong>中性词</strong>：
-&gt; . ELF文件头会写入一个magic number，检查这个数和自己预想的是否一致可以判断文件是否损坏。
-&gt; . 如果你用16进制编辑器打开一个文件，它的开头不是FFD8FF，那就不是jpg文件。这个魔数一般会在相关文件标准中进行规定，所有人都要遵守</p></li>
+<li><dl>
+<dt><strong>中性词</strong>：</dt><dd><div class="admonition-example admonition hint">
+<p class="admonition-title">Example</p>
+<div class="line-block">
+<div class="line">ELF文件头会写入一个magic number，检查这个数和自己预想的是否一致可以判断文件是否损坏。</div>
+<div class="line">如果你用16进制编辑器打开一个文件，它的开头不是FFD8FF，那就不是jpg文件。这个魔数一般会在相关文件标准中进行规定，所有人都要遵守</div>
+</div>
+</div>
+</dd>
+</dl>
+</li>
 </ul>
 </div></blockquote>
 </dd>
@@ -761,12 +652,13 @@ A2.py</p>
 </ul>
 </section>
 <section id="todo">
-<h1 id="todo">Todo<a class="headerlink" href="#todo" title="Link to this heading">¶</a></h1>
+<h2 id="todo">Todo<a class="headerlink" href="#todo" title="Link to this heading">¶</a></h2>
 <p>[import雜談之三———sys.path的洪荒之時]</p>
 <p>[import雜談之三———sys.path的洪荒之時]: <a class="reference external" href="https://ithelp.ithome.com.tw/articles/10196901">https://ithelp.ithome.com.tw/articles/10196901</a>
 [Python中的__all__]:<a class="reference external" href="https://zhuanlan.zhihu.com/p/54274339">https://zhuanlan.zhihu.com/p/54274339</a>
 [import 问题浅谈]:<a class="reference external" href="https://zhuanlan.zhihu.com/p/69099185">https://zhuanlan.zhihu.com/p/69099185</a>
 [编程中的「魔数」（magic number）是什么意思？平时我们能接触到哪些魔数？]:<a class="reference external" href="https://www.zhihu.com/question/22018894">https://www.zhihu.com/question/22018894</a></p>
+</section>
 </section>
 
 

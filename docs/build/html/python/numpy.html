@@ -46,7 +46,7 @@
   
   
   
-    <title>np.ndarray &#8212; HomePage</title>
+    <title>Numpy &amp; Scipy &#8212; HomePage</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=83e35b93" />
     <link rel="stylesheet" type="text/css" href="../_static/material.css?v=79c92029" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -99,7 +99,7 @@
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           <span class="md-header-nav__topic">Cocobook</span>
-          <span class="md-header-nav__topic"> np.ndarray </span>
+          <span class="md-header-nav__topic"> Numpy &amp; Scipy </span>
         </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
@@ -160,6 +160,8 @@
             <li class="md-tabs__item"><a href="../AI/index.html" class="md-tabs__link">AI</a></li>
             
             <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">Python</a></li>
+            
+            <li class="md-tabs__item"><a href="../NLP/index.html" class="md-tabs__link">NLP</a></li>
       </ul>
     </div>
   </nav>
@@ -209,11 +211,15 @@
 <nav class="md-nav md-nav--secondary">
     <label class="md-nav__title" for="__toc">"Contents"</label>
   <ul class="md-nav__list" data-md-scrollfix="">
-        <li class="md-nav__item"><a href="#python-numpy--page-root" class="md-nav__link">np.ndarray</a>
-        </li>
-        <li class="md-nav__item"><a href="#id15" class="md-nav__link">操作</a><nav class="md-nav">
+        <li class="md-nav__item"><a href="#python-numpy--page-root" class="md-nav__link">Numpy & Scipy</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#id16" class="md-nav__link">乘法</a>
+        <li class="md-nav__item"><a href="#np-ndarray" class="md-nav__link">np.ndarray</a>
+        </li>
+        <li class="md-nav__item"><a href="#id1" class="md-nav__link">操作</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id2" class="md-nav__link">乘法</a>
+        </li></ul>
+            </nav>
         </li></ul>
             </nav>
         </li>
@@ -226,166 +232,166 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  <p># Numpy &amp; Scipy</p>
+  <section id="numpy-scipy">
+<h1 id="python-numpy--page-root">Numpy &amp; Scipy<a class="headerlink" href="#python-numpy--page-root" title="Link to this heading">¶</a></h1>
 <p>for <span class="defi">scientific computing</span>  in Python，provide <span class="defi">multidimensional array object</span></p>
 <p><span class="defi">Numpy</span> 实现了 多维同质数组 multidimensional homogenous array &amp; 矩阵。不仅能处理数字还可以存放其它由用户定义的记录。</p>
-<p><span class="defi">Scipy</span> 是基于 Numpy 的一个库，转为线性代数、数值积分、统计学设计，。</p>
+<p><span class="defi">Scipy</span> 是基于 Numpy 的一个库，转为线性代数、数值积分、统计学设计。</p>
 <section id="np-ndarray">
-<h1 id="python-numpy--page-root">np.ndarray<a class="headerlink" href="#python-numpy--page-root" title="Link to this heading">¶</a></h1>
-<dl>
-<dt>!!! danger “shape &amp; ndim, vector &amp; matrix”</dt><dd><p>||Vector|Matrix|
-<a href="#id19"><span class="problematic" id="id20">|--|</span></a>–<a href="#id21"><span class="problematic" id="id22">|--|</span></a>
-<a href="#id1"><span class="problematic" id="id2">`</span></a>a.shape`|(3,) or (, 3)|(3, 1) or (1, 3)|
-<a href="#id3"><span class="problematic" id="id4">`</span></a>a.ndim`|1|2</p>
-<aside class="system-message" id="id1">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/numpy.rst</span>, line 13); <em><a href="#id2">backlink</a></em></p>
-<p>Inline interpreted text or phrase reference start-string without end-string.</p>
-</aside>
-<aside class="system-message" id="id3">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/numpy.rst</span>, line 13); <em><a href="#id4">backlink</a></em></p>
-<p>Inline interpreted text or phrase reference start-string without end-string.</p>
-</aside>
-</dd>
-</dl>
-<p>!!! danger “默认是 float 类型”</p>
-<dl>
-<dt>!!! p “<cite>Int index</cite> &amp; <cite>slice</cite>”</dt><dd><ul class="simple">
+<h2 id="np-ndarray">np.ndarray<a class="headerlink" href="#np-ndarray" title="Link to this heading">¶</a></h2>
+<div class="admonition-shape-ndim-vector-matrix admonition danger">
+<p class="admonition-title">shape &amp; ndim, vector &amp; matrix</p>
+<table>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Vector</p></th>
+<th class="head"><p>Matrix</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">a.shape</span></code></p></td>
+<td><p>(3,) or (, 3)</p></td>
+<td><p>(3, 1) or (1, 3)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">a.ndim</span></code></p></td>
+<td><p>1</p></td>
+<td><p>2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition-float admonition danger">
+<p class="admonition-title">默认是 float 类型</p>
+</div>
+<div class="admonition-int-index-slice admonition note">
+<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">Int</span> <span class="pre">index</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">slice</span></code></p>
+<ul class="simple">
 <li><dl class="simple">
-<dt><cite>slice</cite></dt><dd><p>是==原来的subarray==， 相对顺序不会变化</p>
+<dt><code class="docutils literal notranslate"><span class="pre">slice</span></code></dt><dd><p>是 <span class="defi">原来的subarray</span> ， 相对顺序不会变化</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt><cite>Int index</cite></dt><dd><p>任意构成，只是数据存在，但是相对顺序会变化的。</p>
+<dt><code class="docutils literal notranslate"><span class="pre">Int</span> <span class="pre">index</span></code></dt><dd><p>任意构成，只是数据存在，但是相对顺序会变化的。</p>
 </dd>
 </dl>
 </li>
 </ul>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/numpy.rst</span>, line 25)</p>
-<p>Bullet list ends without a blank line; unexpected unindent.</p>
-</aside>
-<p><code class="docutils literal notranslate"><span class="pre">`python</span> <span class="pre">hl_lines="2</span> <span class="pre">6"</span>
-<span class="pre">a</span> <span class="pre">=</span> <span class="pre">np.array([[1,</span> <span class="pre">2],</span> <span class="pre">[3,</span> <span class="pre">4]])</span>
-<span class="pre">a[[1,</span> <span class="pre">0],[1,</span> <span class="pre">0]]</span>
-<span class="pre">#</span> <span class="pre">&gt;&gt;&gt;</span> <span class="pre">array([4,</span> <span class="pre">1])</span> <span class="pre">与原来的相对不一样了</span>
-<span class="pre">#</span> <span class="pre">=</span> <span class="pre">np.array([a[1][1],</span>
-<span class="pre">#</span>             <span class="pre">a[0][0]])ß</span>
-<span class="pre">a[[[1,</span> <span class="pre">0],[1,</span> <span class="pre">0]],[[1,</span> <span class="pre">0],[1,</span> <span class="pre">0]]]</span>
-<span class="pre">#</span> <span class="pre">&gt;&gt;&gt;</span> <span class="pre">array([[4,</span> <span class="pre">1],[4,</span> <span class="pre">1]])</span> <span class="pre">只是取自数据</span>
-<span class="pre">#</span> <span class="pre">=</span> <span class="pre">np.array([[a[1][1],</span> <span class="pre">a[0][0]],</span>
-<span class="pre">#</span>            <span class="pre">[a[1][1],</span> <span class="pre">a[0][0]]])</span>
-<span class="pre">`</span></code></p>
-</dd>
-</dl>
-<p><a href="#id23"><span class="problematic" id="id24">|case|code||</span></a>
-<a href="#id25"><span class="problematic" id="id26">|--|</span></a>–<a href="#id27"><span class="problematic" id="id28">|--|</span></a>
-<a href="#id5"><span class="problematic" id="id6">|</span></a>创建</p>
-<aside class="system-message" id="id5">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/numpy.rst</span>, line 37); <em><a href="#id6">backlink</a></em></p>
-<p>Inline substitution_reference start-string without end-string.</p>
-</aside>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/numpy.rst</span>, line 40)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><p>shape = <cite>Int</cite> or</p>
-</div></blockquote>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/numpy.rst</span>, line 41)</p>
-<p>Block quote ends without a blank line; unexpected unindent.</p>
-</aside>
-<p><cite>Tuple(shape1, shape2, …)</cite> <a href="#id29"><span class="problematic" id="id30">|`np.array(list[list[...]])`||</span></a>
-<a href="#id31"><span class="problematic" id="id32">|^|`np.zeros(shape)`|全0|</span></a>
-<a href="#id33"><span class="problematic" id="id34">|^|`np.ones(shape)`|全1|</span></a>
-<a href="#id35"><span class="problematic" id="id36">|^|`np.eye(shape)`|单位矩阵|</span></a>
-<a href="#id37"><span class="problematic" id="id38">|^|`np.full(shape, value)`|常数|</span></a>
-<a href="#id39"><span class="problematic" id="id40">|^|`np.random.random(shape)`|任意|</span></a>
-<a href="#id41"><span class="problematic" id="id42">|切片要单行或单列|`row = a[0, :]`, `col = a[:, 0]`|Int index ➡️ shape 要降级|</span></a>
-<a href="#id43"><span class="problematic" id="id44">|^|`row = a[0:1, :]`, `col = a[:, 0:1]`|</span></a> slice ➡️ shape 与原来的同级|</p>
-<p><a href="#id7"><span class="problematic" id="id8">``</span></a><a href="#id9"><span class="problematic" id="id10">`</span></a>python
-“”” create “””
-import numpy as np
-a = np.eye(2)
-&gt;&gt;&gt; a = array([[1., 0.],[0., 1.]])
-======================================================================
-a = np.full((2, 1), 7)
-&gt;&gt;&gt; a = array([[7], [7]])
-====================================================
-a = np.random.random((2, 1))
-&gt;&gt;&gt; array([[0.5018725], [0.283335 ]])
-============================================================================</p>
-<aside class="system-message" id="id7">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/numpy.rst</span>, line 50); <em><a href="#id8">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message" id="id9">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/numpy.rst</span>, line 50); <em><a href="#id10">backlink</a></em></p>
-<p>Inline interpreted text or phrase reference start-string without end-string.</p>
-</aside>
-<p>“”” 切片要单行或单列, 表示 vector  “””
-a = np.array([[1, 2, 3], [4, 5, 6]])
-row1 = a[0, :]  # int index
-row2 = a[0:1, :]  # slice
-&gt;&gt;&gt; row1.shape = (3,) ; row2.shape = (1, 3)
-========================================================================================
-col1 = a[:,0]
-col2 = a[:,0:1]
-&gt;&gt;&gt; col1.shape = (2,) ; col2.shape = (1, 2)
-========================================================================================
-<a href="#id11"><span class="problematic" id="id12">``</span></a><a href="#id13"><span class="problematic" id="id14">`</span></a></p>
-<aside class="system-message" id="id11">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/numpy.rst</span>, line 63); <em><a href="#id12">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message" id="id13">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/numpy.rst</span>, line 63); <em><a href="#id14">backlink</a></em></p>
-<p>Inline interpreted text or phrase reference start-string without end-string.</p>
-</aside>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+</span><span class="go">array([4, 1]) 与原来的相对不一样了</span>
+<span class="go">= np.array([a[1][1],</span>
+<span class="go">            a[0][0]])</span>
+<span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]]</span>
+</span><span class="go">array([[4, 1],[4, 1]]) 只是取自数据</span>
+<span class="go">= np.array([[a[1][1], a[0][0]],</span>
+<span class="go">            [a[1][1], a[0][0]]])</span>
+</pre></div>
+</div>
+</div>
+<table>
+<thead>
+<tr class="row-odd"><th class="head"><p>case</p></th>
+<th class="head"><p>code</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>创建</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.array(list[list[...]])</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>shape = <code class="docutils literal notranslate"><span class="pre">Int</span></code> o</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.zeros(shape)</span></code></p></td>
+<td><p>全0</p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><p><code class="docutils literal notranslate"><span class="pre">Tuple(shape1,</span> <span class="pre">shape2,</span> <span class="pre">...)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.ones(shape)</span></code></p></td>
+<td><p>全1</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">np.eye(shape)</span></code></p></td>
+<td><p>单位矩阵</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">np.full(shape,</span> <span class="pre">value)</span></code></p></td>
+<td><p>常数</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">np.random.random(shape)</span></code></p></td>
+<td><p>任意</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>切片要单行或单列</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">row</span> <span class="pre">=</span> <span class="pre">a[0,</span> <span class="pre">:]</span></code>, <code class="docutils literal notranslate"><span class="pre">col</span> <span class="pre">=</span> <span class="pre">a[:,</span> <span class="pre">0]</span></code></p></td>
+<td><p>Int index ➡️ shape 要降级</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">row</span> <span class="pre">=</span> <span class="pre">a[0:1,</span> <span class="pre">:]</span></code>, <code class="docutils literal notranslate"><span class="pre">col</span> <span class="pre">=</span> <span class="pre">a[:,</span> <span class="pre">0:1]</span></code></p></td>
+<td><p>slice ➡️ shape 与原来的同级</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">""" create """</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">a = array([[1., 0.],[0., 1.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">7</span><span class="p">)</span>
+<span class="go">a = array([[7], [7]])</span>
+<span class="go">a = np.random.random((2, 1))</span>
+<span class="go">array([[0.5018725], [0.283335 ]])</span>
+
+<span class="go">""" 切片要单行或单列, 表示 vector  """</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">row1</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>  <span class="c1"># int index</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">row2</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>  <span class="c1"># slice</span>
+<span class="go">row1.shape = (3,) ; row2.shape = (1, 3)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">col1</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">col2</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">col1.shape = (2,) ; col2.shape = (1, 2)</span>
+</pre></div>
+</div>
 <ul class="simple">
 <li><dl class="simple">
 <dt>numpy ↔️ image</dt><dd><ol class="arabic simple">
-<li><p><cite>img_array = opencv()</cite> 来读取图片 自动是 <cite>numpy.array</cite></p></li>
-<li><p><cite>img_array = np.array(img)</cite></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">img_array</span> <span class="pre">=</span> <span class="pre">opencv()</span></code> 来读取图片 自动是 <code class="docutils literal notranslate"><span class="pre">numpy.array</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">img_array</span> <span class="pre">=</span> <span class="pre">np.array(img)</span></code></p></li>
 </ol>
 </dd>
 </dl>
 </li>
 </ul>
 </section>
-<section id="id15">
-<h1 id="id15">操作<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h1>
-<section id="id16">
-<h2 id="id16">乘法<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h2>
-<p>||`a*b`|`a.dot(b)`|
-<a href="#id45"><span class="problematic" id="id46">|--|</span></a>–<a href="#id47"><span class="problematic" id="id48">|--|</span></a>
-<a href="#id17"><span class="problematic" id="id18">|</span></a>?|对应位置相乘|矩阵内积</p>
-<aside class="system-message" id="id17">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/numpy.rst</span>, line 85); <em><a href="#id18">backlink</a></em></p>
-<p>Inline substitution_reference start-string without end-string.</p>
-</aside>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/numpy.rst</span>, line 88)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><p>==Matrix Product==|</p>
-</div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">`python</span>
-<span class="pre">a</span> <span class="pre">=</span> <span class="pre">np.array([[1,</span> <span class="pre">2],</span> <span class="pre">[3,</span> <span class="pre">4]])</span>
-<span class="pre">b</span> <span class="pre">=</span> <span class="pre">np.array([[1,</span> <span class="pre">1],</span> <span class="pre">[2,</span> <span class="pre">2]])</span>
-<span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span>
-<span class="pre">&gt;&gt;&gt;</span> <span class="pre">array([[1,</span> <span class="pre">2],</span> <span class="pre">[6,</span> <span class="pre">8]])</span>
-<span class="pre">========================================================</span>
-<span class="pre">a.dot(b)</span>
-<span class="pre">&gt;&gt;&gt;</span> <span class="pre">array([[5,</span> <span class="pre">5],</span> <span class="pre">[11,</span> <span class="pre">11]])</span>
-<span class="pre">============================================================</span>
-<span class="pre">`</span></code></p>
-<dl class="simple">
-<dt>!!! p “range:int</dt><dd><p>np.arange float”</p>
-</dd>
-</dl>
+<section id="id1">
+<h2 id="id1">操作<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<section id="id2">
+<h3 id="id2">乘法<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<table>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">a*b</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">a.dot(b)</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>?</p></td>
+<td><p>对应位置相乘</p></td>
+<td><p>矩阵内积</p></td>
+</tr>
+<tr class="row-odd"><td><p>?</p></td>
+<td><p>对应位置相乘</p></td>
+<td><p><span class="defi">Matrix Product</span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+<span class="go">array([[1, 2], [6, 8]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="go">array([[5, 5], [11, 11]])</span>
+</pre></div>
+</div>
+<div class="admonition-range-int admonition note">
+<p class="admonition-title">range:int</p>
+<p>np.arange float</p>
+</div>
+</section>
 </section>
 </section>
 

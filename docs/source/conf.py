@@ -193,6 +193,11 @@ html_theme_options = {
             "internal": True,
             "title": "Python",
         },
+        {
+            "href": "NLP/index",
+            "internal": True,
+            "title": "NLP",
+        },
     ], 
 
 }

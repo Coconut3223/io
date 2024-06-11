@@ -46,7 +46,7 @@
   
   
   
-    <title>排序 &#8212; HomePage</title>
+    <title>笔面 &#8212; HomePage</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=83e35b93" />
     <link rel="stylesheet" type="text/css" href="../_static/material.css?v=79c92029" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -99,7 +99,7 @@
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           <span class="md-header-nav__topic">Cocobook</span>
-          <span class="md-header-nav__topic"> 排序 </span>
+          <span class="md-header-nav__topic"> 笔面 </span>
         </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
@@ -160,6 +160,8 @@
             <li class="md-tabs__item"><a href="../AI/index.html" class="md-tabs__link">AI</a></li>
             
             <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">Python</a></li>
+            
+            <li class="md-tabs__item"><a href="../NLP/index.html" class="md-tabs__link">NLP</a></li>
       </ul>
     </div>
   </nav>
@@ -209,9 +211,9 @@
 <nav class="md-nav md-nav--secondary">
     <label class="md-nav__title" for="__toc">"Contents"</label>
   <ul class="md-nav__list" data-md-scrollfix="">
-        <li class="md-nav__item"><a href="#python-exam--page-root" class="md-nav__link">排序</a><nav class="md-nav">
+        <li class="md-nav__item"><a href="#python-exam--page-root" class="md-nav__link">笔面</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#user-department" class="md-nav__link">user_department</a>
+        <li class="md-nav__item"><a href="#id2" class="md-nav__link">排序</a>
         </li></ul>
             </nav>
         </li>
@@ -224,229 +226,90 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  <p># 笔面</p>
-<section id="id1">
-<h1 id="python-exam--page-root">排序<a class="headerlink" href="#python-exam--page-root" title="Link to this heading">¶</a></h1>
-<p>!!! danger “input: 无序的数组 &amp; k:int
-output：数组第k大的元素</p>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 8)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><p>优化 &amp; 时间复杂度”</p>
-</div></blockquote>
-<p><a href="#id2"><span class="problematic" id="id3">``</span></a><a href="#id4"><span class="problematic" id="id5">`</span></a>python
-def method(lst, k:int):</p>
-<aside class="system-message" id="id2">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 10); <em><a href="#id3">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message" id="id4">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 10); <em><a href="#id5">backlink</a></em></p>
-<p>Inline interpreted text or phrase reference start-string without end-string.</p>
-</aside>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 12)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><dl class="simple">
-<dt>if k &gt; len(lst) or k &lt; 1:</dt><dd><p>return f’{k} is less than the length of list’</p>
-</dd>
-</dl>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 14)</p>
-<p>Definition list ends without a blank line; unexpected unindent.</p>
-</aside>
-<p>return sorted(lst)[k-1]</p>
-</div></blockquote>
-<dl class="simple">
-<dt>if __name__ == ‘__main__’:</dt><dd><p>lst = [3,1,5,4,2]
-print(method(lst, k=3))</p>
-</dd>
-</dl>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 19)</p>
-<p>Definition list ends without a blank line; unexpected unindent.</p>
-</aside>
-<p><a href="#id6"><span class="problematic" id="id7">``</span></a><a href="#id8"><span class="problematic" id="id9">`</span></a></p>
-<aside class="system-message" id="id6">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 19); <em><a href="#id7">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message" id="id8">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 19); <em><a href="#id9">backlink</a></em></p>
-<p>Inline interpreted text or phrase reference start-string without end-string.</p>
-</aside>
-<p>!!! danger “子列表的第一个列表排序”</p>
-<p><a href="#id10"><span class="problematic" id="id11">``</span></a>` title=”data”
-data = [[‘a’, 10,’2020/12/1’],</p>
-<aside class="system-message" id="id10">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 23); <em><a href="#id11">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 25)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><p>[‘b’, 2, ‘2020/12/2’],
-[‘a’, 5,’2020/12/1’],
-[‘c’, 21,’2020/12/4’],
-[‘b’, 19, ‘2020/12/1’],
-[‘c’, 5, ‘2020/12/6’],
-[‘c’, 1, ‘2020/12/7’],
-[‘a’, 8, ‘2020/12/2’],
-[‘a’, 8, ‘2020/12/3’]]</p>
-</div></blockquote>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 33)</p>
-<p>Block quote ends without a blank line; unexpected unindent.</p>
-</aside>
-<p><a href="#id12"><span class="problematic" id="id13">``</span></a><a href="#id14"><span class="problematic" id="id15">`</span></a></p>
-<aside class="system-message" id="id12">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 33); <em><a href="#id13">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message" id="id14">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 33); <em><a href="#id15">backlink</a></em></p>
-<p>Inline interpreted text or phrase reference start-string without end-string.</p>
-</aside>
-<p><a href="#id16"><span class="problematic" id="id17">``</span></a>` python
-def func1(data):</p>
-<aside class="system-message" id="id16">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 35); <em><a href="#id17">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 37)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><p>return sorted(data, key=lambda x:x[0])</p>
-</div></blockquote>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 38)</p>
-<p>Block quote ends without a blank line; unexpected unindent.</p>
-</aside>
-<p>#print(func1(data))
-<a href="#id18"><span class="problematic" id="id19">``</span></a><a href="#id20"><span class="problematic" id="id21">`</span></a></p>
-<aside class="system-message" id="id18">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 38); <em><a href="#id19">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message" id="id20">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 38); <em><a href="#id21">backlink</a></em></p>
-<p>Inline interpreted text or phrase reference start-string without end-string.</p>
-</aside>
-<p>!!! danger “子列表第2个元素分组求和”</p>
-<p><a href="#id22"><span class="problematic" id="id23">``</span></a><a href="#id24"><span class="problematic" id="id25">`</span></a>python
-def func2(data):</p>
-<aside class="system-message" id="id22">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 43); <em><a href="#id23">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message" id="id24">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 43); <em><a href="#id25">backlink</a></em></p>
-<p>Inline interpreted text or phrase reference start-string without end-string.</p>
-</aside>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 45)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><p>user_set = set(x[0] for x in data)
-res = []
-for user in user_set:</p>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 48)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><p>print(sum(x[1] for x in data if x[0]==user))
-if sum(x[1] for x in data if x[0]==user) &gt; 40:</p>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 50)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><p>res.append(user)</p>
-</div></blockquote>
-</div></blockquote>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 51)</p>
-<p>Block quote ends without a blank line; unexpected unindent.</p>
-</aside>
-<p>return res</p>
-</div></blockquote>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 52)</p>
-<p>Block quote ends without a blank line; unexpected unindent.</p>
-</aside>
-<p><a href="#id26"><span class="problematic" id="id27">``</span></a><a href="#id28"><span class="problematic" id="id29">`</span></a></p>
-<aside class="system-message" id="id26">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 52); <em><a href="#id27">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message" id="id28">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 52); <em><a href="#id29">backlink</a></em></p>
-<p>Inline interpreted text or phrase reference start-string without end-string.</p>
-</aside>
-<p>!!! danger “子列表第一个元素分组求最高”</p>
-<p><a href="#id30"><span class="problematic" id="id31">``</span></a>` python
-def func3(data):</p>
-<aside class="system-message" id="id30">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 56); <em><a href="#id31">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 58)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><p># res = dict()</p>
-<p># for rec in data:
-#     if rec[0] not in res.keys():
-#         res[rec[0]] = (rec[1], rec[2])
-#     elif rec[1] &gt; res[rec[0]][0]:
-#         res[rec[0]] = (rec[1], rec[2])
-# return res
-user_payment_dict = {}
-for entry in data:</p>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 68)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><p>username = entry[0]
-payment = entry[1]
-payment_time = entry[2]</p>
-<dl class="simple">
-<dt>if username in user_payment_dict:</dt><dd><dl class="simple">
-<dt>if payment &gt; user_payment_dict[username][0]:</dt><dd><p>user_payment_dict[username] = (payment, payment_time)</p>
-</dd>
-</dl>
-</dd>
-<dt>else:</dt><dd><p>user_payment_dict[username] = (payment, payment_time)</p>
-</dd>
-</dl>
-</div></blockquote>
-<p>return user_payment_dict</p>
-</div></blockquote>
-<section id="user-department">
-<h2 id="user-department">user_department<a class="headerlink" href="#user-department" title="Link to this heading">¶</a></h2>
-<p># u
-print(func3(data))
-<a href="#id32"><span class="problematic" id="id33">``</span></a><a href="#id34"><span class="problematic" id="id35">`</span></a></p>
-<aside class="system-message" id="id32">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 82); <em><a href="#id33">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message" id="id34">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam.rst</span>, line 82); <em><a href="#id35">backlink</a></em></p>
-<p>Inline interpreted text or phrase reference start-string without end-string.</p>
-</aside>
+  <section id="id1">
+<h1 id="python-exam--page-root">笔面<a class="headerlink" href="#python-exam--page-root" title="Link to this heading">¶</a></h1>
+<section id="id2">
+<h2 id="id2">排序<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<div class="admonition-input-k-int admonition danger">
+<p class="admonition-title">input: 无序的数组 &amp; k:int</p>
+<div class="line-block">
+<div class="line">output：数组第k大的元素</div>
+<div class="line">优化 &amp; 时间复杂度”</div>
+</div>
+</div>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">method</span><span class="p">(</span><span class="n">lst</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span> <span class="ow">or</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1"> is less than the length of list'</span>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">lst</span><span class="p">)[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="n">lst</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">method</span><span class="p">(</span><span class="n">lst</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="admonition- admonition danger">
+<p class="admonition-title">子列表的第一个列表排序</p>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>data = [['a', 10,'2020/12/1'],
+        ['b', 2, '2020/12/2'],
+        ['a', 5,'2020/12/1'],
+        ['c', 21,'2020/12/4'],
+        ['b', 19, '2020/12/1'],
+        ['c', 5, '2020/12/6'],
+        ['c', 1, '2020/12/7'],
+        ['a', 8, '2020/12/2'],
+        ['a', 8, '2020/12/3']]
+</pre></div>
+</div>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func1</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1">#print(func1(data))</span>
+</pre></div>
+</div>
+<div class="admonition- admonition danger">
+<p class="admonition-title">子列表第2个元素分组求和</p>
+</div>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func2</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">user_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">user_set</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="n">user</span><span class="p">))</span>
+        <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="n">user</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">40</span><span class="p">:</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+</div>
+<div class="admonition- admonition danger">
+<p class="admonition-title">子列表第一个元素分组求最高</p>
+</div>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func3</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="c1"># res = dict()</span>
+
+    <span class="c1"># for rec in data:</span>
+    <span class="c1">#     if rec[0] not in res.keys():</span>
+    <span class="c1">#         res[rec[0]] = (rec[1], rec[2])</span>
+    <span class="c1">#     elif rec[1] &gt; res[rec[0]][0]:</span>
+    <span class="c1">#         res[rec[0]] = (rec[1], rec[2])</span>
+    <span class="c1"># return res</span>
+    <span class="n">user_payment_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">username</span> <span class="o">=</span> <span class="n">entry</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">payment</span> <span class="o">=</span> <span class="n">entry</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">payment_time</span> <span class="o">=</span> <span class="n">entry</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">username</span> <span class="ow">in</span> <span class="n">user_payment_dict</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">payment</span> <span class="o">&gt;</span> <span class="n">user_payment_dict</span><span class="p">[</span><span class="n">username</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span>
+                <span class="n">user_payment_dict</span><span class="p">[</span><span class="n">username</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">payment</span><span class="p">,</span> <span class="n">payment_time</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">user_payment_dict</span><span class="p">[</span><span class="n">username</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">payment</span><span class="p">,</span> <span class="n">payment_time</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">user_payment_dict</span>
+
+<span class="c1"># user_department</span>
+<span class="c1"># u</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">func3</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+</pre></div>
+</div>
 </section>
 </section>
 
