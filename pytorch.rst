@@ -58,14 +58,15 @@
 .. note:: 初步检查模型是否有写错
     
 	.. code-block:: py
-    	odel = MyModel()
-   	input = torch.ones(batch, input_size)
-    	utput = model(input)
-    	rint(output.shape())
+
+        model = MyModel()
+   	    input = torch.ones(batch, input_size)
+    	output = model(input)
+    	print(output.shape())
 
 ### cpu & gpu
 
-.. danger 要放进gpu的是
+.. danger:: 要放进gpu的是
 
     1. model
     2. 损失函数
