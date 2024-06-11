@@ -36,8 +36,12 @@ import re
 
 
 input_ = r"""
-|软间隔|硬间隔|
-| :math:`0\le\alpha_i\red{\le C}` | :math:`0\le\alpha_i` |
+||bytes(二进制储存)|unicode(就是普通的数字)|中文数字|罗马数字|
+| ``num=`` | ``b'4'`` | ``u'4'``| ``'四'`` | ``'IV'`` |
+| ``num=`` | ``b'4'`` | python3前面不带 ``u`` 就是| ^ | ^ |
+| ``str.isdigit()`` |✅|✅|❌|❌|
+| ``str.isnumeric()`` |✅|✅|✅|✅|
+| ``str.isdecimal()`` |❌|✅|❌|❌|
 """
 
 data_list = input_.split('\n')[1:-1]

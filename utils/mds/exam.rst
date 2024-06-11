@@ -4,7 +4,7 @@
 
 !!! danger "input: 无序的数组 & k:int<br>output：数组第k大的元素<br> 优化 & 时间复杂度"
 
-```python
+ ```` `python
 def method(lst, k:int):
     if k > len(lst) or k < 1:
         return f'{k} is less than the length of list'
@@ -13,11 +13,11 @@ def method(lst, k:int):
 if __name__ == '__main__':
     lst = [3,1,5,4,2]
     print(method(lst, k=3))
-```
+ ```` `
 
 !!! danger "子列表的第一个列表排序"
 
-``` title="data"
+ ```` ` title="data"
 data = [['a', 10,'2020/12/1'],
         ['b', 2, '2020/12/2'],
         ['a', 5,'2020/12/1'],
@@ -27,17 +27,17 @@ data = [['a', 10,'2020/12/1'],
         ['c', 1, '2020/12/7'],
         ['a', 8, '2020/12/2'],
         ['a', 8, '2020/12/3']]
-```
+ ```` `
 
-``` python
+ ```` ` python
 def func1(data):
     return sorted(data, key=lambda x:x[0])
 #print(func1(data))
-```
+ ```` `
 
 !!! danger "子列表第2个元素分组求和"
 
-```python
+ ```` `python
 def func2(data):
     user_set = set(x[0] for x in data)
     res = []
@@ -46,11 +46,11 @@ def func2(data):
         if sum(x[1] for x in data if x[0]==user) > 40:
             res.append(user)
     return res
-```
+ ```` `
 
 !!! danger "子列表第一个元素分组求最高"
 
-``` python
+ ```` ` python
 def func3(data):
     # res = dict()
 
@@ -77,4 +77,4 @@ def func3(data):
 # user_department
 # u
 print(func3(data))
-```
+ ```` `

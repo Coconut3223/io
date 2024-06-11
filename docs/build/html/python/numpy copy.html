@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>np.ndarray &#8212; HomePage</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=83e35b93" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css?v=79c92029" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/katex-math.css?v=91adb8b6" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/def.css?v=5a9d86bd" />
+    <script src="../_static/documentation_options.js?v=7d86a446"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+    <script src="../_static/translations.js?v=beaddf03"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#python/numpy copy" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../index.html" title="HomePage"
+           class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">&#xe869</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">Cocobook</span>
+          <span class="md-header-nav__topic"> np.ndarray </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder=""Search""
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+      
+  
+  <script src="../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../"versions.json"",
+        target_loc = "../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">HomePage</a></li>
+            
+            <li class="md-tabs__item"><a href="../AI/index.html" class="md-tabs__link">AI</a></li>
+            
+            <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">Python</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="HomePage" class="md-nav__button md-logo">
+      
+        <i class="md-icon">&#xe869</i>
+      
+    </a>
+    <a href="../index.html"
+       title="HomePage">Cocobook</a>
+  </label>
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">AI</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../AI/main.html" class="md-nav__link">Artificial Intelligence, AI</a>
+      
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#python-numpy-copy--page-root" class="md-nav__link">np.ndarray</a>
+        </li>
+        <li class="md-nav__item"><a href="#id15" class="md-nav__link">操作</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id16" class="md-nav__link">乘法</a>
+        </li></ul>
+            </nav>
+        </li>
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <p># Numpy &amp; Scipy</p>
+<p>for <span class="defi">scientific computing</span>  in Python，provide <span class="defi">multidimensional array object</span></p>
+<p><span class="defi">Numpy</span> 实现了 多维同质数组 multidimensional homogenous array &amp; 矩阵。不仅能处理数字还可以存放其它由用户定义的记录。</p>
+<p><span class="defi">Scipy</span> 是基于 Numpy 的一个库，转为线性代数、数值积分、统计学设计，。</p>
+<section id="np-ndarray">
+<h1 id="python-numpy-copy--page-root">np.ndarray<a class="headerlink" href="#python-numpy-copy--page-root" title="Link to this heading">¶</a></h1>
+<dl>
+<dt>!!! danger “shape &amp; ndim, vector &amp; matrix”</dt><dd><p>||Vector|Matrix|
+<a href="#id19"><span class="problematic" id="id20">|--|</span></a>–<a href="#id21"><span class="problematic" id="id22">|--|</span></a>
+<a href="#id1"><span class="problematic" id="id2">`</span></a>a.shape`|(3,) or (, 3)|(3, 1) or (1, 3)|
+<a href="#id3"><span class="problematic" id="id4">`</span></a>a.ndim`|1|2</p>
+<aside class="system-message" id="id1">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/numpy copy.rst</span>, line 13); <em><a href="#id2">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id3">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/numpy copy.rst</span>, line 13); <em><a href="#id4">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+</dd>
+</dl>
+<p>!!! danger “默认是 float 类型”</p>
+<dl>
+<dt>!!! p “<cite>Int index</cite> &amp; <cite>slice</cite>”</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt><cite>slice</cite></dt><dd><p>是==原来的subarray==， 相对顺序不会变化</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>Int index</cite></dt><dd><p>任意构成，只是数据存在，但是相对顺序会变化的。</p>
+</dd>
+</dl>
+</li>
+</ul>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/numpy copy.rst</span>, line 25)</p>
+<p>Bullet list ends without a blank line; unexpected unindent.</p>
+</aside>
+<p><code class="docutils literal notranslate"><span class="pre">`python</span> <span class="pre">hl_lines="2</span> <span class="pre">6"</span>
+<span class="pre">a</span> <span class="pre">=</span> <span class="pre">np.array([[1,</span> <span class="pre">2],</span> <span class="pre">[3,</span> <span class="pre">4]])</span>
+<span class="pre">a[[1,</span> <span class="pre">0],[1,</span> <span class="pre">0]]</span>
+<span class="pre">#</span> <span class="pre">&gt;&gt;&gt;</span> <span class="pre">array([4,</span> <span class="pre">1])</span> <span class="pre">与原来的相对不一样了</span>
+<span class="pre">#</span> <span class="pre">=</span> <span class="pre">np.array([a[1][1],</span>
+<span class="pre">#</span>             <span class="pre">a[0][0]])ß</span>
+<span class="pre">a[[[1,</span> <span class="pre">0],[1,</span> <span class="pre">0]],[[1,</span> <span class="pre">0],[1,</span> <span class="pre">0]]]</span>
+<span class="pre">#</span> <span class="pre">&gt;&gt;&gt;</span> <span class="pre">array([[4,</span> <span class="pre">1],[4,</span> <span class="pre">1]])</span> <span class="pre">只是取自数据</span>
+<span class="pre">#</span> <span class="pre">=</span> <span class="pre">np.array([[a[1][1],</span> <span class="pre">a[0][0]],</span>
+<span class="pre">#</span>            <span class="pre">[a[1][1],</span> <span class="pre">a[0][0]]])</span>
+<span class="pre">`</span></code></p>
+</dd>
+</dl>
+<p><a href="#id23"><span class="problematic" id="id24">|case|code||</span></a>
+<a href="#id25"><span class="problematic" id="id26">|--|</span></a>–<a href="#id27"><span class="problematic" id="id28">|--|</span></a>
+<a href="#id5"><span class="problematic" id="id6">|</span></a>创建</p>
+<aside class="system-message" id="id5">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/numpy copy.rst</span>, line 37); <em><a href="#id6">backlink</a></em></p>
+<p>Inline substitution_reference start-string without end-string.</p>
+</aside>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/numpy copy.rst</span>, line 40)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><p>shape = <cite>Int</cite> or</p>
+</div></blockquote>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/numpy copy.rst</span>, line 41)</p>
+<p>Block quote ends without a blank line; unexpected unindent.</p>
+</aside>
+<p><cite>Tuple(shape1, shape2, …)</cite> <a href="#id29"><span class="problematic" id="id30">|`np.array(list[list[...]])`||</span></a>
+<a href="#id31"><span class="problematic" id="id32">|^|`np.zeros(shape)`|全0|</span></a>
+<a href="#id33"><span class="problematic" id="id34">|^|`np.ones(shape)`|全1|</span></a>
+<a href="#id35"><span class="problematic" id="id36">|^|`np.eye(shape)`|单位矩阵|</span></a>
+<a href="#id37"><span class="problematic" id="id38">|^|`np.full(shape, value)`|常数|</span></a>
+<a href="#id39"><span class="problematic" id="id40">|^|`np.random.random(shape)`|任意|</span></a>
+<a href="#id41"><span class="problematic" id="id42">|切片要单行或单列|`row = a[0, :]`, `col = a[:, 0]`|Int index ➡️ shape 要降级|</span></a>
+<a href="#id43"><span class="problematic" id="id44">|^|`row = a[0:1, :]`, `col = a[:, 0:1]`|</span></a> slice ➡️ shape 与原来的同级|</p>
+<p><a href="#id7"><span class="problematic" id="id8">``</span></a><a href="#id9"><span class="problematic" id="id10">`</span></a>python
+“”” create “””
+import numpy as np
+a = np.eye(2)
+&gt;&gt;&gt; a = array([[1., 0.],[0., 1.]])
+======================================================================
+a = np.full((2, 1), 7)
+&gt;&gt;&gt; a = array([[7], [7]])
+====================================================
+a = np.random.random((2, 1))
+&gt;&gt;&gt; array([[0.5018725], [0.283335 ]])
+============================================================================</p>
+<aside class="system-message" id="id7">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/numpy copy.rst</span>, line 50); <em><a href="#id8">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id9">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/numpy copy.rst</span>, line 50); <em><a href="#id10">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+<p>“”” 切片要单行或单列, 表示 vector  “””
+a = np.array([[1, 2, 3], [4, 5, 6]])
+row1 = a[0, :]  # int index
+row2 = a[0:1, :]  # slice
+&gt;&gt;&gt; row1.shape = (3,) ; row2.shape = (1, 3)
+========================================================================================
+col1 = a[:,0]
+col2 = a[:,0:1]
+&gt;&gt;&gt; col1.shape = (2,) ; col2.shape = (1, 2)
+========================================================================================
+<a href="#id11"><span class="problematic" id="id12">``</span></a><a href="#id13"><span class="problematic" id="id14">`</span></a></p>
+<aside class="system-message" id="id11">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/numpy copy.rst</span>, line 63); <em><a href="#id12">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id13">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/numpy copy.rst</span>, line 63); <em><a href="#id14">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+<ul class="simple">
+<li><dl class="simple">
+<dt>numpy ↔️ image</dt><dd><ol class="arabic simple">
+<li><p><cite>img_array = opencv()</cite> 来读取图片 自动是 <cite>numpy.array</cite></p></li>
+<li><p><cite>img_array = np.array(img)</cite></p></li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="id15">
+<h1 id="id15">操作<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h1>
+<section id="id16">
+<h2 id="id16">乘法<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h2>
+<p>||`a*b`|`a.dot(b)`|
+<a href="#id45"><span class="problematic" id="id46">|--|</span></a>–<a href="#id47"><span class="problematic" id="id48">|--|</span></a>
+<a href="#id17"><span class="problematic" id="id18">|</span></a>?|对应位置相乘|矩阵内积</p>
+<aside class="system-message" id="id17">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/numpy copy.rst</span>, line 85); <em><a href="#id18">backlink</a></em></p>
+<p>Inline substitution_reference start-string without end-string.</p>
+</aside>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/numpy copy.rst</span>, line 88)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><p>==Matrix Product==|</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">`python</span>
+<span class="pre">a</span> <span class="pre">=</span> <span class="pre">np.array([[1,</span> <span class="pre">2],</span> <span class="pre">[3,</span> <span class="pre">4]])</span>
+<span class="pre">b</span> <span class="pre">=</span> <span class="pre">np.array([[1,</span> <span class="pre">1],</span> <span class="pre">[2,</span> <span class="pre">2]])</span>
+<span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span>
+<span class="pre">&gt;&gt;&gt;</span> <span class="pre">array([[1,</span> <span class="pre">2],</span> <span class="pre">[6,</span> <span class="pre">8]])</span>
+<span class="pre">========================================================</span>
+<span class="pre">a.dot(b)</span>
+<span class="pre">&gt;&gt;&gt;</span> <span class="pre">array([[5,</span> <span class="pre">5],</span> <span class="pre">[11,</span> <span class="pre">11]])</span>
+<span class="pre">============================================================</span>
+<span class="pre">`</span></code></p>
+<dl class="simple">
+<dt>!!! p “range:int</dt><dd><p>np.arange float”</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2024, coconut.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>

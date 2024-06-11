@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>排序 &#8212; HomePage</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=83e35b93" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css?v=79c92029" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/katex-math.css?v=91adb8b6" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/def.css?v=5a9d86bd" />
+    <script src="../_static/documentation_options.js?v=7d86a446"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+    <script src="../_static/translations.js?v=beaddf03"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#python/exam copy" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../index.html" title="HomePage"
+           class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">&#xe869</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">Cocobook</span>
+          <span class="md-header-nav__topic"> 排序 </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder=""Search""
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+      
+  
+  <script src="../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../"versions.json"",
+        target_loc = "../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">HomePage</a></li>
+            
+            <li class="md-tabs__item"><a href="../AI/index.html" class="md-tabs__link">AI</a></li>
+            
+            <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">Python</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="HomePage" class="md-nav__button md-logo">
+      
+        <i class="md-icon">&#xe869</i>
+      
+    </a>
+    <a href="../index.html"
+       title="HomePage">Cocobook</a>
+  </label>
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">AI</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../AI/main.html" class="md-nav__link">Artificial Intelligence, AI</a>
+      
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#python-exam-copy--page-root" class="md-nav__link">排序</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#user-department" class="md-nav__link">user_department</a>
+        </li></ul>
+            </nav>
+        </li>
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <p># 笔面</p>
+<section id="id1">
+<h1 id="python-exam-copy--page-root">排序<a class="headerlink" href="#python-exam-copy--page-root" title="Link to this heading">¶</a></h1>
+<p>!!! danger “input: 无序的数组 &amp; k:int
+output：数组第k大的元素</p>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 8)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><p>优化 &amp; 时间复杂度”</p>
+</div></blockquote>
+<p><a href="#id2"><span class="problematic" id="id3">``</span></a><a href="#id4"><span class="problematic" id="id5">`</span></a>python
+def method(lst, k:int):</p>
+<aside class="system-message" id="id2">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 10); <em><a href="#id3">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id4">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 10); <em><a href="#id5">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 12)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><dl class="simple">
+<dt>if k &gt; len(lst) or k &lt; 1:</dt><dd><p>return f’{k} is less than the length of list’</p>
+</dd>
+</dl>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 14)</p>
+<p>Definition list ends without a blank line; unexpected unindent.</p>
+</aside>
+<p>return sorted(lst)[k-1]</p>
+</div></blockquote>
+<dl class="simple">
+<dt>if __name__ == ‘__main__’:</dt><dd><p>lst = [3,1,5,4,2]
+print(method(lst, k=3))</p>
+</dd>
+</dl>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 19)</p>
+<p>Definition list ends without a blank line; unexpected unindent.</p>
+</aside>
+<p><a href="#id6"><span class="problematic" id="id7">``</span></a><a href="#id8"><span class="problematic" id="id9">`</span></a></p>
+<aside class="system-message" id="id6">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 19); <em><a href="#id7">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id8">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 19); <em><a href="#id9">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+<p>!!! danger “子列表的第一个列表排序”</p>
+<p><a href="#id10"><span class="problematic" id="id11">``</span></a>` title=”data”
+data = [[‘a’, 10,’2020/12/1’],</p>
+<aside class="system-message" id="id10">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 23); <em><a href="#id11">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 25)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><p>[‘b’, 2, ‘2020/12/2’],
+[‘a’, 5,’2020/12/1’],
+[‘c’, 21,’2020/12/4’],
+[‘b’, 19, ‘2020/12/1’],
+[‘c’, 5, ‘2020/12/6’],
+[‘c’, 1, ‘2020/12/7’],
+[‘a’, 8, ‘2020/12/2’],
+[‘a’, 8, ‘2020/12/3’]]</p>
+</div></blockquote>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 33)</p>
+<p>Block quote ends without a blank line; unexpected unindent.</p>
+</aside>
+<p><a href="#id12"><span class="problematic" id="id13">``</span></a><a href="#id14"><span class="problematic" id="id15">`</span></a></p>
+<aside class="system-message" id="id12">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 33); <em><a href="#id13">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id14">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 33); <em><a href="#id15">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+<p><a href="#id16"><span class="problematic" id="id17">``</span></a>` python
+def func1(data):</p>
+<aside class="system-message" id="id16">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 35); <em><a href="#id17">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 37)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><p>return sorted(data, key=lambda x:x[0])</p>
+</div></blockquote>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 38)</p>
+<p>Block quote ends without a blank line; unexpected unindent.</p>
+</aside>
+<p>#print(func1(data))
+<a href="#id18"><span class="problematic" id="id19">``</span></a><a href="#id20"><span class="problematic" id="id21">`</span></a></p>
+<aside class="system-message" id="id18">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 38); <em><a href="#id19">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id20">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 38); <em><a href="#id21">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+<p>!!! danger “子列表第2个元素分组求和”</p>
+<p><a href="#id22"><span class="problematic" id="id23">``</span></a><a href="#id24"><span class="problematic" id="id25">`</span></a>python
+def func2(data):</p>
+<aside class="system-message" id="id22">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 43); <em><a href="#id23">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id24">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 43); <em><a href="#id25">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 45)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><p>user_set = set(x[0] for x in data)
+res = []
+for user in user_set:</p>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 48)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><p>print(sum(x[1] for x in data if x[0]==user))
+if sum(x[1] for x in data if x[0]==user) &gt; 40:</p>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 50)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><p>res.append(user)</p>
+</div></blockquote>
+</div></blockquote>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 51)</p>
+<p>Block quote ends without a blank line; unexpected unindent.</p>
+</aside>
+<p>return res</p>
+</div></blockquote>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 52)</p>
+<p>Block quote ends without a blank line; unexpected unindent.</p>
+</aside>
+<p><a href="#id26"><span class="problematic" id="id27">``</span></a><a href="#id28"><span class="problematic" id="id29">`</span></a></p>
+<aside class="system-message" id="id26">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 52); <em><a href="#id27">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id28">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 52); <em><a href="#id29">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+<p>!!! danger “子列表第一个元素分组求最高”</p>
+<p><a href="#id30"><span class="problematic" id="id31">``</span></a>` python
+def func3(data):</p>
+<aside class="system-message" id="id30">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 56); <em><a href="#id31">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 58)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><p># res = dict()</p>
+<p># for rec in data:
+#     if rec[0] not in res.keys():
+#         res[rec[0]] = (rec[1], rec[2])
+#     elif rec[1] &gt; res[rec[0]][0]:
+#         res[rec[0]] = (rec[1], rec[2])
+# return res
+user_payment_dict = {}
+for entry in data:</p>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 68)</p>
+<p>Unexpected indentation.</p>
+</aside>
+<blockquote>
+<div><p>username = entry[0]
+payment = entry[1]
+payment_time = entry[2]</p>
+<dl class="simple">
+<dt>if username in user_payment_dict:</dt><dd><dl class="simple">
+<dt>if payment &gt; user_payment_dict[username][0]:</dt><dd><p>user_payment_dict[username] = (payment, payment_time)</p>
+</dd>
+</dl>
+</dd>
+<dt>else:</dt><dd><p>user_payment_dict[username] = (payment, payment_time)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>return user_payment_dict</p>
+</div></blockquote>
+<section id="user-department">
+<h2 id="user-department">user_department<a class="headerlink" href="#user-department" title="Link to this heading">¶</a></h2>
+<p># u
+print(func3(data))
+<a href="#id32"><span class="problematic" id="id33">``</span></a><a href="#id34"><span class="problematic" id="id35">`</span></a></p>
+<aside class="system-message" id="id32">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 82); <em><a href="#id33">backlink</a></em></p>
+<p>Inline literal start-string without end-string.</p>
+</aside>
+<aside class="system-message" id="id34">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/python/exam copy.rst</span>, line 82); <em><a href="#id35">backlink</a></em></p>
+<p>Inline interpreted text or phrase reference start-string without end-string.</p>
+</aside>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2024, coconut.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>

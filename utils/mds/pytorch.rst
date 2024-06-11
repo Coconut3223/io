@@ -7,7 +7,7 @@
 
 1. 是否有显卡驱动
 
-`任务管理器` 看 GPU 一般是 NVIDIA 的。
+ ``任务管理器``  看 GPU 一般是 NVIDIA 的。
 
 1. [pytorch downlaod]
    - [pytorch V.S.cuda] 查显卡决定pytorch
@@ -16,18 +16,18 @@
     <kbd>conda create -n env_name python=? </kbd>
    - 查架构
 
-    ``` python title="查看架构"
+     ```` ` python title="查看架构"
     import platfrorm
     print(platform.uname()[4])
     #>>> arm64
-    ```
+     ```` `
 
 ![](./pics/torch_download_1.png){width=80%}
 ![](./pics/torch_download_2.png){width=80%}
 
 1. check
 
-    ``` python title="检查安装成功"
+     ```` ` python title="检查安装成功"
     import torch
     
     print(torch.__version__)
@@ -36,9 +36,9 @@
     print(torch.cuda.is_available()) # windows
     print(torch.backends.mps.is_available()) # mac
     # >>> True : ok
-    ```
+     ```` `
 
-!!! danger "`torch.cuda.is_avaliable()` -> False"
+!!! danger " ``torch.cuda.is_avaliable()``  -> False"
     1. 检查 platform 是哪个
     2. 检查 gpu 是否支持cuda
     3. 检查显卡驱动版本
@@ -56,12 +56,12 @@
 ## 完整的
 
 !!! p "初步检查模型是否有写错"
-    ``` python
+     ```` ` python
     model = MyModel()
     input = torch.ones(batch, input_size)
     output = model(input)
     print(output.shape())
-    ```
+     ```` `
 
 ### cpu & gpu
 
@@ -72,7 +72,7 @@
 
 ==使用方法==
 
-```python hl_lines="2 15 17"
+ ```` `python hl_lines="2 15 17"
 """
     :meth1: .cuda()
     但要注意 gpu 是否可用
@@ -97,33 +97,33 @@ loss_fn.to(device)
 for data in dataloader:
     imgs, targets = data
     imgs, targets = imgs.to(device), target.to(device)
-```
+ ```` `
 
 #### 多gpu
 
 1. 选择一个运行
 
-    ```python
+     ```` `python
     device = torch.device('cuda') # default = 第一块
     device = torch.device('cuda:0') # 第一块
     device = torch.device('cuda:1') # 第二块
-    ```
+     ```` `
 
 2. 多gpu运行
 
 ### 训练和测试的不同
 
-!!! p "当不涉及训练时： `with torch.no_grad():`"
-    反向传播的时候需要 tensor 的 `requires_grad=True` 才能自动求导，从而优化参数。这其中涉及 ==求导图==即内存的消耗
-    但是训练的时候不需要求导，在`with torch.no_grad():`下，所有计算得出的tensor的requires_grad都自动设置为False。
+!!! p "当不涉及训练时：  ``with torch.no_grad():`` "
+    反向传播的时候需要 tensor 的  ``requires_grad=True``  才能自动求导，从而优化参数。这其中涉及 ==求导图==即内存的消耗
+    但是训练的时候不需要求导，在 ``with torch.no_grad():`` 下，所有计算得出的tensor的requires_grad都自动设置为False。
     [【pytorch系列】 with torch.no_grad():用法详解]
 
-!!! p "`model.train()` & `model.eval()`"
-    class:`Dropout`, :class:`BatchNorm`,
+!!! p " ``model.train()``  &  ``model.eval()`` "
+    class: ``Dropout`` , :class: ``BatchNorm`` ,
     etc.
-    - `model.train()` 写在模型训练前
-    - `model.eval()`==`module.train(False)` 写在模型测试前
-    ```python hl_lines="2 6"
+    -  ``model.train()``  写在模型训练前
+    -  ``model.eval()`` == ``module.train(False)``  写在模型测试前
+     ```` `python hl_lines="2 6"
     for i in range(epoch):
         model.train()
         for data in traning_loader:
@@ -132,9 +132,9 @@ for data in dataloader:
         model.eval()
         for data in testing_loader:
             ...
-    ```
+     ```` `
 
-```python hl_lines="1 13"
+ ```` `python hl_lines="1 13"
 def train(self: T, mode: bool = True) -> T:
     """
     把模型调到 training mode.
@@ -152,7 +152,7 @@ def train(self: T, mode: bool = True) -> T:
     把模型调到 evaluation mode
     """
     return self.train(False)
-```
+ ```` `
 
 ## Data
 
@@ -160,14 +160,14 @@ def train(self: T, mode: bool = True) -> T:
 
 ### class DataSet
 
-!!! p "官方 `torch.utils.data.DataSet`"
+!!! p "官方  ``torch.utils.data.DataSet`` "
     一个虚拟的类，All datasets that represent a map from keys to data samples
     - 所有的 dataset 都必须继承它
-       1. 必须重写 `__getitem__`
-       2. 选择重写 `__len__`
+       1. 必须重写  ``__getitem__`` 
+       2. 选择重写  ``__len__`` 
        3. 如果 key/indice 不是 int，对应的 DataLoader 也大改
 
-``` python
+ ```` ` python
 class Dataset(Generic[T_co]):
     """
     设立数据集，包括 key/indice(default int)、data、label
@@ -181,14 +181,14 @@ class Dataset(Generic[T_co]):
     def __add__(self, other: 'Dataset[T_co]') -> 'ConcatDataset[T_co]':
         return ConcatDataset([self, other])
 
-    # No `def __len__(self)` default?
-    # See NOTE [ Lack of Default `__len__` in Python Abstract Base Classes ]
+    # No  ``def __len__(self)``  default?
+    # See NOTE [ Lack of Default  ``__len__``  in Python Abstract Base Classes ]
     # in pytorch/torch/utils/data/sampler.py
-```
+ ```` `
 
 ### Datalodar
 
-!!! p "`torch.utils.data.DataLoader`"
+!!! p " ``torch.utils.data.DataLoader`` "
     constructs a index sampler that yields integral indices
 
 Epoch: 所有训练样本都以输入到模型中，称为一个Epoch
@@ -200,7 +200,7 @@ Batchsize: 批大小，主要是决定一个Epoch有多少个Iteration
 1 Epoch = 10  drop_last=True
 1 Epoch = 11  drop_last=False
 
-``` python hl_lines="1"
+ ```` ` python hl_lines="1"
 
 class DataLoader(Generic[T_co]):
     """
@@ -253,7 +253,7 @@ class DataLoader(Generic[T_co]):
     def __len__(self) -> int:
         """
         Warning:
-            - `IterableDataset` 会 不正确 ！！！
+            -  ``IterableDataset``  会 不正确 ！！！
             - Cannot statically verify that dataset is Sized
             - 往上取整， 考虑 droplast
         """
@@ -272,20 +272,20 @@ class DataLoader(Generic[T_co]):
         else:
             return len(self._index_sampler)   
         ...
-```
+ ```` `
 
 ## nn
 
 ### 一些基本的东西
 
-### `Containers`  负责 nn 框架的构建
+###  ``Containers``   负责 nn 框架的构建
 
-#### `Module` 所有 NN 的 base class
+####  ``Module``  所有 NN 的 base class
 
 可以包括其他的 module. Modules can also contain other Modules, allowing to nest them in a tree structure.
 
 !!! danger "所有 NN 模型都要 ==继承 subclass== 它，并且要先 父类的 init"
-    ``` python hl_lines="6"
+     ```` ` python hl_lines="6"
     import torch.nn as nn
     import torch.nn.functional as F
 
@@ -301,9 +301,9 @@ class DataLoader(Generic[T_co]):
 
     mymodel = MyModel()
     y = mymodel(x)
-    ```
+     ```` `
 
-``` python
+ ```` ` python
 class Module:
     """
     所有 nn 模型的 base class 都要继承它
@@ -315,18 +315,18 @@ class Module:
         Initializes internal Module state, shared by both nn.Module and ScriptModule.
 
         Warning:
-            - 如果改属性 最好用 `` super().__setattr__('a', a) ``
-                而不是 `` self.a = a `` 防止 Module.__setattr__ overhead
+            - 如果改属性 最好用  ````  super().__setattr__('a', a)  ```` 
+                而不是  ````  self.a = a  ````  防止 Module.__setattr__ overhead
         """
         ... 
-```
+ ```` `
 
-#### `Sequential` 类`transforms.Compose`的用法，模型进一步封装
+####  ``Sequential``  类 ``transforms.Compose`` 的用法，模型进一步封装
 
-!!! p "`torch.nn.Sequential`和 `torch.nn.ModuleList` 的区别"
-    - `torch.nn.ModuleList` 就是真的一个储存模型的list
+!!! p " ``torch.nn.Sequential`` 和  ``torch.nn.ModuleList``  的区别"
+    -  ``torch.nn.ModuleList``  就是真的一个储存模型的list
 
-```python hlines="18 31 35 36 37 45"
+ ```` `python hlines="18 31 35 36 37 45"
 class Sequential(Module):
     """
     模型的序列封装，输入会按序经过里面的每一个模型，最后进行输出。
@@ -465,21 +465,21 @@ class Sequential(Module):
         for layer in sequential:
             self.append(layer)
         return self
-```
+ ```` `
 
 ### nn.xxx & nn.functional.xxx
 
-```python
+ ```` `python
 from torch import nn
 from torch.nn inport Functional as F
 
 layer_nn = nn.conv2d(...)
 layer_F = F.conv2d(...)
-```
+ ```` `
 
 #### Liner
 
-``` python
+ ```` ` python
 class Linear(Module):
     """
     h = W^Tx+b
@@ -503,7 +503,7 @@ class Linear(Module):
     """
 
     ...
-```
+ ```` `
 
 #### Conv
 
@@ -528,7 +528,7 @@ W_{out} = \left\lfloor\frac{W_{in}  + 2 \times \text{padding}[1] - \text{dilatio
     nn 可以[B, C, H, W] 或 [C, H, W]
     functional ==只可以 [B, C, H, W]==
 
-``` python hl_lines="3"
+ ```` ` python hl_lines="3"
 class Conv2d(_ConvNd):
     """
     nn.Conv2d
@@ -549,7 +549,7 @@ class Conv2d(_ConvNd):
             default = 1 = no space
             详看理论部分
         - bias: bool 可学习的偏置
-            default: ``True``
+            default:  ```` True ```` 
 
     Shape:
         - Input = (N, C_{in}, H_{in}, W_{in}) 或 (C_{in}, H_{in}, W_{in})
@@ -590,9 +590,9 @@ class Conv2d(_ConvNd):
 
     ...
 
-```
+ ```` `
 
-``` python hl_lines="4"
+ ```` ` python hl_lines="4"
 conv2d = _add_docstr(
     torch.conv2d,
     """
@@ -622,11 +622,11 @@ conv2d = _add_docstr(
     """
 )  
 ...
-```
+ ```` `
 
 #### Pool
 
-```python hl_lines="1"
+ ```` `python hl_lines="1"
 class MaxPool2d(_MaxPoolNd):
     """
     2D 最大池化
@@ -648,8 +648,8 @@ class MaxPool2d(_MaxPoolNd):
             default =
         - ceil_mode: Bool = 要不要边界料
             default = False
-            - False = `floor` = 不要边角料
-            - True = `ceil` = 要边角料 go off-bounds
+            - False =  ``floor``  = 不要边角料
+            - True =  ``ceil``  = 要边角料 go off-bounds
             应对除不尽的情况， 详看理论部分
 
     Examples:
@@ -665,7 +665,7 @@ class MaxPool2d(_MaxPoolNd):
         return F.max_pool2d(input, self.kernel_size, self.stride,
                             self.padding, self.dilation, ceil_mode=self.ceil_mode,
                             return_indices=self.return_indices)
-```
+ ```` `
 
 #### activation
 
@@ -679,7 +679,7 @@ class MaxPool2d(_MaxPoolNd):
 
 - 如果是稀疏向量 sparse vector（只传递非0的值），那些未传递的=原本是0的 在 softmax 里 看作  :math:`-\inf，\rightarrow \text{softmax}(-\inf)\rightarrow0` 
 
-```python
+ ```` `python
 class Softmax(Module):
     """
     将某一维的值 映射到[0, 1] & sum=1。
@@ -699,7 +699,7 @@ class Softmax(Module):
         # y0 = tensor([[0.0474, 0.0474], [0.9526, 0.9526]])
     """
     ...
-```
+ ```` `
 
 ##### ReLU, rectified linear unit
 
@@ -708,7 +708,7 @@ class Softmax(Module):
  :math:`` 
 ![](https://pytorch.org/docs/stable/_images/ReLU.png){width=60%}
 
-```python
+ ```` `python
 class ReLU(Module):
     """
     对于0以下截断
@@ -727,7 +727,7 @@ class ReLU(Module):
         # output: tensor([[0., 0.], [2., 2.]])
     """
     ...
-```
+ ```` `
 
 ##### Sigmoid
 
@@ -736,7 +736,7 @@ class ReLU(Module):
  :math:`` 
 ![](https://pytorch.org/docs/stable/_images/Sigmoid.png){width=60%}
 
-``` python
+ ```` ` python
 class Sigmoid(Module):
     """
     逐元素，映射到0-1 ，靠近0变化大，否则变化缓慢
@@ -751,7 +751,7 @@ class Sigmoid(Module):
         # output: tensor([[0.2689, 0.2689], [0.8808, 0.8808]])
     """
     ...
-```
+ ```` `
 
 #### Normalization
 
@@ -761,7 +761,7 @@ class Sigmoid(Module):
 
 !!! danger "必须有batch！！！"
 
-``` python
+ ```` ` python
 class Dropout1d(_DropoutNd):
     """
     随机取0，增强 feature maps 的独立性，防止过拟合。
@@ -805,11 +805,11 @@ class Dropout2d(_DropoutNd):
         >>> output = m(input)
     """
     ...
-```
+ ```` `
 
-#### `flatten`
+####  ``flatten`` 
 
-```python hl_lines="14 17"
+ ```` `python hl_lines="14 17"
 class Flatten(Module):
     """
     给定维度展平向量
@@ -832,11 +832,11 @@ class Flatten(Module):
         >>> m = nn.Flatten(0, -1) # 全展平
     """
     ...
-```
+ ```` `
 
-## `torch.nn.`Loss & `torch.Optim`
+##  ``torch.nn.`` Loss &  ``torch.Optim`` 
 
-``` python
+ ```` ` python
 model = # 定义模型
 loss_fn = # 定义 loss 算法
 optimizer = # 定义 梯度迭代 的算法
@@ -847,9 +847,9 @@ for input, target in dataset:
     optimizer.zero_grad() # 清空上一轮算出来的的梯度，否则梯度会累积 
     loss.backward() # 通过 反向传播 计算新一轮梯度
     optimizer.step() # 根据算出来的梯度 更新参数
-```
+ ```` `
 
-``` python
+ ```` ` python
 from torch import nn
 from torch.optim import SGD
 
@@ -873,14 +873,14 @@ for i in range(epoch):
     loss_epoch.step()
 
 """ mini-batch """ 
-```
+ ```` `
 
-#### `torch.optim`
+####  ``torch.optim`` 
 
 构建一个优化器对象，该对象将保持当前状态，并将根据计算的梯度更新参数。
 
 !!! danger " :math:`\text{Minimize} f(\theta)` "
-    `maximize = False(default)` :math:`\iff g_t\leftarrow=-\nabla f(\theta)` 
+     ``maximize = False(default)``  :math:`\iff g_t\leftarrow=-\nabla f(\theta)` 
      :math:`` \begin{aligned}
     &\textbf{关于梯度：}\nabla 是上升的方向\\[-1em]
     &\rule{110mm}{0.4pt}\\
@@ -897,11 +897,11 @@ for i in range(epoch):
 
 !!! p "Nesterov momentum"
     is based on the formula from
-    `On the importance of initialization and momentum in deep learning`__.
+     ``On the importance of initialization and momentum in deep learning`` __.
 
 ##### Adam
 
-``` python
+ ```` ` python
 class Adam(Optimizer):
     """
     Args:
@@ -918,13 +918,13 @@ class Adam(Optimizer):
         ...
 
     ...
-```
+ ```` `
 
 ##### SGD 随机梯度下降
 
 SGD, Stochastic Gradient Descent(optionally with momentum)
 
-``` python
+ ```` ` python
 class SGD(Optimizer):
     """
     随机梯度下降
@@ -941,11 +941,11 @@ class SGD(Optimizer):
         ...
 
     ...
-```
+ ```` `
 
 ##### Adagrad, 自适应随机梯度下降
 
-```python
+ ```` `python
 class Adagrad(Optimizer):
     """
     Adaptive Stochastic Gradient
@@ -963,9 +963,9 @@ class Adagrad(Optimizer):
         ...
 
     ...
-```
+ ```` `
 
-#### `torch.nn.`Loss
+####  ``torch.nn.`` Loss
 
 ##### L1Loss, MAE
 
@@ -974,7 +974,7 @@ class Adagrad(Optimizer):
 \end{cases}
  :math:`` 
 
-``` python
+ ```` ` python
 class L1Loss(_Loss):
     """
     the mean absolute error (MAE)
@@ -991,7 +991,7 @@ class L1Loss(_Loss):
         >>> output.backward() # 回溯 
     """
     ...
-```
+ ```` `
 
 ##### MSE
 
@@ -1000,7 +1000,7 @@ class L1Loss(_Loss):
 \end{cases}
  :math:`` 
 
-``` python
+ ```` ` python
 class MSELoss(_Loss):
     """
     mean squared error (squared L2 norm) 
@@ -1017,12 +1017,12 @@ class MSELoss(_Loss):
         >>> output.backward()
     """
     ...
-```
+ ```` `
 
 ##### CELoss
 
-!!! danger "`torch.nn.CrossEntropyLoss()`"
-    = `torch.nn.LogSoftmax` + `torch.nn.NLLLoss`
+!!! danger " ``torch.nn.CrossEntropyLoss()`` "
+    =  ``torch.nn.LogSoftmax``  +  ``torch.nn.NLLLoss`` 
     softmax 非负化归一化 + 交叉熵
 
  :math:`` \begin{align}\ell(f) &=w_{y^_}  * - \log \cfrac{\exp(\hat{y}^_)}{\sum_C \exp(\hat{y})}\cdot \mathbb{1}\{y^* \neq \text{ignore\_index}\}\\&=w_{y^*}  * -\text{softmax}(\hat{y}) \qquad\text{ 不在忽略}
@@ -1037,7 +1037,7 @@ class MSELoss(_Loss):
           l_n = - \sum_{c=1}^C w_c \log \frac{\exp(x_{n,c})}{\sum_{i=1}^C \exp(x_{n,i})} y_{n,c}
  :math:`` 
 
-``` python
+ ```` ` python
 
 class CrossEntropyLoss(_WeightedLoss):
     """
@@ -1064,7 +1064,7 @@ class CrossEntropyLoss(_WeightedLoss):
             default = 'mean'
         - label_smoothing: Optional[Float] \in [0.0, 1.0]. 
             - default = 0.0 = no smoothing. 
-            看论文：`Rethinking the Inception Architecture for Computer Vision`
+            看论文： ``Rethinking the Inception Architecture for Computer Vision`` 
             a mixture of the original ground truth and a uniform distribution
 
     Examples::
@@ -1084,14 +1084,14 @@ class CrossEntropyLoss(_WeightedLoss):
         >>> output = loss(input, target)
     """
     ...
-```
+ ```` `
 
 ## Save & Load
 
-!!! danger "`AttributeError: Can't get attribute 'MyModel' on <module '__main__' from 'xxx.py'>`"
+!!! danger " ``AttributeError: Can't get attribute 'MyModel' on <module '__main__' from 'xxx.py'>`` "
     自定义的模型 必须先import进来，否则就会加载不了
 
-``` python
+ ```` ` python
 vgg16 = torchvision.models.vgg16()
 class MyModel(nn.Module):
     def __init__(self):
@@ -1099,9 +1099,9 @@ class MyModel(nn.Module):
         self.linear1 = nn.Linear(4, 2)
         self.sigmoid1 = nn.Sigmoid()
     ... 
-```
+ ```` `
 
-```python hl_lines="8 10 20 23-24"
+ ```` `python hl_lines="8 10 20 23-24"
 """ 
     :meth1: 整个模型保存
 1. 内存较大
@@ -1126,9 +1126,9 @@ model = torch.load('./models/mymodel.pth')
 # MyModel(
 #  (linear): Linear(in_features=4, out_features=2, bias=True)
 #  (sigmoid): Sigmoid())
-```
+ ```` `
 
-``` python hl_lines="8 10 11 14 16-18"
+ ```` ` python hl_lines="8 10 11 14 16-18"
 """
     :meth2: 以字典形式只保存参数
 1. 内存较小，官方推荐
@@ -1158,25 +1158,25 @@ mymode.load_state_dict('./models/mymodel_state.pth')
 # MyModel(
 #  (linear): Linear(in_features=4, out_features=2, bias=True)
 #  (sigmoid): Sigmoid()) 
-```
+ ```` `
 
 ## representation
 
-### `utils.tensorboard`
+###  ``utils.tensorboard`` 
 
 !!! danger "目前还是要先下载 tensorflow"
-    `TensorFlow installation not found - running with reduced feature set.`
+     ``TensorFlow installation not found - running with reduced feature set.`` 
 !!! danger "jupyter 使用 tensorboard"
 
-    ``` python
+     ```` ` python
     %load_ext tensorboard # 加载扩展
     %tensorboard --logdir runs # 运行 
-    ```
-    [在jupyter lab中使用tensorboard报错 UsageError: Line magic function `%tensorboard` not found.]
+     ```` `
+    [在jupyter lab中使用tensorboard报错 UsageError: Line magic function  ``%tensorboard``  not found.]
 
 - SummaryWriter
 
-    ``` python
+     ```` ` python
     writer = SummaryWriter()
     
     writer.add_image('my_image', img, 0)
@@ -1185,11 +1185,11 @@ mymode.load_state_dict('./models/mymodel_state.pth')
         writer.add_scalar('y=2x', i * 2, i)
     
     writer close()
-    ```
+     ```` `
 
     ==source code==
 
-    ``` python
+     ```` ` python
     class SummaryWriter:
         """
         直接在 log_dir 里写 Tensorboard 要用的数据，可以在 training loop 里直接 call，而不用减缓训练的速度。
@@ -1232,7 +1232,7 @@ mymode.load_state_dict('./models/mymodel_state.pth')
             walltime=None, 
             dataformats="CHW" ):
             """
-            写图片， 需要 ``pillow`` 包
+            写图片， 需要  ```` pillow ````  包
             
             Args:
                 - tag: str =  名字
@@ -1258,9 +1258,9 @@ mymode.load_state_dict('./models/mymodel_state.pth')
                 - scalar_value: Optional[float or string/blobname] =  y 轴
                 - global_step: int = x 轴，一般是 gloabl step 用作画迭代的变化
             """
-    ```
+     ```` `
 
-!!! danger "`No dashboards are active for the current data set.`"
+!!! danger " ``No dashboards are active for the current data set.`` "
     [关于解决Tensorboard出现No dashboards are active for the current data set.问题]
 
 ## CV
@@ -1273,7 +1273,7 @@ mymode.load_state_dict('./models/mymodel_state.pth')
 
     torchvision 是用来处理==图像==的
 
-``` python hl_lines="1 30 59 92 126"
+ ```` ` python hl_lines="1 30 59 92 126"
 class Compose:
     """
     用来 compose transform， 把好几个 trabsform process 组装成一个 composer
@@ -1336,7 +1336,7 @@ class ToTensor:
 class Normalize(torch.nn.Module):
     """
     对 img Tensor 在每个 channel 正态标准化，默认 non-inplace
-    ``output[channel] = (input[channel] - mean[channel]) / std[channel]``
+     ```` output[channel] = (input[channel] - mean[channel]) / std[channel] ```` 
 
     Args:
         - mean: sequence = Sequence of means for each channel.
@@ -1430,14 +1430,14 @@ class Resize(torch.nn.Module):
                 Union[PIL.Image, Tensor]
             """
             ...
-```
+ ```` `
 
 ### models
 
-!!! danger  "现在提供的是 可以自由地将==预训练的 weights== 加载到模型上。（`pretrained=True`被舍用）"
+!!! danger  "现在提供的是 可以自由地将==预训练的 weights== 加载到模型上。（ ``pretrained=True`` 被舍用）"
     如果需要预训练的，推荐使用指定版本，因为还提供了每种权重对应的的图像预处理的操作。
 
-    ``` python hl_lines="10 11"
+     ```` ` python hl_lines="10 11"
     from torchvision.models import resnet50, ResNet50_Weights
 
     """
@@ -1455,23 +1455,23 @@ class Resize(torch.nn.Module):
     resnet50(weights='DEFAULT') # = pretrained=True
     resnet50(weights=None) # = pretrained=False
     
-    ```
+     ```` `
 
 !!! p "预处理图像"
     在使用预训练模型之前，必须==预处理图像==（以正确的分辨率/插值调整大小，应用推理变换，重新缩放值等）
     现在统一提供了。
 
-    ``` python
+     ```` ` python
     weights = ResNet50_Weights.DEFAULT
     preprocess = weights.transforms() # Weight Transforms 初始化
     img_transformed = preprocess(img) # 预处理图像
-    ```
+     ```` `
 
 #### vgg16
 
 [Very Deep Convolutional Networks for Large-Scale Image Recognition]
 
-``` python
+ ```` ` python
 VGG(
   (features): Sequential(
     (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
@@ -1517,9 +1517,9 @@ VGG(
     (6): Linear(in_features=4096, out_features=1000, bias=True)
   )
 )
-```
+ ```` `
 
-``` python
+ ```` ` python
 @register_model()
 @handle_legacy_interface(weights=("pretrained", VGG16_Weights.IMAGENET1K_V1))
 def vgg16(*, weights: Optional[VGG16_Weights] = None, progress: bool = True, **kwargs: Any) -> VGG:
@@ -1534,10 +1534,10 @@ def vgg16(*, weights: Optional[VGG16_Weights] = None, progress: bool = True, **k
     """
     weights = VGG16_Weights.verify(weights)
     return _vgg("D", False, weights, progress, **kwargs)
-```
+ ```` `
 
 [关于解决Tensorboard出现No dashboards are active for the current data set.问题]: https://blog.csdn.net/qq_40128284/article/details/109343301
-[在jupyter lab中使用tensorboard报错 UsageError: Line magic function `%tensorboard` not found.]: https://blog.csdn.net/Casuall/article/details/109653238
+[在jupyter lab中使用tensorboard报错 UsageError: Line magic function  ``%tensorboard``  not found.]: https://blog.csdn.net/Casuall/article/details/109653238
 [Very Deep Convolutional Networks for Large-Scale Image Recognition]: https://arxiv.org/abs/1409.1556
 [【pytorch系列】 with torch.no_grad():用法详解]: https://blog.csdn.net/sazass/article/details/116668755
 
