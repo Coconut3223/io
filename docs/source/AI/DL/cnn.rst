@@ -184,21 +184,28 @@
     .. math::
         18=\cfrac{32-5}{1}+1, 30=\cfrac{32-3}{1}+1
 
-    ```mermaid
-    graph LR
-    A[Input<br>32✖️32✖️<FONT COLOR="#ff0000">3</FONT>]
-    B{Filter<br>5✖️5✖️<FONT COLOR="#ff0000">3</FONT>}
-    C{Filter<br>3✖️3✖️<FONT COLOR="#ff0000">3</FONT>}
-    A --> B
-    A --> C
-    D{Stride<br>1}
-    B --- D
-    C --- D
-    E[Output<br>18✖️18✖️<FONT COLOR="#ff0000">1</FONT>]
-    F[Output<br>30✖️30✖️<FONT COLOR="#ff0000">1</FONT>]
-    D --> E
-    D --> F
-    ```
+    .. mermaid::
+
+        flowchart LR
+        A["`Input
+        32✖️32✖️3`"]
+        B{"`Filter
+        5✖️5✖️3`"}
+        C{"`Filter
+        3✖️3✖️3`"}
+        A --> B
+        A --> C
+        D{"`Stride
+        1`"}
+        B --- D
+        C --- D
+        E["`Output
+        18✖️18✖️1`"]
+        F["`Output
+        30✖️30✖️1`"]
+        D --> E
+        D --> F
+
 
     .. image:: ./pics/CNN_11.png
         :scale: 30%

@@ -3,20 +3,25 @@
 SVM maps training examples to points in space so as to maximise the width of the gap between the two categories. New examples are then mapped into that same space and predicted to belong to a category based on which side of the gap they fall.
 
 .. note:: find a best hyperplane with the largest margin to separate different class samples.
-    ```mermaid
-    graph  LR
-    A[Linear SVM]
-    B[soft margined ]
-    C[kernel trick<br>低维完成运算]
-    D[non-linear SVM<br>投射高维]
-    E{线性可分}
-    F{噪声存在<br>泛化⬇️}
-    G[hard margined]
-    Z[SVM<br>线性超平面<br>噪声敏感] --> E --Y-->A
-    E --N--> D --计算内积困难--> C
-    Z --> F --N--> G
-    F --Y--> B
-    ```
+    
+    .. mermaid::
+
+        flowchart  LR
+        A[Linear SVM]
+        B[soft margined ]
+        C["`kernel trick
+        低维完成运算`"]
+        D["`non-linear SVM
+        投射高维`"]
+        E{线性可分}
+        F{噪声存在<br>泛化⬇️}
+        G[hard margined]
+        Z["`SVM
+        线性超平面
+        噪声敏感`"] --> E --Y-->A
+        E --N--> D --计算内积困难--> C
+        Z --> F --N--> G
+        F --Y--> B
 
 ## 理论
 

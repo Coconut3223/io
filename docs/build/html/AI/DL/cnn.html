@@ -50,7 +50,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=83e35b93" />
     <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/katex-math.css?v=91adb8b6" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/def.css?v=5a9d86bd" />
@@ -61,6 +61,8 @@
     <script src="../../_static/copybutton.js?v=6dbb43f8"></script>
     <script src="../../_static/translations.js?v=beaddf03"></script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
   
@@ -468,18 +470,18 @@
 </dl>
 </li>
 </ul>
-<figure class="align-center" id="id9">
+<figure class="align-center" id="id1">
 <a class="reference internal image-reference" href="../../_images/CNN_9.png"><img alt="../../_images/CNN_9.png" src="../../_images/CNN_9.png" style="width: 249.6px; height: 179.4px;"/>
 </a>
 <figcaption>
-<p><span class="caption-text">立体的，e.g: <strong>彩色照片立体RGB图像</strong></span><a class="headerlink" href="#id9" title="Link to this image">¶</a></p>
+<p><span class="caption-text">立体的，e.g: <strong>彩色照片立体RGB图像</strong></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id10">
+<figure class="align-center" id="id2">
 <a class="reference internal image-reference" href="../../_images/CNN_10.png"><img alt="../../_images/CNN_10.png" src="../../_images/CNN_10.png" style="width: 257.7px; height: 146.7px;"/>
 </a>
 <figcaption>
-<p><span class="caption-text">立体的，e.g: <strong>彩色照片立体RGB图像</strong></span><a class="headerlink" href="#id10" title="Link to this image">¶</a></p>
+<p><span class="caption-text">立体的，e.g: <strong>彩色照片立体RGB图像</strong></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -495,56 +497,31 @@
 <dt>always <strong>extend the full depth</strong> of the input volume， 一个 filter 的深度(通道数)要和 input 的深度(通道数)一样，但是输出仍只有一个通道数。</dt><dd><div class="math">
 <span class="katex-display"><span class="katex"><span class="katex-mathml"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>18</mn><mo>=</mo><mfrac><mrow><mn>32</mn><mo>−</mo><mn>5</mn></mrow><mn>1</mn></mfrac><mo>+</mo><mn>1</mn><mo separator="true">,</mo><mn>30</mn><mo>=</mo><mfrac><mrow><mn>32</mn><mo>−</mo><mn>3</mn></mrow><mn>1</mn></mfrac><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">18=\cfrac{32-5}{1}+1, 30=\cfrac{32-3}{1}+1
 
-</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">18</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.276em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">32</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">30</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.276em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">32</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span></div><p><a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>mermaid
-graph LR
-A[Input</p>
-<aside class="system-message" id="id1">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/DL/cnn.rst</span>, line 198); <em><a href="#id2">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message" id="id3">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/DL/cnn.rst</span>, line 198); <em><a href="#id4">backlink</a></em></p>
-<p>Inline interpreted text or phrase reference start-string without end-string.</p>
-</aside>
-</dd>
-</dl>
-</li>
-</ol>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/DL/cnn.rst</span>, line 201)</p>
-<p>Enumerated list ends without a blank line; unexpected unindent.</p>
-</aside>
-<dl>
-<dt>32✖️32✖️&lt;FONT COLOR=”#ff0000”&gt;3&lt;/FONT&gt;]</dt><dd><p>B{Filter</p>
-</dd>
-<dt>5✖️5✖️&lt;FONT COLOR=”#ff0000”&gt;3&lt;/FONT&gt;}</dt><dd><p>C{Filter</p>
-</dd>
-<dt>3✖️3✖️&lt;FONT COLOR=”#ff0000”&gt;3&lt;/FONT&gt;}</dt><dd><p>A –&gt; B
-A –&gt; C
-D{Stride</p>
-</dd>
-<dt>1}</dt><dd><p>B — D
-C — D
-E[Output</p>
-</dd>
-<dt>18✖️18✖️&lt;FONT COLOR=”#ff0000”&gt;1&lt;/FONT&gt;]</dt><dd><p>F[Output</p>
-</dd>
-<dt>30✖️30✖️&lt;FONT COLOR=”#ff0000”&gt;1&lt;/FONT&gt;]</dt><dd><p>D –&gt; E
-D –&gt; F
-<a href="#id5"><span class="problematic" id="id6">``</span></a><a href="#id7"><span class="problematic" id="id8">`</span></a></p>
-<aside class="system-message" id="id5">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/DL/cnn.rst</span>, line 216); <em><a href="#id6">backlink</a></em></p>
-<p>Inline literal start-string without end-string.</p>
-</aside>
-<aside class="system-message" id="id7">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/DL/cnn.rst</span>, line 216); <em><a href="#id8">backlink</a></em></p>
-<p>Inline interpreted text or phrase reference start-string without end-string.</p>
-</aside>
-<a class="reference internal image-reference" href="../../_images/CNN_11.png"><img alt="../../_images/CNN_11.png" class="align-center" src="../../_images/CNN_11.png" style="width: 318.59999999999997px; height: 202.79999999999998px;"/>
+</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">18</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.276em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">32</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">30</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.276em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">32</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span></div><div class="mermaid">
+            flowchart LR
+A["`Input
+32✖️32✖️3`"]
+B{"`Filter
+5✖️5✖️3`"}
+C{"`Filter
+3✖️3✖️3`"}
+A --&gt; B
+A --&gt; C
+D{"`Stride
+1`"}
+B --- D
+C --- D
+E["`Output
+18✖️18✖️1`"]
+F["`Output
+30✖️30✖️1`"]
+D --&gt; E
+D --&gt; F
+        </div><a class="reference internal image-reference" href="../../_images/CNN_11.png"><img alt="../../_images/CNN_11.png" class="align-center" src="../../_images/CNN_11.png" style="width: 318.59999999999997px; height: 202.79999999999998px;"/>
 </a>
 </dd>
 </dl>
-<ol class="arabic simple" start="2">
+</li>
 <li><p>dim of <strong>filter 一般为奇数，若为偶数，则会产生不对称填充</strong></p></li>
 <li><dl class="simple">
 <dt><strong>1✖️1 Convolution</strong> is meaningful!</dt><dd><p>It computes the dot product over the channels.</p>
@@ -552,11 +529,11 @@ D –&gt; F
 </dl>
 </li>
 </ol>
-<figure class="align-center" id="id11">
+<figure class="align-center" id="id3">
 <a class="reference internal image-reference" href="../../_images/CNN_13.png"><img alt="../../_images/CNN_13.png" src="../../_images/CNN_13.png" style="width: 355.8px; height: 162.0px;"/>
 </a>
 <figcaption>
-<p><span class="caption-text">1✖️1 Convolution</span><a class="headerlink" href="#id11" title="Link to this image">¶</a></p>
+<p><span class="caption-text">1✖️1 Convolution</span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>advantages：</strong></p>
@@ -644,7 +621,7 @@ D –&gt; F
 <li><p>同一张特征图，同一个通道，上的所有元素 (神经元) 都是对图像的不同位置的同一个特征的检测，通道中某一处 (特征图上某一个神经元) 数值的大小就是当前位置对当前特征强弱的反应。</p></li>
 </ol>
 <aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/Users/yeyehaoye/gitproject/io/docs/source/AI/DL/cnn.rst</span>, line 298)</p>
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">C:\Users\zxouyang\CodeProjects\PRIVATE_P\io\docs\source\AI/DL/cnn.rst</span>, line 299)</p>
 <p>Enumerated list ends without a blank line; unexpected unindent.</p>
 </aside>
 <p>2. 一个 filter 就是一个特征，每个 filter 体现的特质都不一样。
@@ -652,18 +629,18 @@ D –&gt; F
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
 <div class="sd-col sd-d-flex-column docutils">
-<figure class="align-default" id="id12">
+<figure class="align-default" id="id4">
 <img alt="../../_images/CNN_14.png" src="../../_images/CNN_14.png"/>
 <figcaption>
-<p><span class="caption-text">yellow</span><a class="headerlink" href="#id12" title="Link to this image">¶</a></p>
+<p><span class="caption-text">yellow</span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </div>
 <div class="sd-col sd-d-flex-column docutils">
-<figure class="align-default" id="id13">
+<figure class="align-default" id="id5">
 <img alt="../../_images/CNN_15.png" src="../../_images/CNN_15.png"/>
 <figcaption>
-<p><span class="caption-text">roll</span><a class="headerlink" href="#id13" title="Link to this image">¶</a></p>
+<p><span class="caption-text">roll</span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </div>

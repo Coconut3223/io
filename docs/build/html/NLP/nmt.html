@@ -46,7 +46,7 @@
   
   
   
-    <title>NMT &#8212; HomePage</title>
+    <title>Machine Translation MT 机器翻译 &#8212; HomePage</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=83e35b93" />
     <link rel="stylesheet" type="text/css" href="../_static/material.css?v=79c92029" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -99,7 +99,7 @@
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           <span class="md-header-nav__topic">Cocobook</span>
-          <span class="md-header-nav__topic"> NMT </span>
+          <span class="md-header-nav__topic"> Machine Translation MT 机器翻译 </span>
         </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
@@ -209,7 +209,14 @@
               <div class="md-sidebar__inner">
                 
 <nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
   <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#nlp-nmt--page-root" class="md-nav__link">Machine Translation MT 机器翻译</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#nmt" class="md-nav__link">NMT</a>
+        </li></ul>
+            </nav>
+        </li>
   </ul>
 </nav>
               </div>
@@ -219,11 +226,12 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  <p># Machine Translation MT 机器翻译</p>
+  <section id="machine-translation-mt">
+<h1 id="nlp-nmt--page-root">Machine Translation MT 机器翻译<a class="headerlink" href="#nlp-nmt--page-root" title="Link to this heading">¶</a></h1>
 <p><span class="defi">Neural Machine Translation NMT</span> 。
 <span class="defi">Statistical Machine Translation SMT</span> 。rule-based &amp; statistical techniques</p>
 <section id="nmt">
-<h1 id="nlp-nmt--page-root">NMT<a class="headerlink" href="#nlp-nmt--page-root" title="Link to this heading">¶</a></h1>
+<h2 id="nmt">NMT<a class="headerlink" href="#nmt" title="Link to this heading">¶</a></h2>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
 <div class="sd-col sd-d-flex-column docutils">
@@ -260,6 +268,7 @@
 <li><p>&lt;u&gt;Input feeding&lt;/u&gt;, where <strong>the previous attention vector + predicted word</strong> is fed back into the input.(Luong et al., 2015).</p></li>
 <li><p>Test-time decoding is done through beam search where multiple hypothesis target predictions are considered at each time step. Implementing these correctly can be difficult, which motivates their inclusion in an NMT framework.</p></li>
 </ul>
+</section>
 </section>
 
 

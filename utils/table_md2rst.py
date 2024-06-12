@@ -36,12 +36,9 @@ import re
 
 
 input_ = r"""
-| Query | R1 | R2 | R3 | R4 | R5 | R6 | R7 | R8 | R9 | R10 |
-| Q1 | 1 | 0 | 1 | 0 | 1 | 0 | 0 | 0 | 1 | 1 |
-| Q2 | 0 | 1 | 0 | 1 | 0 | 1 | 0 | 1 | 0 | 1 |
-| Q3 | 1 | 0 | 1 | 1 | 0 | 0 | 1 | 1 | 0 | 0 |
-| Q4 | 0 | 1 | 0 | 1 | 0 | 0 | 1 | 0 | 1 | 1 |
-| Q5 | 1 | 0 | 0 | 1 | 1 | 0 | 0 | 1 | 1 | 0 |
+|Transformer| N| :math:`d_{\text{model}}` | ::math:`d_{\text{ff}}` | h| :math:`d_{\text{k}}` | :math:`d_{\text{v}}` |performance|
+|small| 3 |512 |2048 |4 |512|512|worse|
+|big| 6 |512 |2048| 8 |512 |512|👍|
 """
 
 data_list = input_.split('\n')[1:-1]
