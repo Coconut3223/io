@@ -13,10 +13,10 @@ fine-tune lightweight student model for running system
 
 3. LLM 都是在真实的大型数据集上进行训练。由 LLM 合成的 generated data 受到 origin dataset 的影响,進一步 worse performance of the fine-tune model. [<sup>2</sup>](#reference)
    1. limit the diversity
-    size of vocabulary of synthesing's << size of ground truth's
+        size of vocabulary of synthesing's << size of ground truth's
    2. inherit systematic biases
-    词的 frequency 两极分化更严重
-    -> sol:
+        词的 frequency 两极分化更严重
+        -> sol:
 
 ## Approaches with gpt
 
@@ -26,12 +26,18 @@ fine-tune lightweight student model for running system
 
 - target: control output
 
-!!! quote ""
-    [CLM] Sentence: example1 \<br> Translation in French: ... \<br> Sentenc:target \<br> Translation in French:
+.. note:: ""
+    [CLM] Sentence: example1 \
+    Translation in French: ... \
+    Sentenc:target \
+    Translation in French:
 
-    !!! quote "" 
+    .. note:: "" 
     
-        [CLM] Sentence: example1 <br> Translation in French: ... <br> Sentenc:target <br> Translation in French:
+        [CLM] Sentence: example1
+        Translation in French: ... 
+        Sentenc:target 
+        Translation in French:
 
 #### common
 
@@ -40,12 +46,13 @@ fine-tune lightweight student model for running system
 - Back-translate
     English -> French ->English
 
-    !!! quote ""
-        Senetence:... <br> Translation in English:
+    .. note:: ""
+        Senetence:... 
+        Translation in English:
 
 - Paraphrase
 
-    !!! quote ""
+    .. note:: ""
         another way to say "...":
 
 ### for slot tags
@@ -54,30 +61,30 @@ fine-tune lightweight student model for running system
 
 **L**anguage Model **In**struction Tuning to **G**enerate Annotated **U**tterances for **I**ntent Classification and **S**lot **T**agging
 
-!!! p task: joint intent classification and slot tagging = IC+ST
+.. note:: task: joint intent classification and slot tagging = IC+ST
     outperforms state-of-the-art baselines like translation and paraphrasing
 
 introduce an **output format** with **brackets and numbers** that enables the model to produce synthetic data with the slots already tagged.
 
-![](./pics/linguist_1.PNG)
+.. image:: ./pics/linguist_1.PNG
 
-!!! summary
+.. note:: summary
     1. XML format
-    2. 生成的 textdata 包括了 `[label, entity]`
-    3. 最好是 few shots，0-shot $\implies$ more noise
-    4. wildcard instruction `*` 自由发挥，which did not appear in the original examples
+    2. 生成的 textdata 包括了  ``[label, entity]`` 
+    3. 最好是 few shots，0-shot  :math:`\implies`  more noise
+    4. wildcard instruction  ``*``  自由发挥，which did not appear in the original examples
     5. 可以改 language
 
 #### CLASP[<sup>1,7</sup>](#reference)
 
 Few-shot **C**ross-**L**ingual Data **A**ugmentation for **S**emantic **P**arsing
 
-!!! p "task: few-shot multilingual semantic parsing, SP"
+.. note:: task: few-shot multilingual semantic parsing, SP
     machine translation
 
-![](./pics/clasp_1.PNG)
+.. note:: ./pics/clasp_1.PNG
 
-!!! summary ""
+.. note:: summary
     1. multi-language
 
 ### for diversity
@@ -89,8 +96,8 @@ Few-shot **C**ross-**L**ingual Data **A**ugmentation for **S**emantic **P**arsin
 - origin **SimPrompt**
     simple class-conditional prompt
 
-![](./pics/attrprompt_1.PNG)
-![](./pics/attrprompt_2.PNG)
+.. image:: ./pics/attrprompt_1.PNG
+.. image:: ./pics/attrprompt_2.PNG
 
 ##### process
 
@@ -98,34 +105,40 @@ For a given classification task
 
 1. initail step
     identify attribute dimensions and their corresponding attribute values in an interactive, semi-automated process facilitated by the LLM.
-    1. use `gpt` help establish both attribute dimensions and attribute values.
-        !!! quote ""  
+    1. use  ``gpt``  help establish both attribute dimensions and attribute values.
+        .. note::  ""
             Which attribute dimensions do you consider vital in determining the topic of a news article?”
 
-            !!! quote "" 
+            .. note:: ""
                 “subtopics, length, location, reader group, style, time”
     2. adopt the human-ai collaboration scheme to interactively select the attribute dimensions of **the highest quality** that best suit the dataset. **人为地选择** Best Top-N attributes.
     3. generate values corresponding to selected attributes similarly
-        !!! quote ""
+        .. note:: ""
              List 10 diverse subtopics for {class_name} news on NYT.
 
-        |atrrs|class-depe|class-indepe|
-        |--|--|--|
-        ||need value filtering|remain unchanged across different classes|
-        |examples|subtopic|length|
+            .. table::
+
+                +--------+--------------------+-----------------------------------------+
+                |atrrs   |class-depe          |class-indepe                             |
+                +========+====================+=========================================+
+                |        |need value filtering|remain unchanged across different classes|
+                +--------+--------------------+-----------------------------------------+
+                |examples|subtopic            |length                                   |
+                +--------+--------------------+-----------------------------------------+
+
     4. **Class-Dependent Attribute Value Filtering, CAF**
         - target： avoid ambiguity and potential connections to multiple classes
-        对 gpt 根据任务给出的 Top-5 个相似 classes，$\forall \text{value}\in \text{class}$进行询问：是否和别的类相关。相关就 remove.
+            对 gpt 根据任务给出的 Top-5 个相似 classes， :math:`\forall \text{value}\in \text{class}` 进行询问：是否和别的类相关。相关就 remove.
 
-        !!! quote ""  
-            List 5 similar classes for {class-name} news on NYT. The set of classes is listed as: {[a list of class-names]}.
-
-            if the answer is positive which indicates a potential ambiguity, we remove that attribute value for the specific class. 
+        .. note:: ""  
+            | List 5 similar classes for {class-name} news on NYT. The set of classes is listed as: {[a list of class-names]}.
+            | if the answer is positive which indicates a potential ambiguity, we remove that attribute value for the specific class. 
 
 2. generate diverse prompts by combining attributes randomly.
 
-    !!! quote ""
+    .. note:: ""
         Suppose you are a review writer. Please write a review for {product-class} product in Amazon following the requirements below:
+       
        1. The review should be about the product of {subtopic};
        2. The brand for the product should be {brand};
        3. Should be in length between {length:min-words} and {length:max-words} words;
@@ -133,39 +146,40 @@ For a given classification task
        5. The writing style of the review should be {style};
        6. the review must be relevant to {product-class} and irrelevant to: {similar-class}.
 
-    !!! summary
+    .. note:: summary
         设计一种使用不同的attributed prompt（带有特征的prompt）生成训练数据的方法（比如限制长度、风格）
         展望：
+
         -  exploring automated or semi-automated methods for identifying high-quality attribute dimensions and values
         - Domain Limitation 只在 text classification 中
         - 生成的数据继承了 LLM 的 hallucination 幻觉问题(生成的文本中在语义或句法上看似合理但实际上不正确或无意义的错误)
 
 #### increasing diversity wihile maintain accuracy [<sup>3</sup>](#reference)
 
-!!! quote ""
-    Write a movie review (text type) to cover all following elements
-    Elements: positive sentiment (label)
-    Movie review (text type): "This is a great movie"
+.. note:: ""
+    | Write a movie review (text type) to cover all following elements
+    | Elements: positive sentiment (label)
+    | Movie review (text type): "This is a great movie"
 
-![](./pics/diversity_accu_1.PNG){width=80%}
+.. image:: ./pics/diversity_accu_1.PNG
 
-``` python
-openai.Completion.create(
-    engine=’davinci’,
-    prompt='q: What is the capital of france?\na:', 
-    logprobs = 5,  # TopN the natural log of the probability
-    stop = '\n', 
-    temperature=0,
-    logit_bias={Token_ID:logprob} # map: {6342:-1, 1582:-10}
-    )
+.. code-block:: py
 
-"""
-- logit_bias:
-    Accepts a json object that
-    maps tokensto an associated bias value from -100 to 100
-    token_ID: in the GPT tokenizer
-"""
-```
+    openai.Completion.create(
+        engine=’davinci’,
+        prompt='q: What is the capital of france?\na:', 
+        logprobs = 5,  # TopN the natural log of the probability
+        stop = '\n', 
+        temperature=0,
+        logit_bias={Token_ID:logprob} # map: {6342:-1, 1582:-10}
+        )
+
+    """
+    - logit_bias:
+        Accepts a json object that
+        maps tokensto an associated bias value from -100 to 100
+        token_ID: in the GPT tokenizer
+    """
 
 ##### logit supression[<sup>9</sup>](#reference)
 
@@ -173,23 +187,24 @@ openai.Completion.create(
 
 - **Logit bias** parameter
   
-    GPT3 的一个很有用的参数。通过 modify the likelihood of tokens 控制 token in [GPT Tokenizer(convert text to token IDs)] 的生成，unwanted tokens ↓， wanted tokens ↑.[<sup>9</sup>](#reference) **bias 会直接加到 gpt 生成的 logprob 上。**
-    $\text{logprob}\begin{cases}-1|1&\uparrow\downarrow\text{the likelhood of tokens}\\-100|100&\text{禁止或者直接指定 }\end{cases}$
-     [create-logit_bias in openAI Docs]
+    | GPT3 的一个很有用的参数。通过 modify the likelihood of tokens 控制 token in [GPT Tokenizer(convert text to token IDs)] 的生成，unwanted tokens ↓， wanted tokens ↑.[<sup>9</sup>](#reference) **bias 会直接加到 gpt 生成的 logprob 上。**
+    | :math:`\text{logprob}\begin{cases}-1|1&\uparrow\downarrow\text{the likelhood of tokens}\\-100|100&\text{禁止或者直接指定 }\end{cases}` 
+    | [create-logit_bias in openAI Docs]
 
-    !!! question
+    ..hint:: Question
         - 中文？会有在那50000
-        ![](./pics/diversity_accu_3.PNG){width=80%}
+        
+            .. image:: ./pics/diversity_accu_3.PNG
         - only 100 tokens for logit biasing
 
 - how gpt generate tokens
-    When run, GPT-3 takes the prompt and predicts the probabilities of the token that is going to occur next. [<sup>9</sup>](#reference)
-    **Rather than the percentages, logprobs is used. $\text{logprob}→0\iff\text{prob}↑$** .[<sup>9</sup>](#reference)
+    | When run, GPT-3 takes the prompt and predicts the probabilities of the token that is going to occur next. [<sup>9</sup>](#reference)
+    | **Rather than the percentages, logprobs is used.  :math:`\text{logprob}→0\iff\text{prob}↑` ** .[<sup>9</sup>](#reference)
 
-!!! quote ""  
+.. note:: ""  
     Specifically, for the logit bias weights, we multiplied the token appearance ratio (in percentage) by -7.5 while capping the minimum weight at –7.5.[<sup>9</sup>](#reference)
 
-    !!! quote ""  
+    .. note:: ""  
       1. 统计 tokens 的 frequency 
       2. logprob = 出现的 freq * -7.5（也就是说最低不可能超过 -7.5
 
@@ -197,26 +212,26 @@ openai.Completion.create(
 
 温度 采样受到统计热力学的启发，其中高温意味着更有可能遇到低能态。在概率模型中，logits 扮演着能量的角色，我们可以通过将 logits 除以温度来实现温度采样，然后将其输入到 softmax 中并获得采样概率
 
-![](./pics/temperature_sampling_1.png){width=80%}
+.. image:: ./pics/temperature_sampling_1.png
 
-![](./pics/temperature_sampling_2.png){width=80%}
+.. image:: ./pics/temperature_sampling_2.png
 
-!!! quote ""  
+.. note:: ""  
     0.3, 0.7, 0.9, and 1.3[<sup>3</sup>](#reference)
 
 - [create-temperature in openAI Docs]
-    $\text{temperature} \in[0,2]\begin{cases}\uparrow\ge0.8&\text{more random}\\\downarrow\le 0.2&\text{more focused and deterministic}\end{cases}$
+     :math:`\text{temperature} \in[0,2]\begin{cases}\uparrow\ge0.8&\text{more random}\\\downarrow\le 0.2&\text{more focused and deterministic}\end{cases}` 
 
-!!! question more about sampling
-    [The Curious Case of Neural Text Degeneration]
-    We generally recommend altering this or top_p but not both.
+.. hint:: Question more about sampling
+    | [The Curious Case of Neural Text Degeneration]
+    | We generally recommend altering this or top_p but not both.
 
-![](./pics/diversity_accu_4.PNG)
-![](./pics/diversity_accu_5.PNG)
+.. image:: ./pics/diversity_accu_4.PNG
+.. image:: ./pics/diversity_accu_5.PNG
 
 ## metrics
 
-!!! danger the quality of synthesized training data [<sup>4</sup>](#reference)
+.. danger:: the quality of synthesized training data [<sup>4</sup>](#reference)
     - fidelity
         how closely the synthetic data matches with the original data
     - utility
@@ -226,15 +241,18 @@ openai.Completion.create(
     - diversity
 
 - 【fidelity】
-  ![](./pics/fidelity_1.PNG)
+    .. image:: ./pics/fidelity_1.PNG
 - 【utility】**Feature importance score**[<sup>4</sup>](#reference)
     檢查順序
-- 【utility】**QScore？？？？？？？？？？？？？？？？**:
-  This score is used to check if a model trained on synthetic data will give the same results as a model trained on original data. It does this by running random aggregation-based queries on both datasets and comparing the results. If the results are similar, it means the synthetic data has good utility.
+- 【utility】 **QScore？？？？？？？？？？？？？？？？**:
+   This score is used to check if a model trained on synthetic data will give the same results as a model trained on original data. It does this by running random aggregation-based queries on both datasets and comparing the results. If the results are similar, it means the synthetic data has good utility.
 - 【utility】the accuracies of models [<sup>3</sup>](#reference)
 
-    !!! quote ""  
-        We compared the accuracies of models trained with generated data to 1) models trained with oracle datasets (oracle model) and 2) GPT-3’s few-/zero-shot classifications
+    .. note:: ""  
+        We compared the accuracies of models trained with generated data to 
+        
+        | 1) models trained with oracle datasets (oracle model) and 
+        | 2) GPT-3’s few-/zero-shot classifications
 
 - label accuracy[<sup>3</sup>](#reference)
     the accuracy of the alignment between the generated texts and the specified labels
@@ -244,20 +262,20 @@ openai.Completion.create(
     - we embedded generated data with BERT devlin2019bert, then calculated the distances
 
 - 【utility】similarity between dataset [<sup>3</sup>](#reference)
- We also measured the similarity of the generated dataset to the oracle dataset with the average mean pairwise distances between the two. For similarity, we also used BERT to embed the generated texts.
-![](./pics/diversity_accu_2.PNG)
+    We also measured the similarity of the generated dataset to the oracle dataset with the average mean pairwise distances between the two. For similarity, we also used BERT to embed the generated texts.
+.. image:: ./pics/diversity_accu_2.PNG
 
-- 【diversity】**vocalbulary size** for lexical diversity of datasets[<sup>2</sup>](#reference)
-![](./pics/attrprompt_3.PNG)
+- 【diversity】 **vocalbulary size** for lexical diversity of datasets[<sup>2</sup>](#reference)
+.. image:: ./pics/attrprompt_3.PNG
 
 - 【diversity】**cosine similarity** for the diversity from the semantic perspective[<sup>2</sup>](#reference)
     - the cosine similarity is calculated based on the embedding of Sentence-BERT Reimers and Gurevych
     - cosine similarity ↓  diversity ↑
-![](./pics/attrprompt_4.PNG)
+.. image:: ./pics/attrprompt_4.PNG
 
 - 开销
 
-    !!! quote ""  
+    .. note:: ""  
         attributed prompt 只需要 simple prompt 5%的开销（主要用于 query chatgpt）就可以达到和后者一样的效果。
 
 ## Reference
