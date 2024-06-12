@@ -1,54 +1,59 @@
+
 # OpenNMT
 
-==Open-Source Toolkit for Neural Machine Translation==。
+==Open-Source Toolkit for Neural Machine Translation== 。
 ==Neural Machine Translation NMT 神经机器翻译==
 
-The system is successor to **seq2seq-attn** developed at Harvard, and has been completely rewritten for ease of efficiency, readability, and generalizability.
-It includes vanilla NMT models along with support for **attention, gating, stacking, input feeding, regularization, beam search and all other options** necessary for state-of-the-art performance.
-The project is fully self-contained depending on minimal number of external Lua libraries and including also a simple language independent reversible tokenization and detokenization tools. 完全独立，只有少部分依赖 标记 & 去标记 的东西。
+| The system is successor to **seq2seq-attn** developed at Harvard, and has been completely rewritten for ease of efficiency, readability, and generalizability.
+| It includes vanilla NMT models along with support for **attention, gating, stacking, input feeding, regularization, beam search and all other options** necessary for state-of-the-art performance.
+| The project is fully self-contained depending on minimal number of external Lua libraries and including also a simple language independent reversible tokenization and detokenization tools. 完全独立，只有少部分依赖 标记 & 去标记 的东西。
 
-!!! quote "官方 paper 【Abstract】"
-    We describe an open-source toolkit for neural machine translation (NMT). The toolkit **prioritizes efficiency, modularity, and extensibility with the goal of supporting NMT research into model architectures, feature representations, and source modalities**, while maintaining competitive performance and reasonable training requirements. The toolkit consists of modeling and translation support, as well as detailed pedagogical documentation about the underlying techniques.
-    [Open-Source Toolkit for Neural Machine Translation]
+.. note:: 官方 paper 【Abstract】
+    | We describe an open-source toolkit for neural machine translation (NMT). The toolkit **prioritizes efficiency, modularity, and extensibility with the goal of supporting NMT research into model architectures, feature representations, and source modalities**, while maintaining competitive performance and reasonable training requirements. The toolkit consists of modeling and translation support, as well as detailed pedagogical documentation about the underlying techniques.
+    | [Open-Source Toolkit for Neural Machine Translation]
 
 ## Data Gathering and Processing
 
 - 包括：至少4个
-    两种语言分为 ① 源 <kbd>src.txt</kbd> ② 目标 <kbd>tgt.txt</kbd>；从数据集上：分为训练集和验证集。
-    每行一个sample，<kbd>src.txt</kbd> 和 <kbd>tgt.txt</kbd> 相互对应。Each file has a sentence/segment per line, and it is matching translation in the same line in the other file. This is what the "Moses" file format means.
+    | 两种语言分为 ① 源 <kbd>src.txt</kbd> ② 目标 <kbd>tgt.txt</kbd>；从数据集上：分为训练集和验证集。
+    | 每行一个sample，<kbd>src.txt</kbd> 和 <kbd>tgt.txt</kbd> 相互对应。Each file has a sentence/segment per line, and it is matching translation in the same line in the other file. This is what the "Moses" file format means.
 
-    .. note:: "多源怎么办？有偏重怎么办？"
-         ```` `yaml title="config.yml"
-        data:
-            corpus_1:
-                path_src: src1_train.txt
-                path_tgt: tgt1_train.txt
-                weight: 1
-            corpus_2:
-                path_src: src2_train.txt
-                path_tgt: tgt2_train.txt
-                weight: 6
-            valid:
-                path_src: src2_valid.txt
-                path_tgt: tgt2_valid.txt
-            ...
-         ```` `
+    .. note:: 多源怎么办？有偏重怎么办？
+
+        .. code-block:: yaml
+            :caption: config.yml
+
+            data:
+                corpus_1:
+                    path_src: src1_train.txt
+                    path_tgt: tgt1_train.txt
+                    weight: 1
+                corpus_2:
+                    path_src: src2_train.txt
+                    path_tgt: tgt2_train.txt
+                    weight: 6
+                valid:
+                    path_src: src2_valid.txt
+                    path_tgt: tgt2_valid.txt
+                ...
+
 - 内容【see ## Tokenization / Sub-wording】
     - token 形式，以<u>空格</u>分词
         - 本身一个就是最小token形式存在： 英、法：不需要处理
         - 不以特殊标记分割词的：中：<u>需要分词</u>
 
-  !!! P "如果不先分词传进去，也可以指定分词  ``[tokenizer]`` "
+  .. note:: 如果不先分词传进去，也可以指定分词  ``[tokenizer]``
       而一般用 <u>Sentence Piece</u> 基于语料训练一个 tokenizer，类似于 jieba，<U>会形成固定大小的词表</U>。这会影响后来的 <u> ``vocab_size`` </u>
 
-       ```` `yaml title="config.yml"
-        data:
-            corpus_1:
-                path_src: src1_train.txt
-                path_tgt: tgt1_train.txt
-                weight: 1
-                transforms: [tokenizer] 
-       ```` `
+        .. code-block:: yaml
+            :caption: config.yml
+
+            data:
+                corpus_1:
+                    path_src: src1_train.txt
+                    path_tgt: tgt1_train.txt
+                    weight: 1
+                    transforms: [tokenizer] 
 
 ## Tokenization / Sub-wording
 
@@ -56,10 +61,10 @@ However, an MT model can only learn a specific number of vocabulary tokens due t
 
 因为硬件资源有限，MT model 只能学一定量的词汇。为了让它在碰见新的词汇能继续翻译而不是标记成<kbd>unknown</kbd> or <kbd>UNK</kbd>.
 
-.. note:: "最小单元 the small units是什么？"
+.. note:: 最小单元 the small units是什么？
 
-    > <u>English</u>
-    ▁Hav ing ▁considered ▁the ▁report ▁of ▁the ▁Committee ▁on ▁Conferences ▁for ▁ 2 0 0 6 Official ▁Record s ▁of ▁the ▁General ▁Assembly , ▁S ixty - first ▁Session , ▁Supplement ▁No . ▁ 3 2 ▁( A / 6 1 / 3 2 ). ▁and ▁the ▁relevant ▁reports ▁of ▁the ▁Secretary - General , A / 6 1 / 1 2 9 ▁and ▁Add . 1 ▁and ▁A / 6 1 / 3 0 0 .</kbd>
+    .. hint:: <u>English</u>
+        ▁Hav ing ▁considered ▁the ▁report ▁of ▁the ▁Committee ▁on ▁Conferences ▁for ▁ 2 0 0 6 Official ▁Record s ▁of ▁the ▁General ▁Assembly , ▁S ixty - first ▁Session , ▁Supplement ▁No . ▁ 3 2 ▁( A / 6 1 / 3 2 ). ▁and ▁the ▁relevant ▁reports ▁of ▁the ▁Secretary - General , A / 6 1 / 1 2 9 ▁and ▁Add . 1 ▁and ▁A / 6 1 / 3 0 0 .</kbd>
 
 ## Data Splitting
 
@@ -71,95 +76,97 @@ Create the <u>YAML configuration file</u>. On a regular machine, you can create 
 
 ### Example
 
- ```` `yaml title="config.yml"
-save_data: run  # Where the samples will be written
+.. code-block:: yaml
+    :caption: config.yml
 
-# Training files
-data:
-    corpus_1:
-        path_src: UN.en-fr.fr-filtered.fr.subword.train
-        path_tgt: UN.en-fr.en-filtered.en.subword.train
-        transforms: [filtertoolong]
-    valid:
-        path_src: UN.en-fr.fr-filtered.fr.subword.dev
-        path_tgt: UN.en-fr.en-filtered.en.subword.dev
-        transforms: [filtertoolong]
+    save_data: run  # Where the samples will be written
 
-src_vocab: run/source.vocab  # Vocabulary files, generated by onmt_build_vocab
-tgt_vocab: run/target.vocab
+    # Training files
+    data:
+        corpus_1:
+            path_src: UN.en-fr.fr-filtered.fr.subword.train
+            path_tgt: UN.en-fr.en-filtered.en.subword.train
+            transforms: [filtertoolong]
+        valid:
+            path_src: UN.en-fr.fr-filtered.fr.subword.dev
+            path_tgt: UN.en-fr.en-filtered.en.subword.dev
+            transforms: [filtertoolong]
 
-src_vocab_size: 50000  # Max Vocabulary size 
-tgt_vocab_size: 50000  # Max Vocabulary size
+    src_vocab: run/source.vocab  # Vocabulary files, generated by onmt_build_vocab
+    tgt_vocab: run/target.vocab
 
-# Filter out source/target longer than n if [filtertoolong] enabled
-src_seq_length: 150
-src_seq_length: 150
+    src_vocab_size: 50000  # Max Vocabulary size 
+    tgt_vocab_size: 50000  # Max Vocabulary size
 
-# Tokenization options
-src_subword_model: source.model
-tgt_subword_model: target.model
+    # Filter out source/target longer than n if [filtertoolong] enabled
+    src_seq_length: 150
+    src_seq_length: 150
 
-# Where to save the log file and the output models/checkpoints
-log_file: train.log
-save_model: models/model.fren
+    # Tokenization options
+    src_subword_model: source.model
+    tgt_subword_model: target.model
 
-# Checkpoint
-save_checkpoint_steps: 1000  # Default: 5000 - Save a model checkpoint for each n
-keep_checkpoint: 3  # To save space, limit checkpoints to last n
+    # Where to save the log file and the output models/checkpoints
+    log_file: train.log
+    save_model: models/model.fren
 
-seed: 3435
+    # Checkpoint
+    save_checkpoint_steps: 1000  # Default: 5000 - Save a model checkpoint for each n
+    keep_checkpoint: 3  # To save space, limit checkpoints to last n
 
-# Default: 100000 - Train the model to max n steps 
-# Increase to 200000 or more for large datasets
-# For fine-tuning, add up the required steps to the original steps
-train_steps: 3000
+    seed: 3435
 
-valid_steps: 1000 # Default: 10000 - Run validation after n steps
+    # Default: 100000 - Train the model to max n steps 
+    # Increase to 200000 or more for large datasets
+    # For fine-tuning, add up the required steps to the original steps
+    train_steps: 3000
 
-early_stopping: 4  # Stop training if it does not imporve after n validations
-report_every: 100
+    valid_steps: 1000 # Default: 10000 - Run validation after n steps
 
-# GPU
-world_size: 1  # Number of GPUs, and 
-gpu_ranks: [0]  # IDs of GPUs
+    early_stopping: 4  # Stop training if it does not imporve after n validations
+    report_every: 100
 
-# Batching
-bucket_size: 262144
-num_workers: 0  # Default: 2, set to 0 when RAM out of memory
-batch_type: "tokens"
-batch_size: 4096   # Tokens per batch, change when CUDA out of memory
-valid_batch_size: 2048
-max_generator_batches: 2
-accum_count: [4]
-accum_steps: [0]
+    # GPU
+    world_size: 1  # Number of GPUs, and 
+    gpu_ranks: [0]  # IDs of GPUs
 
-# Optimization
-model_dtype: "fp16"
-optim: "adam"
-learning_rate: 2
-warmup_steps: 1000  # Default: 4000 - for large datasets, try up to 8000
-decay_method: "noam"
-adam_beta2: 0.998
-max_grad_norm: 0
-label_smoothing: 0.1
-param_init: 0
-param_init_glorot: true
-normalization: "tokens"
+    # Batching
+    bucket_size: 262144
+    num_workers: 0  # Default: 2, set to 0 when RAM out of memory
+    batch_type: "tokens"
+    batch_size: 4096   # Tokens per batch, change when CUDA out of memory
+    valid_batch_size: 2048
+    max_generator_batches: 2
+    accum_count: [4]
+    accum_steps: [0]
 
-# Model
-encoder_type: transformer
-decoder_type: transformer
-position_encoding: true
-enc_layers: 6
-dec_layers: 6
-heads: 8
-hidden_size: 512
-word_vec_size: 512
-transformer_ff: 2048
-dropout_steps: [0]
-dropout: [0.1]
-attention_dropout: [0.1]
- ```` `
+    # Optimization
+    model_dtype: "fp16"
+    optim: "adam"
+    learning_rate: 2
+    warmup_steps: 1000  # Default: 4000 - for large datasets, try up to 8000
+    decay_method: "noam"
+    adam_beta2: 0.998
+    max_grad_norm: 0
+    label_smoothing: 0.1
+    param_init: 0
+    param_init_glorot: true
+    normalization: "tokens"
+
+    # Model
+    encoder_type: transformer
+    decoder_type: transformer
+    position_encoding: true
+    enc_layers: 6
+    dec_layers: 6
+    heads: 8
+    hidden_size: 512
+    word_vec_size: 512
+    transformer_ff: 2048
+    dropout_steps: [0]
+    dropout: [0.1]
+    attention_dropout: [0.1]
+
 
 ### Content
 
@@ -168,20 +175,20 @@ attention_dropout: [0.1]
     - 如果使用 <u>Sentence Piece</u> 得到的tokenizer来分词，这两个 params = size_of_SentencePiece
     - 但事先分好词进去，就会直接  ``counters``  统计。统计的大小看语料的丰富的程度。
 
-     ```` `bash
-    [2023-12-07 14:23:22,059 INFO] Counters src: 17008
-    [2023-12-07 14:23:22,060 INFO] Counters tgt: 16939
-     ```` `
+    .. code-block:: sh
+    
+        [2023-12-07 14:23:22,059 INFO] Counters src: 17008
+        [2023-12-07 14:23:22,060 INFO] Counters tgt: 16939
 
 For larger datasets, consider increasing: train_steps, valid_steps, warmup_steps, save_checkpoint_steps, keep_checkpoint
 
 -  ``train_steps`` 
-for datasets with a few millions of sentences, consider using a value between 100000 and 200000, or more!
+    for datasets with a few millions of sentences, consider using a value between 100000 and 200000, or more!
     - <u> ``early_stopping: int`` </u> can help stop the training when there is no considerable improvement.
 -  ``valid_steps`` 
-10000 can be good if the value train_steps is big enough.
+    10000 can be good if the value train_steps is big enough.
 -  ``warmup_steps`` 
-obviously, its value must be less than train_steps. Try 4000 and 8000 values.
+    obviously, its value must be less than train_steps. Try 4000 and 8000 values.
 
 ## Build Vocabulary
 
@@ -189,17 +196,18 @@ obviously, its value must be less than train_steps. Try 4000 and 8000 values.
 
 Main purpose: To extract a specific set of vocabulary(usually <u>betweeen 32k and 100k </u>words) from the traning set.
 
- ```` `yaml title="config.yml"
-...
-src_vocab: run/src.vocab  # Vocabulary files, generated by onmt_build_vocab
-tgt_vocab: run/tgt.vocab
+.. code-block:: yaml
+    :caption: config.yml
 
-src_vocab_size: 50000  # MAX Vocabulary size
-tgt_vocab_size: 50000  # MAX Vocabulary size
+    ...
+    src_vocab: run/src.vocab  # Vocabulary files, generated by onmt_build_vocab
+    tgt_vocab: run/tgt.vocab
 
-src_words_min_frequency: 2 # 單獨運行無意義的感覺
-tgt_words_min_frequency: 2 
- ```` `
+    src_vocab_size: 50000  # MAX Vocabulary size
+    tgt_vocab_size: 50000  # MAX Vocabulary size
+
+    src_words_min_frequency: 2 # 單獨運行無意義的感覺
+    tgt_words_min_frequency: 2 `
 
 <kbd>onmt_build_vocab -config config.yaml -n_sample -1 -num_threads 2</kbd>
 
@@ -208,32 +216,36 @@ tgt_words_min_frequency: 2
     -  ``=-1``  on **all** the segment in the training dataset
 -  ``-num_threads`` : change it to match the number of CPUs to run it faster
 
->  ```` ` bash
-> [INFO] Counter vocab from -1 samples.
-> [INFO] n_sample=-1: Build vocab on **full** datasets.
-> [INFO] * Transform statistics for corpus_1(50.00%):
-> * FilterTooLongStats(filtered=2138)
-> [INFO] * Transform statistics for corpus_1(50.00%):
-> * FilterTooLongStats(filtered=2032)
-> [INFO] Counters src:14705
-> [INFO] Counters tgt:11884
->  ```` `
+.. hint:: example
+
+    .. code-block:: sh
+
+        [INFO] Counter vocab from -1 samples.
+        [INFO] n_sample=-1: Build vocab on **full** datasets.
+        [INFO] * Transform statistics for corpus_1(50.00%):
+        * FilterTooLongStats(filtered=2138)
+        [INFO] * Transform statistics for corpus_1(50.00%):
+        * FilterTooLongStats(filtered=2032)
+        [INFO] Counters src:14705
+        [INFO] Counters tgt:11884
+
 
 ## Check GPU
 
 <kbd>nvidia-smi -L</kbd> Check if the GPU is active
 
- ```` `python
-import torch
-print(torch.cuda.is_available())
-print(torch.cuda.get_device_name(0))
+.. code-block:: pycon
 
-gpu_memory = torch.cuda.mem_get_info(0)
-print("Free GPU memory:", gpu_memory[0]/1024**2, "out of:", gpu_memory[1]/1024**2)
-# >>> True
-# >>> Tesla T4
-# >>> Free GPU memory: 15007.75 out of: 15109.75
- ```` `
+    >>> import torch
+    >>> print(torch.cuda.is_available())
+    >>> print(torch.cuda.get_device_name(0))
+
+    >>> gpu_memory = torch.cuda.mem_get_info(0)
+    >>> print("Free GPU memory:", gpu_memory[0]/1024**2, "out of:", gpu_memory[1]/1024**2)
+    True
+    Tesla T4
+    Free GPU memory: 15007.75 out of: 15109.75
+
 
 ## Traning
 
@@ -241,9 +253,10 @@ print("Free GPU memory:", gpu_memory[0]/1024**2, "out of:", gpu_memory[1]/1024**
 2. Train the NMT model: <kbd>onmt_train -config config.yaml</kbd>
     - If the traning stopped, and we want to continue it from a specific checkpoint: <kbd>onmt_train -config config.yaml -train_from models/model.fren_step_3000.pt</kbd>
   
-        ```` `yaml title="config.yml"
-        train_steps # > train_from 的数字
-         ```` `
+        .. code-block:: yaml
+            :caption: config.yml
+        
+            train_steps # > train_from 的数字
 
 - debug mode: <kbd>dmesg -T</kbd>
 
@@ -260,14 +273,15 @@ Translation Options:
 -  ``-min_length[optional]`` :  to avoid empty translations
 -  ``-verbose[optional]`` : if you want to print translations
 
-> 1. <kbd>onmt_translate -model models/model.fren_step_3000.pt -src UN.en-fr.fr-filtered.fr.subword.test -output UN.en.translated -gpu 0 -min_length 1</kbd>
-> 2. Check the first line of result <kbd>head -n 1 UN.en.translated</kbd>
->
->
-> > <u> Using sub-word</u>
-> > ▁Recalling ▁its ▁relevant ▁resolutions , ▁including ▁resolution ▁ 5 8 / 2 9 2 ▁of ▁ 6 ▁May ▁ 2 0 0 4 , ▁as ▁well ▁as ▁th ose ▁adopted ▁at ▁its ▁tenth ▁emergency ▁special ▁session ,
-> > <u>Using word</u>
-> > Recalling its relevant resolutions, including resolution 58/292 of 6 May 2004, as well as those adopted at its tenth emergency special session,
+.. hint:: example
+
+    1. <kbd>onmt_translate -model models/model.fren_step_3000.pt -src UN.en-fr.fr-filtered.fr.subword.test -output UN.en.translated -gpu 0 -min_length 1</kbd>
+    2. Check the first line of result <kbd>head -n 1 UN.en.translated</kbd>
+    
+    | <u> Using sub-word</u>
+    | ▁Recalling ▁its ▁relevant ▁resolutions , ▁including ▁resolution ▁ 5 8 / 2 9 2 ▁of ▁ 6 ▁May ▁ 2 0 0 4 , ▁as ▁well ▁as ▁th ose ▁adopted ▁at ▁its ▁tenth ▁emergency ▁special ▁session ,
+    | <u>Using word</u>
+    | Recalling its relevant resolutions, including resolution 58/292 of 6 May 2004, as well as those adopted at its tenth emergency special session,
 
 ## Evaluation
 
@@ -278,8 +292,9 @@ Translation Options:
 During translation, instead of adding one model/checkpoint to the -model argument, add multiple checkpoints. For example, try the two last checkpoints. Does it improve quality of translation? Does it affect translation seepd?
 
 - **Averaging Models**
-<kbd>python3 average_models.py -models model_step_xxx.pt model_step_yyy.pt -output model_avg.pt</kbd>
-Average multiple models into one model using the average_models.py script, and see how this affects performance.
+
+| <kbd>python3 average_models.py -models model_step_xxx.pt model_step_yyy.pt -output model_avg.pt</kbd>
+| Average multiple models into one model using the average_models.py script, and see how this affects performance.
 
 ### Release Model
 
@@ -289,9 +304,9 @@ see how it reduce the model size.
 
 ## Using pre-trained NMT models
 
-For low-resource languages(up to 15m), using directly or fine-tuning mBART can give better results.
-For high-resource languages, training a baseline model from scratch can outperform mBART.
-Then, applying mixed fine-tuning (Chu et al., 2017) on this new baseline using in-house data can even achieve better gains in terms of Machine Translation quality. Check this code snippet if you would like to try mBART. You can also convert M2M-100 model to the CTranslate2 format for better efficiency as explained here.
+| For low-resource languages(up to 15m), using directly or fine-tuning mBART can give better results.
+| For high-resource languages, training a baseline model from scratch can outperform mBART.
+| Then, applying mixed fine-tuning (Chu et al., 2017) on this new baseline using in-house data can even achieve better gains in terms of Machine Translation quality. Check this code snippet if you would like to try mBART. You can also convert M2M-100 model to the CTranslate2 format for better efficiency as explained here.
 
 ## Multilingual Neural Machine Translation，MNMT
 
@@ -306,9 +321,9 @@ Then, applying mixed fine-tuning (Chu et al., 2017) on this new baseline using i
 1. <u>shuffle</u> dataset
 2. check banlanced -> <u>over-sampling</u>
     - giving **weights** to datasets
-        > En: 10 million, zh: 2 million  :math:`\implies`  weight of En = 1, weight of zh = 5
+        .. hint:: En: 10 million, zh: 2 million  :math:`\implies`  weight of En = 1, weight of zh = 5
 3. <u>[Optional]</u> add a special token to the start of each sentence. In this case, you will have to add these tokens to your SentencePiece model through the option  ``--user_defined_symbols`` . However, some researchers believe this step is optional.
-    > En:  ``<en>`` , zh:  ``<zh>`` 
+    .. hint:: En:  ``<en>`` , zh:  ``<zh>`` 
 4. Integrating other data augmentation approaches like Back-Translation can still be useful.
 5. pre-trained NMT models
     For low-resource languages(up to 15m), using directly or fine-tuning mBART can give better results.
@@ -325,8 +340,8 @@ You can also convert M2M-100 model to the CTranslate2 format for better efficien
 
 ## Ref
 
- [神经机器翻译（NMT）的一些重要资源分享](https://zhuanlan.zhihu.com/p/29338282)
- [OpenNMT-py Tutorial](https://github.com/ymoslem/OpenNMT-Tutorial/tree/main)
+[神经机器翻译（NMT）的一些重要资源分享](https://zhuanlan.zhihu.com/p/29338282)
+[OpenNMT-py Tutorial](https://github.com/ymoslem/OpenNMT-Tutorial/tree/main)
 
 [Notes on Multilingual Machine Translation]: https://blog.machinetranslation.io/multilingual-nmt/
 
