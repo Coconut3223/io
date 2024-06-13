@@ -146,6 +146,7 @@ python 会在系统路径中找寻所需要的包
 .. warning:: 变量名的赋值、变量名的传参，传递都是 ==栈区== 的数据，而且栈的数据是 ==变量名与内存地址的对应关系== ，是对变量值的引用
 
 .. code-block:: pycon
+
     >>> a, b = 1, [1]
     >>> lst = [a, b]
     lst = [1, 2]
@@ -163,6 +164,7 @@ python 会在系统路径中找寻所需要的包
     | ID为* 的 obj 的引用计数 -1
 
     .. code-block:: python
+
         x = x-value  
         # 生成 x-value 的 ID为* 的 obj，把 x 变量名贴到 ID为* 的 obj
         del x  # 解除
@@ -193,6 +195,7 @@ python 会在系统路径中找寻所需要的包
 tuple 是不可变的，只是说 每个元素引用的 ID 不可变，元素可能引用的是可变类型的对象。如果就地修改，元素引用的ID不变，元素引用的内容发生改变。也不会产生 Error。
 
 .. code-block:: pycon
+
     >>> a = (1, [1, 2])
     >>> [id(item) for item in a]
     [4309582064, 4312627712]
@@ -302,7 +305,7 @@ tuple 是不可变的，只是说 每个元素引用的 ID 不可变，元素可
         lst的位[0]在ID=1上与a无关；位[1]在ID=3上，所以也修改了。
 
 .. code-block:: pycon
-    :: 4,5
+    :emphasize-lines: 4,5
 
     >>> import copy
     >>> l1 = [0, [11, 22], (7, 8)]  # [不可变, 可变， 不可变]
@@ -329,6 +332,7 @@ tuple 是不可变的，只是说 每个元素引用的 ID 不可变，元素可
 **理论上的正常情况**，变量都是需要申请 **内存空间（id不同）** 存储数据然后把地址返回给变量名引用。但在 Python解释器（一般是cpython） ==[-5, 256]== 是不会申请新的内存，而都是 **引用同一块早已在解释器运行时就开辟的内存,==小整数池==**，导致 **id相同**。另外 pycharm/vscode 有 ==大整数池== 的概念
 
 .. code-block:: pycon
+
     """正常来说，每次申请，id都不一样"""
     >>> a, b = 9999999999999, 9999999999999
     >>> a == b
@@ -364,7 +368,7 @@ tuple 是不可变的，只是说 每个元素引用的 ID 不可变，元素可
 
 #### naming conventions
 
-- **驼峰命名**的时候
+- **驼峰命名** 的时候
 - **使用单数和复数式名称**，可帮助你判断代码段处理的是单个列表元素还是整个列表。
 
 .. table::
@@ -395,26 +399,28 @@ tuple 是不可变的，只是说 每个元素引用的 ID 不可变，元素可
     | 📕 函数对象特有属性  ``dir(func)``  查看对象属性
     | ``__call__:method-wrapper`` 
     | ``__closure__:tuple=None``  ==函数闭包== 对自由变量的的绑定
-    | ``__defaults__:tuple``  放 **形式参数**的默认值
+    | ``__defaults__:tuple``  放 **形式参数** 的默认值
     | ``__globals__:dict``  所在 module 的全局变量
-    | ``__kwdefaults__``  放 **关键字形式参数**的默认值
+    | ``__kwdefaults__``  放 **关键字形式参数** 的默认值
     | ``__name__``  函数名
 
 
- ```` `python hl_lines="5 7 9"
-def func(n):
-    """ return param """
-    return n
+.. code-block:: pycon
+    :emphasize-lines: 5,7,9
 
-f =func
-# >>> f=func=<function func at 0x102fe88b0>
-f(1)
-# >>> f(1)=func(1)=1
-list(map(f,range(3)))
-# >>> [0, 1, 2]
- ```` `
+    >>> def func(n):
+    >>>     """ return param """
+    >>>     return n
 
-==higher-order func 高阶函数== 。接受 **函数**为参数，或把 **函数**作为结果返回的函数。
+    >>> f =func
+    f=func=<function func at 0x102fe88b0>
+    >>> f(1)
+    f(1)=func(1)=1
+    >>> list(map(f,range(3)))
+    [0, 1, 2]
+
+
+==higher-order func 高阶函数== 。接受 **函数** 为参数，或把 **函数** 作为结果返回的函数。
     map & filter & reduce & apply &...
     sorted(因为能用key去接受k函数作为参数，把k函数结果作为排序的依据)
 
@@ -436,6 +442,7 @@ list(map(f,range(3)))
 
 .. note:: ""
     参数传递 根据引用的方式分为
+
     - 按值传递，函数得到参数的副本。
         传 a 的时候，拿到 a
     - 按引用传递，函数得到指向参数的指针
@@ -447,58 +454,60 @@ list(map(f,range(3)))
     | 参数传递是【引用】按值的传递。函数内部的形参是实参的别名，就是贴在实参所引用的对象上，但是不能解除实参和对象的绑定关系。
     | 所以 函数内部能<u>修改</u>作为参数传入的可变类型。
 
- ```` `python
-def f(a, b):
-    a += b
-    return a
+.. code-block:: pycon
 
-x, y = 1, 2
-f(x, y)
-# >>> 3
-# >>> x, y=(1, 2)
-x, y = (1, 1), (2, 2)
-f(x, y)
-# >>> (1, 1, 2, 2)
-# >>> x, y=((1, 1), (2, 2))
-x, y = [1, 1], [2, 2]
-f(x, y)
-# >>> [1, 1, 2, 2]
-# >>> x, y=([1, 1, 2, 2], [2, 2])  # 可变类型对象被修改
- ```` `
+    >>> def f(a, b):
+    >>>     a += b
+    >>>     return a
+
+    >>> x, y = 1, 2
+    >>> f(x, y)
+    3
+    x, y=(1, 2)
+    >>> x, y = (1, 1), (2, 2)
+    >>> f(x, y)
+    (1, 1, 2, 2)
+    x, y=((1, 1), (2, 2))
+    >>> x, y = [1, 1], [2, 2]
+    >>> f(x, y)
+    [1, 1, 2, 2]
+    x, y=([1, 1, 2, 2], [2, 2])  # 可变类型对象被修改
+
 
 .. danger:: 不要使用可变类型  ``[]``  &  ``dict{}``  作为默认参数，而是选择  ``None`` 
     | 默认参数会自建对象，如果没有指定，就一律贴在其上，所以如果可变类型变化，引用的ID对象变了，只要绑定在这个ID对象（只要不是赋值），都随着一起变化。
     | 默认值在定义函数计算（通常在加载模块时进行对象创建），因此默认值会变成函数对象的属性，凡是没有传入，都会指向这个在一开始就创建好的默认值对象（ID为同一个）。
 
-     ```` `python
-    def func(a=[1,2]):
-        a.append(3)
-        return a
+    .. code-block:: pycon
 
-    func([3])
-    # >>> [3, 3]  <- [3]
-    res = func() 
-    # >>> res=[1, 2, 3]  <- [1, 2]
-    res.append(-1)
-    # >>> res=[1, 2, 3, -1]
-    func()  # 默认参数被改变
-    # >>> [1, 2, 3, -1, 3] <- [1, 2, 3, -1]
-    # >>> res=[1, 2, 3, -1, 3]
-     ```` `
+    >>> def func(a=[1,2]):
+    >>>     a.append(3)
+    >>>     return a
+
+    >>> func([3])
+    [3, 3]  <- [3]
+    >>> res = func() 
+    res=[1, 2, 3]  <- [1, 2]
+    >>> res.append(-1)
+    res=[1, 2, 3, -1]
+    >>> func()  # 默认参数被改变
+    [1, 2, 3, -1, 3] <- [1, 2, 3, -1]
+    res=[1, 2, 3, -1, 3]
+
 
 .. warning:: 如果定义参数接受可变参数，谨慎考虑调用方是否期望修改传入的参数。
 
-     ```` `python
-    class C():
-        def __init__(self,lst=None, modified=True):
-            if lst is None:  # 当需要空的时候 用 None 来判定
-                self.lst = []
-            elif modified == Ture:
-                self.lst = lst  # 指向传入的 ID，里面变，外面同样 ID的 也会变
-            elif modified == Flase:
-                self.lst = list(lst)  # 浅拷贝，for 元素都是不可变的
-                self.lst = copy.deepcopy() # 深拷贝，for 元素有可变的
-     ```` `
+    .. code-block:: py
+
+        class C():
+            def __init__(self,lst=None, modified=True):
+                if lst is None:  # 当需要空的时候 用 None 来判定
+                    self.lst = []
+                elif modified == Ture:
+                    self.lst = lst  # 指向传入的 ID，里面变，外面同样 ID的 也会变
+                elif modified == Flase:
+                    self.lst = list(lst)  # 浅拷贝，for 元素都是不可变的
+                    self.lst = copy.deepcopy() # 深拷贝，for 元素有可变的
 
 #### args & kwargs
 
@@ -511,28 +520,29 @@ f(x, y)
 
 .. note:: ``*``  展开 tuple 🟰 一般参数 &  ``**``  展开 dict 🟰 关键词参数
 
- ```` `python hl_lines="1 5 7 9 11 13 16 18"
-def func(general, *args, kw_only=None, **kwargs):
-    print(f'*args={args}')
-    print(f'**kwargs={kwargs}')
+.. code-block:: pycon
+    :emphasize-lines: 1,5,7,11,13,16,18
 
-func()
-# >>> TypeError: func() missing 1 required positional argument: 'general'
-func(1, 'a', 'b', 'c')
-# >>> *args=('a', 'b', 'c') **kwargs={}
-func(1, 'a', 'b', c='c')
-# >>> *args=('a', 'b') **kwargs={'c': 'c'}
-func(args='a', b= 'b', 1)
-# >>> SyntaxError: positional argument follows keyword argument
-func(args='a', b= 'b', general=1)
-# >>> *args=()  **kwargs={'args': 'a', 'b': 'b'}
-params = {'general': 1, 'a': 'a'}
-func(**params)
-# >>> *args=()  **kwargs={'a': 'a'}
-params = (1,2,3)
-func(*params)
-# >>> *args=(2, 3)  **kwargs={}
- ```` `
+    >>> def func(general, *args, kw_only=None, **kwargs):
+    >>>     print(f'*args={args}')
+    >>>     print(f'**kwargs={kwargs}')
+
+    >>> func()
+    TypeError: func() missing 1 required positional argument: 'general'
+    >>> func(1, 'a', 'b', 'c')
+    *args=('a', 'b', 'c') **kwargs={}
+    >>> func(1, 'a', 'b', c='c')
+    *args=('a', 'b') **kwargs={'c': 'c'}
+    >>> func(args='a', b= 'b', 1)
+    SyntaxError: positional argument follows keyword argument
+    >>> func(args='a', b= 'b', general=1)
+    *args=()  **kwargs={'args': 'a', 'b': 'b'}
+    >>> params = {'general': 1, 'a': 'a'}
+    >>> func(**params)
+    *args=()  **kwargs={'a': 'a'}
+    >>> params = (1,2,3)
+    >>> func(*params)
+    *args=(2, 3)  **kwargs={}
 
 <p>&#9312; kw-only 只允许使用关键字模式，因为在 *args 后面</p>
 <p>&#9316; 没有指定默认值的，得不到参数就会报错</p>
@@ -543,7 +553,9 @@ func(*params)
 <p>&#9327; 字典传入的是纯关键字模式</p>
 <p>&#9329; 元组传入的是定位模式，此时不能存在没有指定默认值的仅限关键字的参数。</p>
 
+
 ### 变量作用域
+
 
 ==名称空间 namespace== ：存放名字的地方，是对栈区的划分。名称空间的”嵌套"关系是以函数定义阶段为准
 
@@ -555,13 +567,13 @@ func(*params)
 | **加载顺序**：内置名称空间>全局名称空间>局部名称空间
 | **销毁顺序**：局部名称空间>全局名空间>内置名称空间
 
-名字的查找优先级：当前所在的位置向上一层一层查找
-    如果当前在局部名称空间: 局部名称空间->全局名称空间->内置名称空间
+| 名字的查找优先级：当前所在的位置向上一层一层查找
+| 如果当前在局部名称空间: 局部名称空间->全局名称空间->内置名称空间
 
 .. danger:: python 在没有任何声明的前提下，假定在函数定义体内中<u>赋值</u>的变量是 ==局部变量== 。
     | 如果想在函数定义体内赋值，还想 python 解释器把其认为全局变量，需要声明  ``global`` 
     | 如果再局部想要修改全局的名字对应的值（不可变类型），需要用global
-    [Python 全局变量]
+    | [Python 全局变量]
 
 | ==全局名称空间==
 | 存放的名字：只要不是函数内定义、也不是内置的，剩下的都是全局名称空间的名字。包括 import 进来的函数和变量
@@ -575,63 +587,74 @@ func(*params)
 | ==闭包== 。延伸了作用域的函数，其中包含函数定义体中运用，但不在定义体内定义的 **非全局变量**。一般出现在嵌套函数里。闭包是一种函数，他会保留定义函数时存在的自由变量的绑定，哪怕是定义作用域不能用，绑定也能使用。
 | ==自由变量== 。未在本地作用域内绑定的变量。用  ``nonlocal``  声明，哪怕是在函数定义体内赋值，python 解释器会把其认为自由变量(类  ``global``  )。保存在 返回对象的 ``.__code__.co_afreevars``   &  ``.__closure__[idx].cell_contents``  一一对应。
 
- ```` `python hl_lines="3-10"
-def outer():
-    # 3-10 inner 的闭包延伸到 inner 之外，包含 自由变量 的定义
-    series = []
-    total, count = 0, 0 
-    def inner(new_v):
-        nonlocal total, count
-        total += new_v  # 哪怕赋值了会解释自由变量。
-        count += 1
-        series.append(new_v)  # 自由变量
-        return f'{sum(series) / len(series)} {total/count}'
-    
-    return inner
+.. code-block:: py
+    :emphasize-lines: 3-10
 
-avg = outer()
-avg(10)
-# >>> '10.0 10.0'
-avg(11)
-# >>> '10.5 10.5'
-avg2 = outer()
-avg2(0)
-# >>> '0 0'
-avg.__code__.co_freevars
-# >>> ('count', 'series', 'total')
-avg.__closure__[1].cell_contents
-# >>> [10, 11]
- ```` `
+    def outer():
+        # 3-10 inner 的闭包延伸到 inner 之外，包含 自由变量 的定义
+        series = []
+        total, count = 0, 0 
+        def inner(new_v):
+            nonlocal total, count
+            total += new_v  # 哪怕赋值了会解释自由变量。
+            count += 1
+            series.append(new_v)  # 自由变量
+            return f'{sum(series) / len(series)} {total/count}'
+        
+        return inner
 
- ```` `python
-glo = 'a'
-def func():
-    print(glo)  # 使用内部变量
-    glo = 3     # 定义内部变量
-    print(glo)
-func()
-# >>> UnboundLocalError: cannot access local variable 'glo' 
+.. code-block:: pycon
 
-def Sol_A():
-    global glo
-    print(glo)  
-    glo = 'A'    # 修改外部变量
-    print(glo)
+    >>> avg = outer()
+    >>> avg(10)
+    '10.0 10.0'
+    >>> avg(11)
+    '10.5 10.5'
+    >>> avg2 = outer()
+    >>> avg2(0)
+    '0 0'
+    >>> avg.__code__.co_freevars
+    ('count', 'series', 'total')
+    >>> avg.__closure__[1].cell_contents
+    [10, 11]
 
-def Sol_B():
-    glo = 'B'    # 定义内部变量
-    print(glo)  
 
-Sol_A()
-# >>> a
-# >>> A
-print(glo)  # 外部变量改变
-# >>> A
-sol_B()
-# >>> B
-print(glo)  # 外部变量不变
-# >>> A
- ```` `
+.. code-block:: py
+
+    glo = 'a'
+    def func():
+        print(glo)  # 使用内部变量
+        glo = 3     # 定义内部变量
+        print(glo)
+
+.. code-block:: pycon
+
+    >> func()
+    UnboundLocalError: cannot access local variable 'glo' 
+
+.. code-block:: py
+
+    def Sol_A():
+        global glo
+        print(glo)  
+        glo = 'A'    # 修改外部变量
+        print(glo)
+
+    def Sol_B():
+        glo = 'B'    # 定义内部变量
+        print(glo)  
+
+.. code-block:: pycon
+
+    >>> Sol_A()
+    a
+    A
+    >>> print(glo)  # 外部变量改变
+    A
+    >>> sol_B()
+    B
+    >>> print(glo)  # 外部变量不变
+    A
 
 ### 函数分类
 
@@ -664,108 +687,111 @@ print(glo)  # 外部变量不变
 .. danger:: 死循环
     纯计算无 IO 的死循环会导致致命的效率问题
 
-     ```` `python
-    # 1  有 IO 会卡 IO 所以不会死机
-    while True:
-        name = input()
-        print(name)
-    
-    # 2 没有 IO 会耗尽计算资源
-    while True:
-        1+1
-     ```` `
+    .. code-block:: py
+
+        # 1  有 IO 会卡 IO 所以不会死机
+        while True:
+            name = input()
+            print(name)
+        
+        # 2 没有 IO 会耗尽计算资源
+        while True:
+            1+1
 
 ##### 规约函数
 
-| ``sum(iterable)``  **累计**之前的结果求和
+| ``sum(iterable)``  **累计** 之前的结果求和
 | ``all(iterable)``  只有全 True 才是 True
 | ``any(iterable)``  一个 True 都是 True
 
+
 #### 装饰器
 
-==装饰器== 是可调用对象，参数是另外一个函数（==被装饰的函数==）。装饰器可能： 1️⃣ 处理被装饰的函数再将其返回； 2️⃣ 将其替换成另外一个函数或可调用对象在返回。
+==装饰器== 是可调用对象，参数是另外一个函数（ ==被装饰的函数== ）。装饰器可能： 1️⃣ 处理被装饰的函数再将其返回； 2️⃣ 将其替换成另外一个函数或可调用对象在返回。
 
- ```` ` python
-def decorate(func):  # 装饰器
-    print(f'running decorator({func})')
-    return function  # 必须返回**一个可调用对象或者函数**s
+.. code-block:: py
 
-@decorate  # 装饰
-def func():
-    pass
- ```` `
+    def decorate(func):  # 装饰器
+        print(f'running decorator({func})')
+        return function  # 必须返回**一个可调用对象或者函数**s
+
+    @decorate  # 装饰
+    def func():
+        pass
 
 .. danger:: 等于的是   ``func = decorate(func)``  而不是  ``func() = decorate(func)``
 
     - 装饰器会在被装饰函数定义之后立刻执行，通常是加载模块时。即背地里运行。所以一般会分开定义。装饰器在一个模块，应用在其他模块的函数上。但是不代表马上运行被装饰的函数。
 
-         ```` ` python
-        func = decorate(func)
-        # >>> running decorator(<function func at 0x1356...>)
-         ```` `
+        .. code-block:: pycon
+
+            >>> func = decorate(func)
+            running decorator(<function func at 0x1356...>)
+
     | 如果  ``decorate``  内 return 的是别的函数 🟰  ``func=deco.return_func``  ，那么  ``func.__name__``  &  ``func.__doc__``  变成了  ``deco.return_func.__name__``  &  ``deco.return_func.__doc__`` 
     | ✏️  ``functools.wraps`` ，不仅能传递，还能实现关键字传参。
     
     - 装饰器需要返回 **一个可调用对象或者函数**，才能在运行  ``func()``  时返回来 跟后面的  ``()``  继续用。<u>所以如果 func 需要传参，一般装饰器需要进行嵌套。</u>
 
-         ```` `python
-        func() # 等同于 decorate(func)() 
-         ```` `
+        .. code-block:: py
+
+            func() # 等同于 decorate(func)() 
+
 .. warning:: 被装饰的函数完全是作为参数传入.
     | ``decorate(func)``  ，此时没有带 ``()`` , 所以  ``func``  还没被调用。
     | 在  ``deco1``  函数体内 带着  ``()``  或者在  ``deco2``  里 被返回 才是被调用运行,  ``deco3``  就是完全没运行
 
-     ```` `python
-    def deco1(func):
-        res = func() + 1  # 在函数体内被运行
-        return res
+    .. code-block:: py
 
-    def deco2(func):
-        # func = deco2(func) = func
-        return func  # deco2(func) () = func ()
-    
-    def deco3(func):
-        # 没运行 func 运行的是 inner
-        # func = deco3(func) = inner
-        def inner:
-            pass
-        return inner  # deco3(func) () = inner ()
-     ```` `
+        def deco1(func):
+            res = func() + 1  # 在函数体内被运行
+            return res
+
+        def deco2(func):
+            # func = deco2(func) = func
+            return func  # deco2(func) () = func ()
+        
+        def deco3(func):
+            # 没运行 func 运行的是 inner
+            # func = deco3(func) = inner
+            def inner:
+                pass
+            return inner  # deco3(func) () = inner ()
 
 .. note:: 装饰器可以叠放
 
-     ```` `python
-    @d1
-    @d2
-    def func():
-        pass
-    # 等价于 func = d1(d2(func))
-    # func() = d1(d2(func))()
-     ```` `
+    .. code-block:: py
+
+        @d1
+        @d2
+        def func():
+            pass
+        # 等价于 func = d1(d2(func))
+        # func() = d1(d2(func))()
 
 .. hint:: 更新策略。
     当商场做营销，不断更新不同的折扣活动，在结算的时候往往需要计算不同策略下的价格，然后进行比较。如果把 所有的活动写进去结算函数，会使结算函数体变长还会在更改的时候需要修改着至关重要的结算函数，使错误的可能增高。所以思路大多都是把分开一个个策略写成函数，然后放进一个全局变量的数组里，for 循环地去 call 数组里的策略。但是在维持数组需要记得相应的函数名，对数组里的元素进行添删，比较麻烦。所以采用装饰器来完成 **“注册”** 这一功能
 
- ```` `python
-promos = []
+.. code-block:: py
 
-def promotion(promo_func):
-    promos.appred(promo_func)  # 只是放进去，不改变 promo_func 本身 
-    return promo_func
+    promos = []
 
-@promotion  # 需要就加上 
-def fidelity(order):
-    ...
-    return discount
+    def promotion(promo_func):
+        promos.appred(promo_func)  # 只是放进去，不改变 promo_func 本身 
+        return promo_func
 
-# @promotion  # 不需要就注释
-def large_order(order)
-    ...
-    return discount
+    @promotion  # 需要就加上 
+    def fidelity(order):
+        ...
+        return discount
 
-der best_promo(order):
-    return max(promo(order) for promo in promos)
- ```` `
+    # @promotion  # 不需要就注释
+    def large_order(order)
+        ...
+        return discount
+
+    der best_promo(order):
+        return max(promo(order) for promo in promos)
 
 ##### 参数化装饰器
 
@@ -778,39 +804,40 @@ der best_promo(order):
 
 .. hint:: 一个参数化的注册计时装饰器
 
- ```` `python hl_lines="4 5 12 13 17 19 21 23 27 31"
-import time, functools
-registry = set()  # 增删更快
+    .. code-block:: py
+        :emphasize-lines: 4,5,12,13,17,19,21,23,27,31
 
-def register(active=True):  # 装饰工厂函数
-    def decorate(func):  # 真正的装饰器（接受的是函数
-        print(f'running register={active} --> decorate {func}')
-        if active:  #  True 注册
-            registry.add(func)
-        else:  # False 注销
-            registry.discard(func)
+        import time, functools
+        registry = set()  # 增删更快
 
-        @functools.wraps(func)  # 包装一下才能接受关键词参数 & 变成 func 属性
-        def clocked(*_args, **kwargs):  # 包装被装饰的函数 
-            t0 = time.time()
-            _result = func(*_args, **kwargs)  # 接受同样的参数
-            t1 = time.time()
-            return _result  # 返回：想要的结果
+        def register(active=True):  # 装饰工厂函数
+            def decorate(func):  # 真正的装饰器（接受的是函数
+                print(f'running register={active} --> decorate {func}')
+                if active:  #  True 注册
+                    registry.add(func)
+                else:  # False 注销
+                    registry.discard(func)
 
-        return clocked  # 返回：函数
-    
-    return decorate  # 返回：装饰器 
+                @functools.wraps(func)  # 包装一下才能接受关键词参数 & 变成 func 属性
+                def clocked(*_args, **kwargs):  # 包装被装饰的函数 
+                    t0 = time.time()
+                    _result = func(*_args, **kwargs)  # 接受同样的参数
+                    t1 = time.time()
+                    return _result  # 返回：想要的结果
 
-@register(active=False)  # f1 注销
-def f1():
-    pass
+                return clocked  # 返回：函数
+            
+            return decorate  # 返回：装饰器 
 
-@register()  # 必须作为函数调用
-def f2():
-    pass
+        @register(active=False)  # f1 注销
+        def f1():
+            pass
 
-f1 = register()(f1) # f1 重新注册
- ```` `
+        @register()  # 必须作为函数调用
+        def f2():
+            pass
+
+        f1 = register()(f1) # f1 重新注册
 
 ##### 现有的有用的装饰器
 
@@ -823,15 +850,15 @@ f1 = register()(f1) # f1 重新注册
 
 .. hint:: 第 n 个 斐波那契数 f(n) = f(n-1)+f(n-2) 当算f(6)的时候 f(2)会算5遍。。。重复计算
 
- ```` `python
-import functools
+.. code-block:: py
 
-@functools.lru_cache()  
-def fibonacci(n):
-    if n < 2:
-        return n
-    return fibonacci(n-1) + fibonacci(n-2)
- ```` `
+    import functools
+
+    @functools.lru_cache()  
+    def fibonacci(n):
+        if n < 2:
+            return n
+        return fibonacci(n-1) + fibonacci(n-2)
 
 | ``functools.wraps`` ，包装使得装饰后的函数或对象拥有被装饰函数的 ``__doc__``  &  ``__name__``  等，还能实现关键字传参。
 | ``functools.singledispatch``  可以吧整体方案拆分成多个模块。
@@ -848,33 +875,37 @@ def fibonacci(n):
     | str：里面的换行符“\n” 变成 “br”
     | list：对每个元素都产生相应的标签
 
- ```` `python hl_lines="5 9 13 18-19"
-from functools import singledispatch
-from collections import abc
-import numbers
+.. code-block:: py
+    :emphasize-lines: 5,9,13,18-19
 
-@singledispatch
-def tag(obj):  # obj 类基函数
-    return f'<p>{obj}</p>'
+    from functools import singledispatch
+    from collections import abc
+    import numbers
 
-@tag.register(numbers.Integral)  # 是 int 的虚拟超类
-def _(n):
-    return f'<pre>{n} & {hex(n)}</pre>'
+    @singledispatch
+    def tag(obj):  # obj 类基函数
+        return f'<p>{obj}</p>'
 
-@tag.register(str)
-def _(string):
-    content= string.replace('\n', '<br>')
-    return f'<p>{content}<p>'
+    @tag.register(numbers.Integral)  # 是 int 的虚拟超类
+    def _(n):
+        return f'<pre>{n} & {hex(n)}</pre>'
 
-@tag.register(tuple)  # 叠放 支持不同类型
-@tag.register(abc.MutableSequence)
-def _(seq):
-    content = '</li>\n<li>'.join(tag(item) for item in seq)
-    return f'<ul>\n<li>{content}</li>\n<ul>'
+    @tag.register(str)
+    def _(string):
+        content= string.replace('\n', '<\br>')
+        return f'<p>{content}<p>'
 
-tag(['a/nb',2] )
-# >>> '<ul>\n<li><p>a/nb<p></li>\n<li><pre>2 & 0x2</pre></li>\n<ul>'
- ```` `
+    @tag.register(tuple)  # 叠放 支持不同类型
+    @tag.register(abc.MutableSequence)
+    def _(seq):
+        content = '</li>\n<li>'.join(tag(item) for item in seq)
+        return f'<ul>\n<li>{content}</li>\n<ul>'
+
+.. code-block:: pycon
+
+    >>> tag(['a/nb',2] )
+    '<ul>\n<li><p>a/nb<p></li>\n<li><pre>2 & 0x2</pre></li>\n<ul>'
+
 
 ### 函数式编程
 
@@ -885,27 +916,29 @@ tag(['a/nb',2] )
 - 从序列中**取出元素** ｜ **读取对象属性**
     | ``itemgetter(n)``  🟰  ``lambda seq: seq[n]`` 
     | ``attrgetter('a')``  🟰 ``lambda obj: obj.a`` 
+
 如果传入的是多个参数，返回来的就会是对应的元组
 
- ```` ` python hl_lines="10 12 14 16"
-from operator import itemgetter, attrgetter
-seq = [('A', 3), ('D', 2), ('B', 2), ('C', 1)]
-class Obj():
-    def __init__(self, a, b):
-        self.a, self.b = a, b
-    def __repr__(self):
-        return f'<Obj ({self.a},{self.b})>'
 
-objs = [Obj(*obj) for obj in seq]
-sorted(seq, key=itemgetter(1))
-# >>> [('C', 1), ('D', 2), ('B', 2), ('A', 3)]
-sorted(seq, key=itemgetter(1,0))
-# >>> [('C', 1), ('B', 2), ('D', 2), ('A', 3)]
-sorted(objs, key=attrgetter('b'))
-# >>> [<Obj (C,1)>, <Obj (D,2)>, <Obj (B,2)>, <Obj (A,3)>]
-sorted(objs, key=attrgetter('b','a'))
-# >>> [<Obj (C,1)>, <Obj (B,2)>, <Obj (D,2)>, <Obj (A,3)>]
- ```` `
+.. code-block:: pycon
+
+    >>> from operator import itemgetter, attrgetter
+    >>> seq = [('A', 3), ('D', 2), ('B', 2), ('C', 1)]
+    >>> class Obj():
+    >>>     def __init__(self, a, b):
+    >>>         self.a, self.b = a, b
+    >>>     def __repr__(self):
+    >>>         return f'<Obj ({self.a},{self.b})>'
+
+    >>> objs = [Obj(*obj) for obj in seq]
+    >>> sorted(seq, key=itemgetter(1))
+    [('C', 1), ('D', 2), ('B', 2), ('A', 3)]
+    >>> sorted(seq, key=itemgetter(1,0))
+    [('C', 1), ('B', 2), ('D', 2), ('A', 3)]
+    >>> sorted(objs, key=attrgetter('b'))
+    [<Obj (C,1)>, <Obj (D,2)>, <Obj (B,2)>, <Obj (A,3)>]
+    >>> sorted(objs, key=attrgetter('b','a'))
+    [<Obj (C,1)>, <Obj (B,2)>, <Obj (D,2)>, <Obj (A,3)>]
 
 ``functools module`` 
 
@@ -918,16 +951,18 @@ sorted(objs, key=attrgetter('b','a'))
 -  ``partialmethod``  和  ``partial``  类似，后者处理**方法**
 -  ``lru_cache``  做备忘。【自动优化】。储存耗时的函数调用结果，避免重新计算。
 
- ```` `python hl_lines="4 7"
-from functools import partial
-from operator import mul
+.. code-block:: pycon
+    :emphasize-lines: 4,7
+    
+    >>> from functools import partial
+    >>> from operator import mul
 
-triple = partial(mul, 3)  # 本来是 mul(a, b)，固定了 a=3
-triple(7)  # 一个新的调用对象，返回3倍的结果
-# >>> 21
-triple.func
-# >>> <built-in function mul>
- ```` `
+    >>> triple = partial(mul, 3)  # 本来是 mul(a, b)，固定了 a=3
+    >>> triple(7)  # 一个新的调用对象，返回3倍的结果
+    21
+    >>> triple.func
+    <built-in function mul>
+
 
 ## Class
 
@@ -984,7 +1019,7 @@ triple.func
         +---------+----------------------------------------------+----------------------+
         |         |包括                                          |判别                  |
         +=========+==============================================+======================+
-        | 空的对象| ``None``                                     | ``instance == None`` |
+        | 空的对象| ``None``                                     | ``instance==None``   |
         +---------+----------------------------------------------+----------------------+
         | 数据为空| ``[], '', {}, ()`` , ``None`` , ``0, False`` | ``not instance``     |
         +---------+----------------------------------------------+----------------------+
@@ -1015,13 +1050,13 @@ triple.func
 - 10 ➡️ 2:  ``bin(int)`` 
 - 10 ➡️ 16:  ``hex(x)`` 
   
- ```` `python
-""" 16 -> 10 """
->>> int('B', 16)
-# 11
- ```` `
+.. code-block:: pycon
 
-<u>Base convention</u>：==除基倒取余法==
+    """ 16 -> 10 """
+    >>> int('B', 16)
+    11
+
+<u>Base convention</u>： ==除基倒取余法==
 
 **以10进制转2进制为例**：
 
@@ -1033,38 +1068,38 @@ triple.func
 .. image:: ./pics/baseconvertion2.png
 .. image:: ./pics/baseconvertion3.png
 
- ```` `python
-def two_ten(a: str):
-    """ 2 -> 10 """
-    ans = list(map(lambda i: int(a[-1-i])*2**i, range(len(a))))
-    return sum(ans)
+.. code-block:: py
 
-def ten_two(a: int):
-    """ 10 -> 2 """
-    ans = []
-    while a != 0:
-        ans.append(str(a%2))
-        a = a // 2
-        print(ans)
-    ans.reverse()
-    return ''.join(ans)
+    def two_ten(a: str):
+        """ 2 -> 10 """
+        ans = list(map(lambda i: int(a[-1-i])*2**i, range(len(a))))
+        return sum(ans)
+
+    def ten_two(a: int):
+        """ 10 -> 2 """
+        ans = []
+        while a != 0:
+            ans.append(str(a%2))
+            a = a // 2
+            print(ans)
+        ans.reverse()
+        return ''.join(ans)
 
 
-def two_eight(a: str):
-    """ 2 -> 8 """
-    ans, tmp = [], 0
-    num, more = len(a)//3, len(a)%3
-    a = list(map(int, a))
-    tmp = 0
-    if more != 0:
-        for i in range(more):
-            tmp += a[i] * 2 ** (more-i-1)
-        ans.append(str(tmp))
-    for i in range(num):
-        tmp = a[more+3*i] * 4 + a[more+ 1+3*i] * 2 + a[more+2+3*i] * 1
-        ans.append(str(tmp))
-    return ''.join(ans)
- ```` `
+    def two_eight(a: str):
+        """ 2 -> 8 """
+        ans, tmp = [], 0
+        num, more = len(a)//3, len(a)%3
+        a = list(map(int, a))
+        tmp = 0
+        if more != 0:
+            for i in range(more):
+                tmp += a[i] * 2 ** (more-i-1)
+            ans.append(str(tmp))
+        for i in range(num):
+            tmp = a[more+3*i] * 4 + a[more+ 1+3*i] * 2 + a[more+2+3*i] * 1
+            ans.append(str(tmp))
+        return ''.join(ans)
 
 格式要求
 
@@ -1106,6 +1141,7 @@ def two_eight(a: str):
 
 .. danger:: ``set``  &  ``dict`` 
     都是  ``{}`` , 但是 ``a={}`` 默认空字典，空集合是 ``a=set()`` 
+    
     -  ``set = {1, 2, ...}`` 
     -  ``dict = {a:1, b:2, ...}`` 
 
@@ -1115,28 +1151,29 @@ def two_eight(a: str):
 
 ##### listcomps & genexps
 
-| ==list comprehension, listcomps，列表推导== 。只用来生成列表。
-| 原则是：只用列表推导来创建新的列表，并且尽量保持简短，**不要超过了两行**
+| ==list comprehension, listcomps，列表推导==  。只用来生成列表。
+| 原则是：只用列表推导来创建新的列表，并且尽量保持简短， **不要超过了两行**
 | [python中，(x for y in z for x in y)这个结构怎么理解？]
 
- ```` `python hl_lines="3 6 12"
-""" listcomps """
-# 1. 一层
-[item for item in items]
+.. code-block:: pycon
+    :emphasize-lines: 3,6,12
 
-# 2. 二层， 可以将二维的列表展平
-[item for items in items_list for item in items]
-for items in items_list:
-    for item in items:
-        list_.append(item)
+    """ listcomps """
+    # 1. 一层
+    [item for item in items]
 
-# 3. mix 两个
-[(x,y) for x in list_x for y in list_y if x!=y]
-for x in list_x:  # 所以是先按 y 再按 x
-    for y in list_y:
-        if x != y:
-            yield (x,y)
- ```` `
+    # 2. 二层， 可以将二维的列表展平
+    [item for items in items_list for item in items]
+    for items in items_list:
+        for item in items:
+            list_.append(item)
+
+    # 3. mix 两个
+    [(x,y) for x in list_x for y in list_y if x!=y]
+    for x in list_x:  # 所以是先按 y 再按 x
+        for y in list_y:
+            if x != y:
+                yield (x,y)
 
 .. note:: 笛卡尔积  with Listcomps
     
@@ -1152,7 +1189,7 @@ for x in list_x:  # 所以是先按 y 再按 x
 
 ##### 拆包
 
-==可迭代元素拆包== 。把 **任何一个可迭代对象**拆开进行
+==可迭代元素拆包== 。把 **任何一个可迭代对象** 拆开进行
 
 - **赋值**
 - 用  ``*``  解析作为 **函数参数**。
@@ -1165,37 +1202,40 @@ for x in list_x:  # 所以是先按 y 再按 x
     | 对待<u>少量不需要</u>的元素： ``_``  占位符。必须数量对应，和位置对应
     | 对待<u>不确定数量无谓需不需要</u>的元素  ``*`` 。可以出现在前中后
 
- ```` `python hl_lines="1 2 4 10 11 19"
-a, b = ('a', 'b')  # 平行赋值
-a, b = b, a  # 不使用中间变量交换两个变量
-a = (20,8)
-divmod(*a)  # 用 * 解析作为函数参数 
-# >>> (2, 4) # 20/8=2...4
+.. code-block:: pycon
+    :emphasize-lines: 1,2, 4,10,11,19
 
-filedir = '/home/dir1/dir2/a.txt'
-filedir.split('/')
-# >>> ['', 'home', 'dir1', 'dir2', 'a.txt']
-_, _, _, _, filename = filedir.split('/') # 只要最后面的, 必须数量一样
-_, *dirs, filename = filedir.split('/') # 每个文件储存的文件夹数量是不一定的
-# 用占位符巧妙减少列表内存（第一个/前面的空格是不需要的）
-filename 
-# >>> a.txt
-dirs
-# >>> ['home', 'dir1', 'dir2']
+    >>> a, b = ('a', 'b')  # 平行赋值
+    >>> a, b = b, a  # 不使用中间变量交换两个变量
+    >>> a = (20,8)
+    >>> divmod(*a)  # 用 * 解析作为函数参数 
+    (2, 4) # 20/8=2...4
 
-area = ('Beijing', 'CN', (111,222))
-city, cc, (latitude, longitude) = area  # 嵌套拆包
- ```` `
+    >>> filedir = '/home/dir1/dir2/a.txt'
+    >>> filedir.split('/')
+    ['', 'home', 'dir1', 'dir2', 'a.txt']
+    >>> _, _, _, _, filename = filedir.split('/') # 只要最后面的, 必须数量一样
+    >>> _, *dirs, filename = filedir.split('/') # 每个文件储存的文件夹数量是不一定的
+    # 用占位符巧妙减少列表内存（第一个/前面的空格是不需要的）
+    >>> filename 
+    a.txt
+    >>> dirs
+    ['home', 'dir1', 'dir2']
+
+    >>> area = ('Beijing', 'CN', (111,222))
+    >>> city, cc, (latitude, longitude) = area  # 嵌套拆包
+
 
 ##### 切片
 
 .. note:: ``seq[n]`` & ``seq[n-1:n]``
     
-    ``seq[n]``  获得是一个元素，元素什么类型，返回就什么类型；
-    ``seq[n-1:n]``  获得是一个长度为1的 seq 对象，seq 什么类型，返回就什么类型。"
+    | ``seq[n]``  获得是一个元素，元素什么类型，返回就什么类型；
+    | ``seq[n-1:n]``  获得是一个长度为1的 seq 对象，seq 什么类型，返回就什么类型。"
 
 -  ``seq[a:b:c]``  对 s 在  :math:`[a, b)`  之间以 c 为间隔取值。【1d】
     其实是调用  ``seq.__getitem__(slice(a,b,c))`` 
+    
     - **c = 1**. c>0 从第一个开始正向; c<0 从倒数第一个开始反向。<u>有可能完全不一样！</u>
 -  ``seq[m:n, k:l]``  对 **多维** s 取  :math:`[m, n)`  行  :math:`[k, l)`  列 交叠的值。【>2d】
     其实是调用  ``seq.__getitem__([(m,k)(m,k+1)...])`` 
@@ -1205,20 +1245,22 @@ city, cc, (latitude, longitude) = area  # 嵌套拆包
 - 切片赋值
     如果赋值的对象是一个切片，那么赋值的右边 **必须** 是一个<u>可迭代序列</u>，哪怕只有单独一个值。
 
- ```` `python hl_lines="4 6 11"
-s = list('abcd')
-s[::1]
-# >>> ['a', 'b', 'c', 'd']
-s[::2]
-# >>> ['a', 'c']
-s[::-2]  # != s[::2]的相反
-# >>> ['d', 'b']
 
-s[:2] = 1
-# >>> TypeError: can only assign an iterable
-s[:2] = [1]  # 哪怕只有单独一个值。
-# >>> [1, 'd']
- ```` `
+.. code-block:: pycon
+    :emphasize-lines: 4,6,11
+
+    >>> s = list('abcd')
+    >>> s[::1]
+    ['a', 'b', 'c', 'd']
+    >>> s[::2]
+    ['a', 'c']
+    >>> s[::-2]  # != s[::2]的相反
+    ['d', 'b']
+
+    >>> s[:2] = 1
+    TypeError: can only assign an iterable
+    >>> s[:2] = [1]  # 哪怕只有单独一个值。
+    [1, 'd']
 
 ##### 拼接
 
@@ -1231,62 +1273,64 @@ s[:2] = [1]  # 哪怕只有单独一个值。
     .. danger:: seq 里的元素是引用，复制的将会是引用，==一改全改== 
         seq 里的元素是值，复制的将会是值 ==具有独立==
 -  ``seqA(seqB for i in range(n))``  对嵌套序列的序列，嵌套内的序列是存放不同内容的东西。
-🟰 ``seA[seqB]`` ➡️  ``seqA[seqB1, seqB2, ...]``  里面相互独立。
- ``seqA(seqB) *n``  🟰  ``seA[seqB]`` ➡️  ``seqA[seqB, seqB, ...]`` （第一个方法，里面一改全改。）
+    | 🟰 ``seA[seqB]`` ➡️  ``seqA[seqB1, seqB2, ...]``  里面相互独立。
+    | ``seqA(seqB) *n``  🟰  ``seA[seqB]`` ➡️  ``seqA[seqB, seqB, ...]`` （第一个方法，里面一改全改。）
 
- ```` `python hl_lines="1 6 11 18 25"
-a = [0] * 3  # [0] 是 seq， 0 是元素 = 值
-# >>> a = [0, 0, 0]
-a[0]=1
-# >>> a = [1, 0, 0]
 
-b = [[0]*3]  # [0] 是 seq，0 是元素 = 值
-# >>> b = [[0, 0, 0]]  # 在 b 内层复制, b 只有1个元素 []
-b[0]=1
-# >>> b = [1]
+.. code-block:: pycon
+    :emphasize-lines: 1,6,11,18,25
 
-c = [[0]] * 3  # [[0]] 是 seq， [0] 是元素 = 引用
-# >>> c = [[0], [0], [0]] # 在 c 复制，c 有3个元素 []
-c[0] = 1
-# >>> c = [1, [0], [0]]
-c[1][0]=2
-# >>> c = [1, [2], [2]]
+    >>> a = [0] * 3  # [0] 是 seq， 0 是元素 = 值
+    a = [0, 0, 0]
+    >>> a[0]=1
+    a = [1, 0, 0]
 
-d = [[0] for i in range(3)]
-# >>> d = [[0], [0], [0]]
-d[0] = 1
-# >>> d = [1, [0], [0]]
-d[1][0]=2
-# >>> d = [1, [2], [0]]
+    >>> b = [[0]*3]  # [0] 是 seq，0 是元素 = 值
+    b = [[0, 0, 0]]  # 在 b 内层复制, b 只有1个元素 []
+    >>> b[0]=1
+    b = [1]
 
-e = ['-'*3]
-# >>> e = ['---']
- ```` `
+    >>> c = [[0]] * 3  # [[0]] 是 seq， [0] 是元素 = 引用
+    c = [[0], [0], [0]] # 在 c 复制，c 有3个元素 []
+    >>> c[0] = 1
+    c = [1, [0], [0]]
+    >>> c[1][0]=2
+    c = [1, [2], [2]]
 
- ```` `mermaid
-graph LR
-subgraph 栈区
-c --一直没变--> c_address
-end
-subgraph 堆区
-0_address
-0
-1
-2
-B[【0_address】]
-C[【0_address,0_address,0_address】]
-D[【1,0_address,0_address】]
-end
-c_address -.- B -.-> 0_address -.- 0 
-c_address -.- C -.-> 0_address
-B --1)复制--> C
-c_address -.- D
-C --2)c0=1--> D
-D -.-> 0_address
-D -.- 1
-0_address -.- 2
-0 --3)c10=2-->2
- ```` `
+    >>> d = [[0] for i in range(3)]
+    d = [[0], [0], [0]]
+    >>> d[0] = 1
+    d = [1, [0], [0]]
+    >>> d[1][0]=2
+    d = [1, [2], [0]]
+
+    >>> e = ['-'*3]
+    e = ['---']
+
+.. mermaid::
+
+    flowchart LR
+    subgraph 栈区
+    c --一直没变--> c_address
+    end
+    subgraph 堆区
+    0_address
+    0
+    1
+    2
+    B[【0_address】]
+    C[【0_address,0_address,0_address】]
+    D[【1,0_address,0_address】]
+    end
+    c_address -.- B -.-> 0_address -.- 0 
+    c_address -.- C -.-> 0_address
+    B --1)复制--> C
+    c_address -.- D
+    C --2)c0=1--> D
+    D -.-> 0_address
+    D -.- 1
+    0_address -.- 2
+    0 --3)c10=2-->2
 
 只有前两步改的是  ``c``  存的的东西，最后一步其实 ``c``  存的的东西没变， ``c``  存的的东西存的东西变了
 
@@ -1295,27 +1339,29 @@ D -.- 1
 | ``+=`` ,  ``*=`` ,  ``__iadd__`` ,  ``__imul__`` 
 | **重要**：对 ==Seq== & ==MutableSeq== 内存地址的变化
 
- ```` `python hl_lines="2 7"
-# Seq 变了
-t = (1, 2)
-# >>> t=(1,2), id(t)=4313022720
-t *= 2
-# >>> t=(1,2,1,2), id(t)=4311067808
-# MutableSeq 不变
-l = [1, 2]
-# >>> l=[1,2], id(l)=4311024448
-l *= 2
-# >>> l=[1,2,1,2], id(l)=4311024448
- ```` `
+.. code-block:: pycon
+    :emphasize-lines: 2,7
 
-!!! warning "关于就地加乘一个还没解决的问题"
+    # Seq 变了
+    >>> t = (1, 2)
+    t=(1,2), id(t)=4313022720
+    >>> t *= 2
+    t=(1,2,1,2), id(t)=4311067808
+    # MutableSeq 不变
+    >>> l = [1, 2]
+    l=[1,2], id(l)=4311024448
+    >>> l *= 2
+    l=[1,2,1,2], id(l)=4311024448
 
-     ```` `python
-    t = (1,2,[30,40])
-    t[2]+=[50,60]
-    # >>> TypeError: 'tuple' object does not support item assignment
-    # >>> t=(1, 2, [30, 40, 50, 60])
-     ```` `
+.. warning:: 关于就地加乘一个还没解决的问题
+
+    .. code-block:: pycon
+
+        >>> t = (1,2,[30,40])
+        >>> t[2]+=[50,60]
+        TypeError: 'tuple' object does not support item assignment
+        t=(1, 2, [30, 40, 50, 60])
+
 
 ##### 排序
 
@@ -1338,37 +1384,39 @@ l *= 2
     -  ``=str.lower``  忽略大小写的的排序
     -  ``=reverse``  从左到右进行比较
 
- ```` `python hl_lines="2 4 6"
-lst = ['Aa', 'b', 'Cc']
-sorted(lst)
-# >>> ['Aa', 'Cc', 'b']  # 按 首字母 ord
-sorted(lst, key=str.lower)  # 按 不分大小写 ord
-# >>> ['Aa', 'b', 'Cc']
-sorted(lst, key=len)
-# >>> ['b', 'Aa', 'Cc']
- ```` `
+.. code-block:: pycon
+    :emphasize-lines: 2,4,6
 
- ```` ` python title="不支持原生比较的对象"
-
-class User:
-    def __init__(self, id, age):
-        self.id = id
-        self.age = age
-    def __repr__(self):
-        return 'User(id:{}, age:{})'.format(self.id, self.age)
-
-users = [User(1, 50), User(9, 10), User(1, 30)]
-print("\n--- uncomparable class ---")
-print(users, "\n",
-      "\t", sorted(users, key=lambda d: d.id), "\n",
-      "\t", sorted(users, key=lambda d: (d.id, d.age)))
+    >>> lst = ['Aa', 'b', 'Cc']
+    >>> sorted(lst)
+    ['Aa', 'Cc', 'b']  # 按 首字母 ord
+    >>> sorted(lst, key=str.lower)  # 按 不分大小写 ord
+    ['Aa', 'b', 'Cc']
+    >>> sorted(lst, key=len)
+    ['b', 'Aa', 'Cc']
 
 
-from operator import attrgetter # another
-print(users, "\n",
-      "\t", sorted(users,  key=attrgetter('id')), "\n",
-      "\t", sorted(users,  key=attrgetter('id', 'age')))
- ```` `
+.. code-block:: py
+    :caption: 不支持原生比较的对象
+
+    class User:
+        def __init__(self, id, age):
+            self.id = id
+            self.age = age
+        def __repr__(self):
+            return 'User(id:{}, age:{})'.format(self.id, self.age)
+
+    users = [User(1, 50), User(9, 10), User(1, 30)]
+    print("\n--- uncomparable class ---")
+    print(users, "\n",
+        "\t", sorted(users, key=lambda d: d.id), "\n",
+        "\t", sorted(users, key=lambda d: (d.id, d.age)))
+
+
+    from operator import attrgetter # another
+    print(users, "\n",
+        "\t", sorted(users,  key=attrgetter('id')), "\n",
+        "\t", sorted(users,  key=attrgetter('id', 'age')))
 
 **需要维护排序：**
 
@@ -1385,24 +1433,25 @@ print(users, "\n",
 -  ``bisect.insort(sortedlst, target)``  查找并插入。就地改变。一步到位，速度更快。
     同样有  ``bisect.insort_left`` 
 
- ```` `python
-import bisect
-lst = [2, 4, 6]
-bisect.bisect(lst, 3)
-# >>> 1
-bisect.insort(lst, 3)
-# >>> [2, 3, 4, 6]
+.. code-block:: pycon
 
-# 用途
-def grade(score):
-    breakpoints=[60, 70, 80, 90]
-    grades = 'FDCBA'
-    i = bisect.bisect(breakpoints, score)
-    return grades[i]
+    >>> import bisect
+    >>> lst = [2, 4, 6]
+    >>> bisect.bisect(lst, 3)
+    1
+    >>> bisect.insort(lst, 3)
+    [2, 3, 4, 6]
 
-[grade(score) for score in [33, 99, 77, 60]]
-# >>> ['F', 'A', 'C', 'D']
- ```` `
+    # 用途
+    >>> def grade(score):
+    >>>     breakpoints=[60, 70, 80, 90]
+    >>>     grades = 'FDCBA'
+    >>>     i = bisect.bisect(breakpoints, score)
+    >>>     return grades[i]
+
+    >>> [grade(score) for score in [33, 99, 77, 60]]
+    ['F', 'A', 'C', 'D']
+
 
 #### list
 
@@ -1431,15 +1480,16 @@ def grade(score):
 
 .. warning::  ``lst_1r = lst_1[:]``   切片等于浅拷贝
 
-     ```` `python
-    a = 'a:a:a:b'
-    b = a[:]
-    # >>> id(a)=id(b)=4382924912
-     ```` `
+    .. code-block:: pycon
+            
+        >>> a = 'a:a:a:b'
+        >> b = a[:]
+        id(a)=id(b)=4382924912
 
 拼接
 
 .. table::
+    
     +----------------------------------------------------+---------------------------+
     |                                                    |cases                      |
     +====================================================+===========================+
@@ -1470,21 +1520,23 @@ def grade(score):
     .. warning:: ``zip`` 
         zip 返回来的是  ``<zip object at 0x103abc288>`` : 元组组成的对象。需要叠层 list。
 
-         ```` ` python hl_lines="2 4"
-        col1, col2 = [1, 2, 3], ['a', 'b', 'c']
-        >>> zip(col1, col2)
-        # >>> <zip object at 0x103abc288>
-        >>> list(zip(col1, col2))
-        # >>> [(1, 'a'), (2, 'b'), (3, 'c')]
-         ```` `
+        .. code-block:: pycon
+            :emphasize-lines: 2,4
+
+            >>> col1, col2 = [1, 2, 3], ['a', 'b', 'c']
+            >>> zip(col1, col2)
+            <zip object at 0x103abc288>
+            >>> list(zip(col1, col2))
+            [(1, 'a'), (2, 'b'), (3, 'c')]
+
 
 - 因为不可变可用作 ``dict`` 的key
 
-     ```` ` python
-    d = {(x, x + 1): x for x in range(10)}    
-    print(d[(5, 6)])       
-    # >>> 5
-     ```` `
+    .. code-block:: pycon
+
+        >>> d = {(x, x + 1): x for x in range(10)}    
+        >>> print(d[(5, 6)])       
+        5
 
 #### namedtuple
 
@@ -1498,6 +1550,7 @@ def grade(score):
     | ``Records = namedtuple(typename:str, field_names:Optional(Iterable, String))`` 
     | ``rec1 = Records(*rec1_data)`` 
     | ``rec2 = Records._make(*rec2_data)`` 
+
 📕 Args:
     - typename: 类表名的感觉
     - field_names: 由数个字符串组成的可迭代对象，或者是由**空格分隔开**的字段名组成的字符串
@@ -1507,19 +1560,20 @@ def grade(score):
     -  ``rec1._asdict()`` 把 namedtuple 以  ``collections.OrderedDict``  形式返回。友好呈现信息
     -  ``rec1._replace(field_name=v)``  修改值。
 
- ```` ` python hl_lines="2 3 6"
-from collections import namedtuple
-Point = namedtuple('Point', ['x', 'y'])
-p = Point(11, y=22)  # 根据位置和kw实例化
-p[0] + p[1] == p.x + p.y  # by idx | name 
-# >>> True  # = 33
-d = p._asdict()  # namedtuple ➡️ dict
-# >>> d = {'x': 11, 'y': 22}
-Point(**d)      # dict ➡️ namedtuple            
-# >>> Point(x=11, y=22)
-p._replace(x=100)
-# >>> Point(x=100, y=22)
- ```` `
+.. code-block:: pycon
+    :emphasize-lines: 2,3,6
+
+    >>> from collections import namedtuple
+    >>> Point = namedtuple('Point', ['x', 'y'])
+    >>> p = Point(11, y=22)  # 根据位置和kw实例化
+    >>> p[0] + p[1] == p.x + p.y  # by idx | name 
+    True  # = 33
+    >>> d = p._asdict()  # namedtuple ➡️ dict
+    d = {'x': 11, 'y': 22}
+    >>> Point(**d)      # dict ➡️ namedtuple            
+    Point(x=11, y=22)
+    >>> p._replace(x=100)
+    Point(x=100, y=22)
 
 #### array 数组
 
@@ -1540,18 +1594,20 @@ p._replace(x=100)
 | 不支持就地排序方法。
 | 但是不支持 浅复制  ``s.copy()``  操作，
 
- ```` `python hl_lines="4 7 10"
-from array import array
-from random import random
+.. code-block:: pycon
+    :emphasize-lines: 4,7,10
 
-floats = array('d', (random() for i in range(3)))
-# >>> floats=array('d', [0.7997733053807442, 0.15195105711939816, 0.013224926567956818])
-with open('floats.bin', 'wb') as fp:
-    floats.tofile(fp)
-floats2 = array('d')
-with open('floats.bin', 'rb') as fp:
-    floats2.fromfile(fp)
- ```` `
+    >>> from array import array
+    >>> from random import random
+
+    >>> floats = array('d', (random() for i in range(3)))
+    floats=array('d', [0.7997733053807442, 0.15195105711939816, 0.013224926567956818])
+    >>> with open('floats.bin', 'wb') as fp:
+    >>>     floats.tofile(fp)
+    >>> floats2 = array('d')
+    >>> with open('floats.bin', 'rb') as fp:
+    >>>     floats2.fromfile(fp)
+
 
 #### memoryview 内存视图
 
@@ -1570,10 +1626,12 @@ with open('floats.bin', 'rb') as fp:
     适合做类似“最近用到的几个元素”。因为在初始化的时候，指定队列的大小(一旦设定之后不能改)。如果满员的话，可以从 **反向端** 删除过期的元素，在尾端添加新元素。
 
 - init
-    ``q = deque([iterable[, maxlen=None])`` 
+    ``q = deque([iterable[, maxlen=None])``
+
 📕
     | ``[iterable]``  没有指定，新队列为空
     | ``maxlen=None``  ，deques 可以增长到任意长度。一旦设定之后不能改。
+
 - 旋转
     ``deque.rotate(n)``  当 n>0, 最右边的 n 个元素会被旋转到最左边；当 n<0, 最左边的 n 个元素会被旋转到最右边。
 - 增加 **O(1)**
@@ -1586,16 +1644,17 @@ with open('floats.bin', 'rb') as fp:
 - 删除 **O(1)**
     ``deque.pop()``  &  ``deque.popleft()`` 
 
- ```` `python hl_lines="3 7"
-from collections import deque
+.. code-block:: pycon
+    :emphasize-lines: 3,7
 
-dq = deque([1,2,3], maxlen=5)
-# >>> dq=deque([1, 2, 3], maxlen=5)
-dq.extend(range(4,8))
-# >>> dq=deque([3, 4, 5, 6, 7], maxlen=5)
-dq.extendleft(range(1,3))
-# >>> dq=deque([2, 1, 3, 4, 5], maxlen=5)
- ```` `
+    >>> from collections import deque
+
+    >>> dq = deque([1,2,3], maxlen=5)
+    dq=deque([1, 2, 3], maxlen=5)
+    >>> dq.extend(range(4,8))
+    dq=deque([3, 4, 5, 6, 7], maxlen=5)
+    >>> dq.extendleft(range(1,3))
+    dq=deque([2, 1, 3, 4, 5], maxlen=5)
 
 #### bytes 字节
 
@@ -1608,14 +1667,16 @@ dq.extendleft(range(1,3))
 - 制表符、换行符、回车符、\对应的字节 ➡️ 转义序列
 - 其他字节的值 ➡️ 16进制转义序列
 
- ```` `python hl_lines="3 4"
-b = bytes('A\t啊', encoding='utf8')
-# >>> b=b'A\t\xe5\x95\x8a'
-# >>> b[0]=65    b[1]=9       b[2]=229 其实是整数
-# >>> b[:1]=b'A' b[1:2]=b'\t' b[2:3]= b'\xe5'
- ```` `
+.. code-block:: pycon
+    :emphasize-lines: 3,4
 
-####  ``str`` 
+    >>> b = bytes('A\t啊', encoding='utf8')
+    b=b'A\t\xe5\x95\x8a'
+    b[0]=65    b[1]=9       b[2]=229 其实是整数
+    b[:1]=b'A' b[1:2]=b'\t' b[2:3]= b'\xe5'
+
+
+#### ``str`` 
 
 ==Sequence==
 
@@ -1635,82 +1696,89 @@ b = bytes('A\t啊', encoding='utf8')
 
 .. table::
 
-    +--------------------+--------------------------------------------+--------------------------------------+
-    |cases               |code                                        |return=non-inplaced                   |
-    +====================+============================================+======================================+
-    |大小写              | ``str.upper()``                            |✅ 结果                               |
-    +                    +--------------------------------------------+                                      +
-    |                    | ``str.lower()``                            |                                      |
-    +                    +--------------------------------------------+                                      +
-    |                    | ``str.capitalize()``                       |                                      |
-    +                    +--------------------------------------------+                                      +
-    |                    | ``str.title()``                            |                                      |
-    +                    +--------------------------------------------+--------------------------------------+
-    |                    | ``str.swapcase()``                         |✅ 结果 大小写互换                    |
-    +--------------------+--------------------------------------------+--------------------------------------+
-    |去除前后字符串      | ``str.lstrip(sub_str)``                    |✅ 结果 默认是空白                    |
-    +                    +--------------------------------------------+                                      +
-    |                    | ``str.rstrip(sub_str)``                    |                                      |
-    +                    +--------------------------------------------+                                      +
-    |                    | ``str.strip(sub_str)``                     |                                      |
-    +--------------------+--------------------------------------------+--------------------------------------+
-    |字符串是否只由__组成| ``str_.isalpha()``                         | ✅ bool                              |
-    +                    +--------------------------------------------+--------------------------------------+
-    |                    | 只由字母，==中文也是==                     | ✅ bool                              |
-    +                    +--------------------------------------------+                                      +
-    |                    | ``str_.isdigit()``                         |                                      |
-    +                    +--------------------------------------------+                                      +
-    |                    | ``str.isnumeric()``                        |                                      |
-    +                    +--------------------------------------------+                                      +
-    |                    | ``str.isdecimal()``                        |                                      |
-    +                    +--------------------------------------------+                                      +
-    |                    | 只由数字                                   |                                      |
-    +                    +--------------------------------------------+                                      +
-    |                    | ``str_.isspace()`` , 只由空格              |                                      |
-    +                    +--------------------------------------------+                                      +
-    |                    | ``in string.punctuation``  标点            |                                      |
-    +--------------------+--------------------------------------------+--------------------------------------+
-    |查找                | ``long_str.find(sub_str)``  ➡️           |✅  第一次出现的位置 or ==-1==        |
-    +                    +--------------------------------------------+                                      +
-    |                    | ``long_str.rfind(sub_str)`` ⬅️           |                                      |
-    +                    +--------------------------------------------+--------------------------------------+
-    |                    | ``long_str.index(sub_str)`` ➡️           |✅ 第一次出现的位置 or ==ValueError== |
-    +                    +--------------------------------------------+                                      +
-    |                    | ``long_str.rindex(sub_str)`` ⬅️          |                                      |
-    +                    +--------------------------------------------+--------------------------------------+
-    |                    | ``str.count(sub, start= 0, end=len(str))`` |✅  sub 在 str中出现的次数            |
-    +--------------------+--------------------------------------------+--------------------------------------+
-    |执行                | ``eval(string)`` 执行一个字符串表达式      |✅ 表达式的值                         |
-    +--------------------+--------------------------------------------+--------------------------------------+
-    |填充                | ``str.ljust(int, pad_str)``                |✅ 结果  ``pad_str=' '`` 默认是空格   |
-    +                    +--------------------------------------------+                                      +
-    |                    | ``str.rjust(int, pad_str)``                |                                      |
-    +                    +--------------------------------------------+                                      +
-    |                    | ``str.center(int, pad_str)``               |                                      |
-    +                    +--------------------------------------------+--------------------------------------+
-    |                    | ``str.zfill(int)``                         |✅ 结果 用0在前面的填充               |
-    +--------------------+--------------------------------------------+--------------------------------------+
-    |修改                | ``s = s[:l] + s[l:][::-1]``  重新赋值      |✅ 结果                               |
-    +                    +--------------------------------------------+--------------------------------------+
-    |                    | ``string.replace(old, new)`` 所有都换一遍  | ✅ 结果                              |
-    +--------------------+--------------------------------------------+--------------------------------------+
-    |连接字符串          | ``s3 = s1 + s2``  ==不推荐==               | ✅ 结果                              |
-    +--------------------+--------------------------------------------+--------------------------------------+
- 
- ```` ` python
->>> a = 'string'
->>> a.rjust(9)
-# '   string'
->>> a.center(9)
-# '  string '
- ```` `
+    +--------------------+--------------------------------------------+------------------------------------------+
+    |cases               |code                                        |return=non-inplaced                       |
+    +====================+============================================+==========================================+
+    |大小写              | ``str.upper()``                            |✅ 结果                                   |
+    +                    +--------------------------------------------+                                          +
+    |                    | ``str.lower()``                            |                                          |
+    +                    +--------------------------------------------+                                          +
+    |                    | ``str.capitalize()``                       |                                          |
+    +                    +--------------------------------------------+                                          +
+    |                    | ``str.title()``                            |                                          |
+    +                    +--------------------------------------------+------------------------------------------+
+    |                    | ``str.swapcase()``                         |✅ 结果 大小写互换                        |
+    +--------------------+--------------------------------------------+------------------------------------------+
+    |去除前后字符串      | ``str.lstrip(sub_str)``                    |✅ 结果 默认是空白                        |
+    +                    +--------------------------------------------+                                          +
+    |                    | ``str.rstrip(sub_str)``                    |                                          |
+    +                    +--------------------------------------------+                                          +
+    |                    | ``str.strip(sub_str)``                     |                                          |
+    +--------------------+--------------------------------------------+------------------------------------------+
+    |                    | ``str_.isalpha()``                         | ✅ bool                                  |
+    +                    +--------------------------------------------+------------------------------------------+
+    |                    | 只由字母, ==中文也是==                 | ✅ bool                                  |
+    +                    +--------------------------------------------+                                          +
+    |                    | ``str_.isdigit()``                         |                                          |
+    +                    +--------------------------------------------+                                          +
+    |                    | ``str.isnumeric()``                        |                                          |
+    +                    +--------------------------------------------+                                          +
+    |                    | ``str.isdecimal()``                        |                                          |
+    +                    +--------------------------------------------+                                          +
+    |                    | 只由数字                                   |                                          |
+    +                    +--------------------------------------------+                                          +
+    |                    | ``str_.isspace()`` , 只由空格              |                                          |
+    +                    +--------------------------------------------+                                          +
+    |                    | ``in string.punctuation``  标点            |                                          |
+    +--------------------+--------------------------------------------+------------------------------------------+
+    |查找                | ``long_str.find(sub_str)``     you        |    第一次出现的位置 or ==-1== ✅      |
+    +                    +--------------------------------------------+                                          +
+    |                    | ``long_str.rfind(sub_str)`` ⬅️            |                                          |
+    +                    +--------------------------------------------+------------------------------------------+
+    |                    | ``long_str.index(sub_str)`` ➡️            | ✅ 第一次出现的位置 or ==ValueError== |
+    +                    +--------------------------------------------+                                          +
+    |                    | ``long_str.rindex(sub_str)`` ⬅️           |                                          |
+    +                    +--------------------------------------------+------------------------------------------+
+    |                    | ``str.count(sub, start= 0, end=len(str))`` | ✅  sub 在 str中出现的次数               |
+    +--------------------+--------------------------------------------+------------------------------------------+
+
+字符串是否只由dd组成
+
+.. code-block:: pycon
+
+    >>> a = 'string'
+    >>> a.rjust(9)
+    '   string'
+    >>> a.center(9)
+    '  string '
+
+
+    |执行                | ``eval(string)`` 执行一个字符串表达式      |✅ 表达式的值                             |
+    +--------------------+--------------------------------------------+------------------------------------------+
+    |填充                | ``str.ljust(int, pad_str)``                |✅ 结果  ``pad_str=' '`` 默认是空格       |
+    +                    +--------------------------------------------+                                          +
+    |                    | ``str.rjust(int, pad_str)``                |                                          |
+    +                    +--------------------------------------------+                                          +
+    |                    | ``str.center(int, pad_str)``               |                                          |
+    +                    +--------------------------------------------+------------------------------------------+
+    |                    | ``str.zfill(int)``                         |✅ 结果 用0在前面的填充                   |
+    +--------------------+--------------------------------------------+------------------------------------------+
+    |修改                | ``s = s[:l] + s[l:][::-1]``  重新赋值      |✅ 结果                                   |
+    +                    +--------------------------------------------+------------------------------------------+
+    |                    | ``string.replace(old, new)`` 所有都换一遍  | ✅ 结果                                  |
+    +--------------------+--------------------------------------------+------------------------------------------+
+    |连接字符串          | ``s3 = s1 + s2``  ==不推荐==           | ✅ 结果                                  |
+    +--------------------+--------------------------------------------+------------------------------------------+
+
+
+
 
 - 识别数字
-数字分：  ，
+    数字分：  
 
- ```` `python
-num1, num2, num3, num4 = b'4', u'4', '四'， 'IV'
- ```` `
+.. code-block:: py
+
+    num1, num2, num3, num4 = b'4', u'4', '四'， 'IV'
 
 .. table::
 
@@ -1745,19 +1813,19 @@ list ↔️ str
     -  ``lst = str.rsplit(':', 1)`` 
 -  ``lst = list(str)`` 
 
- ```` `python
-a = 'a:a:a:a'
-list(a)
-# >>> ['a', ':', 'a', ':', 'a', ':', 'a']
-a.split()
-# >>> ['a:a:a:a']
-a.split(':')
-# >>> ['a', 'a', 'a', 'a']
-a.split(':', 1)
-# >>> ['a', 'a:a:a']
-a.rsplit(':', 1)
-# >>> ['a:a:a', 'a']
- ```` `
+.. code-block:: pycon
+
+    >>> a = 'a:a:a:a'
+    >>> list(a)
+    ['a', ':', 'a', ':', 'a', ':', 'a']
+    >>> a.split()
+    ['a:a:a:a']
+    >>> a.split(':')
+    ['a', 'a', 'a', 'a']
+    >>> a.split(':', 1)
+    ['a', 'a:a:a']
+    >>> a.rsplit(':', 1)
+    ['a:a:a', 'a']
 
 ### 散列表-support
 
@@ -1773,15 +1841,17 @@ a.rsplit(':', 1)
 
     .. hint:: 散列值是  ``id()`` ?
 
-     ```` `python
-    class Fruit():
-        def __init__(self, name):
-            self.name=name
+    .. code-block:: py
 
-    apple1, apple2 = Fruit('apple'), Fruit('apple')
-    hash(apple1) == hash(apple2)
-    # >>> False
-     ```` `
+        class Fruit():
+            def __init__(self, name):
+                self.name=name
+
+    .. code-block:: pycon
+
+        >>> apple1, apple2 = Fruit('apple'), Fruit('apple')
+        >>> hash(apple1) == hash(apple2)
+        False
 
 .. note:: 从 python3.3 开始，str & byte & datetime 的单列值计算多了 ==随机加盐== 这一步。
     所加的盐值是 python 进程的一个常量，但是每次启动时 python.exe 都会生成一个不同的盐值。随机盐值是为了防止 DOS 攻击而采取的一种安全措施。
@@ -1791,8 +1861,9 @@ a.rsplit(':', 1)
 
 | **散列表的工作原理。**
 | 需要  ``hash()``  来计算散列值，并且如果两个可散列的对象是相等，那么散列值一定是一样。
-    1 == 1.0  :math:`\implies`  hash(1) == hash(1.0)
-    哪怕是整型和浮点的内部结构完全不一样。
+    
+    | 1 == 1.0  :math:`\implies`  hash(1) == hash(1.0)
+    | 哪怕是整型和浮点的内部结构完全不一样。
 
 .. danger:: 散列值一定是一样  :math:`\nRightarrow`  两个可散列的对象是相等
 
@@ -1846,7 +1917,9 @@ a.rsplit(':', 1)
     | ``d[k]`` , 没有就 ``KeyError`` .
     | ``d.get(k, [default=None])`` , 没有就返回 ``default`` ， 纯粹 get
 
-    .. warning:: 1.  ``d.__getitem__(v)``  的 call 是  ``d[k]`` ； 和 ``d.get(..)``  一点关系都没有。<br> 2.  ``d.get(..)``  不会改变原有的字典。
+    .. warning:: ""
+        1.  ``d.__getitem__(v)``  的 call 是  ``d[k]`` ； 和 ``d.get(..)``  一点关系都没有。
+        2.  ``d.get(..)``  不会改变原有的字典。
 - contains
     ``k in d.keys()``  &  ``k in d:``  &  ``v in d.values()`` 
 - loop
@@ -1854,24 +1927,25 @@ a.rsplit(':', 1)
 - 更新。
     -  ``d[k]=v``  只有赋值时管用。
     - 更新的时候
-        |``d.setdefault(k, default)``  值的格式不统一
-        |``from collections import defaultdict``  值的格式统一，都是 list | str | int
+        | ``d.setdefault(k, default)``  值的格式不统一
+        | ``from collections import defaultdict``  值的格式统一，都是 list | str | int
 
 .. warning:: 为什么不用 get 的方法。【针对部分改变 v 值 情况】
     | 更新 1️⃣ 彻底改变 v 值(包括新增 k-v 对) 2️⃣ 部分改变 v 值（ ``d[k]+=1``  &  ``d[v].append()`` ）
     | 对于 1️⃣： ``k[v]``  是可以的，标准赋值语句，但是 2️⃣ 会引发  ``KeyError``  直接报错，因为操作需要 k-v 存在。
     | 如果用  ``.get()``  的方法 就必须涉及二次查询，因为当不存在时，返回的 default 并没有跟  ``d[k]``  绑定在一起，需要赋值语句进行绑定，其中涉及再次查询。
 
-     ```` `python hl_lines="1 4 7"
-    v = d.get(k, [])  # 查一次
-    v.append(a) 
-    d[k] = v  # 查两次
-    d.setdefault[k, []].append(a)  # 只查一次
+    .. code-block:: py
+        :emphasize-lines: 1,4,7
 
-    from collections import defaultdict
-    d  = defaultdict(list)  # list []
-    d[k].append(a)
-     ```` `
+        v = d.get(k, [])  # 查一次
+        v.append(a) 
+        d[k] = v  # 查两次
+        d.setdefault[k, []].append(a)  # 只查一次
+
+        from collections import defaultdict
+        d  = defaultdict(list)  # list []
+        d[k].append(a)
 
 .. hint:: 如非需要， ``defaultdict``  比  ``.setdefault()`` 更快"
     | 因为一个是在创建初期就设好统一的初始值，一个是根据值的不一样，在找的时候设值
@@ -1891,13 +1965,15 @@ a.rsplit(':', 1)
     | ``defaultdict([default_factory])`` 
     | 如果没有指定 default_factory， 找不到还是会产生 keyError
 
- ```` `python
-from collections import defaultdict
-d = defaultdict(list)
-# >>> defaultdict(<class 'list'>, {})
-d.default_factory
-# >>> <class 'list'>
- ```` `
+
+.. code-block:: pycon
+
+    >>> from collections import defaultdict
+    >>> d = defaultdict(list)
+    defaultdict(<class 'list'>, {})
+    >>> d.default_factory
+    <class 'list'>
+
 
 >  ``d = defaultdict(list)`` ，当 k 找不到的时候：
 > 1）调用  ``list()``  建立一个新 list
@@ -1917,34 +1993,37 @@ d.default_factory
 
 ``collections.Counter``  整数计数器
 
- ```` `python hl_lines="3 5 7 9"
-from collections import Counter
+.. code-block:: pycon
+    :emphasize-lines: 3,5,7,9
 
-ct = Counter('abbcbcbb')
-# >>> ct=Counter({'b': 5, 'c': 2, 'a': 1})
-ct.update('aaa') 
-# >>> ct=Counter({'b': 5, 'a': 4, 'c': 2})
-ct.most_common(1)
-# >>> [('b', 5)]
-sum(ct.values()) # 求总数
-# >>> 11
- ```` `
+    >>> from collections import Counter
+
+    >>> ct = Counter('abbcbcbb')
+    ct=Counter({'b': 5, 'c': 2, 'a': 1})
+    >>> ct.update('aaa') 
+    ct=Counter({'b': 5, 'a': 4, 'c': 2})
+    >>> ct.most_common(1)
+    [('b', 5)]
+    >>> sum(ct.values()) # 求总数
+    11
 
 #### 不可变的映射类型
 
 ``types.MappingProxyType`` 
 | 提供一个映射的 **只读的动态视图**。不能进行修改，但是如果原映射改了，作为的动态视图 MappingProxyType 也能看见。
 
- ```` `python hl_lines="3 6 7"
-from types import MappingProxyType
-d = {1:'A'}  # dict \in mapping
-d_proxy = MappingProxyType(d)
-# >>> d=d_proxy=mappingproxy({1: 'A'})
-d_proxy[2] = 'B'
-# !!! TypeError: 'mappingproxy' object does not support item assignment
-d[2] = 'B'
-# >>> d=d_proxy=mappingproxy({1: 'A', 2: 'B'})
- ```` `
+.. code-block:: pycon
+    :emphasize-lines: 3,6,7
+
+    >>> from types import MappingProxyType
+    >>> d = {1:'A'}  # dict \in mapping
+    >>> d_proxy = MappingProxyType(d)
+     d=d_proxy=mappingproxy({1: 'A'})
+    >>> d_proxy[2] = 'B'
+    TypeError: 'mappingproxy' object does not support item assignment
+    >>> d[2] = 'B'
+    d=d_proxy=mappingproxy({1: 'A', 2: 'B'})
+
 
 #### set
 
@@ -1957,33 +2036,38 @@ d[2] = 'B'
 - init
     | ``s = set()``  <u>空集合必须</u>。
     | ``s = set(iterater)`` 
-    | ``s = {v for v in iterater}``  &  ``s = {v1, v2, ...}`` 
+    | ``s = {v for v in iterater}``  &  ``s = {v1, v2, ...}``
+
 - element level
     | ``s.add(e)`` 
     | ``s.discard(e)``  <u>不存在do nothing</u>
     | ``s.remove(e)``  <u>不存在就报错</u>
+
 - 数学运算
-    |同样存在 in-placed 的方法  ``&=``   ``|=``   ``-=``   ``^=`` 
+
+    | 同样存在 in-placed 的方法  ``&=``   ``|=``   ``-=``   ``^=`` 
     | ``s1 & s2``   :math:`s1 \cap s2`  交  ``.__and__`` 
     | ``s1 | s2``   :math:`s1 \cup s2`  并  ``.__or__`` 
     | ``s1 - s2``   :math:`s1 \setminus s2`  差  ``.__sub__`` 
     | ``s1 ^ s2``   :math:`(s1 \cup s2) - (s1 \cap s2)`  对称差集  ``.__xor__`` 
+
 - 比较运算
-    |重写了  ``__le__``   ``__lt__``   ``__ge__``   ``__gt__`` 
+    | 重写了  ``__le__``   ``__lt__``   ``__ge__``   ``__gt__`` 
     | ``s1 < s2``   :math:`s1 \subset s2` 
     | ``s.issuperset(it)``  把可迭代 it 转换为 set，然后看 s 是否是它的子集
     | ``s1 <= s2``   :math:`s1 \subseteq s2` 
 
 ### sparse_matrix
 
-####  ``scipy.sparse.coo_matrix`` 
+#### ``scipy.sparse.coo_matrix`` 
 
 | **只存储非零元素**
-| 三元组 ``(row, col, data)`` (或称为**ijv format**)的形式来存储矩阵中非零元素的信息。
+| 三元组 ``(row, col, data)`` (或称为 **ijv format** )的形式来存储矩阵中非零元素的信息。
 
 - 实际
-    - 用来创建矩阵，因为 ``coo_matrix`` **无法**对矩阵的元素进行增删改操作
-    - 转置、矩阵运算等，要转  ``csr_matrix`` 、 ``csc_matrix`` 
+    - 用来创建矩阵，因为 ``coo_matrix`` **无法** 对矩阵的元素进行增删改操作
+    - 转置、矩阵运算等，要转  ``csr_matrix`` 、 ``csc_matrix``
+
 - 实例
 - 转化
 
@@ -1999,12 +2083,12 @@ d[2] = 'B'
 
 - 【最小堆】从零开始计数，对于所有的 k ，都有  ``heap[k] <= heap[2*k+1]``  和  ``heap[k] <= heap[2*k+2]`` 。 为了便于比较，不存在的元素被认为是无限大。
   
-####  ``heapq.py``  堆队列 = 优先队列算法
+#### ``heapq.py``  堆队列 = 优先队列算法
 
 **Heap queue algorithm (a.k.a. priority queue):**
 
-!!! p "最小堆"
-     ``heapq[0] is smallest`` 
+.. note:: 最小堆
+    ``heapq[0] is smallest`` 
 
 - properties
     - **排序稳定性**：具有相同的优先级的话就会按他们被插入到队列的顺序返回 ——> 条目计数可用来打破平局
@@ -2014,15 +2098,24 @@ d[2] = 'B'
 
 ##### code
 
- ``heap.sort()``  维护了堆的不变性
+``heap.sort()``  维护了堆的不变性
 
-!!! danger "heapq 不是一个类而是一个模块"
-     ```` ` python
-    import heapq
+.. danger:: heapq 不是一个类而是一个模块
+     .. code-block:: py
 
-    Meth:
-      - heapify(h)
-     ```` `
+        import heapq
+
+        Meth:
+        - heapify(h)
+
+.. table::
+
+    +--+--+
+    |dd|❌|
+    +==+==+
+    |✅|➡️|
+    +--+--+
+
 
 .. table::
 
@@ -2031,7 +2124,7 @@ d[2] = 'B'
     +==============+================================+==========================================+======================+
     |建立空堆      | ``h = []``                     |                                          |                      |
     +--------------+--------------------------------+------------------------------------------+----------------------+
-    |list ➡️ heap| ``heapify(h)``                 |❌ **in-placed**                          | O(n)                 |
+    |list ➡️ heap | ``heapify(h)``                 |❌ **in-placed**                          | O(n)                 |
     +--------------+--------------------------------+------------------------------------------+----------------------+
     |加入弹出      | ``heapq.heappush(h, x)``       |❌                                        | **O(logn)**          |
     +              +--------------------------------+------------------------------------------+----------------------+
@@ -2041,7 +2134,7 @@ d[2] = 'B'
     +              +--------------------------------+                                          +                      +
     |              | <=>  ``push+pop`` , 先加x再弹出|                                          |                      |
     +              +--------------------------------+------------------------------------------+                      +
-    |              | ``heapq.heapreplace(h, x)``    |✅  :question: x(因为后加x)               |                      |
+    |              | ``heapq.heapreplace(h, x)``    |✅             x(因为后加x)               |                      |
     +              +--------------------------------+------------------------------------------+                      +
     |              | <=>  ``pop+push``              | 空就有 ``IndexError``                    |                      |
     +--------------+--------------------------------+------------------------------------------+----------------------+
@@ -2072,12 +2165,12 @@ d[2] = 'B'
 
 #### 其他常用
 
- ``random.choice(seq)``  从一个序列中随机选出一个元素
+``random.choice(seq)``  从一个序列中随机选出一个元素
 
 -  ``math`` 
- ``.sqrt(n)``  :math:`=\sqrt{n}`   ``.pow(n, a)``   :math:`=n^a`   ``.exp(n)``   :math:`=e^n`   ``.log(n, a)``   :math:`=\log_2^n` 
- ``.fabs(n)``   :math:`\text{float}(|n|)`    ``abs(n)``   :math:`=|n|` 
- ``.factorial(n)``   :math:`=n!` 
+    | ``.sqrt(n)``  :math:`=\sqrt{n}`   ``.pow(n, a)``   :math:`=n^a`   ``.exp(n)``   :math:`=e^n`   ``.log(n, a)``   | :math:`=\log_2^n` 
+    | ``.fabs(n)``   :math:`\text{float}(|n|)`    ``abs(n)``   :math:`=|n|` 
+    | ``.factorial(n)``   :math:`=n!` 
 
     .. table::
 
@@ -2091,21 +2184,22 @@ d[2] = 'B'
 
 ##### 并行迭代对象
 
- ``zip(IterableA, IterableB, ...)``  并行多个迭代对象返回生成器，生成元组。但会在**最短**的可迭代对象耗尽时停止,但不给提示。
- ``itertools.zip_longest(IterableA, IterableB, ..., fillvalue=None)``  用 fillvalue 填充缺失的值，直到**最长**的可迭代对象耗尽。
+| ``zip(IterableA, IterableB, ...)``  并行多个迭代对象返回生成器，生成元组。但会在 **最短** 的可迭代对象耗尽时停止,但不给提示。
+| ``itertools.zip_longest(IterableA, IterableB, ..., fillvalue=None)``  用 fillvalue 填充缺失的值，直到 **最长** 的可迭代对象耗尽。
 
- ```` `python
-import itertools
-z1 = zip(range(1,4), 'ABC', 'ab')
-# >>> z1=<zip object at 0x10288bf40>
-list(z1)
-# >>> [(1, 'A', 'a'), (2, 'B', 'b')]  # 停止不给提示
+.. code-block:: pycon
 
-z2 = itertools.zip_longest(range(1,4), 'ABC', 'ab', fillvalue='?')
-# >>> z2=itertools.zip_longest(range(1,4), 'ABC', 'ab', fillvalue='?')
-list(z2)
-# >>> [(1, 'A', 'a'), (2, 'B', 'b'), (3, 'C', '?')]  # 填充
- ```` `
+    >>> import itertools
+    >>> z1 = zip(range(1,4), 'ABC', 'ab')
+    z1=<zip object at 0x10288bf40>
+    >>> list(z1)
+    [(1, 'A', 'a'), (2, 'B', 'b')]  # 停止不给提示
+
+    >>> z2 = itertools.zip_longest(range(1,4), 'ABC', 'ab', fillvalue='?')
+    z2=itertools.zip_longest(range(1,4), 'ABC', 'ab', fillvalue='?')
+    >>> list(z2)
+    [(1, 'A', 'a'), (2, 'B', 'b'), (3, 'C', '?')]  # 填充
+
 
 ## 基本操作
 
@@ -2188,7 +2282,7 @@ list(z2)
 
 [Python中的zip()：从多个列表中获取元素]
 
-###  ``itertools``  module
+### ``itertools``  module
 
 .. note:: 读取大型文件数据
     当我们需要处理大量数据时，将整个数据集加载到内存中可能会导致程序崩溃或效率低下。使用Python迭代器来处理大型文件数据非常理想，这种方式只在内存中维护当前处理的数据块，而不需要一次性读取整个文件。
@@ -2244,11 +2338,12 @@ list(z2)
 
 ### 协议
 
-.. note:: ==鸭子类型 duck typing== 。主要是一种思想。不要去 **严格验证**是不是鸭子，而是检查有没有鸭子的 **重点特征和行为**。何谓重点特征和行为，取决于你想使用的类型的根本特征是什么。忽略对象的真正类别，转而关注对象又没有实现所需的 方法 & 签名 & 语义。"
+.. note:: ==鸭子类型 duck typing== 。主要是一种思想。不要去 **严格验证** 是不是鸭子，而是检查有没有鸭子的 **重点特征和行为** 。何谓重点特征和行为，取决于你想使用的类型的根本特征是什么。忽略对象的真正类别，转而关注对象又没有实现所需的 方法 & 签名 & 语义。"
     | 序列类型，只要迭代就行。🟰 只要能迭代都是序列类型，而不需要继承什么或者什么严格定义。
     | 说序列，是因为它的行为像序列。如果只想迭代，只需要  ``__iter__``  就行，而不需要 ``__len__``  多余的但是属于序列的行为。
 
 .. note:: ==白鹅类型== 。只要 cls 是抽象基类 🟰 cls 的元类是  ``abc.ABCMeta`` ，就可以使用  ``isinstance(obj, cls)`` "
+
 | ==协议== 。是一种约定，用于指导对象之间的交互和行为。Python并没有严格的接口定义，而是通过协议来实现接口的概念。 **协议是非正式的接口**。对象的类型无关紧要，只要实现特定的协议即可。
 | 协议是 **动态**的：函数不关心参数的类型，只要求对象实现了部分所需协议，即使一开始定义时没有实现， **也可以之后再补上**。
 
@@ -2258,6 +2353,7 @@ list(z2)
     ✏️ 看 getitem
 
     .. code-block:: py
+
         class Vector():
             
             def __init__(self, components):
@@ -2267,6 +2363,7 @@ list(z2)
                 return self._components[index]  # 单纯委托
 
     .. code-block:: pycon
+
         >>> v = Vector([0,1,2])
         v[0]=0
         >>> v[:]
@@ -2274,32 +2371,32 @@ list(z2)
 
 ==序列类型== 。
 
- ```` `mermaid
-classDiagram
-class Container
-Container: __contains__ @
-class Iterable
-Iterable: __iter__ @
-class Sized
-Sized: __len__ @
-class Sequence
-Sequence: __getitem__ @
-Sequence: __contains__
-Sequence: __iter__
-Sequence: __reversed__
-Sequence: index
-Sequence: count
-class MutableSequence
-MutableSequence: __setitem__ @
-MutableSequence: __delitem__ @
-MutableSequence: insert/append/extend
-MutableSequence: pop/remove
-MutableSequence: __iadd__
-Container <|-- Sequence
-Iterable <|-- Sequence
-Sized <|-- Sequence
-Sequence <|-- MutableSequence
- ```` `
+.. mermaid::
+
+    classDiagram
+    class Container
+    Container: __contains__ @
+    class Iterable
+    Iterable: __iter__ @
+    class Sized
+    Sized: __len__ @
+    class Sequence
+    Sequence: __getitem__ @
+    Sequence: __contains__
+    Sequence: __iter__
+    Sequence: __reversed__
+    Sequence: index
+    Sequence: count
+    class MutableSequence
+    MutableSequence: __setitem__ @
+    MutableSequence: __delitem__ @
+    MutableSequence: insert/append/extend
+    MutableSequence: pop/remove
+    MutableSequence: __iadd__
+    Container <|-- Sequence
+    Iterable <|-- Sequence
+    Sized <|-- Sequence
+    Sequence <|-- MutableSequence
 
 | 具体方法和抽象方法是面向对象编程中的两个概念，用于描述类中的方法的特性和行为。
 | ==抽象方法 Abstract Methods== 。(后面加 ``@`` )在类中声明 **但没有具体实现**，它只包含方法的签名（返回类型、方法名和参数列表），没有方法体。**子类必须实现抽象方法**，才能创建对象并调用这个方法。否则就会产生  ``NotImplentedError`` ，或子类也必须声明为抽象类。
@@ -2481,7 +2578,8 @@ Sequence <|-- MutableSequence
                 data = (format(c, fmt_spec) for c in self)
                 return '({0}, {1})'.format(*data)
 
-    .. code-block:: pycon     
+    .. code-block:: pycon
+
         >>> v1, v2 = Vector(3,4), Vector(0,0)
         >>> v1
         Vector(3.0, 4.0)
@@ -2685,6 +2783,7 @@ Sequence <|-- MutableSequence
     norm, func = NormClass(), FuncClass()
 
 .. code-block:: pycon
+
     norm.a = norm.b =1
     >>> callable(nor)
     False
@@ -2708,7 +2807,7 @@ Sequence <|-- MutableSequence
     | 单个切片返回  ``silce(start, stop, step)`` ; 多个切片(有  ``,``  )返回  ``tuple(slice)`` 
     | ==slice== 。内置类。有个属性  ``.indices(len)->(start, stop, stride)``  给定长度 len 的序列，计算 S 表示的扩展切片的起始 & 结尾 & 步伐，使其不超出列表序列长度&转换负数。
 
-    .. code-block:: pyc
+    .. code-block:: py
 
         class Seq():
             def __getitem__(self, index):
@@ -2786,6 +2885,7 @@ Sequence <|-- MutableSequence
         ... 
 
 .. code-block:: pycon
+
     >>> users = Users(data)
     >>> users_iterator = iter(users)
     >>> for user in users_iterator:
@@ -2798,6 +2898,7 @@ Sequence <|-- MutableSequence
     不需要或者不定量的时候,  ``*variables`` 可在开头也可在结尾
 
     .. code-block:: pycon
+
         >>> lst = [1, 2, 3, 4]
         >>> *dontneed, a, b = lst
         dontneed=[1, 2], a=3, b=4
@@ -2833,45 +2934,45 @@ Sequence <|-- MutableSequence
     - 如果分量太多，考虑用  ``...``  表示截断部分，而不需要展开很多的数据占据视窗，同时提醒不止展现这几行.  
         ``reprlib.repr(data)``  超过6个元素，用省略号代替。用于生成大型结构或递归结构的 **安全表现形式**，限制字符串输出长度。
 
-    .. code-block:: pycon
-       
-        >>> import reprlib
-        >>> reprlib.repr([1,2,3,4,5,6,7,8])
-        '[1, 2, 3, 4, 5, 6, ...]'
-        >>> reprlib.repr([1,2,3])
-        '[1, 2, 3]'
+        .. code-block:: pycon
+        
+            >>> import reprlib
+            >>> reprlib.repr([1,2,3,4,5,6,7,8])
+            '[1, 2, 3, 4, 5, 6, ...]'
+            >>> reprlib.repr([1,2,3])
+            '[1, 2, 3]'
 
     - 重点是在对象，而不是构造细节。在显示上可以简化，只出现内容。
-    >  ``Vector(1, 2)``  &  ``Vector(array('d', [1, 2]))``  array 是实现细节，不需要展示以免复杂。
+        ``Vector(1, 2)``  &  ``Vector(array('d', [1, 2]))``  array 是实现细节，不需要展示以免复杂。
 
-> 二维向量
+.. hint:: 二维向量
 
-.. code-block:: py
+    .. code-block:: py
 
-    class Vector():
-        ...
-        def __abs__(self):
-            """ 模 """
-        def __angle__(self):
-            """ 角度 """
-        def __format__(self, fmt_spec=''):
-            if fmt_spc.endswith('p'):  # 极坐标
-                fmt_spec = fmt_spec[:-1]
-                coords = (abs(self), self.angle())
-                outer_fmt = '<{},{}>'
-            else:  # 直角坐标
-                coords = self
-                outer_fmt = '({},{})'
-            data = (format(item, fmt_spec) for item in coords)
-            return outer_fmt.format(*data)
+        class Vector():
+            ...
+            def __abs__(self):
+                """ 模 """
+            def __angle__(self):
+                """ 角度 """
+            def __format__(self, fmt_spec=''):
+                if fmt_spc.endswith('p'):  # 极坐标
+                    fmt_spec = fmt_spec[:-1]
+                    coords = (abs(self), self.angle())
+                    outer_fmt = '<{},{}>'
+                else:  # 直角坐标
+                    coords = self
+                    outer_fmt = '({},{})'
+                data = (format(item, fmt_spec) for item in coords)
+                return outer_fmt.format(*data)
 
-.. code-block:: pycon
+    .. code-block:: pycon
 
-    >>> v = Vector(1, 1)
-    >>> format(v, '.3ep')
-    '<1.414e+00, 7.854e-01>'
-    >>> format(v, '.5fp')
-    '<1.41421, 0.78540>'
+        >>> v = Vector(1, 1)
+        >>> format(v, '.3ep')
+        '<1.414e+00, 7.854e-01>'
+        >>> format(v, '.5fp')
+        '<1.41421, 0.78540>'
 
 #### 重载运算符
 
@@ -2882,14 +2983,6 @@ Sequence <|-- MutableSequence
     | 不能新建运算符，只能重载。
     | 不能重载  ``is and or not``  
     | 当序列进行按元素运算，要处理序列 **长度不一的情况**。（迭代多个可迭代对象 ``itertools.zip_longest(.., fillvalue=None)`` ）
-
-|magic|运算符|meaning|
-|--|--|---|
-| ``__add__(self, other)`` | ``a+b`` |相加<br>序列一般**拼接**|
-| ``__mul__(self, other)`` | ``a*b`` |标量积相乘<br>序列一般**复制**|
-| ``__neg__(self)`` | ``-a`` |一元取反|
-| ``__pos__(self)`` | ``+a`` |一元取正 通常  ``x==+x`` |
-| ``__invert__(self)`` | ``~a`` |对整数按位取反|
 
 .. table::
 
@@ -3084,6 +3177,8 @@ Sequence <|-- MutableSequence
 
 read(), readline(), readlines()
 
+
+
 .. table::
 
     +----------+-------------------------------------+----------------+-----------------+
@@ -3095,7 +3190,7 @@ read(), readline(), readlines()
     +----------+-------------------------------------+----------------+-----------------+
     |返回      |str                                  |str             |list             |
     +----------+-------------------------------------+----------------+-----------------+
-    |每一行分离|❌                                   |✔              |✔               |
+    |每一行分离|❌                                   |✔               |✔                |
     +----------+-------------------------------------+----------------+-----------------+
     |notes     |全部读取的需要考虑内存               |                |                 |
     +          +-------------------------------------+----------------+-----------------+
@@ -3104,29 +3199,31 @@ read(), readline(), readlines()
 
 
 
- ```` `python hl_lines="8 13 20"
-"""1.txt
-aaa
-bbb
+.. code-block:: None
+    :caption: 1.txt
+
+    aaa
+    bbb
+    这是个空行
 
 
-"""
-with open('1.txt', 'r', encoding='utf-8') as f:
-    res = f.read()  # 读全部
-# >>> 'aaa\nbbb\n\n'
+.. code-block:: pycon
 
-with open('1.txt', 'r', encoding='utf-8') as f:
-    res = []
-    line =  f.readline()  # 第一行
-    while line is not None and line != '':
-        res.append(line)
-        line =  f.readline()  # 逐行读取
-# >>> ['aaa\n', 'bbb\n', '\n']
+    >>> with open('1.txt', 'r', encoding='utf-8') as f:
+    >>>    res = f.read()  # 读全部
+    'aaa\nbbb\n\n'
 
-with open('1.txt', 'r', encoding='utf-8') as f:
-    res = f.readlines()
-# >>> ['aaa\n', 'bbb\n', '\n']
- ```` `
+    >>> with open('1.txt', 'r', encoding='utf-8') as f:
+    >>>    res = []
+    >>>    line =  f.readline()  # 第一行
+    >>>    while line is not None and line != '':
+    >>>         res.append(line)
+    >>>         line =  f.readline()  # 逐行读取
+    ['aaa\n', 'bbb\n', '\n']
+
+    >>> with open('1.txt', 'r', encoding='utf-8') as f:
+    >>>     res = f.readlines()
+    ['aaa\n', 'bbb\n', '\n']
 
 ### json
 
@@ -3166,7 +3263,7 @@ with open('1.txt', 'r', encoding='utf-8') as f:
     main()
     print(time.time()-start)  # 秒
 
-####  ``cProfile``  +  ``pstats`` 
+#### ``cProfile``  +  ``pstats`` 
 
 .. table::
 
@@ -3188,17 +3285,17 @@ with open('1.txt', 'r', encoding='utf-8') as f:
 
 .. table::
 
-    +-----------------+----------------------------------------------+
-    | ``pstats``  函数|意思                                          |
-    +=================+==============================================+
-    |strip_dirs()     |移除了所有模块名称中的多余路径                |
-    +-----------------+----------------------------------------------+
+    +-----------------+--------------------------------------------------+
+    | ``pstats``  函数|意思                                              |
+    +=================+==================================================+
+    |strip_dirs()     |移除了所有模块名称中的多余路径                    |
+    +-----------------+--------------------------------------------------+
     |sort_stats(key)  |对key列 ==降序== 排序                         |
-    +-----------------+----------------------------------------------+
-    |print_stats(n)   | 打印统计数据 , default n = all               |
-    +-----------------+----------------------------------------------+
-    |print_callers(n) |每个被列出的函数的调用方列表 , default n = all|
-    +-----------------+----------------------------------------------+
+    +-----------------+--------------------------------------------------+
+    |print_stats(n)   | 打印统计数据 , default n = all                   |
+    +-----------------+--------------------------------------------------+
+    |print_callers(n) |每个被列出的函数的调用方列表 , default n = all    |
+    +-----------------+--------------------------------------------------+
 
 1. step1
 
@@ -3221,16 +3318,16 @@ with open('1.txt', 'r', encoding='utf-8') as f:
     .. code-block:: py
         :caption: analysis.py
 
-    import pstats
-    from pstats import SortKey
-    p = pstats.Stats('./output_file')
+        import pstats
+        from pstats import SortKey
+        p = pstats.Stats('./output_file')
 
-    # 按一个函数中的累计时间对性能分析数据进行排序,打印多的30行
-    p.sort_stats(SortKey.CUMULATIVE).print_stats(30)
-    # 每个函数耗费的时间进行排序，然后打印前十个函数的统计数据 
-    p.sort_stats(SortKey.TIME).print_stats(10)
-    # 以时间为主键，并以累计时间为次键进行排序，然后打印10条
-    p.sort_stats(SortKey.TIME, SortKey.CUMULATIVE).print_stats(.5)
+        # 按一个函数中的累计时间对性能分析数据进行排序,打印多的30行
+        p.sort_stats(SortKey.CUMULATIVE).print_stats(30)
+        # 每个函数耗费的时间进行排序，然后打印前十个函数的统计数据 
+        p.sort_stats(SortKey.TIME).print_stats(10)
+        # 以时间为主键，并以累计时间为次键进行排序，然后打印10条
+        p.sort_stats(SortKey.TIME, SortKey.CUMULATIVE).print_stats(.5)
 
 ## Error
 
@@ -3263,8 +3360,8 @@ with open('1.txt', 'r', encoding='utf-8') as f:
     It is over.
 
 .. danger:: NotImplementedError 未实现父类接口重写
-    在继承的时候，父类有可能留下接口需要子类去重写，但子类并没有重写.
-    ==Sol== : 重写方法
+    | 在继承的时候，父类有可能留下接口需要子类去重写，但子类并没有重写.
+    | ==Sol== : 重写方法
 
     .. code-block:: py
 
@@ -3316,6 +3413,7 @@ with open('1.txt', 'r', encoding='utf-8') as f:
 ✏️ 在文件顶部添加 coding 注释
 
 .. code-block:: py
+
     # coding: gbk
     ...
 

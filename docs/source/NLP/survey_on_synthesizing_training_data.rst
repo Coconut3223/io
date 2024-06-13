@@ -1,3 +1,4 @@
+
 # Synthesize Training Data
 
 ## Introduction
@@ -10,8 +11,8 @@ fine-tune lightweight student model for running system
 1. 对一些像 NER 的 tasks（ICST, NER），不能生成 token-level label (slot tags) [<sup>1</sup>](#reference)
    - before：use a separate model to do work alignment. Res: noise ↑
 2. scoped，不能 control 它的 output
-
 3. LLM 都是在真实的大型数据集上进行训练。由 LLM 合成的 generated data 受到 origin dataset 的影响,進一步 worse performance of the fine-tune model. [<sup>2</sup>](#reference)
+
    1. limit the diversity
         size of vocabulary of synthesing's << size of ground truth's
    2. inherit systematic biases
@@ -27,17 +28,17 @@ fine-tune lightweight student model for running system
 - target: control output
 
 .. note:: ""
-    [CLM] Sentence: example1 \
-    Translation in French: ... \
-    Sentenc:target \
-    Translation in French:
+    | [CLM] Sentence: example1 \
+    | Translation in French: ... \
+    | Sentenc:target \
+    | Translation in French:
 
     .. note:: "" 
     
-        [CLM] Sentence: example1
-        Translation in French: ... 
-        Sentenc:target 
-        Translation in French:
+        | [CLM] Sentence: example1
+        | Translation in French: ... 
+        | Sentenc:target 
+        | Translation in French:
 
 #### common
 
@@ -59,7 +60,7 @@ fine-tune lightweight student model for running system
 
 #### LINGUIST[<sup>1</sup>](#reference)
 
-**L**anguage Model **In**struction Tuning to **G**enerate Annotated **U**tterances for **I**ntent Classification and **S**lot **T**agging
+**L** anguage Model **In** struction Tuning to **G** enerate Annotated **U** tterances for **I** ntent Classification and **S** lot **T** agging
 
 .. note:: task: joint intent classification and slot tagging = IC+ST
     outperforms state-of-the-art baselines like translation and paraphrasing
@@ -77,12 +78,12 @@ introduce an **output format** with **brackets and numbers** that enables the mo
 
 #### CLASP[<sup>1,7</sup>](#reference)
 
-Few-shot **C**ross-**L**ingual Data **A**ugmentation for **S**emantic **P**arsing
+Few-shot **C** ross-**L** ingual Data **A** ugmentation for **S** emantic **P** arsing
 
 .. note:: task: few-shot multilingual semantic parsing, SP
     machine translation
 
-.. note:: ./pics/clasp_1.PNG
+.. image:: ./pics/clasp_1.PNG
 
 .. note:: summary
     1. multi-language
@@ -106,15 +107,13 @@ For a given classification task
 1. initail step
     identify attribute dimensions and their corresponding attribute values in an interactive, semi-automated process facilitated by the LLM.
     1. use  ``gpt``  help establish both attribute dimensions and attribute values.
-        .. note::  ""
-            Which attribute dimensions do you consider vital in determining the topic of a news article?”
 
-            .. note:: ""
-                “subtopics, length, location, reader group, style, time”
+        .. note::  Which attribute dimensions do you consider vital in determining the topic of a news article?
+            “subtopics, length, location, reader group, style, time”
+
     2. adopt the human-ai collaboration scheme to interactively select the attribute dimensions of **the highest quality** that best suit the dataset. **人为地选择** Best Top-N attributes.
     3. generate values corresponding to selected attributes similarly
-        .. note:: ""
-             List 10 diverse subtopics for {class_name} news on NYT.
+        .. note:: List 10 diverse subtopics for {class_name} news on NYT.
 
             .. table::
 
@@ -166,7 +165,7 @@ For a given classification task
 .. code-block:: py
 
     openai.Completion.create(
-        engine=’davinci’,
+        engine='davinci',
         prompt='q: What is the capital of france?\na:', 
         logprobs = 5,  # TopN the natural log of the probability
         stop = '\n', 
@@ -181,40 +180,44 @@ For a given classification task
         token_ID: in the GPT tokenizer
     """
 
-##### logit supression[<sup>9</sup>](#reference)
+##### logit supression
 
 [OpenAI API]
 
 - **Logit bias** parameter
-  
+
     | GPT3 的一个很有用的参数。通过 modify the likelihood of tokens 控制 token in [GPT Tokenizer(convert text to token IDs)] 的生成，unwanted tokens ↓， wanted tokens ↑.[<sup>9</sup>](#reference) **bias 会直接加到 gpt 生成的 logprob 上。**
     | :math:`\text{logprob}\begin{cases}-1|1&\uparrow\downarrow\text{the likelhood of tokens}\\-100|100&\text{禁止或者直接指定 }\end{cases}` 
     | [create-logit_bias in openAI Docs]
 
-    ..hint:: Question
+    .. hint:: Question
         - 中文？会有在那50000
         
             .. image:: ./pics/diversity_accu_3.PNG
+                :scale: 50%
         - only 100 tokens for logit biasing
 
 - how gpt generate tokens
-    | When run, GPT-3 takes the prompt and predicts the probabilities of the token that is going to occur next. [<sup>9</sup>](#reference)
-    | **Rather than the percentages, logprobs is used.  :math:`\text{logprob}→0\iff\text{prob}↑` ** .[<sup>9</sup>](#reference)
+    | When run, GPT-3 takes the prompt and predicts the probabilities of the token that is going to occur next. 
+    | **Rather than the percentages, logprobs is used.**   :math:`\text{logprob}→0\iff\text{prob}↑`.
 
 .. note:: ""  
-    Specifically, for the logit bias weights, we multiplied the token appearance ratio (in percentage) by -7.5 while capping the minimum weight at –7.5.[<sup>9</sup>](#reference)
+    Specifically, for the logit bias weights, we multiplied the token appearance ratio (in percentage) by -7.5 while capping the minimum weight at –7.5.
 
     .. note:: ""  
       1. 统计 tokens 的 frequency 
       2. logprob = 出现的 freq * -7.5（也就是说最低不可能超过 -7.5
 
-##### temperature-based sampling[<sup>5,6</sup>](#reference)
+##### temperature-based sampling
 
 温度 采样受到统计热力学的启发，其中高温意味着更有可能遇到低能态。在概率模型中，logits 扮演着能量的角色，我们可以通过将 logits 除以温度来实现温度采样，然后将其输入到 softmax 中并获得采样概率
 
-.. image:: ./pics/temperature_sampling_1.png
+.. grid:: 2
 
-.. image:: ./pics/temperature_sampling_2.png
+    .. grid-item::
+        .. image:: ./pics/temperature_sampling_1.png
+    .. grid-item::
+        .. image:: ./pics/temperature_sampling_2.png
 
 .. note:: ""  
     0.3, 0.7, 0.9, and 1.3[<sup>3</sup>](#reference)
@@ -227,7 +230,11 @@ For a given classification task
     | We generally recommend altering this or top_p but not both.
 
 .. image:: ./pics/diversity_accu_4.PNG
+    :scale: 50%
+    :align: center
 .. image:: ./pics/diversity_accu_5.PNG
+    :scale: 50%
+    :align: center
 
 ## metrics
 
@@ -242,8 +249,7 @@ For a given classification task
 
 - 【fidelity】
     .. image:: ./pics/fidelity_1.PNG
-- 【utility】**Feature importance score**[<sup>4</sup>](#reference)
-    檢查順序
+- 【utility】 **Feature importance score**
 - 【utility】 **QScore？？？？？？？？？？？？？？？？**:
    This score is used to check if a model trained on synthetic data will give the same results as a model trained on original data. It does this by running random aggregation-based queries on both datasets and comparing the results. If the results are similar, it means the synthetic data has good utility.
 - 【utility】the accuracies of models [<sup>3</sup>](#reference)
@@ -263,15 +269,24 @@ For a given classification task
 
 - 【utility】similarity between dataset [<sup>3</sup>](#reference)
     We also measured the similarity of the generated dataset to the oracle dataset with the average mean pairwise distances between the two. For similarity, we also used BERT to embed the generated texts.
-.. image:: ./pics/diversity_accu_2.PNG
+
+    .. image:: ./pics/diversity_accu_2.PNG
+        :scale: 60%
+        :align: center
 
 - 【diversity】 **vocalbulary size** for lexical diversity of datasets[<sup>2</sup>](#reference)
-.. image:: ./pics/attrprompt_3.PNG
 
-- 【diversity】**cosine similarity** for the diversity from the semantic perspective[<sup>2</sup>](#reference)
+    .. image:: ./pics/attrprompt_3.PNG
+        :scale: 60%
+        :align: center
+
+- 【diversity】 **cosine similarity** for the diversity from the semantic perspective[<sup>2</sup>](#reference)
     - the cosine similarity is calculated based on the embedding of Sentence-BERT Reimers and Gurevych
     - cosine similarity ↓  diversity ↑
-.. image:: ./pics/attrprompt_4.PNG
+
+    .. image:: ./pics/attrprompt_4.PNG
+        :scale: 60%
+        :align: center
 
 - 开销
 
