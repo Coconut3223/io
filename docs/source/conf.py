@@ -198,6 +198,11 @@ html_theme_options = {
             "internal": True,
             "title": "NLP",
         },
+        {
+            "href": "SQL/main",
+            "internal": True,
+            "title": "SQL",
+        },
     ], 
 
 }

@@ -36,15 +36,14 @@ import re
 
 
 input_ = r"""
-|operations|code|return|T(n)|
-|建立空堆| ``h = []``  |||
-|list ➡️ heap| ``heapify(h)`` |❌ **in-placed** | O(n)|
-|加入弹出| ``heapq.heappush(h, x)`` |❌| **O(logn)**|
-|^| ``heapq.heappop(h)`` | ✅ 最小 ``h[0]`` , 空就有 ``IndexError`` | O(logn)|
-|^| ``heapq.heappushpop(h, x)``  |✅  <= x(因为先加x)|比连调两个单纯函数要快|
-|^| <=>  ``push+pop`` , 先加x再弹出|^|^|
-|^| ``heapq.heapreplace(h, x)``  |✅  :question: x(因为后加x) |^|
-|^| <=>  ``pop+push``  | 空就有 ``IndexError`` |^|
+|  |  | 从架构位置分 |
+| Central Control Node | NameNode | keep track of HDFS directories & files |
+| The Master | ^ |  Central manager for the file system Namespace |
+| ^ | JobTracker | dispatch compute tasks to TaskTracker |
+| ^ | ^ |  Central manager for running MapReduce jobs |
+| The Slaves | Main nodes | accept and reply to MapReduce tasks.|
+| ^| TaskTracker, TT |  accept and run map, reduce and shuffle |
+| ^ | DataNode, DN | store needed blocks closely as possible |
 """
 
 data_list = input_.split('\n')[1:-1]
