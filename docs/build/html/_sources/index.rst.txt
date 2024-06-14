@@ -8,10 +8,10 @@ Welcome to cocobook's documentation!
 
 
 .. toctree::
-   :caption: AI
+   :caption: Content
    :maxdepth: 1
 
-   AI/main
+   AI <AI/index>
 
 
 Indices and tables

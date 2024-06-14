@@ -10,7 +10,6 @@
     gpt
     huggingface
     kea
-    kmeanModel
     nmt
     opennmt
     paper

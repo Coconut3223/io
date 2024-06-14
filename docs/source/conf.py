@@ -203,6 +203,11 @@ html_theme_options = {
             "internal": True,
             "title": "SQL",
         },
+        {
+            "href": "utils/index",
+            "internal": True,
+            "title": "Utils",
+        },
     ], 
 
 }
@@ -221,8 +226,22 @@ rst_prolog = """
 html_show_sourcelink = False
 
 html_sidebars = {
-    "**": ["logo-text.html", "globaltoc.html", "localtoc.html", "searchbox.html"]
+
+    '**': [
+        'localtoc.html',
+        'relations.html',
+        'versions.html',
+        'searchbox.html',
+    ]
 }
+
+# html_sidebars = {
+#     "**": [
+#         "localtoc.html",
+#         "globaltoc.html", 
+#         "searchbox.html",
+#         ]
+# }
 
 suppress_warnings = ["config.cache"]  # https://github.com/sphinx-doc/sphinx/issues/12300
 # pickling environment... WARNING: cannot cache unpickable configuration value: 'html_context' (because it contains a function, class, or module object)
