@@ -36,14 +36,12 @@ import re
 
 
 input_ = r"""
-|  |  | 从架构位置分 |
-| Central Control Node | NameNode | keep track of HDFS directories & files |
-| The Master | ^ |  Central manager for the file system Namespace |
-| ^ | JobTracker | dispatch compute tasks to TaskTracker |
-| ^ | ^ |  Central manager for running MapReduce jobs |
-| The Slaves | Main nodes | accept and reply to MapReduce tasks.|
-| ^| TaskTracker, TT |  accept and run map, reduce and shuffle |
-| ^ | DataNode, DN | store needed blocks closely as possible |
+||琅|狼|dis|
+|拼音|lang2|lang2||
+|音形码|F702|F702|edit-distance|
+|^|11313B|14323A| :math:`1-\cfrac{4}{10}=.6` |
+|二进制|1111011100000010|1111011100000010|paper|
+|^|000100010011000100111001|000101000011001000111010| :math:`1-\cfrac{5}{40}=.875` |
 """
 
 data_list = input_.split('\n')[1:-1]

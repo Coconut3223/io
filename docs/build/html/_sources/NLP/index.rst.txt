@@ -17,3 +17,4 @@
     t5
     correction
     survey_on_synthesizing_training_data
+    phonetic
