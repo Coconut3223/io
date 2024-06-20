@@ -12,7 +12,9 @@ dirname = os.path.abspath(os.path.dirname(__file__))
 logging.basicConfig(filename=os.path.join(dirname, 'sphinx.log'))
 
 
+from sphinxcontrib import katex
 
+katex.TIMEOUT_EXPIRED_TEMPLATE = 10
 
 """
 hex(ord('#')) == '0x23'
