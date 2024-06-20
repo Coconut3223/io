@@ -43,6 +43,7 @@ jobs:
     - name: Build documentation
       run: |
         pushd docs
+        ls
         O="-j auto" make html
         popd
     # - name: Move and commit documentation
