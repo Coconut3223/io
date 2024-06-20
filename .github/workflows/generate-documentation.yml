@@ -50,7 +50,7 @@ jobs:
       env:
         GIT_TAG: ${{ github.event.release.tag_name }}
       run: |
-        source tools/docbuild-commit.sh
+        source utils/docbuild-commit.sh
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
