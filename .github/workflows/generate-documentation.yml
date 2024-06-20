@@ -42,9 +42,9 @@ jobs:
         python -m pip list
     - name: Build documentation
       run: |
-        pushd docs/source
+        pushd docs
         O="-j auto" make html
-        popd docs/build/html
+        popd
     # - name: Move and commit documentation
     #   env:
     #     GIT_TAG: ${{ github.event.release.tag_name }}
