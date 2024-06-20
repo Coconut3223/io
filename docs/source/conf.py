@@ -209,7 +209,6 @@ html_theme_options = {
             "title": "Utils",
         },
     ], 
-
 }
 html_static_path = ['_static']
 
