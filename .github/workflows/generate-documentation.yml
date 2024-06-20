@@ -42,7 +42,7 @@ jobs:
         python -m pip list
     - name: Build documentation
       run: |
-        pushd docs/sorce
+        pushd docs/source
         O="-j auto" make html
         popd
     # - name: Move and commit documentation
