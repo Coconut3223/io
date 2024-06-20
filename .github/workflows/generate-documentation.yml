@@ -46,11 +46,11 @@ jobs:
         ls
         O="-j auto" make html
         popd
-    # - name: Move and commit documentation
-    #   env:
-    #     GIT_TAG: ${{ github.event.release.tag_name }}
-    #   run: |
-    #     source tools/docbuild-commit.sh
+    - name: Move and commit documentation
+      env:
+        GIT_TAG: ${{ github.event.release.tag_name }}
+      run: |
+        source tools/docbuild-commit.sh
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
