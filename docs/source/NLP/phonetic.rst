@@ -3,11 +3,9 @@
 
 ## `基于音形码的汉字相似度比对算法 <https://cn.oversea.cnki.net/KCMS/detail/detail.aspx?filename=HDZJ201811016&dbcode=CFJD&dbname=>`_ ``2018``
 
-==字音== ==字形== ==编码== ==相似度==
-
-
-
 .. hint:: Abstract
+
+    ==字音== ==字形== ==编码== ==相似度==
 
     汉字相似度计算不仅是语言研究最基础的一项研究,而且对汉字输入法的校验有着重要的意义.为了准确的计算出汉字的相似,基于编辑距离算法的基础上,文中提出一种 ==基于音形码汉字匹配算法== ;最后,通过实验证明在两种算法编码方式相同的情况下,音形码汉字匹配算法准确率高于编辑距离算法.
 
@@ -92,3 +90,22 @@
 
 
 ## MFCCs 和 DTW 在拼音相似度中的研究
+
+
+## `HANSpeller++: A unified framework for Chinese spelling correction <https://scholar.google.com.au/citations?view_op=view_citation&hl=sl&user=2Sp3OuMAAAAJ&citation_for_view=2Sp3OuMAAAAJ:UeHWp8X0CEIC>`_
+
+.. hint:: Abstract
+
+    | Increased interest in China from foreigners has led to a corresponding interest in the study of Chinese. However, the learning of Chinese by non-native speakers will encounter many difficulties, Chinese spelling check techniques for Chinese as a Foreign Language (CFL) learners is highly desirable. This paper presents our work on the **SIGHAN-2015 Chinese Spelling Check task.** The task focuses on spelling checking on Chinese essays written by CFL learners. We propose a unified framework called HANSpeller++ based on our previous HANSpeller for Chinese spelling correction. 
+    | **The framework consists of candidate generating, candidates re-ranking and final global decision making. Experiments show good performance on the test data of the task.**
+
+**process**
+
+1. preprocess：
+
+    1. 用标点切分子句，子句是 basic unit of the error correction process
+    2. 用 unicode 筛删 非中文字符
+2. candidate generating top K
+
+    | We first initialize a fixed size priority queue for a certain input sub sentence, this queue is used to store intermediate sub sentences.
+    | For each character of sentences in the priority queue, we try to replace it by its candidate character. The possible candidate character include its homophone, near-homophone, similar shape character and confusion pair

@@ -85,7 +85,7 @@
 
 | 但在中文ASR的场景下，很多情况是由于读音相同或相近导致的识别错误。
 | 收录常见字的粤语发音作为输入的一部分
-| [长文字自助粤语注音](https://shyyp.net/romanizer?x=d529e75d76fc289af90b0fecbb8ca547)
+| `长文字自助粤语注音 <https://shyyp.net/romanizer?x=d529e75d76fc289af90b0fecbb8ca547>`_
 
 .. hint:: Example
 
