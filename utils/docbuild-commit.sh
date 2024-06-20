@@ -15,14 +15,14 @@ echo "Checking for tag"
 if [[ -n "${GIT_TAG}" ]]; then
   echo "Tag ${GIT_TAG} is defined"
   echo "Copy docs to root"
-  echo cp -r ${PWD}/docs/_build/html/* ${PWD}/
-  cp -r ${PWD}/docs/_build/html/* ${PWD}
+  echo cp -r ${PWD}/docs/build/html/* ${PWD}/
+  cp -r ${PWD}/docs/build/html/* ${PWD}
 else
   echo "Tag is ${GIT_TAG}. Not updating main documents"
 fi
 echo "Copy docs to devel"
-echo cp -r ${PWD}/docs/_build/html/* ${PWD}/devel/
-cp -r ${PWD}/docs/_build/html/* ${PWD}/devel/
+echo cp -r ${PWD}/docs/build/html/* ${PWD}/devel/
+cp -r ${PWD}/docs/build/html/* ${PWD}/devel/
 echo "Clean up docs"
 cd ${GIT_REPO_DIR}/docs
 make clean && git clean -xfd
