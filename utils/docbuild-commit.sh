@@ -22,8 +22,9 @@ else
 fi
 echo "Copy docs to devel"
 echo cp -r ${PWD}/docs/build/html/* ${PWD}/devel/
+echo cp -r ${PWD}/docs/build/html/* ${PWD}/
 cp -r ${PWD}/docs/build/html/* ${PWD}/devel/
-cp -r ${PWD}/docs/build/html/* ${PWD}/
+cp -r ${PWD}/docs/build/html/html/* ${PWD}/
 echo "Clean up docs"
 cd ${GIT_REPO_DIR}/docs
 make clean && git clean -xfd
