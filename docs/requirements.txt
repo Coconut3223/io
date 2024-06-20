@@ -1,14 +1,7 @@
-Sphinx @ file:///home/conda/feedstock_root/build_artifacts/sphinx_1713554891974/work
+sphinx==7.3.7
 sphinx-autobuild==2024.4.16
 sphinx-basic-ng==1.0.0b2
 sphinx-copybutton==0.5.2
 sphinx-material==0.0.36
-sphinx_design @ file:///home/conda/feedstock_root/build_artifacts/sphinx-design_1690472536755/work
-sphinxcontrib-applehelp @ file:///home/conda/feedstock_root/build_artifacts/sphinxcontrib-applehelp_1705126298355/work
-sphinxcontrib-devhelp @ file:///home/conda/feedstock_root/build_artifacts/sphinxcontrib-devhelp_1705126010477/work
-sphinxcontrib-htmlhelp @ file:///home/conda/feedstock_root/build_artifacts/sphinxcontrib-htmlhelp_1705118152391/work
-sphinxcontrib-jsmath @ file:///home/conda/feedstock_root/build_artifacts/sphinxcontrib-jsmath_1691604704163/work
 sphinxcontrib-katex==0.9.10
 sphinxcontrib-mermaid==0.9.2
-sphinxcontrib-qthelp @ file:///home/conda/feedstock_root/build_artifacts/sphinxcontrib-qthelp_1705126152907/work
-sphinxcontrib-serializinghtml @ file:///home/conda/feedstock_root/build_artifacts/sphinxcontrib-serializinghtml_1705118225549/work
