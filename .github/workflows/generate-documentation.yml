@@ -44,7 +44,7 @@ jobs:
       run: |
         pushd docs/source
         O="-j auto" make html
-        popd
+        popd docs/build/html
     # - name: Move and commit documentation
     #   env:
     #     GIT_TAG: ${{ github.event.release.tag_name }}
