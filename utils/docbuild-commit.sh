@@ -2,7 +2,7 @@
 
 export GIT_REPO_DIR=${PWD}
 echo "Set git email and name"
-git config user.email "kk.gmail.com"
+git config user.email "122254025+Coconut3223@users.noreply.github.com"
 git config user.name "coco"
 git config advice.addIgnoredFile false
 echo "Checkout pages"
