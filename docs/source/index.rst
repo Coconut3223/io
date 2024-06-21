@@ -28,3 +28,5 @@ Indices and tables
 
 
 .. image:: ./pics/attrprompt_1.PNG
+
+.. image:: pics/attrprompt_1.PNG
