@@ -32,6 +32,7 @@ git add .
 git add --all .
 git add -u .
 # Ensure key files are added
+git add build/**/* || true
 git add devel/**/* || true
 git add **/*.html || true
 git add **/*.ipynb || true
