@@ -11,7 +11,7 @@ echo "Remove devel"
 rm -rf devel
 echo "Make a new devel"
 mkdir devel
-echo "Checking for tag'${GIT_TAG}'"
+echo "Checking for tag `${GIT_TAG}`"
 if [[ -n "${GIT_TAG}" ]]; then
   echo "Tag ${GIT_TAG} is defined"
   echo "Copy docs to root"
@@ -22,9 +22,7 @@ else
 fi
 echo "Copy docs to devel"
 echo cp -r ${PWD}/docs/build/html/* ${PWD}/devel/
-echo cp -r ${PWD}/docs/build/html/* ${PWD}/
 cp -r ${PWD}/docs/build/html/* ${PWD}/devel/
-cp -r ${PWD}/docs/build/html/* ${PWD}/
 echo "Clean up docs"
 cd ${GIT_REPO_DIR}/docs
 make clean && git clean -xfd
