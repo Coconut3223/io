@@ -36,7 +36,7 @@
 #         github_token: ${{ secrets.GITHUB_TOKEN }}
 #         publish_dir: docs/build/html
 
-# name: Generate Documentation
+name: Generate Documentation
 
 on:
   release:
