@@ -11,7 +11,7 @@ echo "Remove devel"
 rm -rf devel
 echo "Make a new devel"
 mkdir devel
-echo "Checking for tag"
+echo "Checking for tag'${GIT_TAG}'"
 if [[ -n "${GIT_TAG}" ]]; then
   echo "Tag ${GIT_TAG} is defined"
   echo "Copy docs to root"
