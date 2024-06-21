@@ -145,8 +145,8 @@ BaseAdmonition.run = BaseAdmonition_run
 
 from sphinx.writers.html5 import HTML5Translator
 from typing import TYPE_CHECKING
-if TYPE_CHECKING:
-    from docutils.nodes import Element
+# if TYPE_CHECKING:
+from docutils.nodes import Element
 
 def visit_admonition_hideNodename(self, node: Element, name: str = '') -> None:
     self.body.append(self.starttag(
