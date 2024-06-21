@@ -6,9 +6,6 @@ git config user.email "122254025+Coconut3223@users.noreply.github.com"
 git config user.name "coco"
 git config advice.addIgnoredFile false
 echo "Checkout pages"
-git pull
-git add .
-git commit -m "commit message"
 git checkout gh-pages
 echo "Remove devel"
 rm -rf devel
