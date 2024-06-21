@@ -182,12 +182,11 @@ language = 'zh_CN'
 
 html_theme = 'sphinx_material'
 html_theme_options = {
-    "base_url": "https://github.com/Coconut3223/io/",
+    "base_url": "https://github.com/Coconut3223/io",
     "repo_url": "https://github.com/Coconut3223/io/",
     "repo_name": "io",
     "logo_icon": "&#xe869",
     'nav_title': 'Cocobook',
-    'logo_icon': '&#xe869',
     "repo_type": "github",
     "nav_links": [
         {
@@ -216,6 +215,9 @@ html_theme_options = {
             "title": "Utils",
         },
     ], 
+    # Set the color and the accent color
+    'color_primary': 'blue',
+    'color_accent': 'light-blue',
 }
 html_static_path = ['_static']
 
