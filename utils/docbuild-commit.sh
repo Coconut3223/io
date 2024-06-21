@@ -6,6 +6,7 @@ git config user.email "122254025+Coconut3223@users.noreply.github.com"
 git config user.name "coco"
 git config advice.addIgnoredFile false
 echo "Checkout pages"
+git fetch
 git add .
 git commit -m "ccc"
 git checkout gh-pages
@@ -27,7 +28,7 @@ echo cp -r ${PWD}/docs/build/html/* ${PWD}/devel/
 cp -r ${PWD}/docs/build/html/* ${PWD}/devel/
 echo "Clean up docs"
 cd ${GIT_REPO_DIR}/docs
-make clean && git clean -xfd
+make clean && git clean -xfd #除 build/ 目錄 & 刪除所有未追蹤的文件和目錄。
 echo "Add files"
 cd ${GIT_REPO_DIR}
 git add .
