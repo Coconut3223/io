@@ -24,9 +24,11 @@ Indices and tables
 
 
 
-
-
-
 .. image:: ./pics/attrprompt_1.PNG
+
+.. image:: pics/attrprompt_1.PNG
+
+
+ffffffffffff
 
 .. image:: pics/attrprompt_1.PNG
