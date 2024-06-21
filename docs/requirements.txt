@@ -6,4 +6,4 @@ sphinx-material
 sphinxcontrib-katex
 sphinxcontrib-mermaid
 sphinx-design
-PIL
+Pillow
