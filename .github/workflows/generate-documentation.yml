@@ -6,6 +6,9 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      node-version: '20.0'
+      python-version: '3.12'
     permissions:
       contents: write
     steps:
