@@ -188,7 +188,7 @@ html_theme_options = {
     "logo_icon": "&#xe869",
     'nav_title': 'Cocobook',
     "repo_type": "github",
-    "nav_links": [
+    "navs": [ #nav_links
         {
             "href": "AI/index",
             "internal": True,
