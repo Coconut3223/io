@@ -9,7 +9,8 @@ Welcome to cocobook's documentation!
 
 .. toctree::
    :caption: Content
-   :maxdepth: 1
+   :maxdepth: 2
 
    AI <AI/index>
+   CV <CV/index>
    
