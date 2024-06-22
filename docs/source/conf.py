@@ -239,7 +239,7 @@ rst_prolog = """
 # 是否显示查看源码链接
 html_show_sourcelink = False
 html_sidebars = {
-    '**': ['localtoc.html', 'globaltoc.html', 'searchbox.html']
+    "**": ["logo-text.html", "globaltoc.html", "localtoc.html", "searchbox.html"]
 }
 
 
