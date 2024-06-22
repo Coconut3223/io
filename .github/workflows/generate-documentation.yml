@@ -94,6 +94,11 @@ jobs:
         GIT_TAG: ${{ github.event.release.tag_name }}
       run: |
         source utils/docbuild-commit.sh
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: html-docs
+        path: devel/html/
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
