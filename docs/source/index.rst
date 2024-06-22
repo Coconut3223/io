@@ -12,5 +12,11 @@ Welcome to cocobook's documentation!
    :maxdepth: 2
 
    AI <AI/index>
+   ML <AI/ML/index>
+   DL <AI/DL/index>
    CV <CV/index>
+   NLP <NLP/index>
+   python <python/index>
+   SQL <SQL/index>
+   utils <utils/index>
    
