@@ -22,13 +22,3 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
-
-
-.. image:: ./pics/attrprompt_1.PNG
-
-.. image:: pics/attrprompt_1.PNG
-
-
-ffffffffffff
-
-.. image:: pics/attrprompt_1.PNG

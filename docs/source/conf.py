@@ -242,7 +242,7 @@ html_show_sourcelink = False
 html_sidebars = {
 
     '**': [
-        'localtoc.html',
+        'globaltoc.html',
         'relations.html',
         'versions.html',
         'searchbox.html',
