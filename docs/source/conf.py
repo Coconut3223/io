@@ -188,7 +188,12 @@ html_theme_options = {
     "logo_icon": "&#xe869",
     'nav_title': 'Cocobook',
     "repo_type": "github",
-    "navs": [ #nav_links
+    "nav_links": [ #nav_links
+        {
+            "href": "index",
+            "internal": True,
+            "title": "Homepage"
+        },
         {
             "href": "AI/index",
             "internal": True,
@@ -214,6 +219,7 @@ html_theme_options = {
             "internal": True,
             "title": "Utils",
         },
+
     ], 
     # Set the color and the accent color
     'color_primary': 'blue',
@@ -242,6 +248,7 @@ html_sidebars = {
         'searchbox.html',
     ]
 }
+
 
 # html_sidebars = {
 #     "**": [
