@@ -13,12 +13,3 @@ Welcome to cocobook's documentation!
 
    AI <AI/index>
    
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
