@@ -1,4 +1,4 @@
-docs/build/html/
+docs/build/
 .idea/
 *.pyc
 tools/mds
