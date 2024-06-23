@@ -73,7 +73,7 @@
 
   </head>
   <body dir=ltr
-        data-md-color-primary=blue data-md-color-accent=light-blue>
+        data-md-color-primary=blue data-md-color-accent=cyan>
   
   <svg class="md-svg">
     <defs data-children-count="0">
@@ -263,7 +263,185 @@
     
     
       <a href="index.html" class="md-nav__link">python</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="elegant.html" class="md-nav__link">Elegant Python</a>
       
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="enhanced.html" class="md-nav__link">Enhanced Python</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="numpy.html" class="md-nav__link">Numpy & Scipy</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <label class="md-nav__link md-nav__link--active" for="__toc"> pytorch </label>
+    
+      <a href="#" class="md-nav__link md-nav__link--active">pytorch</a>
+      
+        
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#python-pytorch--page-root" class="md-nav__link">pytorch</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#configuration" class="md-nav__link">Configuration</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id1" class="md-nav__link">pytorch 安装</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#concept" class="md-nav__link">concept</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#autograd" class="md-nav__link">Autograd</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#locally-disable-gradient-computation" class="md-nav__link">locally disable gradient computation</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#id2" class="md-nav__link">完整的</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#cpu-gpu" class="md-nav__link">cpu & gpu</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#gpu" class="md-nav__link">多gpu</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#id3" class="md-nav__link">训练和测试的不同</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#data" class="md-nav__link">Data</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#tensor" class="md-nav__link">Tensor</a>
+        </li>
+        <li class="md-nav__item"><a href="#class-dataset" class="md-nav__link">class DataSet</a>
+        </li>
+        <li class="md-nav__item"><a href="#datalodar" class="md-nav__link">Datalodar</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#nn" class="md-nav__link">nn</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id4" class="md-nav__link">一些基本的东西</a>
+        </li>
+        <li class="md-nav__item"><a href="#containers-nn" class="md-nav__link"><cite>Containers</cite>  负责 nn 框架的构建</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#module-nn-base-class" class="md-nav__link"><cite>Module</cite> 所有 NN 的 base class</a>
+        </li>
+        <li class="md-nav__item"><a href="#sequential-transforms-compose" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Sequential</span></code> 类 <code class="docutils literal notranslate"><span class="pre">transforms.Compose</span></code> 的用法，模型进一步封装</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#nn-xxx-nn-functional-xxx" class="md-nav__link">nn.xxx & nn.functional.xxx</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#liner" class="md-nav__link">Liner</a>
+        </li>
+        <li class="md-nav__item"><a href="#conv" class="md-nav__link">Conv</a>
+        </li>
+        <li class="md-nav__item"><a href="#pool" class="md-nav__link">Pool</a>
+        </li>
+        <li class="md-nav__item"><a href="#activation" class="md-nav__link">activation</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#softmax" class="md-nav__link">softmax</a>
+        </li>
+        <li class="md-nav__item"><a href="#relu-rectified-linear-unit" class="md-nav__link">ReLU, rectified linear unit</a>
+        </li>
+        <li class="md-nav__item"><a href="#sigmoid" class="md-nav__link">Sigmoid</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#normalization" class="md-nav__link">Normalization</a>
+        </li>
+        <li class="md-nav__item"><a href="#droupout" class="md-nav__link">Droupout</a>
+        </li>
+        <li class="md-nav__item"><a href="#flatten" class="md-nav__link"><cite>flatten</cite></a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#torch-nn-loss-torch-optim" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">torch.nn.</span></code> Loss & <code class="docutils literal notranslate"><span class="pre">torch.Optim</span></code></a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#torch-optim" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">torch.optim</span></code></a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#adam" class="md-nav__link">Adam</a>
+        </li>
+        <li class="md-nav__item"><a href="#sgd" class="md-nav__link">SGD 随机梯度下降</a>
+        </li>
+        <li class="md-nav__item"><a href="#adagrad" class="md-nav__link">Adagrad, 自适应随机梯度下降</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#torch-nn-loss" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">torch.nn.</span></code> Loss</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#l1loss-mae" class="md-nav__link">L1Loss, MAE</a>
+        </li>
+        <li class="md-nav__item"><a href="#mse" class="md-nav__link">MSE</a>
+        </li>
+        <li class="md-nav__item"><a href="#celoss" class="md-nav__link">CELoss</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#save-load" class="md-nav__link">Save & Load</a>
+        </li>
+        <li class="md-nav__item"><a href="#representation" class="md-nav__link">representation</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#utils-tensorboard" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">utils.tensorboard</span></code></a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#cv" class="md-nav__link">CV</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#transforms" class="md-nav__link">transforms</a>
+        </li>
+        <li class="md-nav__item"><a href="#models" class="md-nav__link">models</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#vgg16" class="md-nav__link">vgg16</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+  </ul>
+</nav>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="#concept" class="md-nav__link">concept</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="exam.html" class="md-nav__link">笔面</a>
+      
+    
+    </li></ul>
     
     </li>
     <li class="md-nav__item">

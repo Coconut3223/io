@@ -75,7 +75,7 @@
 
   </head>
   <body dir=ltr
-        data-md-color-primary=blue data-md-color-accent=light-blue>
+        data-md-color-primary=blue data-md-color-accent=cyan>
   
   <svg class="md-svg">
     <defs data-children-count="0">
@@ -244,7 +244,162 @@
     
     
       <a href="index.html" class="md-nav__link">DL</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="main.html" class="md-nav__link">DL</a>
       
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="mlp.html" class="md-nav__link">MLP</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <label class="md-nav__link md-nav__link--active" for="__toc"> CNN </label>
+    
+      <a href="#" class="md-nav__link md-nav__link--active">CNN</a>
+      
+        
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#ai-dl-cnn--page-root" class="md-nav__link">CNN</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#introduction" class="md-nav__link">Introduction</a>
+        </li>
+        <li class="md-nav__item"><a href="#keywords" class="md-nav__link">Keywords</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#shared-weights" class="md-nav__link">Shared Weights，共享权重</a>
+        </li>
+        <li class="md-nav__item"><a href="#local-receptive-fields-sparse-connectivity" class="md-nav__link">Local Receptive Fields & Sparse Connectivity, 局部感知域 & 稀疏连接</a>
+        </li>
+        <li class="md-nav__item"><a href="#spatial-information" class="md-nav__link">Spatial Information</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#structure" class="md-nav__link">Structure</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#input-layer" class="md-nav__link">Input Layer</a>
+        </li>
+        <li class="md-nav__item"><a href="#convolution-layers-conv" class="md-nav__link">Convolution Layers, Conv</a>
+        </li>
+        <li class="md-nav__item"><a href="#filters-kernels" class="md-nav__link">Filters, Kernels</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#about-size" class="md-nav__link">about Size</a>
+        </li>
+        <li class="md-nav__item"><a href="#about-stride-s" class="md-nav__link">about Stride s：移动的方格</a>
+        </li>
+        <li class="md-nav__item"><a href="#about-padding" class="md-nav__link">about Padding</a>
+        </li>
+        <li class="md-nav__item"><a href="#about-meaning" class="md-nav__link">about Meaning</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#batch-normalization" class="md-nav__link">Batch Normalization</a>
+        </li>
+        <li class="md-nav__item"><a href="#activation-function" class="md-nav__link">Activation function</a>
+        </li>
+        <li class="md-nav__item"><a href="#pooling-layer" class="md-nav__link">Pooling Layer, 池化层</a>
+        </li>
+        <li class="md-nav__item"><a href="#flatten-layer-tensor-reshape" class="md-nav__link">Flatten Layer — Tensor Reshape</a>
+        </li>
+        <li class="md-nav__item"><a href="#fully-connected-layer-fc" class="md-nav__link">Fully- Connected Layer, FC</a>
+        </li>
+        <li class="md-nav__item"><a href="#softmax" class="md-nav__link">softmax</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#famous-cnn-architectures" class="md-nav__link">Famous CNN Architectures</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#deeper-or-wider" class="md-nav__link">Deeper or Wider?</a>
+        </li>
+        <li class="md-nav__item"><a href="#lenet-5" class="md-nav__link"><strong>LeNet-5</strong></a>
+        </li>
+        <li class="md-nav__item"><a href="#alexnet" class="md-nav__link">AlexNet</a>
+        </li>
+        <li class="md-nav__item"><a href="#vgg-net" class="md-nav__link">VGG Net</a>
+        </li>
+        <li class="md-nav__item"><a href="#residual-net-resnet" class="md-nav__link">Residual Net, ResNet</a>
+        </li>
+        <li class="md-nav__item"><a href="#dense-net" class="md-nav__link">Dense Net</a>
+        </li>
+        <li class="md-nav__item"><a href="#googlenet" class="md-nav__link">GoogleNet</a>
+        </li>
+        <li class="md-nav__item"><a href="#light-weight-networks" class="md-nav__link">Light-weight networks</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#practical-exercise" class="md-nav__link">Practical Exercise</a>
+        </li>
+        <li class="md-nav__item"><a href="#parameters-initialization" class="md-nav__link">Parameters Initialization</a>
+        </li>
+        <li class="md-nav__item"><a href="#bach-normalization" class="md-nav__link">Bach Normalization</a>
+        </li>
+        <li class="md-nav__item"><a href="#application" class="md-nav__link">Application</a>
+        </li>
+        <li class="md-nav__item"><a href="#edge-detection" class="md-nav__link">Edge Detection</a>
+        </li>
+        <li class="md-nav__item"><a href="#exercise" class="md-nav__link">Exercise</a>
+        </li>
+        <li class="md-nav__item"><a href="#code" class="md-nav__link">code</a>
+        </li></ul>
+            </nav>
+        </li>
+  </ul>
+</nav>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="rnn.html" class="md-nav__link">Recurrent Neural Networks</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="transformer.html" class="md-nav__link">Transformer</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="transferlearning.html" class="md-nav__link">Transfer learning</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="tricks.html" class="md-nav__link">部件</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="utils.html" class="md-nav__link">utils</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="generative_model.html" class="md-nav__link">Generative models</a>
+      
+    
+    </li></ul>
     
     </li>
     <li class="md-nav__item">
