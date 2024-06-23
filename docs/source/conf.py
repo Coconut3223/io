@@ -225,7 +225,7 @@ html_theme_options = {
     # Set the color and the accent color
     'color_primary': 'blue',
     'color_accent': 'light-blue',
-    "version_dropdown": True,
+    "version_dropdown": False,
     "version_json": "_static/versions.json",
     # "version_info": {
     #     "Release": "https://bashtage.github.io/sphinx-material/",
