@@ -93,7 +93,7 @@ jobs:
       env:
         GIT_TAG: ${{ github.event.release.tag_name }}
       run: |
-        source utils/docbuild-commit.sh
+        source tools/docbuild-commit.sh
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
