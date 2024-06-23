@@ -218,6 +218,7 @@ dataset :math:`D`；training set :math:`S`；testing set :math:`T`
     x=FPR=\cfrac{FP}{TN+FP}; y=TPR=\cfrac{TP}{TP+FN}
 
 .. note:: socre-based classifier
+
     | :math:`λ\rightarrow\infin, TPR(\infin)=0,FPR(-\infin) =0`. an useless predictor.
     | :math:`λ\rightarrow-\infin, TPR(-\infin)=1,FPR(-\infin) =1`. an useless predictor
 
@@ -314,7 +315,7 @@ dataset :math:`D`；training set :math:`S`；testing set :math:`T`
 
 #### 排序问题
 
-.. question:: ""
+.. hint:: Question
     在排序问题中，通常没有一个确定的阈值把得到的结果直接判定为正样本或负样本，而是采用Top N返回结果的Precision值和Recall值来衡量排序模型的性能，即认为模型返回的Top N的结果就是模型判定的正样本，然后计算前N个位置上的准确率Precision@N和前N个位置上的召回率Recall@N
 
 ## 比较检验

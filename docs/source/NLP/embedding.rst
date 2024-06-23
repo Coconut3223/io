@@ -122,7 +122,7 @@
 
 同时，经过很多轮 **iterations** 使得 一个词 在不同场景下的语义进行“加权组成”
 
-.. image:: ./pics/embedding_3.PNG
+.. image:: ./pics/embedding_3.png
     :scale: 40%
 .. image:: ./pics/embedding_4.png
     :scale: 40%

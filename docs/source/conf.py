@@ -210,7 +210,7 @@ html_theme_options = {
             "title": "NLP",
         },
         {
-            "href": "SQL/main",
+            "href": "SQL/index",
             "internal": True,
             "title": "SQL",
         },
@@ -228,6 +228,8 @@ html_theme_options = {
 html_static_path = ['_static']
 
 html_css_files = ['css/def.css']
+
+katex_options = '{strict: false}'
 
 
 keep_warnings = True
