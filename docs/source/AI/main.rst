@@ -245,7 +245,9 @@ Best-first search is neither complete nor optimal ✅
 
 Solution path : S-B-G
 
-.. danger:: Best-first :math:`\xRightarrow{\forall n, h(n)\leq h^*(n)}` A \*algorithm<br> Algorithm A* is a special best-first search algorithm ✔️
+.. danger:: Best-first :math:`\xRightarrow{\forall n, h(n)\leq h^*(n)}` A \*algorithm
+    
+    Algorithm A* is a special best-first search algorithm ✔️
     
     .. pull-quote::
 
@@ -254,8 +256,10 @@ Solution path : S-B-G
         .. table::
 
             +---+------------------------------+---+----------------------------------------+
-            |n  |h(n)<br>heuristic estimation  |?  | $h^*(n)$<br>actual n$\rightarrow$goal G|
+            |n  | :math:`h(n)`                 |?  | :math:`h^*(n)`                         |
             +===+==============================+===+========================================+
+            |S  | heuristic estimation         |   | actual n :math:`\rightarrow`goal G     |                                |
+            +---+------------------------------+---+----------------------------------------+
             |S  | 70                           | < | 55 +45                                 |
             +---+------------------------------+---+----------------------------------------+
             |A  | 35                           | < | 25 + 35                                |
