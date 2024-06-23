@@ -5,7 +5,7 @@
     :caption: Content
     :maxdepth: 1
 
-    python_elegant
+    elegant
     enhanced
     numpy
     pytorch
