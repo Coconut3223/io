@@ -36,7 +36,7 @@
 
 #### MAP
 
-==Mean Average Precision==【 **整組** 答案正確結果要優先出現】
+==Mean Average Precision==  **整組** 答案正確結果要優先出現】
 
 .. hint::  Suppose we have a set of 5 queries Q1, Q2, Q3, Q4, and Q5, and a ranked list of 10 search results for each query. The relevance of each search result is binary, i.e., 1 if it is relevant to the query and 0 otherwise. Here is the relevance matrix for the search results:
 

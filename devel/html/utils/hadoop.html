@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>(Apache 基金会的) Hadoop &#8212; HomePage</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=83e35b93" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css?v=79c92029" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/katex-math.css?v=91adb8b6" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/def.css?v=5a9d86bd" />
+    <script src="../_static/documentation_options.js?v=7d86a446"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+    <script src="../_static/translations.js?v=beaddf03"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="HTML &amp; CSS 一些用过的部件" href="html_css.html" />
+    <link rel="prev" title="Git" href="git.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue data-md-color-accent=light-blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#utils/hadoop" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../index.html" title="HomePage"
+           class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">&#xe869</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">Cocobook</span>
+          <span class="md-header-nav__topic"> (Apache 基金会的) Hadoop </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder=""Search""
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            <a href="https://github.com/Coconut3223/io/" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    io
+  </div>
+</a>
+          </div>
+        </div>
+      
+      
+  
+  <script src="../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../"versions.json"",
+        target_loc = "../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">HomePage</a></li>
+            
+            <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">Homepage</a></li>
+            
+            <li class="md-tabs__item"><a href="../AI/index.html" class="md-tabs__link">AI</a></li>
+            
+            <li class="md-tabs__item"><a href="../python/index.html" class="md-tabs__link">Python</a></li>
+            
+            <li class="md-tabs__item"><a href="../NLP/index.html" class="md-tabs__link">NLP</a></li>
+            
+            <li class="md-tabs__item"><a href="../SQL/main.html" class="md-tabs__link">SQL</a></li>
+            
+            <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">Utils</a></li>
+          <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">杂</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="HomePage" class="md-nav__button md-logo">
+      
+        <i class="md-icon">&#xe869</i>
+      
+    </a>
+    <a href="../index.html"
+       title="HomePage">Cocobook</a>
+  </label>
+    <div class="md-nav__source">
+      <a href="https://github.com/Coconut3223/io/" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    io
+  </div>
+</a>
+    </div>
+  
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Content</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../AI/index.html" class="md-nav__link">AI</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../AI/ML/index.html" class="md-nav__link">ML</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../AI/DL/index.html" class="md-nav__link">DL</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../CV/index.html" class="md-nav__link">CV</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../NLP/index.html" class="md-nav__link">NLP</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../python/index.html" class="md-nav__link">python</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="index.html" class="md-nav__link">utils</a>
+      
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#utils-hadoop--page-root" class="md-nav__link">(Apache 基金会的) Hadoop</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#architecture" class="md-nav__link">architecture</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#hadoop-distributed-file-system" class="md-nav__link">Hadoop Distributed File System</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id1" class="md-nav__link">Architecture</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#datanode-dn" class="md-nav__link">DataNode, DN</a>
+        </li>
+        <li class="md-nav__item"><a href="#namenode" class="md-nav__link">NameNode</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#strategy" class="md-nav__link">Strategy</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#block-placement-data-pipeline" class="md-nav__link">Block Placement - Data Pipeline</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#mapreduce" class="md-nav__link">Mapreduce</a>
+        </li>
+        <li class="md-nav__item"><a href="#parallelism-in-hadoop" class="md-nav__link">Parallelism in Hadoop</a>
+        </li>
+        <li class="md-nav__item"><a href="#load-balancing" class="md-nav__link">Load Balancing</a>
+        </li>
+        <li class="md-nav__item"><a href="#locality-optimization-local" class="md-nav__link">Locality Optimization, local 优化</a>
+        </li>
+        <li class="md-nav__item"><a href="#fault-tolerance" class="md-nav__link">Fault Tolerance</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="apache-hadoop">
+<h1 id="utils-hadoop--page-root">(Apache 基金会的) Hadoop<a class="headerlink" href="#utils-hadoop--page-root" title="Link to this heading">¶</a></h1>
+<p><span class="defi">Hadoop</span> 是一个 <strong>实现了mapreduce算法</strong> 的开源的分布式并行编程框架。open-source implementation of frameworks for reliable, scalable, distributed computing and data storage.</p>
+<p><strong>Goals/Requirements:</strong></p>
+<ol class="arabic">
+<li><p>Abstract with high scalability and availability 它是一个 <strong>高可扩展性和可用性</strong> 框架</p></li>
+<li><p>Facilitate the storage and processing of large and/or rapidly growing data sets 对大数据进行储存和处理</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>大数据包括 结构化和非结构化 Structured and non-structured data</p></li>
+<li><p>Process中：Move computation rather than data 更多的还是数据的移动读取</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Use commodity hardware with little redundancy 就是说那种最基本配置的标配出售的东西，因为不加任何配置就是标准有一定能力但是不贵</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Simple programming models</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Fault-tolerance</strong> 容错性是最重要的</p></li>
+</ol>
+<section id="architecture">
+<h2 id="architecture">architecture<a class="headerlink" href="#architecture" title="Link to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line"><strong>Hadoop Ecosystem：</strong></div>
+<div class="line"><span class="defi">Hadoop Common</span> 。 A set of components and interfaces for distributed file systems and general I/O; 组件和接口</div>
+<div class="line"><span class="defi">Hadoop Distributed File System, HDFS</span> 。 A distributed file system that runs on large clusters of commodity machines; 分布式文件系统</div>
+<div class="line"><span class="defi">Hadoop MapReduce</span> 。A distributed data processing model and execution environment that runs on large clusters of commodity machines;</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>Hadoop Framework：</strong></div>
+<div class="line"><span class="defi">HBase</span> 。A distributed, column-oriented database.</div>
+<div class="line">Table storage for semi-structured data</div>
+</div>
+<ul class="simple">
+<li><p>Row/column store</p></li>
+<li><p>Billions of rows/millions on columns</p></li>
+<li><p>Column-oriented - nulls are free</p></li>
+<li><p>Untyped - stores byte</p></li>
+</ul>
+<p><span class="defi">Zookeeper</span> 。Coordinating distributed applications。</p>
+<p><span class="defi">Pig</span> 。High-level language for data analysis</p>
+<ul class="simple">
+<li><p>Expresses sequences of MapReduce jobs</p></li>
+<li><p>Data model: nested “bags” of items</p></li>
+<li><p>Provides relational (SQL) operators (JOIN, GROUP BY, etc.)</p></li>
+<li><p>Easy to plug in Java functions</p></li>
+</ul>
+<p><span class="defi">Hive</span> 。SQL-like Query language and Meta-store</p>
+<ul class="simple">
+<li><p>Used for majority of Facebook jobs</p></li>
+<li><p>“Relational database” built on Hadoop</p></li>
+<li><p>Maintains list of table schemas</p></li>
+<li><p>SQL-like query language (HiveQL)</p></li>
+<li><p>Can call Hadoop Streaming scripts from HiveQL</p></li>
+<li><p>Supports table partitioning, clustering, complex data types, some optimizations</p></li>
+</ul>
+<p><span class="defi">Mahout</span> 。Machine learning</p>
+<a class="reference internal image-reference" href="../_images/Hd_1.png"><img alt="../_images/Hd_1.png" class="align-center" src="../_images/Hd_1.png" style="width: 428.0px; height: 236.0px;"/>
+</a>
+<a class="reference internal image-reference" href="../_images/Hd_2.png"><img alt="../_images/Hd_2.png" class="align-center" src="../_images/Hd_2.png" style="width: 499.20000000000005px; height: 324.8px;"/>
+</a>
+<section id="hadoop-distributed-file-system">
+<h3 id="hadoop-distributed-file-system">Hadoop Distributed File System<a class="headerlink" href="#hadoop-distributed-file-system" title="Link to this heading">¶</a></h3>
+<p><strong>Problems and Solutions of HDFS.</strong></p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Data is too big to store on one machine</dt><dd><p>💡HDFS: store the data on <strong>multiple machines</strong></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>High end machines are too expensive</dt><dd><p>💡HDFS: Run on commodity hardware</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Many commodig hardnare will fail occasional</dt><dd><p>💡HDFS: Intelligent enaugh to handle harduard failure</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>How to handle date on failed hardward</dt><dd><p>💡HDFS: Data replication</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Goals of HDFS:</strong></p>
+<ul>
+<li><p>Verg Large Distributed File System <span class="defi">Scalability</span></p>
+<blockquote>
+<div><p>10K nodes, 100 million files, 10PB</p>
+</div></blockquote>
+</li>
+<li><dl class="simple">
+<dt>Assumes Commodity Hardware <span class="defi">Failure Tolerane</span></dt><dd><ul class="simple">
+<li><p>Files ane replicated to handle hardware  failures</p></li>
+<li><p>Detect failures and recover from them</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Optimized from Batch Processing <span class="defi">High Throughaut</span></dt><dd><ul class="simple">
+<li><p>Data locations exposed so that computations can move to where data resides</p></li>
+<li><p>Provide very high aggregate bandwidth</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>With interfaces to move application operation closer to data to reduce data communication costs</p></li>
+<li><p>HDFS is designed to just work, to process Large data sets with write-once-read-many (WORM) semantics. it’s not for low latency access</p></li>
+<li><p>Can be built out of commodity hardware</p></li>
+</ul>
+<p><strong>Distributed</strong>, with some <strong>centralization</strong></p>
+<p><span class="defi">A Hadoop Cluster</span> includes a single master and multiple slave nodes.</p>
+<div class="line-block">
+<div class="line">Main nodes run <span class="defi">TaskTracker TT</span> to accept and reply to MapReduce tasks, and also <span class="defi">DataNode DN</span> to store needed blocks closely as possible</div>
+<div class="line">Central control node runs <span class="defi">NameNode</span> to keep track of HDFS directories &amp; files, and <span class="defi">JobTrack</span> to dispatch compute tasks to TaskTracker.</div>
+<div class="line"><strong>When you create a MapReduce job</strong>, at the very beginning, you have to seek the metadata from Namenode. Normally the namenode will maintain the metadata into his main memory, so we can search. You can retrieve the metadata immediately because everything is on the main memory. Normally on one namenode okay.</div>
+<div class="line"><span class="defi">Main nodes</span> of cluster are where most of the computational power and storage of the system lies</div>
+</div>
+<ul class="simple">
+<li><p>No need for RAID on normal nodes (Raid is a very expensive storage system supporting parallel IO operations.)</p></li>
+<li><p><strong>Data Coherency</strong> Write-once-read-many (WORM) access model Client can only append (not override) to existing files</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/hdfs_1.png"><img alt="../_images/hdfs_1.png" class="align-center" src="../_images/hdfs_1.png" style="width: 510.40000000000003px; height: 212.0px;"/>
+</a>
+<a class="reference internal image-reference" href="../_images/hdfs_2.png"><img alt="../_images/hdfs_2.png" class="align-center" src="../_images/hdfs_2.png" style="width: 509.0px; height: 377.0px;"/>
+</a>
+<a class="reference internal image-reference" href="../_images/hdfs_3.png"><img alt="../_images/hdfs_3.png" class="align-center" src="../_images/hdfs_3.png" style="width: 475.20000000000005px; height: 298.40000000000003px;"/>
+</a>
+<a class="reference internal image-reference" href="../_images/hdfs_4.png"><img alt="../_images/hdfs_4.png" class="align-center" src="../_images/hdfs_4.png" style="width: 488.0px; height: 260.0px;"/>
+</a>
+<a class="reference internal image-reference" href="../_images/hdfs_5.png"><img alt="../_images/hdfs_5.png" class="align-center" src="../_images/hdfs_5.png" style="width: 623.0px; height: 389.0px;"/>
+</a>
+<section id="id1">
+<h4 id="id1">Architecture<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
+<table>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"></th>
+<th class="head"><p>从架构位置分</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Central Control Node</p></td>
+<td rowspan="2"><p>NameNode</p></td>
+<td><p>keep track of HDFS directories &amp; files</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><p>The Master</p></td>
+<td><p>Central manager for the file system Namespace</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>JobTracker</p></td>
+<td><p>dispatch compute tasks to TaskTracker</p></td>
+</tr>
+<tr class="row-odd"><td><p>Central manager for running MapReduce jobs</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><p>The Slaves</p></td>
+<td><p>Main nodes</p></td>
+<td><p>accept and reply to MapReduce tasks.</p></td>
+</tr>
+<tr class="row-odd"><td><p>TaskTracker, TT</p></td>
+<td><p>accept and run map, reduce and shuffle</p></td>
+</tr>
+<tr class="row-even"><td><p>DataNode, DN</p></td>
+<td><p>store needed blocks closely as possible</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line-block">
+<div class="line">|   | 从功能分 |</div>
+</div>
+<div class="line">— | — | — |</div>
+<div class="line">Store Data | NameNode | metadata, Transaction log, |</div>
+<div class="line">^ | DataNode, DN | actual data  |</div>
+<div class="line">MapReduce Engine | JobTracker | splits up data into smaller tasks(“Map”) sends it to the TaskTracker process in each node |</div>
+<div class="line">^ | TaskTracker, TT | reports back to the JobTracker node;reports on job progress;sends data (“Reduce”) or requests new jobs |</div>
+</div>
+<section id="datanode-dn">
+<h5 id="datanode-dn">DataNode, DN<a class="headerlink" href="#datanode-dn" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p>Individual machines in the cluster</p></li>
+<li><p>Typically 2 level architecture. 两层架构</p></li>
+<li><p>30-40 nodes/rack. 一个rack里30-40个nodes</p></li>
+<li><p>Nodes are commodity PCs. 都是商品PC</p></li>
+<li><p>Uplink from one rack is 3-4 gigabit. rack之间互传是3-4千兆</p></li>
+<li><p>Rack-internal is 1 gigabit. rack内部的nodes 是1千兆</p></li>
+<li><p>Can run on any underlying filesystem (ext3/4, NTFS, etc) 可以在任何底层平台上使用</p></li>
+</ul>
+<p><strong>with Client:</strong></p>
+<ul class="simple">
+<li><p>Serves data and metadata to Clients</p></li>
+<li><p>Periodically sends a report of all existing blocks to the NameNode 告诉NameNode自己存了啥数据</p></li>
+</ul>
+<p><strong>Store:</strong></p>
+<ul class="simple">
+<li><p>actual data in the local file system(e.g. ext3) 在本地储存实际数据</p></li>
+<li><p>Stores metadata of local block (e.g. CRC)</p></li>
+<li><p>NameNode replicates blocks 2x in local rack, 1x elsewhere. 关于自己这一台rack的local data会在自己这存两份备份，一份在别的rack那里，由NameNode记录</p></li>
+</ul>
+<p><strong>with others DN:</strong></p>
+<ul class="simple">
+<li><p>Forwards data to other specified DataNodes</p></li>
+</ul>
+</section>
+<section id="namenode">
+<h5 id="namenode">NameNode<a class="headerlink" href="#namenode" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><p><strong>Single Namespace for entire cluster</strong></p></li>
+<li><p>The server holding the NameNode instance is <strong>quite crucial</strong>, as there is <strong>only one</strong>. 非常重要只有一个</p></li>
+</ul>
+<p><strong>Store:</strong></p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>metadata for the files</strong> 储存元数据</dt><dd><ul>
+<li><p>like <strong>the directory structure</strong> of a typical FS(file system). ，比如说data的编号和data的储存位置。不储存data，而是data的搬运工，知道在哪里然后搬到DataNode</p></li>
+<li><p><strong>The entire metadata is in main memory</strong></p></li>
+<li><p><strong>No demand paging of metadata</strong></p></li>
+<li><p>List of files, List of Blocks for each file, List of DataNodes for each block, File attributes, e.g., creation time, replication factor</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Transaction log</strong> for file deletes/adds, etc.</dt><dd><ul>
+<li><p>Does not use transactions for whole blocks or file streams, <strong>only metadata</strong>. 文件删除/添加等的事务日志。不将事务用于整个块或文件流，仅使用元数据。类似垃圾桶，在元数据那里标操作，意义上transaction，但实际储存上还是那样</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>with client:</strong></p>
+<ul class="simple">
+<li><p>is responsible for maintaining the file namespace and directing clients to datanodes;</p></li>
+</ul>
+<p><strong>with DataNode:</strong></p>
+<ul class="simple">
+<li><p>Maps a file name to a set of blocks</p></li>
+<li><p>Maps a block to the DataNodes where it resides</p></li>
+<li><dl class="simple">
+<dt>Handles <strong>creation of more replica blocks</strong> when necessary after a DataNode failure。</dt><dd><ul>
+<li><p><strong>Replication Engine for Blocks</strong></p></li>
+<li><p>当某个DataNode挂了之后就搬运data——创建副本，确保data有定量的replications in DataNode</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><strong>Cluster Configuration Management</strong></p></li>
+</ul>
+</section>
+</section>
+<section id="strategy">
+<h4 id="strategy">Strategy<a class="headerlink" href="#strategy" title="Link to this heading">¶</a></h4>
+<section id="block-placement-data-pipeline">
+<h5 id="block-placement-data-pipeline">Block Placement - Data Pipeline<a class="headerlink" href="#block-placement-data-pipeline" title="Link to this heading">¶</a></h5>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Large blocks stored across a cluster</strong> 每一个file都被分成很多个block储存在一个集群</dt><dd><ul>
+<li><p>Individual files are broken into blocks of a fixed size (64MB by default);</p></li>
+<li><p>Blocks are stored across a cluster of one or more machines;</p></li>
+<li><p><strong>High degree of data replication on multiple DataNodes</strong> 每块都被高度复制储存在不同DataNode上</p></li>
+<li><p>至少三份 (3x by default) ：1st on local node；2nd on a remote rack；3rd on the same remote rack；Additional replicas are randomly placed</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Blocks are moved primarily across DataNodes</strong> 块的备份的写入主要靠DN之间传递</dt><dd><ul>
+<li><p>client retires a list of DataNodes on which to place replicas of a block from NameNodes</p></li>
+<li><p>Client writes block to the first DataNode</p></li>
+<li><p>The first DataNode forwards the data to the next node in the</p></li>
+<li><p>When all replicas are written, the Client moves on to write the next block in file</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<img alt="../_images/hdfs_6.png" src="../_images/hdfs_6.png"/>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Nearest replicas are retrieved by Client in network</strong> 客户端检索最近备份的位置，通过网络直接访问</dt><dd><ul>
+<li><p>Client connects to NN to request to read data</p></li>
+<li><p>NN tells client whichDNS to find the data block</p></li>
+<li><p>Client read blocks of <strong>nearest</strong> replica <strong>directly</strong> from DNS</p></li>
+<li><p>In case of node failures. clients connects to another DN that severs the missing block</p></li>
+<li><dl class="simple">
+<dt>Client accesses data directly from DataNode</dt><dd><ul>
+<li><dl class="simple">
+<dt><strong>why not ask clients to read blocks through NN?</strong></dt><dd><ul>
+<li><p>present NN from being the bottleneck of the cluster</p></li>
+<li><p>Allow HDFS to scale to large number of concurrent clients</p></li>
+<li><p>Spreadthe data traffic across the cluster</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="mapreduce">
+<h3 id="mapreduce">Mapreduce<a class="headerlink" href="#mapreduce" title="Link to this heading">¶</a></h3>
+<div class="line-block">
+<div class="line">因为 Targeted towards many reads of filestreams, Writes are more costly 针对在data process 读比写更重要</div>
+<div class="line">MapReduce is very good at dealing with warm proper property: Read once and write once and read many times right.</div>
+</div>
+<ul class="simple">
+<li><p>Written in Java, also supports Python and Ruby</p></li>
+</ul>
+<p><strong>Fine-grained Map and Reduce tasks:</strong></p>
+<ul class="simple">
+<li><p>Improved load balancing</p></li>
+<li><p>Faster recovery from failed tasks</p></li>
+</ul>
+</section>
+<section id="parallelism-in-hadoop">
+<h3 id="parallelism-in-hadoop">Parallelism in Hadoop<a class="headerlink" href="#parallelism-in-hadoop" title="Link to this heading">¶</a></h3>
+<ol class="arabic">
+<li><p>multi-threaded？</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">No need to handle multi-threaded code</div>
+<div class="line">Each Mapper / Reducer is typically single threaded</div>
+<div class="line">Allows for restarting of failed jobs</div>
+<div class="line">Runs entirely independent of each other in separate JVMs (Java Virtual Machines)</div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</section>
+<section id="load-balancing">
+<h3 id="load-balancing">Load Balancing<a class="headerlink" href="#load-balancing" title="Link to this heading">¶</a></h3>
+<div class="line-block">
+<div class="line">Goal: % disk full on DataNodes should be similar</div>
+<div class="line">不超过balance的时候：就加更多 Mappers/Reducers!</div>
+</div>
+<p><strong>Map:</strong></p>
+<p>Usually as many as the number of HDFS blocks being processed, this is the default, else the number of maps can be specified as a hint. The number of maps can also be controlled by specifying the minimum split size. The actual sizes of the map inputs are computed by:  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>max</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>min</mi><mo>⁡</mo><mo stretchy="false">(</mo><mtext>#block</mtext><mo separator="true">,</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mi>d</mi><mi>a</mi><mi>t</mi><mi>a</mi></mrow><mrow><mi mathvariant="normal">#</mi><mi>m</mi><mi>a</mi><mi>p</mi><mi>s</mi></mrow></mfrac></mstyle><mo stretchy="false">)</mo><mo separator="true">,</mo><mi>m</mi><mi>i</mi><mi>n</mi><mi mathvariant="normal">_</mi><mi>s</mi><mi>p</mi><mi>l</mi><mi>i</mi><mi>t</mi><mi mathvariant="normal">_</mi><mi>s</mi><mi>i</mi><mi>z</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">\max(\min(\text{\#block},\cfrac{data}{\#maps}), min\_split\_size</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:2.4704em;vertical-align:-0.8804em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mop">min</span><span class="mopen">(</span><span class="mord text"><span class="mord">#block</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">#</span><span class="mord mathnormal">ma</span><span class="mord mathnormal">p</span><span class="mord mathnormal">s</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span></span></span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">min</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal">s</span><span class="mord mathnormal" style="margin-right:0.01968em;">pl</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord mathnormal">ze</span></span></span></span></span></p>
+<p><strong>Reduces:</strong></p>
+<div class="line-block">
+<div class="line">Unless the amount of data being processed is small</div>
+<div class="line">0.95*num_nodes*mapred.TaskTracker.tasks.maximum</div>
+<div class="line">What happens if the number of reducers is less than the distinct of number keys?</div>
+<div class="line">The total running time is dominated by Reducer who deals with most intermediate pairs</div>
+<div class="line">Solution: use domain knowledge to decide the partitioning scheme</div>
+<div class="line">到了需要加DataNode的时候：</div>
+</div>
+<p>Usually run when new DataNodes are added</p>
+<p>Cluster is online when Rebalancer is active</p>
+<p>Rebalancer is throttled to avoid network congestion</p>
+</section>
+<section id="locality-optimization-local">
+<h3 id="locality-optimization-local">Locality Optimization, local 优化<a class="headerlink" href="#locality-optimization-local" title="Link to this heading">¶</a></h3>
+<p>Because some of machines are very busy, I cannot assign so many reduced to you the whole job, right? So this system level optimization should be considered locality optimization.</p>
+<div class="line-block">
+<div class="line">&lt;u&gt;Problem&lt;/u&gt;：For large data, bandwidth to data is a problem for <strong>Batch Processing</strong></div>
+<div class="line">By one reading, everything will be transferred from disc into the main memory. So this server time are expensive</div>
+<div class="line">&lt;u&gt;Solution&lt;/u&gt;：Map-Reduce + HDFS is a very effective with the <strong>Master scheduling policy</strong></div>
+</div>
+<p><strong>Master scheduling policy:</strong></p>
+<ul class="simple">
+<li><p>Map-Reduce queries HDFS for locations of input data</p></li>
+<li><p>Map tasks scheduled so HDFS input block replicas are on the same machine or the same rack</p></li>
+<li><p>Map tasks are scheduled close to the inputs when possible</p></li>
+</ul>
+<p><strong>Benefits:</strong></p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Thousands of machines read input at local disk speed，</dt><dd><ul>
+<li><p>It’s not random access partial from here, partial from there, take a lot of time, it’s everything is already local localised on the same place and you just by once reading everything can be available.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Provides very high aggregate bandwidth</p></li>
+<li><p>Eliminate network bottleneck 消除网络速度瓶颈</p></li>
+</ul>
+<div class="line-block">
+<div class="line">Bandwideh at Different Lenels</div>
+<div class="line">Process on the same node</div>
+<div class="line">Different nodes on the same rack</div>
+<div class="line">Nodes on different racks in the same data center( cluster)</div>
+<div class="line">Nodes in different centers</div>
+</div>
+</section>
+<section id="fault-tolerance">
+<h3 id="fault-tolerance">Fault Tolerance<a class="headerlink" href="#fault-tolerance" title="Link to this heading">¶</a></h3>
+<div class="admonition-failure-is-norm-not-an-exception admonition note">
+<p class="admonition-title">首先明确一点：Failure is norm, not an exception</p>
+</div>
+<p>我们采取的是分布式系统，这么多台PC都同时都不出问题概率为0，哪怕一台报错概率极小。所以我们一定要做好确保 <strong>Fault Tolerance</strong> 的工作，包括:</p>
+<ol class="arabic simple">
+<li><p>replication 有备份</p></li>
+<li><p>checksum 时刻检查是否出错</p></li>
+<li><p>Data transfer bandwidth is critical (location of data) 数据传输带宽至关重要（数据位置）</p></li>
+</ol>
+<p><a href="#id2"><span class="problematic" id="id3">**</span></a>Automatic re-execution on failure**§ In a large cluster, some nodes are always slow or flaky</p>
+<aside class="system-message" id="id2">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/home/runner/work/io/io/docs/source/utils/hadoop.rst</span>, line 322); <em><a href="#id3">backlink</a></em></p>
+<p>Inline strong start-string without end-string.</p>
+</aside>
+<p>Framework re-executes failed tasks</p>
+<div class="line-block">
+<div class="line">Failure | Failure Recovery |</div>
+<div class="line">— | — |</div>
+<div class="line">Worker failure | Detect DataNode failure via periodic heartbeats  |</div>
+<div class="line-block">
+<div class="line">| Detect Data correctness via Checksums |</div>
+<div class="line">| Re-execute in-progress map/reduce tasks |</div>
+</div>
+<div class="line">Master failure | Resume from Execution Log |</div>
+</div>
+<p><strong>Worker failure:</strong></p>
+<p><strong>DataNode</strong> failure</p>
+<p><strong>Detect</strong> via <strong>periodic heartbeats</strong></p>
+<p>DataNodes send heartbeats a Block Report from each DataNode to the NameNode. Once every 3 seconds via a TCP handshake</p>
+<p><strong>Recover.</strong></p>
+<div class="line-block">
+<div class="line">Chooses new DataNodes for new replicas</div>
+<div class="line">Balances disk usage</div>
+<div class="line">Balances communication traffic to DataNodes</div>
+</div>
+<p><strong>Data</strong> correctness</p>
+<p><strong>Detect</strong> via <strong>Checksums</strong></p>
+<p>Client computes checksum per 512 bytes.  DataNode stores the checksum</p>
+<p><strong>Master failure:</strong></p>
+<div class="line-block">
+<div class="line">属于 Single point of failure 单点故障</div>
+<div class="line">Transaction Log stored in multiple directories:</div>
+<div class="line">A directory on the local file system</div>
+<div class="line">A directory on a remote file system (NFS/CIFS)</div>
+<div class="line">Need to develop a real HA (high availability) solution</div>
+</div>
+<p><strong>Secondary NameNode</strong></p>
+<p>同步運行 The other can be replaced immediately without interrupting.</p>
+<ul class="simple">
+<li><p>Copies FSImage and Transaction Log from NamNnode to a temporary directory</p></li>
+<li><p>Merges FSImage and Transaction Log into a new FSImage in temporary directory</p></li>
+<li><p>Uploads new FSImage to the NameNode§ Transaction Log on NameNode is purged</p></li>
+</ul>
+<img alt="../_images/hdfs_7.png" src="../_images/hdfs_7.png"/>
+<img alt="../_images/hdfs_8.png" src="../_images/hdfs_8.png"/>
+</section>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="git.html" title="Git"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> "Previous" </span> Git </span>
+              </div>
+            </a>
+          
+          
+            <a href="html_css.html" title="HTML &amp; CSS 一些用过的部件"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> "Next" </span> HTML &amp; CSS 一些用过的部件 </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2024, coconut.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>

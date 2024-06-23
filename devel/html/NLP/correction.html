@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>Correction &#8212; HomePage</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=83e35b93" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css?v=79c92029" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/katex-math.css?v=91adb8b6" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/def.css?v=5a9d86bd" />
+    <script src="../_static/documentation_options.js?v=7d86a446"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+    <script src="../_static/translations.js?v=beaddf03"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Synthesize Training Data" href="survey_on_synthesizing_training_data.html" />
+    <link rel="prev" title="T5s" href="t5.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue data-md-color-accent=light-blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#NLP/correction" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../index.html" title="HomePage"
+           class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">&#xe869</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">Cocobook</span>
+          <span class="md-header-nav__topic"> Correction </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder=""Search""
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            <a href="https://github.com/Coconut3223/io/" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    io
+  </div>
+</a>
+          </div>
+        </div>
+      
+      
+  
+  <script src="../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../"versions.json"",
+        target_loc = "../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">HomePage</a></li>
+            
+            <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">Homepage</a></li>
+            
+            <li class="md-tabs__item"><a href="../AI/index.html" class="md-tabs__link">AI</a></li>
+            
+            <li class="md-tabs__item"><a href="../python/index.html" class="md-tabs__link">Python</a></li>
+            
+            <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">NLP</a></li>
+            
+            <li class="md-tabs__item"><a href="../SQL/main.html" class="md-tabs__link">SQL</a></li>
+            
+            <li class="md-tabs__item"><a href="../utils/index.html" class="md-tabs__link">Utils</a></li>
+          <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">NLP</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="HomePage" class="md-nav__button md-logo">
+      
+        <i class="md-icon">&#xe869</i>
+      
+    </a>
+    <a href="../index.html"
+       title="HomePage">Cocobook</a>
+  </label>
+    <div class="md-nav__source">
+      <a href="https://github.com/Coconut3223/io/" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    io
+  </div>
+</a>
+    </div>
+  
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Content</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../AI/index.html" class="md-nav__link">AI</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../AI/ML/index.html" class="md-nav__link">ML</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../AI/DL/index.html" class="md-nav__link">DL</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../CV/index.html" class="md-nav__link">CV</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="index.html" class="md-nav__link">NLP</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../python/index.html" class="md-nav__link">python</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../utils/index.html" class="md-nav__link">utils</a>
+      
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#nlp-correction--page-root" class="md-nav__link">Correction</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#chatgpt" class="md-nav__link">chatgpt</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#prompts" class="md-nav__link">prompts</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#original" class="md-nav__link">original</a>
+        </li>
+        <li class="md-nav__item"><a href="#id1" class="md-nav__link">引入音素信息</a>
+        </li>
+        <li class="md-nav__item"><a href="#id3" class="md-nav__link">提供错误的类型，追加分类任务</a>
+        </li>
+        <li class="md-nav__item"><a href="#act-as-a-cantonese-pronunciation-helper" class="md-nav__link">Act as a Cantonese Pronunciation Helper</a>
+        </li>
+        <li class="md-nav__item"><a href="#act-as-a-prompt-generator" class="md-nav__link">Act as a Prompt Generator</a>
+        </li>
+        <li class="md-nav__item"><a href="#act-as-a-journalist" class="md-nav__link">Act as a Journalist</a>
+        </li>
+        <li class="md-nav__item"><a href="#act-as-a-proofreader" class="md-nav__link">Act as a Proofreader</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#some-not-good-enough" class="md-nav__link">Some not good enough</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#pycorrector" class="md-nav__link">pycorrector</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#results" class="md-nav__link">results</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#need-to-be-discussed" class="md-nav__link">need to be discussed</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="correction">
+<h1 id="nlp-correction--page-root">Correction<a class="headerlink" href="#nlp-correction--page-root" title="Link to this heading">¶</a></h1>
+<div class="admonition-example admonition hint">
+<p class="admonition-title">Example</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<p>Left is original text.</p>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<p>right is the result</p>
+</div>
+</div>
+</div>
+</div>
+<section id="chatgpt">
+<h2 id="chatgpt">chatgpt<a class="headerlink" href="#chatgpt" title="Link to this heading">¶</a></h2>
+<section id="prompts">
+<h3 id="prompts">prompts<a class="headerlink" href="#prompts" title="Link to this heading">¶</a></h3>
+<section id="original">
+<h4 id="original">original<a class="headerlink" href="#original" title="Link to this heading">¶</a></h4>
+<div class="admonition-example admonition hint">
+<p class="admonition-title">Example</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="sd">"""</span>
+<span class="sd">I got a transcript from Cantonese ASR. Can you help to correct those wrong recognition.</span>
+<span class="sd">Here are the transcript.</span>
+<span class="sd">"""</span>
+</pre></div>
+</div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<p>大家好今日我哋好高興同大家宣佈香港政府呢個新環環保計劃。目的係！推廣海在新能源使用，而家就請講姐同大家喺廣州一下計劃嘅細節啦。香港政府嘅呢個新環保嘅話，系飛非常重要嘅目的系，希望減少我哋哋嘅太排房量同時。發展我哋嘅目標係將可在收能源嘅少使用用量提高度總能圓往客。之十宜家政府都會提供嘅經歷措施、古力企業同家庭庭去安裝在最生能如系統.</p>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<p>大家好，今日我哋好高興同大家宣佈香港政府呢個新環保計劃。目的係推廣海洋新能源使用，而家就請講者同大家喺廣州一齊講解呢個計劃嘅細節啦。香港政府嘅呢個新環保計劃嘅話，係非常重要嘅，目的係希望減少我哋嘅碳排放量同時發展我哋嘅目標係將可再生能源嘅使用量提高到總能源消耗嘅百分之十。而家政府都會提供嘅措施，係鼓勵企業同家庭去安裝最新嘅太陽能系統。</p>
+</div>
+</div>
+</div>
+<table>
+<thead>
+<tr class="row-odd"><th class="head"><p>errror type</p></th>
+<th class="head"><p>asr</p></th>
+<th class="head"><p>res</p></th>
+<th class="head"><p>eva</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="6"><p>冗余</p></td>
+<td><p>環環保</p></td>
+<td><p>環保</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>廣州一下</p></td>
+<td><p>廣州一齊</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>飛非常重要</p></td>
+<td><p>非常重要</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>我哋哋</p></td>
+<td><p>我哋</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p>能源嘅少使用用量</p></td>
+<td><p>能源嘅使用量</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>家庭庭</p></td>
+<td><p>家庭</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p>少字</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="7"><p>音似</p></td>
+<td><p>海在新能源</p></td>
+<td><p>海洋新能源</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>講姐</p></td>
+<td><p>講者</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>新環保嘅話</p></td>
+<td><p>新環保計劃嘅話</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>太排房量</p></td>
+<td><p>碳排放量</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>可在收能源</p></td>
+<td><p>可再生能源</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p>古力</p></td>
+<td><p>鼓勵</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>在最生能如系統</p></td>
+<td><p>最新嘅太陽能系統</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>边界</p></td>
+<td><p>目的係！推廣</p></td>
+<td><p>目的係推廣</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>非常重要嘅目的系，希望</p></td>
+<td><p>非常重要嘅，目的係希望</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>ASR</p></td>
+<td><p>提高度總能圓往客。之十</p></td>
+<td><p>提高到總能源消耗嘅百分之十</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>提供嘅經歷措施</p></td>
+<td><p>提供嘅措施</p></td>
+<td><p>❌</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id1">
+<h4 id="id1">引入音素信息<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
+<div class="line-block">
+<div class="line">但在中文ASR的场景下，很多情况是由于读音相同或相近导致的识别错误。</div>
+<div class="line">收录常见字的粤语发音作为输入的一部分</div>
+<div class="line"><a class="reference external" href="https://shyyp.net/romanizer?x=d529e75d76fc289af90b0fecbb8ca547">长文字自助粤语注音</a></div>
+</div>
+<div class="admonition-example admonition hint">
+<p class="admonition-title">Example</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="sd">"""</span>
+<span class="sd">I got a transcript from Cantonese ASR. Can you help to correct those wrong recognition.</span>
+<span class="sd">Here are the transcript and its Cantonese pronunciation:</span>
+<span class="sd">"""</span>
+</pre></div>
+</div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<div class="line-block">
+<div class="line">大家好今日我哋好高興同大家宣佈香港政府呢個新環環保計劃。目的係！推廣海在新能源使用，而家就請講姐同大家喺廣州一下計劃嘅細節啦。香港政府嘅呢個新環保嘅話，系飛非常重要嘅目的系，希望減少我哋哋嘅太排房量同時。發展我哋嘅目標係將可在收能源嘅少使用用量提高度總能圓往客。之十宜家政府都會提供嘅經歷措施、古力企業同家庭庭去安裝在最生能如系統.</div>
+<div class="line">daai6 gaa1 hou2 gam1 jat6 ngo5 dei6 hou2 gou1 hing1 tung4 daai6 gaa1 syun1 bou3 hoeng1 gong2 zing3 fu2 ne1 go3 san1 waan4 waan4 bou2 gai3 waak6。muk6 dik1 hai6 ！teoi1 gwong2 hoi2 zoi6 san1 nang4 jyun4 si3  jung6 ， ji4  gaa1 zau6 cing2 gong2 ze2 tung4 daai6 gaa1 hai2 gwong2 zau1 jat1 haa6 gai3 waak6 ge3 sai3 zit3 laa1。hoeng1 gong2 zing3 fu2  ge3 ne1 go3 san1 waan4 bou2 ge3 waa6 ， hai6 fei1 fei1 soeng4 zung6 jiu3 ge3 muk6 dik1 hai6 gai3, hei1 mong6 gaam2 siu3 ngo5 dei6 dei6 ge3 taai3 paai4 fong4 loeng6 tung4 si4。faat3 zin2 ngo5 dei6 ge3 muk6 biu1 hai6 zoeng3 ho2 zoi6 sau1 nang4 jyun4 ge3 siu3 si3 jung6 jung6 loeng6 tai4 gou1 dok6 zung2 nang4 jyun4 wong5 haak3。zi1 sap6 ji4 gaa1 zing3 fu2 dou1 wui6 tai4 gung1 ge3 ging1 lik6 cou3 si1、 gu2 lik6 kei5 jip6 tung4 gaa1 ting4 ting4heoi3 on1 zong1 zoi6 zeoi3 saang1 nang4 jyu4 hai6 tung2.</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<p>大家好，今日我哋好高興同大家宣佈香港政府呢個新環保計劃。目的係推廣海洋新能源使用，而家就請講者同大家喺廣州一齊講解呢個計劃嘅細節啦。香港政府嘅呢個新環保嘅話，系非常重要嘅，目的係希望減少我哋嘅碳排放量同時發展我哋嘅目標係將可再生能源嘅使用量提高到總能源消耗嘅百分之十。而家政府都會提供嘅措施，係鼓勵企業同家庭去安裝最新嘅太陽能系統。</p>
+</div>
+</div>
+</div>
+<table>
+<thead>
+<tr class="row-odd"><th class="head"><p>errror type</p></th>
+<th class="head"><p>asr</p></th>
+<th class="head"><p>res</p></th>
+<th class="head"><p>eva</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="6"><p>冗余</p></td>
+<td><p>環環保</p></td>
+<td><p>環保</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>廣州一下</p></td>
+<td><p>廣州一齊</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>飛非常重要</p></td>
+<td><p>非常重要</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>我哋哋</p></td>
+<td><p>我哋</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p>能源嘅少使用用量</p></td>
+<td><p>能源嘅使用量</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>家庭庭</p></td>
+<td><p>家庭</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p>少字</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="7"><p>音似</p></td>
+<td><p>海在新能源</p></td>
+<td><p>海洋新能源</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>講姐</p></td>
+<td><p>講者</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>新環保嘅話</p></td>
+<td><p>新環保計劃嘅話</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>太排房量</p></td>
+<td><p>碳排放量</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>可在收能源</p></td>
+<td><p>可再生能源</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p>古力</p></td>
+<td><p>鼓勵</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>在最生能如系統</p></td>
+<td><p>最新嘅太陽能系統</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>边界</p></td>
+<td><p>目的係！推廣</p></td>
+<td><p>目的係推廣</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>非常重要嘅目的系，希望</p></td>
+<td><p>非常重要嘅，目的係希望</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>ASR</p></td>
+<td><p>提高度總能圓往客。之十</p></td>
+<td><p>提高到總能源消耗嘅百分之十</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td><p>提供嘅經歷措施</p></td>
+<td><p>提供嘅措施</p></td>
+<td><p>❌</p></td>
+</tr>
+</tbody>
+</table>
+<p>没有变化</p>
+</div>
+</section>
+<section id="id3">
+<h4 id="id3">提供错误的类型，追加分类任务<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h4>
+<p>![by pycorrector](<a class="reference external" href="https://github.com/shibing624/pycorrector/raw/master/docs/git_image/error_type.png">https://github.com/shibing624/pycorrector/raw/master/docs/git_image/error_type.png</a>)</p>
+<table>
+<thead>
+<tr class="row-odd"><th class="head"><p>冗余</p></th>
+<th class="head"><p>少字</p></th>
+<th class="head"><p>音似</p></th>
+<th class="head"><p>边界</p></th>
+<th class="head"><p>ASR</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Redundancy</p></td>
+<td><p>Lack</p></td>
+<td><p>Similar Pronunciation</p></td>
+<td><p>Punctuation errors</p></td>
+<td><p>Contextual error</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-example admonition hint">
+<p class="admonition-title">Example</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="sd">"""</span>
+<span class="sd">I got a transcript from Cantonese ASR. Can you help to correct those wrong recognition and classify the errors with '1.Redundancy, 2.Lack, 3.Similar Pronunciation error, 4.Punctuation errors, 5, Contextual error'. Here are the transcript:</span>
+<span class="sd">"""</span>
+</pre></div>
+</div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<p>大家好今日我哋好高興同大家宣佈香港政府呢個新環環保計劃。目的係！推廣海在新能源使用，而家就請講姐同大家喺廣州一下計劃嘅細節啦。香港政府嘅呢個新環保嘅話，系飛非常重要嘅目的系，希望減少我哋哋嘅太排房量同時。發展我哋嘅目標係將可在收能源嘅少使用用量提高度總能圓往客。之十宜家政府都會提供嘅經歷措施、古力企業同家庭庭去安裝在最生能如系統.</p>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<p>大家好今日我哋好高興同大家宣佈香港政府呢個新環環保計劃。目的係！推廣海在新能源使用，而家就請講姐同大家喺廣州一下計劃嘅細節啦。香港政府嘅呢個新環保嘅話，系飛非常重要嘅目的系，希望減少我哋哋嘅太排房量同時。發展我哋嘅目標係將可在收能源嘅少使用用量提高度總能圓往客。之十宜家政府都會提供嘅經歷措施、古力企業同家庭庭去安裝在最生能如系統.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="act-as-a-cantonese-pronunciation-helper">
+<h4 id="act-as-a-cantonese-pronunciation-helper">Act as a Cantonese Pronunciation Helper<a class="headerlink" href="#act-as-a-cantonese-pronunciation-helper" title="Link to this heading">¶</a></h4>
+</section>
+<section id="act-as-a-prompt-generator">
+<h4 id="act-as-a-prompt-generator">Act as a Prompt Generator<a class="headerlink" href="#act-as-a-prompt-generator" title="Link to this heading">¶</a></h4>
+<div class="admonition-example admonition hint">
+<p class="admonition-title">Example</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="sd">"""</span>
+<span class="sd">I got a transcript from Cantonese ASR. Can you help to correct those wrong recognition.</span>
+<span class="sd">Here are the transcript and its Cantonese pronunciation:</span>
+<span class="sd">"""</span>
+</pre></div>
+</div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<div class="line-block">
+<div class="line">大家好今日我哋好高興同大家宣佈香港政府呢個新環環保計劃。目的係！推廣海在新能源使用，而家就請講姐同大家喺廣州一下計劃嘅細節啦。香港政府嘅呢個新環保嘅話，系飛非常重要嘅目的系，希望減少我哋哋嘅太排房量同時。發展我哋嘅目標係將可在收能源嘅少使用用量提高度總能圓往客。之十宜家政府都會提供嘅經歷措施、古力企業同家庭庭去安裝在最生能如系統.</div>
+<div class="line">daai6 gaa1 hou2 gam1 jat6 ngo5 dei6 hou2 gou1 hing1 tung4 daai6 gaa1 syun1 bou3 hoeng1 gong2 zing3 fu2 ne1 go3 san1 waan4 waan4 bou2 gai3 waak6。muk6 dik1 hai6 ！teoi1 gwong2 hoi2 zoi6 san1 nang4 jyun4 si3  jung6 ， ji4  gaa1 zau6 cing2 gong2 ze2 tung4 daai6 gaa1 hai2 gwong2 zau1 jat1 haa6 gai3 waak6 ge3 sai3 zit3 laa1。hoeng1 gong2 zing3 fu2  ge3 ne1 go3 san1 waan4 bou2 ge3 waa6 ， hai6 fei1 fei1 soeng4 zung6 jiu3 ge3 muk6 dik1 hai6 gai3, hei1 mong6 gaam2 siu3 ngo5 dei6 dei6 ge3 taai3 paai4 fong4 loeng6 tung4 si4。faat3 zin2 ngo5 dei6 ge3 muk6 biu1 hai6 zoeng3 ho2 zoi6 sau1 nang4 jyun4 ge3 siu3 si3 jung6 jung6 loeng6 tai4 gou1 dok6 zung2 nang4 jyun4 wong5 haak3。zi1 sap6 ji4 gaa1 zing3 fu2 dou1 wui6 tai4 gung1 ge3 ging1 lik6 cou3 si1、 gu2 lik6 kei5 jip6 tung4 gaa1 ting4 ting4heoi3 on1 zong1 zoi6 zeoi3 saang1 nang4 jyu4 hai6 tung2.</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<p>大家好，今日我哋好高興同大家宣佈香港政府呢個新環保計劃。目的係推廣海洋新能源使用，而家就請講者同大家喺廣州一齊講解呢個計劃嘅細節啦。香港政府嘅呢個新環保嘅話，系非常重要嘅，目的係希望減少我哋嘅碳排放量同時發展我哋嘅目標係將可再生能源嘅使用量提高到總能源消耗嘅百分之十。而家政府都會提供嘅措施，係鼓勵企業同家庭去安裝最新嘅太陽能系統。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition-example admonition hint">
+<p class="admonition-title">Example</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="sd">"""</span>
+<span class="sd">You are the prompt generater.</span>
+<span class="sd">There is a Cantonese ASR transcipt with some errors need to be automate correct by ai robort.</span>
+<span class="sd">Can you generate some prompts to help robort understand the task well and correct the transcript more accurately?</span>
+<span class="sd">Identify and correct any redundant words or phrases in the transcript.</span>
+<span class="sd">Look for any missing or incorrect punctuation marks and add or correct them accordingly.</span>
+<span class="sd">Check for any grammatical errors, such as incorrect verb conjugations or subject-verb agreement, and correct them as needed.</span>
+<span class="sd">Identify any words or phrases that are similar in sound, but have different meanings, and correct any errors related to these.</span>
+<span class="sd">Correct any errors related to context, such as misinterpretations of the intended meaning due to incorrect contextual assumptions.</span>
+<span class="sd">Check for any inconsistent or incorrect use of tone marks, and correct them accordingly.</span>
+<span class="sd">Identify and correct any misspelled words or typos in the transcript.</span>
+<span class="sd">Check for any missing or incorrect particles, such as "嘅", "啦", or "咁", and add or correct them as needed.</span>
+<span class="sd">Identify and correct any errors related to the use of traditional or simplified characters.</span>
+<span class="sd">Check for any omitted or redundant words, and add or remove them as needed to improve the clarity and accuracy of the transcript.</span>
+<span class="sd">"""</span>
+</pre></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">generated prompt</span><a class="headerlink" href="#id4" title="Link to this code">¶</a></div>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="sd">"""</span>
+<span class="sd">I got a transcript from Cantonese ASR.</span>
+<span class="sd">Can you help to correct those wrong recognition with the following steps.....</span>
+<span class="sd">"""</span>
+</pre></div>
+</div>
+</div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<p>大家好今日我哋好高興同大家宣佈香港政府呢個新環環保計劃。目的係！推廣海在新能源使用，而家就請講姐同大家喺廣州一下計劃嘅細節啦。香港政府嘅呢個新環保嘅話，系飛非常重要嘅目的系，希望減少我哋哋嘅太排房量同時。發展我哋嘅目標係將可在收能源嘅少使用用量提高度總能圓往客。之十宜家政府都會提供嘅經歷措施、古力企業同家庭庭去安裝在最生能如系統.</p>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<p>大家好，今日我哋好高興同大家宣佈香港政府嘅新環保計劃。目的係推廣海洋新能源使用，宜家就請講姐同大家喺廣州一齊講返嘅計劃細節啦。香港政府嘅新環保計劃非常重要，目的係希望減少我哋嘅碳排放量，同時發展我哋嘅目標係將可再生能源使用量少提高到總能源消耗量嘅百分之十。宜家政府都會提供經濟措施，俾企業同家庭去安裝最有效率嘅系統。</p>
+</div>
+</div>
+</div>
+</div>
+<table>
+<thead>
+<tr class="row-odd"><th class="head"><p>errror type</p></th>
+<th class="head"><p>asr</p></th>
+<th class="head"><p>res</p></th>
+<th class="head"><p>eva</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>冗余</p></td>
+<td><p>環環保</p></td>
+<td><p>環保</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>廣州一下</p></td>
+<td><p>廣州一齊</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>飛非常重要</p></td>
+<td><p>非常重要</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>我哋哋</p></td>
+<td><p>我哋</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>能源嘅少使用用量</p></td>
+<td><p>能源使用量</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>家庭庭</p></td>
+<td><p>家庭</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p>少字</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>音似</p></td>
+<td><p>海在新能源</p></td>
+<td><p>海洋新能源</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>講姐</p></td>
+<td><p>講姐</p></td>
+<td><p>❌❌</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>新環保嘅話</p></td>
+<td><p>新環保計劃</p></td>
+<td><p>✅✅</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>太排房量</p></td>
+<td><p>碳排放量</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>可在收能源</p></td>
+<td><p>可再生能源</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>古力</p></td>
+<td><p>俾</p></td>
+<td><p>❓❓</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>在最生能如系統</p></td>
+<td><p><strong>最有效率嘅系統</strong></p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>边界</p></td>
+<td><p>目的係！推廣</p></td>
+<td><p>目的係推廣</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>非常重要嘅目的系，希望</p></td>
+<td><p>非常重要嘅，目的係希望</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p>ASR</p></td>
+<td><p>提高度總能圓往客。之十</p></td>
+<td><p>提高到總能源消耗嘅百分之十</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>提供嘅經歷措施</p></td>
+<td><p>提供經濟措施</p></td>
+<td><p>✅✅</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="act-as-a-journalist">
+<h4 id="act-as-a-journalist">Act as a Journalist<a class="headerlink" href="#act-as-a-journalist" title="Link to this heading">¶</a></h4>
+<div class="admonition-example admonition hint">
+<p class="admonition-title">Example</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="sd">"""</span>
+<span class="sd">I want you to act as a journalist.</span>
+<span class="sd">You are invited to take part in a meeting.</span>
+<span class="sd">Most of particiaptors are not good at Contonese which means their pronunciation are not good.</span>
+<span class="sd">Can you repeat and develop the text you heard? Here are the transcript you heard:</span>
+<span class="sd">"""</span>
+</pre></div>
+</div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<p>大家好今日我哋好高興同大家宣佈香港政府呢個新環環保計劃。目的係！推廣海在新能源使用，而家就請講姐同大家喺廣州一下計劃嘅細節啦。香港政府嘅呢個新環保嘅話，系飛非常重要嘅目的系，希望減少我哋哋嘅太排房量同時。發展我哋嘅目標係將可在收能源嘅少使用用量提高度總能圓往客。之十宜家政府都會提供嘅經歷措施、古力企業同家庭庭去安裝在最生能如系統.</p>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<div class="line-block">
+<div class="line">作為一名記者，我接受邀請參加了一個會議。大部分與會者不擅長廣東話，也就是說他們的發音不太好。我聽到的原文如下：「大家好，今天我們非常高興向大家宣佈香港政府的新環保計劃。這個計劃的目的是推廣海洋上的新能源使用。現在我們請一位講者在廣州向大家介紹計劃的細節。香港政府的這個新環保計劃非常重要，主要目的是希望減少我們的碳排放量，實現更可持續的能源未來。政府的目標是將可收集的能源使用量減少，同時也會提供支援措施，幫助企業和家庭安裝節能系統。」</div>
+<div class="line">我的意譯如下：今天我參加了一個會議，大部分與會者不擅長廣東話，他們的發音不太好。會議上，我聽到了一份新聞稿，宣佈了香港政府的新環保計劃。這個計劃的目的是推廣海洋上的新能源使用。講者在廣州向我們介紹了計劃的詳細內容。香港政府的這個新環保計劃非常重要，主要目的是減少碳排放量，實現更可持續的能源未來。政府的目標是減少可收集的能源使用量，同時提供支援措施，幫助企業和家庭安裝節能系統。</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<table>
+<thead>
+<tr class="row-odd"><th class="head"><p>errror type</p></th>
+<th class="head"><p>asr</p></th>
+<th class="head"><p>res</p></th>
+<th class="head"><p>eva</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>冗余</p></td>
+<td><p>環環保</p></td>
+<td><p>環保</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>廣州一下</p></td>
+<td><p>在廣州</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>飛非常重要</p></td>
+<td><p>非常重要</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>我哋哋</p></td>
+<td><p>我哋</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>能源嘅少使用用量</p></td>
+<td><p>能源使用量</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>家庭庭</p></td>
+<td><p>家庭</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p>少字</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>音似</p></td>
+<td><p>海在新能源</p></td>
+<td><p>海洋上的新能源</p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>講姐</p></td>
+<td><p>講者</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>新環保嘅話</p></td>
+<td><p>新環保計劃</p></td>
+<td><p>✅✅</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>太排房量</p></td>
+<td><p>碳排放量</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>可在收能源</p></td>
+<td><p>可收集的能源</p></td>
+<td><p>❌❌</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>古力</p></td>
+<td><p>幫助</p></td>
+<td><p>❓❓</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>在最生能如系統</p></td>
+<td><p><strong>節能系統</strong></p></td>
+<td><p>❌</p></td>
+</tr>
+<tr class="row-even"><td><p>边界</p></td>
+<td><p>目的係！推廣</p></td>
+<td><p>目的係推廣</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>非常重要嘅目的系，希望</p></td>
+<td><p>非常重要嘅，目的係希望</p></td>
+<td><p>✅</p></td>
+</tr>
+<tr class="row-even"><td><p>ASR</p></td>
+<td><p>提高度總能圓往客。之十</p></td>
+<td><p>可收集的能源使用量減少</p></td>
+<td><p>❌❌</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>提供嘅經歷措施</p></td>
+<td><p><strong>提供支援措施</strong></p></td>
+<td><p>❌</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-summary admonition danger">
+<p class="admonition-title">容易编造一些细节或者说变成summary</p>
+</div>
+</section>
+<section id="act-as-a-proofreader">
+<h4 id="act-as-a-proofreader">Act as a Proofreader<a class="headerlink" href="#act-as-a-proofreader" title="Link to this heading">¶</a></h4>
+<div class="admonition-example admonition hint">
+<p class="admonition-title">Example</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="sd">"""</span>
+<span class="sd">I want you act as a proofreader. I will provide you texts and I would like you to review them for any spelling, grammar, punctuation, or word choosing errors. Once you have finished reviewing the text, provide me with any necessary corrections or suggestions for improve the text.</span>
+<span class="sd">Here are the transcript:</span>
+<span class="sd">"""</span>
+</pre></div>
+</div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<p>大家好今日我哋好高興同大家宣佈香港政府呢個新環環保計劃。目的係！推廣海在新能源使用，而家就請講姐同大家喺廣州一下計劃嘅細節啦。香港政府嘅呢個新環保嘅話，系飛非常重要嘅目的系，希望減少我哋哋嘅太排房量同時。發展我哋嘅目標係將可在收能源嘅少使用用量提高度總能圓往客。之十宜家政府都會提供嘅經歷措施、古力企業同家庭庭去安裝在最生能如系統.</p>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<p>大家好，今日我哋好高興同大家宣佈香港政府嘅新環保計劃。目的係推廣海洋上嘅新能源使用，而家就請講姐同大家喺廣州一齊介紹計劃嘅細節啦。香港政府嘅呢個新環保計劃非常重要，主要目的係希望減少我哋嘅碳排放量同時實現更可持續嘅能源未來。政府嘅目標係將可收集嘅能源使用量減少，同時都會提供支援措施，幫助企業同家庭安裝節能系統。而家政府都會提供經驗豐富嘅技術公司同家庭去安裝最先進嘅節能系統。整個計劃嘅細節包括推廣使用太陽能、風能等新能源，同時亦會在航運業同漁業等行業推行節能措施。將來，政府都會繼續加強監管力度，確保呢個計劃可以順利實施。</p>
+<div class="line-block">
+<div class="line">Corrections that I made:</div>
+<div class="line">Replaced 「環環保」 with 「環保」.</div>
+<div class="line">Added「洋上」 before「新能源」 to clarify that the new energy is being promoted on the ocean.</div>
+<div class="line">Replaced「一下」with「一齊」, to mean “together”.</div>
+<div class="line">Replaced「系飛」with「非常」, to mean “very”.</div>
+<div class="line">Replaced「我哋哋嘅太排房量」with「碳排放量」, which is a more accurate translation.</div>
+<div class="line">Changed「收能源」to「可收集嘅能源」, to clarify that the energy being collected is renewable.</div>
+<div class="line">Replaced「生能」with「節能」, to mean “energy-saving”.</div>
+<div class="line">Added「都」before「會提供」to make the sentence grammatically correct.</div>
+<div class="line">Added「而家」before「政府」to make the sentence more clear.</div>
+<div class="line">Added「等」before「行業」to make the sentence more clear.</div>
+<div class="line">Replaced「圓往客」with「實現更可持續嘅能源未來」, which is a more accurate translation.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition- admonition danger">
+<p class="admonition-title">编造细节</p>
+</div>
+</section>
+</section>
+</section>
+<section id="some-not-good-enough">
+<h2 id="some-not-good-enough">Some not good enough<a class="headerlink" href="#some-not-good-enough" title="Link to this heading">¶</a></h2>
+<section id="pycorrector">
+<h3 id="pycorrector">pycorrector<a class="headerlink" href="#pycorrector" title="Link to this heading">¶</a></h3>
+<p>[Chinese Spelling Correction Model shibing624/macbert4csc-base-chinese](<a class="reference external" href="https://huggingface.co/spaces/shibing624/pycorrector">https://huggingface.co/spaces/shibing624/pycorrector</a>)</p>
+<section id="results">
+<h4 id="results">results<a class="headerlink" href="#results" title="Link to this heading">¶</a></h4>
+<div class="admonition-example admonition hint">
+<p class="admonition-title">Example</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<p>大家好今日我哋好高興同大家宣佈香港政府呢個新環環保計劃。目的係！推廣海在新能源使用，而家就請講姐同大家喺廣州一下計劃嘅細節啦。香港政府嘅呢個新環保嘅話，系飛非常重要嘅目的系，希望減少我哋哋嘅太排房量同時。發展我哋嘅目標係將可在收能源嘅少使用用量提高度總能圓往客。之十宜家政府都會提供嘅經歷措施、古力企業同家庭庭去安裝在最生能如系統.</p>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<p>大家好今日我哋好高興同大家宣佈香港政府呢個新環環保計劃。目的係！推廣 <strong>海在新能源</strong> 使用，而家就請 <strong>講姐</strong> 同大家 <strong>喺廣州</strong> 一下計劃嘅細節啦。香港政府嘅呢個新環保 <strong>嘅話</strong>，系飛 <strong>非常</strong> 重要嘅目的系，希望減少我哋哋嘅 <strong>太排房</strong> 量同時。發展我哋嘅目標係將 <strong>可在收能源</strong> 嘅少使用用量提高 <strong>度總能圓往客。之十</strong> 宜家政府都會提供嘅經歷措施、 <strong>古力</strong> 企業同家庭庭去安裝在 <strong>最生能如</strong> 系統</p>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<p>大家好今日我想同大家分享一下香港的創新科技。香港一直致力於推動科技創新同發展，我哋有好多優秀的科技公司同研究機構，如香港科技大學同香港中文大學。 <strong>地球</strong> 不斷推陳出新的科技場產品同解決方案，為香港乃至全球的科技發展，貢獻了力量。喺香港， <strong>我哋嘢有一契</strong> 著名的科技企業家與李嘉誠旗下的招商局集團。佢哋喺科技投資同創新方面做出了好多 <strong>努力同工限</strong>。除此之外，香港還有一些創新科技的應用場景，與智慧城市同 <strong>聯網</strong> 等。呢啲應用場景第二代表香港的 <strong>創新痛，未來發展方向</strong> 總的來說，香港 <strong>去起</strong> 創新科技領域有著豐富的經驗。</p>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<p>大家好今日我想同大家分享一下香港的創新科技。香港一直致力於推动科技創新同發展，我哋有好多优秀的科技公司同研究机构，如香港科技大學同香港中文大学。 <strong>地球</strong> 不斷推陈出新的科技场产品同解决方案，為香港乃至全球的科技发展，贡献了力量。喺香港， <strong>我哋都有一群</strong> 著名的科技企業家跟李嘉誠旗下的招商局集團。佢哋喺科技投資同創新方面做出了好多 <strong>努力同工作</strong> 。除此之外，香港還有一些創新科技的應用場景，與智慧城市同 <strong>聯網</strong> 等。呢啲應用場景第二代表香港的 <strong>創新痛，未来发展方向</strong> 总的來說，香港 <strong>去起</strong> 創新科技領域有著豐富的經驗。</p>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<p>宜家南丫島嘅風力發電場將會設置25號風車，總容量為1000 <strong>笑話</strong>。而 <strong>咧個</strong> 項目嘅建設將會係同政府同私人企業之間嘅公司合作，政府會負責提供土地同埋基礎建設，而而私人企業就會負責。設備嘅購買同埋建設。呢個公司合作嘅模式可以令項目嘅建設更加高效同埋。 <strong>結省</strong> 成本</p>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<p>宜家南丫島嘅风力发电場将會設置25號风車，總容量為1000 <strong>千瓦</strong>。而 <strong>整个</strong> 項目嘅建設将會系同政府同私人企業之間嘅公司合作，政府会負責提供土地同埋基础建設，而而私人企業就會負責。設備嘅購買同埋建設。呢个公司合作嘅模式可以令項目嘅建設更加高效同埋。 <strong>节省</strong> 成本。</p>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<p>大家好 <strong>愛</strong> 我而家試下講廣東話 <strong>聽一個</strong> 聽唔聽得到</p>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<p>大家好 <strong>爱</strong> 我而家試下講廣東話 <strong>聽一個</strong> 聽唔聽得到</p>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<p>今日呢我哋題目就係對人工智能生成人工智能 <strong>擦GPTGPT</strong>。 以及我們的未來！ 這是 <strong>今年</strong> 分享大綱，首先會做一個簡單介紹， <strong>然後</strong> 就會講下這個生成。人工智能佢能力以及其限制，跟住呢講下，我哋大家都關注三個 <strong>圍道</strong>。倫理安全和可持續最後 <strong>起</strong> 一個小結，那就再帶入我會討論會合。其實我個人由好早已經開始。對話食人工智能的了我第一篇文章在這方面是在一六九六年出版那時。就做 <strong>著</strong> 系統。有好多唔同的AI嘅 <strong>有主音識跌有自然雨。</strong> 有對話模型？</p>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<p>今日呢我哋題目就係對人工智能生成人工智能 <strong>擦GPTGPT</strong>。 以及我們的未来！ 這是 <strong>今年</strong> 分享大綱，首先會做一個簡單介紹， <strong>然著</strong> 就會講下这个生成。人工智能的能力以及其限制，跟住呢講下，我哋大家都關注三個 <strong>要道</strong>。倫理安全和可持续最后 <strong>起</strong> 一個小結，那就再帶入我会讨论会合。其實我个人由好早已經開始。對話食人工智能的了我第一篇文章在這方面是在一六九六年出版那時。就做 <strong>著</strong> 系統。有好多唔同的AI嘅 <strong>有主音识跌有自然雨.</strong> 有對話模型？</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="need-to-be-discussed">
+<h3 id="need-to-be-discussed">need to be discussed<a class="headerlink" href="#need-to-be-discussed" title="Link to this heading">¶</a></h3>
+<div class="admonition-question-input-of-correction admonition hint">
+<p class="admonition-title">Question: input of correction</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>纠错是整个 meeting 的文本扔进去 correct，还是逐段逐段去 correct</dt><dd><p>看实验成果</p>
+</dd>
+</dl>
+</li>
+<li><p>现在 asr 出来的结果是一个句子会被切分好几个 segments，一段句子会被切分成好几个段。中间没有标点符号的衔接。如果作为 input 需要标点符号在文本连接中进行断句，否则就是一大段长文本。</p></li>
+</ol>
+</div>
+<p>![Alt text](image.png)</p>
+<div class="admonition-question-performance-of-correction admonition hint">
+<p class="admonition-title">Question: performance of correction</p>
+<div class="line-block">
+<div class="line">模型支持普通话的音似、形似、语法错误纠正，</div>
+<div class="line">我们识别最大的问题在于粤语音似，识别不出精准的字。</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="t5.html" title="T5s"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> "Previous" </span> T5s </span>
+              </div>
+            </a>
+          
+          
+            <a href="survey_on_synthesizing_training_data.html" title="Synthesize Training Data"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> "Next" </span> Synthesize Training Data </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2024, coconut.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>
