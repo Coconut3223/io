@@ -19,4 +19,5 @@
     other
     PPT
     vscode
+    linux
     

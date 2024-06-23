@@ -186,7 +186,7 @@
             
             <li class="md-tabs__item"><a href="../NLP/index.html" class="md-tabs__link">NLP</a></li>
             
-            <li class="md-tabs__item"><a href="../SQL/main.html" class="md-tabs__link">SQL</a></li>
+            <li class="md-tabs__item"><a href="../SQL/index.html" class="md-tabs__link">SQL</a></li>
             
             <li class="md-tabs__item"><a href="../utils/index.html" class="md-tabs__link">Utils</a></li>
           <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">Python</a></li>
@@ -272,6 +272,13 @@
     
     
       <a href="index.html" class="md-nav__link">python</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../SQL/index.html" class="md-nav__link">SQL</a>
       
     
     </li>
@@ -2590,83 +2597,101 @@ D -.- 1
 <div class="admonition- admonition danger">
 <p class="admonition-title">空白泛指任何非打印字符，如空格、制表符和换行符</p>
 </div>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/home/runner/work/io/io/docs/source/python/elegant.rst</span>, line 1748)</p>
-<p>Error parsing content block for the “table” directive: exactly one table expected.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.. table::
-
-    +--------------------+--------------------------------------------+------------------------------------------+
-    |cases               |code                                        |return=non-inplaced                       |
-    +====================+============================================+==========================================+
-    |大小写              | ``str.upper()``                            |✅ 结果                                   |
-    +                    +--------------------------------------------+                                          +
-    |                    | ``str.lower()``                            |                                          |
-    +                    +--------------------------------------------+                                          +
-    |                    | ``str.capitalize()``                       |                                          |
-    +                    +--------------------------------------------+                                          +
-    |                    | ``str.title()``                            |                                          |
-    +                    +--------------------------------------------+------------------------------------------+
-    |                    | ``str.swapcase()``                         |✅ 结果 大小写互换                        |
-    +--------------------+--------------------------------------------+------------------------------------------+
-    |去除前后字符串      | ``str.lstrip(sub_str)``                    |✅ 结果 默认是空白                        |
-    +                    +--------------------------------------------+                                          +
-    |                    | ``str.rstrip(sub_str)``                    |                                          |
-    +                    +--------------------------------------------+                                          +
-    |                    | ``str.strip(sub_str)``                     |                                          |
-    +--------------------+--------------------------------------------+------------------------------------------+
-    |                    | ``str_.isalpha()``                         | ✅ bool                                  |
-    +                    +--------------------------------------------+------------------------------------------+
-    |                    | 只由字母, :defi:`中文也是`                 | ✅ bool                                  |
-    +                    +--------------------------------------------+                                          +
-    |                    | ``str_.isdigit()``                         |                                          |
-    +                    +--------------------------------------------+                                          +
-    |                    | ``str.isnumeric()``                        |                                          |
-    +                    +--------------------------------------------+                                          +
-    |                    | ``str.isdecimal()``                        |                                          |
-    +                    +--------------------------------------------+                                          +
-    |                    | 只由数字                                   |                                          |
-    +                    +--------------------------------------------+                                          +
-    |                    | ``str_.isspace()`` , 只由空格              |                                          |
-    +                    +--------------------------------------------+                                          +
-    |                    | ``in string.punctuation``  标点            |                                          |
-    +--------------------+--------------------------------------------+------------------------------------------+
-    |查找                | ``long_str.find(sub_str)``     you        |    第一次出现的位置 or :defi:`-1` ✅      |
-    +                    +--------------------------------------------+                                          +
-    |                    | ``long_str.rfind(sub_str)`` ⬅️            |                                          |
-    +                    +--------------------------------------------+------------------------------------------+
-    |                    | ``long_str.index(sub_str)`` ➡️            | ✅ 第一次出现的位置 or :defi:`ValueError` |
-    +                    +--------------------------------------------+                                          +
-    |                    | ``long_str.rindex(sub_str)`` ⬅️           |                                          |
-    +                    +--------------------------------------------+------------------------------------------+
-    |                    | ``str.count(sub, start= 0, end=len(str))`` | ✅  sub 在 str中出现的次数               |
-    +--------------------+--------------------------------------------+------------------------------------------+
-</pre></div>
-</div>
-</aside>
-<p>字符串是否只由dd组成</p>
+<table>
+<thead>
+<tr class="row-odd"><th class="head"><p>cases</p></th>
+<th class="head"><p>code</p></th>
+<th class="head"><p>return=non-inplaced</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="5"><p>大小写</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str.upper()</span></code></p></td>
+<td rowspan="4"><p>✅ 结果</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">str.lower()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">str.capitalize()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">str.title()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">str.swapcase()</span></code></p></td>
+<td><p>✅ 结果 大小写互换</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><p>去除前后字符串</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str.lstrip(sub_str)</span></code></p></td>
+<td rowspan="3"><p>✅ 结果 默认是空白</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">str.rstrip(sub_str)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">str.strip(sub_str)</span></code></p></td>
+</tr>
+<tr class="row-even"><td rowspan="8"><p>字符串是否只由dd组成</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str_.isalpha()</span></code></p></td>
+<td><p>✅ bool</p></td>
+</tr>
+<tr class="row-odd"><td><p>只由字母, <span class="defi">中文也是</span></p></td>
+<td rowspan="7"><p>✅ bool</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">str_.isdigit()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">str.isnumeric()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">str.isdecimal()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>只由数字</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">str_.isspace()</span></code> , 只由空格</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">in</span> <span class="pre">string.punctuation</span></code>  标点</p></td>
+</tr>
+<tr class="row-even"><td rowspan="5"><p>查找</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">long_str.find(sub_str)</span></code>       ➡️</p></td>
+<td rowspan="2"><p>第一次出现的位置 or <span class="defi">-1</span> ✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">long_str.rfind(sub_str)</span></code> ⬅️</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">long_str.index(sub_str)</span></code> ➡️</p></td>
+<td rowspan="2"><p>第一次出现的位置 or <span class="defi">ValueError</span> ✅</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">long_str.rindex(sub_str)</span></code> ⬅️</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">str.count(sub,</span> <span class="pre">start=</span> <span class="pre">0,</span> <span class="pre">end=len(str))</span></code></p></td>
+<td><p>✅  sub 在 str中出现的次数</p></td>
+</tr>
+<tr class="row-odd"><td><p>执行</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">eval(string)</span></code> 执行一个字符串表达式</p></td>
+<td><p>✅ 表达式的值</p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><p>填充</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str.ljust(int,</span> <span class="pre">pad_str)</span></code></p></td>
+<td rowspan="3"><p>✅ 结果  <code class="docutils literal notranslate"><span class="pre">pad_str='</span> <span class="pre">'</span></code> 默认是空格</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">str.rjust(int,</span> <span class="pre">pad_str)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">str.center(int,</span> <span class="pre">pad_str)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">str.zfill(int)</span></code></p></td>
+<td><p>✅ 结果 用0在前面的填充</p></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>修改</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">=</span> <span class="pre">s[:l]</span> <span class="pre">+</span> <span class="pre">s[l:][::-1]</span></code>  重新赋值</p></td>
+<td><p>✅ 结果</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">string.replace(old,</span> <span class="pre">new)</span></code> 所有都换一遍</p></td>
+<td><p>✅ 结果</p></td>
+</tr>
+<tr class="row-even"><td><p>连接字符串</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">s3</span> <span class="pre">=</span> <span class="pre">s1</span> <span class="pre">+</span> <span class="pre">s2</span></code> <span class="defi">不推荐</span></p></td>
+<td><p>✅ 结果</p></td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s1">'string'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
 <span class="go">'   string'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
 <span class="go">'  string '</span>
-
-
-<span class="go">|执行                | ``eval(string)`` 执行一个字符串表达式      |✅ 表达式的值                             |</span>
-<span class="go">+--------------------+--------------------------------------------+------------------------------------------+</span>
-<span class="go">|填充                | ``str.ljust(int, pad_str)``                |✅ 结果  ``pad_str=' '`` 默认是空格       |</span>
-<span class="go">+                    +--------------------------------------------+                                          +</span>
-<span class="go">|                    | ``str.rjust(int, pad_str)``                |                                          |</span>
-<span class="go">+                    +--------------------------------------------+                                          +</span>
-<span class="go">|                    | ``str.center(int, pad_str)``               |                                          |</span>
-<span class="go">+                    +--------------------------------------------+------------------------------------------+</span>
-<span class="go">|                    | ``str.zfill(int)``                         |✅ 结果 用0在前面的填充                   |</span>
-<span class="go">+--------------------+--------------------------------------------+------------------------------------------+</span>
-<span class="go">|修改                | ``s = s[:l] + s[l:][::-1]``  重新赋值      |✅ 结果                                   |</span>
-<span class="go">+                    +--------------------------------------------+------------------------------------------+</span>
-<span class="go">|                    | ``string.replace(old, new)`` 所有都换一遍  | ✅ 结果                                  |</span>
-<span class="go">+--------------------+--------------------------------------------+------------------------------------------+</span>
-<span class="go">|连接字符串          | ``s3 = s1 + s2``  :defi:`不推荐`           | ✅ 结果                                  |</span>
-<span class="go">+--------------------+--------------------------------------------+------------------------------------------+</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -3147,33 +3172,48 @@ D -.- 1
 </tr>
 </tbody>
 </table>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/home/runner/work/io/io/docs/source/python/elegant.rst</span>, line 2184)</p>
-<p>Error parsing content block for the “table” directive: exactly one table expected.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.. table::
-
-    +--------------+--------------------------------+------------------------------------------+----------------------+
-    |operations    |code                            |return                                    |T(n)                  |
-    +==============+================================+==========================================+======================+
-    |建立空堆      | ``h = []``                     |                                          |                      |
-    +--------------+--------------------------------+------------------------------------------+----------------------+
-    |list ➡️ heap | ``heapify(h)``                 |❌ **in-placed**                          | O(n)                 |
-    +--------------+--------------------------------+------------------------------------------+----------------------+
-    |加入弹出      | ``heapq.heappush(h, x)``       |❌                                        | **O(logn)**          |
-    +              +--------------------------------+------------------------------------------+----------------------+
-    |              | ``heapq.heappop(h)``           | ✅ 最小 ``h[0]`` , 空就有 ``IndexError`` | O(logn)              |
-    +              +--------------------------------+------------------------------------------+----------------------+
-    |              | ``heapq.heappushpop(h, x)``    |✅  &lt;= x(因为先加x)                       |比连调两个单纯函数要快|
-    +              +--------------------------------+                                          +                      +
-    |              | &lt;=&gt;  ``push+pop`` , 先加x再弹出|                                          |                      |
-    +              +--------------------------------+------------------------------------------+                      +
-    |              | ``heapq.heapreplace(h, x)``    |✅             x(因为后加x)               |                      |
-    +              +--------------------------------+------------------------------------------+                      +
-    |              | &lt;=&gt;  ``pop+push``              | 空就有 ``IndexError``                    |                      |
-    +--------------+--------------------------------+------------------------------------------+----------------------+
-</pre></div>
-</div>
-</aside>
+<table>
+<thead>
+<tr class="row-odd"><th class="head"><p>operations</p></th>
+<th class="head"><p>code</p></th>
+<th class="head"><p>return</p></th>
+<th class="head"><p>T(n)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>建立空堆</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">h</span> <span class="pre">=</span> <span class="pre">[]</span></code></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>list  ➡️ heap</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">heapify(h)</span></code></p></td>
+<td><p>❌ <strong>in-placed</strong></p></td>
+<td><p>O(n)</p></td>
+</tr>
+<tr class="row-even"><td rowspan="6"><p>加入弹出</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">heapq.heappush(h,</span> <span class="pre">x)</span></code></p></td>
+<td><p>❌</p></td>
+<td><p><strong>O(logn)</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">heapq.heappop(h)</span></code></p></td>
+<td><p>✅ 最小 <code class="docutils literal notranslate"><span class="pre">h[0]</span></code> , 空就有 <code class="docutils literal notranslate"><span class="pre">IndexError</span></code></p></td>
+<td><p>O(logn)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">heapq.heappushpop(h,</span> <span class="pre">x)</span></code></p></td>
+<td rowspan="2"><p>✅  &lt;= x(因为先加x)</p></td>
+<td rowspan="4"><p>比连调两个单纯函数要快</p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;=&gt;  <code class="docutils literal notranslate"><span class="pre">push+pop</span></code> , 先加x再弹出</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">heapq.heapreplace(h,</span> <span class="pre">x)</span></code></p></td>
+<td><p>✅             x(因为后加x)</p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;=&gt;  <code class="docutils literal notranslate"><span class="pre">pop+push</span></code></p></td>
+<td><p>空就有 <code class="docutils literal notranslate"><span class="pre">IndexError</span></code></p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 </section>

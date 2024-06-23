@@ -63,6 +63,8 @@
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="杂" href="../utils/index.html" />
+    <link rel="prev" title="SQL" href="index.html" />
   
    
 
@@ -182,9 +184,10 @@
             
             <li class="md-tabs__item"><a href="../NLP/index.html" class="md-tabs__link">NLP</a></li>
             
-            <li class="md-tabs__item"><a href="#" class="md-tabs__link">SQL</a></li>
+            <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">SQL</a></li>
             
             <li class="md-tabs__item"><a href="../utils/index.html" class="md-tabs__link">Utils</a></li>
+          <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">SQL</a></li>
       </ul>
     </div>
   </nav>
@@ -267,6 +270,13 @@
     
     
       <a href="../python/index.html" class="md-nav__link">python</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="index.html" class="md-nav__link">SQL</a>
       
     
     </li>
@@ -1657,21 +1667,27 @@
 <h2 id="operations">operations<a class="headerlink" href="#operations" title="Link to this heading">¶</a></h2>
 <section id="insert">
 <h3 id="insert">insert<a class="headerlink" href="#insert" title="Link to this heading">¶</a></h3>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/home/runner/work/io/io/docs/source/SQL/main.rst</span>, line 990)</p>
-<p>Error parsing content block for the “table” directive: exactly one table expected.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.. table::
-
-    +---------+-----------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------------------+
-    |使用场景 |                                                                 |语句                                                                         |                                |
-    +=========+=================================================================+=============================================================================+================================+
-    |写上cols | ``insert into users(col1, col2,...) values (row1), (row2),..;`` |字段和value一一对应， null可以不写                                           |
-    +---------+-----------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------------------+
-    |导入数据 |Ta-&gt; Tb                                                          | ``insert into Tb(b1, b2, ...) select a1, a2,... from Ta where conditions;`` |名字可以不一样但是数据类型要一样|
-    +---------+-----------------------------------------------------------------+-----------------------------------------------------------------------------+--------------------------------+
-</pre></div>
-</div>
-</aside>
+<table>
+<thead>
+<tr class="row-odd"><th class="head"><p>使用场景</p></th>
+<th class="head"></th>
+<th class="head"><p>语句</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>写上cols</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">insert</span> <span class="pre">into</span> <span class="pre">users(col1,</span> <span class="pre">col2,...)</span> <span class="pre">values</span> <span class="pre">(row1),</span> <span class="pre">(row2),..;</span></code></p></td>
+<td><p>字段和value一一对应, null可以不写</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>导入数据</p></td>
+<td><p>Ta-&gt; Tb</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">insert</span> <span class="pre">into</span> <span class="pre">Tb(b1,</span> <span class="pre">b2,</span> <span class="pre">...)</span> <span class="pre">select</span> <span class="pre">a1,</span> <span class="pre">a2,...</span> <span class="pre">from</span> <span class="pre">Ta</span> <span class="pre">where</span> <span class="pre">conditions;</span></code></p></td>
+<td><p>名字可以不一样但是数据类型要一样</p></td>
+</tr>
+</tbody>
+</table>
 <div class="admonition-insert-into-tb-b1-b2-select-a1-a2-from-ta-where-conditions-values admonition danger">
 <p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">insert</span> <span class="pre">into</span> <span class="pre">Tb(b1,</span> <span class="pre">b2,</span> <span class="pre">...)</span> <span class="pre">select</span> <span class="pre">a1,</span> <span class="pre">a2,...</span> <span class="pre">from</span> <span class="pre">Ta</span> <span class="pre">where</span> <span class="pre">conditions;</span></code>  没有values</p>
 <p>select读出来是多行多列，而values一个括号一次只能存入一行数据</p>
@@ -2128,6 +2144,30 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
+            <a href="index.html" title="SQL"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> "Previous" </span> SQL </span>
+              </div>
+            </a>
+          
+          
+            <a href="../utils/index.html" title="杂"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> "Next" </span> 杂 </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
           
         </a>
         

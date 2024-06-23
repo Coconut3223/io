@@ -51,7 +51,7 @@
         .. grid-item:: 
             :columns: 8
 
-            .. image:: ./pics/CNN_22.PNG
+            .. image:: ./pics/CNN_22.png
                 :scale: 25%
     
 .. note:: 和全连接相比较，全连接的参数数量较多（两层之间的神经元需要两两相连），卷积神经网络的参数较少，主要是由于权值共享和稀疏连接。
@@ -321,6 +321,7 @@ a ==down-sampling== strategy
 
 .. note::   The Dimension After Pooling"
     Given a  :math:`M\times N\times D`  tensor, if we apply the pooling operator with size  :math:`K\times K`  and Stride  :math:`p`  , what are the dimensions of the output?
+    
     - depth has no change
     - 在width和height那里就像卷积一样  :math:`\text{without padding}=(\frac{N-F}{s}+1)\times(\frac{N-F}{s}+1)` 
     - :math:`\implies (\cfrac{M-K}{p}+1)\times (\cfrac{N-K}{p}+1)\times D` 

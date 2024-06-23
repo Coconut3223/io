@@ -481,7 +481,7 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 			``df [-k]``  默认以千字节为单位显示磁盘空间信息
 	
 	.. grid-item::
-		.. figure:: ./pics/linux_du2.png)
+		.. figure:: ./pics/linux_du2.png
 			
 			``df -h``  以KB、MB、GB的单位来显示，可读性高
 	

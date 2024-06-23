@@ -109,12 +109,12 @@
 .. grid:: 2
 
     .. grid-item::
-        .. image:: ./pics/entropy_2.PNG
+        .. image:: ./pics/entropy_2.png
             :scale: 30%
             :align: center
     
     .. grid-item::
-        .. image:: ./pics/entropy_1.PNG
+        .. image:: ./pics/entropy_1.png
             :scale: 30%
             :align: center
 

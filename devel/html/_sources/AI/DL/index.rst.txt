@@ -6,7 +6,7 @@
     :caption: DL
     :maxdepth: 1
 
-    index
+    main
     mlp
     cnn
     rnn
