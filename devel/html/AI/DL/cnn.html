@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>CNN &#8212; HomePage</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=83e35b93" />
+    <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/katex-math.css?v=91adb8b6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/def.css?v=5a9d86bd" />
+    <script src="../../_static/documentation_options.js?v=7d86a446"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=6dbb43f8"></script>
+    <script src="../../_static/translations.js?v=beaddf03"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue data-md-color-accent=light-blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#AI/DL/cnn" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../index.html" title="HomePage"
+           class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">&#xe869</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">Cocobook</span>
+          <span class="md-header-nav__topic"> CNN </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../../search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder=""Search""
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            <a href="https://github.com/Coconut3223/io/" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    io
+  </div>
+</a>
+          </div>
+        </div>
+      
+      
+  
+  <script src="../../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../../"versions.json"",
+        target_loc = "../../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">HomePage</a></li>
+            
+            <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">Homepage</a></li>
+            
+            <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">AI</a></li>
+            
+            <li class="md-tabs__item"><a href="../../python/index.html" class="md-tabs__link">Python</a></li>
+            
+            <li class="md-tabs__item"><a href="../../NLP/index.html" class="md-tabs__link">NLP</a></li>
+            
+            <li class="md-tabs__item"><a href="../../SQL/main.html" class="md-tabs__link">SQL</a></li>
+            
+            <li class="md-tabs__item"><a href="../../utils/index.html" class="md-tabs__link">Utils</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../index.html" title="HomePage" class="md-nav__button md-logo">
+      
+        <i class="md-icon">&#xe869</i>
+      
+    </a>
+    <a href="../../index.html"
+       title="HomePage">Cocobook</a>
+  </label>
+    <div class="md-nav__source">
+      <a href="https://github.com/Coconut3223/io/" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    io
+  </div>
+</a>
+    </div>
+  
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Content</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../index.html" class="md-nav__link">AI</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../ML/index.html" class="md-nav__link">ML</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="index.html" class="md-nav__link">DL</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../CV/index.html" class="md-nav__link">CV</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../NLP/index.html" class="md-nav__link">NLP</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../python/index.html" class="md-nav__link">python</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../../utils/index.html" class="md-nav__link">utils</a>
+      
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#ai-dl-cnn--page-root" class="md-nav__link">CNN</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#introduction" class="md-nav__link">Introduction</a>
+        </li>
+        <li class="md-nav__item"><a href="#keywords" class="md-nav__link">Keywords</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#shared-weights" class="md-nav__link">Shared Weights，共享权重</a>
+        </li>
+        <li class="md-nav__item"><a href="#local-receptive-fields-sparse-connectivity" class="md-nav__link">Local Receptive Fields & Sparse Connectivity, 局部感知域 & 稀疏连接</a>
+        </li>
+        <li class="md-nav__item"><a href="#spatial-information" class="md-nav__link">Spatial Information</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#structure" class="md-nav__link">Structure</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#input-layer" class="md-nav__link">Input Layer</a>
+        </li>
+        <li class="md-nav__item"><a href="#convolution-layers-conv" class="md-nav__link">Convolution Layers, Conv</a>
+        </li>
+        <li class="md-nav__item"><a href="#filters-kernels" class="md-nav__link">Filters, Kernels</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#about-size" class="md-nav__link">about Size</a>
+        </li>
+        <li class="md-nav__item"><a href="#about-stride-s" class="md-nav__link">about Stride s：移动的方格</a>
+        </li>
+        <li class="md-nav__item"><a href="#about-padding" class="md-nav__link">about Padding</a>
+        </li>
+        <li class="md-nav__item"><a href="#about-meaning" class="md-nav__link">about Meaning</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#batch-normalization" class="md-nav__link">Batch Normalization</a>
+        </li>
+        <li class="md-nav__item"><a href="#activation-function" class="md-nav__link">Activation function</a>
+        </li>
+        <li class="md-nav__item"><a href="#pooling-layer" class="md-nav__link">Pooling Layer, 池化层</a>
+        </li>
+        <li class="md-nav__item"><a href="#flatten-layer-tensor-reshape" class="md-nav__link">Flatten Layer — Tensor Reshape</a>
+        </li>
+        <li class="md-nav__item"><a href="#fully-connected-layer-fc" class="md-nav__link">Fully- Connected Layer, FC</a>
+        </li>
+        <li class="md-nav__item"><a href="#softmax" class="md-nav__link">softmax</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#famous-cnn-architectures" class="md-nav__link">Famous CNN Architectures</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#deeper-or-wider" class="md-nav__link">Deeper or Wider?</a>
+        </li>
+        <li class="md-nav__item"><a href="#lenet-5" class="md-nav__link"><strong>LeNet-5</strong></a>
+        </li>
+        <li class="md-nav__item"><a href="#alexnet" class="md-nav__link">AlexNet</a>
+        </li>
+        <li class="md-nav__item"><a href="#vgg-net" class="md-nav__link">VGG Net</a>
+        </li>
+        <li class="md-nav__item"><a href="#residual-net-resnet" class="md-nav__link">Residual Net, ResNet</a>
+        </li>
+        <li class="md-nav__item"><a href="#dense-net" class="md-nav__link">Dense Net</a>
+        </li>
+        <li class="md-nav__item"><a href="#googlenet" class="md-nav__link">GoogleNet</a>
+        </li>
+        <li class="md-nav__item"><a href="#light-weight-networks" class="md-nav__link">Light-weight networks</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#practical-exercise" class="md-nav__link">Practical Exercise</a>
+        </li>
+        <li class="md-nav__item"><a href="#parameters-initialization" class="md-nav__link">Parameters Initialization</a>
+        </li>
+        <li class="md-nav__item"><a href="#bach-normalization" class="md-nav__link">Bach Normalization</a>
+        </li>
+        <li class="md-nav__item"><a href="#application" class="md-nav__link">Application</a>
+        </li>
+        <li class="md-nav__item"><a href="#edge-detection" class="md-nav__link">Edge Detection</a>
+        </li>
+        <li class="md-nav__item"><a href="#exercise" class="md-nav__link">Exercise</a>
+        </li>
+        <li class="md-nav__item"><a href="#code" class="md-nav__link">code</a>
+        </li></ul>
+            </nav>
+        </li>
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="cnn">
+<h1 id="ai-dl-cnn--page-root">CNN<a class="headerlink" href="#ai-dl-cnn--page-root" title="Link to this heading">¶</a></h1>
+<div class="admonition-to-maintain-spatial-struture admonition danger">
+<p class="admonition-title">To maintain spatial struture.</p>
+</div>
+<div class="admonition-summary admonition note">
+<p class="admonition-title">summary</p>
+<p><span class="defi">Conv</span></p>
+<ul class="simple">
+<li><p>Accept a volume of size  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>W</mi><mn>1</mn></msub><mo>×</mo><msub><mi>H</mi><mn>1</mn></msub><mo>×</mo><msub><mi>D</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">W_1\times H_1\times D_1</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p></li>
+<li><p>Requires 4 hyperparameters
+- Number of filters  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span></span>
+- Filter’ size  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span></span></span></span></span>
+- Stride  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span></span>
+- Zero padding  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span></span></p></li>
+<li><p>Number of weights  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>F</mi><mo>×</mo><mi>F</mi><mo>×</mo><msub><mi>D</mi><mn>1</mn></msub><mo stretchy="false">)</mo><mo>×</mo><mi>K</mi><mo>+</mo><mi>K</mi><mtext>(shared bias)</mtext></mrow><annotation encoding="application/x-tex">(F\times F\times D_1)\times K + K\text{(shared bias)}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mord text"><span class="mord">(shared bias)</span></span></span></span></span></span></p></li>
+<li><p>Produce a volume of size  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mfrac><mrow><msub><mi>W</mi><mn>1</mn></msub><mo>−</mo><mi>F</mi><mo>+</mo><mn>2</mn><mi>P</mi></mrow><mi>S</mi></mfrac><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mo stretchy="false">(</mo><mfrac><mrow><msub><mi>H</mi><mn>1</mn></msub><mo>−</mo><mi>F</mi><mo>+</mo><mn>2</mn><mi>P</mi></mrow><mi>S</mi></mfrac><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">(\frac{W_1-F+2P}{S}+1)\times(\frac{H_1-F+2P}{S}+1)\times K</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1.2334em;vertical-align:-0.345em;"></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8884em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">S</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4101em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3173em;"><span style="top:-2.357em;margin-left:-0.1389em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mbin mtight">−</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">F</span><span class="mbin mtight">+</span><span class="mord mtight">2</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.2334em;vertical-align:-0.345em;"></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8884em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">S</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4101em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3173em;"><span style="top:-2.357em;margin-left:-0.0813em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mbin mtight">−</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">F</span><span class="mbin mtight">+</span><span class="mord mtight">2</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span></span></p></li>
+<li><p>In the output volume, the  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>d</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup></mrow><annotation encoding="application/x-tex">d^{th}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8491em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">h</span></span></span></span></span></span></span></span></span></span></span></span></span>  of  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>W</mi><mn>2</mn></msub><mo>×</mo><msub><mi>H</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">W_2\times H_2</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span>  is the result of performing a valid convolution of the  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>d</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup></mrow><annotation encoding="application/x-tex">d^{th}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8491em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">h</span></span></span></span></span></span></span></span></span></span></span></span></span>  filter over the input volume with a stride  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span></span> , and the offser by  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>d</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup></mrow><annotation encoding="application/x-tex">d^{th}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8491em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">h</span></span></span></span></span></span></span></span></span></span></span></span></span>  bias.</p></li>
+</ul>
+<p><span class="defi">Pool</span></p>
+<ul class="simple">
+<li><p>Accept a volume of size  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>W</mi><mn>2</mn></msub><mo>×</mo><msub><mi>H</mi><mn>2</mn></msub><mo>×</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">W_2\times H_2\times K</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span></span></p></li>
+<li><p>Requires 2 hyperparameters
+- pooling kernel’ size  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span></span></span></span></span>
+- Stride  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span></span></p></li>
+<li><p>Number of weights  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></span></p></li>
+<li><p>Produce a volume of size  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mfrac><mrow><msub><mi>W</mi><mn>2</mn></msub><mo>−</mo><mi>F</mi></mrow><mi>S</mi></mfrac><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mo stretchy="false">(</mo><mfrac><mrow><msub><mi>H</mi><mn>2</mn></msub><mo>−</mo><mi>F</mi></mrow><mi>S</mi></mfrac><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\frac{W_2-F}{S}+1)\times(\frac{H_2-F}{S}+1)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1.2334em;vertical-align:-0.345em;"></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8884em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">S</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4101em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3173em;"><span style="top:-2.357em;margin-left:-0.1389em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mbin mtight">−</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">F</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.2334em;vertical-align:-0.345em;"></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8884em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">S</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4101em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3173em;"><span style="top:-2.357em;margin-left:-0.0813em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mbin mtight">−</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">F</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span></p></li>
+<li><p>It is not common to use zero padding for pooling layer.</p></li>
+</ul>
+</div>
+<div class="admonition-common-setting admonition note">
+<p class="admonition-title">common setting</p>
+<div class="line-block">
+<div class="line"><span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span></span>  2 的幂</div>
+<div class="line">F3S1P1, F5S1P2, F5S2P(whatever fits),F1S1P0</div>
+</div>
+</div>
+<section id="introduction">
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<p><strong>In：</strong> Vision Task，就是 <strong>针对图像这一特殊结构</strong> ，包括图片分类, Object Detection 目标检测，边缘检测, Object Segmentation 目标提取，图片风格迁移， Image Captioning 看图说话, Retrieval 恢复图片…</p>
+<p>关于处理的图片对象，有单纯基于 <strong>黑白照片灰度图像(width✖️height)</strong> 的卷积，也有基于 <strong>彩色照片立体RGB(wideth✖️height✖️depthchannel)</strong> 的卷积</p>
+<div class="admonition-notes admonition note">
+<p class="admonition-title">notes</p>
+<p>&lt;u&gt;CNN is a sequence of Convolution Layers, interspersed with activation functions&lt;/u&gt;.</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
+<p>CNN is proposed to reduce the number of parameters, preserve the image layout information, and make the network deeper</p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-8 sd-col-xs-8 sd-col-sm-8 sd-col-md-8 sd-col-lg-8 docutils">
+<a class="reference internal image-reference" href="AI/DL/pics/CNN_22.PNG"><img alt="AI/DL/pics/CNN_22.PNG" src="AI/DL/pics/CNN_22.PNG"/>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/home/runner/work/io/io/docs/source/AI/DL/cnn.rst</span>, line 56)</p>
+<p>Cannot scale image!
+  Could not get size from "AI/DL/pics/CNN_22.PNG":
+  [Errno 2] No such file or directory: '/home/runner/work/io/io/docs/AI/DL/pics/CNN_22.PNG'</p>
+</aside>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition- admonition note">
+<p class="admonition-title">和全连接相比较，全连接的参数数量较多（两层之间的神经元需要两两相连），卷积神经网络的参数较少，主要是由于权值共享和稀疏连接。</p>
+</div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<a class="reference internal image-reference" href="../../_images/CNN_1.png"><img alt="../../_images/CNN_1.png" src="../../_images/CNN_1.png" style="width: 413.4px; height: 171.0px;"/>
+</a>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<a class="reference internal image-reference" href="../../_images/CNN_2.png"><img alt="../../_images/CNN_2.png" src="../../_images/CNN_2.png" style="width: 353.4px; height: 147.0px;"/>
+</a>
+</div>
+</div>
+</div>
+<a class="reference internal image-reference" href="../../_images/CNN_3.png"><img alt="../../_images/CNN_3.png" class="align-center" src="../../_images/CNN_3.png" style="width: 528.6px; height: 282.59999999999997px;"/>
+</a>
+<a class="reference internal image-reference" href="../../_images/CNN_4.png"><img alt="../../_images/CNN_4.png" class="align-center" src="../../_images/CNN_4.png" style="width: 493.2px; height: 264.0px;"/>
+</a>
+<ol class="arabic simple">
+<li><p>The input of image data into the convolution neural network is processed with the help of pixel values of the image in the convolution layer.</p></li>
+<li><p><span class="defi">Filters</span> are generated that perform convolutions over the entire image and train the network to identify and learn features from images, which are converted to matrices.</p></li>
+<li><p><span class="defi">Batch</span> normalization of input vectors is performed at each layer, so as to ensure all input vectors are <strong>normalized</strong> and hence regularization in the network is attained.</p></li>
+<li><p>The convolutions are performed until better accuracy has been attained and maximum feature extraction is done.</p></li>
+<li><p>Convolutions result in the <strong>sub-sampling</strong> of images and the dimensions of input get changed according to <span class="defi">padding</span> and <span class="defi">stride</span> chosen.</p></li>
+<li><p>Each convolution follows the <span class="defi">activation layer(ReLU)</span> and <span class="defi">pooling layer</span> , which brings in <strong>non-linearity</strong> and helps in <strong>sub-sampling</strong> respectively.</p></li>
+<li><p>After the final convolution, the input matrix is converted to feature vectors. This feature vector is the <span class="defi">flattened layer</span> .</p></li>
+<li><p>Feature vector serves as input to the next layer(fully connected layer), where all features are collectively transferred into this network. <span class="defi">Dropout</span> of random nodes occurs during training to reduce overfitting in this layer.</p></li>
+<li><p>Finally, the raw values which are predicted output by the network are converted to probabilistic values with the use of <span class="defi">softmax function</span> .</p></li>
+</ol>
+</section>
+<section id="keywords">
+<h2 id="keywords">Keywords<a class="headerlink" href="#keywords" title="Link to this heading">¶</a></h2>
+<p><span class="defi">共享权重</span> , <span class="defi">局部感知域 &amp; 稀疏连接</span> , <span class="defi">Spatial Information</span></p>
+<section id="shared-weights">
+<h3 id="shared-weights">Shared Weights，共享权重<a class="headerlink" href="#shared-weights" title="Link to this heading">¶</a></h3>
+<p>同一个filter在输入矩阵中进行扫描</p>
+<p>一个隐藏层中的所有 <strong>神经元都检测在图像的不同位置处的同一个特征。权重共享，则检测特征相同。</strong> 因此也将从输入层到隐藏层的这种映射称为&lt;u&gt;特征映射，filters, kernels&lt;/u&gt;。该特征映射的权重称为 <strong>共享权重</strong>，其偏置称为共享偏置。</p>
+</section>
+<section id="local-receptive-fields-sparse-connectivity">
+<h3 id="local-receptive-fields-sparse-connectivity">Local Receptive Fields &amp; Sparse Connectivity, 局部感知域 &amp; 稀疏连接<a class="headerlink" href="#local-receptive-fields-sparse-connectivity" title="Link to this heading">¶</a></h3>
+<div class="line-block">
+<div class="line">For convolution with kernel size  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span></span> , each element in the output depends on a  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>×</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">K\times K</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span></span>  receptive field in the input.</div>
+<div class="line">Each successive convolution contains multiple regions from the previous one.</div>
+<div class="line">输出矩阵中的每一个数值只由输入数据的一部分计算得来。与常规神经网络一样，输入层的神经元需要和隐藏层的神经元连接。但这里 <strong>不是将每一个输入神经元都与每一个隐藏神经元连接</strong>，而是仅仅在一个图像的 <strong>局部区域创建连接</strong></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/CNN_5.png"><img alt="../../_images/CNN_5.png" class="align-center" src="../../_images/CNN_5.png" style="width: 457.2px; height: 208.2px;"/>
+</a>
+<a class="reference internal image-reference" href="../../_images/CNN_6.png"><img alt="../../_images/CNN_6.png" class="align-center" src="../../_images/CNN_6.png" style="width: 408.0px; height: 142.2px;"/>
+</a>
+</section>
+<section id="spatial-information">
+<h3 id="spatial-information">Spatial Information<a class="headerlink" href="#spatial-information" title="Link to this heading">¶</a></h3>
+<p>输入层： <strong>二维矩阵排列</strong> 的 <strong>神经元</strong>。</p>
+</section>
+</section>
+<section id="structure">
+<h2 id="structure">Structure<a class="headerlink" href="#structure" title="Link to this heading">¶</a></h2>
+<a class="reference internal image-reference" href="../../_images/CNN_21.png"><img alt="../../_images/CNN_21.png" class="align-center" src="../../_images/CNN_21.png" style="width: 464.0px; height: 141.0px;"/>
+</a>
+<section id="input-layer">
+<h3 id="input-layer">Input Layer<a class="headerlink" href="#input-layer" title="Link to this heading">¶</a></h3>
+<p><strong>二维矩阵排列</strong> 的 <strong>神经元</strong>。</p>
+</section>
+<section id="convolution-layers-conv">
+<h3 id="convolution-layers-conv">Convolution Layers, Conv<a class="headerlink" href="#convolution-layers-conv" title="Link to this heading">¶</a></h3>
+<div class="admonition-convolve-the-filter-with-the-image-math-rightarrow-u-slide-over-the-image-spatially-computing-dot-products-u admonition note">
+<p class="admonition-title">Convolve the filter with the image  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span></span>  &lt;u&gt;slide over the image spatially, computing dot products&lt;/u&gt;</p>
+</div>
+<p>完成图像和filter 的卷积就是</p>
+<ol class="arabic">
+<li><p>用一个小小的  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>×</mo><mi>F</mi><mo>×</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">F\times F\times D</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span></span>  shared filter 在 <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>×</mo><mi>N</mi><mo>×</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">N\times N\times D</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span></span>  图像上 slide spatially, 空间意义上地滑动。</p></li>
+<li><p>滑动的时候，每一次框定的 <strong>小小对应尺寸</strong> <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>×</mo><mi>F</mi><mo>×</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">F\times F\times D</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span></span>  块 chunk of the image, Local Receptive Fields，和  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>×</mo><mi>F</mi><mo>×</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">F\times F\times D</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span></span>  shared filter 做 dot product <span class="defi">element-wise multiplication</span> .</p>
+<blockquote>
+<div><div class="admonition-notes admonition danger">
+<p class="admonition-title">notes</p>
+<p>D个 channel，都要分别和输入的D个channel 做卷积，得到D个特征图，然后 <strong>通道融合, sum all the (weights x inputs) of D channels</strong></p>
+</div>
+</div></blockquote>
+</li>
+<li><p>将所有滑动的到的结果按空间顺序重新拼成:  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>N</mi><mo>−</mo><mi>F</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mo stretchy="false">(</mo><mi>N</mi><mo>−</mo><mi>F</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mstyle mathcolor="#df0030"><mn>1</mn></mstyle></mrow><annotation encoding="application/x-tex">(N-F+1)\times(N-F+1)\times \red{1}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord" style="color:#df0030;">1</span></span></span></span></span>  tensor</p></li>
+<li><p>再加上  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>N</mi><mo>−</mo><mi>F</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mo stretchy="false">(</mo><mi>N</mi><mo>−</mo><mi>F</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mstyle mathcolor="#df0030"><mn>1</mn></mstyle></mrow><annotation encoding="application/x-tex">(N-F+1)\times(N-F+1)\times \red{1}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord" style="color:#df0030;">1</span></span></span></span></span>  shared bias 偏置</p></li>
+</ol>
+<div class="line-block">
+<div class="line">以上是做一个filter的过程。 <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>w</mi><mi>T</mi></msup><mi>x</mi><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">w^Tx+b</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.9247em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span></span> 。</div>
+<div class="line">因为 input image 和 filter 的乘法是 ==element-wise multiplication==，就和向量点积一样，所以可以想象为多维的 chunk 和 filter 和 bias 展平成向量， <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi mathvariant="double-struck">R</mi><mrow><mi>F</mi><mo>×</mo><mi>F</mi><mo>×</mo><mi>D</mi></mrow></msup><mover><mo minsize="3.0em" stretchy="true">→</mo><mpadded lspace="0.3em" width="+0.6em"><mtext>Flatten</mtext></mpadded></mover><msup><mi mathvariant="double-struck">R</mi><mrow><msup><mi>F</mi><mn>2</mn></msup><mi>D</mi><mo>×</mo><mn>1</mn></mrow></msup><mover><mo minsize="3.0em" stretchy="true">→</mo><mpadded lspace="0.3em" width="+0.6em"><mtext>dot product</mtext></mpadded></mover><mi mathvariant="double-struck">R</mi></mrow><annotation encoding="application/x-tex">\R^{F\times F\times D}\xrightarrow{\text{Flatten}}\R^{F^2D\times 1}\xrightarrow{\text{dot product}}\R</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1.1191em;vertical-align:-0.011em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">F</span><span class="mbin mtight">×</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">F</span><span class="mbin mtight">×</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1081em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">Flatten</span></span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg height="0.522em" preserveaspectratio="xMaxYMin slice" viewbox="0 0 400000 522" width="400em" xmlns="http://www.w3.org/2000/svg"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1191em;vertical-align:-0.011em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9869em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8913em;"><span style="top:-2.931em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span><span class="mbin mtight">×</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1081em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">dot product</span></span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg height="0.522em" preserveaspectratio="xMaxYMin slice" viewbox="0 0 400000 522" width="400em" xmlns="http://www.w3.org/2000/svg"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.011em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6889em;"></span><span class="mord mathbb">R</span></span></span></span></span></div>
+</div>
+<p><span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span></span>  个 filters 就有  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span></span>  个 tensor，最后 <strong>stack 堆叠</strong> these up to get a new “image tensor” <span class="defi">activation map</span> of size as the input of the next layer. 立体卷积的输出结果的维度，长和宽和之前灰度图像的计算一样，而 <strong>结果的通道数则由过滤器的个数决定</strong></p>
+<div class="math">
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>N</mi><mo>−</mo><mi>F</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mo stretchy="false">(</mo><mi>N</mi><mo>−</mo><mi>F</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mstyle mathcolor="#df0030"><mi>K</mi></mstyle></mrow><annotation encoding="application/x-tex">(N-F+1)\times(N-F+1)\times \red{K}
+
+</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;color:#df0030;">K</span></span></span></span></span></div><ul class="simple">
+<li><dl class="simple">
+<dt>立体的，e.g: <strong>彩色照片立体RGB图像</strong></dt><dd><p>过滤器是一个立方体，在输入数据上扫描，每一个通道的权重分别与输入图片的每一个通道扫描到的值相乘再加和得到输出矩阵上的一个输出值</p>
+</dd>
+</dl>
+</li>
+</ul>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../../_images/CNN_9.png"><img alt="../../_images/CNN_9.png" src="../../_images/CNN_9.png" style="width: 249.6px; height: 179.4px;"/>
+</a>
+<figcaption>
+<p><span class="caption-text">立体的，e.g: <strong>彩色照片立体RGB图像</strong></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../../_images/CNN_10.png"><img alt="../../_images/CNN_10.png" src="../../_images/CNN_10.png" style="width: 257.7px; height: 146.7px;"/>
+</a>
+<figcaption>
+<p><span class="caption-text">立体的，e.g: <strong>彩色照片立体RGB图像</strong></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="filters-kernels">
+<h3 id="filters-kernels">Filters, Kernels<a class="headerlink" href="#filters-kernels" title="Link to this heading">¶</a></h3>
+<div class="admonition-input-image-x-feature-detector-defi-feature-map admonition note">
+<p class="admonition-title">Input Image x  Feature Detector = <span class="defi">Feature Map</span></p>
+</div>
+<section id="about-size">
+<h4 id="about-size">about Size<a class="headerlink" href="#about-size" title="Link to this heading">¶</a></h4>
+<ol class="arabic">
+<li><dl>
+<dt>always <strong>extend the full depth</strong> of the input volume， 一个 filter 的深度(通道数)要和 input 的深度(通道数)一样，但是输出仍只有一个通道数。</dt><dd><div class="math">
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>18</mn><mo>=</mo><mfrac><mrow><mn>32</mn><mo>−</mo><mn>5</mn></mrow><mn>1</mn></mfrac><mo>+</mo><mn>1</mn><mo separator="true">,</mo><mn>30</mn><mo>=</mo><mfrac><mrow><mn>32</mn><mo>−</mo><mn>3</mn></mrow><mn>1</mn></mfrac><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">18=\cfrac{32-5}{1}+1, 30=\cfrac{32-3}{1}+1
+
+</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">18</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.276em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">32</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">30</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.276em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">32</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span></div><div class="mermaid">
+            flowchart LR
+A["`Input
+32✖️32✖️3`"]
+B{"`Filter
+5✖️5✖️3`"}
+C{"`Filter
+3✖️3✖️3`"}
+A --&gt; B
+A --&gt; C
+D{"`Stride
+1`"}
+B --- D
+C --- D
+E["`Output
+18✖️18✖️1`"]
+F["`Output
+30✖️30✖️1`"]
+D --&gt; E
+D --&gt; F
+        </div><a class="reference internal image-reference" href="../../_images/CNN_11.png"><img alt="../../_images/CNN_11.png" class="align-center" src="../../_images/CNN_11.png" style="width: 318.59999999999997px; height: 202.79999999999998px;"/>
+</a>
+</dd>
+</dl>
+</li>
+<li><p>dim of <strong>filter 一般为奇数，若为偶数，则会产生不对称填充</strong></p></li>
+<li><dl class="simple">
+<dt><strong>1✖️1 Convolution</strong> is meaningful!</dt><dd><p>It computes the dot product over the channels.</p>
+</dd>
+</dl>
+</li>
+</ol>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="../../_images/CNN_13.png"><img alt="../../_images/CNN_13.png" src="../../_images/CNN_13.png" style="width: 355.8px; height: 162.0px;"/>
+</a>
+<figcaption>
+<p><span class="caption-text">1✖️1 Convolution</span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p><strong>advantages：</strong></p>
+<ul>
+<li><p>Shrinking too volumes spatially</p>
+<blockquote>
+<div><div class="admonition-shrinking-too-fast-is-not-good admonition danger">
+<p class="admonition-title">Shrinking too fast is not good</p>
+</div>
+<p>比如说CNN，CNN是用卷积核和感受野做运算，每一个新产生特征数，也就是 output 的一个小小的数字，囊括的也只是一个小小的感受野的信息。对一个kernel 来说，虽然 output 是由所有的感受野 of input 卷积之后堆叠而成的一个 [L, W]矩阵，也就是这一个 kernel 和所有的感受野做运算的结果堆叠而成。但是 <strong>简单局部特征堆叠不等于全局特征。</strong> 这也是CNN稀疏链接的特点。</p>
+<p>所以我们常说CNN对于那种长序列 long sequence input 不太友好，因为对于两个间隔比较远的 pixels 来说，要是想获得他们之间的关系特征，就需要堆叠很多个卷积层，才能获得他们的关系特征。</p>
+</div></blockquote>
+</li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/CNN_25.jpeg"><img alt="../../_images/CNN_25.jpeg" class="align-center" src="../../_images/CNN_25.jpeg" style="width: 544.5px; height: 292.8px;"/>
+</a>
+</section>
+<section id="about-stride-s">
+<h4 id="about-stride-s">about Stride s：移动的方格<a class="headerlink" href="#about-stride-s" title="Link to this heading">¶</a></h4>
+<ol class="arabic">
+<li><p>s = 1 （default）</p></li>
+<li><p><strong>do not want to capture all the data</strong> or information available so we skip some.</p></li>
+<li><p>设置的 stride 要被刚好设置的filter卷积到</p>
+<blockquote>
+<div><div class="math">
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="#df0030"><mtext>Output Size </mtext><mo stretchy="false">(</mo><mfrac><mrow><mi>N</mi><mo>−</mo><mi>F</mi></mrow><mi>s</mi></mfrac><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mo stretchy="false">(</mo><mfrac><mrow><mi>N</mi><mo>−</mo><mi>F</mi></mrow><mi>s</mi></mfrac><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mstyle><mo separator="true">,</mo><mspace width="1em"></mspace><mfrac><mrow><mi>N</mi><mo>−</mo><mi>F</mi></mrow><mtext>stride</mtext></mfrac><mo>∈</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">\red{\text{Output Size }(\cfrac{N-F}{s}+1)\times(\cfrac{N-F}{s}+1) }, \quad\cfrac{N-F}{\text{stride}}\in Z
+
+</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:2.276em;vertical-align:-0.686em;"></span><span class="mord text" style="color:#df0030;"><span class="mord" style="color:#df0030;">Output Size </span></span><span class="mopen" style="color:#df0030;">(</span><span class="mord" style="color:#df0030;"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="color:#df0030;"><span class="mord mathnormal" style="color:#df0030;">s</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="color:#df0030;border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="color:#df0030;"><span class="mord mathnormal" style="margin-right:0.10903em;color:#df0030;">N</span><span class="mspace" style="color:#df0030;margin-right:0.2222em;"></span><span class="mbin" style="color:#df0030;">−</span><span class="mspace" style="color:#df0030;margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;color:#df0030;">F</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin" style="color:#df0030;">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord" style="color:#df0030;">1</span><span class="mclose" style="color:#df0030;">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin" style="color:#df0030;">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.276em;vertical-align:-0.686em;"></span><span class="mopen" style="color:#df0030;">(</span><span class="mord" style="color:#df0030;"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="color:#df0030;"><span class="mord mathnormal" style="color:#df0030;">s</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="color:#df0030;border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="color:#df0030;"><span class="mord mathnormal" style="margin-right:0.10903em;color:#df0030;">N</span><span class="mspace" style="color:#df0030;margin-right:0.2222em;"></span><span class="mbin" style="color:#df0030;">−</span><span class="mspace" style="color:#df0030;margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;color:#df0030;">F</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin" style="color:#df0030;">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.276em;vertical-align:-0.686em;"></span><span class="mord" style="color:#df0030;">1</span><span class="mclose" style="color:#df0030;">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">stride</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span></span></span></span></span></div><a class="reference internal image-reference" href="../../_images/CNN_12.png"><img alt="../../_images/CNN_12.png" class="align-center" src="../../_images/CNN_12.png" style="width: 189.9px; height: 204.0px;"/>
+</a>
+</div></blockquote>
+</li>
+</ol>
+<p><strong>drawbacks:</strong></p>
+<ul class="simple">
+<li><p>lose data over borders 容易丢失边缘或者是角落上的像素信息，譬如所当 stride=1 的时候，边边就出现一遍，中间的部分会在滑动的时候overlap 到，出现次数就会重复，这也体现了一种设定：图像中间总是比较重要，承载更多信息</p></li>
+</ul>
+<p><strong>advantages:</strong></p>
+<ol class="arabic simple">
+<li><p>输出的图片会缩小</p></li>
+</ol>
+</section>
+<section id="about-padding">
+<h4 id="about-padding">about Padding<a class="headerlink" href="#about-padding" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><dl class="simple">
+<dt>为什么要pad？</dt><dd><p>为了解决容易丢失边缘或者是角落上的像素信息。pad之后本来边缘的部分就不会只出现一次。  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟸</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\impliedby</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟸</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span></span> &lt;u&gt;convolved 之前 pad&lt;/u&gt;. Due to padding, information on the borders of images is also preserved similarly to at the centre of images.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>在哪里pad？ pad 的范围多大</dt><dd><ul>
+<li><p>To 解决边缘容易丢失  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\implies</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span></span>  &lt;u&gt;on the boundary&lt;/u&gt;, image 的四周都要 pad. 范围自定义, <strong>pad with p-pixel border</strong></p></li>
+<li><dl class="simple">
+<dt>To <strong>卷积前后大小不变</strong> == <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mi>F</mi><mo>−</mo><mn>1</mn></mrow><mn>2</mn></mfrac></mstyle><mtext> </mtext><mtext>when s=1</mtext></mrow><annotation encoding="application/x-tex">p=\cfrac{F-1}{2}\:\text{when s=1}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.276em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">when s=1</span></span></span></span></span></span> ==</dt><dd><p><span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mi>N</mi><mo stretchy="false">(</mo><mi>s</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>+</mo><mi>F</mi><mo>−</mo><mi>s</mi></mrow><mn>2</mn></mfrac></mstyle></mrow><annotation encoding="application/x-tex">p=\cfrac{N(s-1)+F-s}{2}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.276em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span></span></span></span></span></p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>保证卷积前后的维度不变，</strong></p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>proof of  formula of p <strong>此处stride=1（default）</strong></dt><dd><p><span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mi>N</mi><mo>+</mo><mn>2</mn><mi>p</mi><mo>−</mo><mi>F</mi><mo>+</mo><mn>1</mn><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext><mi>p</mi><mo>=</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mi>F</mi><mo>−</mo><mn>1</mn></mrow><mn>2</mn></mfrac></mstyle></mrow><annotation encoding="application/x-tex">N= N+2p-F+1\implies p=\cfrac{F-1}{2}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">2</span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6684em;vertical-align:-0.024em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.276em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span></span></span></span></span></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>pad 什么？</dt><dd><p>&lt;u&gt;pad 0&lt;/u&gt; on the boundary，因为做的是 dot product，不会影响结果</p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="math">
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable columnalign="right left" columnspacing="0em" rowspacing="0.25em"><mtr><mtd><mstyle displaystyle="true" scriptlevel="0"><mtext>Output Size without padding</mtext></mstyle></mtd><mtd><mstyle displaystyle="true" scriptlevel="0"><mrow><mrow></mrow><mo>=</mo><mo stretchy="false">(</mo><mfrac><mrow><mi>N</mi><mo>−</mo><mi>F</mi></mrow><mi>s</mi></mfrac><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mo stretchy="false">(</mo><mfrac><mrow><mi>N</mi><mo>−</mo><mi>F</mi></mrow><mi>s</mi></mfrac><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle displaystyle="true" scriptlevel="0"><mtext>Output Size with padding</mtext></mstyle></mtd><mtd><mstyle displaystyle="true" scriptlevel="0"><mrow><mrow></mrow><mo>=</mo><mo stretchy="false">(</mo><mfrac><mrow><mi>N</mi><mo>+</mo><mn>2</mn><mi>p</mi><mo>−</mo><mi>F</mi></mrow><mi>s</mi></mfrac><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mo stretchy="false">(</mo><mfrac><mrow><mi>N</mi><mo>+</mo><mn>2</mn><mi>p</mi><mo>−</mo><mi>F</mi></mrow><mi>s</mi></mfrac><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{align*}\text{Output Size without padding}&amp;=(\cfrac{N-F}{s}+1)\times(\cfrac{N-F}{s}+1)\\  \text{Output Size with padding}&amp;=(\cfrac{N+2p-F}{s}+1)\times(\cfrac{N+2p-F}{s}+1)\end{align*}
+
+</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:5.152em;vertical-align:-2.326em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.826em;"><span style="top:-4.826em;"><span class="pstrut" style="height:3.59em;"></span><span class="mord"><span class="mord text"><span class="mord">Output Size without padding</span></span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.59em;"></span><span class="mord"><span class="mord text"><span class="mord">Output Size with padding</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.326em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.826em;"><span style="top:-4.826em;"><span class="pstrut" style="height:3.59em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">s</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">s</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:3.59em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">s</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">2</span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">s</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">2</span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.326em;"><span></span></span></span></span></span></span></span></span></span></span></span></div><a class="reference internal image-reference" href="../../_images/CNN_16.png"><img alt="../../_images/CNN_16.png" class="align-center" src="../../_images/CNN_16.png" style="width: 400.0px; height: 225.20000000000002px;"/>
+</a>
+</section>
+<section id="about-meaning">
+<h4 id="about-meaning">about Meaning<a class="headerlink" href="#about-meaning" title="Link to this heading">¶</a></h4>
+<ol class="arabic simple">
+<li><p>同一张特征图，同一个通道，上的所有元素 (神经元) 都是对图像的不同位置的同一个特征的检测，通道中某一处 (特征图上某一个神经元) 数值的大小就是当前位置对当前特征强弱的反应。</p></li>
+</ol>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/home/runner/work/io/io/docs/source/AI/DL/cnn.rst</span>, line 299)</p>
+<p>Enumerated list ends without a blank line; unexpected unindent.</p>
+</aside>
+<p>2. 一个 filter 就是一个特征，每个 filter 体现的特质都不一样。
+为了使得模型将注意力集中于图片的某些位置， <strong>而在深度学习中，更好的方法是将过滤器里面的值设置成参数，让模型通过反向传播去学习到过滤器中的权重值</strong> ，代替人为的设定。</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<figure class="align-default" id="id4">
+<img alt="../../_images/CNN_14.png" src="../../_images/CNN_14.png"/>
+<figcaption>
+<p><span class="caption-text">yellow</span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<figure class="align-default" id="id5">
+<img alt="../../_images/CNN_15.png" src="../../_images/CNN_15.png"/>
+<figcaption>
+<p><span class="caption-text">roll</span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ol class="arabic simple">
+<li><p>&lt;u&gt;立体的 filter&lt;/u&gt;，每一个通道的权重分别对应输入图片的每一个通道。 <strong>可以通过设置过滤器不同通道的权值来关注于原始图片不同通道的内容</strong></p></li>
+</ol>
+</section>
+</section>
+<section id="batch-normalization">
+<h3 id="batch-normalization">Batch Normalization<a class="headerlink" href="#batch-normalization" title="Link to this heading">¶</a></h3>
+<p>Batch normalization is generally done in between convolution and activation(ReLU) layers. It normalizes the inputs at each layer, reduces internal co-variate shift(change in the distribution of network activations) and is a method to regularize a convolutional network.</p>
+<p>Batch normalizing allows higher learning rates that can reduce training time and gives better performance. It allows learning at each layer by itself without being more dependent on other layers. Dropout which is also a regularizing technique, is less effective to regularize convolution layers.</p>
+</section>
+<section id="activation-function">
+<h3 id="activation-function">Activation function<a class="headerlink" href="#activation-function" title="Link to this heading">¶</a></h3>
+<p>卷积操作只是加权求和的线性操作，若神经网络只用卷积层，那么无论有多少层，输出都是输入的线性组合，网络的表达能力有限，无法学习到非线性函数。因此 CNN 引入激励函数，激活函数是个非线性函数，常作用于卷积层和全连接层输出的每个神经元（分量/元素），给神经元引入了非线性因素，使网络的表达能力更强，几乎可逼近任意函数，这样神经网络就可应用到众多的非线性模型中。</p>
+</section>
+<section id="pooling-layer">
+<h3 id="pooling-layer">Pooling Layer, 池化层<a class="headerlink" href="#pooling-layer" title="Link to this heading">¶</a></h3>
+<p>a <span class="defi">down-sampling</span> strategy</p>
+<ol class="arabic simple">
+<li><p>Construct better translationally invariant features. 局部平移不变性，当输入有一定的平移时，经池化后输出不会发生改变。使得其特征提取不会因为目标位置的变化而受到较大的影响</p></li>
+<li><p>Learn more compact features. 将某个元素邻域的 <strong>总体统计</strong> 特征作为网络在该位置的输出 we are taking <strong>a summarized value</strong> over all the values present !!! controls overfitting</p></li>
+<li><p>缩减模型的大小，简化卷积层的输出</p></li>
+<li><p>提高计算速度以及提高模型的鲁棒性等。</p></li>
+<li><p><strong>没有需要学习的参数，只需要定义过滤器的大小以及步长即可</strong></p></li>
+</ol>
+<div class="admonition-the-dimension-after-pooling admonition note">
+<p class="admonition-title">The Dimension After Pooling”</p>
+<p>Given a  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>×</mo><mi>N</mi><mo>×</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">M\times N\times D</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span></span>  tensor, if we apply the pooling operator with size  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>×</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">K\times K</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span></span>  and Stride  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span></span>  , what are the dimensions of the output?
+- depth has no change
+- 在width和height那里就像卷积一样  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>without padding</mtext><mo>=</mo><mo stretchy="false">(</mo><mfrac><mrow><mi>N</mi><mo>−</mo><mi>F</mi></mrow><mi>s</mi></mfrac><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mo stretchy="false">(</mo><mfrac><mrow><mi>N</mi><mo>−</mo><mi>F</mi></mrow><mi>s</mi></mfrac><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\text{without padding}=(\frac{N-F}{s}+1)\times(\frac{N-F}{s}+1)</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">without padding</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2173em;vertical-align:-0.345em;"></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span><span class="mbin mtight">−</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">F</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.2173em;vertical-align:-0.345em;"></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span><span class="mbin mtight">−</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">F</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span>
+- <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext><mo stretchy="false">(</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mi>M</mi><mo>−</mo><mi>K</mi></mrow><mi>p</mi></mfrac></mstyle><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mo stretchy="false">(</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mrow><mi>N</mi><mo>−</mo><mi>K</mi></mrow><mi>p</mi></mfrac></mstyle><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">\implies (\cfrac{M-K}{p}+1)\times (\cfrac{N-K}{p}+1)\times D</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.4704em;vertical-align:-0.8804em;"></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">p</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.4704em;vertical-align:-0.8804em;"></span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">p</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em;"><span></span></span></span></span></span><span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span></span></p>
+</div>
+<table>
+<thead>
+<tr class="row-odd"><th class="head"><p>Pooling stategies</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Max Pooling</strong></p></td>
+<td><p>（较常用）is robust to small perturbations.直观理解是能够提取出输入图片中比较显著的特征</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Average Pooling</strong></p></td>
+<td><p>idk</p></td>
+</tr>
+</tbody>
+</table>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/CNN_17.png"><img alt="../../_images/CNN_17.png" src="../../_images/CNN_17.png" style="width: 296.0px; height: 133.20000000000002px;"/>
+</a>
+</figure>
+</section>
+<section id="flatten-layer-tensor-reshape">
+<h3 id="flatten-layer-tensor-reshape">Flatten Layer — Tensor Reshape<a class="headerlink" href="#flatten-layer-tensor-reshape" title="Link to this heading">¶</a></h3>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<a class="reference internal image-reference" href="../../_images/CNN_18.png"><img alt="../../_images/CNN_18.png" class="align-center" src="../../_images/CNN_18.png" style="width: 285.5px; height: 214.0px;"/>
+</a>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<div class="line-block">
+<div class="line">the output feature map(matrix) will be converted into vector</div>
+<div class="line">将前面卷积层或池化层输出的所有二维特征图一起映射成1个一维的特征向量</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="fully-connected-layer-fc">
+<h3 id="fully-connected-layer-fc">Fully- Connected Layer, FC<a class="headerlink" href="#fully-connected-layer-fc" title="Link to this heading">¶</a></h3>
+<div class="line-block">
+<div class="line">光卷积是不能完成分类任务的，所以就是要后面连 FC层，起到“分类器”的作用</div>
+<div class="line"><strong>中间可能有多个FC层，</strong> 最后模型输出一个 <strong>维度等于类别数（输出的神经元个数）</strong> 的 <strong>向量</strong></div>
+</div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<a class="reference internal image-reference" href="../../_images/CNN_19.png"><img alt="../../_images/CNN_19.png" class="align-center" src="../../_images/CNN_19.png" style="width: 204.0px; height: 304.0px;"/>
+</a>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<a class="reference internal image-reference" href="../../_images/CNN_20.png"><img alt="../../_images/CNN_20.png" class="align-center" src="../../_images/CNN_20.png" style="width: 213.60000000000002px; height: 322.40000000000003px;"/>
+</a>
+</div>
+</div>
+</div>
+</section>
+<section id="softmax">
+<h3 id="softmax">softmax<a class="headerlink" href="#softmax" title="Link to this heading">¶</a></h3>
+<div class="line-block">
+<div class="line">softmax归一化，表示每一类的概率，然后 <strong>将得分最高的类别判为输入的类别</strong></div>
+<div class="line">The softmax function is used to map the non-normalized output of a network to a probability distribution.</div>
+<div class="line">将网络的非规范化输出映射到概率分布。</div>
+</div>
+</section>
+</section>
+<section id="famous-cnn-architectures">
+<h2 id="famous-cnn-architectures">Famous CNN Architectures<a class="headerlink" href="#famous-cnn-architectures" title="Link to this heading">¶</a></h2>
+<section id="deeper-or-wider">
+<h3 id="deeper-or-wider">Deeper or Wider?<a class="headerlink" href="#deeper-or-wider" title="Link to this heading">¶</a></h3>
+<p><strong>Deep CNN</strong> : Deeply stacked  Convolution Neural Network</p>
+<table>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>LeNet-5</p></th>
+<th class="head"><p>AlexNet</p></th>
+<th class="head"><p>VGG Net</p></th>
+<th class="head"><p>ResNet</p></th>
+<th class="head"><p>GoogLeNet</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Key</p></td>
+<td><p>特征稀疏链接</p></td>
+<td><p>Relu activation</p></td>
+<td><p>smaller filters</p></td>
+<td><p>^</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Activation</p></td>
+<td><p>Sigmoid</p></td>
+<td><p>ReLU</p></td>
+<td></td>
+<td><p>^</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><p>Advantages</p></td>
+<td rowspan="2"><p>basic architecture</p>
+<p>奠定基础</p>
+</td>
+<td rowspan="2"><p>GPU</p></td>
+<td rowspan="2"></td>
+<td><p>^</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>^</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Drawbacks</p></td>
+<td><p>算力不够</p></td>
+<td><p>^</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><p>设计用途</p></td>
+<td rowspan="2"><p>手写数字识别</p></td>
+<td rowspan="2"><p>ImageNet classification</p>
+<p>with deep CNN</p>
+</td>
+<td rowspan="2"><p>Very Deep CNN</p>
+<p>for Large-Scale Image Recognition</p>
+</td>
+<td rowspan="2"><p>Deep Residual Learning</p>
+<p>for Image Recognition</p>
+</td>
+<td rowspan="2"><p>Going deeper</p>
+<p>with convolutions</p>
+</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td><p>deep CNN</p></td>
+<td></td>
+<td><p>☑️</p></td>
+<td><p>☑️</p></td>
+<td><p>☑️</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-the-skip-connection-was-first-proposed-in-resnet admonition note">
+<p class="admonition-title">The Skip-connection was first proposed in ResNet</p>
+</div>
+</section>
+<section id="lenet-5">
+<h3 id="lenet-5"><strong>LeNet-5</strong><a class="headerlink" href="#lenet-5" title="Link to this heading">¶</a></h3>
+<p><strong>7 Layers</strong> (input layer not counted)</p>
+<p><strong>3 Convolution Layers</strong> (C1; C3; C5)</p>
+<p><strong>2 Pooling Layers</strong> (S2; S4) — Mean</p>
+<p><strong>2 Fully Connected Layers</strong> (F6; Output)</p>
+<p><strong>Sigmoid Activation!</strong></p>
+<p>Details:</p>
+<ol class="arabic simple">
+<li><p>subsampling 中会在结果上多加一个偏置项</p></li>
+<li><p>S2-C3 sparse connected 生成的16@feature map分别按相邻3个，相邻4个，非相邻4个和全部6个特征图进行feature mapping【因为算力不足，限制了连接数，减少计算开销；这样不同特征图的组合可以使新生成的feature map 学到不同的特征模式 】</p></li>
+<li><p>MLP作为分类器</p></li>
+<li><p>这里的 faltten 是用CNN</p></li>
+</ol>
+</section>
+<section id="alexnet">
+<h3 id="alexnet">AlexNet<a class="headerlink" href="#alexnet" title="Link to this heading">¶</a></h3>
+<div class="line-block">
+<div class="line">ReLU, max pooling, stride</div>
+<div class="line">Data augmentation</div>
+<div class="line">Optimizer parameters</div>
+</div>
+</section>
+<section id="vgg-net">
+<h3 id="vgg-net">VGG Net<a class="headerlink" href="#vgg-net" title="Link to this heading">¶</a></h3>
+<p><strong>152 layers for ImageNet.</strong></p>
+<p>💡 <strong>Key Idea of VGG</strong>: Replace the large convolution filter by stacking some <strong>smaller convolution filters.</strong></p>
+<ol class="arabic simple">
+<li><p><strong>More concise and generalizable.</strong></p></li>
+<li><p><strong>Smaller filters can achieve better performance than larger filters. smaller filters 堆积可以比 larger更高</strong></p></li>
+<li><p><strong>Demonstrate that increase depth can boost performance. 深度可提高表现</strong></p></li>
+</ol>
+<div class="line-block">
+<div class="line">5x5 conv = two 3x3 conv</div>
+<div class="line">7x7 conv = three 3x3 conv</div>
+</div>
+</section>
+<section id="residual-net-resnet">
+<h3 id="residual-net-resnet">Residual Net, ResNet<a class="headerlink" href="#residual-net-resnet" title="Link to this heading">¶</a></h3>
+<p>keep origin information</p>
+<div class="line-block">
+<div class="line">Skip-connection</div>
+<div class="line">Batch-normalization</div>
+<div class="line">Bottleneck block</div>
+</div>
+</section>
+<section id="dense-net">
+<h3 id="dense-net">Dense Net<a class="headerlink" href="#dense-net" title="Link to this heading">¶</a></h3>
+</section>
+<section id="googlenet">
+<h3 id="googlenet">GoogleNet<a class="headerlink" href="#googlenet" title="Link to this heading">¶</a></h3>
+<p>There are some parallel polar level.
+Okay? Blocks in in a certain layer that means You will send. You will
+send I input. Okay, into different convolutions. Okay. And let’s go
+through different architectures. And then we merged guys okay, into a
+final okay output. Okay, So this is a key idea. Okay, significant
+difference. Okay, of Google, net with different, other, different neural
+networks. Okay. But yeah you can try this. Okay. But we will not Talk
+about the details of this neural networks, Okay</p>
+</section>
+<section id="light-weight-networks">
+<h3 id="light-weight-networks">Light-weight networks<a class="headerlink" href="#light-weight-networks" title="Link to this heading">¶</a></h3>
+<div class="admonition-performance-on-computation-limits admonition note">
+<p class="admonition-title">Performance on computation limits</p>
+</div>
+<a class="reference internal image-reference" href="../../_images/CNN_23.png"><img alt="../../_images/CNN_23.png" class="align-center" src="../../_images/CNN_23.png" style="width: 455.0px; height: 186.0px;"/>
+</a>
+<a class="reference internal image-reference" href="../../_images/CNN_24.png"><img alt="../../_images/CNN_24.png" class="align-center" src="../../_images/CNN_24.png" style="width: 471.0px; height: 174.0px;"/>
+</a>
+<div class="admonition-a-depthwise-convolution-involves-applying-a-separate-3x3-filter-to-each-input-channel admonition danger">
+<p class="admonition-title">a depthwise convolution involves applying a separate 3x3 filter to each input channel.</p>
+<div class="line-block">
+<div class="line">For a depthwise 3x3 convolution, the number of  input channels and output channels are both 32, how many parameters does this convolution layer have ？</div>
+<div class="line"><span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>∗</mo><mn>3</mn><mo>∗</mo><mn>32</mn></mrow><annotation encoding="application/x-tex">3*3*32</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">32</span></span></span></span></span></div>
+</div>
+</div>
+<p><strong>Group convolution:</strong></p>
+</section>
+</section>
+<section id="practical-exercise">
+<h2 id="practical-exercise">Practical Exercise<a class="headerlink" href="#practical-exercise" title="Link to this heading">¶</a></h2>
+</section>
+<section id="parameters-initialization">
+<h2 id="parameters-initialization">Parameters Initialization<a class="headerlink" href="#parameters-initialization" title="Link to this heading">¶</a></h2>
+<p>快速 shrikage to point</p>
+</section>
+<section id="bach-normalization">
+<h2 id="bach-normalization">Bach Normalization<a class="headerlink" href="#bach-normalization" title="Link to this heading">¶</a></h2>
+</section>
+<section id="application">
+<h2 id="application">Application<a class="headerlink" href="#application" title="Link to this heading">¶</a></h2>
+</section>
+<section id="edge-detection">
+<h2 id="edge-detection">Edge Detection<a class="headerlink" href="#edge-detection" title="Link to this heading">¶</a></h2>
+<p>如上图所示：输入是一个6*6的矩阵，输入是一个左白右灰的图片（白色部分对应的矩阵值大于0，灰色部分的值为0），中间有一道竖线分割；中间的垂直过滤器是一个3*3的矩阵，由白灰黑三个部分组成，矩阵三列的值分别大于0，等于0和小于0；输出的结果矩阵中，中间的两列大于0，即输出的图片中间部分为白色，也就是说经过卷积之后，成功的检测出了原始图片中间存在的垂直竖线。</p>
+</section>
+<section id="exercise">
+<h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Link to this heading">¶</a></h2>
+<div class="admonition-in-l5-in-ama564-input-math-in-r-5-times5-kernel-math-in-r-3-times3-bias-500-activation-function-is-relu admonition hint">
+<p class="admonition-title">(in L5 in AMA564), input  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∈</mo><msup><mi mathvariant="double-struck">R</mi><mrow><mn>5</mn><mo>×</mo><mn>5</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\in\R^{5\times5}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">5</span><span class="mbin mtight">×</span><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span></span></span> ,kernel  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∈</mo><msup><mi mathvariant="double-struck">R</mi><mrow><mn>3</mn><mo>×</mo><mn>3</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\in\R^{3\times3}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mbin mtight">×</span><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span></span></span> ,bias=-500, activation function is ReLU</p>
+</div>
+</section>
+<section id="code">
+<h2 id="code">code<a class="headerlink" href="#code" title="Link to this heading">¶</a></h2>
+<p>[卷积神经网络（浅显易懂）-吴恩达课程学习]: <a class="reference external" href="https://zhuanlan.zhihu.com/p/35251749/">https://zhuanlan.zhihu.com/p/35251749/</a></p>
+<p>[神经网络及CNN中的通道、共享权重、特征映射等的理解_zhu_Lydia的博客-CSDN博客_cnn的通道]:<a class="reference external" href="https://blog.csdn.net/zhu_Lydia/article/details/88567648">https://blog.csdn.net/zhu_Lydia/article/details/88567648</a></p>
+<p>[Convolutional Neural Network Architecture | CNN Architecture]:<a class="reference external" href="https://www.analyticsvidhya.com/blog/2020/10/what-is-the-convolutional-neural-network-architecture/">https://www.analyticsvidhya.com/blog/2020/10/what-is-the-convolutional-neural-network-architecture/</a></p>
+<p>[Convolutional Neural Network | Deep Learning | Developers Breach]: <a class="reference external" href="https://developersbreach.com/convolution-neural-network-deep-learning/">https://developersbreach.com/convolution-neural-network-deep-learning/</a></p>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2024, coconut.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>
