@@ -166,7 +166,8 @@ extensions =[
     'sphinx_design', 
     'sphinxcontrib.katex', 
     'sphinxcontrib.mermaid',
-    'sphinx_copybutton'
+    'sphinx_copybutton',
+    'sphinx_search.extension',
     ]#'sphinxemoji.sphinxemoji',]
 # extensions = ["myst_parser"]
 
@@ -252,6 +253,9 @@ html_sidebars = {
 #         "searchbox.html",
 #         ]
 # }
+
+# 搜索结果是否显示详细细节
+html_show_search_summary = True
 
 suppress_warnings = ["config.cache"]  # https://github.com/sphinx-doc/sphinx/issues/12300
 # pickling environment... WARNING: cannot cache unpickable configuration value: 'html_context' (because it contains a function, class, or module object)
