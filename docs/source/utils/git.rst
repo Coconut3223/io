@@ -43,7 +43,7 @@ https://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html
 
 #### zsh
 
-把如下代码添加至你的  ``~/.zshrc``  文件中，就可以在**右侧显示分支名称**
+把如下代码添加至你的  ``~/.zshrc``  文件中，就可以在 **右侧显示分支名称**
 
 .. code-block:: none
     :caption: zsh

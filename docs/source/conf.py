@@ -191,11 +191,6 @@ html_theme_options = {
     "repo_type": "github",
     "nav_links": [ #nav_links
         {
-            "href": "index",
-            "internal": True,
-            "title": "Homepage"
-        },
-        {
             "href": "AI/index",
             "internal": True,
             "title": "AI",
@@ -219,6 +214,11 @@ html_theme_options = {
             "href": "utils/index",
             "internal": True,
             "title": "Utils",
+        },
+        {
+            "href": "frontend/index",
+            "internal": True,
+            "title": "Frontend",
         },
 
     ], 
