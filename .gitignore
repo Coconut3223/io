@@ -2,3 +2,4 @@ docs/build/
 .idea/
 *.pyc
 tools/mds
+*.log
