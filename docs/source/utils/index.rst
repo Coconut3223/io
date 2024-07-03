@@ -3,8 +3,9 @@
 
 ## 好用的网站
 
-- [readmedium](https://readmedium.com/)
-- [Tables Generator](https://www.tablesgenerator.com/markdown_tables#)
+- `readmedium <https://readmedium.com/>`_`
+- `Tables Generator <https://www.tablesgenerator.com/markdown_tables#>`_
+- `Tree 树形目录可视化生成器 <https://devtool.tech/tree>`_
 
 ## 目录
 
@@ -14,7 +15,6 @@
 
     git
     hadoop
-    html_css
     mapreduce
     other
     PPT
