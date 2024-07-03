@@ -19,5 +19,5 @@ Welcome to cocobook's documentation!
    python <python/index>
    SQL <SQL/index>
    utils <utils/index>
-   frontend <fontend/index>
+   frontend <frontend/index>
    

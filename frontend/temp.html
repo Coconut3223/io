@@ -66,6 +66,7 @@
     <script src="../_static/js/rtd_sphinx_search.min.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
+    <link rel="prev" title="Frontend" href="index.html" />
   
    
 
@@ -167,8 +168,6 @@
       <ul class="md-tabs__list">
           <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">HomePage</a></li>
             
-            <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">Homepage</a></li>
-            
             <li class="md-tabs__item"><a href="../AI/index.html" class="md-tabs__link">AI</a></li>
             
             <li class="md-tabs__item"><a href="../python/index.html" class="md-tabs__link">Python</a></li>
@@ -178,6 +177,9 @@
             <li class="md-tabs__item"><a href="../SQL/index.html" class="md-tabs__link">SQL</a></li>
             
             <li class="md-tabs__item"><a href="../utils/index.html" class="md-tabs__link">Utils</a></li>
+            
+            <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">Frontend</a></li>
+          <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">Frontend</a></li>
       </ul>
     </div>
   </nav>
@@ -277,6 +279,56 @@
       
     
     </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="index.html" class="md-nav__link">frontend</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <label class="md-nav__link md-nav__link--active" for="__toc"> Temporal </label>
+    
+      <a href="#" class="md-nav__link md-nav__link--active">Temporal</a>
+      
+        
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#frontend-temp--page-root" class="md-nav__link">Temporal</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#operations" class="md-nav__link">operations</a>
+        </li>
+        <li class="md-nav__item"><a href="#utils" class="md-nav__link">utils</a>
+        </li>
+        <li class="md-nav__item"><a href="#theroy" class="md-nav__link">theroy</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#modules-packages" class="md-nav__link">Modules & Packages</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#core-modules" class="md-nav__link">Core Modules</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#rounter" class="md-nav__link">路由 rounter</a>
+        </li>
+        <li class="md-nav__item"><a href="#id1" class="md-nav__link">网络方法</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#get-post" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">get</span></code> & <code class="docutils literal notranslate"><span class="pre">post</span></code></a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+  </ul>
+</nav>
+      
+    
+    </li></ul>
+    
+    </li>
   </ul>
   
 
@@ -295,9 +347,23 @@
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#operations" class="md-nav__link">operations</a>
         </li>
-        <li class="md-nav__item"><a href="#utils" class="md-nav__link">utils</a><nav class="md-nav">
+        <li class="md-nav__item"><a href="#utils" class="md-nav__link">utils</a>
+        </li>
+        <li class="md-nav__item"><a href="#theroy" class="md-nav__link">theroy</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#package-management-package-json" class="md-nav__link">package management <code class="docutils literal notranslate"><span class="pre">package.json</span></code></a>
+        <li class="md-nav__item"><a href="#modules-packages" class="md-nav__link">Modules & Packages</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#core-modules" class="md-nav__link">Core Modules</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#rounter" class="md-nav__link">路由 rounter</a>
+        </li>
+        <li class="md-nav__item"><a href="#id1" class="md-nav__link">网络方法</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#get-post" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">get</span></code> & <code class="docutils literal notranslate"><span class="pre">post</span></code></a>
+        </li></ul>
+            </nav>
         </li></ul>
             </nav>
         </li></ul>
@@ -322,39 +388,173 @@
 </section>
 <section id="utils">
 <h2 id="utils">utils<a class="headerlink" href="#utils" title="Link to this heading">¶</a></h2>
-<section id="package-management-package-json">
-<h3 id="package-management-package-json">package management <code class="docutils literal notranslate"><span class="pre">package.json</span></code><a class="headerlink" href="#package-management-package-json" title="Link to this heading">¶</a></h3>
-<p><span class="defi">npm</span> 是前端开发人员广泛使用的包管理工具，项目中通过 <span class="defi">package.json</span> 来管理项目中所依赖的 npm 包的配置。</p>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/home/runner/work/io/io/docs/source/frontend/temp.rst</span>, line 20)</p>
-<p>Error in “code” directive:
-unknown option: “caption”.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">code</span><span class="p">::</span> <span class="n">json</span>
-    <span class="p">:</span><span class="n">caption</span><span class="p">:</span> <span class="n">package</span><span class="o">.</span><span class="n">json</span>
-
-    <span class="p">{</span>
-        <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Your project name"</span><span class="p">,</span>
-        <span class="s2">"version"</span><span class="p">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
-        <span class="s2">"description"</span><span class="p">:</span> <span class="s2">"Your project description"</span><span class="p">,</span>
-        <span class="s2">"main"</span><span class="p">:</span> <span class="s2">"app.js"</span><span class="p">,</span>
-        <span class="s2">"scripts"</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">"test"</span><span class="p">:</span> <span class="s2">"echo </span><span class="se">\"</span><span class="s2">Error: no test specified</span><span class="se">\"</span><span class="s2"> &amp;&amp; exit 1"</span><span class="p">,</span>
-        <span class="p">},</span>
-        <span class="s2">"author"</span><span class="p">:</span> <span class="s2">"Author name"</span><span class="p">,</span>
-        <span class="s2">"license"</span><span class="p">:</span> <span class="s2">"ISC"</span><span class="p">,</span>
-        <span class="s2">"dependencies"</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">"dependency1"</span><span class="p">:</span> <span class="s2">"^1.4.0"</span><span class="p">,</span>
-            <span class="s2">"dependency2"</span><span class="p">:</span> <span class="s2">"^1.5.2"</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-
+</section>
+<section id="theroy">
+<h2 id="theroy">theroy<a class="headerlink" href="#theroy" title="Link to this heading">¶</a></h2>
+<section id="modules-packages">
+<h3 id="modules-packages">Modules &amp; Packages<a class="headerlink" href="#modules-packages" title="Link to this heading">¶</a></h3>
+<p>一个 Node.js 文件就是一个模块，这个文件可能是 Javascript 代码、JSON 或者编译过的 C/C++ 扩展。</p>
+<p>Node.js 有三大類的模組</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Core Modules (原生模組)</p></li>
+<li><p>Local Modules (自建模組)</p></li>
+<li><p>Third Party Modules (第三方模組)</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition-example admonition hint">
+<p class="admonition-title">example</p>
+<p><code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">http</span> <span class="pre">=</span> <span class="pre">require('http')</span></code>. 其中，http 是 Node.js 的一个核心模块，其内部是用 C++ 实现的，外部用 Javascript 封装。我们通过 require 函数获取了这个模块，然后才能使用其中的对象。</p>
+</div>
+<p>Node.js 提供了两个 <code class="docutils literal notranslate"><span class="pre">exports</span></code> 和 <code class="docutils literal notranslate"><span class="pre">require</span></code> 两个对象</p>
+<blockquote>
+<div><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">exports</span></code> 是模块公开的接口</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">module</span> <span class="pre">=</span> <span class="pre">require('module_name');</span></code> 用于从外部获取一个模块的接口，即获取模块的 exports 对象。</p>
+<blockquote>
+<div><p>根據不同的module，它回傳的將會是一個物件，函式，屬性，或是其他的javascript 型別。</p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<div class="admonition-require admonition danger">
+<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">require</span></code> 不会重复加载模块</p>
+<p>实际上和对象又有本质的区别: <strong>无论调用多少次 require，获得的模块都是同一个。</strong></p>
+</div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">directory</span><a class="headerlink" href="#id2" title="Link to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- moduleA.js
+- code.js
 </pre></div>
 </div>
-</aside>
+</div>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">moduleA.js (自定义)</span><a class="headerlink" href="#id3" title="Link to this code">¶</a></div>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">name</span><span class="p">;</span>
+
+<span class="k">export</span><span class="p">.</span><span class="nx">simplehello</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Hello World.'</span><span class="w">   </span><span class="c1">// 使用屬性</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">setName</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="kd">function</span><span class="p">(</span><span class="nx">uname</span><span class="p">){</span><span class="w">  </span><span class="c1">// 使用函式, 名字=setName</span>
+<span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">uname</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">sayhello</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="kd">function</span><span class="p">(){</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Hello'</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">name</span><span class="p">);</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">code.js</span><a class="headerlink" href="#id4" title="Link to this code">¶</a></div>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'http'</span><span class="p">);</span><span class="w">  </span><span class="c1">// 引用公开的</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">module_a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'./moduleA'</span><span class="p">);</span><span class="w"> </span><span class="c1">// 引用自定义</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">module_a</span><span class="p">.</span><span class="nx">simplehello</span><span class="p">);</span><span class="w">  </span><span class="c1">// 使用屬性</span>
+<span class="nx">module_a</span><span class="p">.</span><span class="nx">setName</span><span class="p">(</span><span class="s1">'Lily'</span><span class="p">);</span><span class="w">  </span><span class="c1">// 使用函式</span>
+<span class="nx">module_a</span><span class="p">.</span><span class="nx">sayhello</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">terminal</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Hello<span class="w"> </span>World.
+Hello<span class="w"> </span>Lily
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="core-modules">
+<h4 id="core-modules">Core Modules<a class="headerlink" href="#core-modules" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>http：它包含可以用來建立http server 的一些類別, 方法, 及事件。</p></li>
+<li><p>url：它包含可以解析url的一些方法。</p></li>
+<li><p>querystring：它包含可以處理由client端傳來querystring的一些方法。</p></li>
+<li><p>path：它包含可以處理一些檔案或資料夾路徑的方法。</p></li>
+<li><p>fs：它包含檔案的存取／操作的一些類別，方法及事件。</p></li>
+<li><p>util：它包含一些可供程序者使用的效能函式。</p></li>
+</ul>
 <p><strong>Ref</strong></p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://juejin.cn/post/7099041402771734559">深入浅出package.json</a></p></li>
+<li><p><a class="reference external" href="https://developer.aliyun.com/article/553861">Node.js 模块和包（Modules）</a></p></li>
+<li><p><a class="reference external" href="https://ithelp.ithome.com.tw/m/articles/10184564">Day3 - Node.js Modules 介紹及載入</a></p></li>
+<li><p><a class="reference external" href="https://ithelp.ithome.com.tw/m/articles/10185083">Day5 - 關於 module.exports 的兩三事</a></p></li>
 </ul>
+</section>
+</section>
+<section id="rounter">
+<h3 id="rounter">路由 rounter<a class="headerlink" href="#rounter" title="Link to this heading">¶</a></h3>
+<div class="admonition- admonition note">
+<p class="admonition-title">認識網址規則</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">https</span></code> ：有分為 http 與 https 協定，而 https 有加密功能</p>
+<blockquote>
+<div><div class="admonition-https admonition danger">
+<p class="admonition-title">簡單說就是如果有需要填寫表單，請務必檢查是否是 https 開頭的喔！</p>
+</div>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">www.google.com</span></code>：這個為網址，或稱為 domain。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/search</span></code>：這是路徑，這邊代表搜尋（名稱可以自訂）。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">?q=xxxx</span></code>：此為參數，會用 ?q 代表，q 代表 query。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&amp;</span></code>：多個參數會用 &amp; 做串聯。</p></li>
+</ul>
+<div class="admonition-example admonition hint">
+<p class="admonition-title">example</p>
+<p>透過 express 建立一個 Web 伺服器，如果沒有特別給路徑，預設為根目錄，而這次給予兩個路徑。</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">app.js</span><a class="headerlink" href="#id6" title="Link to this code">¶</a></div>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"./page/index"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="sb">`&lt;h1&gt;Hello, Node&lt;/h1&gt;`</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"./page/about"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;{</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="sb">`&lt;h1&gt;About Node&lt;/h1&gt;`</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="w"> </span><span class="nx">port</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">3000</span><span class="p">;</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">localhost:3000/page/index</span><a class="headerlink" href="#id7" title="Link to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Hello, Node
+
+// 當網址輸入為 /page/index，則會出現 Hello,Node!
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h3 id="id1">网络方法<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<section id="get-post">
+<h4 id="get-post"><code class="docutils literal notranslate"><span class="pre">get</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">post</span></code><a class="headerlink" href="#get-post" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>GET方法请求一个指定资源的表示形式，使用GET的请求应该只被用于获取数据</p></li>
+<li><p>POST方法用于将实体提交到指定的资源，通常导致在服务器上的状态变化或副作用</p></li>
+</ul>
+<div class="line-block">
+<div class="line">本质上都是TCP链接，并无差别</div>
+<div class="line">但是由于HTTP的规定和浏览器/服务器的限制，导致他们在应用过程中会体现出一些区别</div>
+</div>
+<p><strong>Ref</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://hsuchihting.github.io/node/20221023/885469299/">Node.js - 路由設計</a></p></li>
+</ul>
+</section>
 </section>
 </section>
 </section>
@@ -368,6 +568,19 @@ unknown option: “caption”.</p>
   <footer class="md-footer">
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="index.html" title="Frontend"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> "Previous" </span> Frontend </span>
+              </div>
+            </a>
           
           
         </a>
