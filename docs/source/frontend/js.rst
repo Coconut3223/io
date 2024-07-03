@@ -43,15 +43,13 @@
     - ``==`` 等于 只管 **值**
     - ``===`` 绝对等于 不仅管 **值** ， 还管 **类型**
 
-    .. code-block:: jscon
+    .. code-block:: js
 
-        >>> let num = 2;
-        >>> let str = '2';
+        let num = 2;
+        let str = '2';
 
-        >>> num == str
-        true 
-        >>> num === str
-        false
+        num == str  // true 
+        num === str  // false
 
 ### if - for
 

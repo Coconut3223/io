@@ -7,6 +7,12 @@
 - `Tables Generator <https://www.tablesgenerator.com/markdown_tables#>`_
 - `Tree 树形目录可视化生成器 <https://devtool.tech/tree>`_
 
+**pygments support language codes**
+
+    - ``pycon``
+    - ``py``
+    
+
 ## 目录
 
 .. toctree::
@@ -20,4 +26,5 @@
     PPT
     vscode
     linux
+    mermaid
     

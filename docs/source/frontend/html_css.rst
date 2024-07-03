@@ -37,7 +37,7 @@
 
 - 双标签
 
-    - ``<div></div>``竖着排 ``<span></span>`` 横着排
+    - ``<div></div>`` 竖着排 ``<span></span>`` 横着排
     - ``<button></button>``
 
 - 单标签
@@ -54,7 +54,8 @@
 - ==DOM 元素== 是 DOM 树中的基本单位。
 
     DOM 元素有各种属性和方法,可以用来访问和操作它们。
-    ..hint:: <span> 标签在 HTML 中定义了一个行内元素,它就是一个 DOM 元素。
+
+    .. hint:: <span> 标签在 HTML 中定义了一个行内元素,它就是一个 DOM 元素。
 
 
 ### form
@@ -66,8 +67,8 @@
 
 ## css
 
-``<span class={class1: condition>`` 
-如果 ``condition=true``，则 ``class1`` 类名会被应用到 ``<span>`` 元素上。否则,该类名不会被应用。
+| ``<span class={class1: condition>`` 
+| 如果 ``condition=true``，则 ``class1`` 类名会被应用到 ``<span>`` 元素上。否则,该类名不会被应用。
 
 
 .. code-block:: html
