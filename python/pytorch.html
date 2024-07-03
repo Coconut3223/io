@@ -329,7 +329,13 @@
         </li>
         <li class="md-nav__item"><a href="#data" class="md-nav__link">Data</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#tensor" class="md-nav__link">Tensor</a>
+        <li class="md-nav__item"><a href="#tensor" class="md-nav__link">Tensor</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#view" class="md-nav__link">view</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#variable" class="md-nav__link">Variable</a>
         </li>
         <li class="md-nav__item"><a href="#class-dataset" class="md-nav__link">class DataSet</a>
         </li>
@@ -511,7 +517,13 @@
         </li>
         <li class="md-nav__item"><a href="#data" class="md-nav__link">Data</a><nav class="md-nav">
               <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#tensor" class="md-nav__link">Tensor</a>
+        <li class="md-nav__item"><a href="#tensor" class="md-nav__link">Tensor</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#view" class="md-nav__link">view</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#variable" class="md-nav__link">Variable</a>
         </li>
         <li class="md-nav__item"><a href="#class-dataset" class="md-nav__link">class DataSet</a>
         </li>
@@ -811,6 +823,17 @@ print(output.shape())</p>
 <h2 id="data">Data<a class="headerlink" href="#data" title="Link to this heading">¶</a></h2>
 <section id="tensor">
 <h3 id="tensor">Tensor<a class="headerlink" href="#tensor" title="Link to this heading">¶</a></h3>
+<section id="view">
+<h4 id="view">view<a class="headerlink" href="#view" title="Link to this heading">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">tensor.view(-1,</span> <span class="pre">n)</span></code></p>
+<div class="admonition-data-view-batchsize-feature-size admonition danger">
+<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">data.view(batchsize,</span> <span class="pre">feature_size)</span></code></p>
+</div>
+</section>
+</section>
+<section id="variable">
+<h3 id="variable">Variable<a class="headerlink" href="#variable" title="Link to this heading">¶</a></h3>
+<p><a class="reference external" href="https://blog.csdn.net/weixin_42782150/article/details/106854349">https://blog.csdn.net/weixin_42782150/article/details/106854349</a></p>
 </section>
 <section id="class-dataset">
 <h3 id="class-dataset">class DataSet<a class="headerlink" href="#class-dataset" title="Link to this heading">¶</a></h3>
@@ -862,6 +885,20 @@ print(output.shape())</p>
 <p>样本81， Batchsize=8;</p>
 <p>1 Epoch = 10  drop_last=True
 1 Epoch = 11  drop_last=False</p>
+<div class="admonition-len-dataloader admonition note">
+<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">len(dataloader)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">drop_last</span> <span class="pre">=</span> <span class="pre">True</span></code> <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">⌊</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mtext>len(dataset)</mtext><mtext>batchsize</mtext></mfrac></mstyle><mo stretchy="false">⌋</mo></mrow><annotation encoding="application/x-tex">\lfloor\cfrac{\text{len(dataset)}}{\text{batchsize}}\rfloor</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:2.276em;vertical-align:-0.686em;"></span><span class="mopen">⌊</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">batchsize</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">len(dataset)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span><span class="mclose">⌋</span></span></span></span></span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">drop_last</span> <span class="pre">=</span> <span class="pre">False</span></code> <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">⌈</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mtext>len(dataset)</mtext><mtext>batchsize</mtext></mfrac></mstyle><mo stretchy="false">⌉</mo></mrow><annotation encoding="application/x-tex">\lceil\cfrac{\text{len(dataset)}}{\text{batchsize}}\rceil</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:2.276em;vertical-align:-0.686em;"></span><span class="mopen">⌈</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">batchsize</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">len(dataset)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span><span class="mclose">⌉</span></span></span></span></span></p></li>
+</ul>
+<div class="admonition-drop-last-true-data-view-batch-size-feature-size admonition danger">
+<p class="admonition-title">如果不設置 <code class="docutils literal notranslate"><span class="pre">drop_last</span> <span class="pre">=</span> <span class="pre">True</span></code>，就不要設置 <code class="docutils literal notranslate"><span class="pre">data.view(batch_size,</span> <span class="pre">feature_size)</span></code></p>
+<div class="line-block">
+<div class="line">如果 dataset 的長度不能整除掉 batchsize, 最後一個 batch 的 size = <code class="docutils literal notranslate"><span class="pre">mod(len(dataset),</span> <span class="pre">batchsize)</span></code>, 是不定長的。如果設置成 batchsize, tensor的 shape 其實不滿足 <span class="math"><span class="katex-error" style="color:#cc0000" title="ParseError: KaTeX parse error: Expected 'EOF', got '_' at position 36: …es\text{feature_̲size}">\text{batchsize}\times\text{feature_size}</span></span></div>
+<div class="line">=&gt; <code class="docutils literal notranslate"><span class="pre">data.view(-1,</span> <span class="pre">feature_size)</span></code></div>
+</div>
+</div>
+</div>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="k">class</span> <span class="nc">DataLoader</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">T_co</span><span class="p">]):</span>
 </span><span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    “抽样式”地少量 batch 加载数据，集 “数据集 dataset”， “抽样 sampler”，</span>
