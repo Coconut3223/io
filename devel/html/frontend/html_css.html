@@ -66,6 +66,8 @@
     <script src="../_static/js/rtd_sphinx_search.min.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="javascript" href="js.html" />
+    <link rel="prev" title="Temporal" href="temp.html" />
   
    
 
@@ -178,6 +180,7 @@
             <li class="md-tabs__item"><a href="../utils/index.html" class="md-tabs__link">Utils</a></li>
             
             <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">Frontend</a></li>
+          <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">Frontend</a></li>
       </ul>
     </div>
   </nav>
@@ -281,7 +284,74 @@
     
     
       <a href="index.html" class="md-nav__link">frontend</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="temp.html" class="md-nav__link">Temporal</a>
       
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <label class="md-nav__link md-nav__link--active" for="__toc"> HTML & CSS 一些用过的部件 </label>
+    
+      <a href="#" class="md-nav__link md-nav__link--active">HTML & CSS 一些用过的部件</a>
+      
+        
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#frontend-html-css--page-root" class="md-nav__link">HTML & CSS 一些用过的部件</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#grid" class="md-nav__link">Grid</a>
+        </li>
+        <li class="md-nav__item"><a href="#html" class="md-nav__link">html</a>
+        </li>
+        <li class="md-nav__item"><a href="#id1" class="md-nav__link">理论</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#dom" class="md-nav__link">DOM</a>
+        </li>
+        <li class="md-nav__item"><a href="#form" class="md-nav__link">form</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#css" class="md-nav__link">css</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#padding-margin" class="md-nav__link">padding & margin</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+  </ul>
+</nav>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="js.html" class="md-nav__link">javascript</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="node.html" class="md-nav__link">node</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="vue.html" class="md-nav__link">Vue</a>
+      
+    
+    </li></ul>
     
     </li>
   </ul>
@@ -363,7 +433,7 @@
 <li><p>双标签</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;div&gt;&lt;/div&gt;``竖着排</span> <span class="pre">``&lt;span&gt;&lt;/span&gt;</span></code> 横着排</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;div&gt;&lt;/div&gt;</span></code> 竖着排 <code class="docutils literal notranslate"><span class="pre">&lt;span&gt;&lt;/span&gt;</span></code> 横着排</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;button&gt;&lt;/button&gt;</span></code></p></li>
 </ul>
 </div></blockquote>
@@ -385,8 +455,10 @@
 <ul>
 <li><p><span class="defi">DOM 元素</span> 是 DOM 树中的基本单位。</p>
 <blockquote>
-<div><p>DOM 元素有各种属性和方法,可以用来访问和操作它们。
-..hint:: &lt;span&gt; 标签在 HTML 中定义了一个行内元素,它就是一个 DOM 元素。</p>
+<div><p>DOM 元素有各种属性和方法,可以用来访问和操作它们。</p>
+<div class="admonition-span-html-dom admonition hint">
+<p class="admonition-title">&lt;span&gt; 标签在 HTML 中定义了一个行内元素,它就是一个 DOM 元素。</p>
+</div>
 </div></blockquote>
 </li>
 </ul>
@@ -404,8 +476,10 @@
 </section>
 <section id="css">
 <h2 id="css">css<a class="headerlink" href="#css" title="Link to this heading">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">&lt;span</span> <span class="pre">class={class1:</span> <span class="pre">condition&gt;</span></code>
-如果 <code class="docutils literal notranslate"><span class="pre">condition=true</span></code>，则 <code class="docutils literal notranslate"><span class="pre">class1</span></code> 类名会被应用到 <code class="docutils literal notranslate"><span class="pre">&lt;span&gt;</span></code> 元素上。否则,该类名不会被应用。</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;span</span> <span class="pre">class={class1:</span> <span class="pre">condition&gt;</span></code></div>
+<div class="line">如果 <code class="docutils literal notranslate"><span class="pre">condition=true</span></code>，则 <code class="docutils literal notranslate"><span class="pre">class1</span></code> 类名会被应用到 <code class="docutils literal notranslate"><span class="pre">&lt;span&gt;</span></code> 元素上。否则,该类名不会被应用。</div>
+</div>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>This is general box<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span> <span class="cm">&lt;!--内置的div--&gt;</span>
 <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"box1"</span><span class="p">&gt;</span>self-defined box1<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="cm">&lt;!--div为基础新的box1类--&gt;</span>
@@ -461,6 +535,30 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
+            <a href="temp.html" title="Temporal"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> "Previous" </span> Temporal </span>
+              </div>
+            </a>
+          
+          
+            <a href="js.html" title="javascript"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> "Next" </span> javascript </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
           
         </a>
         

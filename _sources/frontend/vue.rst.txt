@@ -23,7 +23,7 @@
     $ npm run serve  # 运行服务
 
 
-## 项目配置 & ``*.vue```
+## 项目配置 & ``*.vue``
 
 .. code-block:: none
     :caption: directory
@@ -78,7 +78,7 @@
 
 ==npm== 是前端开发人员广泛使用的包管理工具，项目中通过 ==package.json== 来管理项目中所依赖的 npm 包的配置。
 
-.. code:: json
+.. code-block:: json
     :caption: package.json
 
     {
@@ -156,14 +156,14 @@
 .. code-block:: html
     :caption: <template>
 
-    // 传内容
-    <div>Header:: {{ header }}</div>  // raw 文本形式
-    <div v-html="header"></div>  // html 编译
+    <!-- 传内容 -->
+    <div>Header:: {{ header }}</div>  <!-- raw 文本形式 -->
+    <div v-html="header"></div>  <!-- html 编译 -->
 
-    // 传代码
-    <div v-bind:id="dynamicId"></div>  // 以 动态传属性 id 为例
-    <div :id="dynamicId"></div>        // 可简写忽略 v-bind
-    <h1 :class="red">Make me red</h1>  // 绑定 js传过来的格式 来改颜色
+    <!-- 传代码 -->
+    <div v-bind:id="dynamicId"></div>  <!-- 以 动态传属性 id 为例 -->
+    <div :id="dynamicId"></div>        <!-- 可简写忽略 v-bind -->
+    <h1 :class="red">Make me red</h1>  <!-- 绑定 js传过来的格式 来改颜色 -->
 
 .. grid:: 2
 
@@ -227,6 +227,7 @@
     .. grid:: 2
 
         .. grid-item::
+
             .. code-block:: js
                 :caption: <script>
 
@@ -238,17 +239,20 @@
                     },
                     methods: {
                         increment(){
-                            this.count++; // 访问该组件 data 里的 count
+                            this.count++; 
+                            // 访问该组件 data 里的 count
                             console.log(this.count)
                         }
                     }
                 }
 
         .. grid-item::
-            .. code-block::html
+
+            .. code-block:: html
                 :caption: <template>     
 
-                <button @click="increment">  // 点击绑定计数+1的函数
+                <button @click="increment">  
+                    <!-- 点击绑定计数+1的函数 --> 
                     click: {{count}}
                 </button>
 
@@ -264,19 +268,21 @@
     .. grid:: 2
 
         .. grid-item::
+
             .. code-block:: js
                 :caption: <script>
 
                 export default{
                     data(){
-                    return{
-                        input:"Type in"
-                    }
+                        return{
+                            input:"Type in"
+                        }
                     }    
                 }
 
         .. grid-item::
-            .. code-block::html
+
+            .. code-block:: html
                 :caption: <template>     
 
                 <input v-model="input">
@@ -301,18 +307,18 @@
                 export default{
                     data(){
                         return{
-                        condition:true
-                        }
+                            condition:true
+                            }
                     },
                     methods:{
                         change(){
-                        this.condition = !this.condition
-                        }
+                            this.condition = !this.condition
+                            }
                     }
                 }
 
         .. grid-item::
-            .. code-block::html
+            .. code-block:: html
                 :caption: <template>     
 
                 <button @click="change">TorF</button>
@@ -325,8 +331,8 @@
 .. code-block:: html
     
     <li v-for="item in items" :key="item.id">
-    {{item.text}}
-    </li>``
+        {{item.text}}
+    </li>
 
 .. hint:: Example: Todo list
 
@@ -369,7 +375,7 @@
         }
 
 
-    .. code-block::html
+    .. code-block:: html
         :caption: <template>  
 
         <form @submit.prevent="addTodo">  <!--表单用来提交--> 
@@ -388,7 +394,7 @@
             <!--条件判断切换按钮的文字-->
         </button>
 
-    .. code-block::css
+    .. code-block:: css
         :caption: <style>  
 
         .done{
@@ -430,7 +436,7 @@
             }
         }
 
-    .. code-block::html
+    .. code-block:: html
         :caption: <template> 
 
         <p ref="pElementRef">Hello</p>
@@ -454,6 +460,7 @@
 .. hint::  当 ID 改变时抓取新的数据。
 
     .. grid:: 2
+
         .. grid-item::
             | 在右边的例子中就是这样一个组件。该组件被挂载时，会从模拟 API 中抓取 todo 数据，同时还有一个按钮可以改变要抓取的 todo 的 ID。
             | 现在，尝试实现一个侦听器，使得组件能够在按钮被点击时抓取新的 todo 项目。
@@ -487,7 +494,7 @@
             }
         }
 
-    .. code-block::html
+    .. code-block:: html
         :caption: <template> 
 
         <p>Todo id: {{ todoId }}</p>
@@ -501,56 +508,59 @@
 
 .. mermaid::
 
-    flowchart
+    flowchart LR
 
-    父组件
-    子组件
-    父组件 --props+: 属性传递数据 -->子组件
-    子组件 --emit+@ 监听触发事件--> 父组件
+    A[父组件]
+    B[子组件]
+    A --"props + :属性传递数据"--> B
+    B --"emit + @监听触发事件"--> A
+
 
 ``this.$emit()`` 的第一个参数是事件的名称。其他所有参数都将传递给事件监听器。
 
 .. hint:: props 传递数据
 
-    .. grid-item::
+    .. grid:: 2
 
-        .. code-block:: js
-            :caption: ChildComp.vue <script> 
+        .. grid-item::
 
-            export default {
-                props: {
-                    msg: String  
-                    // 在props声明 而不是data
-                }
-            }
+            .. code-block:: js
+                :caption: ChildComp.vue <script> 
 
-        .. code-block::html
-            :caption: ChildComp.vue <template> 
-
-            <h2>{{ msg || 'No props passed yet' }}</h2>
-
-    .. grid-item::
-
-        .. code-block:: js
-            :caption: ParentComp.vue <script> 
-
-            import ChildComp from './ChildComp.vue'  // 导入
-
-            export default {
-                components: {ChildComp},  // 注册
-                data() {
-                    return {
-                        greeting: 'Hello from parent'
+                export default {
+                    props: {
+                        msg: String  
+                        // 在props声明 而不是data
                     }
                 }
-            }
 
-        .. code-block::html
-            :caption: ParentComp.vue <template> 
+            .. code-block:: html
+                :caption: ChildComp.vue <template> 
 
-            <!--用dom形式使用子组件-->
-            <ChildComp :msg="greeting"/> 
-            <!--用属性的方式传过去-->
+                <h2>{{ msg || 'No props passed yet' }}</h2>
+
+        .. grid-item::
+
+            .. code-block:: js
+                :caption: ParentComp.vue <script> 
+
+                import ChildComp from './ChildComp.vue'  // 导入
+
+                export default {
+                    components: {ChildComp},  // 注册
+                    data() {
+                        return {
+                            greeting: 'Hello from parent'
+                        }
+                    }
+                }
+
+            .. code-block:: html
+                :caption: ParentComp.vue <template> 
+
+                <!--用dom形式使用子组件-->
+                <ChildComp :msg="greeting"/> 
+                <!--用属性的方式传过去-->
 
 
 
@@ -560,44 +570,44 @@
 
         .. grid-item::
 
-        .. code-block:: js
-            :caption: ChildComp.vue <script> 
+            .. code-block:: js
+                :caption: ChildComp.vue <script> 
 
-            export default {
-                emits: ['response'],
-                created() {  // 生命周期函数
-                    this.$emit('response', 'hello from child')
-                    // 发送 response
-                }
-            }
-
-        .. code-block::html
-            :caption: ChildComp.vue <template> 
-
-            <h2>Child component</h2>
-
-    .. grid-item::
-
-        .. code-block:: js
-            :caption: ParentComp.vue <script> 
-
-            import ChildComp from './ChildComp.vue'
-
-            export default {
-                components: {ChildComp},
-                data() {
-                    return {
-                        childMsg: 'No child msg yet'
+                export default {
+                    emits: ['response'],
+                    created() {  // 生命周期函数
+                        this.$emit('response', 'hello from child')
+                        // 发送 response
                     }
                 }
-            }
 
-        .. code-block::html
-            :caption: ParentComp.vue <template> 
+            .. code-block:: html
+                :caption: ChildComp.vue <template> 
 
-            <ChildComp @response="msg => childMsg=msg"/>
-            <!--监听response-->
-            <p>{{ childMsg }}</p>
+                <h2>Child component</h2>
+
+        .. grid-item::
+
+            .. code-block:: js
+                :caption: ParentComp.vue <script> 
+
+                import ChildComp from './ChildComp.vue'
+
+                export default {
+                    components: {ChildComp},
+                    data() {
+                        return {
+                            childMsg: 'No child msg yet'
+                        }
+                    }
+                }
+
+            .. code-block:: html
+                :caption: ParentComp.vue <template> 
+
+                <ChildComp @response="msg => childMsg=msg"/>
+                <!--监听response-->
+                <p>{{ childMsg }}</p>
 
 ### 插槽
 
