@@ -35,7 +35,6 @@
     .. code-block:: pycon
         :caption: 检查安装成功
 
-
         >>> import torch
         >>> print(torch.__version__)
         >>> print(torchvision.__version__)
@@ -171,6 +170,19 @@
 
 ### Tensor
 
+
+
+#### view
+
+``tensor.view(-1, n)``
+
+.. danger:: ``data.view(batchsize, feature_size)``
+
+### Variable
+
+
+https://blog.csdn.net/weixin_42782150/article/details/106854349
+
 ### class DataSet
 
 .. note:: 官方 ``torch.utils.data.DataSet``
@@ -214,6 +226,18 @@
 
 1 Epoch = 10  drop_last=True
 1 Epoch = 11  drop_last=False
+
+
+
+.. note:: ``len(dataloader)``
+
+    - ``drop_last = True`` :math:`\lfloor\cfrac{\text{len(dataset)}}{\text{batchsize}}\rfloor`
+    - ``drop_last = False`` :math:`\lceil\cfrac{\text{len(dataset)}}{\text{batchsize}}\rceil`
+
+    .. danger:: 如果不設置 ``drop_last = True``，就不要設置 ``data.view(batch_size, feature_size)``
+
+        | 如果 dataset 的長度不能整除掉 batchsize, 最後一個 batch 的 size = ``mod(len(dataset), batchsize)``, 是不定長的。如果設置成 batchsize, tensor的 shape 其實不滿足 :math:`\text{batchsize}\times\text{feature_size}`  
+        | => ``data.view(-1, feature_size)``
 
 .. code-block:: py
     :emphasize-lines: 1
