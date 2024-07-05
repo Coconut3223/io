@@ -36,10 +36,10 @@ import re
 
 
 input_ = r"""
-|ele|change|
-| input | 回车|
-|textarea||
-|select||
+|||拷贝|共享内存|创建新副本|
+|array_2_tensor| ``torch.from_numpy(arr)`` | 浅拷贝|✅|❌|
+|^| ``torch.Tensor(arr)`` | 深拷贝|❌|✅|
+|tensor_2_array| ``t.numpy(arr)`` | 浅拷贝|✅|❌|
 """
 
 data_list = input_.split('\n')[1:-1]

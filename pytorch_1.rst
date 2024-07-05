@@ -18,8 +18,8 @@
 
 
 .. code-block:: pycon
+    :caption: 查看架构
 	
-    ``` python title="查看架构"
     >>> import platfrorm
     >>> print(platform.uname()[4])
     arm64
@@ -53,16 +53,18 @@
 
 ### locally disable gradient computation
 
+...
+
 ## 完整的
 
-.. note:: 初步检查模型是否有写错
+.. note:: 初步检查模型是否有写错?
     
-	.. code-block:: py
+    .. code-block:: py
 
         model = MyModel()
-   	    input = torch.ones(batch, input_size)
-    	output = model(input)
-    	print(output.shape())
+        input = torch.ones(batch, input_size)
+        output = model(input)
+        print(output.shape())
 
 ### cpu & gpu
 
@@ -305,23 +307,24 @@ class DataLoader(Generic[T_co]):
     y = mymodel(x)
      ```` `
 
- ```` ` python
-class Module:
-    """
-    所有 nn 模型的 base class 都要继承它
-    """
-    ...
-    
-    def __init__(self, *args, **kwargs) -> None:
-        """
-        Initializes internal Module state, shared by both nn.Module and ScriptModule.
+.. code-block:: py
 
-        Warning:
-            - 如果改属性 最好用  ````  super().__setattr__('a', a)  ```` 
-                而不是  ````  self.a = a  ````  防止 Module.__setattr__ overhead
+    class Module:
         """
-        ... 
- ```` `
+        所有 nn 模型的 base class 都要继承它
+        """
+        ...
+        
+        def __init__(self, *args, **kwargs) -> None:
+            """
+            Initializes internal Module state, shared by both nn.Module and ScriptModule.
+
+            Warning:
+                - 如果改属性 最好用  ````  super().__setattr__('a', a)  ```` 
+                    而不是  ````  self.a = a  ````  防止 Module.__setattr__ overhead
+            """
+            ... 
+
 
 ####  ``Sequential``  类 ``transforms.Compose`` 的用法，模型进一步封装
 
@@ -471,431 +474,451 @@ class Sequential(Module):
 
 ### nn.xxx & nn.functional.xxx
 
- ```` `python
-from torch import nn
-from torch.nn inport Functional as F
+.. code-block:: py
 
-layer_nn = nn.conv2d(...)
-layer_F = F.conv2d(...)
- ```` `
+    from torch import nn
+    from torch.nn inport Functional as F
+
+    layer_nn = nn.conv2d(...)
+    layer_F = F.conv2d(...)
+
 
 #### Liner
 
- ```` ` python
-class Linear(Module):
-    """
-    h = W^Tx+b
+.. code-block:: py
 
-    Args:
-        - in_features: Int = 入
-        - out_features: Int = 出
-        - bias: Bool
-            default = True
+    class Linear(Module):
+        """
+        h = W^Tx+b
 
-    Attributes:
-        - weight: tensor[in_features, out_features]
-        - bias: tensor[1]
+        Args:
+            - in_features: Int = 入
+            - out_features: Int = 出
+            - bias: Bool
+                default = True
 
-    Examples::
-        >>> m = nn.Linear(20, 30)
-        >>> input = torch.randn(128, 20)
-        >>> output = m(input)
-        >>> print(output.size())
-        #res: torch.Size([128, 30])
-    """
+        Attributes:
+            - weight: tensor[in_features, out_features]
+            - bias: tensor[1]
 
-    ...
- ```` `
+        Examples::
+            >>> m = nn.Linear(20, 30)
+            >>> input = torch.randn(128, 20)
+            >>> output = m(input)
+            >>> print(output.size())
+            #res: torch.Size([128, 30])
+        """
+
+        ...
 
 #### Conv
 
- :math:`` 
-\mathcal{U}(-\sqrt{k}, \sqrt{k})
-\\
-k = \frac{groups}{C_\text{in} * \prod_{i=0}^{1}\text{kernel\_size}[i]}
- :math:`` 
+.. math::
 
------
- :math:`` 
-\text{out}(N_i, C_{\text{out}_j}) = \text{bias}(C_{\text{out}_j}) +
-\sum_{k = 0}^{C_{\text{in}} - 1} \text{weight}(C_{\text{out}_j}, k) \star \text{input}(N_i, k)
-\\\begin{cases} N&\text{batch size}\\ C&\text{channel}\\H&\text{height}\\W&\text{width}\\\end{cases}\\
-H_{out} = \left\lfloor\frac{H_{in}  + 2 \times \text{padding}[0] - \text{dilation}[0]
-        \times (\text{kernel\_size}[0] - 1) - 1}{\text{stride}[0]} + 1\right\rfloor\\
-W_{out} = \left\lfloor\frac{W_{in}  + 2 \times \text{padding}[1] - \text{dilation}[1]
-        \times (\text{kernel\_size}[1] - 1) - 1}{\text{stride}[1]} + 1\right\rfloor
- :math:`` 
+    \mathcal{U}(-\sqrt{k}, \sqrt{k})
+    \\
+    k = \frac{groups}{C_\text{in} * \prod_{i=0}^{1}\text{kernel\_size}[i]}
 
-!!! danger "input size"
+.. math::
+
+    \text{out}(N_i, C_{\text{out}_j}) = \text{bias}(C_{\text{out}_j}) +
+    \sum_{k = 0}^{C_{\text{in}} - 1} \text{weight}(C_{\text{out}_j}, k) \star \text{input}(N_i, k)
+    \\\begin{cases} N&\text{batch size}\\ C&\text{channel}\\H&\text{height}\\W&\text{width}\\\end{cases}\\
+    H_{out} = \left\lfloor\frac{H_{in}  + 2 \times \text{padding}[0] - \text{dilation}[0]
+            \times (\text{kernel\_size}[0] - 1) - 1}{\text{stride}[0]} + 1\right\rfloor\\
+    W_{out} = \left\lfloor\frac{W_{in}  + 2 \times \text{padding}[1] - \text{dilation}[1]
+            \times (\text{kernel\_size}[1] - 1) - 1}{\text{stride}[1]} + 1\right\rfloor
+
+.. danger:: input size
     nn 可以[B, C, H, W] 或 [C, H, W]
     functional ==只可以 [B, C, H, W]==
 
- ```` ` python hl_lines="3"
-class Conv2d(_ConvNd):
-    """
-    nn.Conv2d
+.. code-block:: py
+    :emphasize-lines: 3
 
-    Args:
-        - in_channels: int = C_{in} = 输入的通道数
-        - out_channels: int = C_{out} = 输出的通道数 
-        - kernel_size: Union[int. tuple(int)] (int or tuple) = 卷积核大小
-        - stride: Union[int, tuple(int)] = 位移量 
-            default = 1
-            - int = 竖直方向 = 水平方向
-        - padding: Union[int, tuple(int), str\in{{'valid', 'same'}}] = 填充 input 图像
-            default = 0
-            - int = 竖直方向 = 水平方向
-            - 'valid' = no padding
-            - 'same' = 使得 input‘shape = output’shape
-        - dilation: Union[int, tuple(int)]= 填充 kernel 卷积核,  Spacing between kernel elements
-            default = 1 = no space
-            详看理论部分
-        - bias: bool 可学习的偏置
-            default:  ```` True ```` 
+    class Conv2d(_ConvNd):
+        """
+        nn.Conv2d
 
-    Shape:
-        - Input = (N, C_{in}, H_{in}, W_{in}) 或 (C_{in}, H_{in}, W_{in})
-        - Output = (N, C_{out}, H_{out}, W_{out}) 或 (C_{out}, H_{out}, W_{out})
+        Args:
+            - in_channels: int = C_{in} = 输入的通道数
+            - out_channels: int = C_{out} = 输出的通道数 
+            - kernel_size: Union[int. tuple(int)] (int or tuple) = 卷积核大小
+            - stride: Union[int, tuple(int)] = 位移量 
+                default = 1
+                - int = 竖直方向 = 水平方向
+            - padding: Union[int, tuple(int), str\in{{'valid', 'same'}}] = 填充 input 图像
+                default = 0
+                - int = 竖直方向 = 水平方向
+                - 'valid' = no padding
+                - 'same' = 使得 input‘shape = output’shape
+            - dilation: Union[int, tuple(int)]= 填充 kernel 卷积核,  Spacing between kernel elements
+                default = 1 = no space
+                详看理论部分
+            - bias: bool 可学习的偏置
+                default:  ```` True ```` 
 
-    Attributes:
-        - weight: Tensor[...] = 学习出来的卷积核 kernel
-            详看理论部分
-        - bias: Tensor[out_channels] = 学习出来的偏置
-            需要 bias := True  
-            详看理论部分
+        Shape:
+            - Input = (N, C_{in}, H_{in}, W_{in}) 或 (C_{in}, H_{in}, W_{in})
+            - Output = (N, C_{out}, H_{out}, W_{out}) 或 (C_{out}, H_{out}, W_{out})
 
-    Examples:
-        >>> # non-square kernels and unequal stride and with padding and dilation
-        >>> m = nn.Conv2d(16, 33, (3, 5), stride=(2, 1), padding=(4, 2), dilation=(3, 1))
-        >>> input = torch.randn(20, 16, 50, 100)
-        >>> output = m(input)
-    """
+        Attributes:
+            - weight: Tensor[...] = 学习出来的卷积核 kernel
+                详看理论部分
+            - bias: Tensor[out_channels] = 学习出来的偏置
+                需要 bias := True  
+                详看理论部分
 
-    def __init__(
-        self,
-        in_channels: int,
-        out_channels: int,
-        kernel_size: _size_2_t,
-        stride: _size_2_t = 1,
-        padding: Union[str, _size_2_t] = 0,
-        dilation: _size_2_t = 1,
-        groups: int = 1,
-        bias: bool = True,
-        padding_mode: str = 'zeros',  # TODO: refine this type
-        device=None,
-        dtype=None
-    ) -> None:
+        Examples:
+            >>> # non-square kernels and unequal stride and with padding and dilation
+            >>> m = nn.Conv2d(16, 33, (3, 5), stride=(2, 1), padding=(4, 2), dilation=(3, 1))
+            >>> input = torch.randn(20, 16, 50, 100)
+            >>> output = m(input)
+        """
+
+        def __init__(
+            self,
+            in_channels: int,
+            out_channels: int,
+            kernel_size: _size_2_t,
+            stride: _size_2_t = 1,
+            padding: Union[str, _size_2_t] = 0,
+            dilation: _size_2_t = 1,
+            groups: int = 1,
+            bias: bool = True,
+            padding_mode: str = 'zeros',  # TODO: refine this type
+            device=None,
+            dtype=None
+        ) -> None:
+            ...
+            super().__init__(
+                in_channels, out_channels, kernel_size_, stride_, padding_, dilation_,
+                False, _pair(0), groups, bias, padding_mode, **factory_kwargs)
+
         ...
-        super().__init__(
-            in_channels, out_channels, kernel_size_, stride_, padding_, dilation_,
-            False, _pair(0), groups, bias, padding_mode, **factory_kwargs)
 
+
+.. code-block:: py
+    :emphasize-lines: 4
+
+    conv2d = _add_docstr(
+        torch.conv2d,
+        """
+        nn.funcational.conv2d
+
+        conv2d(input, weight, bias=None, stride=1, padding=0, dilation=1, groups=1) -> Tensor
+
+        Args:
+            - input: Tensor[minibatch, in_channels, in_H , in_W] 
+            - weight: Tensor[out_channels, ?, ke_H, ke_W] = 卷积核
+            - bias: Union[Tensor[out_channels], None] 
+            - stride: Union[Int, Tuple(Int, Int)]
+                default =  1
+            - padding: Union[Int, Tuple(Int, Int), Str{'valid', 'same'}]
+                default = 0
+                - 'valid' = no padding
+                - 'same' = 
+            - dilation: Union[Int, Tuple(Int, Int)] the spacing between kernel elements.
+                default = 1
+
+        Examples::
+
+            >>> # With square kernels and equal stride
+            >>> filters = torch.randn(8, 4, 3, 3)
+            >>> inputs = torch.randn(1, 4, 5, 5)
+            >>> F.conv2d(inputs, filters, padding=1)
+        """
+    )  
     ...
 
- ```` `
-
- ```` ` python hl_lines="4"
-conv2d = _add_docstr(
-    torch.conv2d,
-    """
-    nn.funcational.conv2d
-
-    conv2d(input, weight, bias=None, stride=1, padding=0, dilation=1, groups=1) -> Tensor
-
-    Args:
-        - input: Tensor[minibatch, in_channels, in_H , in_W] 
-        - weight: Tensor[out_channels, ?, ke_H, ke_W] = 卷积核
-        - bias: Union[Tensor[out_channels], None] 
-        - stride: Union[Int, Tuple(Int, Int)]
-            default =  1
-        - padding: Union[Int, Tuple(Int, Int), Str{'valid', 'same'}]
-            default = 0
-            - 'valid' = no padding
-            - 'same' = 
-        - dilation: Union[Int, Tuple(Int, Int)] the spacing between kernel elements.
-            default = 1
-
-    Examples::
-
-        >>> # With square kernels and equal stride
-        >>> filters = torch.randn(8, 4, 3, 3)
-        >>> inputs = torch.randn(1, 4, 5, 5)
-        >>> F.conv2d(inputs, filters, padding=1)
-    """
-)  
-...
- ```` `
 
 #### Pool
 
- ```` `python hl_lines="1"
-class MaxPool2d(_MaxPoolNd):
-    """
-    2D 最大池化
+.. code-block:: py
+    :emphasize-lines: 1
 
-    Shape:
-        - input = [N, C, in_H, in_W] 或 [C, in_H, in_W]
-        - ouptput = [N, C, out_H, out_W] 或 [C, in_H, in_W]
-        - kernel = [ke_H, ke_W]
-        公式详看理论部分
+    class MaxPool2d(_MaxPoolNd):
+        """
+        2D 最大池化
 
-    Args:
-        - kernel_size: Union[Int, Tuple(Int, Int)]
-        - stride: Union[Int, Tuple(Int, Int)] 
-            default = kernel_size !!!
-        - padding: Union[Int, Tuple(Int, Int)] = 填充负无穷
-            用来针对除不尽的情况，也不会影响到取值（MaxPool）
-        - dilation: Union[Int, Tuple(Int, Int)] = controls the stride of elements in the window
-        - return_indices: Bool = 返回 MaxPool 中被取值的索引
-            default =
-        - ceil_mode: Bool = 要不要边界料
-            default = False
-            - False =  ``floor``  = 不要边角料
-            - True =  ``ceil``  = 要边角料 go off-bounds
-            应对除不尽的情况， 详看理论部分
+        Shape:
+            - input = [N, C, in_H, in_W] 或 [C, in_H, in_W]
+            - ouptput = [N, C, out_H, out_W] 或 [C, in_H, in_W]
+            - kernel = [ke_H, ke_W]
+            公式详看理论部分
 
-    Examples:
-        >>> # pool of non-square window
-        >>> m = nn.MaxPool2d((3, 2), stride=(2, 1))
-        >>> input = torch.randn(20, 16, 50, 32)
-        >>> output = m(input)
-    """
+        Args:
+            - kernel_size: Union[Int, Tuple(Int, Int)]
+            - stride: Union[Int, Tuple(Int, Int)] 
+                default = kernel_size !!!
+            - padding: Union[Int, Tuple(Int, Int)] = 填充负无穷
+                用来针对除不尽的情况，也不会影响到取值（MaxPool）
+            - dilation: Union[Int, Tuple(Int, Int)] = controls the stride of elements in the window
+            - return_indices: Bool = 返回 MaxPool 中被取值的索引
+                default =
+            - ceil_mode: Bool = 要不要边界料
+                default = False
+                - False =  ``floor``  = 不要边角料
+                - True =  ``ceil``  = 要边角料 go off-bounds
+                应对除不尽的情况， 详看理论部分
 
-    ...
+        Examples:
+            >>> # pool of non-square window
+            >>> m = nn.MaxPool2d((3, 2), stride=(2, 1))
+            >>> input = torch.randn(20, 16, 50, 32)
+            >>> output = m(input)
+        """
 
-    def forward(self, input: Tensor):
-        return F.max_pool2d(input, self.kernel_size, self.stride,
-                            self.padding, self.dilation, ceil_mode=self.ceil_mode,
-                            return_indices=self.return_indices)
- ```` `
+        ...
+
+        def forward(self, input: Tensor):
+            return F.max_pool2d(input, self.kernel_size, self.stride,
+                                self.padding, self.dilation, ceil_mode=self.ceil_mode,
+                                return_indices=self.return_indices)
+
 
 #### activation
 
-!!! danger "non-inpalce <br> shape：[B, *] 除了必须batchsize，后面 size 都随便"
+.. danger:: non-inpalce 
+
+    shape：[B, \*] 除了必须batchsize，后面 size 都随便
+
 
 ##### softmax
 
- :math:`` 
-\text{Softmax}(x_{i}) = \frac{\exp(x_i)}{\sum_j \exp(x_j)}
- :math:`` 
+
+.. math::
+    \text{Softmax}(x_{i}) = \frac{\exp(x_i)}{\sum_j \exp(x_j)}
+
 
 - 如果是稀疏向量 sparse vector（只传递非0的值），那些未传递的=原本是0的 在 softmax 里 看作  :math:`-\inf，\rightarrow \text{softmax}(-\inf)\rightarrow0` 
 
- ```` `python
-class Softmax(Module):
-    """
-    将某一维的值 映射到[0, 1] & sum=1。
+.. code-block:: py
 
-    Shape:
-        都可以
+    class Softmax(Module):
+        """
+        将某一维的值 映射到[0, 1] & sum=1。
 
-    Args:
-        - dim: Int = 要进行 softmax 的维度
-            default = 
+        Shape:
+            都可以
 
-    Examples::
-        >>> one, zerp = nn.Softmax(dim=1), nn.Softmax(dim=0)
-        >>> input = torch.tensor([[-1., -1.],[2., 2.]])
-        >>> y1, y0 = one(input), zero(input)
-        # y1 = tensor([[0.5, 0.5], [0.5, 0.5]])
-        # y0 = tensor([[0.0474, 0.0474], [0.9526, 0.9526]])
-    """
-    ...
- ```` `
+        Args:
+            - dim: Int = 要进行 softmax 的维度
+                default = 
+
+        Examples::
+            >>> one, zerp = nn.Softmax(dim=1), nn.Softmax(dim=0)
+            >>> input = torch.tensor([[-1., -1.],[2., 2.]])
+            >>> y1, y0 = one(input), zero(input)
+            # y1 = tensor([[0.5, 0.5], [0.5, 0.5]])
+            # y0 = tensor([[0.0474, 0.0474], [0.9526, 0.9526]])
+        """
+        ...
+
 
 ##### ReLU, rectified linear unit
 
- :math:`` 
-\text{ReLU}(x) = (x)^+ = \max(0, x)
- :math:`` 
-![](https://pytorch.org/docs/stable/_images/ReLU.png){width=60%}
+.. math:: 
+    \text{ReLU}(x) = (x)^+ = \max(0, x)
 
- ```` `python
-class ReLU(Module):
-    """
-    对于0以下截断
+.. image:: https://pytorch.org/docs/stable/_images/ReLU.png
+    :scale: 40%
 
-    Args:
-        - inplace:Bool = 原地实现
-            default = False
 
-    Shape:
-        都可以
+.. code-block:: py
 
-    Examples::
-        >>> m = nn.ReLU()
-        >>> input = torch.tensor([[-1., -1.],[2., 2.]])
-        >>> output = m(input)
-        # output: tensor([[0., 0.], [2., 2.]])
-    """
-    ...
- ```` `
+    class ReLU(Module):
+        """
+        对于0以下截断
+
+        Args:
+            - inplace:Bool = 原地实现
+                default = False
+
+        Shape:
+            都可以
+
+        Examples::
+            >>> m = nn.ReLU()
+            >>> input = torch.tensor([[-1., -1.],[2., 2.]])
+            >>> output = m(input)
+            # output: tensor([[0., 0.], [2., 2.]])
+        """
+        ...
 
 ##### Sigmoid
 
- :math:`` 
-\text{Sigmoid}(x) = \sigma(x) = \frac{1}{1 + \exp(-x)}
- :math:`` 
-![](https://pytorch.org/docs/stable/_images/Sigmoid.png){width=60%}
+.. math::
+    \text{Sigmoid}(x) = \sigma(x) = \frac{1}{1 + \exp(-x)}
 
- ```` ` python
-class Sigmoid(Module):
-    """
-    逐元素，映射到0-1 ，靠近0变化大，否则变化缓慢
-        
-    Shape:
-        都可以
+.. image:: https://pytorch.org/docs/stable/_images/Sigmoid.png
+    :scale: 40%
 
-    Examples:
-        >>> m = nn.Sigmoid()
-        >>> input = torch.tensor([[-1., -1.],[2., 2.]])
-        >>> output = m(input)
-        # output: tensor([[0.2689, 0.2689], [0.8808, 0.8808]])
-    """
-    ...
- ```` `
+.. code-block:: py
+
+    class Sigmoid(Module):
+        """
+        逐元素，映射到0-1 ，靠近0变化大，否则变化缓慢
+            
+        Shape:
+            都可以
+
+        Examples:
+            >>> m = nn.Sigmoid()
+            >>> input = torch.tensor([[-1., -1.],[2., 2.]])
+            >>> output = m(input)
+            # output: tensor([[0.2689, 0.2689], [0.8808, 0.8808]])
+        """
+        ...
 
 #### Normalization
 
 #### Droupout
 
-!!! question "如果特征图中的相邻像素具有很强的相关性 (则 i.i.d. dropout 不会使激活正则化，否则只会导致有效学习率下降。"
+.. hint:: Question: 如果特征图中的相邻像素具有很强的相关性 (则 i.i.d. dropout 不会使激活正则化，否则只会导致有效学习率下降。
 
-!!! danger "必须有batch！！！"
+.. danger:: 必须有batch！！！
 
- ```` ` python
-class Dropout1d(_DropoutNd):
-    """
-    随机取0，增强 feature maps 的独立性，防止过拟合。
-    概率 p 伯努利采样
+.. code-block:: py
 
-    Args:
-        - p: Optional[Float] 
-        - inplace:bool 
-            default = False 
+    class Dropout1d(_DropoutNd):
+        """
+        随机取0，增强 feature maps 的独立性，防止过拟合。
+        概率 p 伯努利采样
 
-    Shape:
-        - Input: [B, C, L] 或 [C, L] 
-            卷积的时候：nn.Conv1d: 1D-tensor
-        - Output: [B, C, L] 或 [C, L]
+        Args:
+            - p: Optional[Float] 
+            - inplace:bool 
+                default = False 
 
-    Examples::
-        >>> m = nn.Dropout1d(p=0.2)
-        >>> input = torch.randn(20, 16, 32)
-        >>> output = m(input)
-    """
-    ...
+        Shape:
+            - Input: [B, C, L] 或 [C, L] 
+                卷积的时候：nn.Conv1d: 1D-tensor
+            - Output: [B, C, L] 或 [C, L]
 
-class Dropout2d(_DropoutNd):
-    """
-    随机取0，增强 feature maps 的独立性，防止过拟合。
-    概率 p 伯努利采样
+        Examples::
+            >>> m = nn.Dropout1d(p=0.2)
+            >>> input = torch.randn(20, 16, 32)
+            >>> output = m(input)
+        """
+        ...
 
-    Args:
-        - p: Optional[Float] 
-        - inplace:bool 
-            default = False 
+    class Dropout2d(_DropoutNd):
+        """
+        随机取0，增强 feature maps 的独立性，防止过拟合。
+        概率 p 伯努利采样
 
-    Shape:
-        - Input: [B, C, H, W] 或 [B, C, L] 
-            卷积的时候：nn.Conv1d: 2D-tensor
-        - Output: [B, C, H, W] 或 [B, C, L] 
+        Args:
+            - p: Optional[Float] 
+            - inplace:bool 
+                default = False 
 
-    Examples::
-        >>> m = nn.Dropout2d(p=0.2)
-        >>> input = torch.randn(20, 16, 32, 32)
-        >>> output = m(input)
-    """
-    ...
- ```` `
+        Shape:
+            - Input: [B, C, H, W] 或 [B, C, L] 
+                卷积的时候：nn.Conv1d: 2D-tensor
+            - Output: [B, C, H, W] 或 [B, C, L] 
+
+        Examples::
+            >>> m = nn.Dropout2d(p=0.2)
+            >>> input = torch.randn(20, 16, 32, 32)
+            >>> output = m(input)
+        """
+        ...
 
 ####  ``flatten`` 
 
- ```` `python hl_lines="14 17"
-class Flatten(Module):
-    """
-    给定维度展平向量
+.. code-block:: py
+    :emphasize-lines: 14,17
 
-    Args:
-        - start_dim: Int = 开始的维度
-            default = 1
-        - end_dim: Int  = 结束的维度
-            default = -1
-        default 就是 [B, H, W, ...] -> [B, H*W*...], 最外层不会被展平
+    class Flatten(Module):
+        """
+        给定维度展平向量
 
-    Examples::
-        >>> input = torch.randn(32, 1, 5, 5)
-        >>> m = nn.Flatten() # 默认 0B 除外
-        >>> output = m(input)
-        torch.Size([32, 25])
-        >>> m = nn.Flatten(0, 2) # 自定义：最里面除外
-        >>> output = m(input)
-        torch.Size([160, 5])
-        >>> m = nn.Flatten(0, -1) # 全展平
-    """
-    ...
- ```` `
+        Args:
+            - start_dim: Int = 开始的维度
+                default = 1
+            - end_dim: Int  = 结束的维度
+                default = -1
+            default 就是 [B, H, W, ...] -> [B, H*W*...], 最外层不会被展平
+
+        Examples::
+            >>> input = torch.randn(32, 1, 5, 5)
+            >>> m = nn.Flatten() # 默认 0B 除外
+            >>> output = m(input)
+            torch.Size([32, 25])
+            >>> m = nn.Flatten(0, 2) # 自定义：最里面除外
+            >>> output = m(input)
+            torch.Size([160, 5])
+            >>> m = nn.Flatten(0, -1) # 全展平
+        """
+        ...
+
 
 ##  ``torch.nn.`` Loss &  ``torch.Optim`` 
 
- ```` ` python
-model = # 定义模型
-loss_fn = # 定义 loss 算法
-optimizer = # 定义 梯度迭代 的算法
-""" basic """
-for input, target in dataset:
-    output = model(input) 
-    loss = loss_fn(output, target) # 算 loss
-    optimizer.zero_grad() # 清空上一轮算出来的的梯度，否则梯度会累积 
-    loss.backward() # 通过 反向传播 计算新一轮梯度
-    optimizer.step() # 根据算出来的梯度 更新参数
- ```` `
+.. code-block:: py
 
- ```` ` python
-from torch import nn
-from torch.optim import SGD
+    model = # 定义模型
+    loss_fn = # 定义 loss 算法
+    optimizer = # 定义 梯度迭代 的算法
+    """ basic """
+    for input, target in dataset:
+        output = model(input) 
+        loss = loss_fn(output, target) # 算 loss
+        optimizer.zero_grad() # 清空上一轮算出来的的梯度，否则梯度会累积 
+        loss.backward() # 通过 反向传播 计算新一轮梯度
+        optimizer.step() # 根据算出来的梯度 更新参数
 
-model = nn.Sequential(
-    Linear(10, 32),
-    ReLU(),
-    Linear(32, 3)
-)
-loss_fn = nn.L1Loss()
-optimizer = SGD(model.parameters(), lr=0.01, momentum=0.9)
 
-""" whole batch 整一个"""
-for i in range(epoch):
-    loss_epoch = 0
-    for x, y in dataloader:
-        y_hat = model(x)
-        loss_epoch += loss_fn(y, y_hat)
-    
-    optimizer.zero_grad()
-    loss_epoch.backward()
-    loss_epoch.step()
+.. code-block:: py
 
-""" mini-batch """ 
- ```` `
+    from torch import nn
+    from torch.optim import SGD
+
+    model = nn.Sequential(
+        Linear(10, 32),
+        ReLU(),
+        Linear(32, 3)
+    )
+    loss_fn = nn.L1Loss()
+    optimizer = SGD(model.parameters(), lr=0.01, momentum=0.9)
+
+    """ whole batch 整一个"""
+    for i in range(epoch):
+        loss_epoch = 0
+        for x, y in dataloader:
+            y_hat = model(x)
+            loss_epoch += loss_fn(y, y_hat)
+        
+        optimizer.zero_grad()
+        loss_epoch.backward()
+        loss_epoch.step()
+
+    """ mini-batch """ 
+
 
 ####  ``torch.optim`` 
 
 构建一个优化器对象，该对象将保持当前状态，并将根据计算的梯度更新参数。
 
-!!! danger " :math:`\text{Minimize} f(\theta)` "
+.. danger:: :math:`\text{Minimize} f(\theta)` 
      ``maximize = False(default)``  :math:`\iff g_t\leftarrow=-\nabla f(\theta)` 
-     :math:`` \begin{aligned}
-    &\textbf{关于梯度：}\nabla 是上升的方向\\[-1em]
-    &\rule{110mm}{0.4pt}\\
-    &\textbf{input}:
-        \theta_0 \text{ (params)}, \:
-        f(\theta) \text{ (objective)}, \: \textit{maximize}\\[-1em]
-    &\rule{110mm}{0.4pt}\\
-    &\hspace{5mm}\textbf{if} \: \textit{maximize}\iff \text{Maximize }f(\theta)\\
-    &\hspace{10mm}g_t \leftarrow  +\nabla_\theta f(\theta)\\
-    &\hspace{5mm}\textbf{else}\iff \text{Minimize}f(\theta)\\
-    &\hspace{10mm}g_t \leftarrow -\nabla_\theta f(\theta)\\[-1em]
-    &\rule{110mm}{0.4pt}
-    \end{aligned} :math:`` 
+    
+    .. math:: 
+        
+        \begin{aligned}
+        &\textbf{关于梯度：}\nabla 是上升的方向\\[-1em]
+        &\rule{110mm}{0.4pt}\\
+        &\textbf{input}:
+            \theta_0 \text{ (params)}, \:
+            f(\theta) \text{ (objective)}, \: \textit{maximize}\\[-1em]
+        &\rule{110mm}{0.4pt}\\
+        &\hspace{5mm}\textbf{if} \: \textit{maximize}\iff \text{Maximize }f(\theta)\\
+        &\hspace{10mm}g_t \leftarrow  +\nabla_\theta f(\theta)\\
+        &\hspace{5mm}\textbf{else}\iff \text{Minimize}f(\theta)\\
+        &\hspace{10mm}g_t \leftarrow -\nabla_\theta f(\theta)\\[-1em]
+        &\rule{110mm}{0.4pt}
+        \end{aligned}
 
 !!! p "Nesterov momentum"
     is based on the formula from
@@ -971,7 +994,7 @@ class Adagrad(Optimizer):
 
 ##### L1Loss, MAE
 
- :math:`` 
+:math:`` 
 \text{MAE} = \ell(f)= \begin{cases}\mathbb{E}\vert\hat{y_i}-y_i\vert\in\R&\text{reduction=mean} \\ \Vert\hat{y}-y\Vert_1\in\R&\text{reduction=sum}\\\vert\hat{y}-y\vert\in\R^n&\text{reduction=none}
 \end{cases}
  :math:`` 

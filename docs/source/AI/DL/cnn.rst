@@ -8,10 +8,10 @@
 
     - Accept a volume of size  :math:`W_1\times H_1\times D_1` 
     - Requires 4 hyperparameters
-      - Number of filters  :math:`K` 
-      - Filter' size  :math:`F` 
-      - Stride  :math:`S` 
-      - Zero padding  :math:`P` 
+        - Number of filters  :math:`K` 
+        - Filter' size  :math:`F` 
+        - Stride  :math:`S` 
+        - Zero padding  :math:`P` 
 
     - Number of weights  :math:`(F\times F\times D_1)\times K + K\text{(shared bias)}` 
     - Produce a volume of size  :math:`(\frac{W_1-F+2P}{S}+1)\times(\frac{H_1-F+2P}{S}+1)\times K` 
@@ -22,8 +22,8 @@
 
     - Accept a volume of size  :math:`W_2\times H_2\times K` 
     - Requires 2 hyperparameters
-      - pooling kernel' size  :math:`F` 
-      - Stride  :math:`S` 
+        - pooling kernel' size  :math:`F` 
+        - Stride  :math:`S` 
     - Number of weights  :math:`0` 
     - Produce a volume of size  :math:`(\frac{W_2-F}{S}+1)\times(\frac{H_2-F}{S}+1)` 
     - It is not common to use zero padding for pooling layer.
@@ -31,6 +31,10 @@
 .. note:: common setting
     | :math:`K`  2 的幂
     | F3S1P1, F5S1P2, F5S2P(whatever fits),F1S1P0
+
+.. note:: CNN 必须输入相同大小的照片吗？
+
+    CNN 地卷积层是不需要的，但是如果有全连接层，就一定要相同大小的输入
 
 ## Introduction
 

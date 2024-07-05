@@ -103,7 +103,7 @@
 
 **Ref**
 
-- `深入浅出package.json`_
+- `深入浅出package.json <>`_
 
 
 ## 模版语法
@@ -448,12 +448,14 @@
                 condition
             </button>
         
-        .. image:: ./pics/v-if_1.png
-            :caption: when condition = true
+        .. figure:: ./pics/v-if_1.png
+            
+            when condition = true
         
         .. figure:: ./pics/v-if_2.png
-            :caption: when condition = false
-
+            
+            when condition = false
+            
             整一块都没被渲染
 
     .. grid-item::
@@ -471,12 +473,14 @@
                 condition
             </button>
 
-        .. image:: ./pics/v-show_1.png
-            :caption: when condition = true
+        .. figure:: ./pics/v-show_1.png
+            
+            when condition = true
         
         .. figure:: ./pics/v-show_2.png
-            :caption: when condition = false
-
+            
+            when condition = false
+            
             基于 css display = None
 
 

@@ -1,6 +1,20 @@
 
 # pytorch
 
+
+## 机制
+
+### 内存共享机制
+
+为了实现高效计算，PyTorch提供了一些原地操作运算，即in-place operation，不经过复制，直接在原来的内存上进行计算。对于内存共享，主要有如下3种情况
+
+- 通过Tensor初始化Tensor: 直接通过Tensor来初始化另一个Tensor，或者通过Tensor的组合、分块、索引、变形操作来初始化另一个Tensor，则这两个Tensor共享内存。
+- 原地操作符: PyTorch对于一些操作通过加后缀 “ _ ” 实现了原地操作，如add_()和resize_()等，这种操作只要被执行，本身的Tensor则会被改变。
+- Tensor与NumPy转换: Tensor与NumPy可以高效地进行转换，并且转换前后的变量共享内存。在进行PyTorch不支持的操作时，甚至可以曲线救国，将Tensor转换为NumPy类型，操作后再转换为Tensor
+
+
+`深度学习(23):numpy与tensor的数据转换、相互赋值 <https://blog.csdn.net/BIT_HXZ/article/details/129714906?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0-129714906-blog-124422603.235^v43^pc_blog_bottom_relevance_base5&spm=1001.2101.3001.4242.1&utm_relevant_index=3>`_
+
 ## Configuration
 
 ### pytorch 安装
@@ -189,9 +203,10 @@ https://blog.csdn.net/weixin_42782150/article/details/106854349
     一个虚拟的类，All datasets that represent a map from keys to data samples
 
     - 所有的 dataset 都必须继承它
-       1. 必须重写 `__getitem__`
-       2. 选择重写 `__len__`
-       3. 如果 key/indice 不是 int，对应的 DataLoader 也大改
+
+        1. 必须重写 `__getitem__`
+        2. 选择重写 `__len__`
+        3. 如果 key/indice 不是 int，对应的 DataLoader 也大改
 
     .. code-block:: py
 
@@ -312,6 +327,45 @@ https://blog.csdn.net/weixin_42782150/article/details/106854349
             else:
                 return len(self._index_sampler)   
 
+#### Data sampler
+
+##### `WeightedRandomSampler <https://pytorch.org/docs/stable/data.html#torch.utils.data.WeightedRandomSampler>`_
+
+**样本不均衡情况下带权重随机采样**
+
+==Classification==
+
+
+- 不需要再传 ``shuffle=True``
+- ``:warning:`` 传进去的权重 seq 是针对每一个样本的权重
+- 权重的和不需要等于 1 → :math:`\sum(\text{weight_of_samples})\neq 1`
+- 权重的设置= **样本数量的倒数** :math:`w_A = \cfrac{1}{\text{size_of_classA}}` 重点是相对比例，所以只要 :math:`s_A * \cfrac{1}{s_A}=s_B*\cfrac{1}{s_B}=1` 就行
+
+
+.. hint:: Question: 通过weights设定样本权重，权重越大的样本被选中的概率越大，待选取的样本数目一般小于全部的样本数目。
+
+.. code-block:: py
+    
+    from torch.utils.data import WeightedRandomSampler
+
+    weight_of_classes = [0.251, 0.249]  # 每一类的比重
+    weight_of_samples = [weight_of_classes[int(y)] for (x, y) in train_dataset]  
+    # 样本根据所属的类获得生成对应的权重
+
+    train_loader = DataLoader(
+        dataset=train_dataset,
+        batch_size=BATCH_SIZE,      
+        sampler=WeightedRandomSampler(
+            weights=weight_of_samples,  # len = len_of_samples
+            num_samples=total_train_samples,   # 一共要抽多少
+            replacement=True,  # 放回采样
+        ),
+    )
+
+**ref:**
+
+- `torch.utils.data.WeightedRandomSampler样本不均衡情况下带权重随机采样 <https://blog.csdn.net/weixin_41496173/article/details/116501428>`_
+
 ## nn
 
 ### 一些基本的东西
@@ -326,7 +380,7 @@ https://blog.csdn.net/weixin_42782150/article/details/106854349
 
     .. code-block:: py
         :emphasize-lines: 6
- 
+
         import torch.nn as nn
         import torch.nn.functional as F
 
@@ -357,8 +411,8 @@ https://blog.csdn.net/weixin_42782150/article/details/106854349
             Initializes internal Module state, shared by both nn.Module and ScriptModule.
 
             Warning:
-                - 如果改属性 最好用 `` super().__setattr__('a', a) ``
-                    而不是 `` self.a = a `` 防止 Module.__setattr__ overhead
+                - 如果改属性 最好用 ``super().__setattr__('a', a)``
+                    而不是 ``self.a = a`` 防止 Module.__setattr__ overhead
             """
             ... 
 
@@ -370,7 +424,7 @@ https://blog.csdn.net/weixin_42782150/article/details/106854349
 
 .. code-block:: py
     :emphasize-lines: 18,31,35,36,37,45
- 
+
     class Sequential(Module):
         """
         模型的序列封装，输入会按序经过里面的每一个模型，最后进行输出。
@@ -716,9 +770,12 @@ https://blog.csdn.net/weixin_42782150/article/details/106854349
 #### activation
 
 .. danger:: non-inpalce 
+    
     shape：[B, \*] 除了必须batchsize，后面 size 都随便
 
+
 ##### softmax
+
 
 .. math:: 
     \text{Softmax}(x_{i}) = \frac{\exp(x_i)}{\sum_j \exp(x_j)}
@@ -777,12 +834,14 @@ https://blog.csdn.net/weixin_42782150/article/details/106854349
         """
         ...
 
+
 ##### Sigmoid
+
 
 .. math::
     \text{Sigmoid}(x) = \sigma(x) = \frac{1}{1 + \exp(-x)}
 
- 
+
 .. image:: https://pytorch.org/docs/stable/_images/Sigmoid.png
 
 .. code-block:: py
@@ -802,9 +861,10 @@ https://blog.csdn.net/weixin_42782150/article/details/106854349
         """
         ...
 
+
 #### Normalization
 
-#### Droupout
+##### Droupout
 
 .. hint:: 如果特征图中的相邻像素具有很强的相关性 (则 i.i.d. dropout 不会使激活正则化，否则只会导致有效学习率下降。
 
@@ -857,7 +917,7 @@ https://blog.csdn.net/weixin_42782150/article/details/106854349
         ...
 
 
-#### `flatten`
+##### ``flatten``
 
 .. code-block:: py
     :emphasize-lines: 14,17

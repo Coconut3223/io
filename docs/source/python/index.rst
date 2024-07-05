@@ -10,3 +10,5 @@
     numpy
     pytorch
     exam
+    plot
+    trans
