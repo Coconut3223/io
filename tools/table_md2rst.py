@@ -36,12 +36,10 @@ import re
 
 
 input_ = r"""
-||琅|狼|dis|
-|拼音|lang2|lang2||
-|音形码|F702|F702|edit-distance|
-|^|11313B|14323A| :math:`1-\cfrac{4}{10}=.6` |
-|二进制|1111011100000010|1111011100000010|paper|
-|^|000100010011000100111001|000101000011001000111010| :math:`1-\cfrac{5}{40}=.875` |
+|ele|change|
+| input | 回车|
+|textarea||
+|select||
 """
 
 data_list = input_.split('\n')[1:-1]
