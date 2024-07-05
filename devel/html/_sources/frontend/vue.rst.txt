@@ -23,6 +23,9 @@
     $ npm run serve  # 运行服务
 
 
+`重新启用被弃用的TypeScript Vue Plugin (Volar)拓展  <https://github.com/vuejs/language-tools/issues/4205>`_
+
+
 ## 项目配置 & ``*.vue``
 
 .. code-block:: none
@@ -117,8 +120,49 @@
 
     - ``this`` 来访问组件实例。组件实例会暴露 ``data`` 中声明的数据属性。我们可以通过改变这些属性的值来更新组件状态。
 
+.. danger:: 变量在 ``*.vue`` 上被引用 (Options API)
+
+    .. grid:: 2
+
+        .. grid-item::
+
+            .. code-block:: js
+                :caption: <script>
+
+                export default{
+                    name: "componentA"  // 组件的名字以便被引用
+                    data(){
+                        return{  // 暴露出去被别的引用
+                            var: value, // 直接
+                            
+                        }
+                    },
+                    methods:{ // 放函数的地方
+                        /*
+                        在事件中, 读取data里的属性, 需要 this.属性
+                        */
+                        func(){
+                            this.var = xxx  
+                        },
+                        fun(arg){
+                        },
+                    }
+                }
+    
+        .. grid-item::
+
+            .. code-block:: html
+                :caption: <template>
+
+                {{var}}  <!-- 双大括号 -->
+
+
+
+
+
+
 .. code-block:: js
-    :caption: <template>
+    :caption: <script>
 
     export default{
         data(){
@@ -132,7 +176,7 @@
             // 使用 computed 选项声明一个响应式的属性，它的值由其他属性计算而来：
         },
         components:{
-            // 注册组件
+            // 挂载组件
         },
         props:{
             // 暴露给父组件的
@@ -210,13 +254,66 @@
             {{ var a = 1 }}  // 语句 not 表达式
             {{ if (ok) {return message}  // 流程控制    
 
-### 事件监听
+### 监听事件
 
 ``v-on:event="func"`` & 简写 ``@event="func"`` 指令监听 DOM 事件
 
 ==HTML DOM 事件== 允许 JavaScript 在 HTML 文档中的元素上注册不同的事件处理程序。事件通常与函数结合使用，在事件发生之前函数不会被执行（例如当用户单击按钮时）。
 
 `HTML DOM 事件 <https://www.w3school.com.cn/jsref/dom_obj_event.asp>`_
+
+.. hint:: 可以直接在里面写一些简单 js 语句
+
+    .. grid:: 2
+
+        .. grid-item::
+
+            .. code-block:: html
+                :caption: <template>
+
+                <button @="counter += 1">Click: {{counter}}</button>
+
+        .. grid-item::
+
+            .. code-block:: js
+                :caption: <script>
+
+                export default{
+                    data(){
+                        return{
+                            counter = 0,
+                        }
+                    }
+                }
+
+.. note:: 带参数的话
+
+    .. grid:: 2
+
+        .. grid-item::
+
+            .. code-block:: html
+                :caption: <template>
+
+                <button @="func(arg)">Click: {{this.message}}</button>
+
+        .. grid-item::
+
+            .. code-block:: js
+                :caption: <script>
+
+                export default{
+                    data(){
+                        return{
+                            message = ""
+                        }
+                    },
+                    methods:{
+                        func(arg){
+                            this.message = arg
+                        }
+                    }
+                }
 
 **常见：**
 
@@ -257,11 +354,30 @@
                 </button>
 
 
-### 表单绑定
+### 双向数据绑定
 
-| ``<input v-model="绑定的值">``
-| ``v-model`` 会将被绑定的值与 ``<input>`` 的值自动同步，这样我们就不必再使用事件处理函数了。
+``v-model="绑定的值"`` 在 ``<textarea/>``, ``<input/>``, ``<select/>`` 元素上创建双向数据绑定。他会根据控件类型自动选取正确的方法自动更新数据，并在某种极端场景下进行一些特殊处理。
 
+.. danger:: ``v-model`` 是实时同步的。实时同步消耗很大 !!!!
+    | 绑定的数据会随输入进行实时更新。
+    | 添加 ``.lazy`` 修饰符，从而转为在 change 事件之后在进行同步。
+
+    .. table::
+
+        +--------+------+
+        |ele     |change|
+        +========+======+
+        | input  | 回车 |
+        +--------+------+
+        |textarea|      |
+        +--------+------+
+        |select  |      |
+        +--------+------+
+
+**修饰符**
+
+    - ``.lazy`` 不实时同步
+    - ``.trim`` 过滤输入首尾空白字符
 
 .. hint:: Example: 输入框
 
@@ -275,7 +391,7 @@
                 export default{
                     data(){
                         return{
-                            input:"Type in"
+                            input: ""
                         }
                     }    
                 }
@@ -285,16 +401,84 @@
             .. code-block:: html
                 :caption: <template>     
 
-                <input v-model="input">
+                <input v-model.lazy="input" placeholder="Type in"/>
+                <!-- 添加 lazy 修饰符 -->
                 <p>
-                    the content you typed is "{{input}}""
+                    the content you typed is "{{input}}"
                 </p>
+            
+            .. image:: ./pics/v-model_1.png
+
 
 
 ### 条件渲染
 
+
 1. ``v-if="condition"`` & ``v-else`` & ``v-else-if``
 2. ``v-show="condition"``
+
+.. danger:: ``v-if`` & ``v-show``
+
+    .. table:: 
+
+        +------+--------------------------+--------+------------+----------------+
+        |      |                          |切换开销|初始渲染开销|选择            |
+        +======+==========================+========+============+================+
+        |v-if  |真渲染，假销毁            |高      |低          |运行条件很少改变|
+        +------+--------------------------+--------+------------+----------------+
+        |v-else|all渲染，只是基于css不显示|低      |高          |频繁地切换      |
+        +------+--------------------------+--------+------------+----------------+
+
+    ``v-if`` ： 真正的条件渲染。确保在 ``condition=True|False`` 的切换过程中，条件块内的事件监听 & 子组件 适当地被销毁和重建
+
+.. grid:: 2
+
+    .. grid-item::
+
+        .. code-block:: html
+            :caption: v-if <template>
+
+            <span v-if="condition">
+                <button @click="change_condition">
+                    condition
+                </button>
+                <p>HelloWorld</p>
+            </span>
+            <button @click="change_condition">
+                condition
+            </button>
+        
+        .. image:: ./pics/v-if_1.png
+            :caption: when condition = true
+        
+        .. figure:: ./pics/v-if_2.png
+            :caption: when condition = false
+
+            整一块都没被渲染
+
+    .. grid-item::
+
+        .. code-block:: html
+            :caption: v-show <template>
+
+            <span v-show="condition">
+                <button @click="change_condition">
+                    condition
+                </button>
+                <p>HelloWorld</p>
+            </span>
+            <button @click="change_condition">
+                condition
+            </button>
+
+        .. image:: ./pics/v-show_1.png
+            :caption: when condition = true
+        
+        .. figure:: ./pics/v-show_2.png
+            :caption: when condition = false
+
+            基于 css display = None
+
 
 .. hint:: Example: 按钮修改条件真假，然后条件渲染
 
@@ -330,9 +514,18 @@
 
 .. code-block:: html
     
-    <li v-for="item in items" :key="item.id">
-        {{item.text}}
+    <li v-for="item in items" :key="item.id|idx">
+        {{item.attr}}
     </li>
+
+**维护状态：**
+
+| 当更新使用 ``v-for`` 渲染的元素列表时，默认使用 **就地更新** 策略，如果使用数据项的顺序被改变，vue 不会移动 DOM 元素来匹配数据项的顺序，而是就地更新 DOM 元素，并且确保它们在每个索引位置正确渲染。
+| 为了给 Vue 一个提示以便它跟踪每个节点的身份，从而重用和重新排序现有元素，需要为每项提供唯一的 ``key`` attribute.
+
+.. hint:: ``:key`` 的取值
+
+    看似是需要 index, 但其实业务上来说 都是从数据库拿或者将要存到数据库，都会有唯一的 ID.
 
 .. hint:: Example: Todo list
 
@@ -347,10 +540,12 @@
         export default {
             data() {
                 return {
-                newTodo: '',
-                hideCompleted: false,  // 决定是否展示全部
-                todos: [
-                    { id: id++, text: 'todo', done: false }]
+                    newTodo: '',
+                    hideCompleted: false,  // 决定是否展示全部
+                    todos: [{ 
+                        id: id++, 
+                        text: 'todo', 
+                        done: false }]
                 }
             },
             methods: {
@@ -446,6 +641,7 @@
 
 ``watch``
 
+
 .. hint:: 有些情况下，我们需要在状态变化时执行一些“副作用”
     
     | 例如更改 DOM，或是根据异步操作的结果去修改另一处的状态。
@@ -502,9 +698,45 @@
         <p v-if="!todoData">Loading...</p>
         <pre v-else>{{ todoData }}</pre>
 
+
+
 ### 父组件 & 子组件
 
-真正的 Vue 应用往往是由嵌套组件创建的。 父组件可以在模板中渲染另一个组件作为子组件。
+真正的 Vue 应用往往是由嵌套组件创建的。 父组件可以在模板中渲染另一个组件作为子组件。 
+
+通常一个应用会以 **一棵嵌套的组件树** 来组织。
+
+
+.. grid:: 2
+
+    .. grid-item::
+
+        .. code-block:: js
+            :caption: parent.<script>
+
+            import ComponentA from './components/Component.vue'  // 1. 引入组件
+
+            export default{
+                components:{
+                    ComponentA,  // 2. 挂载组件
+                }
+            }
+
+        .. code-block:: html
+            :caption:  parent.<template>
+
+            <ComponentA/>  // 3. 显示使用组件
+
+    .. grid-item::
+
+        .. code-block:: js
+            :caption:  child.<script>
+
+            export default{
+                name: "ComponentA",  // 子组件的名字
+            }
+
+    
 
 .. mermaid::
 

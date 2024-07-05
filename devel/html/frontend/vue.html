@@ -338,9 +338,9 @@
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#js-html-css" class="md-nav__link">js & html & css 绑定数据</a>
         </li>
-        <li class="md-nav__item"><a href="#id3" class="md-nav__link">事件监听</a>
+        <li class="md-nav__item"><a href="#id3" class="md-nav__link">监听事件</a>
         </li>
-        <li class="md-nav__item"><a href="#id4" class="md-nav__link">表单绑定</a>
+        <li class="md-nav__item"><a href="#id4" class="md-nav__link">双向数据绑定</a>
         </li>
         <li class="md-nav__item"><a href="#id5" class="md-nav__link">条件渲染</a>
         </li>
@@ -393,9 +393,9 @@
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#js-html-css" class="md-nav__link">js & html & css 绑定数据</a>
         </li>
-        <li class="md-nav__item"><a href="#id3" class="md-nav__link">事件监听</a>
+        <li class="md-nav__item"><a href="#id3" class="md-nav__link">监听事件</a>
         </li>
-        <li class="md-nav__item"><a href="#id4" class="md-nav__link">表单绑定</a>
+        <li class="md-nav__item"><a href="#id4" class="md-nav__link">双向数据绑定</a>
         </li>
         <li class="md-nav__item"><a href="#id5" class="md-nav__link">条件渲染</a>
         </li>
@@ -446,6 +446,7 @@ $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>vue_d
 $<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>serve<span class="w">  </span><span class="c1"># 运行服务</span>
 </pre></div>
 </div>
+<p><a class="reference external" href="https://github.com/vuejs/language-tools/issues/4205">重新启用被弃用的TypeScript Vue Plugin (Volar)拓展</a></p>
 <section id="id1">
 <h2 id="id1">项目配置 &amp; <code class="docutils literal notranslate"><span class="pre">*.vue</span></code><a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
 <div class="literal-block-wrapper docutils container" id="id12">
@@ -526,7 +527,7 @@ $<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>s
 </div>
 <p><strong>Ref</strong></p>
 <ul class="simple">
-<li><p><a href="#id44"><span class="problematic" id="id45">`深入浅出package.json`_</span></a></p></li>
+<li><p><a href="#id55"><span class="problematic" id="id56">`深入浅出package.json`_</span></a></p></li>
 </ul>
 </section>
 </section>
@@ -549,8 +550,49 @@ $<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>s
 <li><p><code class="docutils literal notranslate"><span class="pre">this</span></code> 来访问组件实例。组件实例会暴露 <code class="docutils literal notranslate"><span class="pre">data</span></code> 中声明的数据属性。我们可以通过改变这些属性的值来更新组件状态。</p></li>
 </ul>
 </div>
+<div class="admonition-vue-options-api admonition danger">
+<p class="admonition-title">变量在 <code class="docutils literal notranslate"><span class="pre">*.vue</span></code> 上被引用 (Options API)</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
 <div class="literal-block-wrapper docutils container" id="id17">
-<div class="code-block-caption"><span class="caption-text">&lt;template&gt;</span><a class="headerlink" href="#id17" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text">&lt;script&gt;</span><a class="headerlink" href="#id17" title="Link to this code">¶</a></div>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"componentA"</span><span class="w">  </span><span class="c1">// 组件的名字以便被引用</span>
+<span class="w">    </span><span class="nx">data</span><span class="p">(){</span>
+<span class="w">        </span><span class="k">return</span><span class="p">{</span><span class="w">  </span><span class="c1">// 暴露出去被别的引用</span>
+<span class="w">            </span><span class="kd">var</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="c1">// 直接</span>
+
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">methods</span><span class="o">:</span><span class="p">{</span><span class="w"> </span><span class="c1">// 放函数的地方</span>
+<span class="w">        </span><span class="cm">/*</span>
+<span class="cm">        在事件中, 读取data里的属性, 需要 this.属性</span>
+<span class="cm">        */</span>
+<span class="w">        </span><span class="nx">func</span><span class="p">(){</span>
+<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="kd">var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">xxx</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">fun</span><span class="p">(</span><span class="nx">arg</span><span class="p">){</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-text">&lt;template&gt;</span><a class="headerlink" href="#id18" title="Link to this code">¶</a></div>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{{var}}  <span class="cm">&lt;!-- 双大括号 --&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id19">
+<div class="code-block-caption"><span class="caption-text">&lt;script&gt;</span><a class="headerlink" href="#id19" title="Link to this code">¶</a></div>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="p">{</span>
 <span class="w">    </span><span class="nx">data</span><span class="p">(){</span>
 <span class="w">        </span><span class="c1">// 该组件暴露的数据</span>
@@ -563,7 +605,7 @@ $<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>s
 <span class="w">        </span><span class="c1">// 使用 computed 选项声明一个响应式的属性，它的值由其他属性计算而来：</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nx">components</span><span class="o">:</span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// 注册组件</span>
+<span class="w">        </span><span class="c1">// 挂载组件</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nx">props</span><span class="o">:</span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 暴露给父组件的</span>
@@ -585,8 +627,8 @@ $<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>s
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;..</span> <span class="pre">v-html="content"&gt;&lt;/..&gt;</span></code> 富 html</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;..</span> <span class="pre">v-bind:attri="attri_v"&gt;&lt;/..&gt;</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">&lt;..</span> <span class="pre">:attri="attri_v"&gt;&lt;/..&gt;</span></code> 属性</p></li>
 </ul>
-<div class="literal-block-wrapper docutils container" id="id18">
-<div class="code-block-caption"><span class="caption-text">&lt;template&gt;</span><a class="headerlink" href="#id18" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id20">
+<div class="code-block-caption"><span class="caption-text">&lt;template&gt;</span><a class="headerlink" href="#id20" title="Link to this code">¶</a></div>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- 传内容 --&gt;</span>
 <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>Header:: {{ header }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>  <span class="cm">&lt;!-- raw 文本形式 --&gt;</span>
 <span class="p">&lt;</span><span class="nt">div</span> <span class="na">v-html</span><span class="o">=</span><span class="s">"header"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>  <span class="cm">&lt;!-- html 编译 --&gt;</span>
@@ -601,8 +643,8 @@ $<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>s
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
 <div class="sd-col sd-d-flex-column docutils">
-<div class="literal-block-wrapper docutils container" id="id19">
-<div class="code-block-caption"><span class="caption-text">&lt;script&gt;</span><a class="headerlink" href="#id19" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id21">
+<div class="code-block-caption"><span class="caption-text">&lt;script&gt;</span><a class="headerlink" href="#id21" title="Link to this code">¶</a></div>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="p">{</span>
 <span class="w">    </span><span class="nx">data</span><span class="p">(){</span><span class="w">  </span><span class="c1">// 配合 data() 里的 return 设置数据</span>
 <span class="w">        </span><span class="k">return</span><span class="p">{</span>
@@ -617,8 +659,8 @@ $<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>s
 </div>
 </div>
 <div class="sd-col sd-d-flex-column docutils">
-<div class="literal-block-wrapper docutils container" id="id20">
-<div class="code-block-caption"><span class="caption-text">&lt;style&gt;</span><a class="headerlink" href="#id20" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id22">
+<div class="code-block-caption"><span class="caption-text">&lt;style&gt;</span><a class="headerlink" href="#id22" title="Link to this code">¶</a></div>
 <div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">red</span><span class="p">{</span>
 <span class="w">    </span><span class="k">color</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">red</span><span class="p">;</span>
 <span class="p">}</span>
@@ -633,8 +675,8 @@ $<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>s
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
 <div class="sd-col sd-d-flex-column docutils">
-<div class="literal-block-wrapper docutils container" id="id21">
-<div class="code-block-caption"><span class="caption-text">succeded</span><a class="headerlink" href="#id21" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id23">
+<div class="code-block-caption"><span class="caption-text">succeded</span><a class="headerlink" href="#id23" title="Link to this code">¶</a></div>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{{ number + 1 }}
 {{ ok ? "Yes" : "No" }}
 </pre></div>
@@ -642,8 +684,8 @@ $<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>s
 </div>
 </div>
 <div class="sd-col sd-d-flex-column docutils">
-<div class="literal-block-wrapper docutils container" id="id22">
-<div class="code-block-caption"><span class="caption-text">failed</span><a class="headerlink" href="#id22" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id24">
+<div class="code-block-caption"><span class="caption-text">failed</span><a class="headerlink" href="#id24" title="Link to this code">¶</a></div>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{{ var a = 1 }}  // 语句 not 表达式
 {{ if (ok) {return message}  // 流程控制
 </pre></div>
@@ -654,10 +696,73 @@ $<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>s
 </div>
 </section>
 <section id="id3">
-<h3 id="id3">事件监听<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<h3 id="id3">监听事件<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">v-on:event="func"</span></code> &amp; 简写 <code class="docutils literal notranslate"><span class="pre">@event="func"</span></code> 指令监听 DOM 事件</p>
 <p><span class="defi">HTML DOM 事件</span> 允许 JavaScript 在 HTML 文档中的元素上注册不同的事件处理程序。事件通常与函数结合使用，在事件发生之前函数不会被执行（例如当用户单击按钮时）。</p>
 <p><a class="reference external" href="https://www.w3school.com.cn/jsref/dom_obj_event.asp">HTML DOM 事件</a></p>
+<div class="admonition-js admonition hint">
+<p class="admonition-title">可以直接在里面写一些简单 js 语句</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<div class="literal-block-wrapper docutils container" id="id25">
+<div class="code-block-caption"><span class="caption-text">&lt;template&gt;</span><a class="headerlink" href="#id25" title="Link to this code">¶</a></div>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">button</span> <span class="err">@="</span><span class="na">counter</span> <span class="err">+=</span> <span class="na">1</span><span class="err">"</span><span class="p">&gt;</span>Click: {{counter}}<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<div class="literal-block-wrapper docutils container" id="id26">
+<div class="code-block-caption"><span class="caption-text">&lt;script&gt;</span><a class="headerlink" href="#id26" title="Link to this code">¶</a></div>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="p">{</span>
+<span class="w">    </span><span class="nx">data</span><span class="p">(){</span>
+<span class="w">        </span><span class="k">return</span><span class="p">{</span>
+<span class="w">            </span><span class="nx">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition- admonition note">
+<p class="admonition-title">带参数的话</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<div class="literal-block-wrapper docutils container" id="id27">
+<div class="code-block-caption"><span class="caption-text">&lt;template&gt;</span><a class="headerlink" href="#id27" title="Link to this code">¶</a></div>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">button</span> <span class="err">@="</span><span class="na">func</span><span class="err">(</span><span class="na">arg</span><span class="err">)"</span><span class="p">&gt;</span>Click: {{this.message}}<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<div class="literal-block-wrapper docutils container" id="id28">
+<div class="code-block-caption"><span class="caption-text">&lt;script&gt;</span><a class="headerlink" href="#id28" title="Link to this code">¶</a></div>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="p">{</span>
+<span class="w">    </span><span class="nx">data</span><span class="p">(){</span>
+<span class="w">        </span><span class="k">return</span><span class="p">{</span>
+<span class="w">            </span><span class="nx">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">methods</span><span class="o">:</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">func</span><span class="p">(</span><span class="nx">arg</span><span class="p">){</span>
+<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">arg</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <p><strong>常见：</strong></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">click</span></code> 单击</p></li>
@@ -667,8 +772,8 @@ $<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>s
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
 <div class="sd-col sd-d-flex-column docutils">
-<div class="literal-block-wrapper docutils container" id="id23">
-<div class="code-block-caption"><span class="caption-text">&lt;script&gt;</span><a class="headerlink" href="#id23" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id29">
+<div class="code-block-caption"><span class="caption-text">&lt;script&gt;</span><a class="headerlink" href="#id29" title="Link to this code">¶</a></div>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="p">{</span>
 <span class="w">    </span><span class="nx">data</span><span class="p">(){</span>
 <span class="w">        </span><span class="k">return</span><span class="p">{</span>
@@ -688,8 +793,8 @@ $<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>s
 </div>
 </div>
 <div class="sd-col sd-d-flex-column docutils">
-<div class="literal-block-wrapper docutils container" id="id24">
-<div class="code-block-caption"><span class="caption-text">&lt;template&gt;</span><a class="headerlink" href="#id24" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id30">
+<div class="code-block-caption"><span class="caption-text">&lt;template&gt;</span><a class="headerlink" href="#id30" title="Link to this code">¶</a></div>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">button</span> <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">"increment"</span><span class="p">&gt;</span>
     <span class="cm">&lt;!-- 点击绑定计数+1的函数 --&gt;</span>
     click: {{count}}
@@ -703,22 +808,51 @@ $<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>s
 </div>
 </section>
 <section id="id4">
-<h3 id="id4">表单绑定<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<h3 id="id4">双向数据绑定<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">v-model="绑定的值"</span></code> 在 <code class="docutils literal notranslate"><span class="pre">&lt;textarea/&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;input/&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;select/&gt;</span></code> 元素上创建双向数据绑定。他会根据控件类型自动选取正确的方法自动更新数据，并在某种极端场景下进行一些特殊处理。</p>
+<div class="admonition-v-model admonition danger">
+<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">v-model</span></code> 是实时同步的。实时同步消耗很大 !!!!</p>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">&lt;input</span> <span class="pre">v-model="绑定的值"&gt;</span></code></div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">v-model</span></code> 会将被绑定的值与 <code class="docutils literal notranslate"><span class="pre">&lt;input&gt;</span></code> 的值自动同步，这样我们就不必再使用事件处理函数了。</div>
+<div class="line">绑定的数据会随输入进行实时更新。</div>
+<div class="line">添加 <code class="docutils literal notranslate"><span class="pre">.lazy</span></code> 修饰符，从而转为在 change 事件之后在进行同步。</div>
 </div>
+<table>
+<thead>
+<tr class="row-odd"><th class="head"><p>ele</p></th>
+<th class="head"><p>change</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>input</p></td>
+<td><p>回车</p></td>
+</tr>
+<tr class="row-odd"><td><p>textarea</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>select</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>修饰符</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.lazy</span></code> 不实时同步</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.trim</span></code> 过滤输入首尾空白字符</p></li>
+</ul>
+</div></blockquote>
 <div class="admonition-example admonition hint">
 <p class="admonition-title">Example: 输入框</p>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
 <div class="sd-col sd-d-flex-column docutils">
-<div class="literal-block-wrapper docutils container" id="id25">
-<div class="code-block-caption"><span class="caption-text">&lt;script&gt;</span><a class="headerlink" href="#id25" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id31">
+<div class="code-block-caption"><span class="caption-text">&lt;script&gt;</span><a class="headerlink" href="#id31" title="Link to this code">¶</a></div>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="p">{</span>
 <span class="w">    </span><span class="nx">data</span><span class="p">(){</span>
 <span class="w">        </span><span class="k">return</span><span class="p">{</span>
-<span class="w">            </span><span class="nx">input</span><span class="o">:</span><span class="s2">"Type in"</span>
+<span class="w">            </span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="s2">""</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -727,15 +861,17 @@ $<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>s
 </div>
 </div>
 <div class="sd-col sd-d-flex-column docutils">
-<div class="literal-block-wrapper docutils container" id="id26">
-<div class="code-block-caption"><span class="caption-text">&lt;template&gt;</span><a class="headerlink" href="#id26" title="Link to this code">¶</a></div>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">input</span> <span class="na">v-model</span><span class="o">=</span><span class="s">"input"</span><span class="p">&gt;</span>
+<div class="literal-block-wrapper docutils container" id="id32">
+<div class="code-block-caption"><span class="caption-text">&lt;template&gt;</span><a class="headerlink" href="#id32" title="Link to this code">¶</a></div>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">input</span> <span class="na">v-model</span><span class="err">.</span><span class="na">lazy</span><span class="o">=</span><span class="s">"input"</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">"Type in"</span><span class="p">/&gt;</span>
+<span class="cm">&lt;!-- 添加 lazy 修饰符 --&gt;</span>
 <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
-    the content you typed is "{{input}}""
+    the content you typed is "{{input}}"
 <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 </div>
+<img alt="../_images/v-model_1.png" src="../_images/v-model_1.png"/>
 </div>
 </div>
 </div>
@@ -747,13 +883,117 @@ $<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>s
 <li><p><code class="docutils literal notranslate"><span class="pre">v-if="condition"</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">v-else</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">v-else-if</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">v-show="condition"</span></code></p></li>
 </ol>
+<div class="admonition-v-if-v-show admonition danger">
+<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">v-if</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">v-show</span></code></p>
+<table>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"></th>
+<th class="head"><p>切换开销</p></th>
+<th class="head"><p>初始渲染开销</p></th>
+<th class="head"><p>选择</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>v-if</p></td>
+<td><p>真渲染，假销毁</p></td>
+<td><p>高</p></td>
+<td><p>低</p></td>
+<td><p>运行条件很少改变</p></td>
+</tr>
+<tr class="row-odd"><td><p>v-else</p></td>
+<td><p>all渲染，只是基于css不显示</p></td>
+<td><p>低</p></td>
+<td><p>高</p></td>
+<td><p>频繁地切换</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">v-if</span></code> ： 真正的条件渲染。确保在 <code class="docutils literal notranslate"><span class="pre">condition=True|False</span></code> 的切换过程中，条件块内的事件监听 &amp; 子组件 适当地被销毁和重建</p>
+</div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<div class="literal-block-wrapper docutils container" id="id33">
+<div class="code-block-caption"><span class="caption-text">v-if &lt;template&gt;</span><a class="headerlink" href="#id33" title="Link to this code">¶</a></div>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">span</span> <span class="na">v-if</span><span class="o">=</span><span class="s">"condition"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">"change_condition"</span><span class="p">&gt;</span>
+        condition
+    <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>HelloWorld<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">button</span> <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">"change_condition"</span><span class="p">&gt;</span>
+    condition
+<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/home/runner/work/io/io/docs/source/frontend/vue.rst</span>, line 459)</p>
+<p>Error in “image” directive:
+unknown option: “caption”.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">image</span><span class="p">::</span> <span class="o">./</span><span class="n">pics</span><span class="o">/</span><span class="n">v</span><span class="o">-</span><span class="n">if_1</span><span class="o">.</span><span class="n">png</span>
+    <span class="p">:</span><span class="n">caption</span><span class="p">:</span> <span class="n">when</span> <span class="n">condition</span> <span class="o">=</span> <span class="n">true</span>
+</pre></div>
+</div>
+</aside>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/home/runner/work/io/io/docs/source/frontend/vue.rst</span>, line 462)</p>
+<p>Error in “figure” directive:
+unknown option: “caption”.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">figure</span><span class="p">::</span> <span class="o">./</span><span class="n">pics</span><span class="o">/</span><span class="n">v</span><span class="o">-</span><span class="n">if_2</span><span class="o">.</span><span class="n">png</span>
+    <span class="p">:</span><span class="n">caption</span><span class="p">:</span> <span class="n">when</span> <span class="n">condition</span> <span class="o">=</span> <span class="n">false</span>
+
+    <span class="n">整一块都没被渲染</span>
+</pre></div>
+</div>
+</aside>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<div class="literal-block-wrapper docutils container" id="id34">
+<div class="code-block-caption"><span class="caption-text">v-show &lt;template&gt;</span><a class="headerlink" href="#id34" title="Link to this code">¶</a></div>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">span</span> <span class="na">v-show</span><span class="o">=</span><span class="s">"condition"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">"change_condition"</span><span class="p">&gt;</span>
+        condition
+    <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>HelloWorld<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">button</span> <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">"change_condition"</span><span class="p">&gt;</span>
+    condition
+<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/home/runner/work/io/io/docs/source/frontend/vue.rst</span>, line 482)</p>
+<p>Error in “image” directive:
+unknown option: “caption”.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">image</span><span class="p">::</span> <span class="o">./</span><span class="n">pics</span><span class="o">/</span><span class="n">v</span><span class="o">-</span><span class="n">show_1</span><span class="o">.</span><span class="n">png</span>
+    <span class="p">:</span><span class="n">caption</span><span class="p">:</span> <span class="n">when</span> <span class="n">condition</span> <span class="o">=</span> <span class="n">true</span>
+</pre></div>
+</div>
+</aside>
+<aside class="system-message">
+<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/home/runner/work/io/io/docs/source/frontend/vue.rst</span>, line 485)</p>
+<p>Error in “figure” directive:
+unknown option: “caption”.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">figure</span><span class="p">::</span> <span class="o">./</span><span class="n">pics</span><span class="o">/</span><span class="n">v</span><span class="o">-</span><span class="n">show_2</span><span class="o">.</span><span class="n">png</span>
+    <span class="p">:</span><span class="n">caption</span><span class="p">:</span> <span class="n">when</span> <span class="n">condition</span> <span class="o">=</span> <span class="n">false</span>
+
+    <span class="n">基于</span> <span class="n">css</span> <span class="n">display</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</aside>
+</div>
+</div>
+</div>
 <div class="admonition-example admonition hint">
 <p class="admonition-title">Example: 按钮修改条件真假，然后条件渲染</p>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
 <div class="sd-col sd-d-flex-column docutils">
-<div class="literal-block-wrapper docutils container" id="id27">
-<div class="code-block-caption"><span class="caption-text">&lt;script&gt;</span><a class="headerlink" href="#id27" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id35">
+<div class="code-block-caption"><span class="caption-text">&lt;script&gt;</span><a class="headerlink" href="#id35" title="Link to this code">¶</a></div>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="p">{</span>
 <span class="w">    </span><span class="nx">data</span><span class="p">(){</span>
 <span class="w">        </span><span class="k">return</span><span class="p">{</span>
@@ -771,8 +1011,8 @@ $<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>s
 </div>
 </div>
 <div class="sd-col sd-d-flex-column docutils">
-<div class="literal-block-wrapper docutils container" id="id28">
-<div class="code-block-caption"><span class="caption-text">&lt;template&gt;</span><a class="headerlink" href="#id28" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id36">
+<div class="code-block-caption"><span class="caption-text">&lt;template&gt;</span><a class="headerlink" href="#id36" title="Link to this code">¶</a></div>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">button</span> <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">"change"</span><span class="p">&gt;</span>TorF<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">p</span> <span class="na">v-if</span><span class="o">=</span><span class="s">"condition"</span><span class="p">&gt;</span>T<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">p</span> <span class="na">v-else</span><span class="p">&gt;</span>F<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
@@ -786,10 +1026,19 @@ $<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>s
 </section>
 <section id="id6">
 <h3 id="id6">列表渲染<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">li</span> <span class="na">v-for</span><span class="o">=</span><span class="s">"item in items"</span> <span class="na">:key</span><span class="o">=</span><span class="s">"item.id"</span><span class="p">&gt;</span>
-    {{item.text}}
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">li</span> <span class="na">v-for</span><span class="o">=</span><span class="s">"item in items"</span> <span class="na">:key</span><span class="o">=</span><span class="s">"item.id|idx"</span><span class="p">&gt;</span>
+    {{item.attr}}
 <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 </pre></div>
+</div>
+<p><strong>维护状态：</strong></p>
+<div class="line-block">
+<div class="line">当更新使用 <code class="docutils literal notranslate"><span class="pre">v-for</span></code> 渲染的元素列表时，默认使用 <strong>就地更新</strong> 策略，如果使用数据项的顺序被改变，vue 不会移动 DOM 元素来匹配数据项的顺序，而是就地更新 DOM 元素，并且确保它们在每个索引位置正确渲染。</div>
+<div class="line">为了给 Vue 一个提示以便它跟踪每个节点的身份，从而重用和重新排序现有元素，需要为每项提供唯一的 <code class="docutils literal notranslate"><span class="pre">key</span></code> attribute.</div>
+</div>
+<div class="admonition-key admonition hint">
+<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">:key</span></code> 的取值</p>
+<p>看似是需要 index, 但其实业务上来说 都是从数据库拿或者将要存到数据库，都会有唯一的 ID.</p>
 </div>
 <div class="admonition-example-todo-list admonition hint">
 <p class="admonition-title">Example: Todo list</p>
@@ -797,16 +1046,18 @@ $<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>s
 <div class="admonition-array-push-item-array-filter-func admonition hint">
 <p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">array.push(item)</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">array.filter(func)</span></code></p>
 </div>
-<div class="literal-block-wrapper docutils container" id="id29">
-<div class="code-block-caption"><span class="caption-text">&lt;script&gt;</span><a class="headerlink" href="#id29" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id37">
+<div class="code-block-caption"><span class="caption-text">&lt;script&gt;</span><a class="headerlink" href="#id37" title="Link to this code">¶</a></div>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="w">  </span><span class="c1">// 初始化唯一索引</span>
 <span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">newTodo</span><span class="o">:</span><span class="w"> </span><span class="s1">''</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">hideCompleted</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">  </span><span class="c1">// 决定是否展示全部</span>
-<span class="w">        </span><span class="nx">todos</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">id</span><span class="o">++</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">'todo'</span><span class="p">,</span><span class="w"> </span><span class="nx">done</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">}]</span>
+<span class="w">            </span><span class="nx">newTodo</span><span class="o">:</span><span class="w"> </span><span class="s1">''</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">hideCompleted</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">  </span><span class="c1">// 决定是否展示全部</span>
+<span class="w">            </span><span class="nx">todos</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">                </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">id</span><span class="o">++</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">'todo'</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">done</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">}]</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
@@ -832,8 +1083,8 @@ $<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>s
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id30">
-<div class="code-block-caption"><span class="caption-text">&lt;template&gt;</span><a class="headerlink" href="#id30" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id38">
+<div class="code-block-caption"><span class="caption-text">&lt;template&gt;</span><a class="headerlink" href="#id38" title="Link to this code">¶</a></div>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">form</span> <span class="err">@</span><span class="na">submit</span><span class="err">.</span><span class="na">prevent</span><span class="o">=</span><span class="s">"addTodo"</span><span class="p">&gt;</span>  <span class="cm">&lt;!--表单用来提交--&gt;</span>
     <span class="p">&lt;</span><span class="nt">input</span> <span class="na">v-model</span><span class="o">=</span><span class="s">"newTodo"</span><span class="p">&gt;&lt;</span><span class="nt">button</span><span class="p">&gt;</span>add Todo<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
@@ -852,8 +1103,8 @@ $<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>s
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id31">
-<div class="code-block-caption"><span class="caption-text">&lt;style&gt;</span><a class="headerlink" href="#id31" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id39">
+<div class="code-block-caption"><span class="caption-text">&lt;style&gt;</span><a class="headerlink" href="#id39" title="Link to this code">¶</a></div>
 <div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">done</span><span class="p">{</span>
 <span class="w">    </span><span class="k">text-decoration</span><span class="p">:</span><span class="w"> </span><span class="kc">line-through</span><span class="p">;</span>
 <span class="p">}</span>
@@ -886,8 +1137,8 @@ $<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>s
 </div>
 <div class="admonition-mounted-this-refs-pelementref-p-dom-textcontent admonition hint">
 <p class="admonition-title">添加一个 mounted 钩子，然后通过 <code class="docutils literal notranslate"><span class="pre">this.$refs.pElementRef</span></code> 访问 <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code>，并直接对其执行一些 DOM 操作。(例如修改它的 textContent)。</p>
-<div class="literal-block-wrapper docutils container" id="id32">
-<div class="code-block-caption"><span class="caption-text">&lt;script&gt;</span><a class="headerlink" href="#id32" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id40">
+<div class="code-block-caption"><span class="caption-text">&lt;script&gt;</span><a class="headerlink" href="#id40" title="Link to this code">¶</a></div>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">mounted</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 此时组件已经挂载。</span>
@@ -897,8 +1148,8 @@ $<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>s
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id33">
-<div class="code-block-caption"><span class="caption-text">&lt;template&gt;</span><a class="headerlink" href="#id33" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id41">
+<div class="code-block-caption"><span class="caption-text">&lt;template&gt;</span><a class="headerlink" href="#id41" title="Link to this code">¶</a></div>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span> <span class="na">ref</span><span class="o">=</span><span class="s">"pElementRef"</span><span class="p">&gt;</span>Hello<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </pre></div>
 </div>
@@ -939,8 +1190,8 @@ $<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>s
 </div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id34">
-<div class="code-block-caption"><span class="caption-text">&lt;script&gt;</span><a class="headerlink" href="#id34" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id42">
+<div class="code-block-caption"><span class="caption-text">&lt;script&gt;</span><a class="headerlink" href="#id42" title="Link to this code">¶</a></div>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
@@ -967,8 +1218,8 @@ $<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>s
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id35">
-<div class="code-block-caption"><span class="caption-text">&lt;template&gt;</span><a class="headerlink" href="#id35" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id43">
+<div class="code-block-caption"><span class="caption-text">&lt;template&gt;</span><a class="headerlink" href="#id43" title="Link to this code">¶</a></div>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Todo id: {{ todoId }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">button</span> <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">"todoId++"</span> <span class="na">:disabled</span><span class="o">=</span><span class="s">"!todoData"</span><span class="p">&gt;</span>Fetch next todo<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">p</span> <span class="na">v-if</span><span class="o">=</span><span class="s">"!todoData"</span><span class="p">&gt;</span>Loading...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
@@ -981,6 +1232,41 @@ $<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>s
 <section id="id9">
 <h3 id="id9">父组件 &amp; 子组件<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
 <p>真正的 Vue 应用往往是由嵌套组件创建的。 父组件可以在模板中渲染另一个组件作为子组件。</p>
+<p>通常一个应用会以 <strong>一棵嵌套的组件树</strong> 来组织。</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<div class="literal-block-wrapper docutils container" id="id44">
+<div class="code-block-caption"><span class="caption-text">parent.&lt;script&gt;</span><a class="headerlink" href="#id44" title="Link to this code">¶</a></div>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="nx">ComponentA</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./components/Component.vue'</span><span class="w">  </span><span class="c1">// 1. 引入组件</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="p">{</span>
+<span class="w">    </span><span class="nx">components</span><span class="o">:</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">ComponentA</span><span class="p">,</span><span class="w">  </span><span class="c1">// 2. 挂载组件</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id45">
+<div class="code-block-caption"><span class="caption-text">parent.&lt;template&gt;</span><a class="headerlink" href="#id45" title="Link to this code">¶</a></div>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">ComponentA</span><span class="p">/&gt;</span>  // 3. 显示使用组件
+</pre></div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<div class="literal-block-wrapper docutils container" id="id46">
+<div class="code-block-caption"><span class="caption-text">child.&lt;script&gt;</span><a class="headerlink" href="#id46" title="Link to this code">¶</a></div>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"ComponentA"</span><span class="p">,</span><span class="w">  </span><span class="c1">// 子组件的名字</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="mermaid">
             flowchart LR
 
@@ -994,8 +1280,8 @@ B --"emit + @监听触发事件"--&gt; A
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
 <div class="sd-col sd-d-flex-column docutils">
-<div class="literal-block-wrapper docutils container" id="id36">
-<div class="code-block-caption"><span class="caption-text">ChildComp.vue &lt;script&gt;</span><a class="headerlink" href="#id36" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id47">
+<div class="code-block-caption"><span class="caption-text">ChildComp.vue &lt;script&gt;</span><a class="headerlink" href="#id47" title="Link to this code">¶</a></div>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">props</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span>
@@ -1005,16 +1291,16 @@ B --"emit + @监听触发事件"--&gt; A
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id37">
-<div class="code-block-caption"><span class="caption-text">ChildComp.vue &lt;template&gt;</span><a class="headerlink" href="#id37" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id48">
+<div class="code-block-caption"><span class="caption-text">ChildComp.vue &lt;template&gt;</span><a class="headerlink" href="#id48" title="Link to this code">¶</a></div>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>{{ msg || 'No props passed yet' }}<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="sd-col sd-d-flex-column docutils">
-<div class="literal-block-wrapper docutils container" id="id38">
-<div class="code-block-caption"><span class="caption-text">ParentComp.vue &lt;script&gt;</span><a class="headerlink" href="#id38" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id49">
+<div class="code-block-caption"><span class="caption-text">ParentComp.vue &lt;script&gt;</span><a class="headerlink" href="#id49" title="Link to this code">¶</a></div>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="nx">ChildComp</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./ChildComp.vue'</span><span class="w">  </span><span class="c1">// 导入</span>
 
 <span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
@@ -1028,8 +1314,8 @@ B --"emit + @监听触发事件"--&gt; A
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id39">
-<div class="code-block-caption"><span class="caption-text">ParentComp.vue &lt;template&gt;</span><a class="headerlink" href="#id39" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id50">
+<div class="code-block-caption"><span class="caption-text">ParentComp.vue &lt;template&gt;</span><a class="headerlink" href="#id50" title="Link to this code">¶</a></div>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!--用dom形式使用子组件--&gt;</span>
 <span class="p">&lt;</span><span class="nt">ChildComp</span> <span class="na">:msg</span><span class="o">=</span><span class="s">"greeting"</span><span class="p">/&gt;</span>
 <span class="cm">&lt;!--用属性的方式传过去--&gt;</span>
@@ -1045,8 +1331,8 @@ B --"emit + @监听触发事件"--&gt; A
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
 <div class="sd-col sd-d-flex-column docutils">
-<div class="literal-block-wrapper docutils container" id="id40">
-<div class="code-block-caption"><span class="caption-text">ChildComp.vue &lt;script&gt;</span><a class="headerlink" href="#id40" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id51">
+<div class="code-block-caption"><span class="caption-text">ChildComp.vue &lt;script&gt;</span><a class="headerlink" href="#id51" title="Link to this code">¶</a></div>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">emits</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'response'</span><span class="p">],</span>
 <span class="w">    </span><span class="nx">created</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// 生命周期函数</span>
@@ -1057,16 +1343,16 @@ B --"emit + @监听触发事件"--&gt; A
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id41">
-<div class="code-block-caption"><span class="caption-text">ChildComp.vue &lt;template&gt;</span><a class="headerlink" href="#id41" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id52">
+<div class="code-block-caption"><span class="caption-text">ChildComp.vue &lt;template&gt;</span><a class="headerlink" href="#id52" title="Link to this code">¶</a></div>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Child component<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="sd-col sd-d-flex-column docutils">
-<div class="literal-block-wrapper docutils container" id="id42">
-<div class="code-block-caption"><span class="caption-text">ParentComp.vue &lt;script&gt;</span><a class="headerlink" href="#id42" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id53">
+<div class="code-block-caption"><span class="caption-text">ParentComp.vue &lt;script&gt;</span><a class="headerlink" href="#id53" title="Link to this code">¶</a></div>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="nx">ChildComp</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./ChildComp.vue'</span>
 
 <span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
@@ -1080,8 +1366,8 @@ B --"emit + @监听触发事件"--&gt; A
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id43">
-<div class="code-block-caption"><span class="caption-text">ParentComp.vue &lt;template&gt;</span><a class="headerlink" href="#id43" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id54">
+<div class="code-block-caption"><span class="caption-text">ParentComp.vue &lt;template&gt;</span><a class="headerlink" href="#id54" title="Link to this code">¶</a></div>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">ChildComp</span> <span class="err">@</span><span class="na">response</span><span class="o">=</span><span class="s">"msg =&gt; childMsg=msg"</span><span class="p">/&gt;</span>
 <span class="cm">&lt;!--监听response--&gt;</span>
 <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{ childMsg }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
