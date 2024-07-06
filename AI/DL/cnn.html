@@ -864,13 +864,9 @@ D --&gt; F
 <h4 id="about-meaning">about Meaning<a class="headerlink" href="#about-meaning" title="Link to this heading">¶</a></h4>
 <ol class="arabic simple">
 <li><p>同一张特征图，同一个通道，上的所有元素 (神经元) 都是对图像的不同位置的同一个特征的检测，通道中某一处 (特征图上某一个神经元) 数值的大小就是当前位置对当前特征强弱的反应。</p></li>
+<li><p>一个 filter 就是一个特征，每个 filter 体现的特质都不一样。</p></li>
 </ol>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/home/runner/work/io/io/docs/source/AI/DL/cnn.rst</span>, line 299)</p>
-<p>Enumerated list ends without a blank line; unexpected unindent.</p>
-</aside>
-<p>2. 一个 filter 就是一个特征，每个 filter 体现的特质都不一样。
-为了使得模型将注意力集中于图片的某些位置， <strong>而在深度学习中，更好的方法是将过滤器里面的值设置成参数，让模型通过反向传播去学习到过滤器中的权重值</strong> ，代替人为的设定。</p>
+<p>为了使得模型将注意力集中于图片的某些位置， <strong>而在深度学习中，更好的方法是将过滤器里面的值设置成参数，让模型通过反向传播去学习到过滤器中的权重值</strong> ，代替人为的设定。</p>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
 <div class="sd-col sd-d-flex-column docutils">

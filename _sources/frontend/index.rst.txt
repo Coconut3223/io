@@ -1,5 +1,5 @@
-
-# Frontend
+Frontend
+##########
 
 .. toctree::
     :caption: Content

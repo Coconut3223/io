@@ -296,11 +296,7 @@
         <li class="md-nav__item"><a href="#init-py" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">__init__.py</span></code></a>
         </li>
         <li class="md-nav__item"><a href="#main-py" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">__main__.py</span></code></a>
-        </li></ul>
-            </nav>
         </li>
-        <li class="md-nav__item"><a href="#import" class="md-nav__link">import</a><nav class="md-nav">
-              <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#id2" class="md-nav__link">从内容区分</a>
         </li>
         <li class="md-nav__item"><a href="#id3" class="md-nav__link">从方式区分</a>
@@ -337,13 +333,6 @@
     
     
       <a href="pytorch.html" class="md-nav__link">pytorch</a>
-      
-    
-    </li>
-    <li class="md-nav__item">
-    
-    
-      <a href="pytorch.html#concept" class="md-nav__link">concept</a>
       
     
     </li>
@@ -404,11 +393,7 @@
         <li class="md-nav__item"><a href="#init-py" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">__init__.py</span></code></a>
         </li>
         <li class="md-nav__item"><a href="#main-py" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">__main__.py</span></code></a>
-        </li></ul>
-            </nav>
         </li>
-        <li class="md-nav__item"><a href="#import" class="md-nav__link">import</a><nav class="md-nav">
-              <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#id2" class="md-nav__link">从内容区分</a>
         </li>
         <li class="md-nav__item"><a href="#id3" class="md-nav__link">从方式区分</a>
@@ -628,19 +613,18 @@
 <div class="admonition-package-module-main-py admonition note">
 <p class="admonition-title">package 里的 module 的单元测试是在  <code class="docutils literal notranslate"><span class="pre">__main__.py</span></code>  进行.</p>
 </div>
-</section>
-</section>
-<section id="import">
-<h3 id="import">import<a class="headerlink" href="#import" title="Link to this heading">¶</a></h3>
+<p>import
+========:defi:`</p>
 <p>为了 <strong>快速加载模块（不是加速执行）</strong> ，Python 把 <strong>模块的编译版本</strong> 缓存在  <code class="docutils literal notranslate"><span class="pre">__pycache__</span> <span class="pre">dir</span></code>  中，文件名为  <code class="docutils literal notranslate"><span class="pre">module.version.pyc，version</span></code>  对编译文件格式进行编码</p>
 <div class="admonition-notes admonition hint">
 <p class="admonition-title">notes</p>
-<p>CPython 的 3.3 发行版中，spam.py 的编译版本 ==  <code class="docutils literal notranslate"><span class="pre">__pycache__/spam.cpython-33.pyc</span></code></p>
+<p>CPython 的 3.3 发行版中，spam.py 的编译版本 `  <code class="docutils literal notranslate"><span class="pre">__pycache__/spam.cpython-33.pyc</span></code></p>
 </div>
 <div class="admonition- admonition note">
 <p class="admonition-title">为什么没有 运行脚本的已编译档案？</p>
 <p>运行脚本 当作程式的进入点，所以每一次执行  <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">xxx.py</span></code>  指令时，Python编译器都要进行编译，所以没有将  <code class="docutils literal notranslate"><span class="pre">xxx.py</span></code>  进行快取的动作。</p>
 </div>
+</section>
 <section id="id2">
 <h4 id="id2">从内容区分<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h4>
 <ul class="simple">

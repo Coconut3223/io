@@ -1,9 +1,10 @@
-
-# LRs
+LRs
+##########
 
 ==多重回归== .包含了多个变量的回归
 
-## Problem Setting
+Problem Setting
+********************
 
 .. math::
     y =β_0 +β_1x_1 +...+β_px_p +ε=\red{\beta^Tx}+\epsilon\\\quad\begin{cases}x_1,\dots,x_p:&\text{Predictors, }\red{\text{independent}}\text{ variable, covariates}\\Y:&\text{Response, dependent variable}\\\epsilon:&\text{noises, error}\end{cases}
@@ -39,7 +40,8 @@
 | **常规思路：**
 | :math:`\cfrac{\partial}{\partial\beta}f(\beta)=\mathbb{E}\big(x(Y-x^T\beta)\big)\xlongequal{SET}0\\[1em]\implies \beta^*=\mathbb{E}(x^Tx)^{-1}\mathbb{E}(xY)=\Sigma^{-1}Cov(x,Y)=Var(x)^{-1}Cov(x,Y)` 
 
-## Linear Regression
+Linear Regression
+********************
 
 .. math::
     y = w^Tx+b
@@ -70,13 +72,15 @@
     从这角度来卡，LR 就是使用了所有的observations
 - ==residual sum of squares, RSS==  :math:`=\sum\limits_{i=1}^n\{Y_i-\hat{Y}_i\}^2`  RSS表示拟合模型后Y的变化仍然不能被X的变化解释的部分  :math:`\hat{\sigma}^2=\cfrac{RSS}{n-p-1}` 
 
-### Graphical
+Graphical
+====================
 
 | Suppose  :math:`\mathbb{X}^T\mathbb{X}`  is **inverible**.
 | :math:`\hat{Y}=\mathbb{X}\hat{\beta}\implies`   :math:`\hat{Y}`  is an ==orthogonal projection image== of  :math:`\hat{Y}`  on the image of  :math:`\mathbb{X}` .  
 | :math:`\hat{\epsilon}=Y-\hat{Y}` 
 
-### inference of LR model
+inference of LR model
+==============================
 
 .. warning:: 更强的 assumption:  :math:`\Xi～N(0,\sigma^2I)(\text{i.e. correct model got})`
     指定了  :math:`\Xi`  的分布，我们才能在此基础上推 distribution of  :math:`\hat\beta_{LSE}`  , 才能进行 hypothesis testing. 以下由此进行推断：
@@ -95,7 +99,8 @@
     .. image:: ./pics/LRs_1.png
         :scale: 50%
 
-#### Confidence interval for the regression function
+Confidence interval for the regression function
+-------------------------------------------------------
 
 **【Uncentralized】** For a subject with predictor  :math:`X = (1, x_1, ..., x_p)^T` and response Y. fitted linear regression model  :math:`Y= β_0 +β_1x_1 +...+β_px_p+ ε` . the regression  :math:`\mathbb{E}Y=β_0 +β_1x_1 +...+β_px_p`  is a function of  :math:`X=(1,x_1,\dots,x_p)^T` 
 
@@ -174,7 +179,8 @@ The estimator of  :math:`\mathbb{E}Y`  is  :math:`\mathbb{E}\hat{Y}=\hat β_0+
 
 .. note:: Assumption: both X and Y are centralized and standardized(scaled) (接下来都是基于这个设定来统一一下)"
 
-## 广义线性模型
+广义线性模型
+********************
 
 ==generalized linear model 广义线性模型== 。 :math:`g(*):=` 联系函数 link function
 
@@ -185,7 +191,8 @@ The estimator of  :math:`\mathbb{E}Y`  is  :math:`\mathbb{E}\hat{Y}=\hat β_0+
 | :math:`\ln y=w^Tx+b\Leftrightarrow g(*)=\ln(*)` 
 | 将指数曲线投影到一条直线上。
 
-## 正则化 Regularization
+正则化 Regularization
+****************************************
 
 :math:`L_p`  ==- Norm== 。  :math:`\Vert w\Vert_p=(\sum\limits_{i=1}^dx_i^p)^{1/p}` 
 
@@ -194,9 +201,11 @@ The estimator of  :math:`\mathbb{E}Y`  is  :math:`\mathbb{E}\hat{Y}=\hat β_0+
 | 避免过拟合的产生和减少网络误差
 | 正则化的作用是选择**经验风险与模型复杂度同时较小**的模型。
 
-### Ridge Regression  - L2 penalty
+Ridge Regression  - L2 penalty
+========================================
 
-#### Background
+Background
+---------------
 
 **Why we need Ridge Regression ↔ Understanding of Ridge Regression?**
 
@@ -242,7 +251,8 @@ The estimator of  :math:`\mathbb{E}Y`  is  :math:`\mathbb{E}\hat{Y}=\hat β_0+
 | :math:`\tilde{\mathbb X}=\begin{bmatrix}x_{1,1},&x_{1,2}&\dots&x_{1,p}\\x_{2,1},&x_{2,2}&\dots&x_{2,p}\\\vdots\\x_{n,1},&x_{n,2}&\dots&x_{n,p}\\\sqrt\lambda&0&\dots&0\\0&\sqrt\lambda&\dots&0\\\vdots&&\ddots\\0&0&\dots&\sqrt\lambda\end{bmatrix}_{(n+p)\times p}=\begin{bmatrix}\mathbb X\\\sqrt\lambda I_p\end{bmatrix},\tilde{\mathbb Y}= \begin{bmatrix}Y_1\\\vdots\\Y_n\\0\\\vdots\\0\end{bmatrix}_{(n+p)}= \begin{bmatrix}\mathbb Y\\0_p\end{bmatrix}` 
 | :math:`\implies \hat{\tilde\beta}_{LSE}=(\tilde{\mathbb X}^T\tilde{\mathbb X})^{-1}\tilde{\mathbb X}^T\tilde{\mathbb Y}\\[1ex]\qquad\qquad=(\begin{bmatrix}\mathbb X^T&\sqrt\lambda I_p\end{bmatrix}\times\begin{bmatrix}\mathbb X\\\sqrt\lambda I_p\end{bmatrix})^{-1}\begin{bmatrix}\mathbb X^T&\sqrt\lambda I_p\end{bmatrix}\begin{bmatrix}\mathbb Y\\\sqrt\lambda 0_p\end{bmatrix}\\[1ex]\qquad\qquad=(\mathbb X^T\mathbb X+\lambda I)^{-1}\mathbb X^T\mathbb Y` 
 
-#### Content
+Content
+--------------------
 
 | ==the estimator  :math:`\hat\beta`  of Ridge Regression, Ridge==
 | :math:`\hat\beta_{\text{ridge}}= \min\limits_\beta\Vert \mathbb Y-\mathbb X\beta\Vert^2+\red{\lambda\Vert\beta\Vert^2}=(\mathbb X^T\mathbb X+\lambda I)^{-1}\mathbb X^T\mathbb Y,\quad \lambda>0,` 
@@ -266,7 +276,8 @@ proof
 .. math:: 
     \begin{align*}Var(\hat\beta_\text{ridge})&=\mathbb{E}\Big\{(\hat{\beta}_\text{ridge}-\mathbb{E}\hat{\beta}_\text{ridge})^2\Big\}\\&=\mathbb{E}\Big\{\big((X^TX+\lambda I)^{-1}\mathbb{X}^T\mathbb{Y}-\mathbb{E}(X^TX+\lambda I)^{-1}\mathbb{X}^T\mathbb{Y}\big)^2\Big\}\\&\xlongequal[\mathbb{Y=X}\beta+\epsilon]{\mathbb{E\epsilon=0}}\mathbb{E}\Big[(\mathbb{X}^T\mathbb{X}+\lambda I)^{-1}\mathbb{X}^T\epsilon\Big]^2\\&=\mathbb{E}\Big[(\mathbb{X}^T\mathbb{X}+\lambda I)^{-1}\mathbb{X}^T\epsilon\epsilon^T\mathbb{X}(\mathbb{X}^T\mathbb{X}+\lambda I)^{-1}\Big]\\&=(\mathbb{X}^T\mathbb{X}+\lambda I)^{-1}\mathbb{X}^T\mathbb{E}\Big[\epsilon\epsilon^T\Big]\mathbb{X}(\mathbb{X}^T\mathbb{X}+\lambda I)^{-1}\\&\xlongequal{Var(\epsilon)=\sigma^2I}\sigma^2\cdot(\mathbb{X}^T\mathbb{X}+\lambda I)^{-1}\mathbb{X}^T\mathbb{X}(\mathbb{X}^T\mathbb{X}+\lambda I)^{-1}\end{align*}
 
-##### λ := the shrinkage parameter - ridge
+λ := the shrinkage parameter - ridge
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. **controls** the **size** of the coefficients, 它仅仅是调整参数的大小，并没有删去特征
 2. **controls** the amount of regularization
@@ -320,7 +331,8 @@ We select a large range for possible  :math:`λ\in [0, c]` . For each fixed �
     
     The best λ is the minimum point of CV(λ). 
 
-### Lasso - L1 penalty, Least Absolute Shrinkage and Selection Operator
+Lasso - L1 penalty, Least Absolute Shrinkage and Selection Operator
+======================================================================
 
 .. note::
     
@@ -339,7 +351,8 @@ The two approaches are also **equivalent**:
 
 .. hint:: 那如果在lasso之后把beta为0的特征值扔掉之后再LSE的准确率会一样吗？
 
-#### λ := the shrinkage parameter -lasso
+λ := the shrinkage parameter -lasso
+--------------------------------------------------
 
 ==t==
 
@@ -413,14 +426,16 @@ The two approaches are also **equivalent**:
     - `class` applies only to ”binomial” or ”multinomial” models. for ”binomial” models, results are returned only for the class corresponding to the second level.
 - Please state the procedure of selecting the tuning parameter based on 5-fold CV.
 
-### elastic net: A combination of Lasso and Ridge regression
+elastic net: A combination of Lasso and Ridge regression
+================================================================================
 
 | ==ridge== .  :math:`\hat\beta_{ridge}=\min\limits_\beta\sum\limits_{i=1}^n\{Y_i-\beta_1x_{i1}-\beta_2x_{i2}\}^2+\lambda\Vert\beta\Vert_2^2` 
 | ==lasso== .  :math:`\hat\beta_{lasso} = \min\limits_\beta\sum\limits_{i=1}^n\{Y_i-\beta_1x_{i1}-\beta_2x_{i2}\}^2+\lambda\Vert\beta\Vert_1` 
 | ==the elastic net estimator==
 | :math:`\hat\beta_{net}:=\min\limits_\beta\sum\limits_{i=1}^n\{Y_i-\beta_1x_{i1}-\beta_2x_{i2}\}^2+\lambda\{(1-\alpha)\Vert\beta\Vert_2^2+\alpha\Vert\beta\Vert_1\},\alpha\in[0,1]` 
 
-## Comparison
+Comparison
+********************
 
 .. table::
 
@@ -454,7 +469,8 @@ The two approaches are also **equivalent**:
 
 crease more bias but the variance is smaller iff more confident
 
-### LSE & Lasso & ridge
+LSE & Lasso & ridge
+==============================
 
 .. image:: ./pics/LRs_7.png
     :scale: 50%
@@ -498,7 +514,8 @@ Take a derivate  :math:`\cfrac{\partial f}{\partial\beta}\xlongequal{SET}0`
 
 <u>shrinks big coeﬀicients by a constant  :math:`\tilde{\lambda}=\frac{\lambda}{2}`  towards zero.truncates small coeﬀicients to zero exactly</u>
 
-### Lasso & ridge
+Lasso & ridge
+==============================
 
 | **同是 shrinkage method, 但是在 penalty 项有所不同 (subtle but important differences)。**
 | Consider a case with 2 variables after centralized and scaled and represent the problem with a constraint format.
@@ -538,7 +555,8 @@ Take a derivate  :math:`\cfrac{\partial f}{\partial\beta}\xlongequal{SET}0`
 
 1. 他们都在 shrinkage in beta towards 0, 但 lasso creates zeros （这个 property is very attractive）
 
-## solution path
+solution path
+******************************
 
 Notice that the solution is indexed by the parameter λ – So for each λ, we have a solution
 

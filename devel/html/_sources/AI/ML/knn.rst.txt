@@ -1,5 +1,5 @@
-
-# KNN, K近邻
+KNN, K近邻
+####################
 
 ==lazy== , ==nearest== , ==non-parametric supervised==
 
@@ -16,8 +16,8 @@
     3. focus on real data,
     4. 局部逼近
 
-## 距离 - similarity  :math:`d(\hat{x},x_i)` 
-
+距离 - similarity  :math:`d(\hat{x},x_i)` 
+************************************************************
 
 .. table::
 
@@ -60,11 +60,13 @@
         .. image:: ./pics/edit_dis_1.jpg
             :scale: 40%
 
-## 多数表决
+多数表决
+********************
 
 优点：build any decision boundary，更灵活
 
-### Origin - Depend on k
+Origin - Depend on k
+==============================
 
 .. math:: 
     y^*=\max\limits_u\sum\limits_{(x_i,y_i)\in D(\hat{x},\hat{y})}I(\hat{y}=y_i) 
@@ -72,7 +74,8 @@
 | :math:`D(\hat{x},\hat{y}):=`  the list of k nearest neighbors of  :math:`(\hat{x},\hat{y})` 
 | :math:`I(\hat{y}=y_i):=`  the indicator of  :math:`\{\hat{y}\}=y_i` 
 
-### Weighted -  Considering the distance
+Weighted -  Considering the distance
+==================================================
 
 .. math::
     y^*=\max_u\sum\limits_{(x_i,y_i)\in D(\hat{x},\hat{y})}w_i\cdot I(\hat{y}=y_i)
@@ -81,11 +84,13 @@
 
 1. 能消除孤立噪声点
 
-#### choices of w
+choices of w
+--------------------
 
 :math:`w= \cfrac{1}{d(\hat{x},x_i)}` , 越远就越不相似，他的类别就不重要
 
-## list of K
+list of K
+********************
 
 .. danger:: k 很重要
 
@@ -112,9 +117,11 @@
 
 k的选择是通过一个验证集合 ,或者是在训练集上交叉检验。即兴试一此不同k选择那个在验证集(或交叉检验)上最准确的k作为最后的结果。
 
-### Parameter tuning：k
+Parameter tuning：k
+==============================
 
-## 实现
+实现
+**********
 
 .. code-block::
     :linenos:

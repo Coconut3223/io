@@ -1,5 +1,5 @@
-
-# 聚类, Clustering
+聚类, Clustering
+####################
 
 ==upsupervised== , ==distance sensitive==
 
@@ -19,9 +19,11 @@ Clustering is the process of dividing the entire data into clusters based on the
 | Minimize Intra-cluster distance
 | ==Centroid== . 中心点
 
-## similarities and distances
+similarities and distances
+******************************
 
-### point level
+point level
+====================
 
 :math:`d(X_i,X_j),\quad X\in\R^{p},i,j=1,\dots,n` 
 
@@ -37,7 +39,8 @@ Clustering is the process of dividing the entire data into clusters based on the
 | ==Minkowski Distance== .  :math:`\Big[\sum\limits_{k=1}^p|X_{ik}-X_{jk}|^m\Big]^{1/m}` 
 | ==Czekanowski Coefficient: signal-to-noise== . :math:`1-\cfrac{\sum\limits_{k=1}^p\min(X_{ik},X_{jk})}{\sum\limits_{k=1}^p(X_{ik}+X_{jk})}` 
 
-### class level
+class level
+===============
 
 .. table::
     
@@ -64,7 +67,8 @@ Clustering is the process of dividing the entire data into clusters based on the
 .. danger:: 可不可以在监督性学习使用聚类？
     ✅。可以创建聚类，在不同集群上构建单独的机器学习模型
 
-## methods
+methods
+**********
 
 .. table::
 
@@ -78,13 +82,16 @@ Clustering is the process of dividing the entire data into clusters based on the
     | Gaussian mixture.        |                                       |                                |
     +--------------------------+---------------------------------------+--------------------------------+
 
-### EM
+EM
+==========
 
 .. danger:: EM不会陷于局部极小值 ❌
 
-### Hierarchical methods
+Hierarchical methods
+=========================
 
-#### Agglomerative hierarchical algorithms (start with n clusters)
+Agglomerative hierarchical algorithms (start with n clusters)
+---------------------------------------------------------------------------
 
 1. Compute the proximity matrix ! Let each data point be a cluster. **Repeat**:
 2. Merge the two closest clusters ! Update the ==proximity matrix== which defines the distances between each point
@@ -98,7 +105,8 @@ Clustering is the process of dividing the entire data into clusters based on the
     
     :math:`D = (d_{ij}) = \begin{bmatrix}0\\9&0\\3&7&0\\6&5&9&0\\11&10&2&8&0\end{bmatrix}` 
 
-### K-means
+K-means
+==========
 
 ==centroid-based== , ==distance-based== , ==a blind guess k clusters==
 
@@ -146,7 +154,8 @@ Clustering is the process of dividing the entire data into clusters based on the
     :scale: 50%
     :align: center
 
-#### Evaluating the choice of K
+Evaluating the choice of K
+------------------------------
 
 ==Within Cluster Sum of Squares, WCSS==
 
@@ -159,7 +168,8 @@ Then the ==Elbow Method== is then used to choose the best K value based on WCSS
     :scale: 30%
     :align: center
 
-#### Mathematical
+Mathematical
+--------------------
 
 | :math:`\Vert A \Vert_{F}=\sqrt{Tr(AA^T)}=\sqrt{\sum\limits_{i=1}^n\sum\limits_{j=1}^n\vert a_{ij}\vert^2}` 
 | :math:`M_{n,q}=\{M\in\R^{n\times p} : M \text{ has q distinct rows}\}` 
@@ -172,8 +182,8 @@ Then the ==Elbow Method== is then used to choose the best K value based on WCSS
 
 写起来数学公式很简单，但是我们并不知道哪个是属于哪个cluster的，如果有 k 个cluster的话，每个 observation 有 k 个选择，那么就会有  :math:`k^n`  种可能，在计算上是属于 high computational cost，这就是它的 drawback。所以我们就不会遍历所有的可能，我们往往就在 initial 的时 random 选择，这就导致我们极有可能走进 local minimizer
 
-#### Steps
-
+Steps
+----------
 .. image:: ./pics/KMeans_1.png
     :scale: 50%
     :align: center
@@ -207,7 +217,8 @@ Then the ==Elbow Method== is then used to choose the best K value based on WCSS
     :scale: 40%
     :align: center
 
-#### Programming
+Programming
+--------------------
 
 `kmeanModel.inertia_` Sum of squared distances of samples to their closest cluster centre, weighted by the sample weights if provided. 样本到其最近的聚类中心的平方距离之和，如果提供的话，用样本权重进行加权。
 
@@ -287,7 +298,8 @@ Then the ==Elbow Method== is then used to choose the best K value based on WCSS
     plt.show()
 
 
-## ref
+ref
+**********
 
 - [K-Means Clustering in Python: A Practical Guide – Real Python]
 - [sklearn.cluster.KMeans]

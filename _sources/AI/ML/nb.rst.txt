@@ -1,9 +1,10 @@
+Naive Bayes classifier
+##############################
 
-# Naive Bayes classifier
+In statistics, ==naive Bayes classifiers== are a family of simple "**probabilistic classifiers**" based on applying Bayes' theorem with **strong (naive) independence assumptions** between the features.
 
-In statistics, ==naive Bayes classifiers== are a family of simple "**probabilistic classifiers**" based on applying Bayes' theorem with **strong (naive) independence assumptions** between the features.
-
-## Background
+Background
+********************
 
 | ==Conditional probability== 。  :math:`P(A|B)=\frac{P(AB)}{P(B)}, P(B|A)=\frac{P(AB)}{P(A)}` 
 | ==Bayes' Theorem== Suppose  :math:`B_1, · · · , B_n`  form a partition of the sample space  :math:`S`  (mutually exclusive and collectively exhaustive), then for any  :math:`k = 1, · · · n`  and any event  :math:`A` 
@@ -20,7 +21,8 @@ In statistics, ==naive Bayes classifiers== are a family of simple "**probabilis
     | :math:`P (C|B) = \cfrac{P (C)P (B|C)}{P (C)P (B|C) + P (C)P (B|C)}=\cfrac{0.001 × 0.99}{0.999 × 0.01 + 0.001 × 0.99}= 0.09016393` 
     | So for the rare disease, even though the test is very precise, a positive report may still have an overwhelming probability to be a mistake.
 
-## Content
+Content
+**********
 
 | ==Bayesian Classifiers, Idiot's Bayes== .
 | Choose value of  :math:`C`  that maximizes  :math:`P (C|A_1, A_2, . . . , A_n)` 

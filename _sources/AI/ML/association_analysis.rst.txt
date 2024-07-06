@@ -1,5 +1,5 @@
-
-# Association Analysis
+Association Analysis
+#########################
 
 | ==Itemset== 。A collection of one or more items. **k-itemset**: An itemset that contains k items.
 | ==Support count σ== 。 Frequency of occurrence of an itemset.
@@ -27,7 +27,8 @@
     | Association Rule = {Milk, Diaper} -> {Beer}
     | **Confidence** c= :math:`\cfrac{\sigma(MDB)}{\sigma(MD)}=\frac{2}{3}` 
 
-## approach
+approach
+***************
 
 - **Frequent Itemset Generation**: Generate all itemsets whose <u>support ≥ minsup</u>.
     Given  :math:`d`  items, there are  :math:`2^d − 1`  possible candidate itemsets.
@@ -63,7 +64,8 @@
     | search AB: 找B再看有没有A =5
     | search AE：先找E再看看有没有A=1+1=2
 
-## Da
+Da
+**********
 
 .. table::
 
@@ -82,20 +84,23 @@
 
 [comp9318 Association Rule Mining](https://zhuanlan.zhihu.com/p/65155693)
 
-## Association Rule 关联规则
+Association Rule 关联规则
+***********************************
 
 **An association rule is an implication of the form 𝐴 ⇒ 𝐵, where 𝐴 is the Antecedent, 𝐵 is the Consequent.**
 
 商品放在一起可以促销，放在两端可以诱惑人们沿途购买
 
-## Support-Confidence Framework
+Support-Confidence Framework
+***********************************
 
 | 💡 support(itemset) 支持度 AB有关
 | confidence(associate rule)置信度 A推B 而不是B推A
 
 `min_sup` : a minimum support threshold  :math:`\implies`  whether a frequent itemset  :math:`L_k` 
 
-### How to develop
+How to develop
+====================
 
 1. 设定一个 minimum support threshold，找到 frequent itemset  :math:`L_k` 
 2. Generate Strong Association Rules from the Frequent Itemsets
