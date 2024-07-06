@@ -1,7 +1,8 @@
+T5s
+##########
 
-# T5s
-
-## T5
+T5
+**********
 
 <kbd>pre-trained model</kbd>, <kbd>encoder-decoder</kbd>
 
@@ -9,7 +10,8 @@
 
 .. note:: 有在下游任务上进行预训练，所以可以开箱即用
 
-### 训练语料
+训练语料
+==========
 
 .. note:: 改成 seq2seq 版本
 
@@ -29,7 +31,8 @@ T5 的预训练包含无监督和有监督两部分。无监督部分使用的�
 [Paper: Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer]
 [那个屠榜的T5模型，现在可以在中文上玩玩了]
 
-## mT5, Multilingual T5
+mT5, Multilingual T5
+****************************************
 
 <kbd>pre-trained model</kbd>, <kbd>encoder-decoder</kbd>, <kbd>multilingual</kbd>
 

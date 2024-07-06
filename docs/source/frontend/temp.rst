@@ -1,20 +1,21 @@
+Temporal
+##########
 
-# Temporal
 
-
-## operations
+operations
+********************
 
 1. ``npm init`` 生成 package.json
 
-## utils
+utils
+**********
 
 
+theroy
+**********
 
-
-
-## theroy
-
-### Modules & Packages
+Modules & Packages
+==============================
 
 一个 Node.js 文件就是一个模块，这个文件可能是 Javascript 代码、JSON 或者编译过的 C/C++ 扩展。
 
@@ -89,7 +90,8 @@ Node.js 提供了两个 ``exports`` 和 ``require`` 两个对象
             Hello World.
             Hello Lily
 
-#### Core Modules
+Core Modules
+--------------------
 
 - http：它包含可以用來建立http server 的一些類別, 方法, 及事件。
 - url：它包含可以解析url的一些方法。
@@ -109,7 +111,8 @@ Node.js 提供了两个 ``exports`` 和 ``require`` 两个对象
 
 
 
-### 路由 rounter
+路由 rounter
+====================
 
 .. note:: 認識網址規則
 
@@ -152,10 +155,11 @@ Node.js 提供了两个 ``exports`` 和 ``require`` 两个对象
             // 當網址輸入為 /page/index，則會出現 Hello,Node!
 
 
-### 网络方法
+网络方法
+====================
 
-#### ``get`` & ``post``
-
+``get`` & ``post``
+------------------------------
 
 - GET方法请求一个指定资源的表示形式，使用GET的请求应该只被用于获取数据
 - POST方法用于将实体提交到指定的资源，通常导致在服务器上的状态变化或副作用

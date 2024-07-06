@@ -1,7 +1,8 @@
+Phonetic related 
+##############################
 
-# Phonetic related 
-
-## `基于音形码的汉字相似度比对算法 <https://cn.oversea.cnki.net/KCMS/detail/detail.aspx?filename=HDZJ201811016&dbcode=CFJD&dbname=>`_ ``2018``
+`基于音形码的汉字相似度比对算法 <https://cn.oversea.cnki.net/KCMS/detail/detail.aspx?filename=HDZJ201811016&dbcode=CFJD&dbname=>`_ ``2018``
+************************************************************************************************************************************************************************************
 
 .. hint:: Abstract
 
@@ -89,10 +90,11 @@
         +------+------------------------+------------------------+------------------------------+
 
 
-## MFCCs 和 DTW 在拼音相似度中的研究
+MFCCs 和 DTW 在拼音相似度中的研究
+**********
 
-
-## `HANSpeller++: A unified framework for Chinese spelling correction <https://scholar.google.com.au/citations?view_op=view_citation&hl=sl&user=2Sp3OuMAAAAJ&citation_for_view=2Sp3OuMAAAAJ:UeHWp8X0CEIC>`_
+`HANSpeller++: A unified framework for Chinese spelling correction <https://scholar.google.com.au/citations?view_op=view_citation&hl=sl&user=2Sp3OuMAAAAJ&citation_for_view=2Sp3OuMAAAAJ:UeHWp8X0CEIC>`_
+**********************************************************************************************************************************************************************************************************************************************************
 
 .. hint:: Abstract
 

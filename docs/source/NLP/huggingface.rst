@@ -1,7 +1,8 @@
+Huggingface
+####################
 
-# Huggingface
-
-## 方法下载
+方法下载
+**********
 
 .. note:: 来自[如何快速下载huggingface模型——全方法总结]的推荐
     | Linux/Mac OS/windows 默认推荐使用huggingface-cli，对外网连接较好（丢包少）的时候，可尝试 huggingface-cli+hf_transfer（可选）。
@@ -10,7 +11,8 @@
 
 .. warning:: 目前没用到很大的模型，所以用snapshot_download enough
 
-### 直接  ``from_pretrained`` 
+直接  ``from_pretrained`` 
+==============================
 
 如果在服务器上直接git clone，就会要不断地下载所用的model，导致内存的浪费。需要指定一个“绝对”地址，这样就可以重用下载的模型。
 
@@ -27,7 +29,8 @@
 
 [修改huggingface transformers默认缓存文件夹](https://blog.csdn.net/zp_stu/article/details/126410323)
 
-### ``snapshot_download``  【推荐】
+``snapshot_download``  【推荐】
+========================================
 
 downloads an entire repository at a given revision.
 
@@ -72,7 +75,8 @@ local_dir must be a path to a folder on your system.
     local_path = './model/'
     model = AutoModel.from_pretrained(local_path)
 
-### 模型需要许可
+模型需要许可
+====================
 
 .. warning:: 怎么看模型是否需要许可
     如果在模型主页 **Files and versions** 看不到模型文件，那就是需要申请许可通过才能下载的 ==Gated Model== 。

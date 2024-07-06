@@ -1,5 +1,5 @@
-
-# Loss
+Loss
+##########
 
 **What do we care about？**
 
@@ -20,13 +20,15 @@
     .. math::
         η～ 0.8 × N(0,1) + 0.2 × N(0,10^4)
 
-## Data Loss
+Data Loss
+**********
 
 ==Data loss== : Model predictions should match training data. Loss over the dataset is an average of loss over examples:
 
 做 data mining 目的是要找到数据的分布，这个时候的数据就是一个大的概念，真正的数据，属于population level，此时的所有数据的统计值包括均值，包括损失函数，都是 **expected 期望的，population 总体的** 。但是我们不可能知道真正的数据分布是什么，因为在不知道具体分布情况下，我们只能通过极高极高数量的样本去靠近它，但是 observations 是无穷无尽的，我们几乎不可能靠有限的 observations 去找到数据分布。所以我们只能说我们收集样本，通过有限的样本去观测去 observe，此时我们所得到统计值只是建立在我们所采的样本，是 **empirical 经验** 的。
 
-### 结构风险 & 经验风险
+结构风险 & 经验风险
+====================
 
 .. math:: 
     \min_f\Omega(f)+C\sum_{i=1}^nl(f(x_i),y_i)
@@ -75,7 +77,8 @@
 
 :math:`\\\qquad \rightarrow \begin{cases}R_{LAD}(f)=\mathbb E\Vert Y-f(X)\Vert_1&\text{population level}\\R_n(f)=\frac{1}{n}\sum\limits_{i=1}^n\Vert Y_i-f(X_i)\Vert_1&\text{empirical risk}\end{cases}`
 
-### loss functions
+loss functions
+=========================
 
 **requirements:** (其实本质上就是预测点和实际真实点的 **distance measure** )
 
@@ -89,7 +92,8 @@
     :scale: 30%
 
 
-#### 0-1
+0-1
+----------
 
 .. grid:: 2
 
@@ -105,10 +109,9 @@
             :scale: 30%
     
             non-continuous, non-smooth
-
-    
-
-#### Least Squares Error, LSE, L2-loss —— conditional mean
+  
+Least Squares Error, LSE, L2-loss —— conditional mean
+----------------------------------------------------------------------
 
 .. math::
     L_i=(Y_i-f(X_i;\theta))^2
@@ -136,7 +139,8 @@ Regression → Ordinary Least Squares (OLS) according to estimation 分类
             .. image:: ./pics/Loss_5.png
 
 
-#### Least Absolute Deviation, LAD —— conditional median
+Least Absolute Deviation, LAD —— conditional median
+----------------------------------------------------------------------
 
 .. math::
     \Vert Y_i-f(X_i)\Vert_1=|Y_i-f(X_i;\theta)|
@@ -162,7 +166,8 @@ Regression → Ordinary Least Squares (OLS) according to estimation 分类
 3. Non-differentiable.
     exists an alternative approach for solving this problem: using linear programming 单纯形法
 
-#### Check Loss function —— conditional quantile
+Check Loss function —— conditional quantile
+--------------------------------------------------
 
 .. note:: Which class of data do we care about？ We can trace the Quartile
 
@@ -198,30 +203,35 @@ Regression → Ordinary Least Squares (OLS) according to estimation 分类
 
 :math:`F_{Y|X=x}(f^*(x))=τ,\forall τ\in(0,1)\implies f^*(x)=F_{Y|X=x}^{-1}(τ)`  **will be the conditional** 𝝉–th quantile of 𝒀|𝑿 = 𝒙
 
-#### Hinge Loss
+Hinge Loss
+---------------
 
 .. math::
     L_i=\sum\limits_{j≠y_i}\max(0,s_j-s_{y_i}+1)
 
-#### Squared Hinge Loss
+Squared Hinge Loss
+-------------------------
 
 .. math::
     L_i=\sum\limits_{j≠y_i}\max(0,s_j-s_{y_i}+1)^2
 
-#### Softmax
+Softmax
+--------------------
 
 .. math::
     L_i=-\log\Big(\cfrac{\exp(s_{y_i})}{\sum\limits_j\exp(s_j)}\Big)
 
 更关注少见的错误
 
-## Regularization - measure complexity and penalize
+Regularization - measure complexity and penalize
+**********************************************************************
 
 Prevent the model from doing *too* well on training data, control 复杂度
 
 according to problem
 
-## Classification
+Classification
+********************
 
 - data: :math:`(X_i,Y_i),i=1,\dots,n,X_i\in\R^p, X\in\R^{n\times p}, Y_i`  is categorical
 - Classifier:  :math:`\mathcal{F}=\{f:f(\cdot)\in \text{dom}(Y)\}` 
@@ -238,7 +248,8 @@ Y 是类别属性 without numerical meaning，我们只在乎 **whether sample i
 
 **the number of success 错有多少的角度** 。我们先想到的是：Indictor & 0-1 loss
 
-### From 0-1 loss
+From 0-1 loss
+====================
 
 ==Empirical Risk with 0-1 Loss== . with  :math:`Y_i\in\{-1,1\}` 
 
@@ -306,7 +317,8 @@ Y 是类别属性 without numerical meaning，我们只在乎 **whether sample i
             :scale: 36%
             :align: center
 
-### The Likelihood 似然的角度
+The Likelihood 似然的角度
+==============================
 
 ==The Likelihood Function==
 
@@ -317,7 +329,8 @@ Y 是类别属性 without numerical meaning，我们只在乎 **whether sample i
 
 ==Log Likelihood Function== .  :math:`l(Y_i|X_i)=\log(L(\cdot))=\sum\limits_{j=1}^{\text{\#category}}Y_{ij}\times\log[\hat{y_{ij}}]\\\qquad =Y_{i1}\log[\hat{y}_{i1}]+Y_{i2}\log[\hat{y}_{i2}]+\dots+Y_{ij}\log[\hat{y}_{ij}]+\dots` 
 
-### Cross Entropy
+Cross Entropy
+====================
 
 ==Cross Entropy Loss== .  :math:`\text{CELoss}_i =-\sum\limits_{j=1}^{\text{\#category}}Y_{ij}\times \log \hat{y}_{ij}` 
 
@@ -329,7 +342,9 @@ Y 是类别属性 without numerical meaning，我们只在乎 **whether sample i
 
 可以说交叉熵是直接衡量两个分布，或者说两个model之间的差异。而似然函数则是解释以model的输出为参数的某分布模型对样本集的解释程度。因此，可以说这两者是“同貌不同源”，但是“殊途同归”啦。
 
-## 📑 ref
+📑 ref
+**********
+
 - [Understanding the Bias-Variance Tradeoff]
 - [偏差（Bias）与方差（Variance）]
 - [【深度学习】一文读懂机器学习常用损失函数（Loss Function）]

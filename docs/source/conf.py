@@ -67,7 +67,7 @@ def replace_br(text):
 
 def pre_process(text):
     text = replace_double_equalsymbol(text)
-    text = replace_title(text)
+    # text = replace_title(text)
     text = replace_br(text)
     #print(f'dewdwaaaaaaaaaaaaaaaaaaaaa\n{text}')
     return text

@@ -1,5 +1,5 @@
-
-# 模型评估与选择
+模型评估与选择
+####################
 
 .. image:: ./pics/RES_fit_6.png
     :scale: 30%
@@ -9,7 +9,8 @@
     | 依据：训练集 & 测试集 **独立同分布** 地在数据空间中采样形成。
     | 通过降低 **训练误差** 来让 **测试误差** ⬇️，通过测量 **测试误差** 来衡量在整个数据集的 **泛化性能** 。
 
-## 数据划分
+数据划分
+**********
 
 **留出法和k折交叉验证** 最常用。
 
@@ -39,11 +40,13 @@ dataset :math:`D`；training set :math:`S`；testing set :math:`T`
 
 对样本而言，在 n 次采样中始终找不到：:math:`\lim\limits_{m\rightarrow\infin}(1-\frac{1}{m})^m=\frac{1}{e}\approx0.368\implies S:T=2:1`
 
-### 数据采样
+数据采样
+===============
 
 ==stratified sampling 分层采样== 。保留类比比例
 
-## 评估指标
+评估指标
+**********
 
 - 分类
     - 准确率 Accuracy，错误率 Error rate
@@ -59,7 +62,8 @@ dataset :math:`D`；training set :math:`S`；testing set :math:`T`
 [机器学习基础，回归模型评估指标]
 [机器学习笔记_混淆矩阵（Confusion Matrix]
 
-### 分类
+分类
+==========
 
 .. grid:: 2
 
@@ -116,7 +120,8 @@ dataset :math:`D`；training set :math:`S`；testing set :math:`T`
     | ==macro- 宏== 。先各混淆矩阵分别计算，再平均。:math:`\text{macro-P}=\overline{P}=\cfrac{1}{n}\sum\limits_{i=1}^nP_i`
     | ==micro- 微== 。先平均混淆矩阵，再一起计算 :math:`\text{micro-P}=\cfrac{\overline{TP}}{\overline{TP}+\overline{FP}}`
 
-#### precision & recall
+precision & recall
+------------------------------
 
 .. danger:: 定义经常记错
     - precision 是 ==说多错多== 。高 prec 值需要在<u>很有把握的时候</u>预测为正 :math:`\implies` <u>过于保守</u>，漏掉很多正样本，recall↓
@@ -148,7 +153,8 @@ dataset :math:`D`；training set :math:`S`；testing set :math:`T`
     | :math:`λ\rightarrow-\infin`, the classifier predicts **everything as positive**.
     | :math:`λ\rightarrow\infin`, the classifier predicts **everything as negative**.
 
-##### P-R 曲线, Precision-Recall
+P-R 曲线, Precision-Recall
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note:: socre-based classifier
     | :math:`λ\rightarrow\infin, P(\infin)=1,R(-\infin) =0`. an useless predictor.
@@ -210,7 +216,8 @@ dataset :math:`D`；training set :math:`S`；testing set :math:`T`
 .. image:: ./pics/PR_1.png
     :scale: 20%
 
-##### ROC & AUC
+ROC & AUC
+^^^^^^^^^^^^^^^
 
 ==ROC, the Receiver Operating Characteristics curve 受试者工作特征曲线== 。
 
@@ -270,15 +277,16 @@ dataset :math:`D`；training set :math:`S`；testing set :math:`T`
     +---+--------+--------+--------+--------+--------+---------------------+----------------------+
 
 
-##### 代价敏感错误率 & 代价曲线
-
+代价敏感错误率 & 代价曲线
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 | 为权衡不同类型错误所造成的损失，将错误赋予“非均等代价”。上述的那些其实是 **默认均等代价, target：最小错误次数**.
 | ==Cost Matrix 代价矩阵== 。 :math:`\text{cost}_{ij}:=` 将 i 类 误认为 j 类的代价。 **target：最小总体代价 total cost**.
 
 ==cost curve 代价曲线== 。反映出期望总体代价。（ROC不能反映）
 
-#### MSE 系列
+MSE 系列
+---------------
 
 ==MSE== 。
 
@@ -299,12 +307,14 @@ dataset :math:`D`；training set :math:`S`；testing set :math:`T`
         - 增加关于 outliers 建模
         - 选择更鲁棒的 metrics ：MAPE
 
-#### MAE
+MAE
+----------
 
 .. math::
     MAPE=\cfrac{1}{n}\sum\limits_{i=1}^n\vert\hat{y_i}-y_i\vert \times100\%
 
-##### MAPE, Mean Absolute Percent Error, 平均绝对百分比误差
+MAPE, Mean Absolute Percent Error, 平均绝对百分比误差
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. math::
     MAPE=\cfrac{1}{n}\sum\limits_{i=1}^n\vert\cfrac{\hat{y_i}-y_i}{y_i}\vert \times100\%
@@ -313,12 +323,14 @@ dataset :math:`D`；training set :math:`S`；testing set :math:`T`
 | 相当于加权版的 MAE
 | MAPE 可以看做是 MAE 和 MPE (Mean Percentage Error) 综合而成的指标
 
-#### 排序问题
+排序问题
+---------------
 
 .. hint:: Question
     在排序问题中，通常没有一个确定的阈值把得到的结果直接判定为正样本或负样本，而是采用Top N返回结果的Precision值和Recall值来衡量排序模型的性能，即认为模型返回的Top N的结果就是模型判定的正样本，然后计算前N个位置上的准确率Precision@N和前N个位置上的召回率Recall@N
 
-## 比较检验
+比较检验
+**********
 
 .. warning:: 直接数值比较吗?
     | ❌。需要测的是泛化性能，但是在选出的 testing set 上测的。（两者不等价，且后者受测试集的大小和选择影响）
@@ -361,7 +373,8 @@ dataset :math:`D`；training set :math:`S`；testing set :math:`T`
 [机器学习基础，回归模型评估指标]: https://zhuanlan.zhihu.com/p/73330018
 [机器学习笔记_混淆矩阵（Confusion Matrix]: https://blog.csdn.net/seagal890/article/details/105059498
 
-## generalization 泛化性能
+generalization 泛化性能
+**************************************************
 
 ==generalization error, 泛化误差== 。训练数据集的损失与一般化的数据集的损失之间的差异
 
@@ -372,7 +385,8 @@ dataset :math:`D`；training set :math:`S`；testing set :math:`T`
 
 ==bias-variance decomposition, 偏差-方差分解== 。就是从偏差和方差的角度来解释学习算法泛化性能的一种重要工具。
 
-### MSE
+MSE
+==========
 
 ==Mean Squared Error, MSE== 。 one of evaluations of an estimator of parameter.
 
@@ -394,24 +408,28 @@ assume that :math:`Y=f(X)+ε,ε～N(0,σ_ε)`
 
     \begin{align*}MSE&=\mathbb E\{(Y-\hat Y)^2\}=\mathbb E\{(f_X-\hat f_X)^2\}\\&=(\mathbb E\hat f- f)^2+\mathbb E\{(\hat f-\mathbb E \hat f)^2\}+\sigma_\epsilon^2\\&=Bias^2+Var+\text{Irreducible Error}\end{align*}
 
-#### bias, 偏差
+bias, 偏差
+---------------
 
 | ==Bias== 。:math:`=\mathbb E\hat f- f`
 | 用所有可能的训练数据集训练出的 **所有模型** 输出 **值** 与 **真实模型** 的输出值之间的差异。度量了学习算法的期望预测与真实结果的偏离程度，即刻画了 **学习算法本身的拟合能力。**
 | Bias的对象是 **单个模型**，是期望输出与真实标记的差别。它描述了 **模型对本训练集的拟合程度**。
 
-#### variance, 方差
+variance, 方差
+--------------------
 
 | ==Variance== 。:math:`=\mathbb E\{(\hat f-\mathbb E \hat f)^2\}`
 | 数据的离散程度，不同的训练数据集训练出的模型 **输出值之间的差异**。度量了同样大小的训练集的变动所导致的学习性能的变化，即刻画了 **数据扰动所造成的影响。**
 | Variance的对象是 **多个模型**，是相同分布的不同数据集训练出模型的输出值之间的差异。它刻画的是数据扰动对模型的影响。
 
-#### noise, 噪聲
+noise, 噪聲
+--------------------
 
 | ==Noise== 。 :math:`=ε～N(0,σ_ε)`
 | 学习算法所无法解决的问题，数据的质量决定了学习的上限。我们要做的就是尽可能的接近这个上限。表达了在当前任务上任何学习算法所能达到的 **期望泛化误差的下界**，即刻画了学习问题本身的难度
 
-### bias-variance dilemma, 偏差-方差窘境
+bias-variance dilemma, 偏差-方差窘境
+=============================================
 
 .. note:: 训练误差 :math:`\xrightarrow{近似}` 测试误差 :math:`\xrightarrow{近似}`  泛化误差。
     决定机器学习算法效果是否好的因素：
@@ -430,7 +448,8 @@ assume that :math:`Y=f(X)+ε,ε～N(0,σ_ε)`
 [Understanding the Bias-Variance Tradeoff]
 [Understanding the Bias-Variance Tradeoff]:https://link.zhihu.com/?target=http%3A//scott.fortmann-roe.com/docs/BiasVariance.html
 
-### underfitting 欠拟合
+underfitting 欠拟合
+====================
 
 表示模型不懂数据，无法学到数据之间内在的规律，忽略数据特征。忽略了多少数据
 
@@ -442,7 +461,8 @@ assume that :math:`Y=f(X)+ε,ε～N(0,σ_ε)`
 .. danger:: 欠拟合： 单纯增加训练数据集没有用。核心是模型太拉学不到东西。增加模型复杂度才是正道。
     即使增加数据的数量，无论是使用训练数据还是测试数据，精度也都会很差的状态
 
-### overfitting, 过拟合 - 高方差
+overfitting, 过拟合 - 高方差
+==============================
 
 是指模型对数据的依赖程度.
 
@@ -453,7 +473,8 @@ assume that :math:`Y=f(X)+ε,ε～N(0,σ_ε)`
 3. increasing regularization hyperparameter lambda. decrease model complexity 正则化方法
 4. 交叉验证法
 
-### OF vs UF
+OF vs UF
+===============
 
 .. grid:: 2
 
@@ -487,7 +508,8 @@ assume that :math:`Y=f(X)+ε,ε～N(0,σ_ε)`
             
             过拟合;只对训练数据拟合得较好
 
-### 解决方法
+解决方法
+==========
 
 .. table::
 
@@ -513,7 +535,8 @@ assume that :math:`Y=f(X)+ε,ε～N(0,σ_ε)`
 
 ✏️ 通过调整模型的容量，控制模型是否偏向 UF｜OF
 
-#### capacity 容量
+capacity 容量
+--------------------
 
 | ==模型的容量 capacity== 。其拟合各种函数的能力。
 | 容量低的模型可能很难拟合训练集，容量高的模型可能会过拟合，因为记住了不适用于测试集的训练集性质。

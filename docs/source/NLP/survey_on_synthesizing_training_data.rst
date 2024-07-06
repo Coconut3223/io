@@ -1,12 +1,14 @@
+Synthesize Training Data
+##############################
 
-# Synthesize Training Data
-
-## Introduction
+Introduction
+********************
 
 for TvD, Teaching via Data
 fine-tune lightweight student model for running system
 
-## Limitations
+Limitations
+********************
 
 1. 对一些像 NER 的 tasks（ICST, NER），不能生成 token-level label (slot tags) [<sup>1</sup>](#reference)
    - before：use a separate model to do work alignment. Res: noise ↑
@@ -19,11 +21,14 @@ fine-tune lightweight student model for running system
         词的 frequency 两极分化更严重
         -> sol:
 
-## Approaches with gpt
+Approaches with gpt
+********************
 
-### Prompt Format
+Prompt Format
+====================
 
-#### HTML/XML [<sup>1</sup>](#reference)
+HTML/XML [<sup>1</sup>](#reference)
+----------------------------------------
 
 - target: control output
 
@@ -40,9 +45,11 @@ fine-tune lightweight student model for running system
         | Sentenc:target 
         | Translation in French:
 
-#### common
+common
+--------------------
 
-### for multi-languages
+for multi-languages
+====================
 
 - Back-translate
     English -> French ->English
@@ -56,9 +63,11 @@ fine-tune lightweight student model for running system
     .. note:: ""
         another way to say "...":
 
-### for slot tags
+for slot tags
+====================
 
-#### LINGUIST[<sup>1</sup>](#reference)
+LINGUIST[<sup>1</sup>](#reference)
+----------------------------------------
 
 **L** anguage Model **In** struction Tuning to **G** enerate Annotated **U** tterances for **I** ntent Classification and **S** lot **T** agging
 
@@ -76,7 +85,8 @@ introduce an **output format** with **brackets and numbers** that enables the mo
     4. wildcard instruction  ``*``  自由发挥，which did not appear in the original examples
     5. 可以改 language
 
-#### CLASP[<sup>1,7</sup>](#reference)
+CLASP[<sup>1,7</sup>](#reference)
+----------------------------------------
 
 Few-shot **C** ross-**L** ingual Data **A** ugmentation for **S** emantic **P** arsing
 
@@ -88,9 +98,11 @@ Few-shot **C** ross-**L** ingual Data **A** ugmentation for **S** emantic **P** 
 .. note:: summary
     1. multi-language
 
-### for diversity
+for diversity
+====================
 
-#### AttrPrompt [<sup>2,8</sup>](#reference)
+AttrPrompt [<sup>2,8</sup>](#reference)
+------------------------------------------------------------
 
 [AttrPrompt github]
 
@@ -100,7 +112,8 @@ Few-shot **C** ross-**L** ingual Data **A** ugmentation for **S** emantic **P** 
 .. image:: ./pics/attrprompt_1.PNG
 .. image:: ./pics/attrprompt_2.PNG
 
-##### process
+process
+^^^^^^^^^^
 
 For a given classification task
 
@@ -153,8 +166,8 @@ For a given classification task
         - Domain Limitation 只在 text classification 中
         - 生成的数据继承了 LLM 的 hallucination 幻觉问题(生成的文本中在语义或句法上看似合理但实际上不正确或无意义的错误)
 
-#### increasing diversity wihile maintain accuracy [<sup>3</sup>](#reference)
-
+increasing diversity wihile maintain accuracy [<sup>3</sup>](#reference)
+----------------------------------------------------------------------------------------------------
 .. note:: ""
     | Write a movie review (text type) to cover all following elements
     | Elements: positive sentiment (label)
@@ -180,7 +193,8 @@ For a given classification task
         token_ID: in the GPT tokenizer
     """
 
-##### logit supression
+logit supression
+^^^^^^^^^^^^^^^^^^^^
 
 [OpenAI API]
 
@@ -208,7 +222,8 @@ For a given classification task
       1. 统计 tokens 的 frequency 
       2. logprob = 出现的 freq * -7.5（也就是说最低不可能超过 -7.5
 
-##### temperature-based sampling
+temperature-based sampling
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 温度 采样受到统计热力学的启发，其中高温意味着更有可能遇到低能态。在概率模型中，logits 扮演着能量的角色，我们可以通过将 logits 除以温度来实现温度采样，然后将其输入到 softmax 中并获得采样概率
 
@@ -236,7 +251,8 @@ For a given classification task
     :scale: 50%
     :align: center
 
-## metrics
+metrics
+**********
 
 .. danger:: the quality of synthesized training data [<sup>4</sup>](#reference)
     - fidelity
@@ -293,7 +309,8 @@ For a given classification task
     .. note:: ""  
         attributed prompt 只需要 simple prompt 5%的开销（主要用于 query chatgpt）就可以达到和后者一样的效果。
 
-## Reference
+Reference
+**********
 
 - [Using large language models LLMs to synthesize training data]
 - [Large Language Model as Attributed Training Data Generator: A Tale of Diversity and Bias]

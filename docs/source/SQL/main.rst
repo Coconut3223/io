@@ -1,5 +1,5 @@
-
-# SQL
+SQL
+##########
 
 mysql 底层的索引是B+ tree
 
@@ -21,12 +21,14 @@ mysql 底层的索引是B+ tree
         group by name
         having count(name) = 2
 
-## datatype
+datatype
+**********
 
-### <div id ='unicode' > 编码</div>
+<div id ='unicode' > 编码</div>
+==================================================
 
-#### charset
-
+charset
+----------
 
 .. table::
 
@@ -38,7 +40,8 @@ mysql 底层的索引是B+ tree
     | ``utf8mb4`` | ``utf8mb4_unicode_ci`` |
     +-------------+------------------------+
 
-#### collate
+collate
+----------
 
 实际上符号都是编码储存的，编码会影响读取的速度、排序的位置、是否区分大小写、支持的符号等等问题。
 
@@ -66,7 +69,8 @@ mysql 底层的索引是B+ tree
 
 - [MySQL 編碼挑選與差異比較]
 
-### int
+int
+==========
 
 .. note:: int(M)
     ``int(M:max_display_width)``  ,无论 M 是多少，都是 int 类型，也就是存储  ``bytes = 4`` 
@@ -89,16 +93,19 @@ mysql 底层的索引是B+ tree
     |bigint   |8    |         |
     +---------+-----+---------+
 
-### char
+char
+==========
 
 .. note:: "根据 Mysql 官方建议，使用 VARCHAR 替代 CHAR"
 
-### format
+format
+==========
 
 - 四舍五入，保留n位小数  ``round(col, n)`` 
 - 大小写  ``lower(col)`` ,  ``upper(col)`` 
 
-## query
+query
+**********
 
 | ``select * from users;`` 
 | ``select <old_col_name> as <new_col_name> from users;`` 
@@ -134,7 +141,8 @@ mysql 底层的索引是B+ tree
 - [SELECT 1 FROM TABLE的作用]
 - [select 1 in SQL]
 
-### 一些特别的选取
+一些特别的选取
+====================
 
 - 条件
     - 为空  ``null`` 
@@ -145,7 +153,8 @@ mysql 底层的索引是B+ tree
         from users
         where col is not null
 
-#### 日期
+日期
+----------
 
 - 格式
     - 常见的日期数据格式 ``'yyyy-mm-dd h:m:s'``  和  ``'yyyymmdd'`` 
@@ -257,7 +266,8 @@ mysql 底层的索引是B+ tree
                 ) as new
             group by day;
 
-#### 数字
+数字
+----------
 
 .. code-block:: sql
 
@@ -272,7 +282,8 @@ mysql 底层的索引是B+ tree
     from users
     where col between m and n; 
 
-#### 字符串字段
+字符串字段
+--------------------
 
 .. code-block:: sql
 
@@ -290,7 +301,8 @@ mysql 底层的索引是B+ tree
     from users
     where col in ('val1', 'val2', ...);
 
-#### 长字符串 long string
+长字符串 long string
+------------------------------
 
 需要进行再一步提取处理
 
@@ -377,7 +389,8 @@ mysql 底层的索引是B+ tree
             upper(concat(left(cust_name,2), left(cust_city, 3))) as user_login
         from Customers;
 
-#### 模糊查询
+模糊查询
+--------------------
 
 .. danger:: "尽量避免通配符在开头"
     | 当  ``like``  模式以通配符（例如“%xyz”）开头时，MySQL不能使用索引，并在这种情况下执行完整表扫描。
@@ -463,8 +476,9 @@ mysql 底层的索引是B+ tree
             where prod_desc not REGEXP 'toy'
             order by prod_name;
 
-#### 复合条件的查询
-  
+复合条件的查询
+------------------------------
+
 .. note:: 复合条件的查询  ``or, union, union all`` 
     1. 是否去重
         | 只要满足一个条件就被筛选出来，但总会存在一个人满足了多个条件， 但返回的结果是多少条呢？
@@ -568,7 +582,8 @@ mysql 底层的索引是B+ tree
         # 2. 
 
 
-#### 统计- 聚合函数 with  ``group by`` 
+统计- 聚合函数 with  ``group by`` 
+----------------------------------------
 
 ``select cols from users group by col having condition`` 
 
@@ -725,7 +740,8 @@ mysql 底层的索引是B+ tree
         from OrderItems
         order by 1 desc, 2 desc;
 
-#### 连表查询
+连表查询
+--------------------
 
 .. note:: 连接多张表
     就一直写一直写就行
@@ -831,7 +847,8 @@ mysql 底层的索引是B+ tree
         group by rec.exam_id
         order by uv desc, avg_score asc;
 
-#### 拼接
+拼接
+----------
 
 .. table::
 
@@ -880,7 +897,8 @@ mysql 底层的索引是B+ tree
         having incomplete_cnt < 5 and complete_cnt >= 1 and incomplete_cnt > 1
         order by incomplete_cnt desc
 
-### 分组
+分组
+==========
 
 .. hint:: 在日常工作中，经常会遇到需要在每组内排名，比如下面的业务需求：
     - **排名问题**：每个部门按业绩来排名
@@ -888,7 +906,8 @@ mysql 底层的索引是B+ tree
     
     非全局排序，需要在某个维度下进行排序
 
-#### 窗口函数
+窗口函数
+--------------------
 
 窗口函数, OLAP, Online Anallytical Processing，联机分析处理，可以对数据库数据进行实时分析处理。
 
@@ -938,7 +957,8 @@ mysql 底层的索引是B+ tree
 
 - [通俗易懂的学会：SQL窗口函数]
 
-##### 常见业务
+常见业务
+^^^^^^^^^^^^^^^
 
 - 最低最高
     .. hint:: 现在运营想要找到每个学校gpa最低的同学来做调研，请你取出每个学校的最低gpa
@@ -959,9 +979,11 @@ mysql 底层的索引是B+ tree
 
 - [hive sql]
 
-## operations
+operations
+********************
 
-### insert
+insert
+==========
 
 .. table::
 
@@ -1012,9 +1034,11 @@ mysql 底层的索引是B+ tree
 
 .. hint:: 现有一张试卷作答记录表exam_record，结构如下表，其中包含多年来的用户作答试卷记录，由于数据越来越多，维护难度越来越大，需要对数据表内容做精简，历史数据做备份。
 
-### alter & update
+alter & update
+========================================
 
-#### ``alter``  基于表 scheme
+``alter``  基于表 scheme
+----------------------------------------
 
 .. danger:: ``alter table users``  每一句都要写
 
@@ -1044,7 +1068,8 @@ mysql 底层的索引是B+ tree
     alter table user_info change column job profession varchar(10);
     alter table user_info modify column achievement int(11) default 0;
 
-#### ``update``   基于记录 records
+``update``   基于记录 records
+----------------------------------------
 
 .. danger:: update
     - 更新的值要满足建表时的字段类型。比如score是int类型就不能更新为char类型。
@@ -1062,7 +1087,8 @@ mysql 底层的索引是B+ tree
     |多个值       | ``update users set col1 if(condition,val1, val2);``   ``case``  也可以|
     +-------------+-----------------------------------------------------------------------+
 
-### delete & truncate
+delete & truncate
+========================================
 
 .. danger:: "非必要不要用 truncate 或 drop"
 
@@ -1088,7 +1114,8 @@ mysql 底层的索引是B+ tree
         order by start_time
         limit 3;
 
-### create
+create
+==========
 
 .. code-block:: sql
 
@@ -1141,14 +1168,16 @@ mysql 底层的索引是B+ tree
     |存在就返回| ``create table if not exists (...);``               |
     +----------+-----------------------------------------------------+
 
-### index
+index
+==========
 
 .. danger:: "没有内置修改索引操作的，需要先执行删除操作在重新建立一个索引"
 
 .. danger:: "先导数据再设  ``create fulltime index`` "
     在数据量较大时候，先将数据放入一个没有全文索引的表中，然后再用CREATE INDEX创建FULLTEXT索引，要比先为一张表建立FULLTEXT然后再将数据写入的速度快很多。
 
-#### create2
+create2
+----------
 
 .. code-block:: sql
 
@@ -1197,7 +1226,8 @@ mysql 底层的索引是B+ tree
         create fulltext index full_idx_tag on examination_info(tag);
 
 
-#### delete
+delete
+----------
 
 .. code-block:: sql
 
@@ -1206,7 +1236,8 @@ mysql 底层的索引是B+ tree
     alter table users
     drop index index_name;
 
-## 业务
+业务
+**********
 
 .. hint:: 牛客的运营同学想要查看大家在SQL类别中高难度试卷的得分情况。请你帮她从exam_record数据表中计算所有用户完成SQL类别高难度试卷得分的截断平均值（去掉一个最大值和一个最小值后的平均值）。
     :math:`=\cfrac{\sum-\max-\min}{\#-2}` 

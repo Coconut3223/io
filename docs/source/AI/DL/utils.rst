@@ -1,7 +1,8 @@
+utils
+##########
 
-# utils
-
-## GPU
+GPU
+******
 
 .. note:: 某某神经网络参数量有多少，大概占用多大的显存
 
@@ -18,7 +19,8 @@
     :scale: 30%
     :align: center
 
-### Model size
+Model size
+===============
 
 .. hint:: CNN
 
@@ -46,7 +48,8 @@
     | after Fnn1: 128
     | after Fnn2: 10 = output
 
-### optimization
+optimization
+===============
 
 | In practice, we want to do mini-batch SGD:
 | More stable gradient estimates
@@ -87,6 +90,7 @@
 [Memory usage and computational considerations]:https://imatge-upc.github.io/telecombcn-2016-dlcv/slides/D2L1-memory.pdf
 [CNN 模型所需的计算力flops是什么？怎么计算？]:https://zhuanlan.zhihu.com/p/137719986
 
-## tensorboard
+tensorboard
+******************
 
 [pytorch：本地使用tensorboard可视化](https://blog.csdn.net/Caesar6666/article/details/127245418)

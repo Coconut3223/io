@@ -1,23 +1,28 @@
+other
+##########
 
-# other
+计算机网络
+**********
 
-## 计算机网络
+数据加密解密体制
+====================
 
-### 数据加密解密体制
-
-#### 对称密钥密码体制
+对称密钥密码体制
+------------------------------
 
 加密 Encrypt、解密 Decrypt 都用同一把钥匙
 
 - DES 数据加密标准
   
-#### 不对称密钥
+不对称密钥
+--------------------
 
 - 加密密钥和解密密钥不是同一把
 - 由 given public key 在计算上推断 private key 不可能
 - All public key、 encrypt algorithm，decrypt algorithm are open
 
-##### RSA
+RSA
+^^^^^^^^^^^^^^^
 
 - keys
     -  ``id_rsa`` : private key ，需要保密
@@ -25,7 +30,8 @@
 
 - 具有保密的数字签名
 
-## Docker
+Docker
+**********
 
 ==传统虚拟机技术== 是虚拟出一套硬件后，在其上运行一个完整操作系统，在该系统上再运行所需应用进程；
 ==Container 容器== 内的应用进程直接运行于宿主的内核，容器内没有自己的内核，而且也没有进行硬件虚拟。因此容器要比传统虚拟机更为轻便。
@@ -36,13 +42,15 @@
 
 ==Ubuntu== is a **Linux** distribution based on Debian and composed mostly of free and open-source software.
 
-### Concept
+Concept
+==========
 
 ==images, 镜像== 就是原始的文件系统，为用户提供用户空间支持
 ==container 容器== 镜像运行的实体
 ==repository 仓库== 就是储存分发镜像
 
-#### images 镜像
+images 镜像
+--------------------
 
 ==操作系统== 分为 **内核** 和 **用户空间**。对于 ``Linux``  而言，内核启动后，会挂载 ``root`` 文件系统为其提供用户空间支持相当于是一个 root 文件系统。
 
@@ -54,13 +62,15 @@
 
     .. hint:: ``docker pull ubuntu`` 
 
-#### Container
+Container
+--------------------
 
 每一个容器运行时，是以镜像为基础层，在其上创建一个当前容器的存储层
 
 镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停
 
-#### repository
+repository
+--------------------
 
 以 Ubuntu 镜像为例，ubuntu是仓库的名字，其内包含有不同的版本标签，如，16.0, 18.04。我们可以通过 ubuntu:16.04，或者 ubuntu:18.04来具体指定所需哪个版本的镜像。如果忽略了标签，比如 ubuntu，那将视为 ubuntu:latest。
 
@@ -76,7 +86,8 @@
 - ``docker start <container_id> or <container_name>``  打开restart
 - ``docker attach <container_id> or <container_name>`` 
 
-## 字符 问题
+字符 问题
+**********
 
 字符的标识通常是指字符的编码方式，用于在计算机系统中表示和存储字符。最常见的字符编码标准是ASCII（American Standard Code for Information Interchange，美国信息交换标准代码），它使用7位或8位二进制数来表示字符，包括字母、数字、标点符号和控制字符。
 
@@ -169,7 +180,8 @@
     >>> chr(unicode_A)
     'A'
 
-### clumsy
+clumsy
+==========
 
 [official](https://jagt.github.io/clumsy/cn/index.html)
 [弱网模拟工具Clumsy使用指南](https://www.lfzxb.top/clumsy-guide/)
@@ -181,7 +193,8 @@
     
     当clumsy被激活时，只有符合这些标准的网络数据会被进行处理，而你不需要的数据仍然会由系统正常传输。
 
-#### 使用
+使用
+----------
 
 1. 自定义filter，正确的 WinDivert 规则
 2. 如果有预设的filter 可以自定义 see: #self-define-presets
@@ -194,7 +207,8 @@
 
     .. image:: ./pics/clumsy_1.png
 
-##### Self-define <kbd>presets</kbd>
+Self-define <kbd>presets</kbd>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 软件根目录下的<kbd>config.txt</kbd>以<u>键值对</u>的形式填写自己的配置
 
@@ -208,7 +222,8 @@
         NKGMoba: udp and (udp.DstPort == 10003 or udp.DstPort == 10004) \
         or (udp.SrcPort == 10003 or udp.SrcPort == 10004) 
 
-##### Functions
+Functions
+^^^^^^^^^^^^^^^^^^^^
 
 - **Lag**, 延迟，把数据包缓存一段时间后再发出，这样能够模拟网络延迟的状况。
 - **Drop**, 掉包，随机丢弃一些数据。

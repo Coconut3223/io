@@ -1,7 +1,8 @@
+Recurrent Neural Networks
+##############################
 
-# Recurrent Neural Networks
-
-## standard RNN
+standard RNN
+***************
 
 <kbd>Variable-length Sequene</kbd> <kbd>Sequential-Dependent</kbd> <kbd>Time-Dependent</kbd>
 
@@ -60,7 +61,8 @@
 .. math:: 
     s_t=\text{tanh}(Ux_t+Ws_{t-1})
 
-### shortcoming
+shortcoming
+===============
 
 RNN 比较擅长解决 想要的信息 & 相关的信息 距离较近。
 
@@ -107,7 +109,8 @@ RNN 比较擅长解决 想要的信息 & 相关的信息 距离较近。
     就像是 CNN 用参数共享的卷积核来提取相同的特征，在RNN中，使用参数共享的 U,V 来 **确保相同的输入产生的输出是一样**。参数共享的矩阵W **确保了对于相同的上文，产生相同的下文**。
         一段文本中，可能会出现大量的“小狗”。无论小狗出现在哪个位置（x?），参数共享使得神经网络在输入“小狗”的时候，在不考虑上下文的 memory， :math:`x\xrightarrow{完全编码}h`  的结果是一样。类似地，在不考虑当前输入 x， :math:`m\xrightarrow{完全编码}h`  的结果是一样。
 
-## LSTM Long Short-Term Memory Network
+LSTM Long Short-Term Memory Network
+****************************************
 
 .. note:: motivation
     | To solve short-term memory of RNN, LSTM can retain "important information" in longer sequence data, ignoring less important information.
@@ -203,7 +206,8 @@ RNN 比较擅长解决 想要的信息 & 相关的信息 距离较近。
 | ==input gate== 决定：用当前的判断  :math:`i` ：要加入多少当前的信息  :math:`\tilde{c}_{t}`
 | ==output gate== 决定：用迄今为止的判断  :math:`o` ：要向外面或者未来暴露多少信息  :math:`c_t`  。defines how much of the internal state you want to expose to the external network (higher layers and the next time step).
 
-### forget gate 遗忘门
+forget gate 遗忘门
+====================
 
 当前的信息  :math:`[h_{t-1}, x_t]`   决定 过去的信息  :math:`c_{t-1}`  要忘记多少
 
@@ -215,7 +219,8 @@ RNN 比较擅长解决 想要的信息 & 相关的信息 距离较近。
     :align: center
     :scale: 50%
 
-### input gate 输入门
+input gate 输入门
+====================
 
 将当前的信息  :math:`[h_{t-1}, x_t]`  更新到过去的信息  :math:`c`  里：不仅要处理要流入的值，还要决定哪些值是重要的，所以  :math:`[h_{t-1}, x_t]`  同时经过 Sigmoid & tanh。The sigmoid output will decide which information is important to keep from the tanh output.
 
@@ -237,7 +242,8 @@ RNN 比较擅长解决 想要的信息 & 相关的信息 距离较近。
     :scale: 60%
 
 
-### output gate 输出门
+output gate 输出门
+====================
 
 cell state  :math:`c_t`  已更新，要过一遍 tanh 传递给下一轮的 hidden state & output for prediction，同时 当前信息  :math:`[h_{t-1}, x_t]`  要过 sigmoid 决定新的  :math:`c_t`  里有哪些是需要遗忘的。
 
@@ -251,7 +257,8 @@ cell state  :math:`c_t`  已更新，要过一遍 tanh 传递给下一轮的 hid
 
 t 时刻的 hidden state  :math:`h_t`  既作为 hidden state 继续向前流动，又作为 t时刻的输出，来进行解码和完成任务。
 
-## GNU Gated Recurrent Unit-GRU
+GNU Gated Recurrent Unit-GRU
+******************************
 
 a variant of LSTM. He retains the characteristics of LSTM to focus and forget unimportant information, and it will not be lost during long-term propagation.
 
@@ -277,16 +284,19 @@ GRU 将 LSTM 的 forget gate & input gate 整合到一个单独的 update gate�
 
 简单来说，把 reset 的参数都变成 1， update 的参数 都变成0，就是 standard RNN。
 
-### Reset Gate
+Reset Gate
+===============
 
 决定忘记哪些过去信息
 
-### Update Gate
+Update Gate
+===============
 
 | 把 LSTM 的 forget gate & input gate 融了进来。
 | what information to throw away and what new information to add.
 
-## Ref
+Ref
+*****
 
 - [如何理解RNN？（理论篇）]
 - [Long short-term memory network-Long short-term memory | LSTM]

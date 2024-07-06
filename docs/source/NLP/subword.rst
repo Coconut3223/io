@@ -1,5 +1,5 @@
-
-# Subword Segmentation
+Subword Segmentation
+##############################
 
 .. grid:: 2
 
@@ -51,7 +51,8 @@ Strictly speaking, wordpiece model (Schuster and Naka- jima, 2012) is different 
 
 Wordpiece model uses a likelihood instead of frequency.
 
-## Subword segmentations with language model
+Subword segmentations with language model
+******************************************************************************************
 
 .. table::
 
@@ -68,7 +69,8 @@ Wordpiece model uses a likelihood instead of frequency.
 .. note:: BPE & unigram 【SAME】
     the same idea that they encode a text using fewer bits with a certain data compression principle (dictionary vs. entropy).
 
-### Byte-Pair-Encoding BPE
+Byte-Pair-Encoding BPE
+==============================
 
 [Neural Machine Translation of Rare Words with Subword Units]
 
@@ -91,11 +93,13 @@ Wordpiece model uses a likelihood instead of frequency.
 
 [Neural Machine Translation of Rare Words with Subword Units]: https://arxiv.org/pdf/1508.07909.pdf
 
-### Unigram language model
+Unigram language model
+========================================
 
 On the other hand, the unigram language model is reformulated as an entropy encoder that minimizes the total code length for the text.
 
-## Questions
+Questions
+**********
 
 .. danger:: multiple segmentation candidates
     | 即使是同样的字典，还是有不一样的分割表示方式。is a spurious ambiguity
@@ -110,7 +114,8 @@ On the other hand, the unigram language model is reformulated as an entropy enco
         | /He/l/l/o/ world 7 18085 356 356 137 255
         | H/el/l/o/ /world 320 585 356 137 7 12295
 
-## [Subword Regularization: Improving Neural Network Translation Models with Multiple Subword Candidates]
+[Subword Regularization: Improving Neural Network Translation Models with Multiple Subword Candidates]
+********************************************************************************************************************************************
 
 .. hint:: Abstract
     ==Subword units== are an effective way to alleviate the open vocabulary problems in neural machine translation (NMT). While sentences are usually converted into unique subword sequences, ==subword segmentation== is potentially ambiguous and multiple segmentations are possible even with the same vocabulary. **The question addressed in this paper is whether it is possible to harness the segmentation ambiguity as a noise to improve the robustness of NMT. We present a simple regularization method, ==subword regularization==, which trains the model with multiple subword segmentations probabilistically sampled during training.** In addition, for better subword sampling, we propose a new subword segmentation algorithm based on a unigram language model. We experiment with multiple corpora and report consistent improvements especially on low resource and out-of-domain settings.
@@ -129,7 +134,8 @@ In this paper, we propose a new subword segmentation algorithm based on a unigra
 
 [Subword Regularization: Improving Neural Network Translation Models with Multiple Subword Candidates]: https://arxiv.org/pdf/1804.10959.pdf
 
-## [Neural Machine Translation of Rare Words with Subword Units]
+[Neural Machine Translation of Rare Words with Subword Units]
+**********************************************************************
 
 .. hint:: Abstract
     Neural machine translation (NMT) models typically operate with a fixed vocabulary, but translation is an open-vocabulary problem. Previous work addresses the translation of out-of-vocabulary words by backing off to a dictionary. In this paper, we introduce a simpler and more effective approach, **making the NMT model capable of open-vocabulary translation by encoding rare and unknown words as sequences of ==subword units==**. This is based on the intuition that various word classes are translatable via smaller units than words, for instance names (via character copying or transliteration ), compounds (via compositional translation), and cognates and loanwords (via phonological and morphological transformations). 這是基於這樣的直覺：各種詞類都可以透過比單字更小的單位進行翻譯，例如名稱（透過字元複製或音譯轉寫）、化合物（透過組合翻譯）以及同源詞和外來詞（透過語音和形態轉換）。**We discuss the suitability of different word segmentation techniques, including simple character n-gram models and a segmentation based on the ==byte pair encoding== compression algorithm**, and empirically show that subword models improve over a back-off dictionary baseline for the WMT 15 translation tasks English→German and English→Russian by up to 1.1 and 1.3 BLEU, respectively.
@@ -191,7 +197,8 @@ Firstly, we initialize the symbol vocabulary with the character vocabulary, and 
 | Each merge operation pro- duces a new symbol which represents a charac- ter n-gram. Frequent character n-grams (or whole words) are eventually merged into a single sym- bol, thus BPE requires no shortlist. The final sym- bol vocabulary size is equal to the size of the initial vocabulary, plus the number of merge operations – the latter is the only hyperparameter of the algorithm.
 | For efficiency, we do not consider pairs that cross word boundaries. The algorithm can thus be run on the dictionary extracted from a text, with each word being weighted by its frequency. A minimal Python implementation is shown in Al-
 
-## [Neural Machine Translation with Byte-Level Subwords]
+[Neural Machine Translation with Byte-Level Subwords]
+**********************************************************************
 
 .. hint:: Abstract
     | Almost all existing machine translation models are built on top of character-based vocabularies: characters, subwords or words.
@@ -206,7 +213,8 @@ Firstly, we initialize the symbol vocabulary with the character vocabulary, and 
 
 [Neural Machine Translation with Byte-Level Subwords]:https://arxiv.org/abs/1909.03341
 
-## BBPE
+BBPE
+**********
 
 .. hint:: Abstract
     | Almost all existing machine translation models are built on top of character-based vocabularies: characters, subwords or words.
@@ -222,7 +230,8 @@ Firstly, we initialize the symbol vocabulary with the character vocabulary, and 
 
 原本：data compression = 》 <kbd>byte</kbd> + <kbd>subword</kbd>
 
-### Encoding
+Encoding
+==========
 
 - UTF-8 encoding
 - learn (B)BPE vocabularies jointly on source and target sentences using SentencePiece
@@ -252,7 +261,8 @@ We propose to use either **a depth-wise convolutional layer or a bidirectional r
     x_{ctx\_emb}=\text{DepthWiseConv}(X_{emb})\\
     x_{ctx\_emb}=\text{BiGRU}(X_{emb})
 
-### decoding
+decoding
+==========
 
 Empirically, we find that invalid outputs from trained models are very rare.
 
@@ -262,7 +272,8 @@ Empirically, we find that invalid outputs from trained models are very rare.
 
 The design of UTF-8 encoding ensures the uniqueness of this recovery process: for a character UTF-8 encoded with multiple bytes, its trailing bytes will not make a valid UTF-8 encoded character. Then the best selection in Eq. 1 is unique and so is the final solution.
 
-### Experiment
+Experiment
+====================
 
 learn (B)BPE vocabularies jointly on source and target sentences using SentencePiece
 

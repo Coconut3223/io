@@ -1,5 +1,5 @@
-
-# Correction
+Correction
+####################
 
 .. hint:: Example
     
@@ -12,11 +12,14 @@
         .. grid-item::
             right is the result
 
-## chatgpt
+chatgpt
+**********
 
-### prompts
+prompts
+====================
 
-#### original
+original
+--------------------
 
 .. hint:: Example
 
@@ -81,7 +84,8 @@
         +-----------+----------------------+--------------------------+---+
 
 
-#### 引入音素信息
+引入音素信息
+--------------------
 
 | 但在中文ASR的场景下，很多情况是由于读音相同或相近导致的识别错误。
 | 收录常见字的粤语发音作为输入的一部分
@@ -150,7 +154,8 @@
 
     没有变化
 
-#### 提供错误的类型，追加分类任务
+提供错误的类型，追加分类任务
+--------------------------------------------------
 
 ![by pycorrector](https://github.com/shibing624/pycorrector/raw/master/docs/git_image/error_type.png)
 
@@ -179,9 +184,11 @@
 
             大家好今日我哋好高興同大家宣佈香港政府呢個新環環保計劃。目的係！推廣海在新能源使用，而家就請講姐同大家喺廣州一下計劃嘅細節啦。香港政府嘅呢個新環保嘅話，系飛非常重要嘅目的系，希望減少我哋哋嘅太排房量同時。發展我哋嘅目標係將可在收能源嘅少使用用量提高度總能圓往客。之十宜家政府都會提供嘅經歷措施、古力企業同家庭庭去安裝在最生能如系統.
 
-#### Act as a Cantonese Pronunciation Helper
+Act as a Cantonese Pronunciation Helper
+--------------------------------------------------
 
-#### Act as a Prompt Generator
+Act as a Prompt Generator
+------------------------------
 
 .. hint:: Example
 
@@ -281,7 +288,8 @@
     +-----------+----------------------+--------------------------+----+
 
 
-#### Act as a Journalist
+Act as a Journalist
+--------------------
 
 .. hint:: Example
 
@@ -348,7 +356,8 @@
 
 .. danger:: 容易编造一些细节或者说变成summary
 
-#### Act as a Proofreader
+Act as a Proofreader
+------------------------------
 
 .. hint:: Example   
     
@@ -384,13 +393,16 @@
 .. danger:: 编造细节
 
 
-## Some not good enough
+Some not good enough
+****************************************
 
-### pycorrector
+pycorrector
+====================
 
 [Chinese Spelling Correction Model shibing624/macbert4csc-base-chinese](https://huggingface.co/spaces/shibing624/pycorrector)
 
-#### results
+results
+--------------------
 
 .. hint:: Example
 
@@ -428,7 +440,8 @@
         .. grid-item::
             今日呢我哋題目就係對人工智能生成人工智能 **擦GPTGPT**。 以及我們的未来！ 這是 **今年** 分享大綱，首先會做一個簡單介紹， **然著** 就會講下这个生成。人工智能的能力以及其限制，跟住呢講下，我哋大家都關注三個 **要道**。倫理安全和可持续最后 **起** 一個小結，那就再帶入我会讨论会合。其實我个人由好早已經開始。對話食人工智能的了我第一篇文章在這方面是在一六九六年出版那時。就做 **著** 系統。有好多唔同的AI嘅 **有主音识跌有自然雨.** 有對話模型？
 
-### need to be discussed
+need to be discussed
+==============================
 
 .. hint:: Question: input of correction
     1. 纠错是整个 meeting 的文本扔进去 correct，还是逐段逐段去 correct

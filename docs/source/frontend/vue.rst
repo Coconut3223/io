@@ -1,5 +1,5 @@
-
-# Vue
+Vue
+##########
 
 | Vue 单文件组件 (Single-File Component，缩写为 SFC)。SFC 是一种可复用的代码组织形式，它将 **从属于同一个组件的 HTML、CSS 和 JavaScript 封装** 在使用 ``.vue`` 后缀的文件中。
 | Vue 的核心功能是 ==声明式渲染== ：通过扩展于标准 HTML 的模板语法，我们可以根据 JavaScript 的状态来描述 HTML 应该是什么样子的。当状态改变时，HTML 会自动更新。
@@ -26,7 +26,8 @@
 `重新启用被弃用的TypeScript Vue Plugin (Volar)拓展  <https://github.com/vuejs/language-tools/issues/4205>`_
 
 
-## 项目配置 & ``*.vue``
+项目配置 & ``*.vue``
+******************************
 
 .. code-block:: none
     :caption: directory
@@ -77,7 +78,8 @@
             // 组件逻辑 
             // 此处声明一些响应式状态
 
-### package management ``package.json``
+package management ``package.json``
+==================================================
 
 ==npm== 是前端开发人员广泛使用的包管理工具，项目中通过 ==package.json== 来管理项目中所依赖的 npm 包的配置。
 
@@ -106,7 +108,8 @@
 - `深入浅出package.json`_
 
 
-## 模版语法
+模版语法
+**********
 
 .. note:: Options API
     | Vue 的组件可以按两种不同的风格书写：选项式 API 和组合式 API。
@@ -189,7 +192,8 @@
     }
 
 
-### js & html & css 绑定数据
+js & html & css 绑定数据
+========================================
 
 配合 js 的 ``data()`` 
 
@@ -254,7 +258,8 @@
             {{ var a = 1 }}  // 语句 not 表达式
             {{ if (ok) {return message}  // 流程控制    
 
-### 监听事件
+监听事件
+====================
 
 ``v-on:event="func"`` & 简写 ``@event="func"`` 指令监听 DOM 事件
 
@@ -354,7 +359,8 @@
                 </button>
 
 
-### 双向数据绑定
+双向数据绑定
+====================
 
 ``v-model="绑定的值"`` 在 ``<textarea/>``, ``<input/>``, ``<select/>`` 元素上创建双向数据绑定。他会根据控件类型自动选取正确的方法自动更新数据，并在某种极端场景下进行一些特殊处理。
 
@@ -411,8 +417,8 @@
 
 
 
-### 条件渲染
-
+条件渲染
+====================
 
 1. ``v-if="condition"`` & ``v-else`` & ``v-else-if``
 2. ``v-show="condition"``
@@ -510,7 +516,8 @@
                 <p v-else>F</p>
 
 
-### 列表渲染
+列表渲染
+==========
 
 .. code-block:: html
     
@@ -597,7 +604,8 @@
         }
 
 
-### 生命周期
+生命周期
+==========
 
 .. grid:: 2
 
@@ -637,8 +645,8 @@
         <p ref="pElementRef">Hello</p>
 
 
-### 侦听器
-
+侦听器
+==========
 ``watch``
 
 
@@ -700,7 +708,8 @@
 
 
 
-### 父组件 & 子组件
+父组件 & 子组件
+====================
 
 真正的 Vue 应用往往是由嵌套组件创建的。 父组件可以在模板中渲染另一个组件作为子组件。 
 
@@ -840,10 +849,10 @@
                 <ChildComp @response="msg => childMsg=msg"/>
                 <!--监听response-->
                 <p>{{ childMsg }}</p>
+插槽
+==========
 
-### 插槽
-
-
-## links
+links
+**********
 
 `vuejs tutorial <https://vuejs.org/tutorial/#step-1>`_

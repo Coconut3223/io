@@ -1,5 +1,6 @@
 
-# 决策树
+决策树
+##########
 
 ==A decision tree== allows a classification of an object by testing its values for certain properties.
 
@@ -55,7 +56,8 @@
         :scale: 30%
 
 
-## 如何度量：最佳划分
+如何度量：最佳划分
+********************
 
 | ==impurity, 不纯度== ，分支结点所包含样本的归属的度量指标。impurity ⬇️，类分布越倾斜。
 | ==Information Gain== . **不纯度的降低程度**：确定划分效果的度量标准：最大化增益 :math:`\Delta` 
@@ -68,7 +70,8 @@
 | :math:`I(j)` : 第 j 个子结点的不纯度,  :math:`N(j)`  第 j 个子结点的样本数
 
 
-### impurity
+impurity
+==========
 
 .. table::
 
@@ -86,7 +89,8 @@
 
 .. warning:: 不同的准则可能导致不同的答案
 
-#### 熵 Entropy = ID3 ➡️  C4.5
+熵 Entropy = ID3 ➡️  C4.5
+------------------------------
 
 .. math::
     \text{Ent}(t)=-\sum_{i=1}^cp(i)\log_2p(i)
@@ -123,7 +127,8 @@
 | 💡证明 **将结点划分为更小的后续结点，结点熵一定会减少或者维持不变**。
 | 根据定义可知，熵越大，类分布越均匀；熵越小，类分布约倾斜。假设原结点属于各个类的概率相同(真实分布)，熵=1，则分出来的后续结点在各个类上均匀分布，各个后续结点的熵=1，加权后熵 🟰。假设原结点属于各个类的概率不一样，分出来的后续结点不均匀地分布在各个类上，则此时的分类比原有的分类更不均匀，所以熵 ⬇️
 
-##### C4.5
+C4.5
+^^^^^^^^^^
 
 为了惩罚 **高熵分裂的属性**，引入 **分裂信息 split information** 的项  :math:`-\sum\limits_{j=1}^kp(j)\log_2p(j)`  作为分母，阻碍选择属性值均匀分布的属性。 :math:`p(j)` :当前结点中划分属性第j个属性值所占有样本的比例。
 
@@ -132,8 +137,9 @@
 
 - <u>Q:</u> 当划分属性在当前结点中几乎相同的属性值时，会导致增益无定义或者非常大(分母非常小甚至为0)。偏好选择具有较少属性值的属性。
     A：启发式方法。先计算每个属性的信息增益及平均值，然后仅对信息增益高于平均值的属性应用增益率度量。
-
-#### Gini 基尼系数
+    
+Gini 基尼系数
+---------------
 
 .. math::
     \text{Gini}(t)=1-\sum_{j=1}^kp(j)^2 
@@ -142,7 +148,8 @@
 | 假设有两类  :math:`\text{Gini}(t)=1-x^2-(1-x)^2=2x-2x^2` 
 | :math:`\frac{b}{2a}=\frac{1}{2}`  开口向下，此时是最高点。
 
-#### 误分类率
+误分类率
+----------
 
 .. math::
     \text{Error}(t)=1-\max_ip(i|t) 
@@ -178,13 +185,15 @@
     | :math:`\text{Gini}(A)=\frac{7}{10}(1-\frac{4}{7}^2-\frac{3}{7}^2)+\frac{3}{10}\times0=\frac{12}{35}` 
     | :math:`\text{Gini}(B)=\frac{2}{5}(1-\frac{3}{4}^2-\frac{1}{4}^2)+\frac{3}{5}(1-\frac{1}{6}^2-\frac{5}{6}^2)=\frac{19}{60}`  (smaller  :math:`\implies B` )
 
-### performance
+performance
+===============
 
 | **Not too small**: need to handle important but possibly subtle distinctions in  data
 | **Not too big**: Computational efficiency (avoid redundant, spurious attributes),Avoid over-fitting training examples
 | ==Occam’s Razor== : find the simplest hypothesis (smallest tree) that fits the  observations.  **The best decision tree** is the smallest one that correctly classifies all given examples.
 
-#### 过拟合
+过拟合
+----------
 
 over-fitting due to
 
@@ -207,20 +216,23 @@ over-fitting due to
 - 后剪枝的<u>欠拟合风险</u>更小，<u>泛化性能</u>通常优于预剪枝。
 - 后剪枝是在生成完全决策树之后进行，并且要自底向上地对树中所有非叶结点进行逐一考察，<u>训练时间</u>远大于预剪枝。
 
-#### 预剪枝, pre-pruning
+预剪枝, pre-pruning
+--------------------
 
 - 结点实例数目小于预定义的阈值
 - 实例类分布与属性值相互独立  :math:`\leftarrow\Chi^2` 检验
 - 当前结点的扩展不能减小不纯度
 
-#### 后剪枝, post-pruning
+后剪枝, post-pruning
+-------------------------
 
 - 自上而下修剪
 - 若剪枝改善泛化误差，则改结点代替子树
 - 子树的叶实例的主要类确定节点的类标签
 - 在后剪枝使用 MDL，最小描述长度
 
-## 多变量决策树 multivariate decision tree
+多变量决策树 multivariate decision tree
+****************************************
 
 .. grid:: 2
 

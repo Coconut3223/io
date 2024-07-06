@@ -1,5 +1,5 @@
-
-# OpenNMT
+OpenNMT
+##########
 
 ==Open-Source Toolkit for Neural Machine Translation== 。
 ==Neural Machine Translation NMT 神经机器翻译==
@@ -12,7 +12,8 @@
     | We describe an open-source toolkit for neural machine translation (NMT). The toolkit **prioritizes efficiency, modularity, and extensibility with the goal of supporting NMT research into model architectures, feature representations, and source modalities**, while maintaining competitive performance and reasonable training requirements. The toolkit consists of modeling and translation support, as well as detailed pedagogical documentation about the underlying techniques.
     | [Open-Source Toolkit for Neural Machine Translation]
 
-## Data Gathering and Processing
+Data Gathering and Processing
+**************************************************
 
 - 包括：至少4个
     | 两种语言分为 ① 源 <kbd>src.txt</kbd> ② 目标 <kbd>tgt.txt</kbd>；从数据集上：分为训练集和验证集。
@@ -55,7 +56,8 @@
                     weight: 1
                     transforms: [tokenizer] 
 
-## Tokenization / Sub-wording
+Tokenization / Sub-wording
+**************************************************
 
 However, an MT model can only learn a specific number of vocabulary tokens due to limited hardware resources. <u>To solve this issue, sub-words are used instead of whole words.</u> At translation time, when the model sees a new word/token that looks like a word/token it has in the vocabulary, it still can try to continue the translation instead of marking this word as “unknown” or “unk”.
 
@@ -66,15 +68,18 @@ However, an MT model can only learn a specific number of vocabulary tokens due t
     .. hint:: <u>English</u>
         ▁Hav ing ▁considered ▁the ▁report ▁of ▁the ▁Committee ▁on ▁Conferences ▁for ▁ 2 0 0 6 Official ▁Record s ▁of ▁the ▁General ▁Assembly , ▁S ixty - first ▁Session , ▁Supplement ▁No . ▁ 3 2 ▁( A / 6 1 / 3 2 ). ▁and ▁the ▁relevant ▁reports ▁of ▁the ▁Secretary - General , A / 6 1 / 1 2 9 ▁and ▁Add . 1 ▁and ▁A / 6 1 / 3 0 0 .</kbd>
 
-## Data Splitting
+Data Splitting
+********************
 
 tra, test, valid
 
-## Create the Training Configuration File
+Create the Training Configuration File
+************************************************************
 
 Create the <u>YAML configuration file</u>. On a regular machine, you can create it manually or with <u>nano</u>.
 
-### Example
+Example
+==========
 
 .. code-block:: yaml
     :caption: config.yml
@@ -168,7 +173,8 @@ Create the <u>YAML configuration file</u>. On a regular machine, you can create 
     attention_dropout: [0.1]
 
 
-### Content
+Content
+==========
 
 -  ``src_vocab_size=50k``  &  ``tgt_vocab_size=50k``  Vocabulary size
     - default 50k
@@ -190,7 +196,8 @@ For larger datasets, consider increasing: train_steps, valid_steps, warmup_steps
 -  ``warmup_steps`` 
     obviously, its value must be less than train_steps. Try 4000 and 8000 values.
 
-## Build Vocabulary
+Build Vocabulary
+******************************
 
 对于大的数据集来说，用所有的词进行训练是 not feasible. 所以需要构建小的词库。
 
@@ -230,7 +237,8 @@ Main purpose: To extract a specific set of vocabulary(usually <u>betweeen 32k an
         [INFO] Counters tgt:11884
 
 
-## Check GPU
+Check GPU
+**********
 
 <kbd>nvidia-smi -L</kbd> Check if the GPU is active
 
@@ -247,7 +255,8 @@ Main purpose: To extract a specific set of vocabulary(usually <u>betweeen 32k an
     Free GPU memory: 15007.75 out of: 15109.75
 
 
-## Traning
+Traning
+**********
 
 1. remove existed model: <kbd>rm -rf drive/MyDrive/nmt/models/</kbd>
 2. Train the NMT model: <kbd>onmt_train -config config.yaml</kbd>
@@ -260,7 +269,8 @@ Main purpose: To extract a specific set of vocabulary(usually <u>betweeen 32k an
 
 - debug mode: <kbd>dmesg -T</kbd>
 
-## Applying
+Applying
+********************
 
 Translation Options:
 
@@ -283,11 +293,14 @@ Translation Options:
     | <u>Using word</u>
     | Recalling its relevant resolutions, including resolution 58/292 of 6 May 2004, as well as those adopted at its tenth emergency special session,
 
-## Evaluation
+Evaluation
+********************
 
-## model
+model
+**********
 
-### Ensemble Decoding
+Ensemble Decoding
+====================
 
 During translation, instead of adding one model/checkpoint to the -model argument, add multiple checkpoints. For example, try the two last checkpoints. Does it improve quality of translation? Does it affect translation seepd?
 
@@ -296,19 +309,22 @@ During translation, instead of adding one model/checkpoint to the -model argumen
 | <kbd>python3 average_models.py -models model_step_xxx.pt model_step_yyy.pt -output model_avg.pt</kbd>
 | Average multiple models into one model using the average_models.py script, and see how this affects performance.
 
-### Release Model
+Release Model
+====================
 
 see how it reduce the model size.
 
 <kbd>onmt_release_model --model model.pt --output model_released.pt</kbd>
 
-## Using pre-trained NMT models
+Using pre-trained NMT models
+**************************************************
 
 | For low-resource languages(up to 15m), using directly or fine-tuning mBART can give better results.
 | For high-resource languages, training a baseline model from scratch can outperform mBART.
 | Then, applying mixed fine-tuning (Chu et al., 2017) on this new baseline using in-house data can even achieve better gains in terms of Machine Translation quality. Check this code snippet if you would like to try mBART. You can also convert M2M-100 model to the CTranslate2 format for better efficiency as explained here.
 
-## Multilingual Neural Machine Translation，MNMT
+Multilingual Neural Machine Translation，MNMT
+**************************************************
 
 **Advantages：**
 
@@ -334,11 +350,13 @@ see how it reduce the model size.
 
 You can also convert M2M-100 model to the CTranslate2 format for better efficiency as explained here.
 
-### tensorboard
+tensorboard
+====================
 
 [Running TensorBoard](https://forum.opennmt.net/t/running-tensorboard/4242)
 
-## Ref
+Ref
+**********
 
 [神经机器翻译（NMT）的一些重要资源分享](https://zhuanlan.zhihu.com/p/29338282)
 [OpenNMT-py Tutorial](https://github.com/ymoslem/OpenNMT-Tutorial/tree/main)
@@ -349,7 +367,8 @@ You can also convert M2M-100 model to the CTranslate2 format for better efficien
 
 [Open-Source Toolkit for Neural Machine Translation]:https://aclanthology.org/P17-4012.pdf
 
-## Temp
+Temp
+**********
 
 [How is Accuracy calculated ?](https://github.com/OpenNMT/OpenNMT-py/issues/1944)
 

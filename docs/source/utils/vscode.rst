@@ -1,7 +1,8 @@
+Vscode
+##########
 
-# Vscode
-
-## Remote Development [extention]
+Remote Development [extention]
+**************************************************
 
 远程修改与调试服务器上的代码，同时具备代码高亮与补全功能，就和在本地使用VScode一样
 
@@ -57,7 +58,8 @@
     - [Using Conda Environment Remotely with Visual Studio Code](https://hackmd.io/@MingRuey/HJOJ30ajO)
     - [Remote Access to the Workstation](https://hackmd.io/9iVBJfITQwy8tIz9ubgorw?view#Q-How-can-I-avoid-typing-password-each-time)
 
-## 配置
+配置
+**********
 
 - 插件配置
 
@@ -65,9 +67,11 @@
 
 .. image:: ./pics/setting1.PNG
 
-## SSH 配置
+SSH 配置
+**********
 
-### practical use
+practical use
+====================
 
 - 在本地机器生成密钥对(公钥+私钥)： ``ssh-keygen`` 
     - 一般在  ``C:\user\.ssh``  里，隐藏文件夹

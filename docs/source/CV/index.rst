@@ -1,7 +1,8 @@
+CV
+##########
 
-# CV
-
-## Problems
+Problems
+********************
 
 - **Viewpoint variation**，观察角度的变化
     “不识庐山真面目，只缘身在此山中”。
@@ -17,15 +18,19 @@
 
 .. image:: ./pics/CV_challenge.png
 
-## Data
+Data
+**********
 
-## image
+image
+**********
 
 .. image:: ./pics/data_img.jpeg
 
-## Image Classification
+Image Classification
+******************************
 
-## KNN
+KNN
+**********
 
 - :question:距离是什么
 

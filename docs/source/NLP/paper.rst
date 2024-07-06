@@ -1,7 +1,8 @@
+Temp
+##########
 
-# Temp
-
-## [Automatic Spelling Correction with Transformer for CTC-based End-to-End Speech Recognition]
+[Automatic Spelling Correction with Transformer for CTC-based End-to-End Speech Recognition]
+**************************************************************************************************************
 
 ==Connectionist Temporal Classification CTC== 。CTC based end-to-end SR system usually need to incorporate an external language model by using WFST-based decoding in order to achieve promising results. This is more essential to Mandarin speech recognition since it owns a special phenomenon, namely homophone, which causes a lot of substitution errors.
 
@@ -57,7 +58,8 @@ CTC-based 的特点是条件独立，每个时刻的预测相互独立，可以�
 
 [Automatic Spelling Correction with Transformer for CTC-based End-to-End Speech Recognition]:https://arxiv.org/pdf/1904.10045.pdf
 
-## [Bi-encoder Transformer Network for Mandarin-English Code-switching Speech Recognition using Mixture of Experts]
+[Bi-encoder Transformer Network for Mandarin-English Code-switching Speech Recognition using Mixture of Experts]
+******************************************************************************************************************************************************
 
 [Bi-encoder Transformer Network for Mandarin-English Code-switching Speech Recognition using Mixture of Experts]:https://x-lance.sjtu.edu.cn/en/papers/2020/yzl23-lu-is2020.pdf
 
@@ -112,7 +114,8 @@ In this work we focus on leveraging rich resources monolingual data to achieve a
 
 The LID and ASR are trained independently. To improve the performance of LID classifier, we adopt transfer learning strategy and a pretrained CTC model is used for initialization.
 
-### Experimental setup
+Experimental setup
+==============================
 
 - Dataset:【CN:EN:CS=25:23:10】
     | **ASRU 2019 Mandarin-English code-switching Challenge** dataset (500 hours Mandarin data and 200 hours code-switching data) & a subset of 460 hours English data from **Librispeech corpus**
@@ -147,7 +150,8 @@ The LID and ASR are trained independently. To improve the performance of LID cla
     | word error rate (WER) 纯 English
     | mix error rate (MER) 各自语言用各自统计
 
-## [New Datasets and Controllable Iterative Data Augmentation Method for Code-switching ASR Error Correction]
+[New Datasets and Controllable Iterative Data Augmentation Method for Code-switching ASR Error Correction]
+******************************************************************************************************************************************************
 
 [New Datasets and Controllable Iterative Data Augmentation Method for Code-switching ASR Error Correction]: https://aclanthology.org/2023.findings-emnlp.543.pdf
 
@@ -175,7 +179,8 @@ data augmentation method in text error correction.
 
 [SEAME: a Mandarin-English  Code-switching Speech Corpus in South-East Asia]: https://www.researchgate.net/publication/221481268_Mandarin-English_code-switching_speech_corpus_in_South-East_Asia_SEAME
 
-## [SEAME: a Mandarin-English Code-switching Speech Corpus in South-East Asia]
+[SEAME: a Mandarin-English Code-switching Speech Corpus in South-East Asia]
+******************************************************************************************
 
 Mandarin-English  code-switching
 

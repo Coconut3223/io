@@ -1,5 +1,5 @@
-
-# high dimentional DA
+high dimentional DA
+####################
 
 ==Data mining== is the process of discovering new patterns from LARGE DATA sets using methods of artificial intelligence, machine learning, statistics and database systems.
 
@@ -31,7 +31,8 @@
     | 获取无法解释的特征与变量之间的关系 | 可解释性强                  |
     +------------------------------------+-----------------------------+
 
-## some special notation
+some special notation
+******************************
 
 ==Random Vector==  :math:`Z=\begin{bmatrix}Z_1\\\vdots\\Z_p\end{bmatrix}\in\R^p` 
 
@@ -93,13 +94,15 @@ Correlation只是考察线性关系的相关性，并不是代表independent
     2. Let  :math:`Σ^{− 1/2} = ΓΛ^{− 1/2} Γ′.`  What is the distribution of  :math:`Σ^{− 1/2} X` ?
     3. Suppose p =2 and denote  :math:`X = (X_1, X_2)′` . In addition,  :math:`σ_{11}=σ_{22} = 1, σ_{12}=ρ` . What is the distribution of  :math:`(Y_1,Y_2), Y_1=\cfrac{(X_1+X_2)}{\sqrt{2+2ρ}}, Y_2 = \cfrac{(X_1 − X_2)}{\sqrt{2 − 2ρ}} ?` 
 
-## Special Matrix
+Special Matrix
+********************
 
 :math:`A=11^T=\begin{bmatrix}1&1&\dots&1\\\vdots&\ddots&\dots&\vdots\\1&\dots&\dots&1\end{bmatrix}\in\R^p=p\cdot \begin{bmatrix}\cfrac{1}{\sqrt p}\\\vdots\\\cfrac{1}{\sqrt{p}}\end{bmatrix}*\begin{bmatrix}\cfrac{1}{\sqrt p}&\dots&\cfrac{1}{\sqrt{p}}\end{bmatrix}+0...` 
 
 ==AR(1) model==  :math:`A=\begin{bmatrix}1&\rho&\rho^2&\dots&\rho^{n-1}\\\rho&1&\rho&\dots&\rho^{n-2}\\\vdots&\vdots&\vdots&\ddots&\vdots\\\rho^{n-1}&\rho^{n-2}&\dots&\dots&1\end{bmatrix} \xrightarrow{e.g,}\begin{bmatrix}1&0.9&0.9^2&0.9^3\\0.9&1&0.9&0.9^2\\0.9^2&0.9&1&0.9\\0.9^3&0.9^2&0.9&1\end{bmatrix}` 
 
-## Variable Selection
+Variable Selection
+******************************
 
 📑 ref
 
@@ -131,7 +134,8 @@ Variable, Predictor, in the model, plays two roles: **improving the model flexib
 
 **常见的方法包括过滤法（Filter, Screening、包裹法（Warpper），嵌入法（Embedding）。**
 
-### Filter, Screening, 过滤法
+Filter, Screening, 过滤法
+==============================
 
 选择一些 important features, which is a **subset** of all features, 但我们不是简单的选择，而是设置一个 threshold 尽量 save all signals。但 No free lunch, it just a trade.
 
@@ -155,7 +159,8 @@ Variable, Predictor, in the model, plays two roles: **improving the model flexib
     | :math:`E\{(Y-\hat{Y})^2\}`   |  :math:`\approx\sigma^2(1+\cfrac{p_0}{n})`  | :math:`\approx\sigma^2(1+\cfrac{p}{n})`  | :math:`\approx\sigma^2+(\beta_{p+1}^2+\dots+\beta_{p_o^2})\lambda_{min}(\Sigma)`  |
     +------------------------------+---------------------------------------------+------------------------------------------+-----------------------------------------------------------------------------------+
 
-#### Perfect Models with General Variables
+Perfect Models with General Variables
+------------------------------------------------------------
 
 | ==Perfect model variables== . ( :math:`p=p_0` ) :math:`Y_i=\beta_1x_{i,1}+\dots+\beta_{p_0}x_{i,p_0}+\red{\epsilon_i}` 
 | :math:`\iff Y_i=\beta^TX_i+\epsilon_i, \begin{cases}Y_i\in\R,\\\beta=\begin{bmatrix}\beta_1&\dots&\beta_{p_0}\end{bmatrix}^T\in\R^{p_0}\\X_i=\begin{bmatrix}x_{i,1}&\dots&x_{i,p_0}\end{bmatrix}^T\in\R^{p_0}\\[1em]Cov(X)=\Sigma\in\R^{p_0\times p_0}\\\red{\epsilon_i\text{ are IID}～N(0,\sigma^2)}\end{cases}` 
@@ -192,7 +197,8 @@ Take expectation:
 
 :math:`\implies`  **When n is large, the perfect model has the smallest prediction error**
 
-#### Working Model with More Redundant Variables
+Working Model with More Redundant Variables
+-----------------------------------------------------------------
 
 如果我们不选择重要特征，我们尝试为折有事物添加估计系数，那么误差将汇总权将汇总，即每次我们估计某些东西时，您都会创一个错误。
 
@@ -213,7 +219,8 @@ proof of
 | :math:`\implies`   **the more redundant variables, the worse the prediction is.**
 | :math:`\implies`   **if n is very large, it is ok to put all features in model as well since** :math:`\cfrac{p_0}{n}`   would vanish
 
-#### Working Model with Less Important Variables
+Working Model with Less Important Variables
+------------------------------------------------------------
 
 | ==Wroking model with less important variables == ( :math:`p`  variables,  :math:`\red{p<p_0, \beta_{p_0}\neq0}` )
 | :math:`Y_i=\beta_1x_{i,1}+\dots+\beta_p\times x_{i,p}+\red{\tilde{\epsilon_i}}` 
@@ -237,7 +244,8 @@ Expected Square of Prediction Error
     | :math:`\implies`   If the working model does not include all the important variables (those with  :math:`β_{k}≠ 0,k=1,\dots,p_0` ), the prediction error (lower bound) is also bigger than the model with exactly the important variables.
     | :math:`\implies`  **样本数 n 再大也拯救不了这个error 因为** :math:`(\beta_{p+1}^2+\dots+\beta_{p_0^2})\lambda_{min}(\Sigma)`  **is constant，而且这只是下界 lower bound**
 
-#### Candidate Models for p+1 predictor  :math:`1， x_1, ..., x_p` 
+Candidate Models for p+1 predictor  :math:`1， x_1, ..., x_p` 
+----------------------------------------------------------------------
 
 .. figure:: ./pics/FS_1.png
     :scale: 40%
@@ -256,7 +264,8 @@ Expected Square of Prediction Error
 1. For any two models A and B, if A is a sub-model of B, then  :math:`RSS(A) ≥ RSS(B).`  只要 A是 B 的子集，那么 RSS(A) 一定≥ RSS(B)。
 2. 而且这个RSS是在 training set 1-n 上进行，如果是 overfitting 的话，error再小，但是在鲁棒性还是很垃圾的。所以我们不能用在训练集上的RSS去 compare
 
-### Model Selection for LR
+Model Selection for LR
+=========================
 
 For example, an empirical method like Cross-Validation, Bootstrap methods or sample penalties such as AIC, BIC, Mallow's CP.
 
@@ -275,20 +284,23 @@ AIC and BIC explicitly penalize the number of parameters, cross-validation not, 
 
 [Model Selection: AIC/BIC and Cross-Validation gives different conclusion]: https://stats.stackexchange.com/questions/578982/model-selection-aic-bic-and-cross-validation-gives-different-conclusion
 
-## Dimensionality Reduction，数据降维
+Dimensionality Reduction，数据降维
+**************************************************
 
 数据降维其实还有另一个好处：数据可视化。因为超过三维的数据就无法可视化了。数据降维最常用的方法是主成分分析。
 
 .. danger:: 我们想找到重要信号的位置。其次，我们找到重要信号或强信号，或者这些弱信号现在是零，就扔掉，我们希望为这些强信号提供适当的估计。
     我们肯定没有 enough information，因为同时存在着 noise。决定我们是否能完成目标就是：whether the important signals in data are stronger than noises。我们现在假定这个 important signals are **stronger** than noises. 接下来就要想如何将important information 剥离 noise？
 
-### Principal Component Analysis, PCA, 主成分分析
+Principal Component Analysis, PCA, 主成分分析
+=================================================================
 
 The basic idea is to transform the p random variables into <u>linear combinations</u> called ==Principal Components== . Extracting linear combinations from multivariate data, a subset of PCs <u>captures most of the variability </u> in the data.
 
 正交变换把由线性相关变量表示的观测数据转换为少数几个由线性无关变量表示的数据，**线性无关** 的变量称为 ==主成分==
 
-#### KEY: Maximize the variance
+KEY: Maximize the variance
+---------------------------------------------
 
 .. note:: Maximize the variance
     | Identify key components which can <u>maximize the information</u> with a reasonable dimension.
@@ -348,7 +360,8 @@ Look for <u>the linear transformations</u>:
 1. It can be **more difficult to interpret** than using a subset of the original variables.
 2. It uses only covariances/correlations but not higher-order moments. This can be extended to ==independent component analysis ICA==
 
-#### PCA Transformation
+PCA Transformation
+-----------------------------------
 
 :math:`Y_i = g_i^TX\implies Y=\Gamma^TX` 
 
@@ -358,7 +371,8 @@ Look for <u>the linear transformations</u>:
 .. math:: 
     \vdots\\\begin{bmatrix}Y_1\\\vdots\\Y_p\end{bmatrix}=\begin{bmatrix}g_1^T\\\vdots\\g_p^T\end{bmatrix}_{p\times p}\begin{bmatrix}X_1\\\vdots\\X_p\end{bmatrix}\iff \Gamma=\begin{bmatrix}g_1&\dots&g_p\end{bmatrix}\in\R^{p\times p}
 
-##### Practical Use
+Practical Use
+^^^^^^^^^^^^^^^^^^^^
 
 1. <u> **Standardize 规范化** </u> the data, 使得数据每一变量的均值为0，方差为1
 2. <u> **SVD 正交分解** </u> of the sample **covariance M/correlation M**
@@ -383,7 +397,8 @@ Look for <u>the linear transformations</u>:
 
 [Covariance Vs Correlation: Here are the Difference You Should Know ,Simplilearn]:https://www.simplilearn.com/covariance-vs-correlation-article
 
-#### Graphical: Rotate the data without scaling
+Graphical: Rotate the data without scaling
+------------------------------------------------------------
 
 数据集合中的样本由实数空间（正交坐标系）中的点表示，空间的一个坐标轴表示一个变量，规范化处理后得到的数据 **分布在原点附近** 。对原坐标系中的数据进行主成分分析等价于进行 **坐标系旋转变换，将数据投影到新坐标系的坐标轴上。**
 
@@ -423,7 +438,8 @@ Look for <u>the linear transformations</u>:
     | 椭圆的长轴               | 椭圆的短轴                   |
     +--------------------------+------------------------------+
 
-### Linear Discriminant Analysis, LDA, 线性判别分析
+Linear Discriminant Analysis, LDA, 线性判别分析
+=================================================================
 
 LDA的目标是 **提取一个新的坐标系，将原始数据集投影到一个低维空间中。**
 和PCA的主要区别在于，LDA不会专注于数据的方差，而是优化低维空间， **以获得最佳的类别可分性**。意思是，新的坐标系在为分类模型查找**决策边界**时更有用，<u>非常适合用于构建分类流水线</u>。
@@ -459,7 +475,8 @@ Both Fisher’s LDA and Bayes rule reduce to:
     |S_w                | S_b                |
     +-------------------+--------------------+
 
-#### Fisher’s LDA
+Fisher’s LDA
+--------------------
 
 LDA的目标是提取一个新的坐标系，将原始数据集投影到一个低维空间中，以获得最佳的类别可分性。
 
@@ -482,7 +499,8 @@ Force  :math:`\begin{cases}S_B=(\mu_X-\mu_Y)(\mu_X-\mu_Y)^T&\text{ between-class
 
 [機器學習: 降維(Dimension Reduction)- 線性區別分析( Linear Discriminant Analysis)]
 
-#### Bayes’ LDA
+Bayes’ LDA
+------------------------------
 
 .. note:: 贝叶斯的优点：不需要知道具体的分布
 
@@ -496,7 +514,8 @@ For simplicity let’s assume that  :math:`π_1 = π_2 = 1/2.`  without any assu
 | :math:`δ(Z) =I \{[Z−(μ_X+\mu_Y)/2]^T Σ^{−1}(μ_X−\mu_Y)>0\}\\\hat{δ}(Z) =I \{[Z−(\overline{X}+\overline{Y} )/2]^T \hat{Σ}^{−1}(\overline{X} − \overline{Y})>0\}` 
 | Z will be assigned as  :math:`\begin{cases}X&δ(Z) =1\\Y&δ(Z) =0\end{cases}` 
 
-### Quadratic Discriminant Analysis, QDA
+Quadratic Discriminant Analysis, QDA
+==================================================
 
 Assume:  :math:`Y_1∼N(μ_1,Σ_1), Y_2∼N(μ_2,Σ_2)`  The two classes have **different** covariance matrices!
 
