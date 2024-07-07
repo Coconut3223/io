@@ -36,7 +36,7 @@ git client tool
 ====================
 
 - Git Bash
-    - [Download for macOS](https://git-scm.com/download/mac)
+    - `Download for macOS <https://git-scm.com/download/mac>`_
     -  ``brew install git`` 
     -  ``git --version`` 
 - Github Desktop 【
@@ -61,7 +61,7 @@ zsh
     # PROMPT=\$vcs_info_msg_0_'%# '
     zstyle ':vcs_info:git:*' formats '%b'
 
-- [在其它环境中使用 Git - Zsh 中的 Git](https://git-scm.com/book/zh/v2/附录-A%3A-在其它环境中使用-Git-Zsh-中的-Git)
+- `在其它环境中使用 Git - Zsh 中的 Git <https://git-scm.com/book/zh/v2/附录-A%3A-在其它环境中使用-Git-Zsh-中的-Git>`_
 
 工作流程原理
 ********************
@@ -314,7 +314,7 @@ git config 配置
         $ git checkout <SHA>
 
 
-    [Git 切换分支](https://www.freecodecamp.org/chinese/news/git-switch-branch/)
+    `Git 切换分支 <https://www.freecodecamp.org/chinese/news/git-switch-branch/>`_
 - 删除分支
 
     .. code-block:: sh
@@ -1600,7 +1600,7 @@ drop
 六、参与开源项目
 ====================
 
-这里我们以袋鼠云的 chunjun 做示例, 首先我们需要 [fork](https://github.com/DTStack/chunjun) 该项目。
+这里我们以袋鼠云的 chunjun 做示例, 首先我们需要 `fork <https://github.com/DTStack/chunjun>`_ 该项目。
 
 .. image:: ./../img/git/1.git-fork.png
 

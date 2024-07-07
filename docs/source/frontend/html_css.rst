@@ -23,7 +23,7 @@ Grid
 
 **可能用到的链接：**
 
-- [grid-template-columns](https://css-tricks.com/almanac/properties/g/grid-template-columns/)
+- `grid-template-columns < https://css-tricks.com/almanac/properties/g/grid-template-columns/>`_
 
 html 
 **********

@@ -28,7 +28,7 @@ from docutils.readers import Reader
 
 def replace_double_equalsymbol(text):
     import re
-    pattern = r'(?P<defi_text>\x20?==[^=]+==\s)'
+    pattern = r'(?P<defi_text>\x20?==[^=\s][^=\n]+==\s)'
     tag = 'defi_text'
     def to_defi(matched):
         value = matched.group(tag)

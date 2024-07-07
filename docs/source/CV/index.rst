@@ -32,7 +32,7 @@ Image Classification
 KNN
 **********
 
-- :question:距离是什么
+- .. hint:: Question: 距离是什么
 
     ==pixel-wise== 像素级别
         .. math:: 

@@ -91,6 +91,7 @@ python 会在系统路径中找寻所需要的包
 
 对象引用机制
 ********************
+
 .. danger:: 变量是✅贴在对象上的标注，而不是❌承载对象的盒子。
     | ==赋值== 。是把变量分配给对象。对象在赋值之前就已经创建。
     | 赋值语句 从右到左执行。
@@ -115,17 +116,27 @@ python 会在系统路径中找寻所需要的包
 is & == 标识 & 相等性
 ==============================
 
-.. code-block:: pycon
+.. grid:: 2
 
-    >>> var1 = {'name':'Lily', 'sex':'F'}
-    >>> var2 = var1
-    >>> var3 = {'name':'Lily', 'sex':'F'}
-    >>> var1 is var2  
-    True
-    >>> var1 is var3  # id 是唯一的标识
-    False
-    >>> var1 == var3  # 内容相同
-    True
+    .. grid-item:: 
+        :columns: 5
+
+        .. image:: ./pics/memory_3.png
+    
+    .. grid-item:: 
+        :columns: 7
+
+        .. code-block:: pycon
+
+            >>> var1 = {'name':'Lily', 'sex':'F'}
+            >>> var2 = var1
+            >>> var3 = {'name':'Lily', 'sex':'F'}
+            >>> var1 is var2  
+            True
+            >>> var1 is var3  # id 是唯一的标识
+            False
+            >>> var1 == var3  # 内容相同
+            True
 
 | ``A == B``  对象内容 ↔️  ``__eq__``  【相等】
 | 通常我们关注的是值。
@@ -167,20 +178,28 @@ is & == 标识 & 相等性
 ==垃圾变量== ， 当一个值 **没有任何变量名和它进行捆绑** ，该变量值就会无法被访问到，涉及到 **引用计数** 的算法
 
 .. danger::  ``del x``  的理解
-    | 解除了 x 和它所指向对象ID为*的 obj 的绑定关系
-    | ID为* 的 obj 的引用计数 -1
+    .. grid:: 2
 
-    .. code-block:: python
+        .. grid-item::
+            :columns: 4
 
-        x = x-value  
-        # 生成 x-value 的 ID为* 的 obj，把 x 变量名贴到 ID为* 的 obj
-        del x  # 解除
+            | 解除了 x 和它所指向对象ID为*的 obj 的绑定关系
+            | ID为* 的 obj 的引用计数 -1
+
+        .. grid-item::
+            :columns: 8
+
+            .. code-block:: python
+
+                x = x-value  
+                # 生成 x-value 的 ID为* 的 obj，
+                # 把 x 变量名贴到 ID为* 的 obj
+                del x  # 解除
 
 | ==引用计数、标记清楚、分代回收==
 | **引用计数**，变量值被引用(指向)的数量，一旦没有引用关系(箭头指向)，引用计数=0，就当成需要回收的<u>垃圾</u>。垃圾对象会被销毁，释放被分配的内存
 | **标记清除**，因为间接引用有可能造成<u>循环引用</u>，导致引用计数不可能为0，以至于变量值永远不可能被删除。所以引入标记清除，将所有变量值进行扫描，若存在无法从栈区访达的变量值，则证明是<u>无直接引用，纯间接引用的垃圾</u>
 | **分代回收**，用空间换时间，不会每时每刻地去扫描全部变量值，而是将变量值分类，以不同的频率去扫描归属不同类别的变量。刚刚新建的变量属于 **新生代** 的变量，有可能用完即弃，所以扫描频率会高一点；被引用过很多次的变量属于 **成熟变量**，可能属于一直都要用的重要变量，所以扫描频率会低一些。
-
 
 .. mermaid::
 
@@ -211,49 +230,75 @@ tuple 是不可变的，只是说 每个元素引用的 ID 不可变，元素可
     [4309582064, 4312627712]  # id 不变
     a = (1, [1, 2, 3])  # 内容变
 
-
 .. warning::  变量名的赋值、变量名的传参，传递都是 ==栈区== 的数据
     赋值就是将一个<u>旧的变量名</u>和
     - <u>旧值的地址</u>解绑关系
     - <u>新值的地址</u>绑定关系
 
     .. hint:: 对于a重新赋值
-        - 与 4的地址 解绑关系
-        - 与 5的地址 绑定关系
 
-        .. code-block:: pycon
+        .. grid:: 2
 
-            >>> a = 4
-            id(a) = 4373905744
-            >>> a = 5
-            id(a) = 4373905776
-            id(4) = 4373905744
-            id(5) = 4373905776
+            .. grid-item::
+                :columns: 5
+
+                - 与 4的地址 解绑关系
+                - 与 5的地址 绑定关系
+
+            .. grid-item::
+                :columns: 7
+
+                .. code-block:: pycon
+                    
+                    >>> a = 4
+                    id(a) = 4373905744
+                    >>> a = 5
+                    id(a) = 4373905776
+                    id(4) = 4373905744
+                    id(5) = 4373905776
 
     .. hint:: 对于lst重新赋值
-        - 解绑关系
-        - 绑定关系
-    
-    .. code-block:: pycon
 
-        >>> lst = [1, 2]
-        id(lst) = 4376984512
-        >>> lst = [1, 3]
-        id(lst) = 4376922944
+        .. grid:: 2
+
+            .. grid-item::
+                :columns: 5
+
+                - 解绑关系
+                - 绑定关系
+
+            .. grid-item::
+                :columns: 7
+
+                .. code-block:: pycon
+
+                    >>> lst = [1, 2]
+                    id(lst) = 4376984512
+                    >>> lst = [1, 3]
+                    id(lst) = 4376922944
 
     .. hint:: 对于lst 的 item assignment【可变】
-        - 不改变id地址
-        - 但会改变容器内的地址
-    
-        .. code-block:: pycon
 
-            lst[1] = 3
-            id(lst[1]) = 4373905712
-            id(3) = 4373905712
-            >>> lst[1] = 2
-            lst = [1, 2]
-            id(lst) = 4376922944 # 和之前一致
-            id(lst[1]) = 4373905680 # 改了之前的
+        .. grid:: 2
+
+            .. grid-item::
+                :columns: 5
+
+                - 不改变id地址
+                - 但会改变容器内的地址
+
+            .. grid-item::
+                :columns: 7
+
+                .. code-block:: pycon
+
+                    lst[1] = 3
+                    id(lst[1]) = 4373905712
+                    id(3) = 4373905712
+                    >>> lst[1] = 2
+                    lst = [1, 2]
+                    id(lst) = 4376922944 # 和之前一致
+                    id(lst[1]) = 4373905680 # 改了之前的
 
 深浅拷贝
 --------------------
@@ -301,15 +346,17 @@ tuple 是不可变的，只是说 每个元素引用的 ID 不可变，元素可
 
     .. grid-item::
         .. image:: ./pics/memory_1.png
+
+        a 是不可变；b是可变。假设创建对象的ID从1开始。
     
     .. grid-item::
-        
-        a 是不可变；b是可变。假设创建对象的ID从1开始。
+
         1. 创建 ID=1的1 & ID=2列表[1]
         2. 把 a & b 分别贴到 ID=1 & ID=2上
         3. 创建 ID=3的列表，把[0]位贴到ID=1，[1]位贴到ID=2。而不是贴到 a & b 上
         4. 创建 ID=4的2，把 a 从ID=1撕掉，给ID=3
         5. 修改b，b没有撕掉，其实修改ID=3
+        
         lst的位[0]在ID=1上与a无关；位[1]在ID=3上，所以也修改了。
 
 .. code-block:: pycon
@@ -333,6 +380,14 @@ tuple 是不可变的，只是说 每个元素引用的 ID 不可变，元素可
     l2=[0, [22, 33, 44], (7, 8)]
     l3=[0, [11, 22], (7, 8)]
 
+.. grid:: 2
+
+    .. grid-item::
+        .. image:: ./pics/memory_4.png
+
+    .. grid-item::
+        .. image:: ./pics/memory_5.png
+
 .. image:: ./pics/memory_2.jpg
 
 整数池
@@ -340,22 +395,32 @@ tuple 是不可变的，只是说 每个元素引用的 ID 不可变，元素可
 
 **理论上的正常情况**，变量都是需要申请 **内存空间（id不同）** 存储数据然后把地址返回给变量名引用。但在 Python解释器（一般是cpython） ==[-5, 256]== 是不会申请新的内存，而都是 **引用同一块早已在解释器运行时就开辟的内存,==小整数池==**，导致 **id相同**。另外 pycharm/vscode 有 ==大整数池== 的概念
 
-.. code-block:: pycon
+.. grid:: 2
 
-    """正常来说，每次申请，id都不一样"""
-    >>> a, b = 9999999999999, 9999999999999
-    >>> a == b
-    True
-    >>> a is b
-    Fasle
-    id(a) = 4336403888
-    id(b) = 4336403152
+    .. grid-item::
+        :columns: 7
 
-    """ 在vscode里id依旧一样：大整数池"""
-    >>> id(221111111)
-    4336403952
-    >>> id(221111111)
-    4336403952
+        .. code-block:: pycon
+            :caption: 正常来说，每次申请，id都不一样
+
+            >>> a, b = 9999999999999, 9999999999999
+            >>> a == b
+            True
+            >>> a is b
+            Fasle
+            id(a) = 4336403888
+            id(b) = 4336403152
+
+    .. grid-item::
+        :columns: 5
+
+        .. code-block:: pycon
+            :caption: 在vscode里id依旧一样：大整数池
+
+            >>> id(221111111)
+            4336403952
+            >>> id(221111111)
+            4336403952
 
 [小整数池]
 
@@ -493,19 +558,19 @@ naming conventions
 
     .. code-block:: pycon
 
-    >>> def func(a=[1,2]):
-    >>>     a.append(3)
-    >>>     return a
+        >>> def func(a=[1,2]):
+        >>>     a.append(3)
+        >>>     return a
 
-    >>> func([3])
-    [3, 3]  <- [3]
-    >>> res = func() 
-    res=[1, 2, 3]  <- [1, 2]
-    >>> res.append(-1)
-    res=[1, 2, 3, -1]
-    >>> func()  # 默认参数被改变
-    [1, 2, 3, -1, 3] <- [1, 2, 3, -1]
-    res=[1, 2, 3, -1, 3]
+        >>> func([3])
+        [3, 3]  <- [3]
+        >>> res = func() 
+        res=[1, 2, 3]  <- [1, 2]
+        >>> res.append(-1)
+        res=[1, 2, 3, -1]
+        >>> func()  # 默认参数被改变
+        [1, 2, 3, -1, 3] <- [1, 2, 3, -1]
+        res=[1, 2, 3, -1, 3]
 
 
 .. warning:: 如果定义参数接受可变参数，谨慎考虑调用方是否期望修改传入的参数。
@@ -598,7 +663,7 @@ args & kwargs
 | 存放的名字：在调用函数时，运行函数体代码过程中产生的函数内的名字
 | 存活周期：在调用函数时存活，函数调用完毕后则销毁
 
-| ==闭包== 。延伸了作用域的函数，其中包含函数定义体中运用，但不在定义体内定义的 **非全局变量**。一般出现在嵌套函数里。闭包是一种函数，他会保留定义函数时存在的自由变量的绑定，哪怕是定义作用域不能用，绑定也能使用。
+| ==闭包== 。延伸了作用域的函数，其中包含函数定义体中运用，但不在定义体内定义的 **非全局变量**。一般出现在嵌套函数里。闭包是一种函数，他会保留定义函数时存在的自由变量的绑定，哪怕是定义作用域不能用，绑定也能使用。"闭" 🟰 内嵌函数； “包” 🟰 该函数包含对外层函作用域名字的引用
 | ==自由变量== 。未在本地作用域内绑定的变量。用  ``nonlocal``  声明，哪怕是在函数定义体内赋值，python 解释器会把其认为自由变量(类  ``global``  )。保存在 返回对象的 ``.__code__.co_afreevars``   &  ``.__closure__[idx].cell_contents``  一一对应。
 
 .. code-block:: py
@@ -737,11 +802,24 @@ map
 | ==装饰器== 是可调用对象，参数是另外一个函数（ ==被装饰的函数== ）。目的是在不修改被装饰器对象 **源代码&调用方式** 的前提下为其添加新功能。
 | 装饰器可能： 1️⃣ 处理被装饰的函数再将其返回； 2️⃣ 将其替换成另外一个函数或可调用对象在返回。
 
+.. note:: 装饰器只是被装饰函数的延伸，核心还是被装饰函数。
+
+    **应该把 wrapper 做的跟原函数一样**
+
+    - ``func.__name__``
+    - ``func.__doc__``
+
+    ...
+
+
 .. code-block:: py
 
+    from functools import wraps
+
+    @wraps(func)  # 把原函数的属性复制给装饰器函数 
     def decorate(func):  # 装饰器
         print(f'running decorator({func})')
-        return function  # 必须返回**一个可调用对象或者函数**s
+        return function  # 必须返回 **一个可调用对象或者函数**
 
     @decorate  # 装饰
     def func():
@@ -2024,7 +2102,7 @@ dict
 
 .. hint:: 如非需要， ``defaultdict``  比  ``.setdefault()`` 更快"
     | 因为一个是在创建初期就设好统一的初始值，一个是根据值的不一样，在找的时候设值
-    | [setdefault vs defaultdict performance](https://stackoverflow.com/questions/38625608/setdefault-vs-defaultdict-performance)
+    | `setdefault vs defaultdict performance <https://stackoverflow.com/questions/38625608/setdefault-vs-defaultdict-performance>`_
 
 defaultdict
 ^^^^^^^^^^^^^^^^^^^^
@@ -3258,11 +3336,11 @@ Input
 
 .. danger:: input 接收后字符串性质
 
-.. code-block:: pycon
+    .. code-block:: pycon
 
-    >>> a = input('plz input a number:')
-    plz input a number: 9
-    a = '9'
+        >>> a = input('plz input a number:')
+        plz input a number: 9
+        a = '9'
 
 读照片
 --------------------
@@ -3347,32 +3425,38 @@ read(), readline(), readlines()
     +----------+-------------------------------------+----------------+-----------------+
 
 
+.. grid:: 2
 
-.. code-block:: None
-    :caption: 1.txt
+    .. grid-item::
+        :columns: 3
 
-    aaa
-    bbb
-    这是个空行
+        .. code-block:: None
+            :caption: 1.txt
 
+            aaa
+            bbb
+            这是个空行
 
-.. code-block:: pycon
+    .. grid-item::
+        :columns: 9
 
-    >>> with open('1.txt', 'r', encoding='utf-8') as f:
-    >>>    res = f.read()  # 读全部
-    'aaa\nbbb\n\n'
+        .. code-block:: pycon
 
-    >>> with open('1.txt', 'r', encoding='utf-8') as f:
-    >>>    res = []
-    >>>    line =  f.readline()  # 第一行
-    >>>    while line is not None and line != '':
-    >>>         res.append(line)
-    >>>         line =  f.readline()  # 逐行读取
-    ['aaa\n', 'bbb\n', '\n']
+            >>> with open('1.txt', 'r', encoding='utf-8') as f:
+            >>>    res = f.read()  # 读全部
+            'aaa\nbbb\n\n'
 
-    >>> with open('1.txt', 'r', encoding='utf-8') as f:
-    >>>     res = f.readlines()
-    ['aaa\n', 'bbb\n', '\n']
+            >>> with open('1.txt', 'r', encoding='utf-8') as f:
+            >>>    res = []
+            >>>    line =  f.readline()  # 第一行
+            >>>    while line is not None and line != '':
+            >>>         res.append(line)
+            >>>         line =  f.readline()  # 逐行读取
+            ['aaa\n', 'bbb\n', '\n']
+
+            >>> with open('1.txt', 'r', encoding='utf-8') as f:
+            >>>     res = f.readlines()
+            ['aaa\n', 'bbb\n', '\n']
 
 json
 ==========
@@ -3451,40 +3535,39 @@ time
     |print_callers(n) |每个被列出的函数的调用方列表 , default n = all    |
     +-----------------+--------------------------------------------------+
 
-1. step1
 
-    .. code-block:: py
-        :caption: main.py
+.. code-block:: py
+    :caption: main.py
 
-        def run():
-            pass
-        
-        if __name__ == '__main__':
-            for i in rang(10):
-                run()
+    def run():
+        pass
+    
+    if __name__ == '__main__':
+        for i in rang(10):
+            run()
 
-2. <kbd>python -m cProfile -o output_file main.py</kbd>
+.. code-block:: bash
 
-   -  ``-o``  将结果写入文件
+    python -m cProfile -o output_file main.py
+    # 将结果写入文件
 
-3. step3
+.. code-block:: py
+    :caption: analysis.py
 
-    .. code-block:: py
-        :caption: analysis.py
+    import pstats
+    from pstats import SortKey
+    p = pstats.Stats('./output_file')
 
-        import pstats
-        from pstats import SortKey
-        p = pstats.Stats('./output_file')
-
-        # 按一个函数中的累计时间对性能分析数据进行排序,打印多的30行
-        p.sort_stats(SortKey.CUMULATIVE).print_stats(30)
-        # 每个函数耗费的时间进行排序，然后打印前十个函数的统计数据 
-        p.sort_stats(SortKey.TIME).print_stats(10)
-        # 以时间为主键，并以累计时间为次键进行排序，然后打印10条
-        p.sort_stats(SortKey.TIME, SortKey.CUMULATIVE).print_stats(.5)
+    # 按一个函数中的累计时间对性能分析数据进行排序,打印多的30行
+    p.sort_stats(SortKey.CUMULATIVE).print_stats(30)
+    # 每个函数耗费的时间进行排序，然后打印前十个函数的统计数据 
+    p.sort_stats(SortKey.TIME).print_stats(10)
+    # 以时间为主键，并以累计时间为次键进行排序，然后打印10条
+    p.sort_stats(SortKey.TIME, SortKey.CUMULATIVE).print_stats(.5)
 
 Error
 **********
+
 
 .. mermaid::
 
@@ -3493,26 +3576,35 @@ Error
     try --except有的error--> except --> finally
     try --except没有的error -->A{报错} --> finally
 
-.. code-block:: py
 
-    def numb(a):
-        try:
-            a = int(a)
-        except (ValueError, OverflowError):
-            print(f'{a} is not valid') 
-        else:
-            print(a)
-        finally:
-            print("It is over.")
+.. grid:: 2
 
-.. code-block:: pycon
+    .. grid-item::
+        :columns: 8
 
-    >>> numb(2.1)
-    2
-    It is over.
-    >>> numb('a')
-    a is not valid
-    It is over.
+        .. code-block:: py
+
+            def numb(a):
+                try:
+                    a = int(a)
+                except (ValueError, OverflowError):
+                    print(f'{a} is not valid') 
+                else:
+                    print(a)
+                finally:
+                    print("It is over.")
+
+    .. grid-item::
+        :columns: 4
+
+        .. code-block:: pycon
+
+            >>> numb(2.1)
+            2
+            It is over.
+            >>> numb('a')
+            a is not valid
+            It is over.
 
 .. danger:: NotImplementedError 未实现父类接口重写
     | 在继承的时候，父类有可能留下接口需要子类去重写，但子类并没有重写.
@@ -3543,8 +3635,8 @@ Error
 字符串相关
 ==========
 
-==UnicodeEncodeError== 。选定的编码方式不能编码这个字符。
-==UnicodeDecodeError== 。选定的解码方式不能解码这个字符。
+| ==UnicodeEncodeError== 。选定的编码方式不能编码这个字符。
+| ==UnicodeDecodeError== 。选定的解码方式不能解码这个字符。
 
 .. danger:: 文本存取乱码问题
     - 存乱了，编码格式应该设置成支持文本内字符串的格式。日文就不要用 <kbd>gbk</kbd>

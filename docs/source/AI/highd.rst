@@ -517,13 +517,13 @@ For simplicity let’s assume that  :math:`π_1 = π_2 = 1/2.`  without any assu
 Quadratic Discriminant Analysis, QDA
 ==================================================
 
-Assume:  :math:`Y_1∼N(μ_1,Σ_1), Y_2∼N(μ_2,Σ_2)`  The two classes have **different** covariance matrices!
+Assume: :math:`Y_1∼N(μ_1,Σ_1), Y_2∼N(μ_2,Σ_2)`  The two classes have **different** covariance matrices!
 
 :math:`\delta(x) = (x−μ)^TΩ(x−μ)+δ^T(x− μ)+η\\\begin{cases}μ=(μ_1+ μ_2)/2\space\text{ (mean)}\\\Omega=\Sigma_2^{-1}-\Sigma^{-1}\space\text{ the difference of the two precision matrices}\\\delta=(\Sigma_1^{-1}+\Sigma_2^{-1})(\mu_1-\mu_2)\\η=2\log(\pi_1/\pi_2)+\frac{1}{4}(\mu_1-\mu_2)^T\Omega(\mu_1-\mu_2)+\log|\Sigma_2|-\log|\Sigma_1|\end{cases}` 
 
 因为是关于x的二次函数，所以是 quadratic 二次
 
-[](https://towardsdatascience.com/linear-discriminant-analysis-explained-f88be6c1e00b)
+`linear-discriminant-analysis-explained <https://towardsdatascience.com/linear-discriminant-analysis-explained-f88be6c1e00b>`_
 
 .. hint:: (T1 in Chap1.1 in AMA565) Suppose the covariance M of a p-dimensional random vector X is  :math:`Σ = \text{diag}\{1, 2, . . . , p\}.`  What are the Principal Components of X?
 

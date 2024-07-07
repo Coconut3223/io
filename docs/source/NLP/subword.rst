@@ -244,15 +244,15 @@ Encoding
 
     The design of UTF-8 encoding ensures the uniqueness of this recovery process: for a character UTF-8 encoded with multiple bytes, its trailing bytes will not make a valid UTF-8 encoded character. 
 
-    [搞搞字节，byte的小知识](https://zhuanlan.zhihu.com/p/449954688)
+   `搞搞字节，byte的小知识 <https://zhuanlan.zhihu.com/p/449954688>`_
 
 | BBPE symbols can be partial characters shared by different characters or the combination of complete and partial
 | characters. This arbitrariness may necessitate incorporating
 | a larger context surrounding each symbol for disambiguation and learning the character boundaries.
 
 .. note:: ==Contextualized（Dynamic）Word Embedding==
-    在很多的NLP工作里面，一个单词可以表示成很多种意思（即一词多义），如何处理一词多义、考虑单词在上下文中的意思
-    [From Static Embedding to Contextualized Embedding](https://zhuanlan.zhihu.com/p/147938963)
+    | 在很多的NLP工作里面，一个单词可以表示成很多种意思（即一词多义），如何处理一词多义、考虑单词在上下文中的意思
+    | `From Static Embedding to Contextualized Embedding <https://zhuanlan.zhihu.com/p/147938963>`_
 
 We propose to use either **a depth-wise convolutional layer or a bidirectional recurrent layer with gated recurrent units** to contextualize BBPE embeddings before feeding them into the model
 
@@ -280,7 +280,7 @@ learn (B)BPE vocabularies jointly on source and target sentences using SentenceP
 .. image:: pics/NMT_1.png
 
 | learning rate schedule
-|set attention and ReLU dropout to 0.1
+| set attention and ReLU dropout to 0.1
 | use 0.2 residual dropout for Tbase models in X-En
 | use a kernel size of 5 and a padding of 2 on both sides for all convolutional layers.
 
