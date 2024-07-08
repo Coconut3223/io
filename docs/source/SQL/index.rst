@@ -1,5 +1,5 @@
-
-# SQL
+SQL
+##########
 
 .. toctree::
     :caption: Content

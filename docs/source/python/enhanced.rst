@@ -1,7 +1,8 @@
+Enhanced Python
+##############################
 
-# Enhanced Python
-
-## Script & Module & Package
+Script & Module & Package
+****************************************
 
 ==script 脚本== 。是一个包含可执行代码的文件，一个 py 文件，更多时候是指可以直接运行的 py 文件。为一个特定任务写成。
 ==顶层代码== 。由用户指定的最先开始运行的那一个 py 文件，是应用程序的入口点。 它的 ``__name__``  被设为  ``__main__``
@@ -9,7 +10,8 @@
 ==package 包== 。包含了一个或多个的 Module ，并且拥有  ``__init__.py`` 
 ==library 库== 。
 
-### 顶层代码
+顶层代码
+==========
 
 ==顶层代码== 。由用户指定的最先开始运行的那一个 py 文件，是应用程序的入口点。
 
@@ -64,14 +66,16 @@
 
 .. note::  ``__main__.py``  in package 参见 package section
 
-### Module
+Module
+==========
 
 ==module 模块== 。主要是被引用，包含了 **相关性较高** 的程式码。
 
 - 在 **模块内部** ，模块名 通过全局变量  ``__name__``  获取.
 - 每个模块都有自己的 **私有命名空间** ，它会被用作模块中定义的所有函数的全局命名空间。
 
-### Package
+Package
+==========
 
 ==package 包== 。包含了一个或多个的 Module ，并且拥有  ``__init__.py`` 。
 
@@ -84,8 +88,8 @@
         __main__.py
         module1.py
 
-#### ``__init__.py``
-
+``__init__.py``
+------------------------------
 
 .. danger:: 需要有  ``__init__.py``  文件才能让 Python 将包含该文件的目录当作包来处理
 
@@ -162,7 +166,8 @@
                 >>> f2()
                 F2
 
-#### ``__main__.py`` 
+``__main__.py`` 
+------------------------------
 
 ``python -m package`` 。 使用  ``-m``  从命令行直接调用软件包本身时，将执行  ``__main__.py`` 。
 
@@ -170,7 +175,8 @@
 
 .. note:: package 里的 module 的单元测试是在  ``__main__.py``  进行.
 
-### import
+import
+==========
 
 为了 **快速加载模块（不是加速执行）** ，Python 把 **模块的编译版本** 缓存在  ``__pycache__ dir``  中，文件名为  ``module.version.pyc，version``  对编译文件格式进行编码
 
@@ -180,7 +186,8 @@
 .. note:: 为什么没有 运行脚本的已编译档案？
     运行脚本 当作程式的进入点，所以每一次执行  ``python xxx.py``  指令时，Python编译器都要进行编译，所以没有将  ``xxx.py``  进行快取的动作。
 
-#### 从内容区分
+从内容区分
+--------------------
 
 -  ``import module``  = 调用 》  ``module.specific_func()`` 
 -  ``from module import specific_func``  = 调用 》  ``specific_func()`` 
@@ -194,14 +201,16 @@
     -  ``from package import item``  时，item 可以是包的子模块（或子包），也可以是包中定义的函数、类或变量等其他名称。
     -  ``import item.subitem.subsubitem``  时，除最后一项外， **每个 item 都必须是包；最后一项可以是模块或包** ，但不能是上一项中定义的类、函数或变量。
 
-#### 从方式区分
+从方式区分
+------------------------------
 
 See 路径相关的 section
 
 - 绝对导入
 - 相对导入
 
-## 路径相关
+路径相关
+**********
 
 .. danger:: 如果不是从脚本所在路径  ``python ./xxx.py``  运行脚本，就会有 working directory & script path 区别
     
@@ -254,7 +263,8 @@ See 路径相关的 section
     system_path[0] = ...\A
     1.txt 在 subA 底下， # 在工作目录对应进行创建
 
-### import - module 搜索路径
+import - module 搜索路径
+==============================
 
 当  ``import spam`` ，解释器：
 
@@ -305,7 +315,8 @@ See 路径相关的 section
 
 [import 问题浅谈]
 
-## Others
+Others
+**********
 
 - Magic Number 魔数（中性词）
    | [编程中的「魔数」（magic number）是什么意思？平时我们能接触到哪些魔数？]

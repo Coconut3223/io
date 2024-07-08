@@ -1,7 +1,8 @@
 
 .. (https://bitbucket.org/lbesson/web-sphinx/src/master/.static/hacks.css)
 
-# Artificial Intelligence, AI
+Artificial Intelligence, AI
+##############################
 
 .. note:: data_drived的这个概念
 
@@ -35,8 +36,8 @@ AI is intelligence exhibited by machines, rather than humans or other animals
     |      model capacity       |         low         |       high       |
     +---------------------------+---------------------+------------------+
 
-## Terminology
-
+Terminology
+********************
 
 - records 记录 = instance 实例 = sample 样本 = feature vector  特征向量 = example 样例(严格：有了 label 的 sample)
 - attribute 属性 = feature 特征
@@ -149,7 +150,8 @@ ML
 .. image:: ./pics/BigData_1.png
     :scale: 40%
 
-## Assumption
+Assumption
+********************
 
 ==独立同分布 independent & identically :math:`(i.i.d.)`  == 。假设样本空间中全体样本服从一个未知 “分布 distribution” :math:`D` ，现有的每个 sample 都是独立地从这个分布上采样得到的。
 
@@ -168,7 +170,8 @@ ML
 
             SVM 长这样，这个其实也是一个分布
 
-## identifiability of model 模型的可识别性
+identifiability of model 模型的可识别性
+**************************************************
 
 `Statistical Modelling and Identifiability of Parameters <https://www.analyticsvidhya.com/blog/2021/05/statistical-modelling-and-identifiability-of-parameters/>`_
 
@@ -179,14 +182,16 @@ ML
     | X～N(μ, σ) is identifiable
     | 每个不同的 μ 都指向一个不同的期望，指向不同的正态分布，同样地每一个拥有不同期望的正态分布都能唯一求出一个 μ。但是对不同的 a 和 b 来说，a+b 也许是相同的，意味着一个正态分布并不能唯一推断出 (a, b, σ)的值。（e.g. (1, 1, σ) = (0, 2, σ)
 
-## DNN
+DNN
+**********
 
 .. note:: why it is difficult for neural networks to be deep before 2010s.
     1. No enough computation resources,
     2. No enough training data,
     3. Gradient vanish problem and no advanced optimization techniques
 
-## condition
+condition
+********************
 
 .. note:: Product Rule, Chain Rule and Bayes’ Rule?
 
@@ -206,7 +211,8 @@ ML
     | :math:`P(D|+II)= \cfrac{P(+II|D)P(D)}{P(+II|D) P(D)+ P(+II|H) P(H)}=\frac{0.90\times 0.001}{0.90\times0.001+0.01\times0.999}=0.0826`
     | :math:`P(D|+ I)< P(D|+ II)` It means if a person has the disease, it has more chance of being detected by Test Method II. So Test method II is better.
 
-## search
+search
+**********
 
 .. note:: A search algorithm is admissible if it is guaranteed to find a minimal path to a solution whenever such a path exists.
 
@@ -218,7 +224,8 @@ ML
 .. note:: informed search method"
     Hill-climbing search; A* algorithm; Best-first.
 
-### Best-first search
+Best-first search
+====================
 
 Best-first search is neither complete nor optimal ✅
 
@@ -281,7 +288,8 @@ Solution path : S-B-G
 
         All h(n)<=h*(n),so it is an A* algorithm and it is admissible. The path S-B-G is the shortest path.
 
-### BNN, Bayesian Belief networkd
+BNN, Bayesian Belief networkd
+========================================
 
 A Bayesian Belief Net consists of a graph and some local conditional probabilities.
 
@@ -304,7 +312,8 @@ A Bayesian Belief Net consists of a graph and some local conditional probabiliti
     | :math:`P(B|D)=\cfrac{P(BD)}{P(D)}=\cfrac{P(D|B)P(B)}{P(D|B)P(B)+P(D|\neg B)P(\neg B)}=\cfrac{.62*.8}{.62*.8+.1*.2}=.9612`
     | :math:`P(B|\neg D)=\cfrac{P(B\neg D)}{P(\neg D)}=\cfrac{P(\neg D|B)P(B)}{1-P(D)}=\cfrac{(1-P(D|B))P(B)}{1-P(D)}=.6281`
 
-### Breadth-firth search
+Breadth-firth search
+========================================
 
 .. danger:: If the search space contains very deep branches without solution, breadth-first search will be a better choice than depth-first search.  T"
     | 搜索空间包含非常深的分支 :math:`\neq` 目标在很深的分支里。
@@ -335,7 +344,8 @@ A Bayesian Belief Net consists of a graph and some local conditional probabiliti
     .. math::
         b^{d+1}
 
-## 离散
+离散
+**********
 
 .. note:: Why in some cases we need to use First Order Logic (FOL) rather than Propositional Logic (PL)?"
     1. Propositional logic (PL) is too “coarse” to easily describe properties of objects.
@@ -394,19 +404,23 @@ A Bayesian Belief Net consists of a graph and some local conditional probabiliti
         +---------+---------------------------+-----------------------------------------+
 
 
-## kmeans
+kmeans
+**********
 
 .. danger:: Manhattan distance is <u>usually</u> larger than Euclidean distance. ✔️
     当存在三角形形状，斜边比直角边加和要小
 
-## parameter tuning
+parameter tuning
+********************
 
-### Guess
+Guess
+====================
 
 .. image:: ./pics/paramT_1.png
     :scale: 40%
-
-#### Grid Search
+    
+Grid Search
+--------------------
 
 1. specify a **list** of possible hyperparameter values 需要人为设定超参数的范围
 2. **Grid Search** will train models with every possible combination of the provided hyperparameter values and assess the performance of each trained model using a specified metric (e.g., the accuracy of predictions on a test data set). **Grid Search** 就会用设定区间内的**各种组合**进行训练并根据人为指定的metric进行assess
@@ -416,7 +430,8 @@ A Bayesian Belief Net consists of a graph and some local conditional probabiliti
 1. 事先很难知道最优是在哪里，所以是否找到最优很依赖人为选择的范围，并且只是进行范围内的compare，并不确定是否全局最小
 2. 容易loss control，如果是2个hyper-parameter，每个有3个备选都要训练 :math:`3^2` 个model
 
-#### Random Search
+Random Search
+--------------------
 
 | **Idea** ==Monte Carlo method，蒙特卡洛法，统计模拟法== 
 | 所求解问题可以转化为某种随机分布的特征数，比如随机事件出现的概率，或者随机变量的期望值。通过随机抽样的方法，以随机事件出现的频率估计其概率，或者以抽样的数字特征估算随机变量的数字特征，并将其作为问题的解。这种方法多用于求解复杂的多维积分问题。
@@ -432,7 +447,8 @@ A Bayesian Belief Net consists of a graph and some local conditional probabiliti
 2. 找到这些显性超参数的最佳值将比获得所有超参数的最佳组合更有性价比
 3. 重要的超参数因数据集而异。网格搜索就会很难具体制定某一个
 
-## tuning parameter work
+tuning parameter work
+******************************
 
 
 .. image:: ./pics/LRs_12.png

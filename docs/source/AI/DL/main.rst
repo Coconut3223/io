@@ -1,5 +1,5 @@
-
-# DL
+DL
+#####
 
 Deep learning is part of a broader family of machine learning methods based on **artificial neural networks** with representation learning (表征学习).
 
@@ -10,9 +10,11 @@ Deep learning is part of a broader family of machine learning methods based o
     Any continuous functions defined on **a compact set** can be approximated **arbitrarily well** by a shallow neural network if **the shallow neural network is arbitrarily wide**. 如果浅神经网络任意宽，则在紧集上定义的任何连续函数都可以被 **浅神经网络任意近似**。
 3. Neural networks can be expressive. 神经网络可以富有表现力。
 
-## info
+info
+************
 
-### global features 全局特征 🆚 local features
+global features 全局特征 🆚 local features
+=============================================
 
 | ==全局特征== 是指 信息由整块 input 产生
 | 比如说 MLP，第一层的每一个 input 都是全连接的，就是每一个 out put 都是全体 input 的运算，收获的也是全体 input 的信息
@@ -26,7 +28,8 @@ Deep learning is part of a broader family of machine learning methods based o
     :scale: 30%
     :align: center
 
-## categories of Neural Networks
+categories of Neural Networks
+***********************************
 
 .. table::
 
@@ -83,12 +86,14 @@ Deep learning is part of a broader family of machine learning methods based o
 
 深度学习框架指明了设计方向：以计算图为核心，采用GPU设备加速。
 
-## 科学计算
+科学计算
+**********
 
 - 为什么使用多维数组， **为什么 batch 一般是64、128或256？**
     现代计算机都是多核多处理器的，支持多线程和多进程，非常适合矩阵的并行计算。科学计算往往都是基于矩阵的计算，并且会指定一个适当的Batch。例如， **PyTorch视觉处理中通常将Batch指定为64、128或256，这也是为了充分利用计算机资源而考虑的**
 
-## parameter tuning
+parameter tuning
+********************
 
 .. math::
     f(x;\theta)=\argmin\limits_{\theta}\sum\limits_{i=1}^n(Y_i-f(X_i))^2,X_i\in\R^p,Y_i\in\R\\\\\mathcal F=\{f:f(x;\theta)\text{ is a neural network parameterized by }\theta\in \R^S\}\\

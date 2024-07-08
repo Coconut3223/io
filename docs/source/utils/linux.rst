@@ -1,7 +1,9 @@
+Linux基础命令
+####################
 
-# Linux基础命令
 
-## Linux的目录结构
+Linux的目录结构
+====================
 
 .. image:: https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027214128.png
 
@@ -10,7 +12,8 @@
 - 路径描述的层次关系同样适用 ``/`` 来表示
 - /home/itheima/a.txt，表示根目录下的home文件夹内有itheima文件夹，内有a.txt
 
-## ls命令
+ls命令
+==========
 
 功能：列出文件夹信息
 
@@ -21,19 +24,22 @@
 - -h，配合-l，以更加人性化的方式显示文件大小
 - -a，显示隐藏文件
 
-### 隐藏文件、文件夹
+隐藏文件、文件夹
+====================
 
 在Linux中以 ``.`` 开头的，均是隐藏的。
 
 默认不显示出来，需要 ``-a`` 选项才可查看到。
 
-## pwd命令
+pwd命令
+==========
 
 功能：展示当前工作目录
 
 语法： ``pwd`` 
 
-## cd命令
+cd命令
+==========
 
 功能：切换工作目录
 
@@ -41,7 +47,8 @@
 
 参数：目标目录，要切换去的地方，不提供默认切换到 ``当前登录用户HOME目录`` 
 
-## HOME目录
+HOME目录
+==========
 
 每一个用户在Linux系统中都有自己的专属工作目录，称之为HOME目录。
 
@@ -51,7 +58,8 @@
 
 FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
-## 相对路径、绝对路径
+相对路径、绝对路径
+====================
 
 - 相对路径，==非== ``/`` 开头的称之为相对路径
 
@@ -61,13 +69,15 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 	绝对路径从 ``根`` 开始描述路径
 
-## 特殊路径符
+特殊路径符
+==========
 
 -  ``.`` ，表示当前，比如./a.txt，表示当前文件夹内的 ``a.txt`` 文件
 -  ``..`` ，表示上级目录，比如 ``../`` 表示上级目录， ``../../`` 表示上级的上级目录
 -  ``~`` ，表示用户的HOME目录，比如 ``cd ~`` ，即可切回用户HOME目录
 
-## mkdir命令
+mkdir命令
+==========
 
 功能：创建文件夹
 
@@ -76,7 +86,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 - 参数：被创建文件夹的路径
 - 选项：-p，可选，表示创建前置路径
 
-## touch命令
+touch命令
+==========
 
 功能：创建文件
 
@@ -84,7 +95,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 - 参数：被创建的文件路径
 
-## cat命令
+cat命令
+==========
 
 功能：查看文件内容
 
@@ -92,7 +104,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 - 参数：被查看的文件路径
 
-## more命令
+more命令
+==========
 
 功能：查看文件，可以支持翻页查看
 
@@ -103,7 +116,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
     -  ``空格`` 键翻页
     -  ``q`` 退出查看
 
-## cp命令
+cp命令
+==========
 
 功能：复制文件、文件夹
 
@@ -119,7 +133,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 - cp a.txt test/，复制当前目录a.txt到test文件夹内
 - cp -r test test2，复制文件夹test到当前文件夹内为test2存在
 
-## mv命令
+mv命令
+==========
 
 功能：移动文件、文件夹
 
@@ -128,7 +143,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 - 参数1：被移动的
 - 参数2：要移动去的地方，参数2如果不存在，则会进行改名
 
-## rm命令
+rm命令
+==========
 
 功能：删除文件、文件夹
 
@@ -140,7 +156,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 .. danger:: rm命令很危险，一定要注意，特别是切换到root用户的时候。
 
-## which命令
+which命令
+==========
 
 功能：查看命令的程序本体文件路径
 
@@ -148,7 +165,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 - 参数：被查看的命令
 
-## find命令
+find命令
+==========
 
 功能：搜索文件
 
@@ -157,7 +175,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 - 路径，搜索的起始路径
 - 参数，搜索的关键字，支持通配符*， 比如： ``*`` test表示搜索任意以test结尾的文件
 
-## grep命令
+grep命令
+==========
 
 功能：过滤关键字
 
@@ -169,7 +188,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 .. note:: 参数文件路径，可作为管道符的输入
 
-## wc命令
+wc命令
+==========
 
 功能：统计
 
@@ -183,7 +203,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 .. note:: 参数文件路径，可作为管道符的输入
 
-## 管道符|
+管道符|
+==========
 
 写法： ``|`` 
 
@@ -195,7 +216,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 可以支持嵌套：``cat a.txt | grep itheima | grep itcast`` 
 
-## echo命令
+echo命令
+==========
 
 功能：输出内容
 
@@ -203,7 +225,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 - 参数：被输出的内容
 
-## `反引号
+`反引号
+==========
 
 功能：被两个反引号包围的内容，会作为命令执行
 
@@ -211,7 +234,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 - echo \ ``pwd\`` ，会输出当前工作目录
 
-## tail命令
+tail命令
+==========
 
 功能：查看文件尾部内容
 
@@ -220,7 +244,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 - 参数：被查看的文件
 - 选项：-f，持续跟踪文件修改
 
-## head命令
+head命令
+==========
 
 功能：查看文件头部内容
 
@@ -229,16 +254,19 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 - 参数：被查看的文件
 - 选项：-n，查看的行数
 
-## 重定向符
+重定向符
+==========
 
 功能：将符号左边的结果，输出到右边指定的文件中去
 
 -  ``>`` ，表示覆盖输出
 -  ``>>`` ，表示追加输出
 
-## vi编辑器
+vi编辑器
+**********
 
-### 命令模式快捷键
+命令模式快捷键
+====================
 
 .. image:: https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027215841.png
 
@@ -246,12 +274,13 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 .. image:: https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027215849.png
 
-### 底线命令快捷键
+底线命令快捷键
+====================
 
 .. image:: https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027215858.png
 
-## 命令的选项
-
+命令的选项
+**********
 我们学习的一系列Linux命令，它们所拥有的选项都是非常多的。
 
 比如，简单的ls命令就有：-a -A -b -c -C -d -D -f -F -g -G -h -H -i -I -k -l -L -m -n -N -o -p -q -Q -r-R -s -S -t -T -u -U -v -w -x -X -1等选项，可以发现选项是极其多的。
@@ -260,21 +289,25 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 课程中，会对常见的选项进行讲解， 足够满足绝大多数的学习、工作场景。
 
-### 查看命令的帮助
+查看命令的帮助
+====================
 
 可以通过： ``命令 --help`` 查看命令的帮助手册
 
 .. image:: https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027220005.png
 
-### 查看命令的详细手册
+查看命令的详细手册
+========================================
 
 可以通过： ``man 命令`` 查看某命令的详细手册
 
 .. image:: https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027220010.png
 
-## Linux常用操作
+Linux常用操作
+********************
 
-### 软件安装
+软件安装
+==========
 
 - CentOS系统使用：
     - yum [install remove search] [-y] 软件名称
@@ -291,7 +324,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 .. note:: yum 和 apt 均需要root权限
 
-### systemctl
+systemctl
+==========
 
 功能：控制系统服务的启动关闭等
 
@@ -304,7 +338,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 - enable，开启开机自启
 - restart，重启
 
-### 软链接
+软链接
+==========
 
 功能：创建文件、文件夹软链接（快捷方式）
 
@@ -313,7 +348,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 - 参数1：被链接的
 - 参数2：要链接去的地方（快捷方式的名称和存放位置）
 
-### 日期
+日期
+==========
 
 语法： ``date [-d] [+格式化字符串]`` 
 
@@ -346,13 +382,15 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 		.. image:: https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027220449.png
 
-### 时区
+时区
+==========
 
 修改时区为中国时区
 
 .. image:: https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027220554.png
 
-### ntp
+ntp
+==========
 
 功能：同步时间
 
@@ -362,7 +400,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 手动校准时间： ``ntpdate -u ntp.aliyun.com`` 
 
-### ip地址
+ip地址
+==========
 
 格式：a.b.c.d
 
@@ -377,7 +416,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 查看ip： ``ifconfig`` 
 
-### 主机名
+主机名
+==========
 
 功能：Linux系统的名称
 
@@ -385,7 +425,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 设置： ``hostnamectl set-hostname 主机名`` 
 
-### 配置VMware固定IP
+配置VMware固定IP
+====================
 
 1. 修改VMware网络，参阅PPT，图太多
 
@@ -417,27 +458,32 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 	GATEWAY="192.168.88.2"  # 网关，要和VMware中配置的一致
 	DNS1="192.168.88.2"  # DNS1服务器，和网关一致即可
 
-### ps命令
+ps命令
+==========
 
 功能：查看进程信息
 
 语法： ``ps -ef`` ，查看全部进程信息，可以搭配grep做过滤： ``ps -ef | grep xxx`` 
 
-### kill命令
+kill命令
+==========
 
 .. image:: https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027221303.png
 
-### nmap命令
+nmap命令
+==========
 
 .. image:: https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027221241.png
 
-### netstat命令
+netstat命令
+====================
 
 功能：查看端口占用
 
 用法： ``netstat -anp | grep xxx`` 
 
-### ping命令
+ping命令
+==========
 
 测试网络是否联通
 
@@ -445,17 +491,20 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 .. image:: https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027221129.png
 
-### wget命令
+wget命令
+==========
 
 .. image:: https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027221149.png
 
-### curl命令
+curl命令
+==========
 
 .. image:: https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027221201.png
 
 .. image:: https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027221210.png
 
-### top命令
+top命令
+==========
 
 功能：查看主机运行状态
 
@@ -469,7 +518,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 .. image:: https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027221354.png
 
-### 资源相关
+资源相关
+==========
 
 显示根目录下每个文件和目录的磁盘使用空间  ``du``  (disk usage)
 
@@ -514,7 +564,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 [Linux中 du （详解）、 df （详解）和 free（详解）以及它们的区别](https://blog.csdn.net/qq_19167629/article/details/80915834)
 
-### iostat命令
+iostat命令
+==========
 
 查看CPU、磁盘的相关信息
 
@@ -522,26 +573,30 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 .. image:: https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027221514.png
 
-### sar命令
+sar命令
+==========
 
 查看网络统计
 
 .. image:: https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027221545.png
 
-### 环境变量
+环境变量
+==========
 
 - 临时设置：export 变量名=变量值
 - 永久设置：
     - 针对用户，设置用户HOME目录内： ``.bashrc`` 文件
     - 针对全局，设置 ``/etc/profile`` 
 
-#### PATH变量
+PATH变量
+--------------------
 
 记录了执行程序的搜索路径
 
 可以将自定义路径加入PATH内，实现自定义命令在任意地方均可执行的效果
 
-### $符号
+$符号
+==========
 
 可以取出指定的环境变量的值
 
@@ -555,9 +610,11 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 如果变量名和其它内容混淆在一起，可以使用${}
 
-### 压缩解压
+压缩解压
+==========
 
-#### 压缩
+压缩
+----------
 
 ``tar -zcvf 压缩包 被压缩1...被压缩2...被压缩N`` 
 
@@ -567,7 +624,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 .. image:: https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027221906.png
 
-#### 解压
+解压
+----------
 
  ``tar -zxvf 被解压的文件 -C 要解压去的地方`` 
 
@@ -578,7 +636,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 .. image:: https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027221939.png
 
-### su命令
+su命令
+==========
 
 切换用户
 
@@ -586,7 +645,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 .. image:: https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027222021.png
 
-### sudo命令
+sudo命令
+==========
 
 .. image:: https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027222035.png
 
@@ -598,7 +658,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 在visudo内配置如上内容，可以让itheima用户，无需密码直接使用 ``sudo`` 
 
-### chmod命令
+chmod命令
+==========
 
 修改文件、文件夹权限
 
@@ -612,7 +673,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 - 选项-R，设置文件夹和其内部全部内容一样生效
 
-### chown命令
+chown命令
+==========
 
 修改文件、文件夹所属用户、组
 
@@ -620,15 +682,18 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 .. image:: https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027222326.png
 
-### 用户组管理
+用户组管理
+==========
 
 .. image:: https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027222354.png
 
-### 用户管理
+用户管理
+==========
 
 .. image:: https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027222407.png
 
-### genenv命令
+genenv
+====================
 
 -  ``getenv group`` ，查看系统全部的用户组
 
@@ -638,7 +703,8 @@ FinalShell登陆终端后，默认的工作目录就是用户的HOME目录
 
 	.. image:: https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027222512.png
 
-### env命令
+env命令
+==========
 
 查看系统全部的环境变量
 

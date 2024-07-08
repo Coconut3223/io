@@ -1,7 +1,8 @@
+Git
+##########
 
-# Git
-
-## Background
+Background
+********************
 
 https://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html
 
@@ -17,7 +18,8 @@ https://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html
         - 每一个 team member 都是 project maintainer，可以直接 make changes  ``git push <local_main>:<remote_main>`` 。
         - Relies on policies to restrict access to the main project branch
 
-### 软件配置管理, Software Contiguration Management,SCM
+软件配置管理, Software Contiguration Management,SCM
+============================================================
 
 通过执行版本控制、变更控制的规程，以及使用合适的配置管理软件，来保证所有配置项的完整性和可跟踪性。配置管理是对工作成果(源码文件、需求文档、设计文档，开发文档)的一种有效保护。
 
@@ -30,7 +32,8 @@ https://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html
 
     一旦服务器发生故障或者损坏，就会丢失
 
-### git client tool
+git client tool
+====================
 
 - Git Bash
     - [Download for macOS](https://git-scm.com/download/mac)
@@ -39,9 +42,11 @@ https://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html
 - Github Desktop 【
 - sourcetree
 
-### mac
+mac
+==========
 
-#### zsh
+zsh
+----------
 
 把如下代码添加至你的  ``~/.zshrc``  文件中，就可以在 **右侧显示分支名称**
 
@@ -58,9 +63,11 @@ https://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html
 
 - [在其它环境中使用 Git - Zsh 中的 Git](https://git-scm.com/book/zh/v2/附录-A%3A-在其它环境中使用-Git-Zsh-中的-Git)
 
-## 工作流程原理
+工作流程原理
+********************
 
-### 四大区域
+四大区域
+==========
 
 - 3个本地区域
     - 工作区, **Working Directory**
@@ -83,7 +90,8 @@ https://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html
     - 远程库，Remote
         - 托管代码的服务器，从 local repository 推送文件到远程库需要  ``git push`` , 从远程库拉取文件来更新 repository 需要  ``git pull`` 
 
-## details
+details
+********************
 
 - 版本号
     - SHA-1 加密， 用来 merge 时避免 conflict
@@ -95,11 +103,14 @@ https://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html
 
     - 内容是当前提前信息的
 
-## git command
+git command
+********************
 
-### 初始化
+初始化
+==========
 
-#### 本地新建一个 local init
+本地新建一个 local init
+------------------------------
 
 ``git init`` 
 
@@ -158,7 +169,8 @@ https://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html
 .. image:: ./pics/gui_create_2.png
     :scale: 30%
 
-### git config 配置
+git config 配置
+==============================
 
 - 查看 git 配置  ``git config --list`` 
 
@@ -192,11 +204,14 @@ https://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html
         # 2. 针对 local 所有仓库
         $ git config -e --global 
 
-### 日常操作
+日常操作
+==========
 
-#### 提交代码
+提交代码
+--------------------
 
-##### 基本流程
+基本流程
+^^^^^^^^^^^^^^^
 
 1. working dir -> staging area  
     ``git add`` 
@@ -226,7 +241,8 @@ https://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html
     - ``local_branch``  working dir 的 branch
     - ``remote_branch``  你要 push 的那个 repository 的那个 branch
 
-##### 一些过程中可能用到的查看指令
+一些过程中可能用到的查看指令
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - 查看在你上次提交之后是否有对文件进行再次修改
 
@@ -259,7 +275,8 @@ https://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html
 .. image:: ./pics/tag-1.png
     :scale: 30%
 
-##### 一些操作
+一些操作
+^^^^^^^^^^^^^^^
 
 - 删除文件
 
@@ -274,7 +291,8 @@ https://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html
         # 2. 将文件从暂存区删除，在工作区保留
         $ git rm --cached <file>
 
-#### 分支操作
+分支操作
+--------------------
 
 - 查看分支  ``git branch -a`` 
 - 创建新分支  ``git checkout -b <new_branch>`` 
@@ -322,11 +340,13 @@ https://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html
         # 3. 删除远程分支
         $ git push origin :heads/<_remote_branch>
 
-## 4.3 更新操作
+4.3 更新操作
+==================
 
 @TODO
 
-### 合并操作
+合并操作
+==========
 
 1. 先切换到要合并的主分支  ``git checkout master`` 
 2. 选择要合并的另外一个 branch
@@ -343,7 +363,8 @@ https://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html
         .. image:: ./pics/merge_2.png
             :scale: 30%
 
-#### 合并冲突
+合并冲突
+--------------------
 
 合并代码出现冲突提示。 这个时候不可以进行任何分支切换和commit操作，需要按照提示将冲突解决。
 
@@ -381,7 +402,8 @@ https://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html
 
     1. 冲突解决完成之后, 再次提交代码 ``git commit`` 
 
-#### 暂存代码保护现场
+暂存代码保护现场
+------------------------------
 
 .. hint:: 项目经理提了一个新的需求, 开发就需要从 master 分支迁出一个新的分支进行功能开发(例如迁出新分支为dev), 如果在开发过程中生产上有紧急 bug 需要修复, 就可以用到  ``git stash``  了。
     这种情况一般是出现在你正在完成一个功能，但是忽然线上发现了一个Bug，必须马上开一个新的分支来修复bug，但是现在的功能没写完不打算提交(commit)，现在怎么办？？
@@ -494,7 +516,7 @@ https://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html
     file1 init
     add file1.txt code 1
     add file2.txt code 2
-    +add file1.txt no.3 & code end   ## 可以看见, feature1 最后一次提交已经是未暂存状态了
+    +add file1.txt no.3 & code end   # 可以看见, feature1 最后一次提交已经是未暂存状态了
     # 此时, 我们就可以使用 git stash, 将撤销的代码存储起来, 
     $ git stash save 'save file1.txt reset code'
     Saved working directory and index state On feature1: save file1.txt reset code
@@ -614,9 +636,11 @@ https://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html
     $ cat file2.txt
     file2 init
 
-## 五、git 高级操作
+五、git 高级操作
+********************
 
-### 5.1 git 撤销操作
+5.1 git 撤销操作
+====================
 
 **disk:**
 
@@ -670,7 +694,8 @@ https://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html
 1. ``git reset --hard HEAD~1`` 
 2. ``git push -f`` 
 
-## 5.2 git 找回丢失文件(commit了)
+5.2 git 找回丢失文件(commit了)
+====================================
 
 恢复因为执行  ``git reset --hard COMMITID``  丢失的文件
 
@@ -745,7 +770,8 @@ git 提供了  ``git reflog``  用来记录你的每一次改变目录树的命�
 
         first commit
 
-## 5.3 git 找回丢失文件(未commit,但添加暂存区了)
+5.3 git 找回丢失文件(未commit,但添加暂存区了)
+===============================================================
 
 如果只  ``git add``  了没有  ``git commit`` (如果连  ``git add`` 都没有, 那只能找磁盘数据恢复的方式了), 这就不是仅仅一个  ``git reflog``  就能找回的了。
 
@@ -832,7 +858,8 @@ git 提供了  ``git fsck --lost-found``  命令, 他会通过一些神奇的方
 - ``commit``  数据结构在每次提交之后都会生成一个, 当我们进行  ``commit``  之后, 首先会创建一个  ``commit``  组件, 之后创建一个  ``tree``  组件, 把所有的文件信息都存在里面, 每个  ``blob``  都代表一个文件, 都可以在  ``tree``  里面找到。
 - ``blob``  组件并不会对文件信息进行存储, 而是只对文件的内容进行记录, 文件信息存储在  ``tree``  里.
 
-## 5.4 终极大招
+5.4 终极大招
+==================
 
 如果 5.3 并没有找到你想要的内容, 那只能再去看看最近修改的文件了
 
@@ -870,16 +897,19 @@ git 提供了  ``git fsck --lost-found``  命令, 他会通过一些神奇的方
     $ git cat-file -p 24b6cb352efeff7a2b24b99e8ff814ab1fc2a2fd
     master message 1
 
-## 5.5 git 迁移(保留 commit)
+5.5 git 迁移(保留 commit)
+====================================
 
-### 5.5.1 clone 原来的项目
+5.5.1 clone 原来的项目
+==============================
 
 .. code-block:: sh
 
     git clone --bare git://github.com/username/project.git
 
 
-### 5.5.2 推送到新的gitlab
+5.5.2 推送到新的gitlab
+========================================
 
 .. code-block:: sh
 
@@ -889,13 +919,15 @@ git 提供了  ``git fsck --lost-found``  命令, 他会通过一些神奇的方
 
 会提示没有权限, 在gitlab中把项目的权限保护关掉就好了
 
-### 5.5.3 本地代码更换gitlab地址
+5.5.3 本地代码更换gitlab地址
+==============================
 
 .. code-block:: sh
 
     git remote set-url origin git@example.com/username/newproject.git
 
-## 5.6 git rebase
+5.6 git rebase
+====================
 
 准备4个场景:
 
@@ -904,7 +936,8 @@ git 提供了  ``git fsck --lost-found``  命令, 他会通过一些神奇的方
 - rebase 时只有一个分支变更
 - rebase 时两个分支有变更
 
-### 5.6.1 merge 时只有一个分支变更
+5.6.1 merge 时只有一个分支变更
+==================================================
 
 .. code-block:: sh
 
@@ -914,10 +947,10 @@ git 提供了  ``git fsck --lost-found``  命令, 他会通过一些神奇的方
     git add README.md
     git commit -m "init"
 
-    ## 创建一个分支
+    # 创建一个分支
     git checkout -b feature
 
-    ## 在 master 上添加两个 commit
+    # 在 master 上添加两个 commit
     git checkout main
     echo "c1" >> README.md
     git add README.md
@@ -927,11 +960,11 @@ git 提供了  ``git fsck --lost-found``  命令, 他会通过一些神奇的方
     git add README.md
     git commit -m "c2 commit"
 
-    ## feature 合并 master 新增记录
+    # feature 合并 master 新增记录
     git checkout feature
     git merge main
 
-    ## 查看日志, 可以看见 feature 分支上已经有了 master 的两个提交了
+    # 查看日志, 可以看见 feature 分支上已经有了 master 的两个提交了
     git log --graph --pretty=oneline --abbrev-commit
     * c001f6f (HEAD -> feature, main) c2 commit
     * a4d98be c1 commit
@@ -943,7 +976,8 @@ git 提供了  ``git fsck --lost-found``  命令, 他会通过一些神奇的方
     c2
 
 
-### 5.6.2 merge 时两个分支有变更
+5.6.2 merge 时两个分支有变更
+========================================
 
 .. code-block:: sh
 
@@ -953,11 +987,11 @@ git 提供了  ``git fsck --lost-found``  命令, 他会通过一些神奇的方
     git add README.md
     git commit -m "init"
 
-    ## 创建两个分支
+    # 创建两个分支
     git checkout -b feature1
     git checkout -b feature2
 
-    ## 在 feature1 上添加两个 commit
+    # 在 feature1 上添加两个 commit
     git checkout feature1
     echo "c1" >> README.md
     git add README.md
@@ -967,7 +1001,7 @@ git 提供了  ``git fsck --lost-found``  命令, 他会通过一些神奇的方
     git add README.md
     git commit -m "c2 commit"
 
-    ## 在 feature2 上添加两个 commit
+    # 在 feature2 上添加两个 commit
     git checkout feature2
     echo "c3" >> README.md
     git add README.md
@@ -977,13 +1011,13 @@ git 提供了  ``git fsck --lost-found``  命令, 他会通过一些神奇的方
     git add README.md
     git commit -m "c4 commit"
 
-    ## 在 feature1 上添加一个 commit
+    # 在 feature1 上添加一个 commit
     git checkout feature1
     echo "c5" >> README.md
     git add README.md
     git commit -m "c5 commit"
 
-    ## 查看两个分支的commit时间
+    # 查看两个分支的commit时间
     git log feature1
     commit a16e20a00329b0a60cbf8f541ff999e065a907b0 (HEAD -> feature1)
     Author: kino <kinoxyz1@gmail.com>
@@ -1028,22 +1062,22 @@ git 提供了  ``git fsck --lost-found``  命令, 他会通过一些神奇的方
 
         init
 
-    ## 可以看见, feature2 上的两个 commit 时间晚于 feature1 的 c2/c3 commit, 但是又早于 feature1 上的 c5 commit
-    ## 现在将 feature1 合并到 feature2
+    # 可以看见, feature2 上的两个 commit 时间晚于 feature1 的 c2/c3 commit, 但是又早于 feature1 上的 c5 commit
+    # 现在将 feature1 合并到 feature2
     git checkout feature2
     git merge feature1
-    ## 冲突提示
+    # 冲突提示
     Already on 'feature2'
     Auto-merging README.md
     CONFLICT (content): Merge conflict in README.md
     Automatic merge failed; fix conflicts and then commit the result.
-    ## 解决冲突
+    # 解决冲突
     vim README.md
     git add .
     git commit 
 
-    ## 再次查看feature2的提交记录, 发现多出来了一个 commit:faaa86d914cce98ab6dd6159ff76a4fe351f809e
-    ## 并且时间顺序是按两个分支的时间排好序的(合并后时间有序未被打乱)
+    # 再次查看feature2的提交记录, 发现多出来了一个 commit:faaa86d914cce98ab6dd6159ff76a4fe351f809e
+    # 并且时间顺序是按两个分支的时间排好序的(合并后时间有序未被打乱)
     commit 6f9869531606418e4c40fabb9cfaabfa1425545a (HEAD -> feature2)
     Merge: 02f3370 a16e20a
     Author: kino <kinoxyz1@gmail.com>
@@ -1088,7 +1122,8 @@ git 提供了  ``git fsck --lost-found``  命令, 他会通过一些神奇的方
         init
 
 
-### 5.6.3 rebase 时只有一个分支变更
+5.6.3 rebase 时只有一个分支变更
+==============================
 
 rebase 分支未作出commit
 
@@ -1100,10 +1135,10 @@ rebase 分支未作出commit
     git add README.md
     git commit -m "init"
 
-    ## 创建一个分支
+    # 创建一个分支
     git checkout -b feature
 
-    ## 在 master 上添加两个 commit
+    # 在 master 上添加两个 commit
     git checkout master
     echo "c1" >> README.md
     git add README.md
@@ -1113,18 +1148,19 @@ rebase 分支未作出commit
     git add README.md
     git commit -m "c2 commit"
 
-    ## feature 合并 master 新增记录
+    # feature 合并 master 新增记录
     git checkout feature
     git rebase master
 
-    ## 查看日志, 可以看见 feature 分支上已经有了 master 的两个提交了, 并且指针feature和master同时指向HEAD
+    # 查看日志, 可以看见 feature 分支上已经有了 master 的两个提交了, 并且指针feature和master同时指向HEAD
     git log --graph --pretty=oneline --abbrev-commit
     * 715cf72 (HEAD -> feature, master) c2 commit
     * 5f626b8 c1 commit
     * 6a2e050 init
 
 
-### 5.6.4 rebase 时两个分支有变更
+5.6.4 rebase 时两个分支有变更
+==============================
 
 rebase 分支作出commit
 
@@ -1136,14 +1172,14 @@ rebase 分支作出commit
     git add README.md
     git commit -m "init"
 
-    ## 创建一个分支
+    # 创建一个分支
     git checkout -b feature
-    ## 在 feature 上添加一个 commit
+    # 在 feature 上添加一个 commit
     echo "c3" >> README.md
     git add README.md
     git commit -m "c3 commit"
 
-    ## 在 master 上添加两个 commit
+    # 在 master 上添加两个 commit
     git checkout master
     echo "c1" >> README.md
     git add README.md
@@ -1153,7 +1189,7 @@ rebase 分支作出commit
     git add README.md
     git commit -m "c2 commit"
 
-    ## 查看 feature 分支的log
+    # 查看 feature 分支的log
     git log feature
     commit d97013d9428e61d4d97ebe6a67b5c27d1b98c7cb (HEAD -> feature)
     Author: kino <kinoxyz1@gmail.com>
@@ -1167,7 +1203,7 @@ rebase 分支作出commit
 
         init
 
-    ## 查看 master 分支的log
+    # 查看 master 分支的log
     git log master
     commit 0ec71a9b42831756babb31aba75d56e0e73a6c68 (master)
     Author: kino <kinoxyz1@gmail.com>
@@ -1187,19 +1223,19 @@ rebase 分支作出commit
 
         init
 
-    ## 可以看见 feature 分支上的 c3 commit 时间早于 master 分支的 c1/c2 commit
-    ## feature 合并 master 新增记录
+    # 可以看见 feature 分支上的 c3 commit 时间早于 master 分支的 c1/c2 commit
+    # feature 合并 master 新增记录
     git checkout feature
     git rebase master
-    ## 提示有冲突, 解决冲突
+    # 提示有冲突, 解决冲突
     vim README.md
     git add README.md
     git rebase --continue
-    ## 再次查看 feature 分支的 log, 发现 c3 commit 时间早于 master 分支的 c1/c2 commit, 但是排在了最后面(没按时间排序)
-    ## 并且, c3 commit 的 commit id 已经变了.
-    ## rebase 原理: 一次 rebase 中, 会拿到 当前分支最新的 commit、被 rebase 分支最新的 commit、以及它们最近的一个父commit,
-    ##     然后将当前分支 从父commit到当前最新commit 移动到被 rebase 分支最新代码之后(此时被移动过来的commit是属于被重新commit了, 和原来的已经不一样了)
-    ##     最后将当前分支的指针移动到最近的地方.
+    # 再次查看 feature 分支的 log, 发现 c3 commit 时间早于 master 分支的 c1/c2 commit, 但是排在了最后面(没按时间排序)
+    # 并且, c3 commit 的 commit id 已经变了.
+    # rebase 原理: 一次 rebase 中, 会拿到 当前分支最新的 commit、被 rebase 分支最新的 commit、以及它们最近的一个父commit,
+    #     然后将当前分支 从父commit到当前最新commit 移动到被 rebase 分支最新代码之后(此时被移动过来的commit是属于被重新commit了, 和原来的已经不一样了)
+    #     最后将当前分支的指针移动到最近的地方.
     commit e5fd30e03a32d1a902895dfa8ec51e50ba02bd41 (HEAD -> feature)
     Author: kino <kinoxyz1@gmail.com>
     Date:   Thu Apr 6 23:26:59 2023 +0800
@@ -1224,13 +1260,14 @@ rebase 分支作出commit
 
         init
 
-    ## 查看 feature 的log, 也能得出上面说的原理
+    # 查看 feature 的log, 也能得出上面说的原理
     * e5fd30e (HEAD -> feature) c3 commit
     * 0ec71a9 (master) c2 commit
     * fdf2a2e c1 commit
     * fb9a4a6 init
 
-### 5.6.5 rebase 总结
+5.6.5 rebase 总结
+====================
 
 rebase 的时候, 找到 **当前分支** 和 **被rebase分支** 的父commit, 然后找到当前分支在父commit之后所有的commit记录, 把这些 commit 记录移动到被 rebase 分支上去, 这些 commit 记录已经不是原来的 commit 了(因为 commit id 已经改变了)。或者通俗来说: rebase 就是被rebase分支插入到当前分支之前, 例如: 从 master checkout 一个 feature 用作开发, 开发一段时间之后, 有人给 master 提交代码了(如fixbug), 那么我们应该 rebase master 到当前分支, 当 master 最新的代码放到 feature 最前面.
 
@@ -1241,7 +1278,8 @@ rebase 的时候, 找到 **当前分支** 和 **被rebase分支** 的父commit, 
 1. 在公共分支上不要使用 rebase, 应该用 merge;
 2. 功能分支上, 可以选择 rebase(不介意时间顺序, 把自己的 commit 顶到最后).
 
-### 5.6.6 rebase 的命令行操作
+5.6.6 rebase 的命令行操作
+========================================
 
 开启命令行操作
 
@@ -1355,7 +1393,8 @@ rebase 的时候, 找到 **当前分支** 和 **被rebase分支** 的父commit, 
 
         init
 
-#### squash
+squash
+--------------------
 
 我想要将 c4 commit 和 c3 commit 合并成一个commit
 
@@ -1368,9 +1407,9 @@ rebase 的时候, 找到 **当前分支** 和 **被rebase分支** 的父commit, 
     squash f7dfd4a c4 commit
     pick 84a6eef c5 commit
 
-    ## 修改合并的commit信息
+    # 修改合并的commit信息
 
-    ## 查看 log
+    # 查看 log
     commit 779c9bf0f7503a0b7020a447666c7ef3c241b884 (HEAD -> master)
     Author: kino <kinoxyz1@gmail.com>
     Date:   Fri Apr 7 00:19:01 2023 +0800
@@ -1402,7 +1441,7 @@ rebase 的时候, 找到 **当前分支** 和 **被rebase分支** 的父commit, 
 
         init
         
-    ## 查看 0e4b353 变更了哪些东西, 可以看见, 本次 commit, 修改了 README.md 文件, 添加了 c3/c4 两行代码
+    # 查看 0e4b353 变更了哪些东西, 可以看见, 本次 commit, 修改了 README.md 文件, 添加了 c3/c4 两行代码
     commit 0e4b3536cb998f3ffab91746954366915d9eb360
     Author: kino <kinoxyz1@gmail.com>
     Date:   Fri Apr 7 00:19:01 2023 +0800
@@ -1421,7 +1460,8 @@ rebase 的时候, 找到 **当前分支** 和 **被rebase分支** 的父commit, 
     +c3
     +c4
 
-#### fixup
+fixup
+----------
 
 也可以使用 fixup 代替 squash, fixup 不会保留合并的的提交信息, 可以使用此操作将一个小的提交合并到之前的提交中
 
@@ -1435,7 +1475,8 @@ rebase 的时候, 找到 **当前分支** 和 **被rebase分支** 的父commit, 
     pick cb1017b c5 commit
 
 
-#### edit
+edit
+----------
 
 当然还可以修改 commit 信息
 
@@ -1450,11 +1491,12 @@ rebase 的时候, 找到 **当前分支** 和 **被rebase分支** 的父commit, 
 
     # 执行以下命令开始操作(可以执行多次)
     git commit --amend
-    ## 填写 commit 信息
-    ## 修改到满意之后, 执行以下命令生效
+    # 填写 commit 信息
+    # 修改到满意之后, 执行以下命令生效
     git rebase --continue
 
-#### reword
+reword
+----------
 
 修改 commit 信息也可以直接使用 reword, 这将直接开始修改
 
@@ -1467,7 +1509,8 @@ rebase 的时候, 找到 **当前分支** 和 **被rebase分支** 的父commit, 
     reword 69799d0 c4 commit
     pick cb1017b c5 commit
 
-#### drop
+drop
+----------
 
 除此之外, 还可以删除某个 commit
 
@@ -1480,7 +1523,8 @@ rebase 的时候, 找到 **当前分支** 和 **被rebase分支** 的父commit, 
     drop 69799d0 c4 commit
     pick cb1017b c5 commit
 
-## 5.7 cherry-pick
+5.7 cherry-pick
+====================
 
 ``git cherry-pick``  命令用于将指定的提交（commit）应用于当前分支。这个命令可以方便地将其他分支或者提交的修改应用到当前分支中，而无需将整个分支合并。
 
@@ -1492,11 +1536,11 @@ rebase 的时候, 找到 **当前分支** 和 **被rebase分支** 的父commit, 
     git add README.md
     git commit -m "init"
 
-    ## 创建两个分支
+    # 创建两个分支
     git checkout -b feature1
     git checkout -b feature2
 
-    ## 在 feature1 上添加两个 commit
+    # 在 feature1 上添加两个 commit
     git checkout feature1
     echo "c1" >> README.md
     git add README.md
@@ -1506,7 +1550,7 @@ rebase 的时候, 找到 **当前分支** 和 **被rebase分支** 的父commit, 
     git add README.md
     git commit -m "c2 commit"
 
-    ## 在 feature2 上添加两个 commit
+    # 在 feature2 上添加两个 commit
     git checkout feature2
     echo "c3" >> README.md
     git add README.md
@@ -1565,7 +1609,8 @@ rebase 的时候, 找到 **当前分支** 和 **被rebase分支** 的父commit, 
 
 .. danger:: 使用  ``git cherry-pick``  命令将提交应用到当前分支时，也可能会引入新的问题，因此在使用该命令时需要谨慎
 
-## 六、参与开源项目
+六、参与开源项目
+====================
 
 这里我们以袋鼠云的 chunjun 做示例, 首先我们需要 [fork](https://github.com/DTStack/chunjun) 该项目。
 

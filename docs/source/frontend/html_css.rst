@@ -1,7 +1,8 @@
+HTML & CSS 一些用过的部件
+##############################
 
-# HTML & CSS 一些用过的部件
-
-## Grid
+Grid
+**********
 
 这个 grid 的部件能实现 把页面分成几个网格，然后并排展示
 
@@ -24,11 +25,11 @@
 
 - [grid-template-columns](https://css-tricks.com/almanac/properties/g/grid-template-columns/)
 
+html 
+**********
 
-
-## html 
-
-## 理论
+理论
+**********
 
 .. danger:: 从左到右 从上到下 从外到内
 
@@ -44,8 +45,8 @@
 
     - ``<input type="checkbox/text/number" place-holder="占位符">``
 
-### DOM
-
+DOM
+==========
 
 ==DOM 文档对象模型, Document Object Model== 是一个用于表示和交互网页的标准API。它将 HTML、XML 等文档表示为一个树状结构,每个节点都是文档的一部分。
 
@@ -58,17 +59,20 @@
     .. hint:: <span> 标签在 HTML 中定义了一个行内元素,它就是一个 DOM 元素。
 
 
-### form
+form
+==========
 
 - ``<form @submit.prevent="func"></form>``
 
     ``form`` 的提交默认行为是提交后刷新页面，为了阻止它提交刷新 ``.prevent``，而是只需执行 ``func``
 
-#### input
+input
+---------------
 
 - ``placeholder`` 占位符，当绑定的字符串为空 🟰 没有输入的时候，就会展示，但不会影响真实的值。
 
-## css
+css
+**********
 
 | ``<span class={class1: condition>`` 
 | 如果 ``condition=true``，则 ``class1`` 类名会被应用到 ``<span>`` 元素上。否则,该类名不会被应用。
@@ -90,7 +94,8 @@
         }
     </style>
 
-### padding & margin
+padding & margin
+==============================
 
 在 margin 不起作用的时候加 padding。
 加了 padding 之后 不想外面的盒子太大，就加上 box-sizing

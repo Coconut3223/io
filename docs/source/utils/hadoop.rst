@@ -1,5 +1,5 @@
-
-# (Apache 基金会的) Hadoop
+(Apache 基金会的) Hadoop
+########################################
 
 ==Hadoop== 是一个 **实现了mapreduce算法** 的开源的分布式并行编程框架。open-source implementation of frameworks for reliable, scalable, distributed computing and data storage.
 
@@ -15,7 +15,8 @@
     - Simple programming models
 4. **Fault-tolerance** 容错性是最重要的
 
-## architecture
+architecture
+====================
 
 | **Hadoop Ecosystem：**
 | ==Hadoop Common== 。 A set of components and interfaces for distributed file systems and general I/O; 组件和接口
@@ -58,7 +59,8 @@
     :scale: 40%
     :align: center
 
-### Hadoop Distributed File System
+Hadoop Distributed File System
+========================================
 
 **Problems and Solutions of HDFS.**
 
@@ -114,7 +116,8 @@
     :scale: 50%
     :align: center
 
-#### Architecture
+Architecture
+--------------------
 
 .. table::
 
@@ -143,7 +146,8 @@
 | MapReduce Engine | JobTracker | splits up data into smaller tasks(“Map”) sends it to the TaskTracker process in each node |
 | ^ | TaskTracker, TT | reports back to the JobTracker node;reports on job progress;sends data (“Reduce”) or requests new jobs |
 
-##### DataNode, DN
+DataNode, DN
+^^^^^^^^^^^^^^^^^^^^
 
 - Individual machines in the cluster
 - Typically 2 level architecture. 两层架构
@@ -168,7 +172,8 @@
 
 - Forwards data to other specified DataNodes
 
-##### NameNode
+NameNode
+^^^^^^^^^^^^^^^
 
 - **Single Namespace for entire cluster**
 - The server holding the NameNode instance is **quite crucial**, as there is **only one**. 非常重要只有一个
@@ -196,9 +201,11 @@
     - 当某个DataNode挂了之后就搬运data——创建副本，确保data有定量的replications in DataNode
 - **Cluster Configuration Management**
 
-#### Strategy
+Strategy
+--------------------
 
-##### Block Placement - Data Pipeline
+Block Placement - Data Pipeline
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - **Large blocks stored across a cluster** 每一个file都被分成很多个block储存在一个集群
     - Individual files are broken into blocks of a fixed size (64MB by default);
@@ -224,7 +231,8 @@
             - Allow HDFS to scale to large number of concurrent clients
             - Spreadthe data traffic across the cluster
 
-### Mapreduce
+Mapreduce
+==========
 
 | 因为 Targeted towards many reads of filestreams, Writes are more costly 针对在data process 读比写更重要
 | MapReduce is very good at dealing with warm proper property: Read once and write once and read many times right.
@@ -236,7 +244,8 @@
 - Improved load balancing
 - Faster recovery from failed tasks
 
-### Parallelism in Hadoop
+Parallelism in Hadoop
+==============================
 
 1. multi-threaded？
 
@@ -245,7 +254,8 @@
     | Allows for restarting of failed jobs
     | Runs entirely independent of each other in separate JVMs (Java Virtual Machines)
 
-### Load Balancing
+Load Balancing
+====================
 
 | Goal: % disk full on DataNodes should be similar
 | 不超过balance的时候：就加更多 Mappers/Reducers!
@@ -269,7 +279,8 @@ Cluster is online when Rebalancer is active
 
 Rebalancer is throttled to avoid network congestion
 
-### Locality Optimization, local 优化
+Locality Optimization, local 优化
+==================================================
 
 Because some of machines are very busy, I cannot assign so many reduced to you the whole job, right? So this system level optimization should be considered locality optimization.
 
@@ -296,7 +307,8 @@ Because some of machines are very busy, I cannot assign so many reduced to you t
 | Nodes on different racks in the same data center( cluster)
 | Nodes in different centers
 
-### Fault Tolerance
+Fault Tolerance
+==============================
 
 .. note:: 首先明确一点：Failure is norm, not an exception
 

@@ -1,5 +1,8 @@
+pytorch
+##########
 
-# pytorch
+Configuration
+******************************
 
 
 ## 机制
@@ -62,16 +65,20 @@
     3. 检查显卡驱动版本
     4. 检查更新是否成功
 
-# concept
+concept
+**********
 
-## Autograd
+Autograd
+====================
 
 .. note:: ""
     Conceptually, autograd ==records a graph== recording all of the operations that created the data as you execute operations, giving you ==a directed acyclic graph whose leaves are the input tensors and roots are the output tensors== . By tracing this graph from roots to leaves, you can automatically compute the gradients using the chain rule.
 
-### locally disable gradient computation
+locally disable gradient computation
+==================================================
 
-## 完整的
+完整的
+==========
 
 .. note:: 初步检查模型是否有写错
     
@@ -82,7 +89,8 @@
         output = model(input)
         print(output.shape())
 
-### cpu & gpu
+cpu & gpu
+====================
 
 .. danger:: 要放进gpu的是
 
@@ -121,7 +129,8 @@
         imgs, targets = imgs.to(device), target.to(device)
 
 
-#### 多gpu
+多gpu
+--------------------
 
 1. 选择一个运行
 
@@ -133,7 +142,8 @@
 
 2. 多gpu运行
 
-### 训练和测试的不同
+训练和测试的不同
+====================
 
 .. note:: 当不涉及训练时： ``with torch.no_grad():``
     | 反向传播的时候需要 tensor 的 ``requires_grad=True`` 才能自动求导，从而优化参数。这其中涉及 ==求导图== 即内存的消耗
@@ -180,24 +190,26 @@
         return self.train(False)
 
 
-## Data
+Data
+**********
 
-### Tensor
+Tensor
+==========
 
-
-
-#### view
+view
+--------------------
 
 ``tensor.view(-1, n)``
 
 .. danger:: ``data.view(batchsize, feature_size)``
 
-### Variable
-
+Variable
+====================
 
 https://blog.csdn.net/weixin_42782150/article/details/106854349
 
-### class DataSet
+class DataSet
+====================
 
 .. note:: 官方 ``torch.utils.data.DataSet``
     一个虚拟的类，All datasets that represent a map from keys to data samples
@@ -228,7 +240,8 @@ https://blog.csdn.net/weixin_42782150/article/details/106854349
             # in pytorch/torch/utils/data/sampler.py
 
 
-### Datalodar
+Datalodar
+==========
 
 .. note:: ``torch.utils.data.DataLoader``
     constructs a index sampler that yields integral indices
@@ -368,11 +381,14 @@ https://blog.csdn.net/weixin_42782150/article/details/106854349
 
 ## nn
 
-### 一些基本的东西
+一些基本的东西
+====================
 
-### `Containers`  负责 nn 框架的构建
+``Containers``  负责 nn 框架的构建
+============================================================
 
-#### `Module` 所有 NN 的 base class
+``Module`` 所有 NN 的 base class
+--------------------------------------------------
 
 可以包括其他的 module. Modules can also contain other Modules, allowing to nest them in a tree structure.
 
@@ -417,7 +433,8 @@ https://blog.csdn.net/weixin_42782150/article/details/106854349
             ... 
 
 
-#### ``Sequential`` 类 ``transforms.Compose`` 的用法，模型进一步封装
+``Sequential`` 类 ``transforms.Compose`` 的用法，模型进一步封装
+------------------------------------------------------------------------------------------
 
 .. note:: ``torch.nn.Sequential`` 和 ``torch.nn.ModuleList`` 的区别"
     - ``torch.nn.ModuleList`` 就是真的一个储存模型的list
@@ -565,7 +582,8 @@ https://blog.csdn.net/weixin_42782150/article/details/106854349
             return self
 
 
-### nn.xxx & nn.functional.xxx
+nn.xxx & nn.functional.xxx
+========================================
 
 .. code-block:: py
 
@@ -576,7 +594,8 @@ https://blog.csdn.net/weixin_42782150/article/details/106854349
     layer_F = F.conv2d(...)
 
 
-#### Liner
+Liner
+--------------------
 
 .. code-block:: py
 
@@ -604,7 +623,8 @@ https://blog.csdn.net/weixin_42782150/article/details/106854349
 
         ...
 
-#### Conv
+Conv
+--------------------
 
 .. math::
     \mathcal{U}(-\sqrt{k}, \sqrt{k})
@@ -723,7 +743,8 @@ https://blog.csdn.net/weixin_42782150/article/details/106854349
     )  
     ...
 
-#### Pool
+Pool
+--------------------
 
 .. code-block:: py
     :emphasize-lines: 1
@@ -767,7 +788,8 @@ https://blog.csdn.net/weixin_42782150/article/details/106854349
                                 self.padding, self.dilation, ceil_mode=self.ceil_mode,
                                 return_indices=self.return_indices)
 
-#### activation
+activation
+--------------------
 
 .. danger:: non-inpalce 
     
@@ -805,7 +827,8 @@ https://blog.csdn.net/weixin_42782150/article/details/106854349
         """
         ...
 
-##### ReLU, rectified linear unit
+ReLU, rectified linear unit
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. math:: 
     \text{ReLU}(x) = (x)^+ = \max(0, x)
@@ -834,8 +857,8 @@ https://blog.csdn.net/weixin_42782150/article/details/106854349
         """
         ...
 
-
-##### Sigmoid
+Sigmoid
+^^^^^^^^^^^^^^^
 
 
 .. math::
@@ -861,10 +884,11 @@ https://blog.csdn.net/weixin_42782150/article/details/106854349
         """
         ...
 
+Normalization
+------------------------------
 
-#### Normalization
-
-##### Droupout
+Droupout
+--------------------
 
 .. hint:: 如果特征图中的相邻像素具有很强的相关性 (则 i.i.d. dropout 不会使激活正则化，否则只会导致有效学习率下降。
 
@@ -917,7 +941,8 @@ https://blog.csdn.net/weixin_42782150/article/details/106854349
         ...
 
 
-##### ``flatten``
+`flatten`
+--------------------
 
 .. code-block:: py
     :emphasize-lines: 14,17
@@ -946,7 +971,8 @@ https://blog.csdn.net/weixin_42782150/article/details/106854349
         ...
 
 
-## ``torch.nn.`` Loss & ``torch.Optim``
+``torch.nn.`` Loss & ``torch.Optim``
+**************************************************
 
 .. code-block:: py
 
@@ -987,7 +1013,8 @@ https://blog.csdn.net/weixin_42782150/article/details/106854349
 
     """ mini-batch """ 
 
-### ``torch.optim``
+``torch.optim``
+====================
 
 构建一个优化器对象，该对象将保持当前状态，并将根据计算的梯度更新参数。
 
@@ -1015,7 +1042,8 @@ https://blog.csdn.net/weixin_42782150/article/details/106854349
     | is based on the formula from
     | ``On the importance of initialization and momentum in deep learning``
 
-#### Adam
+Adam
+--------------------
 
 .. code-block:: py
 
@@ -1037,7 +1065,8 @@ https://blog.csdn.net/weixin_42782150/article/details/106854349
         ...
 
 
-#### SGD 随机梯度下降
+SGD 随机梯度下降
+------------------------------
 
 SGD, Stochastic Gradient Descent(optionally with momentum)
 
@@ -1061,7 +1090,8 @@ SGD, Stochastic Gradient Descent(optionally with momentum)
         ...
 
 
-#### Adagrad, 自适应随机梯度下降
+Adagrad, 自适应随机梯度下降
+----------------------------------------
 
 .. code-block:: py
 
@@ -1083,9 +1113,11 @@ SGD, Stochastic Gradient Descent(optionally with momentum)
 
         ...
 
-### ``torch.nn.`` Loss
+``torch.nn.`` Loss
+==============================
 
-#### L1Loss, MAE
+L1Loss, MAE
+--------------------
 
 .. math:: 
     
@@ -1110,7 +1142,8 @@ SGD, Stochastic Gradient Descent(optionally with momentum)
         """
         ...
 
-#### MSE
+MSE
+--------------------
 
 .. math::
 
@@ -1136,7 +1169,8 @@ SGD, Stochastic Gradient Descent(optionally with momentum)
         """
         ...
 
-#### CELoss
+CELoss
+--------------------
 
 .. danger:: ``torch.nn.CrossEntropyLoss()``
     | = ``torch.nn.LogSoftmax`` + ``torch.nn.NLLLoss``
@@ -1195,7 +1229,8 @@ SGD, Stochastic Gradient Descent(optionally with momentum)
         """
 
 
-## Save & Load
+Save & Load
+******************************
 
 .. danger:: ``AttributeError: Can't get attribute 'MyModel' on <module '__main__' from 'xxx.py'>``
     自定义的模型 必须先import进来，否则就会加载不了
@@ -1275,9 +1310,11 @@ SGD, Stochastic Gradient Descent(optionally with momentum)
         (sigmoid): Sigmoid()) 
 
 
-## representation
+representation
+******************************
 
-### ``utils.tensorboard``
+``utils.tensorboard``
+==================================================
 
 .. danger:: 目前还是要先下载 tensorflow
     ``TensorFlow installation not found - running with reduced feature set.``
@@ -1378,11 +1415,13 @@ SGD, Stochastic Gradient Descent(optionally with momentum)
 .. danger:: ``No dashboards are active for the current data set.``
     [关于解决Tensorboard出现No dashboards are active for the current data set.问题]
 
-## CV
+CV
+==========
 
 - torchvion.
 
-### transforms
+transforms
+====================
 
 .. danger:: 一定要关注 compose 的输入和输出，要相互衔接匹配
 
@@ -1549,7 +1588,8 @@ SGD, Stochastic Gradient Descent(optionally with momentum)
                 ...
 
 
-### models
+models
+==========
 
 .. danger:: 现在提供的是 可以自由地将 ==预训练的 weights== 加载到模型上。（ ``pretrained=True`` 被舍用）
     
@@ -1587,7 +1627,8 @@ SGD, Stochastic Gradient Descent(optionally with momentum)
         img_transformed = preprocess(img) # 预处理图像
 
 
-#### vgg16
+vgg16
+--------------------
 
 [Very Deep Convolutional Networks for Large-Scale Image Recognition]
 

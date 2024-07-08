@@ -1,10 +1,11 @@
-
-# Machine Translation MT 机器翻译
+Machine Translation MT 机器翻译
+########################################
 
 ==Neural Machine Translation NMT== 。
 ==Statistical Machine Translation SMT== 。rule-based & statistical techniques
 
-## NMT
+NMT
+**********
 
 .. grid:: 2
 

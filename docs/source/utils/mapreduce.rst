@@ -1,7 +1,8 @@
+MapReduce
+####################
 
-# MapReduce
-
-## background
+background
+********************
 
 以前我们设计数据库以及其 transaction 操作最迫切地要求是 **make sure the transactions safe and consistent**，确保这项 transaction 安全一致。除此之外满足：**the throughput, the reliability, the asset property 吞吐量、可靠性、资产属性。**
 
@@ -27,7 +28,8 @@
     |                |                                                                  | 疯狂需要加载                                        |
     +----------------+------------------------------------------------------------------+-----------------------------------------------------+
 
-### Ideas： Distributed Processing
+Ideas： Distributed Processing
+==================================================
 
 In a computing cluster, a ==worker node== is a computer that works on data. Data is split into several parts
 
@@ -51,16 +53,19 @@ In a computing cluster, a ==worker node== is a computer that works on data. Da
     |              | 因为1在读写的时候，同样也访问这个东西的2就会被迫suspend|                                                                     |
     +--------------+--------------------------------------------------------+---------------------------------------------------------------------+
 
-## Map-Reduce
+Map-Reduce
+********************
 
 ==Map-Reduce== . A simple programming model that applies to many **large-scale** computing problems
 
 - ability to explore **large-scale cloud resources**
-- inherently designed for **batch and high throughput** 专为**批处理和高吞吐量**而设计
+- inherently designed for **batch and high throughput** 专为 **批处理和高吞吐量** 而设计
 
-### messy details in Map-Reduce runtime library 潜在的一些问题
+messy details in Map-Reduce runtime library 潜在的一些问题
+============================================================
 
-#### automatic parallelization
+automatic parallelization
+------------------------------
 
 既然是平行，那么就有可能
 
@@ -73,7 +78,8 @@ In a computing cluster, a ==worker node== is a computer that works on data. Da
     - MapReduce assumes an architecture where processors and storage are co-located
     - When workers finish, perform batch updates
 
-#### load balancing
+load balancing
+--------------------
 
 **network and disk transfer optimization：**
 
@@ -84,13 +90,15 @@ Cluster of thousands of heterogeneous low-end servers
 - When workers finish, perform batch updates
     The reason is that random access will move the drive from one location to the other and take a longer time if the data is sequentially stored, one read will be upload will be will be uploading everything in in in in, in once. So the IO time is very limited.
 
-#### handling of machine failures
+handling of machine failures
+----------------------------------------
 
 Assume failures are common§ Fault-tolerant service must cope with failures
 
 without impacting the quality of service
 
-## Workflow
+Workflow
+**********
 
 .. image:: ./pics/MapR_1.png
     :scale: 50%
@@ -106,7 +114,8 @@ without impacting the quality of service
 
 1. definition of key-value pairs
 
-### Map
+Map
+==========
 
 a **mapping** that is responsible for
 
@@ -114,14 +123,16 @@ a **mapping** that is responsible for
 2. transform the original data into key-value pairs **``input data → (key, value) pairs``**
 3. produces set of intermediate pairs
 
-### Shuffle: Sort and Segment
+Shuffle: Sort and Segment
+==================================================
 
 the process of further organizing and delivering the Map output to the Reduce
 
 1. the output of the Map must be sorted and segmented **Sorting is done before calling “reduce”**
 2. then passed to the corresponding Reduce
 
-### Reduce
+Reduce
+==========
 
 a **merge** that
 
@@ -129,9 +140,11 @@ a **merge** that
     **All pairs in the same “reduce” call share the same key**
 2. produces a set of merged output values
 
-## Example
+Example
+**********
 
-### the average gpa for the male students in each year from table Student
+the average gpa for the male students in each year from table Student
+==========================================================================================
 
 **Input:** Given a 10TB table: Student(id, name, year, gpa, gender)
 
@@ -170,7 +183,8 @@ a **merge** that
         emit(key, sumGPA/sizeof(values))
     }
 
-### Wordcount
+Wordcount
+====================
 
 .. image:: ./pics/MapR_4.png
     :scale: 80%
@@ -233,7 +247,8 @@ a **merge** that
 
     reduce(map_result)
 
-### K-Means with MapReduce
+K-Means with MapReduce
+==============================
 
 .. image:: ./pics/MapR_5.png
     :scale: 50%
@@ -242,7 +257,8 @@ a **merge** that
 - Each Mapper loads a set of data samples, and assign each sample to a nearest centroid
 - Each Mapper needs to keep a copy of centroids
 
-### Find the most pleasant date
+Find the most pleasant date
+==================================================
 
 .. image:: ./pics/MapR_6.png
     :scale: 50%

@@ -1,6 +1,5 @@
-
-# Plot
-
+Plot
+##########
 
 .. code-block:: py
 

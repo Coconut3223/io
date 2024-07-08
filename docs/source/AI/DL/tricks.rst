@@ -1,11 +1,12 @@
-
-# 部件
+部件
+#####
 
 .. image:: ./pics/tricks_1.png
     :scale: 40%
     :align: center
 
-## activation function
+activation function
+*************************
 
 Non-linearity is introduced by activation functions **but non-polynomial !!**
 
@@ -31,7 +32,8 @@ Non-linearity is introduced by activation functions **but non-polynomial !!**
 
 [深度学习中saturation是什么意思？]: https://www.zhihu.com/question/48010350
 
-## Regularization
+Regularization
+********************
 
 算法的性能，一是允许使用的函数种类，二是这些函数的数量。在假设空间中，相比于某一个学习算法，我们可能更偏好另一个学习算法。这意味着两个函数都是符合条件的，但是我们更偏好其中一个。只有非偏好函数比偏好函数在训练数据集上效果明显好很多时，我们才会考虑非偏好函数。
 
@@ -51,7 +53,8 @@ Non-linearity is introduced by activation functions **but non-polynomial !!**
     | 而当我们并不知道正确的值是正还是负时，**0 是有意义的默认值。**
     | 舍弃数值比拟合一个数值更简单。（类噪声）
 
-### 参数范数惩罚
+参数范数惩罚
+===============
 
 .. math::
     
@@ -68,7 +71,8 @@ Non-linearity is introduced by activation functions **but non-polynomial !!**
         in LR:  :math:`w=\cfrac{\partial y}{\partial x}; b\propto y` 
     - 正则化偏置参数可能会导致明显的欠拟合。
 
-#### L2 参数正则化
+L2 参数正则化
+--------------------
 
 ==weight decay 权重递减== ==岭回归== ==Tikhonov 正则化==
 
@@ -95,7 +99,8 @@ Non-linearity is introduced by activation functions **but non-polynomial !!**
 .. math:: 
     \begin{align*}\tilde{w}&=(H+CI)^{-1}Hw^*\\&=(Q\Lambda Q^T+CI)^{-1}Q\Lambda Q^Tw^*\\&=[Q(\Lambda+CI)Q^T]^{-1}Q\Lambda Q^Tw^*\\&=Q(\Lambda+CI)^{-1}\Lambda Q^Tw^*\end{align*}
 
-## Dropout
+Dropout
+***************
 
 ==A dropout layer== randomly sets input elements to zero with a given probability.
 
@@ -105,7 +110,8 @@ Dropout is an approach used for regularization in neural networks. It is a techn
 
 This dropout rate is usually 0.5 and dropout can be tuned to produce best results and also improves training speed. This method of regularization reduces node-to-node interactions in the network which leads to learning of important features and also helps in generalizing new data better
 
-## Parameters Initialization
+Parameters Initialization
+******************************
 
 **Assumption:**
 
@@ -132,19 +138,24 @@ This dropout rate is usually 0.5 and dropout can be tuned to produce best result
 [【DL】初始化：你真的了解我吗？]
 [神经网络之权重初始化 - 康行天下 - 博客园]
 
-### Naive Initialization
+Naive Initialization
+=========================
 
-#### 完全random
+完全random
+---------------
 
-#### Guss Distribution
+Guss Distribution
+--------------------
 
-##### normal distribution
+normal distribution
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 :math:`W～N(μ,σ^2)` 
 
 Consider a 10-layer DNN with **tanh activation function.** If we initialize all the weights with normal distribution **N(0, 0.01)**.
 
-##### Uniform Distribution
+Uniform Distribution
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 :math:`W～U(a,b), n:=`  #input neurons of layer i
 
@@ -188,7 +199,8 @@ output i  :math:`h_i=\sum\limits_{j=1}^n(w_jx_j+b_j)`
                     nn.init.uniform_(m.weight.data, -a, a)
 
 
-### Xavier Initialization
+Xavier Initialization
+=========================
 
 Forward propagation
 
@@ -214,14 +226,16 @@ xavier权重初始化的作用，使得信号在经过多层神经元后保持�
 [【DL】初始化：你真的了解我吗？]: https://mp.weixin.qq.com/s/S733ojKWA4Kk9kIL7mkPlA
 [神经网络之权重初始化 - 康行天下 - 博客园]:https://www.cnblogs.com/makefile/p/init-weight.html
 
-## Data Augmentation
+Data Augmentation
+********************
 
 相关的数据
 
 1. generate some **Gaussian noise** and add the Gaussian noise to the image
 2. 用 **generative models** to generate similar data
 
-### for image
+for image
+===============
 
 [深度学习训练中为什么要将图片随机剪裁（random crop）_随机裁剪__pinnacle_的博客-CSDN博客]
 
@@ -257,7 +271,8 @@ xavier权重初始化的作用，使得信号在经过多层神经元后保持�
 
 [深度学习训练中为什么要将图片随机剪裁（random crop）_随机裁剪__pinnacle_的博客-CSDN博客]: https://blog.csdn.net/u010165147/article/details/78633858
 
-## gradient disappears
+gradient disappears
+*************************
 
 Resnet
 

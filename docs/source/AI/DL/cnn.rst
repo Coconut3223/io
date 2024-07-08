@@ -1,5 +1,5 @@
-
-# CNN
+CNN
+#####
 
 .. danger:: To maintain spatial struture.
 
@@ -86,17 +86,21 @@
 8. Feature vector serves as input to the next layer(fully connected layer), where all features are collectively transferred into this network. ==Dropout== of random nodes occurs during training to reduce overfitting in this layer.
 9. Finally, the raw values which are predicted output by the network are converted to probabilistic values with the use of ==softmax function== .
 
-## Keywords
+Keywords
+************
 
 ==共享权重== , ==局部感知域 & 稀疏连接== , ==Spatial Information==
 
-### Shared Weights，共享权重
+Shared Weights，共享权重
+=============================
+
 
 同一个filter在输入矩阵中进行扫描
 
 一个隐藏层中的所有 **神经元都检测在图像的不同位置处的同一个特征。权重共享，则检测特征相同。** 因此也将从输入层到隐藏层的这种映射称为<u>特征映射，filters, kernels</u>。该特征映射的权重称为 **共享权重**，其偏置称为共享偏置。
 
-### Local Receptive Fields & Sparse Connectivity, 局部感知域 & 稀疏连接
+Local Receptive Fields & Sparse Connectivity, 局部感知域 & 稀疏连接
+========================================================================
 
 | For convolution with kernel size  :math:`K` , each element in the output depends on a  :math:`K\times K`  receptive field in the input.
 | Each successive convolution contains multiple regions from the previous one.
@@ -110,21 +114,25 @@
     :scale: 30%
     :align: center
 
-### Spatial Information
+Spatial Information
+========================
 
 输入层： **二维矩阵排列** 的 **神经元**。
 
-## Structure
+Structure
+************
 
 .. image:: ./pics/CNN_21.png
     :scale: 50%
     :align: center
 
-### Input Layer
+Input Layer
+==================
 
 **二维矩阵排列** 的 **神经元**。
 
-### Convolution Layers, Conv
+Convolution Layers, Conv
+==============================
 
 .. note:: Convolve the filter with the image  :math:`\Rightarrow`  <u>slide over the image spatially, computing dot products</u>
 
@@ -178,11 +186,13 @@
     
     立体的，e.g: **彩色照片立体RGB图像** 
 
-### Filters, Kernels
+Filters, Kernels
+==================
 
 .. note:: Input Image x  Feature Detector = ==Feature Map==
 
-#### about Size
+about Size
+--------------
 
 1. always **extend the full depth** of the input volume， 一个 filter 的深度(通道数)要和 input 的深度(通道数)一样，但是输出仍只有一个通道数。
     .. math::
@@ -239,7 +249,8 @@
     :scale: 30%
     :align: center
 
-#### about Stride s：移动的方格
+about Stride s：移动的方格
+----------------------------
 
 1. s = 1 （default）
 2. **do not want to capture all the data** or information available so we skip some.
@@ -260,7 +271,8 @@
 
 1. 输出的图片会缩小
 
-#### about Padding
+about Padding
+---------------------
 
 - 为什么要pad？
     为了解决容易丢失边缘或者是角落上的像素信息。pad之后本来边缘的部分就不会只出现一次。  :math:`\impliedby` <u>convolved 之前 pad</u>. Due to padding, information on the borders of images is also preserved similarly to at the centre of images.
@@ -283,10 +295,12 @@
     :scale: 40%
     :align: center
 
-#### about Meaning
+about Meaning
+---------------------
 
 1. 同一张特征图，同一个通道，上的所有元素 (神经元) 都是对图像的不同位置的同一个特征的检测，通道中某一处 (特征图上某一个神经元) 数值的大小就是当前位置对当前特征强弱的反应。
 2. 一个 filter 就是一个特征，每个 filter 体现的特质都不一样。
+
 为了使得模型将注意力集中于图片的某些位置， **而在深度学习中，更好的方法是将过滤器里面的值设置成参数，让模型通过反向传播去学习到过滤器中的权重值** ，代替人为的设定。
 
 .. grid:: 2
@@ -303,17 +317,20 @@
 
 1. <u>立体的 filter</u>，每一个通道的权重分别对应输入图片的每一个通道。 **可以通过设置过滤器不同通道的权值来关注于原始图片不同通道的内容**
 
-### Batch Normalization
+Batch Normalization
+=======================
 
 Batch normalization is generally done in between convolution and activation(ReLU) layers. It normalizes the inputs at each layer, reduces internal co-variate shift(change in the distribution of network activations) and is a method to regularize a convolutional network.
 
 Batch normalizing allows higher learning rates that can reduce training time and gives better performance. It allows learning at each layer by itself without being more dependent on other layers. Dropout which is also a regularizing technique, is less effective to regularize convolution layers.
 
-### Activation function
+Activation function
+=======================
 
 卷积操作只是加权求和的线性操作，若神经网络只用卷积层，那么无论有多少层，输出都是输入的线性组合，网络的表达能力有限，无法学习到非线性函数。因此 CNN 引入激励函数，激活函数是个非线性函数，常作用于卷积层和全连接层输出的每个神经元（分量/元素），给神经元引入了非线性因素，使网络的表达能力更强，几乎可逼近任意函数，这样神经网络就可应用到众多的非线性模型中。
 
-### Pooling Layer, 池化层
+Pooling Layer, 池化层
+========================
 
 a ==down-sampling== strategy
 
@@ -344,7 +361,8 @@ a ==down-sampling== strategy
     :scale: 40%
     :align: center
 
-### Flatten Layer — Tensor Reshape
+Flatten Layer — Tensor Reshape
+====================================
 
 .. grid:: 2
 
@@ -357,7 +375,8 @@ a ==down-sampling== strategy
         | the output feature map(matrix) will be converted into vector
         | 将前面卷积层或池化层输出的所有二维特征图一起映射成1个一维的特征向量
 
-### Fully- Connected Layer, FC
+Fully- Connected Layer, FC
+==============================
 
 | 光卷积是不能完成分类任务的，所以就是要后面连 FC层，起到“分类器”的作用
 | **中间可能有多个FC层，** 最后模型输出一个 **维度等于类别数（输出的神经元个数）** 的 **向量**
@@ -374,15 +393,18 @@ a ==down-sampling== strategy
             :scale: 40%
             :align: center
 
-### softmax
+softmax
+============
 
 | softmax归一化，表示每一类的概率，然后 **将得分最高的类别判为输入的类别**
 | The softmax function is used to map the non-normalized output of a network to a probability distribution.
 | 将网络的非规范化输出映射到概率分布。
 
-## Famous CNN Architectures
+Famous CNN Architectures
+******************************
 
-### Deeper or Wider?
+Deeper or Wider?
+==================
 
 **Deep CNN** : Deeply stacked  Convolution Neural Network
 
@@ -413,7 +435,8 @@ a ==down-sampling== strategy
 
 .. note:: The Skip-connection was first proposed in ResNet
 
-### **LeNet-5**
+**LeNet-5**
+==================
 
 **7 Layers** (input layer not counted)
 
@@ -432,13 +455,15 @@ Details:
 3. MLP作为分类器
 4. 这里的 faltten 是用CNN
 
-### AlexNet
+AlexNet
+============
 
 | ReLU, max pooling, stride
 | Data augmentation
 | Optimizer parameters
 
-### VGG Net
+VGG Net
+============
 
 **152 layers for ImageNet.**
 
@@ -451,7 +476,8 @@ Details:
 | 5x5 conv = two 3x3 conv
 | 7x7 conv = three 3x3 conv
 
-### Residual Net, ResNet
+Residual Net, ResNet
+========================
 
 keep origin information
 
@@ -459,9 +485,11 @@ keep origin information
 | Batch-normalization
 | Bottleneck block
 
-### Dense Net
+Dense Net
+============
 
-### GoogleNet
+GoogleNet
+============
 
 There are some parallel polar level.
 Okay? Blocks in in a certain layer that means You will send. You will
@@ -472,11 +500,10 @@ difference. Okay, of Google, net with different, other, different neural
 networks. Okay. But yeah you can try this. Okay. But we will not Talk
 about the details of this neural networks, Okay
 
-### Light-weight networks
+Light-weight networks
+========================
 
 .. note:: Performance on computation limits
-
-
 
 .. image:: ./pics/CNN_23.png
     :scale: 50%
@@ -491,25 +518,32 @@ about the details of this neural networks, Okay
 
 **Group convolution:**
 
-## Practical Exercise
+Practical Exercise
+*************************
 
-## Parameters Initialization
+Parameters Initialization
+******************************
 
 快速 shrikage to point
 
-## Bach Normalization
+Bach Normalization
+********************
 
-## Application
+Application
+***************
 
-## Edge Detection
+Edge Detection
+********************
 
 如上图所示：输入是一个6*6的矩阵，输入是一个左白右灰的图片（白色部分对应的矩阵值大于0，灰色部分的值为0），中间有一道竖线分割；中间的垂直过滤器是一个3*3的矩阵，由白灰黑三个部分组成，矩阵三列的值分别大于0，等于0和小于0；输出的结果矩阵中，中间的两列大于0，即输出的图片中间部分为白色，也就是说经过卷积之后，成功的检测出了原始图片中间存在的垂直竖线。
 
-## Exercise
+Exercise
+***************
 
 .. hint:: (in L5 in AMA564), input  :math:`\in\R^{5\times5}` ,kernel  :math:`\in\R^{3\times3}` ,bias=-500, activation function is ReLU
 
-## code
+code
+**********
 
 [卷积神经网络（浅显易懂）-吴恩达课程学习]: https://zhuanlan.zhihu.com/p/35251749/
 

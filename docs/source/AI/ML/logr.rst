@@ -1,5 +1,5 @@
-
-# Logistics Regression
+Logistics Regression
+##############################
 
 .. note:: Logistic (Linear Regression)
     <u>Sigmoid Function (S型函数，在机器学习特指 Logstic Function)</u>
@@ -21,7 +21,8 @@
     - [浅析机器学习：线性回归 & 逻辑回归]
     - [Link Functions and Errors in Logistic Regression - The Analysis Factor]
 
-## Background
+Background
+********************
 
 在二分类 0-1 问题. Y 随机服从 **the binomial distribution**.
 
@@ -44,9 +45,11 @@
     +------------+--------------------+------------------------------+-------------------------+
 
 
-### LR 的角度
+LR 的角度
+====================
 
-#### Sigmoid
+Sigmoid
+---------------
 
 ==Logistic Function(Sigmoid)== 。  :math:`y=\cfrac{1}{1+e^{-x}}\begin{cases}\lim\limits_{x\rightarrow-\infin}=0\\\lim\limits_{x\rightarrow+\infin}=1\end{cases}` 
 
@@ -65,8 +68,8 @@
 
 所以 **A regularized Regression：Linear Regression + LSM -》 Logistic Regression + 0.5**
 
-
-#### threshold α
+threshold α
+--------------------
 
 .. note:: Based on LSM.
     | ==Least Minimum Method== 。 :math:`\mathcal{L}_i=\Vert Y_i-f(X_i,\theta)\Vert^2,`  with target : condition Mean  :math:`E\{Y|X\}` 
@@ -76,14 +79,16 @@
 .. math::
     \hat{y}=\begin{cases}0&P\{Y=1|X\}<0.5\\1&P\{Y=1|X\}>0.5\end{cases} 
 
-## Content
+Content
+**********
 
 ==Logistic Regression==
 
 .. math::
     P(Y=1|X)=p(X,\tilde\beta) =\cfrac{\exp(a+X^T\beta)}{1+\exp(a+X^T\beta)},\tilde\beta=(a,\beta)
 
-### 极大似然角度去估计
+极大似然角度去估计
+==============================
 
 :math:`\begin{cases}P(Y = 1|X = X_i) = p(X_i,\tildeβ),\\ P (Y = 0 | X = X_i ) = 1−p( X_i , \tildeβ )\end{cases}\xrightarrow{\text{unified as}}` 
 
@@ -94,7 +99,8 @@
 | log-likelihood function  :math:`l(\tilde β)=\log L(\tilde β) = \sum\limits_{i=1}^n \{Y_i\tilde\beta^T\tilde X_i-\log(1+\exp(\tilde\beta^T\tilde X_i))\}` 
 | Using MLE,  :math:`\hat\beta = \max\limits_{\tilde\beta} \mathcal{L}(\tilde\beta) = \min\limits_{\tilde\beta} -l(\tilde\beta)` 
 
-### compared with Linear R
+compared with Linear R
+========================================
 
 | ==Linear R== :math:`Y=X^T\beta+\red\epsilon=\beta_0+\beta_1X_1+\dots+\beta_pX_p+\red\epsilon` 
 | ==Logistic==  :math:`\mathbb E(Y|X)=X^T\beta=\beta_0+\beta_1X_1+\dots+\beta_pX_p` 

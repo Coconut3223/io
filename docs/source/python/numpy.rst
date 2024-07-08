@@ -1,5 +1,5 @@
-
-# Numpy & Scipy
+Numpy & Scipy
+##############################
 
 for ==scientific computing==  in Python，provide ==multidimensional array object==
 
@@ -7,7 +7,8 @@ for ==scientific computing==  in Python，provide ==multidimensional array objec
 
 ==Scipy== 是基于 Numpy 的一个库，转为线性代数、数值积分、统计学设计。
 
-## np.ndarray
+np.ndarray
+********************
 
 .. danger:: shape & ndim, vector & matrix
 
@@ -89,9 +90,11 @@ for ==scientific computing==  in Python，provide ==multidimensional array objec
     1. ``img_array = opencv()`` 来读取图片 自动是 ``numpy.array``
     2. ``img_array = np.array(img)``
 
-## 操作
+操作
+**********
 
-### 乘法
+乘法
+==========
 
 .. table::
 

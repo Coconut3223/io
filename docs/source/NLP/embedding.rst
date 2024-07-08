@@ -1,5 +1,5 @@
-
-# Word Representation
+Word Representation
+##############################
 
 ==Word Stemming，词干抽取== 将不同词性、形态的单词统一成为同一词干的形式
 
@@ -23,15 +23,16 @@
     A -.- G
     A -.- H
 
-
-## TFIDF
+TFIDF
+**********
 
 **理解：**
 
 - TF：如果一个词在这篇文章中出现很多次，那么它可能是这篇文章的关键词
 - IDF：如果一个词在很多文章中里都出现，那么它可能是一个比较通用的词
 
-## 词袋模型 Bag of Words
+词袋模型 Bag of Words
+****************************************
 
 | 维度是词袋的大小，独热编码
 | 单纯用词袋模型 Binary vector 是行不通的：
@@ -40,15 +41,18 @@
     2. 过于傻瓜，不能通过 向量的数值 体现更多的信息
     3. 过于依赖，未出现在词袋的词不能表示
 
-## N-gram
+N-gram
+**********
 
 连续出现的n个词组成的词组 as 一个单独的特征
 
-## Topic Model
+Topic Model
+******************************
 
 每个主题上面词的分布特性），并且能够计算出每篇文章的主题分布
 
-## Word Embedding
+Word Embedding
+******************************
 
 .. danger:: 与全连接的网络结构相比，卷积神经网络和循环神经网络一方面很好地抓住了文本的特性，另一方面又减少了网络中待学习的参数，提高了训练速度，并且降低了过拟合的风险。
 
@@ -66,7 +70,8 @@
         .. image:: ./pics/embedding_1.png
             :scale: 30%
 
-## Background
+Background
+********************
 
 .. note:: 不仅是本义相似要在一块，高度相关的也要在一块
     words that are closer in the vector dpace are expected to be ==similar(cosine)== in meaning
@@ -88,14 +93,16 @@
             +------------+----------+
 
 
-## Algorithm
+Algorithm
+********************
 
 .. note:: 个人理解
     | 过程类似于：学习一个抽象词比如 ``高兴`` ，一开始并不确切知道是什么，但是当读完很多篇文章，标为 ``积极`` 的情感的文章大部分有它，标为 ``消极`` 的文章确很少有它。此时大概能摸索出 ``高兴`` 属于积极的一类词，它语义的某一部分组成就是 ``积极`` 。
     | ==通过下游任务来确定词义==  :math:`\implies`  不同的下游任务将决定词义的获得
         word2vec 的下游任务，就是 **预测附近的词**
 
-### Word2Vec
+Word2Vec
+==========
 
 .. warning:: 实际的 word2vec 就是一个==三层神经网络==
     网络层(#神经元)：输入层 :math:`(V)\xrightarrow{W\in[V\times N]}`  隐藏层 :math:`(N)\xrightarrow{W'\in[N\times V]}`  输出层  :math:`(V)`
@@ -112,7 +119,8 @@
     \\N:=\text{嵌入维度 embedding = 隐藏层神经元大小}
 
 
-#### one-word context (最简单来说明)
+one-word context (最简单来说明)
+--------------------------------------------------
 
 通过 **back propagation** 使得 同在一个场景（也就是真实数据集所给的 pairs）的词语向量相似度会接近, similarity between word vector pairs， :math:`\lrArr N`  维空间中，相关性高的词语会靠近，相关性低低词语会相互远离。
 
@@ -145,18 +153,21 @@
     |网络结构|1->N                   |N->1                      |
     +--------+-----------------------+--------------------------+
 
-#### CBOW, Continues Bag of Words ==n➡️1==
+CBOW, Continues Bag of Words ==n➡️1==
+------------------------------------------------------------
 
 <u>相较于one-word context</u>
 
 - input = 所有输入单词的平均 ⬅️ 只有一个输入的单词
 
-#### Skip-Gram ==1➡️n==
+Skip-Gram ==1➡️n==
+----------------------------------------
 
 - :question: skip-gram 的输出个数固定吗？
 - :question: 用同一个 :math:`W'` 怎么能输出 C multi- distribution 的结果？
 
-#### Q&A
+Q&A
+--------------------
 
 通过 Q&A 再次梳理关系，==基于 one-word context==
 
@@ -183,11 +194,14 @@
     | :math:`W`  ✅，  :math:`W'`  ✅，  :math:`\cfrac{W+W'}{2}`  ✅   ...
 - :question: 为什么
 
-##### 一些trciks
+一些trciks
+^^^^^^^^^^^^^^^^^^^^
 
-###### Hierarchical Softmax
+Hierarchical Softmax
+"""""""""""""""""""""""""
 
-###### Negative Sampling
+Negative Sampling
+"""""""""""""""""""""""""
 
 数据集不应该只有 正确的 ‘A :math:`\rightarrow` B’， ‘B :math:`\rightarrow` C’，应该还有 ‘A :math:`\nrightarrow` D‘,‘A :math:`\nrightarrow` E‘
 
