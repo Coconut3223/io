@@ -47,9 +47,13 @@ def replace_title(text):
     tag = 'title'
     def add_title(matched):
         level_symbal = {
-            1:'=',  2:'-',  3:'~',
-            4:'^',  5:'+',  6:'\''
+            1:'#',  2:'*',  3:'=',
+            4:'-',  5:'~',  6:'"'
             }
+        # level_symbal = {
+        #     1:'=',  2:'-',  3:'~',
+        #     4:'^',  5:'+',  6:'\''
+        #     }
         value = matched.group(tag)
         split_ = value.split('#')
         level, size = len(split_)-1, len(split_[-1])-1

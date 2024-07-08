@@ -140,8 +140,20 @@ git command
 .. image:: ./pics/local_git_init_4.png
     :scale: 30%
 
-GUI init
---------------------
+
+#### git init for an existed folder 
+
+.. code-block:: bash
+
+    cd existing_folder
+    git init
+    git checkout -b  main
+    git remote add origin git@gitlab.com:path/to/project.git
+    # 就正常地联系上了
+
+`Error Initialize GIT git init --initial-branch=main <https://wiki.koansoftware.com/index.php/Error_Initialize_GIT_git_init_--initial-branch%3Dmain>`_
+
+#### GUI init
 
 .. image:: ./pics/gui_create_1.png
     :scale: 30%

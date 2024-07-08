@@ -3371,8 +3371,18 @@ output  格式化输出
 - f-string
     Python3.6 新增了一种 f-字符串格式化，也可以写成print(f"训练数据集的长度为:{train_data_size}")
 
-读写文件
-**********
+.. code-block:: pycon
+    :caption: 打印的时候保留多少位小数
+    :emphasize-lines: 2
+    
+    >>> a = 1.2345
+    >>> f'{a:.2f}' 
+    '1.23'
+    
+
+
+
+## 读写文件
 
 文件路径
 ==========

@@ -189,8 +189,8 @@ P-R 曲线, Precision-Recall
 
     | :math:`\frac{1}{F1}=\frac{1}{2}(\frac{1}{P}+\frac{1}{R})=\frac{P+R}{2PR}\implies F1=\cfrac{2PR}{P+R}`
     | Assume :math:`P\rightarrow 0, R\rightarrow 1` 极度不平衡
-    | :math:`F1=\cfrac{2PR}{P+R}=\cfrac{\rightarrow0}{\rightarrow 1}\rightarrow0`（很糟）
-    | :math:`F1=\cfrac{P+R}{2}=\cfrac{\rightarrow1}{2}\rightarrow0.5`（中等）
+    | :math:`F1=\cfrac{2PR}{P+R}=\cfrac{\rightarrow 0}{\rightarrow 1}\rightarrow0`（很糟）
+    | :math:`F1=\cfrac{P+R}{2}=\cfrac{\rightarrow1}{2}\rightarrow 0.5`（中等）
     | Btw :math:`\frac{1}{F_\beta}=\frac{1}{1+\beta^2}(\frac{1}{P}+\frac{\beta^2}{R})`
 
 
