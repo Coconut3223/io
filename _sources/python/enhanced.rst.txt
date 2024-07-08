@@ -332,8 +332,39 @@ Others
             | ELF文件头会写入一个magic number，检查这个数和自己预想的是否一致可以判断文件是否损坏。
             | 如果你用16进制编辑器打开一个文件，它的开头不是FFD8FF，那就不是jpg文件。这个魔数一般会在相关文件标准中进行规定，所有人都要遵守
 
-Todo
-**********
+## ipynb
+
+`jupyter notebook中找不到anaconda中的python环境解决方法  <https://blog.csdn.net/sean2100/article/details/83744679>`_
+
+.. code-block:: bash
+
+    conda install nb_conda_kernels
+
+
+.. warning:: 但是最近好像有点问题 对于高版本会显示 ``3.1x``
+
+
+## 常用的别的
+
+
+### 进度条
+
+``tqdm``
+
+.. code-block:: py
+
+    from tqdm import tqdm
+
+    for i in tqdm(range(10)):
+        ...
+
+    for x in tqdm(lst):
+        ...
+
+    for idx, x in enumerate(tqdm(lst)):
+        ...
+
+## Todo
 
 [import雜談之三———sys.path的洪荒之時]
 

@@ -66,6 +66,8 @@
     <script src="../_static/js/rtd_sphinx_search.min.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="交叉" href="trans.html" />
+    <link rel="prev" title="笔面" href="exam.html" />
   
    
 
@@ -178,6 +180,7 @@
             <li class="md-tabs__item"><a href="../utils/index.html" class="md-tabs__link">Utils</a></li>
             
             <li class="md-tabs__item"><a href="../frontend/index.html" class="md-tabs__link">Frontend</a></li>
+          <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">Python</a></li>
       </ul>
     </div>
   </nav>
@@ -260,7 +263,65 @@
     
     
       <a href="index.html" class="md-nav__link">python</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="elegant.html" class="md-nav__link">Elegant Python</a>
       
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="enhanced.html" class="md-nav__link">Enhanced Python</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="numpy.html" class="md-nav__link">Numpy & Scipy</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="pytorch.html" class="md-nav__link">pytorch</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="exam.html" class="md-nav__link">笔面</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <label class="md-nav__link md-nav__link--active" for="__toc"> Plot </label>
+    
+      <a href="#" class="md-nav__link md-nav__link--active">Plot</a>
+      
+        
+<nav class="md-nav md-nav--secondary">
+  <ul class="md-nav__list" data-md-scrollfix="">
+  </ul>
+</nav>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="trans.html" class="md-nav__link">交叉</a>
+      
+    
+    </li></ul>
     
     </li>
     <li class="md-nav__item">
@@ -313,6 +374,121 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># 去除白邊</span>
 </pre></div>
 </div>
+<p>## 散点图 scatter</p>
+<div class="admonition- admonition danger">
+<p class="admonition-title">如果两点有可能有相同的坐标，但有不同的标签，显示的颜色将是后绘制点的颜色，可以使用透明颜色，用来显示重叠点。</p>
+</div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">scatter plot</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="k">def</span> <span class="nf">plot_with_labels</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">'tsne.png'</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    :x: 坐标</span>
+<span class="sd">    :y: 数字类别, 按1/2/3</span>
+<span class="sd">    :classes: 对应的类别标签  len(classes) = len_of_class</span>
+<span class="sd">    """</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+
+    <span class="c1"># 隐藏右&amp;上面的坐标轴</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'right'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'top'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="n">fig</span><span class="o">.</span><span class="n">set_tight_layout</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># 紧密的排布</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># 消除周围空白区域</span>
+
+    <span class="n">scatter</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+        <span class="n">x</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>  <span class="c1"># xy轴</span>
+        <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>  <span class="c1"># 指定对应的label</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="s2">"Spectral"</span>
+    <span class="p">)</span>
+
+    <span class="c1"># 添加图例</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    这个操作应该就是把图例的 y &amp; 真实的含义对应起来</span>
+<span class="sd">    """</span>
+    <span class="n">legend1</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span>
+        <span class="n">scatter</span><span class="o">.</span><span class="n">legend_elements</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
+        <span class="n">classes</span><span class="p">,</span>
+        <span class="n">loc</span><span class="o">=</span><span class="s2">"upper right"</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="n">target_name</span><span class="p">,</span> <span class="n">title_fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+        <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">legend1</span><span class="p">)</span>
+
+    <span class="c1"># plt.show()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/plot_1.png"><img alt="../_images/plot_1.png" src="../_images/plot_1.png" style="width: 300.0px; height: 240.0px;"/>
+</a>
+<figcaption>
+<p><span class="caption-text">画的图</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<div class="admonition-legend admonition note">
+<p class="admonition-title">关于散点图的 legend</p>
+<div class="line-block">
+<div class="line">因为是使用类别的数值代码来给点上色，所以需要传给它数值代码所对应的类别列表。</div>
+<div class="line">We colored the scatterplot using numerical code for the species variable.</div>
+<div class="line">We can maually specify labels for legend. <strong>We define labels using a list of species names first.</strong></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">scatter.legend</span><a class="headerlink" href="#id3" title="Link to this code">¶</a></div>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">legend_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span>
+    <span class="n">scatter</span><span class="o">.</span><span class="n">legend_elements</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">classes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference external" href="https://datavizpyr.com/add-legend-to-scatterplot-colored-by-a-variable-with-matplotlib-in-python/">Data Viz with Python and R</a></p>
+</div>
+</div>
+</div>
+</div>
+<p>## configs</p>
+<p>### 配色方案 <code class="docutils literal notranslate"><span class="pre">cmap</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">rainbow</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">blues</span></code> 好像用得比较多</p>
+<p><code class="docutils literal notranslate"><span class="pre">Spectral</span></code></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://matplotlib.org/stable/users/explain/colors/colormaps.html">Choosing Colormaps in Matplotlib</a></p></li>
+<li><p><a class="reference external" href="https://blog.csdn.net/qq_43426078/article/details/123635851">【Matplotlib】plt.imshow() cmap色彩表</a></p></li>
+<li><p><a class="reference external" href="https://blog.csdn.net/qq_37851620/article/details/100642566">Python-matplotlib绘制散点图-plt.scatter-颜色设置（c, cmap）</a></p></li>
+</ul>
+<p>### 图例 legend</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">legend</span><span class="p">(</span>
+    <span class="o">...</span><span class="p">,</span>
+    <span class="n">loc</span><span class="o">=</span><span class="s2">"upper right"</span><span class="p">,</span>  <span class="c1"># 位置</span>
+    <span class="n">title</span><span class="o">=</span><span class="n">target_name</span><span class="p">,</span> <span class="n">title_fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>  <span class="c1"># legend 的 title</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span>  <span class="c1"># legend 的内容</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>### 坐标轴</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'right'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># 右面的边隐藏</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'top'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># 上面的边隐藏</span>
+</pre></div>
+</div>
+<p>### 一些杂的</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># 消除周围空白区域</span>
+</pre></div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<a class="reference internal image-reference" href="../_images/plot_2.png"><img alt="../_images/plot_2.png" src="../_images/plot_2.png" style="width: 332.7px; height: 188.7px;"/>
+</a>
+</div>
+</div>
+</div>
 </section>
 
 
@@ -325,6 +501,30 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
           
+            <a href="exam.html" title="笔面"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> "Previous" </span> 笔面 </span>
+              </div>
+            </a>
+          
+          
+            <a href="trans.html" title="交叉"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> "Next" </span> 交叉 </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
           
         </a>
         

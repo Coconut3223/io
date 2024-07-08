@@ -778,18 +778,10 @@ x_{ctx\_emb}=\text{BiGRU}(X_{emb})</annotation></semantics></math></span><span a
 <img alt="../_images/NMT_1.png" src="../_images/NMT_1.png"/>
 <div class="line-block">
 <div class="line">learning rate schedule</div>
+<div class="line">set attention and ReLU dropout to 0.1</div>
+<div class="line">use 0.2 residual dropout for Tbase models in X-En</div>
+<div class="line">use a kernel size of 5 and a padding of 2 on both sides for all convolutional layers.</div>
 </div>
-<aside class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/home/runner/work/io/io/docs/source/NLP/subword.rst</span>, line 283)</p>
-<p>Line block ends without a blank line.</p>
-</aside>
-<p><a href="#id1"><span class="problematic" id="id2">|</span></a>set attention and ReLU dropout to 0.1
-| use 0.2 residual dropout for Tbase models in X-En
-| use a kernel size of 5 and a padding of 2 on both sides for all convolutional layers.</p>
-<aside class="system-message" id="id1">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/home/runner/work/io/io/docs/source/NLP/subword.rst</span>, line 283); <em><a href="#id2">backlink</a></em></p>
-<p>Inline substitution_reference start-string without end-string.</p>
-</aside>
 <p>Inference and Evaluation</p>
 <div class="line-block">
 <div class="line">set beam width to 4 for EnDe and 5 for the other and</div>

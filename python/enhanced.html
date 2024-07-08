@@ -312,8 +312,6 @@
             </nav>
         </li>
         <li class="md-nav__item"><a href="#others" class="md-nav__link">Others</a>
-        </li>
-        <li class="md-nav__item"><a href="#todo" class="md-nav__link">Todo</a>
         </li></ul>
             </nav>
         </li>
@@ -340,6 +338,20 @@
     
     
       <a href="exam.html" class="md-nav__link">笔面</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="plot.html" class="md-nav__link">Plot</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="trans.html" class="md-nav__link">交叉</a>
       
     
     </li></ul>
@@ -409,8 +421,6 @@
             </nav>
         </li>
         <li class="md-nav__item"><a href="#others" class="md-nav__link">Others</a>
-        </li>
-        <li class="md-nav__item"><a href="#todo" class="md-nav__link">Todo</a>
         </li></ul>
             </nav>
         </li>
@@ -814,9 +824,30 @@ system_path<span class="o">[</span><span class="m">0</span><span class="o">]</sp
 </dl>
 </li>
 </ul>
-</section>
-<section id="todo">
-<h2 id="todo">Todo<a class="headerlink" href="#todo" title="Link to this heading">¶</a></h2>
+<p>## ipynb</p>
+<p><a class="reference external" href="https://blog.csdn.net/sean2100/article/details/83744679">jupyter notebook中找不到anaconda中的python环境解决方法</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>nb_conda_kernels
+</pre></div>
+</div>
+<div class="admonition-x admonition warning">
+<p class="admonition-title">但是最近好像有点问题 对于高版本会显示 <code class="docutils literal notranslate"><span class="pre">3.1x</span></code></p>
+</div>
+<p>## 常用的别的</p>
+<p>### 进度条</p>
+<p><code class="docutils literal notranslate"><span class="pre">tqdm</span></code></p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)):</span>
+    <span class="o">...</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+    <span class="o">...</span>
+
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tqdm</span><span class="p">(</span><span class="n">lst</span><span class="p">)):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>## Todo</p>
 <p>[import雜談之三———sys.path的洪荒之時]</p>
 <p>[import雜談之三———sys.path的洪荒之時]: <a class="reference external" href="https://ithelp.ithome.com.tw/articles/10196901">https://ithelp.ithome.com.tw/articles/10196901</a>
 [Python中的__all__]:<a class="reference external" href="https://zhuanlan.zhihu.com/p/54274339">https://zhuanlan.zhihu.com/p/54274339</a>

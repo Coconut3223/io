@@ -280,7 +280,7 @@ learn (B)BPE vocabularies jointly on source and target sentences using SentenceP
 .. image:: pics/NMT_1.png
 
 | learning rate schedule
-|set attention and ReLU dropout to 0.1
+| set attention and ReLU dropout to 0.1
 | use 0.2 residual dropout for Tbase models in X-En
 | use a kernel size of 5 and a padding of 2 on both sides for all convolutional layers.
 
