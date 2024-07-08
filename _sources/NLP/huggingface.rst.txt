@@ -27,7 +27,7 @@ Huggingface
 
 2. 设系统变量 ``TRANSFORMERS_CACHE`` 
 
-[修改huggingface transformers默认缓存文件夹](https://blog.csdn.net/zp_stu/article/details/126410323)
+`修改huggingface transformers默认缓存文件夹 <https://blog.csdn.net/zp_stu/article/details/126410323>`_
 
 ``snapshot_download``  【推荐】
 ========================================

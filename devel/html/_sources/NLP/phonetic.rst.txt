@@ -91,7 +91,7 @@ Phonetic related
 
 
 MFCCs 和 DTW 在拼音相似度中的研究
-**********
+****************************************
 
 `HANSpeller++: A unified framework for Chinese spelling correction <https://scholar.google.com.au/citations?view_op=view_citation&hl=sl&user=2Sp3OuMAAAAJ&citation_for_view=2Sp3OuMAAAAJ:UeHWp8X0CEIC>`_
 **********************************************************************************************************************************************************************************************************************************************************

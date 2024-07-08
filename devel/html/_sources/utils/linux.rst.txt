@@ -562,7 +562,7 @@ top命令
 .. figure:: ./pics/linux_free.png
 
 
-[Linux中 du （详解）、 df （详解）和 free（详解）以及它们的区别](https://blog.csdn.net/qq_19167629/article/details/80915834)
+`Linux中 du （详解）、 df （详解）和 free(详解)以及它们的区别 <https://blog.csdn.net/qq_19167629/article/details/80915834>`_
 
 iostat命令
 ==========

@@ -53,10 +53,10 @@ Remote Development [extention]
         - 如果询问密码，那就是没配置好，重新检查一下
 
 - Reference
-    - [VScode Remote 远程开发与调试](https://www.jianshu.com/p/0f2fb935a9a1)
-    - [VScode连接服务器](https://blog.csdn.net/weixin_43466026/article/details/121416372)
-    - [Using Conda Environment Remotely with Visual Studio Code](https://hackmd.io/@MingRuey/HJOJ30ajO)
-    - [Remote Access to the Workstation](https://hackmd.io/9iVBJfITQwy8tIz9ubgorw?view#Q-How-can-I-avoid-typing-password-each-time)
+    - `VScode Remote 远程开发与调试 <https://www.jianshu.com/p/0f2fb935a9a1>`_
+    - `VScode连接服务器 <https://blog.csdn.net/weixin_43466026/article/details/121416372>`_
+    - `Using Conda Environment Remotely with Visual Studio Code <https://hackmd.io/@MingRuey/HJOJ30ajO>`_
+    - `Remote Access to the Workstation <https://hackmd.io/9iVBJfITQwy8tIz9ubgorw?view#Q-How-can-I-avoid-typing-password-each-time>`_
 
 配置
 **********

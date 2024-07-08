@@ -740,13 +740,15 @@
 </ul>
 <div class="admonition-utf-8-encoding admonition note">
 <p class="admonition-title">UTF-8 encoding</p>
-<div class="line-block">
+<blockquote>
+<div><div class="line-block">
 <div class="line">encodes each Unicode character into 1 to 4 bytes</div>
 <div class="line">represent a sentence in any language as a sequence of UTF-8 bytes (248 out of 256 possible bytes).</div>
 </div>
 <img alt="../_images/utf8.jpg" src="../_images/utf8.jpg"/>
 <p>The design of UTF-8 encoding ensures the uniqueness of this recovery process: for a character UTF-8 encoded with multiple bytes, its trailing bytes will not make a valid UTF-8 encoded character.</p>
-<p>[搞搞字节，byte的小知识](<a class="reference external" href="https://zhuanlan.zhihu.com/p/449954688">https://zhuanlan.zhihu.com/p/449954688</a>)</p>
+</div></blockquote>
+<p><a class="reference external" href="https://zhuanlan.zhihu.com/p/449954688">搞搞字节，byte的小知识</a></p>
 </div>
 <div class="line-block">
 <div class="line">BBPE symbols can be partial characters shared by different characters or the combination of complete and partial</div>
@@ -755,8 +757,10 @@
 </div>
 <div class="admonition-defi-contextualized-dynamic-word-embedding admonition note">
 <p class="admonition-title"><span class="defi">Contextualized（Dynamic）Word Embedding</span></p>
-<p>在很多的NLP工作里面，一个单词可以表示成很多种意思（即一词多义），如何处理一词多义、考虑单词在上下文中的意思
-[From Static Embedding to Contextualized Embedding](<a class="reference external" href="https://zhuanlan.zhihu.com/p/147938963">https://zhuanlan.zhihu.com/p/147938963</a>)</p>
+<div class="line-block">
+<div class="line">在很多的NLP工作里面，一个单词可以表示成很多种意思（即一词多义），如何处理一词多义、考虑单词在上下文中的意思</div>
+<div class="line"><a class="reference external" href="https://zhuanlan.zhihu.com/p/147938963">From Static Embedding to Contextualized Embedding</a></div>
+</div>
 </div>
 <p>We propose to use either <strong>a depth-wise convolutional layer or a bidirectional recurrent layer with gated recurrent units</strong> to contextualize BBPE embeddings before feeding them into the model</p>
 <div class="math">

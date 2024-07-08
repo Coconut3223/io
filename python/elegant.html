@@ -1063,6 +1063,12 @@
 <p>每个对象都有标识、类型、值。对象一旦创建， <strong>标识</strong> 绝不会变。可以将标识理解为对象在内存中的地址。  <code class="docutils literal notranslate"><span class="pre">id(var)</span></code>  返回变量所引用的 <strong>对象标识</strong> 的整数表示。</p>
 <section id="is">
 <h3 id="is">is &amp; == 标识 &amp; 相等性<a class="headerlink" href="#is" title="Link to this heading">¶</a></h3>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column sd-col-5 sd-col-xs-5 sd-col-sm-5 sd-col-md-5 sd-col-lg-5 docutils">
+<img alt="../_images/memory_31.png" src="../_images/memory_31.png"/>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-7 sd-col-xs-7 sd-col-sm-7 sd-col-md-7 sd-col-lg-7 docutils">
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">var1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'name'</span><span class="p">:</span><span class="s1">'Lily'</span><span class="p">,</span> <span class="s1">'sex'</span><span class="p">:</span><span class="s1">'F'</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">var2</span> <span class="o">=</span> <span class="n">var1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">var3</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'name'</span><span class="p">:</span><span class="s1">'Lily'</span><span class="p">,</span> <span class="s1">'sex'</span><span class="p">:</span><span class="s1">'F'</span><span class="p">}</span>
@@ -1070,12 +1076,15 @@
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">var1</span> <span class="ow">is</span> <span class="n">var3</span>  <span class="c1"># id 是唯一的标识</span>
 <span class="go">False</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">var1</span> <span class="p">:</span><span class="n">defi</span><span class="p">:</span><span class="err">`</span> <span class="n">var3</span>  <span class="c1"># 内容相同</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">var1</span> <span class="o">==</span> <span class="n">var3</span>  <span class="c1"># 内容相同</span>
 <span class="go">True</span>
 </pre></div>
 </div>
+</div>
+</div>
+</div>
 <div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">`</span> <span class="pre">B</span></code>  对象内容 ↔️  <code class="docutils literal notranslate"><span class="pre">__eq__</span></code>  【相等】</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">==</span> <span class="pre">B</span></code>  对象内容 ↔️  <code class="docutils literal notranslate"><span class="pre">__eq__</span></code>  【相等】</div>
 <div class="line">通常我们关注的是值。</div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">is</span> <span class="pre">B</span></code>  id地址 是否同一个对象引用。【标识】</div>
 <div class="line">经常用来确定是不是  <code class="docutils literal notranslate"><span class="pre">None</span></code> :  <code class="docutils literal notranslate"><span class="pre">is</span> <span class="pre">None</span></code>  &amp;  <code class="docutils literal notranslate"><span class="pre">is</span> <span class="pre">not</span> <span class="pre">None</span></code></div>
@@ -1084,9 +1093,9 @@
 <p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">is</span></code>  通常比  <code class="docutils literal notranslate"><span class="pre">==</span></code>  快。</p>
 <p>因为  <code class="docutils literal notranslate"><span class="pre">is</span></code>  不能重载，所以 python 不需要寻找和调用特殊方法，而是直接比较两个整数ID。 <code class="docutils literal notranslate"><span class="pre">==</span></code>  挂钩的是  <code class="docutils literal notranslate"><span class="pre">__eq__</span></code>  能重载，考虑更有实际意义的比较，相比于直接继承  <code class="docutils literal notranslate"><span class="pre">object</span></code>  的 直接比较ID的  <code class="docutils literal notranslate"><span class="pre">__eq__</span></code> ，大多数类重载了  <code class="docutils literal notranslate"><span class="pre">__eq__</span></code> ，设计到对象的类型、属性、可能复杂嵌套架构的值。需要多种比较。</p>
 </div>
-<div class="admonition-is-defi-syntaxwarning admonition danger">
-<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">is</span></code>  &amp;  <code class="docutils literal notranslate"><span class="pre">:defi:`</span></code>  SyntaxWarning</p>
-<p>从python 3.8 开始，使用 is 和 is not 运算符时，会抛出  <code class="docutils literal notranslate"><span class="pre">SyntaxWarning</span></code>  语句警告信息。解决方法：建议将对应语句中 is/is not 用 ` 和 != 代替</p>
+<div class="admonition-is-syntaxwarning admonition danger">
+<p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">is</span></code>  &amp;  <code class="docutils literal notranslate"><span class="pre">==</span></code>  SyntaxWarning</p>
+<p>从python 3.8 开始，使用 is 和 is not 运算符时，会抛出  <code class="docutils literal notranslate"><span class="pre">SyntaxWarning</span></code>  语句警告信息。解决方法：建议将对应语句中 is/is not 用 == 和 != 代替</p>
 </div>
 </section>
 <section id="id3">
@@ -1116,14 +1125,23 @@
 <p><span class="defi">垃圾变量</span> ， 当一个值 <strong>没有任何变量名和它进行捆绑</strong> ，该变量值就会无法被访问到，涉及到 <strong>引用计数</strong> 的算法</p>
 <div class="admonition-del-x admonition danger">
 <p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">del</span> <span class="pre">x</span></code>  的理解</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
 <div class="line-block">
 <div class="line">解除了 x 和它所指向对象ID为*的 obj 的绑定关系</div>
 <div class="line">ID为* 的 obj 的引用计数 -1</div>
 </div>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-8 sd-col-xs-8 sd-col-sm-8 sd-col-md-8 sd-col-lg-8 docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">-</span><span class="n">value</span>
-<span class="c1"># 生成 x-value 的 ID为* 的 obj，把 x 变量名贴到 ID为* 的 obj</span>
+<span class="c1"># 生成 x-value 的 ID为* 的 obj，</span>
+<span class="c1"># 把 x 变量名贴到 ID为* 的 obj</span>
 <span class="k">del</span> <span class="n">x</span>  <span class="c1"># 解除</span>
 </pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="line-block">
@@ -1167,10 +1185,15 @@ end
 - &lt;u&gt;新值的地址&lt;/u&gt;绑定关系</p>
 <div class="admonition-a admonition hint">
 <p class="admonition-title">对于a重新赋值</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column sd-col-5 sd-col-xs-5 sd-col-sm-5 sd-col-md-5 sd-col-lg-5 docutils">
 <ul class="simple">
 <li><p>与 4的地址 解绑关系</p></li>
 <li><p>与 5的地址 绑定关系</p></li>
 </ul>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-7 sd-col-xs-7 sd-col-sm-7 sd-col-md-7 sd-col-lg-7 docutils">
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="go">id(a) = 4373905744</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
@@ -1180,25 +1203,41 @@ end
 </pre></div>
 </div>
 </div>
+</div>
+</div>
+</div>
 <div class="admonition-lst admonition hint">
 <p class="admonition-title">对于lst重新赋值</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column sd-col-5 sd-col-xs-5 sd-col-sm-5 sd-col-md-5 sd-col-lg-5 docutils">
 <ul class="simple">
 <li><p>解绑关系</p></li>
 <li><p>绑定关系</p></li>
 </ul>
 </div>
+<div class="sd-col sd-d-flex-column sd-col-7 sd-col-xs-7 sd-col-sm-7 sd-col-md-7 sd-col-lg-7 docutils">
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lst</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="go">id(lst) = 4376984512</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lst</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="go">id(lst) = 4376922944</span>
 </pre></div>
 </div>
+</div>
+</div>
+</div>
+</div>
 <div class="admonition-lst-item-assignment admonition hint">
 <p class="admonition-title">对于lst 的 item assignment【可变】</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column sd-col-5 sd-col-xs-5 sd-col-sm-5 sd-col-md-5 sd-col-lg-5 docutils">
 <ul class="simple">
 <li><p>不改变id地址</p></li>
 <li><p>但会改变容器内的地址</p></li>
 </ul>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-7 sd-col-xs-7 sd-col-sm-7 sd-col-md-7 sd-col-lg-7 docutils">
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">lst[1] = 3</span>
 <span class="go">id(lst[1]) = 4373905712</span>
 <span class="go">id(3) = 4373905712</span>
@@ -1207,6 +1246,9 @@ end
 <span class="go">id(lst) = 4376922944 # 和之前一致</span>
 <span class="go">id(lst[1]) = 4373905680 # 改了之前的</span>
 </pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1277,15 +1319,17 @@ end
 <div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
 <div class="sd-col sd-d-flex-column docutils">
 <img alt="../_images/memory_1.png" src="../_images/memory_1.png"/>
+<p>a 是不可变；b是可变。假设创建对象的ID从1开始。</p>
 </div>
 <div class="sd-col sd-d-flex-column docutils">
-<p>a 是不可变；b是可变。假设创建对象的ID从1开始。
-1. 创建 ID=1的1 &amp; ID=2列表[1]
-2. 把 a &amp; b 分别贴到 ID=1 &amp; ID=2上
-3. 创建 ID=3的列表，把[0]位贴到ID=1，[1]位贴到ID=2。而不是贴到 a &amp; b 上
-4. 创建 ID=4的2，把 a 从ID=1撕掉，给ID=3
-5. 修改b，b没有撕掉，其实修改ID=3
-lst的位[0]在ID=1上与a无关；位[1]在ID=3上，所以也修改了。</p>
+<ol class="arabic simple">
+<li><p>创建 ID=1的1 &amp; ID=2列表[1]</p></li>
+<li><p>把 a &amp; b 分别贴到 ID=1 &amp; ID=2上</p></li>
+<li><p>创建 ID=3的列表，把[0]位贴到ID=1，[1]位贴到ID=2。而不是贴到 a &amp; b 上</p></li>
+<li><p>创建 ID=4的2，把 a 从ID=1撕掉，给ID=3</p></li>
+<li><p>修改b，b没有撕掉，其实修改ID=3</p></li>
+</ol>
+<p>lst的位[0]在ID=1上与a无关；位[1]在ID=3上，所以也修改了。</p>
 </div>
 </div>
 </div>
@@ -1308,26 +1352,49 @@ lst的位[0]在ID=1上与a无关；位[1]在ID=3上，所以也修改了。</p>
 <span class="go">l3=[0, [11, 22], (7, 8)]</span>
 </pre></div>
 </div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<img alt="../_images/memory_41.png" src="../_images/memory_41.png"/>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<img alt="../_images/memory_51.png" src="../_images/memory_51.png"/>
+</div>
+</div>
+</div>
 <img alt="../_images/memory_2.jpg" src="../_images/memory_2.jpg"/>
 </section>
 <section id="id8">
 <h4 id="id8">整数池<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h4>
 <p><strong>理论上的正常情况</strong>，变量都是需要申请 <strong>内存空间（id不同）</strong> 存储数据然后把地址返回给变量名引用。但在 Python解释器（一般是cpython） <span class="defi">[-5, 256]</span> 是不会申请新的内存，而都是 <strong>引用同一块早已在解释器运行时就开辟的内存,==小整数池==</strong>，导致 <strong>id相同</strong>。另外 pycharm/vscode 有 <span class="defi">大整数池</span> 的概念</p>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">"""正常来说，每次申请，id都不一样"""</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">9999999999999</span><span class="p">,</span> <span class="mi">9999999999999</span>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column sd-col-7 sd-col-xs-7 sd-col-sm-7 sd-col-md-7 sd-col-lg-7 docutils">
+<div class="literal-block-wrapper docutils container" id="id55">
+<div class="code-block-caption"><span class="caption-text">正常来说，每次申请，id都不一样</span><a class="headerlink" href="#id55" title="Link to this code">¶</a></div>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">9999999999999</span><span class="p">,</span> <span class="mi">9999999999999</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
 <span class="go">Fasle</span>
 <span class="go">id(a) = 4336403888</span>
 <span class="go">id(b) = 4336403152</span>
-
-<span class="go">""" 在vscode里id依旧一样：大整数池"""</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="mi">221111111</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-5 sd-col-xs-5 sd-col-sm-5 sd-col-md-5 sd-col-lg-5 docutils">
+<div class="literal-block-wrapper docutils container" id="id56">
+<div class="code-block-caption"><span class="caption-text">在vscode里id依旧一样：大整数池</span><a class="headerlink" href="#id56" title="Link to this code">¶</a></div>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="mi">221111111</span><span class="p">)</span>
 <span class="go">4336403952</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="mi">221111111</span><span class="p">)</span>
 <span class="go">4336403952</span>
 </pre></div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <p>[小整数池]</p>
 </section>
@@ -1496,15 +1563,11 @@ sorted(因为能用key去接受k函数作为参数，把k函数结果作为排�
 <div class="line">默认参数会自建对象，如果没有指定，就一律贴在其上，所以如果可变类型变化，引用的ID对象变了，只要绑定在这个ID对象（只要不是赋值），都随着一起变化。</div>
 <div class="line">默认值在定义函数计算（通常在加载模块时进行对象创建），被赋予的是 <strong>值的内存地址</strong>。因此默认值会变成函数对象的属性，凡是没有传入，都会指向这个在一开始就创建好的默认值对象（ID为同一个）。</div>
 </div>
-<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]):</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]):</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span>    <span class="k">return</span> <span class="n">a</span>
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">func</span><span class="p">([</span><span class="mi">3</span><span class="p">])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">func</span><span class="p">([</span><span class="mi">3</span><span class="p">])</span>
 <span class="go">[3, 3]  &lt;- [3]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">func</span><span class="p">()</span>
 <span class="go">res=[1, 2, 3]  &lt;- [1, 2]</span>
@@ -1611,7 +1674,7 @@ sorted(因为能用key去接受k函数作为参数，把k函数结果作为排�
 <div class="line">存活周期：在调用函数时存活，函数调用完毕后则销毁</div>
 </div>
 <div class="line-block">
-<div class="line"><span class="defi">闭包</span> 。延伸了作用域的函数，其中包含函数定义体中运用，但不在定义体内定义的 <strong>非全局变量</strong>。一般出现在嵌套函数里。闭包是一种函数，他会保留定义函数时存在的自由变量的绑定，哪怕是定义作用域不能用，绑定也能使用。</div>
+<div class="line"><span class="defi">闭包</span> 。延伸了作用域的函数，其中包含函数定义体中运用，但不在定义体内定义的 <strong>非全局变量</strong>。一般出现在嵌套函数里。闭包是一种函数，他会保留定义函数时存在的自由变量的绑定，哪怕是定义作用域不能用，绑定也能使用。”闭” 🟰 内嵌函数； “包” 🟰 该函数包含对外层函作用域名字的引用</div>
 <div class="line"><span class="defi">自由变量</span> 。未在本地作用域内绑定的变量。用  <code class="docutils literal notranslate"><span class="pre">nonlocal</span></code>  声明，哪怕是在函数定义体内赋值，python 解释器会把其认为自由变量(类  <code class="docutils literal notranslate"><span class="pre">global</span></code>  )。保存在 返回对象的 <code class="docutils literal notranslate"><span class="pre">.__code__.co_afreevars</span></code>   &amp;  <code class="docutils literal notranslate"><span class="pre">.__closure__[idx].cell_contents</span></code>  一一对应。</div>
 </div>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">outer</span><span class="p">():</span>
@@ -1708,8 +1771,8 @@ sorted(因为能用key去接受k函数作为参数，把k函数结果作为排�
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
 <div class="sd-col sd-d-flex-column docutils">
-<div class="literal-block-wrapper docutils container" id="id55">
-<div class="code-block-caption"><span class="caption-text">有 IO 会卡 IO 所以不会死机</span><a class="headerlink" href="#id55" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id57">
+<div class="code-block-caption"><span class="caption-text">有 IO 会卡 IO 所以不会死机</span><a class="headerlink" href="#id57" title="Link to this code">¶</a></div>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
@@ -1718,8 +1781,8 @@ sorted(因为能用key去接受k函数作为参数，把k函数结果作为排�
 </div>
 </div>
 <div class="sd-col sd-d-flex-column docutils">
-<div class="literal-block-wrapper docutils container" id="id56">
-<div class="code-block-caption"><span class="caption-text">没有 IO 会耗尽计算资源</span><a class="headerlink" href="#id56" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id58">
+<div class="code-block-caption"><span class="caption-text">没有 IO 会耗尽计算资源</span><a class="headerlink" href="#id58" title="Link to this code">¶</a></div>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="mi">1</span><span class="o">+</span><span class="mi">1</span>
 </pre></div>
@@ -1745,9 +1808,21 @@ sorted(因为能用key去接受k函数作为参数，把k函数结果作为排�
 <div class="line"><span class="defi">装饰器</span> 是可调用对象，参数是另外一个函数（ <span class="defi">被装饰的函数</span> ）。目的是在不修改被装饰器对象 <strong>源代码&amp;调用方式</strong> 的前提下为其添加新功能。</div>
 <div class="line">装饰器可能： 1️⃣ 处理被装饰的函数再将其返回； 2️⃣ 将其替换成另外一个函数或可调用对象在返回。</div>
 </div>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">decorate</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>  <span class="c1"># 装饰器</span>
+<div class="admonition- admonition note">
+<p class="admonition-title">装饰器只是被装饰函数的延伸，核心还是被装饰函数。</p>
+<p><strong>应该把 wrapper 做的跟原函数一样</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">func.__name__</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">func.__doc__</span></code></p></li>
+</ul>
+<p>…</p>
+</div>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+
+<span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>  <span class="c1"># 把原函数的属性复制给装饰器函数</span>
+<span class="k">def</span> <span class="nf">decorate</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>  <span class="c1"># 装饰器</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'running decorator(</span><span class="si">{</span><span class="n">func</span><span class="si">}</span><span class="s1">)'</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">function</span>  <span class="c1"># 必须返回**一个可调用对象或者函数**s</span>
+    <span class="k">return</span> <span class="n">function</span>  <span class="c1"># 必须返回 **一个可调用对象或者函数**</span>
 
 <span class="nd">@decorate</span>  <span class="c1"># 装饰</span>
 <span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
@@ -1847,8 +1922,8 @@ sorted(因为能用key去接受k函数作为参数，把k函数结果作为排�
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
 <div class="sd-col sd-d-flex-column docutils">
-<div class="literal-block-wrapper docutils container" id="id57">
-<div class="code-block-caption"><span class="caption-text">无参装饰器模版</span><a class="headerlink" href="#id57" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id59">
+<div class="code-block-caption"><span class="caption-text">无参装饰器模版</span><a class="headerlink" href="#id59" title="Link to this code">¶</a></div>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">outter</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">res</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -1860,8 +1935,8 @@ sorted(因为能用key去接受k函数作为参数，把k函数结果作为排�
 </div>
 </div>
 <div class="sd-col sd-d-flex-column docutils">
-<div class="literal-block-wrapper docutils container" id="id58">
-<div class="code-block-caption"><span class="caption-text">有参装饰器模版</span><a class="headerlink" href="#id58" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id60">
+<div class="code-block-caption"><span class="caption-text">有参装饰器模版</span><a class="headerlink" href="#id60" title="Link to this code">¶</a></div>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">有参装饰器</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">outter</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
         <span class="o">...</span>
@@ -2582,8 +2657,8 @@ D -.- 1
 </span><span class="go">['b', 'Aa', 'Cc']</span>
 </pre></div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id59">
-<div class="code-block-caption"><span class="caption-text">不支持原生比较的对象</span><a class="headerlink" href="#id59" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id61">
+<div class="code-block-caption"><span class="caption-text">不支持原生比较的对象</span><a class="headerlink" href="#id61" title="Link to this code">¶</a></div>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
@@ -3207,7 +3282,7 @@ D -.- 1
 </div>
 <blockquote>
 <div><div class="line-block">
-<div class="line">1 :defi:` 1.0  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\implies</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span></span>  hash(1) ` hash(1.0)</div>
+<div class="line">1 == 1.0  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\implies</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span></span>  hash(1) == hash(1.0)</div>
 <div class="line">哪怕是整型和浮点的内部结构完全不一样。</div>
 </div>
 </div></blockquote>
@@ -3224,14 +3299,14 @@ D -.- 1
 <li><p>把散列值最低的几位数字当作偏移量，在散列表查找表元。</p></li>
 <li><p>🟰 空，➡️  <code class="docutils literal notranslate"><span class="pre">search_item</span></code>  不在结构中。 🔚</p></li>
 <li><p>🟰 非空，即表元存放了一个  <code class="docutils literal notranslate"><span class="pre">found_item</span></code> ，但是散列值相同的不一定是一样的</p></li>
-<li><p>比较  <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">search_item</span> <span class="pre">:defi:`</span> <span class="pre">found_item</span></code></p></li>
+<li><p>比较  <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">search_item</span> <span class="pre">==</span> <span class="pre">found_item</span></code></p></li>
 <li><p>🟰  <code class="docutils literal notranslate"><span class="pre">True</span></code>  ，就对了。🔚</p></li>
 <li><dl class="simple">
 <dt>🟰  <code class="docutils literal notranslate"><span class="pre">False</span></code> ，只能证明出现 &lt;u&gt;散列冲突&lt;/u&gt;。</dt><dd><p>为了解决散列冲突，算法在散列值中再另外去几位，然后用特殊的方法处理一下，得到新的散列值来在散列表查找表元，重复 2-7。</p>
 </dd>
 </dl>
 </li>
-<li><p>直至发现 1️⃣ 表元为空 2️⃣  <code class="docutils literal notranslate"><span class="pre">search_item</span> <span class="pre">`</span> <span class="pre">found_item</span></code>  结束循环</p></li>
+<li><p>直至发现 1️⃣ 表元为空 2️⃣  <code class="docutils literal notranslate"><span class="pre">search_item</span> <span class="pre">==</span> <span class="pre">found_item</span></code>  结束循环</p></li>
 </ol>
 <p><strong>效率到底有多高？</strong></p>
 <div class="admonition-s2-s1-if-s-in-s1 admonition hint">
@@ -3339,7 +3414,7 @@ D -.- 1
 <p class="admonition-title">如非需要， <code class="docutils literal notranslate"><span class="pre">defaultdict</span></code>  比  <code class="docutils literal notranslate"><span class="pre">.setdefault()</span></code> 更快”</p>
 <div class="line-block">
 <div class="line">因为一个是在创建初期就设好统一的初始值，一个是根据值的不一样，在找的时候设值</div>
-<div class="line">[setdefault vs defaultdict performance](<a class="reference external" href="https://stackoverflow.com/questions/38625608/setdefault-vs-defaultdict-performance">https://stackoverflow.com/questions/38625608/setdefault-vs-defaultdict-performance</a>)</div>
+<div class="line"><a class="reference external" href="https://stackoverflow.com/questions/38625608/setdefault-vs-defaultdict-performance">setdefault vs defaultdict performance</a></div>
 </div>
 </div>
 <section id="defaultdict">
@@ -4824,11 +4899,11 @@ Sequence &lt;|-- MutableSequence
 <h3 id="input">Input<a class="headerlink" href="#input" title="Link to this heading">¶</a></h3>
 <div class="admonition-input admonition danger">
 <p class="admonition-title">input 接收后字符串性质</p>
-</div>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">'plz input a number:'</span><span class="p">)</span>
 <span class="go">plz input a number: 9</span>
 <span class="go">a = '9'</span>
 </pre></div>
+</div>
 </div>
 <section id="id49">
 <h4 id="id49">读照片<a class="headerlink" href="#id49" title="Link to this heading">¶</a></h4>
@@ -4864,8 +4939,8 @@ Sequence &lt;|-- MutableSequence
 </dl>
 </li>
 </ul>
-<div class="literal-block-wrapper docutils container" id="id60">
-<div class="code-block-caption"><span class="caption-text">打印的时候保留多少位小数</span><a class="headerlink" href="#id60" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id62">
+<div class="code-block-caption"><span class="caption-text">打印的时候保留多少位小数</span><a class="headerlink" href="#id62" title="Link to this code">¶</a></div>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mf">1.2345</span>
 <span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">a</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">'</span>
 </span><span class="go">'1.23'</span>
@@ -4954,14 +5029,19 @@ Sequence &lt;|-- MutableSequence
 </tr>
 </tbody>
 </table>
-<div class="literal-block-wrapper docutils container" id="id61">
-<div class="code-block-caption"><span class="caption-text">1.txt</span><a class="headerlink" href="#id61" title="Link to this code">¶</a></div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column sd-col-3 sd-col-xs-3 sd-col-sm-3 sd-col-md-3 sd-col-lg-3 docutils">
+<div class="literal-block-wrapper docutils container" id="id63">
+<div class="code-block-caption"><span class="caption-text">1.txt</span><a class="headerlink" href="#id63" title="Link to this code">¶</a></div>
 <div class="highlight-None notranslate"><div class="highlight"><pre><span></span>aaa
 bbb
 这是个空行
 </pre></div>
 </div>
 </div>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-9 sd-col-xs-9 sd-col-sm-9 sd-col-md-9 sd-col-lg-9 docutils">
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'1.txt'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
 <span class="gp">&gt;&gt;&gt; </span>   <span class="n">res</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>  <span class="c1"># 读全部</span>
 <span class="go">'aaa\nbbb\n\n'</span>
@@ -4978,6 +5058,9 @@ bbb
 <span class="gp">&gt;&gt;&gt; </span>    <span class="n">res</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 <span class="go">['aaa\n', 'bbb\n', '\n']</span>
 </pre></div>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="json">
@@ -5074,11 +5157,8 @@ bbb
 </tr>
 </tbody>
 </table>
-<ol class="arabic">
-<li><p>step1</p>
-<blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id62">
-<div class="code-block-caption"><span class="caption-text">main.py</span><a class="headerlink" href="#id62" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id64">
+<div class="code-block-caption"><span class="caption-text">main.py</span><a class="headerlink" href="#id64" title="Link to this code">¶</a></div>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
     <span class="k">pass</span>
 
@@ -5088,17 +5168,12 @@ bbb
 </pre></div>
 </div>
 </div>
-</div></blockquote>
-</li>
-<li><p>&lt;kbd&gt;python -m cProfile -o output_file main.py&lt;/kbd&gt;</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-o</span></code>  将结果写入文件</p></li>
-</ul>
-</li>
-<li><p>step3</p>
-<blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id63">
-<div class="code-block-caption"><span class="caption-text">analysis.py</span><a class="headerlink" href="#id63" title="Link to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>cProfile<span class="w"> </span>-o<span class="w"> </span>output_file<span class="w"> </span>main.py
+<span class="c1"># 将结果写入文件</span>
+</pre></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id65">
+<div class="code-block-caption"><span class="caption-text">analysis.py</span><a class="headerlink" href="#id65" title="Link to this code">¶</a></div>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pstats</span>
 <span class="kn">from</span> <span class="nn">pstats</span> <span class="kn">import</span> <span class="n">SortKey</span>
 <span class="n">p</span> <span class="o">=</span> <span class="n">pstats</span><span class="o">.</span><span class="n">Stats</span><span class="p">(</span><span class="s1">'./output_file'</span><span class="p">)</span>
@@ -5112,9 +5187,6 @@ bbb
 </pre></div>
 </div>
 </div>
-</div></blockquote>
-</li>
-</ol>
 </section>
 </section>
 </section>
@@ -5125,7 +5197,10 @@ bbb
 try --No_error--&gt; else --&gt; finally
 try --except有的error--&gt; except --&gt; finally
 try --except没有的error --&gt;A{报错} --&gt; finally
-        </div><div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">numb</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+        </div><div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column sd-col-8 sd-col-xs-8 sd-col-sm-8 sd-col-md-8 sd-col-lg-8 docutils">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">numb</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
     <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">OverflowError</span><span class="p">):</span>
@@ -5136,6 +5211,8 @@ try --except没有的error --&gt;A{报错} --&gt; finally
         <span class="nb">print</span><span class="p">(</span><span class="s2">"It is over."</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">numb</span><span class="p">(</span><span class="mf">2.1</span><span class="p">)</span>
 <span class="go">2</span>
 <span class="go">It is over.</span>
@@ -5143,6 +5220,9 @@ try --except没有的error --&gt;A{报错} --&gt; finally
 <span class="go">a is not valid</span>
 <span class="go">It is over.</span>
 </pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="admonition-notimplementederror admonition danger">
 <p class="admonition-title">NotImplementedError 未实现父类接口重写</p>
@@ -5173,8 +5253,10 @@ try --except没有的error --&gt;A{报错} --&gt; finally
 </div>
 <section id="id54">
 <h3 id="id54">字符串相关<a class="headerlink" href="#id54" title="Link to this heading">¶</a></h3>
-<p><span class="defi">UnicodeEncodeError</span> 。选定的编码方式不能编码这个字符。
-<span class="defi">UnicodeDecodeError</span> 。选定的解码方式不能解码这个字符。</p>
+<div class="line-block">
+<div class="line"><span class="defi">UnicodeEncodeError</span> 。选定的编码方式不能编码这个字符。</div>
+<div class="line"><span class="defi">UnicodeDecodeError</span> 。选定的解码方式不能解码这个字符。</div>
+</div>
 <div class="admonition- admonition danger">
 <p class="admonition-title">文本存取乱码问题</p>
 <ul class="simple">

@@ -349,7 +349,21 @@
         </li></ul>
             </nav>
         </li>
-        <li class="md-nav__item"><a href="#id5" class="md-nav__link">字符 问题</a>
+        <li class="md-nav__item"><a href="#id5" class="md-nav__link">字符 问题</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#clumsy" class="md-nav__link">clumsy</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id7" class="md-nav__link">使用</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#self-define-kbd-presets-kbd" class="md-nav__link">Self-define <kbd>presets</kbd></a>
+        </li>
+        <li class="md-nav__item"><a href="#functions" class="md-nav__link">Functions</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
         </li></ul>
             </nav>
         </li>
@@ -559,9 +573,9 @@ end
 字符的码位:十进制 --encode--&gt; 字符的具体表述:字节bytes
         </div><div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="s1">'A'</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">'utf8'</span><span class="p">)</span>
 </span><span class="go">b'A'</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="sa">b</span><span class="s1">'A'</span> <span class="p">:</span><span class="n">defi</span><span class="p">:</span><span class="err">`</span> <span class="sa">b</span><span class="s1">'</span><span class="se">\x41</span><span class="s1">'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sa">b</span><span class="s1">'A'</span> <span class="o">==</span> <span class="sa">b</span><span class="s1">'</span><span class="se">\x41</span><span class="s1">'</span>
 <span class="go">True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="s1">' ` b'</span><span class="n">A</span><span class="s1">'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="s1">' == b'</span><span class="n">A</span><span class="s1">'</span>
 <span class="go">False</span>
 <span class="hll"><span class="gp">&gt;&gt;&gt; </span><span class="sa">b</span><span class="s1">'</span><span class="se">\x41</span><span class="s1">'</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">'utf8'</span><span class="p">)</span>
 </span><span class="go">'A'</span>
@@ -571,11 +585,13 @@ end
 </span><span class="go">'A'</span>
 </pre></div>
 </div>
-<p>clumsy
-========:defi:`</p>
-<p>[official](<a class="reference external" href="https://jagt.github.io/clumsy/cn/index.html">https://jagt.github.io/clumsy/cn/index.html</a>)
-[弱网模拟工具Clumsy使用指南](<a class="reference external" href="https://www.lfzxb.top/clumsy-guide/">https://www.lfzxb.top/clumsy-guide/</a>)
-[add Bandwidth version](<a class="reference external" href="https://github.com/skywind3000/clumsy">https://github.com/skywind3000/clumsy</a>)</p>
+<section id="clumsy">
+<h3 id="clumsy">clumsy<a class="headerlink" href="#clumsy" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://jagt.github.io/clumsy/cn/index.html">official</a></p></li>
+<li><p><a class="reference external" href="https://www.lfzxb.top/clumsy-guide/">弱网模拟工具Clumsy使用指南</a></p></li>
+<li><p><a class="reference external" href="https://github.com/skywind3000/clumsy">add Bandwidth version</a></p></li>
+</ul>
 <div class="admonition- admonition note">
 <p class="admonition-title">功能</p>
 <ol class="arabic simple">
@@ -584,14 +600,8 @@ end
 </ol>
 <p>当clumsy被激活时，只有符合这些标准的网络数据会被进行处理，而你不需要的数据仍然会由系统正常传输。</p>
 </div>
-<aside class="system-message">
-<p class="system-message-title">System Message: SEVERE/4 (<span class="docutils literal">/home/runner/work/io/io/docs/source/utils/other.rst</span>, line 196)</p>
-<p>Title level inconsistent:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">使用</span>
-<span class="o">----------</span>
-</pre></div>
-</div>
-</aside>
+<section id="id7">
+<h4 id="id7">使用<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h4>
 <ol class="arabic">
 <li><p>自定义filter，正确的 WinDivert 规则</p></li>
 <li><p>如果有预设的filter 可以自定义 see: #self-define-presets</p></li>
@@ -608,35 +618,24 @@ end
 </div></blockquote>
 </li>
 </ol>
-<aside class="system-message">
-<p class="system-message-title">System Message: SEVERE/4 (<span class="docutils literal">/home/runner/work/io/io/docs/source/utils/other.rst</span>, line 210)</p>
-<p>Title level inconsistent:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Self</span><span class="o">-</span><span class="n">define</span> <span class="o">&lt;</span><span class="n">kbd</span><span class="o">&gt;</span><span class="n">presets</span><span class="o">&lt;/</span><span class="n">kbd</span><span class="o">&gt;</span>
-<span class="o">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
-</pre></div>
-</div>
-</aside>
+<section id="self-define-kbd-presets-kbd">
+<h5 id="self-define-kbd-presets-kbd">Self-define &lt;kbd&gt;presets&lt;/kbd&gt;<a class="headerlink" href="#self-define-kbd-presets-kbd" title="Link to this heading">¶</a></h5>
 <p>软件根目录下的&lt;kbd&gt;config.txt&lt;/kbd&gt;以&lt;u&gt;键值对&lt;/u&gt;的形式填写自己的配置</p>
 <div class="admonition-udp admonition hint">
 <p class="admonition-title">添加一个 起始和目标端口为10003，10004的udp连接 配置</p>
-<div class="literal-block-wrapper docutils container" id="id6">
-<div class="code-block-caption"><span class="caption-text">config.txt</span><a class="headerlink" href="#id6" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">config.txt</span><a class="headerlink" href="#id8" title="Link to this code">¶</a></div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span># you can add your usual filters here for your own use:
-#http requests ONLY(data transmit on other ports): outbound and tcp.DstPort ` 80
-NKGMoba: udp and (udp.DstPort :defi:` 10003 or udp.DstPort ` 10004) \
-or (udp.SrcPort :defi:` 10003 or udp.SrcPort ` 10004)
+#http requests ONLY(data transmit on other ports): outbound and tcp.DstPort == 80
+NKGMoba: udp and (udp.DstPort == 10003 or udp.DstPort == 10004) \
+or (udp.SrcPort == 10003 or udp.SrcPort == 10004)
 </pre></div>
 </div>
 </div>
 </div>
-<aside class="system-message">
-<p class="system-message-title">System Message: SEVERE/4 (<span class="docutils literal">/home/runner/work/io/io/docs/source/utils/other.rst</span>, line 225)</p>
-<p>Title level inconsistent:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Functions</span>
-<span class="o">^^^^^^^^^^^^^^^^^^^^</span>
-</pre></div>
-</div>
-</aside>
+</section>
+<section id="functions">
+<h5 id="functions">Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h5>
 <ul class="simple">
 <li><p><strong>Lag</strong>, 延迟，把数据包缓存一段时间后再发出，这样能够模拟网络延迟的状况。</p></li>
 <li><p><strong>Drop</strong>, 掉包，随机丢弃一些数据。</p></li>
@@ -655,7 +654,10 @@ or (udp.SrcPort :defi:` 10003 or udp.SrcPort ` 10004)
 <li><p><strong>Inbound/Outbound</strong>: 是否处理输入/输出数据包。这里在 filter 的控制之外额外提供一个选择的机会，并且也可以在实时生效。</p></li>
 <li><p><strong>Chance:</strong> 功能生效的概率。显然你需要把它们设置在一个合理的范围内才不会让网络在可以接受的范围内劣化。</p></li>
 </ul>
-<p>[Example](<a class="reference external" href="https://testerhome.com/topics/11001/show_wechat">https://testerhome.com/topics/11001/show_wechat</a>)</p>
+<p><a class="reference external" href="https://testerhome.com/topics/11001/show_wechat">Example</a></p>
+</section>
+</section>
+</section>
 </section>
 </section>
 

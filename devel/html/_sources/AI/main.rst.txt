@@ -216,7 +216,6 @@ search
 
 .. note:: A search algorithm is admissible if it is guaranteed to find a minimal path to a solution whenever such a path exists.
 
-
 .. note:: Q4. the motivations of employing heuristics in solving AI problems?
     1. A problem may not have an exact solution because of ambiguities in problem statement or available data
     2. A problem may have an exact solution, but the computational cost (time and space) of finding it may be prohibitive.
@@ -286,7 +285,7 @@ Solution path : S-B-G
             +---+------------------------------+---+----------------------------------------+
 
 
-        All h(n)<=h*(n),so it is an A* algorithm and it is admissible. The path S-B-G is the shortest path.
+        All h(n)<=h\*(n),so it is an A\* algorithm and it is admissible. The path S-B-G is the shortest path.
 
 BNN, Bayesian Belief networkd
 ========================================

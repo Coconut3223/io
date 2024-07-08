@@ -6,7 +6,8 @@ GPU
 
 .. note:: 某某神经网络参数量有多少，大概占用多大的显存
 
-| Estimating neural network memory consumption
+Estimating neural network memory consumption
+
 - Mini-batch sizes and gradient splitting trick
 - Estimating neural network computation (FLOP/s)
 - Calculating effective aperture sizes
@@ -84,13 +85,10 @@ optimization
 
 **Refernce:**
 
-- [Memory usage and computational considerations]
-- [CNN 模型所需的计算力flops是什么？怎么计算？]
-
-[Memory usage and computational considerations]:https://imatge-upc.github.io/telecombcn-2016-dlcv/slides/D2L1-memory.pdf
-[CNN 模型所需的计算力flops是什么？怎么计算？]:https://zhuanlan.zhihu.com/p/137719986
+- `Memory usage and computational considerations <https://imatge-upc.github.io/telecombcn-2016-dlcv/slides/D2L1-memory.pdf>`_
+- `CNN 模型所需的计算力flops是什么？怎么计算？ <https://zhuanlan.zhihu.com/p/137719986>`_
 
 tensorboard
 ******************
 
-[pytorch：本地使用tensorboard可视化](https://blog.csdn.net/Caesar6666/article/details/127245418)
+`pytorch：本地使用tensorboard可视化 <https://blog.csdn.net/Caesar6666/article/details/127245418>`_

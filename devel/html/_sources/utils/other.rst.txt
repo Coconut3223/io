@@ -183,9 +183,9 @@ repository
 clumsy
 ==========
 
-[official](https://jagt.github.io/clumsy/cn/index.html)
-[弱网模拟工具Clumsy使用指南](https://www.lfzxb.top/clumsy-guide/)
-[add Bandwidth version](https://github.com/skywind3000/clumsy)
+- `official <https://jagt.github.io/clumsy/cn/index.html>`_
+- `弱网模拟工具Clumsy使用指南 <https://www.lfzxb.top/clumsy-guide/>`_
+- `add Bandwidth version <https://github.com/skywind3000/clumsy>`_
 
 .. note:: 功能 
     1. 重现网络异常造成的程序错误
@@ -239,4 +239,4 @@ Functions
 - **Inbound/Outbound**: 是否处理输入/输出数据包。这里在 filter 的控制之外额外提供一个选择的机会，并且也可以在实时生效。
 - **Chance:** 功能生效的概率。显然你需要把它们设置在一个合理的范围内才不会让网络在可以接受的范围内劣化。
 
-[Example](https://testerhome.com/topics/11001/show_wechat)
+`Example <https://testerhome.com/topics/11001/show_wechat>`_

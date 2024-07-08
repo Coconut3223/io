@@ -82,7 +82,7 @@ Da
     +-----------------+------------------+
 
 
-[comp9318 Association Rule Mining](https://zhuanlan.zhihu.com/p/65155693)
+`comp9318 Association Rule Mining <https://zhuanlan.zhihu.com/p/65155693>`_
 
 Association Rule 关联规则
 ***********************************

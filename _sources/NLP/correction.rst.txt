@@ -157,7 +157,7 @@ original
 提供错误的类型，追加分类任务
 --------------------------------------------------
 
-![by pycorrector](https://github.com/shibing624/pycorrector/raw/master/docs/git_image/error_type.png)
+`by pycorrector <https://github.com/shibing624/pycorrector/raw/master/docs/git_image/error_type.png>`_
 
 .. table::
 
@@ -399,7 +399,7 @@ Some not good enough
 pycorrector
 ====================
 
-[Chinese Spelling Correction Model shibing624/macbert4csc-base-chinese](https://huggingface.co/spaces/shibing624/pycorrector)
+`Chinese Spelling Correction Model shibing624/macbert4csc-base-chinese <https://huggingface.co/spaces/shibing624/pycorrector>`_
 
 results
 --------------------

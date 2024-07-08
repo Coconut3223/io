@@ -353,23 +353,19 @@ You can also convert M2M-100 model to the CTranslate2 format for better efficien
 tensorboard
 ====================
 
-[Running TensorBoard](https://forum.opennmt.net/t/running-tensorboard/4242)
+`Running TensorBoard <https://forum.opennmt.net/t/running-tensorboard/4242>`_
 
 Ref
 **********
 
-[神经机器翻译（NMT）的一些重要资源分享](https://zhuanlan.zhihu.com/p/29338282)
-[OpenNMT-py Tutorial](https://github.com/ymoslem/OpenNMT-Tutorial/tree/main)
-
-[Notes on Multilingual Machine Translation]: https://blog.machinetranslation.io/multilingual-nmt/
-
-[](https://leonis.cc/sui-sui-nian/2022-12-16-opennmt-tutorial-quickstart.html)
-
-[Open-Source Toolkit for Neural Machine Translation]:https://aclanthology.org/P17-4012.pdf
+- `神经机器翻译（NMT）的一些重要资源分享 <https://zhuanlan.zhihu.com/p/29338282>`_
+- `OpenNMT-py Tutorial <https://github.com/ymoslem/OpenNMT-Tutorial/tree/main>`_
+- `Notes on Multilingual Machine Translation <https://blog.machinetranslation.io/multilingual-nmt/>`_
+- `opennmt-tutorial-quickstart <https://leonis.cc/sui-sui-nian/2022-12-16-opennmt-tutorial-quickstart.html>`_
+- `Open-Source Toolkit for Neural Machine Translation <https://aclanthology.org/P17-4012.pdf>`_
 
 Temp
 **********
 
-[How is Accuracy calculated ?](https://github.com/OpenNMT/OpenNMT-py/issues/1944)
-
-[Discrepency between training and tranlsation](https://forum.opennmt.net/t/discrepency-between-training-and-tranlsation/4765)
+- `How is Accuracy calculated ? <https://github.com/OpenNMT/OpenNMT-py/issues/1944>`_
+- `Discrepency between training and tranlsation <https://forum.opennmt.net/t/discrepency-between-training-and-tranlsation/4765>`_
