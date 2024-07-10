@@ -4,7 +4,7 @@ Huggingface
 方法下载
 **********
 
-.. note:: 来自[如何快速下载huggingface模型——全方法总结]的推荐
+.. note:: 来自 `如何快速下载huggingface模型——全方法总结`_ 的推荐
     | Linux/Mac OS/windows 默认推荐使用huggingface-cli，对外网连接较好（丢包少）的时候，可尝试 huggingface-cli+hf_transfer（可选）。
     | 网络连接不好，推荐先GIT_LFS_SKIP_SMUDGE=1 git clone，其次再对大文件用第三方、成熟的多线程下载工具，Linux 推荐hfd脚本+aria2c，Windows 推荐 IDM。用第三方工具的好处是，下载上百GB的模型、数据集，你可以放个一晚上，第二天就下载好了，而不是第二天早晨发现下载了10%断了还得继续。
     | 偶尔小文件下载，直接访问镜像站，用浏览器下载。
@@ -22,7 +22,7 @@ Huggingface
 
     .. code-block:: py
 
-        from transformers impoet AutoModel
+        from transformers import AutoModel
         AutoModel.from_pretrained(, cache_dir='')
 
 2. 设系统变量 ``TRANSFORMERS_CACHE`` 
@@ -83,12 +83,17 @@ local_dir must be a path to a folder on your system.
 
 申请通过后，就可以 **在模型主页的 Files and versions 中看到模型文件了**，浏览器的话直接点击下载即可。但是如果想要用工具例如 huggingface-cli 下载，则需要获取 access token:
 
-访问[huggingface.setting.token 管理页]，选择 New 一个 token，只需要 Read 权限即可，创建后便可以在工具中调用时使用了。
+访问 `huggingface.setting.token 管理页`_，选择 New 一个 token，只需要 Read 权限即可，创建后便可以在工具中调用时使用了。
 
-[下载huggingface-transformers模型至本地，并使用from_pretrained方法加载]
-[Download files from the Hub]
 
-[下载huggingface-transformers模型至本地，并使用from_pretrained方法加载]:https://blog.csdn.net/weixin_44612221/article/details/129884741
-[如何快速下载huggingface模型——全方法总结]:https://www.yunqiic.com/2024/01/04/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E4%B8%8B%E8%BD%BDhuggingface%E6%A8%A1%E5%9E%8B-%E5%85%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/
-[huggingface.setting.token 管理页]: https://huggingface.co/settings/tokens
-[Download files from the Hub]:https://huggingface.co/docs/huggingface_hub/v0.13.3/guides/download
+
+
+
+
+
+- `下载huggingface-transformers模型至本地，并使用from_pretrained方法加载 <https://blog.csdn.net/weixin_44612221/article/details/129884741>`_
+- `Download files from the Hub <https://huggingface.co/docs/huggingface_hub/v0.13.3/guides/download>`_
+
+
+.. _huggingface.setting.token 管理页: https://huggingface.co/settings/tokens
+.. _如何快速下载huggingface模型——全方法总结: https://www.yunqiic.com/2024/01/04/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E4%B8%8B%E8%BD%BDhuggingface%E6%A8%A1%E5%9E%8B-%E5%85%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/

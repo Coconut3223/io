@@ -8,7 +8,16 @@ Plot
     plt.margins(x=0, y=0)  # 去除白邊
 
 
-## 散点图 scatter 
+条形图
+********************
+
+.. code-block:: py
+    :caption: bar plot
+    
+
+
+散点图 scatter
+********************
 
 .. danger:: 如果两点有可能有相同的坐标，但有不同的标签，显示的颜色将是后绘制点的颜色，可以使用透明颜色，用来显示重叠点。
 
@@ -81,9 +90,11 @@ Plot
 
                 
 
-## configs
+configs
+**********
 
-### 配色方案 ``cmap``
+配色方案 ``cmap``
+==============================
 
 ``rainbow`` & ``blues`` 好像用得比较多
 
@@ -93,7 +104,8 @@ Plot
 - `【Matplotlib】plt.imshow() cmap色彩表 <https://blog.csdn.net/qq_43426078/article/details/123635851>`_
 - `Python-matplotlib绘制散点图-plt.scatter-颜色设置（c, cmap） <https://blog.csdn.net/qq_37851620/article/details/100642566>`_
 
-### 图例 legend
+图例 legend
+====================
 
 .. code-block:: py
 
@@ -104,14 +116,16 @@ Plot
         fontsize=18,  # legend 的内容
     )
 
-### 坐标轴
+坐标轴
+====================
 
 .. code-block:: py
 
     ax.spines['right'].set_visible(False)  # 右面的边隐藏
     ax.spines['top'].set_visible(False)  # 上面的边隐藏
 
-### 一些杂的
+一些杂的
+====================
 
 .. grid:: 2
 
