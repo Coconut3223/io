@@ -12,3 +12,4 @@ Python
     exam
     plot
     trans
+    pandas

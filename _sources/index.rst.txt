@@ -21,3 +21,37 @@ Welcome to cocobook's documentation!
    utils <utils/index>
    frontend <frontend/index>
    
+
+.. mermaid:: 
+
+   flowchart LR
+
+   B1["`faster_whisper_V3 
+   & 100ms`"]
+   B2["`faster_whisper_V3 
+   & 1000ms`"]
+   B3["`faster_whisper_V3 
+   & 100ms`"]
+   C{"`check 
+   VAD & ASR`"}
+   D{"`check 
+   ASR`"}
+   F["`whisper-small-Cantonese`"]
+   G("`audio`")
+   H("`audio segment 
+   & its ASR`")
+   I("`truth`")
+   J1("`validated audio segment`")
+   J2("`validated audio segment`")
+   K("`ASR`")
+
+   G-->B1-->H 
+   G -->B2-->H
+   H-.->C
+   C -. pass .-> J1
+   J2 --> B3 --> K
+   J2 --> F --> K
+   K -.-> D -. pass .-> I
+
+
+

@@ -64,6 +64,8 @@
     <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script src="_static/js/rtd_search_config.js"></script>
     <script src="_static/js/rtd_sphinx_search.min.js"></script>
+    <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="搜索" href="search.html" />
     <link rel="next" title="AI" href="AI/index.html" />
@@ -372,6 +374,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python/exam.html">笔面</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python/plot.html">Plot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python/trans.html">交叉</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python/pandas.html">pandas</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="SQL/index.html">SQL</a><ul>
@@ -393,7 +396,36 @@
 </li>
 </ul>
 </div>
-</section>
+<div class="mermaid">
+            flowchart LR
+
+B1["`faster_whisper_V3
+&amp; 100ms`"]
+B2["`faster_whisper_V3
+&amp; 1000ms`"]
+B3["`faster_whisper_V3
+&amp; 100ms`"]
+C{"`check
+VAD &amp; ASR`"}
+D{"`check
+ASR`"}
+F["`whisper-small-Cantonese`"]
+G("`audio`")
+H("`audio segment
+&amp; its ASR`")
+I("`truth`")
+J1("`validated audio segment`")
+J2("`validated audio segment`")
+K("`ASR`")
+
+G--&gt;B1--&gt;H
+G --&gt;B2--&gt;H
+H-.-&gt;C
+C -. pass .-&gt; J1
+J2 --&gt; B3 --&gt; K
+J2 --&gt; F --&gt; K
+K -.-&gt; D -. pass .-&gt; I
+        </div></section>
 
 
           </article>

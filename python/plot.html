@@ -309,7 +309,28 @@
       
         
 <nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
   <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#python-plot--page-root" class="md-nav__link">Plot</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id1" class="md-nav__link">条形图</a>
+        </li>
+        <li class="md-nav__item"><a href="#scatter" class="md-nav__link">散点图 scatter</a>
+        </li>
+        <li class="md-nav__item"><a href="#configs" class="md-nav__link">configs</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#cmap" class="md-nav__link">配色方案 <code class="docutils literal notranslate"><span class="pre">cmap</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#legend" class="md-nav__link">图例 legend</a>
+        </li>
+        <li class="md-nav__item"><a href="#id2" class="md-nav__link">坐标轴</a>
+        </li>
+        <li class="md-nav__item"><a href="#id3" class="md-nav__link">一些杂的</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
   </ul>
 </nav>
       
@@ -319,6 +340,13 @@
     
     
       <a href="trans.html" class="md-nav__link">交叉</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="pandas.html" class="md-nav__link">pandas</a>
       
     
     </li></ul>
@@ -357,7 +385,28 @@
               <div class="md-sidebar__inner">
                 
 <nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
   <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#python-plot--page-root" class="md-nav__link">Plot</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id1" class="md-nav__link">条形图</a>
+        </li>
+        <li class="md-nav__item"><a href="#scatter" class="md-nav__link">散点图 scatter</a>
+        </li>
+        <li class="md-nav__item"><a href="#configs" class="md-nav__link">configs</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#cmap" class="md-nav__link">配色方案 <code class="docutils literal notranslate"><span class="pre">cmap</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#legend" class="md-nav__link">图例 legend</a>
+        </li>
+        <li class="md-nav__item"><a href="#id2" class="md-nav__link">坐标轴</a>
+        </li>
+        <li class="md-nav__item"><a href="#id3" class="md-nav__link">一些杂的</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
   </ul>
 </nav>
               </div>
@@ -374,15 +423,25 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># 去除白邊</span>
 </pre></div>
 </div>
-<p>## 散点图 scatter</p>
+<section id="id1">
+<h2 id="id1">条形图<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">bar plot</span><a class="headerlink" href="#id4" title="Link to this code">¶</a></div>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="scatter">
+<h2 id="scatter">散点图 scatter<a class="headerlink" href="#scatter" title="Link to this heading">¶</a></h2>
 <div class="admonition- admonition danger">
 <p class="admonition-title">如果两点有可能有相同的坐标，但有不同的标签，显示的颜色将是后绘制点的颜色，可以使用透明颜色，用来显示重叠点。</p>
 </div>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
 <div class="sd-col sd-d-flex-column docutils">
-<div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">scatter plot</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">scatter plot</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="k">def</span> <span class="nf">plot_with_labels</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">'tsne.png'</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
@@ -425,11 +484,11 @@
 </div>
 </div>
 <div class="sd-col sd-d-flex-column docutils">
-<figure class="align-default" id="id2">
+<figure class="align-default" id="id6">
 <a class="reference internal image-reference" href="../_images/plot_1.png"><img alt="../_images/plot_1.png" src="../_images/plot_1.png" style="width: 300.0px; height: 240.0px;"/>
 </a>
 <figcaption>
-<p><span class="caption-text">画的图</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+<p><span class="caption-text">画的图</span><a class="headerlink" href="#id6" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <div class="admonition-legend admonition note">
@@ -439,8 +498,8 @@
 <div class="line">We colored the scatterplot using numerical code for the species variable.</div>
 <div class="line">We can maually specify labels for legend. <strong>We define labels using a list of species names first.</strong></div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-text">scatter.legend</span><a class="headerlink" href="#id3" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">scatter.legend</span><a class="headerlink" href="#id7" title="Link to this code">¶</a></div>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">legend_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span>
     <span class="n">scatter</span><span class="o">.</span><span class="n">legend_elements</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
     <span class="n">classes</span><span class="p">)</span>
@@ -452,8 +511,11 @@
 </div>
 </div>
 </div>
-<p>## configs</p>
-<p>### 配色方案 <code class="docutils literal notranslate"><span class="pre">cmap</span></code></p>
+</section>
+<section id="configs">
+<h2 id="configs">configs<a class="headerlink" href="#configs" title="Link to this heading">¶</a></h2>
+<section id="cmap">
+<h3 id="cmap">配色方案 <code class="docutils literal notranslate"><span class="pre">cmap</span></code><a class="headerlink" href="#cmap" title="Link to this heading">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">rainbow</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">blues</span></code> 好像用得比较多</p>
 <p><code class="docutils literal notranslate"><span class="pre">Spectral</span></code></p>
 <ul class="simple">
@@ -461,7 +523,9 @@
 <li><p><a class="reference external" href="https://blog.csdn.net/qq_43426078/article/details/123635851">【Matplotlib】plt.imshow() cmap色彩表</a></p></li>
 <li><p><a class="reference external" href="https://blog.csdn.net/qq_37851620/article/details/100642566">Python-matplotlib绘制散点图-plt.scatter-颜色设置（c, cmap）</a></p></li>
 </ul>
-<p>### 图例 legend</p>
+</section>
+<section id="legend">
+<h3 id="legend">图例 legend<a class="headerlink" href="#legend" title="Link to this heading">¶</a></h3>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">legend</span><span class="p">(</span>
     <span class="o">...</span><span class="p">,</span>
     <span class="n">loc</span><span class="o">=</span><span class="s2">"upper right"</span><span class="p">,</span>  <span class="c1"># 位置</span>
@@ -470,12 +534,16 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>### 坐标轴</p>
+</section>
+<section id="id2">
+<h3 id="id2">坐标轴<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'right'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># 右面的边隐藏</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'top'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># 上面的边隐藏</span>
 </pre></div>
 </div>
-<p>### 一些杂的</p>
+</section>
+<section id="id3">
+<h3 id="id3">一些杂的<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
 <div class="sd-col sd-d-flex-column docutils">
@@ -489,6 +557,8 @@
 </div>
 </div>
 </div>
+</section>
+</section>
 </section>
 
 

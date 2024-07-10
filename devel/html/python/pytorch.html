@@ -324,6 +324,8 @@
         <li class="md-nav__item"><a href="#tensor" class="md-nav__link">Tensor</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#view" class="md-nav__link">view</a>
+        </li>
+        <li class="md-nav__item"><a href="#cat" class="md-nav__link">cat 拼接</a>
         </li></ul>
             </nav>
         </li>
@@ -438,6 +440,13 @@
       <a href="trans.html" class="md-nav__link">交叉</a>
       
     
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="pandas.html" class="md-nav__link">pandas</a>
+      
+    
     </li></ul>
     
     </li>
@@ -503,6 +512,8 @@
         <li class="md-nav__item"><a href="#tensor" class="md-nav__link">Tensor</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#view" class="md-nav__link">view</a>
+        </li>
+        <li class="md-nav__item"><a href="#cat" class="md-nav__link">cat 拼接</a>
         </li></ul>
             </nav>
         </li>
@@ -811,6 +822,18 @@ print(output.shape())</p>
 <p><code class="docutils literal notranslate"><span class="pre">tensor.view(-1,</span> <span class="pre">n)</span></code></p>
 <div class="admonition-data-view-batchsize-feature-size admonition danger">
 <p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">data.view(batchsize,</span> <span class="pre">feature_size)</span></code></p>
+</div>
+</section>
+<section id="cat">
+<h4 id="cat">cat 拼接<a class="headerlink" href="#cat" title="Link to this heading">¶</a></h4>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>
+<span class="go">tensor([[1., 2.],[3., 4.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">tensor([[1., 2.], [3., 4.], [1., 2.], [3., 4.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">,),</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">tensor([[1., 2., 1., 2.],</span>
+<span class="go">        [3., 4., 3., 4.]])</span>
+</pre></div>
 </div>
 </section>
 </section>

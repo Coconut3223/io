@@ -203,6 +203,23 @@ view
 
 .. danger:: ``data.view(batchsize, feature_size)``
 
+
+cat 拼接
+----------------
+
+.. code-block:: pycon
+
+    >>> x = torch.Tensor([[1,2], [3,4]])
+    tensor([[1., 2.],[3., 4.]])
+    >>> torch.cat((x,x),0)
+    tensor([[1., 2.], [3., 4.], [1., 2.], [3., 4.]])
+    >>> torch.cat((x,x,),1)
+    tensor([[1., 2., 1., 2.],
+            [3., 4., 3., 4.]])
+
+
+
+
 Variable
 ====================
 

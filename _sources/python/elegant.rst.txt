@@ -3471,6 +3471,11 @@ read(), readline(), readlines()
 json
 ==========
 
+.. note:: 写中文
+
+    - ``encoding='utf-8'``
+    - ``ensure_ascii=False``
+
 .. code-block:: py
 
     import json
@@ -3483,6 +3488,7 @@ json
 
     with open('./built-in.json', 'w', encoding='utf-8') as f:
         json.dump(res, f, indent=4, ensure_ascii=False)
+
 
 快速序列
 ==========
@@ -3586,6 +3592,8 @@ Error
     try --except有的error--> except --> finally
     try --except没有的error -->A{报错} --> finally
 
+
+- ``assert condition, "message"``
 
 .. grid:: 2
 

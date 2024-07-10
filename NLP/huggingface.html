@@ -444,7 +444,7 @@
 <section id="id1">
 <h2 id="id1">方法下载<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
 <div class="admonition-huggingface admonition note">
-<p class="admonition-title">来自[如何快速下载huggingface模型——全方法总结]的推荐</p>
+<p class="admonition-title">来自 <a class="reference external" href="https://www.yunqiic.com/2024/01/04/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E4%B8%8B%E8%BD%BDhuggingface%E6%A8%A1%E5%9E%8B-%E5%85%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/">如何快速下载huggingface模型——全方法总结</a> 的推荐</p>
 <div class="line-block">
 <div class="line">Linux/Mac OS/windows 默认推荐使用huggingface-cli，对外网连接较好（丢包少）的时候，可尝试 huggingface-cli+hf_transfer（可选）。</div>
 <div class="line">网络连接不好，推荐先GIT_LFS_SKIP_SMUDGE=1 git clone，其次再对大文件用第三方、成熟的多线程下载工具，Linux 推荐hfd脚本+aria2c，Windows 推荐 IDM。用第三方工具的好处是，下载上百GB的模型、数据集，你可以放个一晚上，第二天就下载好了，而不是第二天早晨发现下载了10%断了还得继续。</div>
@@ -461,7 +461,7 @@
 <ol class="arabic">
 <li><p>每次都传入参数 <code class="docutils literal notranslate"><span class="pre">cache_dir</span></code></p>
 <blockquote>
-<div><div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="n">impoet</span> <span class="n">AutoModel</span>
+<div><div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModel</span>
 <span class="n">AutoModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(,</span> <span class="n">cache_dir</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -485,8 +485,8 @@
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>huggingface_hub
 </pre></div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id3">
-<div class="code-block-caption"><span class="caption-text">download.py</span><a class="headerlink" href="#id3" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">download.py</span><a class="headerlink" href="#id4" title="Link to this code">¶</a></div>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># if need login in</span>
 <span class="kn">import</span> <span class="nn">huggingface_hub</span>
 <span class="n">huggingface_hub</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s1">'HF_token'</span><span class="p">)</span>
@@ -506,8 +506,8 @@
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-text">load.py</span><a class="headerlink" href="#id4" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">load.py</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">local_path</span> <span class="o">=</span> <span class="s1">'./model/'</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">AutoModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">local_path</span><span class="p">)</span>
 </pre></div>
@@ -521,13 +521,11 @@
 <p>如果在模型主页 <strong>Files and versions</strong> 看不到模型文件，那就是需要申请许可通过才能下载的 <span class="defi">Gated Model</span> 。</p>
 </div>
 <p>申请通过后，就可以 <strong>在模型主页的 Files and versions 中看到模型文件了</strong>，浏览器的话直接点击下载即可。但是如果想要用工具例如 huggingface-cli 下载，则需要获取 access token:</p>
-<p>访问[huggingface.setting.token 管理页]，选择 New 一个 token，只需要 Read 权限即可，创建后便可以在工具中调用时使用了。</p>
-<p>[下载huggingface-transformers模型至本地，并使用from_pretrained方法加载]
-[Download files from the Hub]</p>
-<p>[下载huggingface-transformers模型至本地，并使用from_pretrained方法加载]:<a class="reference external" href="https://blog.csdn.net/weixin_44612221/article/details/129884741">https://blog.csdn.net/weixin_44612221/article/details/129884741</a>
-[如何快速下载huggingface模型——全方法总结]:<a class="reference external" href="https://www.yunqiic.com/2024/01/04/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E4%B8%8B%E8%BD%BDhuggingface%E6%A8%A1%E5%9E%8B-%E5%85%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/">https://www.yunqiic.com/2024/01/04/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E4%B8%8B%E8%BD%BDhuggingface%E6%A8%A1%E5%9E%8B-%E5%85%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/</a>
-[huggingface.setting.token 管理页]: <a class="reference external" href="https://huggingface.co/settings/tokens">https://huggingface.co/settings/tokens</a>
-[Download files from the Hub]:<a class="reference external" href="https://huggingface.co/docs/huggingface_hub/v0.13.3/guides/download">https://huggingface.co/docs/huggingface_hub/v0.13.3/guides/download</a></p>
+<p>访问 <a class="reference external" href="https://huggingface.co/settings/tokens">huggingface.setting.token 管理页</a>，选择 New 一个 token，只需要 Read 权限即可，创建后便可以在工具中调用时使用了。</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.csdn.net/weixin_44612221/article/details/129884741">下载huggingface-transformers模型至本地，并使用from_pretrained方法加载</a></p></li>
+<li><p><a class="reference external" href="https://huggingface.co/docs/huggingface_hub/v0.13.3/guides/download">Download files from the Hub</a></p></li>
+</ul>
 </section>
 </section>
 </section>
