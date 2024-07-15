@@ -332,7 +332,8 @@ Others
             | ELF文件头会写入一个magic number，检查这个数和自己预想的是否一致可以判断文件是否损坏。
             | 如果你用16进制编辑器打开一个文件，它的开头不是FFD8FF，那就不是jpg文件。这个魔数一般会在相关文件标准中进行规定，所有人都要遵守
 
-## ipynb
+ipynb
+**********
 
 `jupyter notebook中找不到anaconda中的python环境解决方法  <https://blog.csdn.net/sean2100/article/details/83744679>`_
 
@@ -344,10 +345,11 @@ Others
 .. warning:: 但是最近好像有点问题 对于高版本会显示 ``3.1x``
 
 
-## 常用的别的
+常用的别的
+********************
 
-
-### 进度条
+进度条
+====================
 
 ``tqdm``
 
@@ -364,7 +366,90 @@ Others
     for idx, x in enumerate(tqdm(lst)):
         ...
 
-## Todo
+
+logging
+====================
+
+.. code-block:: py
+
+    import logging
+    logging.basicConfig(filename='log_name.log', 
+                        # filemode='a',
+                        format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                        datefmt='%H:%M:%S',
+                        level=logging.DEBUG  # the minimum message level it will accept
+                        )
+
+    logging.info("Running Urban Planning")  # 写入log
+
+    logger = logging.getLogger('urbanGUI')  # ?
+
+** `message level <https://docs.python.org/3/library/logging.html#logging-levels>`_**
+
+.. table::
+
+    +-------------+--------------+-------------+------------+---------------+-------------+----------------+
+    |Level        |logging.NOTSET|logging.DEBUG|logging.INFO|logging.WARNING|logging.ERROR|logging.CRITICAL|
+    +=============+==============+=============+============+===============+=============+================+
+    |Numeric value|0             |10           |20          |30             |40           |50              |
+    +-------------+--------------+-------------+------------+---------------+-------------+----------------+
+
+
+.. danger:: 低于设定 level 的会被忽略。
+
+
+脚本传参
+====================
+
+.. code-block:: bash
+    :caption: 两种格式
+
+    python script.py 0,1,2 10  # sys.argv
+    python script.py --gpus=0,1,2 --batch_size=10  # argparse
+
+
+.. grid:: 2
+
+    .. grid-item::
+        ``sys.argv``
+
+        .. code-block:: py
+
+            import sys
+            gpus = sys.argv[1]
+            gpus = [int(gpus.split(','))]
+            batch_size = sys.argv[2]
+            print(gpus)
+            print(batch_size)
+        
+        .. code-block:: bash
+            python script.py 0,1,2 10
+
+    .. grid-item::
+        ``argparse``
+
+        .. code-block:: py
+
+            import argparse
+            parser = argparse.ArgumentParser(description='manual to this script')
+            parser.add_argument('--gpus', type=str, default = None)
+            parser.add_argument('--batch_size', type=int, default=32)
+
+            args = parser.parse_args()
+            print(args.gpus)
+            print(args.batch_size)
+
+        .. code-block:: bash
+
+            python script.py --gpus=0,1,2 --batch_size=10
+
+
+
+- `命令行运行Python脚本时传入参数--3种方法 <https://blog.csdn.net/helloasimo/article/details/124210144>`_
+- `命令行运行Python脚本时传入参数的三种方式 <https://blog.csdn.net/weixin_35653315/article/details/72886718?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3.pc_relevant_antiscanv2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3.pc_relevant_antiscanv2&utm_relevant_index=6>`_
+
+Todo
+********************
 
 [import雜談之三———sys.path的洪荒之時]
 
