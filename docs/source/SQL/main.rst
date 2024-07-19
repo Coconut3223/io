@@ -161,7 +161,6 @@ query
         .. danger:: 要加引号
     - 转换
     - 轉換格式  ``date_format(date, format)`` 
-
         .. table::
 
             +--------+---------------+
@@ -181,7 +180,6 @@ query
             +--------+---------------+
 
     - 时间戳
-    
         .. note::  "时间戳和日期格式之间"
             在实际工作环境中，对于用户行为发生的时间通常都是用**时间戳**进行记录，时间戳和日期格式之间可以利用 ``from_unixtime``  和  ``unix_timestamp``  进行转换。
             
@@ -196,7 +194,6 @@ query
                 From question_practice_detail;           
 
 - 拿到信息，based on 常见时间格式
-  
     .. table::
 
         +----------------------------------------+------------------------+----------------------------------------+
@@ -208,7 +205,6 @@ query
         +----------------------------------------+------------------------+----------------------------------------+
 
 - 日期差計算
-
     .. table::
 
         +------+---------------------------------------------------------------------+
@@ -253,7 +249,6 @@ query
         where timestampdiff(minute, start_time, submit_time) < 5 and score < 60; 
 
 - [日期函数]
-
     .. hint:: 现在运营想要计算出2021年8月每天用户练习题目的数量
 
         .. code-block:: sql
@@ -307,7 +302,6 @@ query
 需要进行再一步提取处理
 
 - 找位置， return 位置索引
-
     返回子串  ``substr``  在字符串  ``str``  中第一次出现的位置，if not exist: 0；
     
     -  ``locate(substr, str)`` 
@@ -319,7 +313,6 @@ query
         | locate、position 和 instr 的差別只是参数的位置不同，
         | 同时locate 多一个请始位置的参数外,可以自定义选择的起始位置
 - 替代 like
-
     .. code-block:: sql
 
         # 1. 替代 like
@@ -397,7 +390,6 @@ query
     | 通常会导致服务器性能下降。
 
     - 后缀搜索
-
         .. note:: 对后缀搜索的优化：
             可以通过创建新列、将其值设置为与目标列逆序的值并对其建立索引来执行高效的后缀搜索。从后缀转为前缀
 
@@ -410,12 +402,10 @@ query
                 where name_reversed like 'ic%'
 
     - 中缀搜索
-  
         .. danger:: ``fulltext index``
             没有有效的方法来执行 **中缀搜索**，无论是LIKE在索引列上还是使用全文索引。
 
 1. sql 自带 模式匹配  ``like``  + 通配符  ``%_`` 
-
     .. table::
 
         +--------+-----------------+
@@ -427,7 +417,6 @@ query
         +--------+-----------------+
 
     - 精确匹配。如果不跟通配符合用就等于  ``=`` ：精确等于。不能返回包含关系的行
-
         .. code-block:: sql
 
             # 精确匹配
@@ -438,7 +427,6 @@ query
 
     - **注意大小写**， 因为sql自带的，所以是否区分大小写看用户对MySQL的配置方式
     - **不能匹配到**  ``null``
-
         .. code-block:: sql
 
             # 1. 以 ‘yes‘ 开头
@@ -462,7 +450,6 @@ query
 
 2. 正则表达  ``regexp`` 
     - 模糊匹配。如果不跟任何符号用也能模糊匹配，能返回包含关系的行
-  
         .. code-block:: sql
 
             # 模糊匹配
@@ -485,7 +472,7 @@ query
         | 每条记录只返回一次就是 **去重**， 满足多少个条件就返回多少次是 **不去重**
     2. 怎么看
         先看完 condition1 再看 condition2， 有分界线的是 **分别**
-            
+
             - 先 match  ``condition1``  然后又再 match  ``condition2`` 。每一条都先过完一遍  ``condition1`` ，再过一遍  ``condition2`` 
         
         无所谓区分，condition1 和 condition2 混杂的是 **按索引排序**
@@ -569,17 +556,16 @@ query
             ) question;
 
 - 去重
+    .. note:: "谨慎使用 DISTINCT & UNION"
+        查询调优的另一个好建议是仅在必要时使用DISTINCT和UNION运算符，因为与它们的查询会导致服务器开销，并通常会增加响应时间。考虑用UNION ALL取代UNION，用GROUP BY取代DISTINCT，以提高流程的效率
 
-.. note:: "谨慎使用 DISTINCT & UNION"
-    查询调优的另一个好建议是仅在必要时使用DISTINCT和UNION运算符，因为与它们的查询会导致服务器开销，并通常会增加响应时间。考虑用UNION ALL取代UNION，用GROUP BY取代DISTINCT，以提高流程的效率
+        .. code-block:: sql
 
-    .. code-block:: sql
+            # 1. 
+            select distinct cols
+            from users;
 
-        # 1. 
-        select distinct cols
-        from users;
-
-        # 2. 
+            # 2. 
 
 
 统计- 聚合函数 with  ``group by`` 
@@ -701,7 +687,6 @@ query
             order by submit_month;
 
 - 划分
-
     .. code-block:: sql
 
         select cols,
@@ -913,7 +898,6 @@ query
 
 - 同时具有分组和排序的功能
 - 不减少原表的行数
-
     ``<窗口函数> over (partition by <用于分组的列名> order by <用于排序的列名>)`` 
 
 -  ``<窗口函数>`` 

@@ -36,8 +36,9 @@ import re
 
 
 input_ = r"""
-|Level|logging.NOTSET|logging.DEBUG|logging.INFO|logging.WARNING|logging.ERROR|logging.CRITICAL|
-|Numeric value|0|10|20|30|40|50|
+|meth| ``params.query`` | 环境变量 | ``Params.Path Variabes``|
+|加在哪|url 末尾|可以插到url中|可以插到url中|
+|参数需要现跑| ❌ | ✅ | ❌ |
 """
 
 

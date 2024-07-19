@@ -1,13 +1,12 @@
 pytorch
 ##########
 
-Configuration
+
+机制
 ******************************
 
-
-## 机制
-
-### 内存共享机制
+内存共享机制
+====================
 
 为了实现高效计算，PyTorch提供了一些原地操作运算，即in-place operation，不经过复制，直接在原来的内存上进行计算。对于内存共享，主要有如下3种情况
 
@@ -18,9 +17,12 @@ Configuration
 
 `深度学习(23):numpy与tensor的数据转换、相互赋值 <https://blog.csdn.net/BIT_HXZ/article/details/129714906?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0-129714906-blog-124422603.235^v43^pc_blog_bottom_relevance_base5&spm=1001.2101.3001.4242.1&utm_relevant_index=3>`_
 
-## Configuration
 
-### pytorch 安装
+Configuration
+******************************
+
+pytorch 安装
+====================
 
 1. 是否有显卡驱动
 
@@ -48,7 +50,6 @@ Configuration
     :scale: 30%
 
 1. check
-
     .. code-block:: pycon
         :caption: 检查安装成功
 
@@ -81,7 +82,7 @@ locally disable gradient computation
 ==========
 
 .. note:: 初步检查模型是否有写错
-    
+
 	.. code-block:: py
 
         model = MyModel()
@@ -100,33 +101,37 @@ cpu & gpu
 
 ==使用方法==
 
-.. code-block:: py
-    :emphasize-lines: 2,15,17
+.. grid:: 2
 
-    """
-        :meth1: .cuda()
-        但要注意 gpu 是否可用
-    """
-    if torch.cuda.is_available():
-        model = model.cuda()
-        loss_fn = loss_fn.cuda()
+    .. grid-item::
+        :columns: 5
 
-    for data in dataloader:
-        imgs, targets = data
-        if torch.cuda.is_available():
-            imgs, targets = imgs.cuda(), targets.cuda()
+        .. code-block:: py
+            :caption: :meth1:.cuda()
 
-    """
-        :meth2: .to(device)
-    """
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+            if torch.cuda.is_available():
+                model = model.cuda()
+                loss_fn = loss_fn.cuda()
 
-    model.to(device)
-    loss_fn.to(device)
+            for data in dataloader:
+                imgs, targets = data
+                if torch.cuda.is_available():
+                    imgs = imgs.cuda(), 
+                    targets = targets.cuda()
+    .. grid-item::
+        .. code-block:: py
+            :caption: :meth2:.to(device)
 
-    for data in dataloader:
-        imgs, targets = data
-        imgs, targets = imgs.to(device), target.to(device)
+            device = torch.device('cuda' \
+            if torch.cuda.is_available() else 'cpu')
+
+            model.to(device)
+            loss_fn.to(device)
+
+            for data in dataloader:
+                imgs, targets = data
+                imgs = imgs.to(device)
+                targets = targets.to(device)
 
 
 多gpu
@@ -134,11 +139,39 @@ cpu & gpu
 
 1. 选择一个运行
 
-.. code-block:: py
+.. grid:: 2
+    
+    .. grid-item::
 
-    device = torch.device('cuda') # default = 第一块
-    device = torch.device('cuda:0') # 第一块
-    device = torch.device('cuda:1') # 第二块
+        .. code-block:: py
+            :caption: 选择最空的 gpu
+
+            def get_free_GPU():
+                def get_free_memory(i):
+                    h = nvml.nvmlDeviceGetHandleByIndex(i)
+                    info = nvml.nvmlDeviceGetMemoryInfo(h)
+                    return info.free
+
+                import pynvml as nvml
+                nvml.nvmlInit()
+                gpu_count = nvml.nvmlDeviceGetCount()
+                # print(f'There are {gpu_count} GPUs')
+                max_memory, max_idx = get_free_memory(0), 0
+                for i in range(1, gpu_count):
+                    cur_memory = get_free_memory(i) 
+                    if cur_memory > max_memory:
+                        max_memory, max_idx = cur_memory, i
+                return max_idx
+
+    .. grid-item::
+        .. code-block:: py
+            :caption: 指定一块
+
+            device = torch.device('cuda') # default = 第一块
+            device = torch.device('cuda:0') # 第一块
+            device = torch.device('cuda:1') # 第二块
+
+`pynvml <https://pypi.org/project/pynvml/>`_
 
 2. 多gpu运行
 
@@ -232,7 +265,6 @@ class DataSet
     一个虚拟的类，All datasets that represent a map from keys to data samples
 
     - 所有的 dataset 都必须继承它
-
         1. 必须重写 `__getitem__`
         2. 选择重写 `__len__`
         3. 如果 key/indice 不是 int，对应的 DataLoader 也大改
@@ -357,9 +389,10 @@ Datalodar
             else:
                 return len(self._index_sampler)   
 
-#### Data sampler
-
-##### `WeightedRandomSampler <https://pytorch.org/docs/stable/data.html#torch.utils.data.WeightedRandomSampler>`_
+Data sampler
+--------------------
+`WeightedRandomSampler <https://pytorch.org/docs/stable/data.html#torch.utils.data.WeightedRandomSampler>`_
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **样本不均衡情况下带权重随机采样**
 
@@ -396,7 +429,8 @@ Datalodar
 
 - `torch.utils.data.WeightedRandomSampler样本不均衡情况下带权重随机采样 <https://blog.csdn.net/weixin_41496173/article/details/116501428>`_
 
-## nn
+nn
+**********
 
 一些基本的东西
 ====================
@@ -813,8 +847,8 @@ activation
     shape：[B, \*] 除了必须batchsize，后面 size 都随便
 
 
-##### softmax
-
+softmax
+^^^^^^^^^^^^^^^^^^^^
 
 .. math:: 
     \text{Softmax}(x_{i}) = \frac{\exp(x_i)}{\sum_j \exp(x_j)}
@@ -1346,7 +1380,6 @@ representation
     [在jupyter lab中使用tensorboard报错 UsageError: Line magic function `%tensorboard` not found.]
 
 - SummaryWriter
-
     .. code-block:: py
 
         writer = SummaryWriter()
