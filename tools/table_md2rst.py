@@ -36,21 +36,12 @@ import re
 
 
 input_ = r"""
-||str|int|float|
-|0|a|1|0.1|
-|1|b|2|0.2|
-|2|c|3|0.3|
-|3|d|4|0.4|
-|4|e|5|0.5|
-|5|f|6|0.6|
-|6|g|7|0.7|
-|7|h|8|0.8|
-|8|i|9|0.9|
-|9|j|10|1.0|
+|meth| ``params.query`` | 环境变量 | ``Params.Path Variabes``|
+|加在哪|url 末尾|可以插到url中|可以插到url中|
+|参数需要现跑| ❌ | ✅ | ❌ |
 """
 
 
-raise file
 
 data_list = input_.split('\n')[1:-1]
 col_num = list(map(lambda x: len(x.split('|')), data_list))

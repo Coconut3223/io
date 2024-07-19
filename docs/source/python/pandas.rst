@@ -342,6 +342,20 @@ df 替换
 ==========
 
 
+`iloc <https://pandas.pydata.org/docs/reference/api/pandas.Series.iloc.html>`_
+
+.. note:: Purely integer-location based indexing for selection by position.
+    纯靠索引, 无论是行还是列, 无论是否有label.
+
+.. grid:: 2
+
+    .. grid-item::
+
+        .. code-block:: pycon
+            
+        >>> df.iloc[1:3, 0:3]
+        >>> df.iloc[[0, 2], [1, 3]]
+        >>> df.iloc[:, lambda df: [0, 2]]
 
 
 

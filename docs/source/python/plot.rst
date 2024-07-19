@@ -104,6 +104,8 @@ configs
 - `【Matplotlib】plt.imshow() cmap色彩表 <https://blog.csdn.net/qq_43426078/article/details/123635851>`_
 - `Python-matplotlib绘制散点图-plt.scatter-颜色设置（c, cmap） <https://blog.csdn.net/qq_37851620/article/details/100642566>`_
 
+
+
 图例 legend
 ====================
 
@@ -119,10 +121,63 @@ configs
 坐标轴
 ====================
 
+隐藏坐标轴
+--------------------
+
 .. code-block:: py
 
     ax.spines['right'].set_visible(False)  # 右面的边隐藏
     ax.spines['top'].set_visible(False)  # 上面的边隐藏
+
+
+坐标轴刻度间隔以及刻度范围
+----------------------------------------
+
+.. note:: 设置刻度范围的时候，多设置半个刻度间隔。
+    
+    因为不满一个刻度间隔，所以数字不会显示出来，但是能看到一点空白。显得不会太挤。
+
+.. code-block:: py
+
+    import matplotlib.pyplot as plt
+    from matplotlib.pyplot import MultipleLocator
+    # 用于设置刻度间隔
+    
+    plt.tick_params(
+        axis='both',  # 'x'、'y'、'both'
+        width=2, length=20,  # 长宽
+        color='red'  # 颜色
+        which='major',
+        labelsize=14
+    )
+
+    ax=plt.gca() # ax为两条坐标轴的实例
+
+    # 刻度间隔
+    x_major_locator = MultipleLocator(1)  # 刻度间隔=1
+    y_major_locator=MultipleLocator(10)  # 刻度间隔=10
+    ax.xaxis.set_major_locator(x_major_locator)  # x主刻度=1的倍数
+    ax.yaxis.set_major_locator(y_major_locator)  # y主刻度=10的倍数
+
+    # 刻度范围
+    plt.xlim(-0.5,11)  # -0.5到11
+    plt.ylim(-5,110)  # -5到110
+
+.. grid:: 2
+
+    .. grid-item::
+        .. figure:: https://img-blog.csdnimg.cn/20190507110725787.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDUyMDI1OQ==,size_16,color_FFFFFF,t_70
+
+            before
+
+    .. grid-item::
+        .. figure:: https://img-blog.csdnimg.cn/20190507112143613.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDUyMDI1OQ==,size_16,color_FFFFFF,t_70
+
+            after
+
+- `matplotlib命令与格式：tick_params参数刻度线样式设置 <https://blog.csdn.net/helunqu2017/article/details/78736554>`_
+- `Python设置matplotlib.plot的坐标轴刻度间隔以及刻度范围 <https://blog.csdn.net/weixin_44520259/article/details/89917026>`_
+
 
 一些杂的
 ====================
@@ -138,5 +193,6 @@ configs
         .. image:: ./pics/plot_2.png
             :scale: 30%
 
-
+中文乱码
+--------------------
 
