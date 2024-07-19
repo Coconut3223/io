@@ -323,9 +323,19 @@
         </li>
         <li class="md-nav__item"><a href="#legend" class="md-nav__link">图例 legend</a>
         </li>
-        <li class="md-nav__item"><a href="#id2" class="md-nav__link">坐标轴</a>
+        <li class="md-nav__item"><a href="#id2" class="md-nav__link">坐标轴</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id3" class="md-nav__link">隐藏坐标轴</a>
         </li>
-        <li class="md-nav__item"><a href="#id3" class="md-nav__link">一些杂的</a>
+        <li class="md-nav__item"><a href="#id4" class="md-nav__link">坐标轴刻度间隔以及刻度范围</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#id5" class="md-nav__link">一些杂的</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id6" class="md-nav__link">中文乱码</a>
+        </li></ul>
+            </nav>
         </li></ul>
             </nav>
         </li></ul>
@@ -399,9 +409,19 @@
         </li>
         <li class="md-nav__item"><a href="#legend" class="md-nav__link">图例 legend</a>
         </li>
-        <li class="md-nav__item"><a href="#id2" class="md-nav__link">坐标轴</a>
+        <li class="md-nav__item"><a href="#id2" class="md-nav__link">坐标轴</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id3" class="md-nav__link">隐藏坐标轴</a>
         </li>
-        <li class="md-nav__item"><a href="#id3" class="md-nav__link">一些杂的</a>
+        <li class="md-nav__item"><a href="#id4" class="md-nav__link">坐标轴刻度间隔以及刻度范围</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#id5" class="md-nav__link">一些杂的</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id6" class="md-nav__link">中文乱码</a>
+        </li></ul>
+            </nav>
         </li></ul>
             </nav>
         </li></ul>
@@ -425,8 +445,8 @@
 </div>
 <section id="id1">
 <h2 id="id1">条形图<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
-<div class="literal-block-wrapper docutils container" id="id4">
-<div class="code-block-caption"><span class="caption-text">bar plot</span><a class="headerlink" href="#id4" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">bar plot</span><a class="headerlink" href="#id7" title="Link to this code">¶</a></div>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
@@ -440,8 +460,8 @@
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
 <div class="sd-col sd-d-flex-column docutils">
-<div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-text">scatter plot</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">scatter plot</span><a class="headerlink" href="#id8" title="Link to this code">¶</a></div>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="k">def</span> <span class="nf">plot_with_labels</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">'tsne.png'</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
@@ -484,11 +504,11 @@
 </div>
 </div>
 <div class="sd-col sd-d-flex-column docutils">
-<figure class="align-default" id="id6">
+<figure class="align-default" id="id9">
 <a class="reference internal image-reference" href="../_images/plot_1.png"><img alt="../_images/plot_1.png" src="../_images/plot_1.png" style="width: 300.0px; height: 240.0px;"/>
 </a>
 <figcaption>
-<p><span class="caption-text">画的图</span><a class="headerlink" href="#id6" title="Link to this image">¶</a></p>
+<p><span class="caption-text">画的图</span><a class="headerlink" href="#id9" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <div class="admonition-legend admonition note">
@@ -498,8 +518,8 @@
 <div class="line">We colored the scatterplot using numerical code for the species variable.</div>
 <div class="line">We can maually specify labels for legend. <strong>We define labels using a list of species names first.</strong></div>
 </div>
-<div class="literal-block-wrapper docutils container" id="id7">
-<div class="code-block-caption"><span class="caption-text">scatter.legend</span><a class="headerlink" href="#id7" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">scatter.legend</span><a class="headerlink" href="#id10" title="Link to this code">¶</a></div>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">legend_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span>
     <span class="n">scatter</span><span class="o">.</span><span class="n">legend_elements</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span>
     <span class="n">classes</span><span class="p">)</span>
@@ -537,13 +557,72 @@
 </section>
 <section id="id2">
 <h3 id="id2">坐标轴<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<section id="id3">
+<h4 id="id3">隐藏坐标轴<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h4>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'right'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># 右面的边隐藏</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">'top'</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># 上面的边隐藏</span>
 </pre></div>
 </div>
 </section>
-<section id="id3">
-<h3 id="id3">一些杂的<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<section id="id4">
+<h4 id="id4">坐标轴刻度间隔以及刻度范围<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
+<div class="admonition- admonition note">
+<p class="admonition-title">设置刻度范围的时候，多设置半个刻度间隔。</p>
+<p>因为不满一个刻度间隔，所以数字不会显示出来，但是能看到一点空白。显得不会太挤。</p>
+</div>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">import</span> <span class="n">MultipleLocator</span>
+<span class="c1"># 用于设置刻度间隔</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span>
+    <span class="n">axis</span><span class="o">=</span><span class="s1">'both'</span><span class="p">,</span>  <span class="c1"># 'x'、'y'、'both'</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>  <span class="c1"># 长宽</span>
+    <span class="n">color</span><span class="o">=</span><span class="s1">'red'</span>  <span class="c1"># 颜色</span>
+    <span class="n">which</span><span class="o">=</span><span class="s1">'major'</span><span class="p">,</span>
+    <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span>
+<span class="p">)</span>
+
+<span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span> <span class="c1"># ax为两条坐标轴的实例</span>
+
+<span class="c1"># 刻度间隔</span>
+<span class="n">x_major_locator</span> <span class="o">=</span> <span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 刻度间隔=1</span>
+<span class="n">y_major_locator</span><span class="o">=</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># 刻度间隔=10</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">x_major_locator</span><span class="p">)</span>  <span class="c1"># x主刻度=1的倍数</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">y_major_locator</span><span class="p">)</span>  <span class="c1"># y主刻度=10的倍数</span>
+
+<span class="c1"># 刻度范围</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">11</span><span class="p">)</span>  <span class="c1"># -0.5到11</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">110</span><span class="p">)</span>  <span class="c1"># -5到110</span>
+</pre></div>
+</div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<figure class="align-default" id="id11">
+<img alt="https://img-blog.csdnimg.cn/20190507110725787.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDUyMDI1OQ==,size_16,color_FFFFFF,t_70" src="https://img-blog.csdnimg.cn/20190507110725787.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDUyMDI1OQ==,size_16,color_FFFFFF,t_70"/>
+<figcaption>
+<p><span class="caption-text">before</span><a class="headerlink" href="#id11" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<figure class="align-default" id="id12">
+<img alt="https://img-blog.csdnimg.cn/20190507112143613.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDUyMDI1OQ==,size_16,color_FFFFFF,t_70" src="https://img-blog.csdnimg.cn/20190507112143613.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDUyMDI1OQ==,size_16,color_FFFFFF,t_70"/>
+<figcaption>
+<p><span class="caption-text">after</span><a class="headerlink" href="#id12" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.csdn.net/helunqu2017/article/details/78736554">matplotlib命令与格式：tick_params参数刻度线样式设置</a></p></li>
+<li><p><a class="reference external" href="https://blog.csdn.net/weixin_44520259/article/details/89917026">Python设置matplotlib.plot的坐标轴刻度间隔以及刻度范围</a></p></li>
+</ul>
+</section>
+</section>
+<section id="id5">
+<h3 id="id5">一些杂的<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
 <div class="sd-col sd-d-flex-column docutils">
@@ -557,6 +636,9 @@
 </div>
 </div>
 </div>
+<section id="id6">
+<h4 id="id6">中文乱码<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+</section>
 </section>
 </section>
 </section>
@@ -608,7 +690,7 @@
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.4.6.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

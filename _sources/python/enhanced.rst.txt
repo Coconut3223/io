@@ -319,9 +319,9 @@ Others
 **********
 
 - Magic Number 魔数（中性词）
-   | [编程中的「魔数」（magic number）是什么意思？平时我们能接触到哪些魔数？]
-   | 一般是指 **硬写到代码里的整数常量**，数值是编程者自己指定的，其他人不知道数值有什么具体意义，表示不明觉厉，就称作magic number。编程教材书用magic number指代 **初学者不定义常量直接写数的不良习惯。**
-
+    | [编程中的「魔数」（magic number）是什么意思？平时我们能接触到哪些魔数？]
+    | 一般是指 **硬写到代码里的整数常量**，数值是编程者自己指定的，其他人不知道数值有什么具体意义，表示不明觉厉，就称作magic number。编程教材书用magic number指代 **初学者不定义常量直接写数的不良习惯。**
+    
     - **贬义词**: 指的是代码中出现的没有说明的数字。代码中突然出现一个没说明用途的数字会让其它阅读代码、维护代码的的人非常难受。
         .. hint:: ""
             例如写3.1416这种数字，也应该改为数学库中的π常数，例如Unity中的Mathf.PI。
@@ -332,7 +332,8 @@ Others
             | ELF文件头会写入一个magic number，检查这个数和自己预想的是否一致可以判断文件是否损坏。
             | 如果你用16进制编辑器打开一个文件，它的开头不是FFD8FF，那就不是jpg文件。这个魔数一般会在相关文件标准中进行规定，所有人都要遵守
 
-## ipynb
+ipynb
+**********
 
 `jupyter notebook中找不到anaconda中的python环境解决方法  <https://blog.csdn.net/sean2100/article/details/83744679>`_
 
@@ -344,10 +345,11 @@ Others
 .. warning:: 但是最近好像有点问题 对于高版本会显示 ``3.1x``
 
 
-## 常用的别的
+常用的别的
+********************
 
-
-### 进度条
+进度条
+====================
 
 ``tqdm``
 
@@ -364,7 +366,249 @@ Others
     for idx, x in enumerate(tqdm(lst)):
         ...
 
-## Todo
+
+logging
+====================
+
+.. code-block:: py
+
+    import logging
+    logging.basicConfig(filename='log_name.log', 
+                        # filemode='a',
+                        format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                        datefmt='%H:%M:%S',
+                        level=logging.DEBUG  # the minimum message level it will accept
+                        )
+
+    logging.info("Running Urban Planning")  # 写入log
+
+    logger = logging.getLogger('urbanGUI')  # ?
+
+** `message level <https://docs.python.org/3/library/logging.html#logging-levels>`_**
+
+.. table::
+
+    +-------------+--------------+-------------+------------+---------------+-------------+----------------+
+    |Level        |logging.NOTSET|logging.DEBUG|logging.INFO|logging.WARNING|logging.ERROR|logging.CRITICAL|
+    +=============+==============+=============+============+===============+=============+================+
+    |Numeric value|0             |10           |20          |30             |40           |50              |
+    +-------------+--------------+-------------+------------+---------------+-------------+----------------+
+
+
+.. danger:: 低于设定 level 的会被忽略。
+
+
+脚本传参
+====================
+
+.. code-block:: bash
+    :caption: 两种格式
+
+    python script.py 0,1,2 10  # sys.argv
+    python script.py --gpus=0,1,2 --batch_size=10  # argparse
+
+
+.. grid:: 2
+
+    .. grid-item::
+        ``sys.argv``
+
+        .. code-block:: py
+
+            import sys
+            gpus = sys.argv[1]
+            gpus = [int(gpus.split(','))]
+            batch_size = sys.argv[2]
+            print(gpus)
+            print(batch_size)
+        
+        .. code-block:: bash
+
+            python script.py 0,1,2 10
+
+    .. grid-item::
+        ``argparse``
+
+        .. code-block:: py
+
+            import argparse
+            parser = argparse.ArgumentParser(description='manual to this script')
+            parser.add_argument('--gpus', type=str, default = None)
+            parser.add_argument('--batch_size', type=int, default=32)
+
+            args = parser.parse_args()
+            print(args.gpus)
+            print(args.batch_size)
+
+        .. code-block:: bash
+
+            python script.py --gpus=0,1,2 --batch_size=10
+
+
+
+- `命令行运行Python脚本时传入参数--3种方法 <https://blog.csdn.net/helloasimo/article/details/124210144>`_
+- `命令行运行Python脚本时传入参数的三种方式 <https://blog.csdn.net/weixin_35653315/article/details/72886718?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3.pc_relevant_antiscanv2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3.pc_relevant_antiscanv2&utm_relevant_index=6>`_
+
+
+shell 命令
+====================
+
+``shutil`` & ``os``
+
+文件 & 文件夹
+--------------------
+
+- ``shutil.copy()`` 复制 & ``shutil.move()`` 移动
+    操作都一样
+- ``os.remove(file)``  & ``shutil.rmtree(folder)`` 删除
+
+
+.. code-block:: py
+
+    import shutil
+    import Others
+
+    shutil.copy('demo.txt','new_folder')  # 单纯复制过去
+    shutil.move('demo.txt','new_folder/demo1.txt')  # 移动并改名
+
+    os.remove(file)  # del 文件
+    shutil.rmtree(folder)  # del folder
+
+- `【Python】移动、复制文件到另一个文件夹、删除文件（夹） <https://blog.csdn.net/Asher117/article/details/109083247>`_
+
+RE
+==========
+
+
+表达式
+--------------------
+
+.. code-block:: py
+
+
+
+
+-  ``flags=0``  用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等
+    - re.I 忽略大小写
+    - re.X 为了增加可读性，忽略规则表达式中的空白和注释，并允许使用 ’#’ 来引导一个注释。这样可以让你把规则写得更美观些。
+
+    .. table::
+
+        +-------------+------------------------------------+---------------------------------------------------------------+
+        |symbol       |meaning                             |special usage                                                  |
+        +=============+====================================+===============================================================+
+        | ``\D``      |任何非十进制数字的字符              | ``re.sub(r'\D', '', string)``  只保留十进制数字               |
+        +-------------+------------------------------------+---------------------------------------------------------------+
+        | ``[0-9-]+`` |0-9 还有 ``-`` 号,  ``+`` ：不止一个| ``re.match('[0-9-]+', string)``  提取的仅包含数字和-的电话号码|
+        +-------------+------------------------------------+---------------------------------------------------------------+
+
+-  ``re.match(pattern, string, flags=0)`` 
+    - 从字符串的 **起始位置** 匹配一个模式
+    - 成功  ``return <re.Match object; span=(0, end_idx), match=pattern>`` 
+        -  ``<re.Match object>.group()``  返回正则匹配的字符串
+        -  ``<re.Match object>.start()`` ,  ``<re.Match object>.end()`` 
+        -  ``<re.Match object>.span()`` : (start, end)
+        - 不是起始位置匹配成功  ``return None`` 
+
+-  ``re.sub(pattern, repl, string, count=0, flags=0)`` 
+    -  ``count=0`` : 模式匹配后替换的最大次数，默认 0 表示替换所有的匹配。
+
+
+
+
+
+Request
+====================
+
+
+测试
+**********
+
+时间
+==========
+
+简单感觉时间可用time，但是对优化来说，得看quota，看哪部分占比比较明显，如果是那些外调的函数比较明显的话，那也木有办法。
+
+.. warning:: 加载模型尽量在外部一次加载，load是比较慢的，不要每次调每次都加载。
+
+time
+--------------------
+
+.. code-block:: py
+
+    import time
+
+    start = time.time()
+    main()
+    print(time.time()-start)  # 秒
+
+``cProfile``  +  ``pstats`` 
+----------------------------------------
+.. table::
+
+    +---------------------+-------------------------------------------------------------+
+    | ``cProfile``  结果列|意思                                                         |
+    +=====================+=============================================================+
+    |ncalls               |调用次数                                                     |
+    +---------------------+-------------------------------------------------------------+
+    |tottime              |在指定函数中消耗的总时间<u>（不包括调用子函数的时间）</u>    |
+    +---------------------+-------------------------------------------------------------+
+    |percall              | = tottime / ncalls                                          |
+    +---------------------+-------------------------------------------------------------+
+    |cumtime              |指定的函数<u>及其所有子函数</u>（从调用到退出）消耗的总时间。|
+    +---------------------+-------------------------------------------------------------+
+    |percall              | = cumtime / ncalls, 函数运行一次的平均时间                  |
+    +---------------------+-------------------------------------------------------------+
+    |filename             |函数名                                                       |
+    +---------------------+-------------------------------------------------------------+
+
+.. table::
+
+    +-----------------+--------------------------------------------------+
+    | ``pstats``  函数|意思                                              |
+    +=================+==================================================+
+    |strip_dirs()     |移除了所有模块名称中的多余路径                    |
+    +-----------------+--------------------------------------------------+
+    |sort_stats(key)  |对key列 ==降序== 排序                         |
+    +-----------------+--------------------------------------------------+
+    |print_stats(n)   | 打印统计数据 , default n = all                   |
+    +-----------------+--------------------------------------------------+
+    |print_callers(n) |每个被列出的函数的调用方列表 , default n = all    |
+    +-----------------+--------------------------------------------------+
+
+
+.. code-block:: py
+    :caption: main.py
+
+    def run():
+        pass
+    
+    if __name__ == '__main__':
+        for i in rang(10):
+            run()
+
+.. code-block:: bash
+
+    python -m cProfile -o output_file main.py
+    # 将结果写入文件
+
+.. code-block:: py
+    :caption: analysis.py
+
+    import pstats
+    from pstats import SortKey
+    p = pstats.Stats('./output_file')
+
+    # 按一个函数中的累计时间对性能分析数据进行排序,打印多的30行
+    p.sort_stats(SortKey.CUMULATIVE).print_stats(30)
+    # 每个函数耗费的时间进行排序，然后打印前十个函数的统计数据 
+    p.sort_stats(SortKey.TIME).print_stats(10)
+    # 以时间为主键，并以累计时间为次键进行排序，然后打印10条
+    p.sort_stats(SortKey.TIME, SortKey.CUMULATIVE).print_stats(.5)
+
+
+Todo
+********************
 
 [import雜談之三———sys.path的洪荒之時]
 

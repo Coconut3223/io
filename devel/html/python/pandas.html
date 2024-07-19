@@ -530,6 +530,25 @@
 </section>
 <section id="id2">
 <h4 id="id2">取列<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h4>
+<p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.iloc.html">iloc</a></p>
+<div class="admonition-purely-integer-location-based-indexing-for-selection-by-position admonition note">
+<p class="admonition-title">Purely integer-location based indexing for selection by position.</p>
+<p>纯靠索引, 无论是行还是列, 无论是否有label.</p>
+</div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 <p><a class="reference external" href="https://www.cnblogs.com/nxf-rabbit75/p/10105271.html">pandas取dataframe特定行/列</a></p>
 </section>
 </section>
@@ -583,7 +602,7 @@
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.4.6.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

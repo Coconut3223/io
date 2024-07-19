@@ -349,8 +349,8 @@
         </li></ul>
             </nav>
         </li>
-        <li class="md-nav__item"><a href="#id5" class="md-nav__link">字符 问题</a><nav class="md-nav">
-              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id5" class="md-nav__link">字符 问题</a>
+        </li>
         <li class="md-nav__item"><a href="#clumsy" class="md-nav__link">clumsy</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#id7" class="md-nav__link">使用</a><nav class="md-nav">
@@ -362,6 +362,12 @@
             </nav>
         </li></ul>
             </nav>
+        </li>
+        <li class="md-nav__item"><a href="#postman" class="md-nav__link">Postman</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id8" class="md-nav__link">传参</a>
+        </li>
+        <li class="md-nav__item"><a href="#errors" class="md-nav__link">Errors</a>
         </li></ul>
             </nav>
         </li></ul>
@@ -431,12 +437,12 @@
 <p><span class="defi">Docker 镜像</span> 是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像 <strong>不包含</strong> 任何动态数据，其内容在构建之后也不会被改变。</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">images</span></code>   查看所有的 images</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">&lt;images(repository)_name&gt;</span></code></p>
-<blockquote>
-<div><div class="admonition-docker-pull-ubuntu admonition hint">
+<li><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">&lt;images(repository)_name&gt;</span></code></dt><dd><div class="admonition-docker-pull-ubuntu admonition hint">
 <p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">ubuntu</span></code></p>
 </div>
-</div></blockquote>
+</dd>
+</dl>
 </li>
 </ul>
 </section>
@@ -452,13 +458,13 @@
 <p class="admonition-title">使用images(repository)上的container</p>
 </div>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">--name</span> <span class="pre">&lt;container_name&gt;</span> <span class="pre">-it</span> <span class="pre">&lt;images(repository)_name&gt;</span> <span class="pre">/bin/bash</span></code>  创建image上的container</p>
-<blockquote>
-<div><div class="admonition-docker-run-name-my-ubuntu-it-ubuntu-bin-bash admonition hint">
+<li><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">--name</span> <span class="pre">&lt;container_name&gt;</span> <span class="pre">-it</span> <span class="pre">&lt;images(repository)_name&gt;</span> <span class="pre">/bin/bash</span></code>  创建image上的container</dt><dd><div class="admonition-docker-run-name-my-ubuntu-it-ubuntu-bin-bash admonition hint">
 <p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">--name</span> <span class="pre">my_ubuntu</span> <span class="pre">-it</span> <span class="pre">ubuntu</span> <span class="pre">/bin/bash</span></code></p>
 </div>
 <p>💡 每一次run都是create 完全新的container</p>
-</div></blockquote>
+</dd>
+</dl>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">exit</span></code>  退出container</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span> <span class="pre">-a</span></code>   查看所有的containers</p></li>
@@ -530,16 +536,16 @@
 </tbody>
 </table>
 <ul>
-<li><p><span class="defi">UTF-8 Unicode Transformation Format-8</span> 是一种基于 <strong>Unicode的字符编码方案</strong>。它使用可变长度的编码方式，可以表示Unicode字符集中的所有字符。</p>
-<blockquote>
-<div><div class="line-block">
+<li><dl>
+<dt><span class="defi">UTF-8 Unicode Transformation Format-8</span> 是一种基于 <strong>Unicode的字符编码方案</strong>。它使用可变长度的编码方式，可以表示Unicode字符集中的所有字符。</dt><dd><div class="line-block">
 <div class="line">特点： <strong>兼容ASCII编码</strong> ，即ASCII字符的UTF-8编码与ASCII编码完全一致，不会引入额外的字节。对于非ASCII字符，UTF-8使用多字节表示，根据字符的Unicode编码点范围，将字符编码为1到4个字节。</div>
 <div class="line">优势：它既可以表示Unicode字符集中的所有字符，又能够高效地处理ASCII字符，使得在存储和传输文本数据时节省空间和带宽。因此，UTF-8成为了互联网上使用最广泛的字符编码方案。</div>
 </div>
 <div class="admonition-utf-8-unicode-unicode-ascii admonition note">
 <p class="admonition-title">总结: UTF-8 是基于 Unicode 的一种字符编码方案，用于表示 Unicode 字符集中的字符，并且兼容 ASCII 编码。</p>
 </div>
-</div></blockquote>
+</dd>
+</dl>
 </li>
 <li><p>gbk</p></li>
 </ul>
@@ -585,8 +591,9 @@ end
 </span><span class="go">'A'</span>
 </pre></div>
 </div>
+</section>
 <section id="clumsy">
-<h3 id="clumsy">clumsy<a class="headerlink" href="#clumsy" title="Link to this heading">¶</a></h3>
+<h2 id="clumsy">clumsy<a class="headerlink" href="#clumsy" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://jagt.github.io/clumsy/cn/index.html">official</a></p></li>
 <li><p><a class="reference external" href="https://www.lfzxb.top/clumsy-guide/">弱网模拟工具Clumsy使用指南</a></p></li>
@@ -601,30 +608,30 @@ end
 <p>当clumsy被激活时，只有符合这些标准的网络数据会被进行处理，而你不需要的数据仍然会由系统正常传输。</p>
 </div>
 <section id="id7">
-<h4 id="id7">使用<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h4>
+<h3 id="id7">使用<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>自定义filter，正确的 WinDivert 规则</p></li>
 <li><p>如果有预设的filter 可以自定义 see: #self-define-presets</p></li>
 <li><p>&lt;kbd&gt;Start&lt;/kbd&gt;。</p></li>
 <li><p>选择&lt;kbd&gt;Fuctions&lt;/kbd&gt;，对应指标前面出现绿点，表示该项拦截生效</p></li>
-<li><p>修改params</p>
-<blockquote>
-<div><img alt="../_images/clumsy_0.png" src="../_images/clumsy_0.png"/>
-</div></blockquote>
+<li><dl>
+<dt>修改params</dt><dd><img alt="../_images/clumsy_0.png" src="../_images/clumsy_0.png"/>
+</dd>
+</dl>
 </li>
-<li><p>通过 ping 网络，查看工具模拟网络是否生效</p>
-<blockquote>
-<div><img alt="../_images/clumsy_1.png" src="../_images/clumsy_1.png"/>
-</div></blockquote>
+<li><dl>
+<dt>通过 ping 网络，查看工具模拟网络是否生效</dt><dd><img alt="../_images/clumsy_1.png" src="../_images/clumsy_1.png"/>
+</dd>
+</dl>
 </li>
 </ol>
 <section id="self-define-kbd-presets-kbd">
-<h5 id="self-define-kbd-presets-kbd">Self-define &lt;kbd&gt;presets&lt;/kbd&gt;<a class="headerlink" href="#self-define-kbd-presets-kbd" title="Link to this heading">¶</a></h5>
+<h4 id="self-define-kbd-presets-kbd">Self-define &lt;kbd&gt;presets&lt;/kbd&gt;<a class="headerlink" href="#self-define-kbd-presets-kbd" title="Link to this heading">¶</a></h4>
 <p>软件根目录下的&lt;kbd&gt;config.txt&lt;/kbd&gt;以&lt;u&gt;键值对&lt;/u&gt;的形式填写自己的配置</p>
 <div class="admonition-udp admonition hint">
 <p class="admonition-title">添加一个 起始和目标端口为10003，10004的udp连接 配置</p>
-<div class="literal-block-wrapper docutils container" id="id8">
-<div class="code-block-caption"><span class="caption-text">config.txt</span><a class="headerlink" href="#id8" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">config.txt</span><a class="headerlink" href="#id10" title="Link to this code">¶</a></div>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span># you can add your usual filters here for your own use:
 #http requests ONLY(data transmit on other ports): outbound and tcp.DstPort == 80
 NKGMoba: udp and (udp.DstPort == 10003 or udp.DstPort == 10004) \
@@ -635,7 +642,7 @@ or (udp.SrcPort == 10003 or udp.SrcPort == 10004)
 </div>
 </section>
 <section id="functions">
-<h5 id="functions">Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h5>
+<h4 id="functions">Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p><strong>Lag</strong>, 延迟，把数据包缓存一段时间后再发出，这样能够模拟网络延迟的状况。</p></li>
 <li><p><strong>Drop</strong>, 掉包，随机丢弃一些数据。</p></li>
@@ -657,6 +664,82 @@ or (udp.SrcPort == 10003 or udp.SrcPort == 10004)
 <p><a class="reference external" href="https://testerhome.com/topics/11001/show_wechat">Example</a></p>
 </section>
 </section>
+</section>
+<section id="postman">
+<h2 id="postman">Postman<a class="headerlink" href="#postman" title="Link to this heading">¶</a></h2>
+<section id="id8">
+<h3 id="id8">传参<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<table>
+<thead>
+<tr class="row-odd"><th class="head"><p>meth</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">params.query</span></code></p></th>
+<th class="head"><p>环境变量</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">Params.Path</span> <span class="pre">Variabes</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>加在哪</p></td>
+<td><p>url 末尾</p></td>
+<td><p>可以插到url中</p></td>
+<td><p>可以插到url中</p></td>
+</tr>
+<tr class="row-odd"><td><p>参数需要现跑</p></td>
+<td><p>❌</p></td>
+<td><p>✅</p></td>
+<td><p>❌</p></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">Params.query</span></code></dt><dd><figure class="align-default" id="id11">
+<a class="reference internal image-reference" href="../_images/postman_2.png"><img alt="../_images/postman_2.png" src="../_images/postman_2.png" style="width: 425.4px; height: 210.6px;"/>
+</a>
+<figcaption>
+<p><span class="caption-text">以 <code class="docutils literal notranslate"><span class="pre">?&amp;</span></code> 连接，加入到地址后面</span><a class="headerlink" href="#id11" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><code class="docutils literal notranslate"><span class="pre">Params.Path</span> <span class="pre">Variabes</span></code></dt><dd><figure class="align-default" id="id12">
+<a class="reference internal image-reference" href="../_images/postman_3.png"><img alt="../_images/postman_3.png" src="../_images/postman_3.png" style="width: 466.79999999999995px; height: 254.39999999999998px;"/>
+</a>
+<figcaption>
+<p><span class="caption-text">带有 <code class="docutils literal notranslate"><span class="pre">:</span></code> 的占位符进行引用。 在用户输入路径参数时，Postman 将在 Params 选项卡的Path Variabes中自动填充它</span><a class="headerlink" href="#id12" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>使用环境变量</dt><dd><figure class="align-default" id="id13">
+<a class="reference internal image-reference" href="../_images/postman_1.png"><img alt="../_images/postman_1.png" src="../_images/postman_1.png" style="width: 428.4px; height: 141.6px;"/>
+</a>
+<figcaption>
+<p><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">pm.environment.set(env_var_name,</span> <span class="pre">env_var_value)</span></code> 设环境变量, <code class="docutils literal notranslate"><span class="pre">ID</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">format</span></code> 是环境变量，在目前的环境中，都可以通过 <code class="docutils literal notranslate"><span class="pre">{{env_var_name}}</span></code> == <code class="docutils literal notranslate"><span class="pre">{{ID}}</span></code>  &amp; <code class="docutils literal notranslate"><span class="pre">{{format}}</span></code> 来使用这个变量。</span><a class="headerlink" href="#id13" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Refs</dt><dd><div class="line-block">
+<div class="line"><a class="reference external" href="https://www.cnblogs.com/gsh-test/p/15884356.html">postman中用当前时间戳做请求的入参</a></div>
+<div class="line"><a class="reference external" href="https://www.cnblogs.com/gsh-test/p/15901070.html">postman中，一种新奇的在请求的url带请求参数的方法</a></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="errors">
+<h3 id="errors">Errors<a class="headerlink" href="#errors" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Error:</span> <span class="pre">Maximum</span> <span class="pre">response</span> <span class="pre">size</span> <span class="pre">reached</span></code> : <code class="docutils literal notranslate"><span class="pre">File</span></code> in navigation bar -》 <code class="docutils literal notranslate"><span class="pre">Settings</span></code> -》 <code class="docutils literal notranslate"><span class="pre">Max</span> <span class="pre">response</span> <span class="pre">size</span> <span class="pre">in</span> <span class="pre">MB</span></code> 改大一点</p></li>
+</ul>
+<p><a class="reference external" href="https://blog.csdn.net/taoshihan/article/details/119902455">[开发工具] 解决postman报错：Error: Maximum response size reached</a></p>
 </section>
 </section>
 </section>
@@ -708,7 +791,7 @@ or (udp.SrcPort == 10003 or udp.SrcPort == 10004)
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.4.6.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>
