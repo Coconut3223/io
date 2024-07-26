@@ -1954,25 +1954,41 @@ str的 转换
 
 list ↔️ str
 
--  ``str = ''.join(lst)`` 
--  ``lst = str.split(':')`` 
-    -  ``lst = str.split(':', 1)`` 
-    -  ``lst = str.rsplit(':', 1)`` 
--  ``lst = list(str)`` 
+.. grid:: 2
 
-.. code-block:: pycon
+    .. grid-item::
 
-    >>> a = 'a:a:a:a'
-    >>> list(a)
-    ['a', ':', 'a', ':', 'a', ':', 'a']
-    >>> a.split()
-    ['a:a:a:a']
-    >>> a.split(':')
-    ['a', 'a', 'a', 'a']
-    >>> a.split(':', 1)
-    ['a', 'a:a:a']
-    >>> a.rsplit(':', 1)
-    ['a:a:a', 'a']
+        -  ``str = ''.join(lst)`` 
+        -  ``lst = str.split(':')`` 
+            -  ``lst = str.split(':', 1)`` 
+            -  ``lst = str.rsplit(':', 1)`` 
+        -  ``lst = list(str)`` 
+
+    .. grid-item::
+        .. code-block:: pycon
+
+            >>> a = 'a:a:a:a'
+            >>> list(a)
+            ['a', ':', 'a', ':', 'a', ':', 'a']
+            >>> a.split()
+            ['a:a:a:a']
+            >>> a.split(':')
+            ['a', 'a', 'a', 'a']
+            >>> a.split(':', 1)
+            ['a', 'a:a:a']
+            >>> a.rsplit(':', 1)
+            ['a:a:a', 'a']
+
+.. note:: python多空格字符串
+
+    .. code-block:: pycon
+
+        >>> string = "a bb  cccc   dd"
+        >>> string.split(' ')  # 指定了一个空字符格  False 
+        ['a', 'bb', '', 'cccc', '', '', 'dd']  # 只是用一个
+        >>> string.split()  # 不指定  True
+        ['a', 'bb', 'cccc', 'dd']  # 凡是用空格分隔就会被切，不管有多少个空格
+
 
 散列表-support
 ====================
@@ -3336,17 +3352,59 @@ output  格式化输出
 - f-string
     Python3.6 新增了一种 f-字符串格式化，也可以写成print(f"训练数据集的长度为:{train_data_size}")
 
+
+.. grid:: 2
+
+    .. grid-item::
+
+        ``f'{num:xxx}'``
+
+        .. table::
+
+            +-------+--------+------+---------------+
+            |``xxx``|width   |0width|width.precision|
+            +=======+========+======+===============+
+            |meaning|指定宽度|0补全 |宽度.小数位    |
+            +-------+--------+------+---------------+
+
+
+
+
+    .. grid-item::
+
+        .. code-block:: pycon
+            :caption: 打印的时候保留多少位小数
+            :emphasize-lines: 2
+            
+            >>> a = 1.2345
+            >>> f'{a:.2f}' 
+            '1.23'
+    
+
+    
+.. table::
+
+    +-----------+-----+-------+-------+-------+
+    |format     |``d``|``2d`` |``02d``|``-2d``|
+    +===========+=====+=======+=======+=======+
+    |notes      |正常 |宽度为2                |
+    +-----------+-----+-------+-------+-------+
+    |placeholder|❌   |`` ``  |``0``  |`` ``  |
+    +-----------+-----+-------+-------+-------+
+    |对齐       |❌   |右             |左     |
+    +-----------+-----+-------+-------+-------+
+
 .. code-block:: pycon
-    :caption: 打印的时候保留多少位小数
-    :emphasize-lines: 2
+
+    >>> a, b = 2, 200
+    >>> func = lambda x: f'{x:d}_{x:2d}_{x:02d}_{x:-2d}'
+    >>> func(a)
+    '2_ 2_02_ 2'
+    >>> func(b)
+    '200_200_200_200'
+
+`Python中的{:02d}是什么意思 <https://blog.csdn.net/weixin_46713695/article/details/125250239>`_
     
-    >>> a = 1.2345
-    >>> f'{a:.2f}' 
-    '1.23'
-    
-
-
-
 读写文件
 ********************
 文件路径
@@ -3433,26 +3491,7 @@ read(), readline(), readlines()
             >>>     res = f.readlines()
             ['aaa\n', 'bbb\n', '\n']
 
-json
-==========
 
-.. note:: 写中文
-
-    - ``encoding='utf-8'``
-    - ``ensure_ascii=False``
-
-.. code-block:: py
-
-    import json
-    try:
-        with open(json_path, 'r', encoding='utf-8') as f:
-            data_dict = json.load(f)
-    except FileNotFoundError:
-        print(f'{json_path} doesnt exist.')
-        return ''
-
-    with open('./built-in.json', 'w', encoding='utf-8') as f:
-        json.dump(res, f, indent=4, ensure_ascii=False)
 
 
 快速序列

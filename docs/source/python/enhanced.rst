@@ -348,6 +348,15 @@ ipynb
 常用的别的
 ********************
 
+
+os
+==========
+
+.. danger:: ``os.listdir()`` 返回的只是一个某个路径下的文件和列表的名称, 甚至不是相对路径，只是文件名字
+
+    需要 ``os.path.join()`` 来拼接
+
+
 进度条
 ====================
 
@@ -384,7 +393,7 @@ logging
 
     logger = logging.getLogger('urbanGUI')  # ?
 
-** `message level <https://docs.python.org/3/library/logging.html#logging-levels>`_**
+`message level <https://docs.python.org/3/library/logging.html#logging-levels>`_
 
 .. table::
 
@@ -484,9 +493,6 @@ RE
 --------------------
 
 .. code-block:: py
-
-
-
 
 -  ``flags=0``  用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等
     - re.I 忽略大小写
@@ -605,6 +611,258 @@ time
     p.sort_stats(SortKey.TIME).print_stats(10)
     # 以时间为主键，并以累计时间为次键进行排序，然后打印10条
     p.sort_stats(SortKey.TIME, SortKey.CUMULATIVE).print_stats(.5)
+
+time
+==========
+
+.. code-block:: py
+    :caption: 秒的换算关系
+
+    def second_2_standard(total_second):
+        hours, reminder = divmod(total_second, 3600) 
+        minutes, reminder = divmod(reminder, 60)
+        seconds, reminder = divmod(reminder, 1)
+        centiseconds = reminder * 100
+        milliseconds = centiseconds * 10
+        print(f"{int(hours):02}:{int(minutes):02}:{int(seconds):02},{int(milliseconds):03}")
+
+
+        second_2_standard(11111.33)
+        # 03:05:11,329
+
+
+json
+==========
+
+
+.. grid:: 2
+
+    .. grid-item::
+        
+        .. code-block:: py
+            :caption: dict -- Str
+
+            dict = json.loads(str)
+            str = json.dumps(str)
+
+
+    .. grid-item::
+
+        .. code-block:: py
+            :caption: dict -- json 文件
+
+            dict = json.load(json_file)
+            with open(json_file, 'w') as fp:
+                json.dump(dict, fp)
+
+
+
+
+.. note:: 写中文
+
+    - ``encoding='utf-8'``
+    - ``ensure_ascii=False``
+
+.. code-block:: py
+
+    import json
+    try:
+        with open(json_path, 'r', encoding='utf-8') as f:
+            data_dict = json.load(f)
+    except FileNotFoundError:
+        print(f'{json_path} doesnt exist.')
+        return ''
+
+    with open('./built-in.json', 'w', encoding='utf-8') as f:
+        json.dump(res, f, indent=4, ensure_ascii=False)
+
+pip 环境
+******************************
+
+``requirements.txt``, ``environment.yml`` 是同一类的东西，它们提供的是当前软件包安装运行所需要的环境或者依赖信息，即这些东西的安装是当前软件包安装和运行的前提条件。这些信息相当于是开发者给使用者提供的用于恢复自己开发时的环境的信息。
+
+.. danger:: ``environment.yml`` !!
+
+    1. ``environment.yml`` 已指定 虚拟环境的名字，要check 当前虚拟环境列表里没有重名的
+    2. check yml文件最后一行是 ``prefix: E:\anacodna3\envs\pytorch`` 这是个虚拟环境路径
+
+.. grid:: 2
+
+    .. grid-item::
+
+        **requirements.txt** --- ``pip``
+        .. code-block:: bash
+            :caption: 只想生成当前项目依赖的
+
+            cd project/root
+            pip install pipreqs
+            pipreqs . --encoding=utf8 --force  
+            # 当前目录生成
+
+            # 安装
+            pip install -r requirements.txt
+
+    .. grid-item::
+
+        **environment.yml**  --- ``conda env create``
+
+        .. code-block:: bash
+            :caption: 只想生成当前项目依赖的
+
+            cd project/root
+            conda env export > environment.yml
+            # 当前目录生成
+
+            # 创建
+            conda env create -f environment.yml
+
+`Python库安装之requirements.txt, environment.yml <https://blog.csdn.net/chenxy_bwave/article/details/121187923>`_
+
+Type & Typing 类型声明
+******************************
+
+
+判断 变量是哪种类型
+==============================
+
+- ``isinstance()``：认为子类是一种父类类型，考虑继承关系
+- ``type()``：不会认为子类是一种父类类型，不考虑继承关系。
+
+如果要判断两个类型是否相同推荐使用 isinstance()。
+
+
+.. danger:: Type 变量是哪种类型
+
+    .. grid:: 2
+
+        .. grid-item::
+            .. code-block:: pycon 
+                :caption: Wrong
+
+                >>> from typing import List
+                >>> a = [1,2,3]
+                >>> type(a)==List
+                False
+        
+        .. grid-item::
+            .. code-block:: pycon 
+                :caption: True
+                
+                >>> type(a)==list
+                True
+
+.. note:: 中英文 & 数字
+
+    利用 **Unicode**
+
+    - 中文（基本汉字）在Unicode编码中的范围：\u4e00-\u9fa5
+    - 英文单词在Unicode中的范围就是acsii码中的前英文字母，即在unicode的前128种
+
+    .. grid:: 2
+
+        .. grid-item:: 
+
+            .. code-block:: py
+                :caption: 是否是纯中文
+
+                def isChinese(ch):
+                    return '\u4e00' <= ch <= '\u9fff'
+
+                all(map(isChinese, s))
+
+
+        .. grid-item:: 
+
+            .. code-block:: py
+                :caption: 是否是纯英文
+
+                def isEnglish(ch):
+                    return 5 <= ord(ch) <= 90 or 97 <= ord(ch) <= 122
+
+                all(map(isEnglish, s))
+
+            
+    `中文字符和英文字符判断 <https://blog.csdn.net/u014147522/article/details/126308776>`_
+
+
+`python 判断变量类型 是否为list(列表) 以及dict(字典) 类型 —— isinstance() type() <https://blog.csdn.net/weixin_42649856/article/details/103578109>`_
+
+.. note:: 只是一种类型提示，对运行实际上是没有影响的，就算不对，不会报错，也不会对参数进行类型转换
+
+.. code-block:: py
+
+    from typing import List, Tuple, 
+
+    names: List[str] = ['Germey', 'Guido']
+    person: Tuple[str, int, float] = ('Mike', 22, 1.75)
+    operations: Dict[str, bool] = {'show': False, 'sort': True}
+
+    from typing import Sequence  # 序列类型 无畏 list or tuple
+
+    from typing import NoReturn
+    def hello() -> NoReturn:
+        print('hello')
+
+    from typing import Union  # 并集
+    def func(a:Union[int, str]):
+        ...
+
+    from typing import Optional  # = Union[type, None]
+    # 这个参数可以传为 None
+    def func(a:Optional[str]):
+        ...
+
+
+.. table::
+
+    +----+---------------+--------+
+    |注解|参数           |返回类型|
+    +====+===============+========+
+    |字典|``Mapping``    |``Dict``|
+    +----+---------------+--------+
+    |集合|``AbstractSet``|``Set`` |
+    +----+---------------+--------+
+
+.. note:: 关于 字典 ``Dict`` & ``Mapping``
+
+    .. grid:: 2
+
+        .. grid-item::
+
+            - ==Dict== 、字典, 是 dict 的泛型； **注解返回类型**
+            - ==Mapping== , 映射, 是 collections.abc.Mapping 的泛型 **注解参数**
+            - ==MutableMapping== 则是 Mapping 对象的子类，在很多库中也经常用 MutableMapping 来代替 Mapping。
+
+            ``Dict|Mapping[type_of_key, type_of_value]``
+
+        .. grid-item::
+
+            .. code-block:: py
+
+                from typing import Dict, Mapping
+
+                def size(rect: Mapping[str, int]) -> Dict[str, int]:
+                    return {'width': rect['width'], 'height': rect['width']}
+
+
+.. note:: 关于 集合 ``set`` & ``AbstractSet``
+
+    .. grid:: 2
+
+        .. grid-item::
+
+            - ``Set`` 集合，是 set 的泛型； **注解返回类型**
+            - ``AbstractSet`` 是 collections.abc.Set 的泛型。 **注解参数**
+
+        .. grid-item::
+
+            .. code-block:: py
+
+                from typing import Set, AbstractSet
+                def describe(s: AbstractSet[int]) -> Set[int]:
+                    return set(s)
+
+`Python 中 typing 模块和类型注解的使用 <https://cuiqingcai.com/7071.html>`_
 
 
 Todo

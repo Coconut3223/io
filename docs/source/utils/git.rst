@@ -1,6 +1,8 @@
 Git
 ##########
 
+configure and initialize a repository, begin and stop tracking files, and stage and commit changes. 
+
 Background
 ********************
 
@@ -24,9 +26,9 @@ https://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html
 通过执行版本控制、变更控制的规程，以及使用合适的配置管理软件，来保证所有配置项的完整性和可跟踪性。配置管理是对工作成果(源码文件、需求文档、设计文档，开发文档)的一种有效保护。
 
 - **集中版本控制系统**
-  
+
 是放在中央服务器上，每次只能由一个人去锁定服务器文件的去用
-  
+
 - doc-level锁，
 - row-level锁，后者就是需要提前分配好行数，然后进行比对合并，提高了多人协作水平。如果是同样对一行，那也没辙，那也只能是锁住不给别人用），在锁定期间其他人是不能进行修改的，只能查看。
 
@@ -74,12 +76,12 @@ zsh
 
         - 用户工作的地方，放代码文件的地方。
         - 需要往 repository 里放文件，就要先在工作区里放文件。Git 会自动检测这里的文件变化情况。
+        - 当 repository 里有很多 branches，工作区会自动是所选 branch 的工作地方。
 
-    - 当 repository 里有很多 branches，工作区会自动是所选 branch 的工作地方。
     - 暂存区, **Staging Area** :
 
         - 存放临时的改动, working directory 里有修改的文件需要先  ``git add file_name``  提交到 staging area，然后再 ``git commit -m <message>``  放到 local repository 里，然后就会产生一个版本号文件。
-    - 事实上它只是一个文件, 保存即将提交的文件列表信息。
+        - 事实上它只是一个文件, 保存即将提交的文件列表信息。
     - Git 目录， **.git directory, Respository**
 
         - 安全存放数据的位置, 这里面有提交到 **所有版本** 的数据。通过这个实现万一远程挂了，怎么在 local 端继续操作
@@ -88,7 +90,7 @@ zsh
         - objects dir 里是所有版本的修改情况
 - 1个远程区域
     - 远程库，Remote
-        - 托管代码的服务器，从 local repository 推送文件到远程库需要  ``git push`` , 从远程库拉取文件来更新 repository 需要  ``git pull`` 
+        托管代码的服务器，从 local repository 推送文件到远程库需要  ``git push`` , 从远程库拉取文件来更新 repository 需要  ``git pull`` 
 
 details
 ********************
@@ -141,7 +143,8 @@ git command
     :scale: 30%
 
 
-#### git init for an existed folder 
+git init for an existed folder 
+----------------------------------------
 
 .. code-block:: bash
 
@@ -153,8 +156,8 @@ git command
 
 `Error Initialize GIT git init --initial-branch=main <https://wiki.koansoftware.com/index.php/Error_Initialize_GIT_git_init_--initial-branch%3Dmain>`_
 
-#### GUI init
-
+GUI init
+--------------------
 .. image:: ./pics/gui_create_1.png
     :scale: 30%
 
@@ -205,13 +208,13 @@ git config 配置
         $ git config -e --global 
 
 日常操作
-==========
+********************
 
 提交代码
---------------------
+====================
 
 基本流程
-^^^^^^^^^^^^^^^
+--------------------
 
 1. working dir -> staging area  
     ``git add`` 
@@ -242,7 +245,7 @@ git config 配置
     - ``remote_branch``  你要 push 的那个 repository 的那个 branch
 
 一些过程中可能用到的查看指令
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------
 
 - 查看在你上次提交之后是否有对文件进行再次修改
 
@@ -269,27 +272,79 @@ git config 配置
     ``git cat-file -p`` 
     
     - 如果 error， 可以看看  ``git ls-files``  在不在暂存区里
-  
+
 - 给版本文件打标签
 
 .. image:: ./pics/tag-1.png
     :scale: 30%
 
-一些操作
-^^^^^^^^^^^^^^^
+.gitignore
+====================
 
-- 删除文件
+忽略Git中不想提交的文件
 
-    ``git rm`` 
+定义
+--------------------
 
-    .. code-block:: sh
+.. grid:: 2
 
-        # 1. 将文件从暂存区和工作区中删除
-        # 可以加上 -f, 表示强制删除之前修改过而且 add 到暂存区的文件
-        $ git rm [-f] <file>
-        
-        # 2. 将文件从暂存区删除，在工作区保留
-        $ git rm --cached <file>
+    .. grid-item::
+
+        - ``/`` 结束的模式匹配文件夹以及在该文件夹路径下的内容
+        - ``/`` 开头表示仅限根目录，如果没有就是递归搜索下全部的
+        - ``**`` 匹配任意中间目录
+        - ``!`` **不忽略** 匹配到的文件或目录
+
+        .. danger:: git 对于 .ignore 配置文件是按行从上到下进行规则匹配的，意味着如果前面的规则匹配的范围更大，则后面的规则将不会生效；
+
+            如果文件的 **父目录** 已经被前面的规则排除掉了，那么对这个文件用"!"规则是不起作用的
+            
+            .. code-block:: yaml
+                :caption: .gitignore
+
+                # Wrong
+                folder/  # 父目录已经被忽略
+                !folder/a.txt
+
+                # True
+                folder/*  # 只是排除父目录下文件
+                !folder/a.txt
+            
+
+    .. grid-item::
+        .. code-block:: yaml
+            :caption: .gitignore
+
+            # 忽略Git中不想提交的文件
+            logs/  # 所有的 logs 文件夹 & 该路径下的内容
+            /logs/ # 根目录下 logs 文件夹 & 该路径下的内容
+
+            /data/**/*.wav # 根目录下 data 下所有 wav file
+            data/**/*.wav # 所有的 data 下所有 wav file
+
+            *.pyc  # 所有的 pyc
+            /*.pyc  # 根目录下所有的 pyc
+
+忽略已经被提交的
+--------------------
+
+.. danger:: 如果某些文件已经被纳入了版本管理中，就算是在 .gitignore 中已经声明了忽略路径也是不起作用的，
+
+    ``.gitignore`` 只能起效于 Untracked Files
+
+    1. 原来没有被 **track** 的文件
+    2. 不在暂存区中才可以，``.gitignore`` 文件只是忽略没有被 staged(cached) 文件 => unstage
+    
+    **Solutions：**
+
+    1. 先把本地缓存删除但文件还保留在本地 ``git rm -r --cached folder/file``
+        ``--cached`` 本地缓存删除但文件还保留在本地
+        加上 -f **删除本地文件**
+    2. 添加 ``.gitignore`` 
+    3. git的提交
+
+`Git忽略提交规则 - .gitignore配置运维总结 <https://www.cnblogs.com/kevingrace/p/5690241.html>`_
+
 
 分支操作
 --------------------
@@ -395,8 +450,8 @@ git config 配置
         3344
         >>>>>>> feature/hotfix-002
 
-   - 从  ``<<<<<<< HEAD``  开始, 到  ``=======``  都是主分支已经存在的内容。
-   - 从  ``=======``  开始, 到  ``>>>>>>> branch``  都是 merge 过来的分支的内容。
+    - 从  ``<<<<<<< HEAD``  开始, 到  ``=======``  都是主分支已经存在的内容。
+    - 从  ``=======``  开始, 到  ``>>>>>>> branch``  都是 merge 过来的分支的内容。
 
 2. 解决冲突，视情况保留(删除)记录
 
@@ -1608,6 +1663,76 @@ drop
 如果有冲突, 需要解决冲突后, 使用  ``git add``  添加到暂存区, 然后使用  ``git cherry-pick --continue``  继续 cherry-pick 操作, 直到完成.
 
 .. danger:: 使用  ``git cherry-pick``  命令将提交应用到当前分支时，也可能会引入新的问题，因此在使用该命令时需要谨慎
+
+Merge Request
+====================
+
+==Merge Request== 分支合并请求，==Reviewer== 一般是项目、团队的负责人或者其他成员 来进行 ==Code Review== 代码复审/审查/检视。
+
+
+.. note:: 前情提要 
+    | master 分支为起点创建一个 dev 分支作为 **开发分支**.
+    | 在实际开发中，我们往往会新建一个特性分支，该分支专门为你服务，并且它专门用于处理某个bug，或者开发某个新的功能。即当有个新功能需要开发或者有bug以及优化重构部分代码时，我们就应该单独拿出一个新分支来专门处理这些事情。
+
+1. **PULL** ``origin dev`` into ``local dev`` =》 ``origin dev`` == ``local dev`` 。一定要 pull
+2. **NEW** ``local feature`` branch locally based on ``dev``
+3. **PUBLISH & PUSH** ``local feature`` to ``origin feature``
+4. **New merge request** 选中源分支、目标分支。还能看到提交记录和文件改动信息。
+
+Merge done
+
+.. grid:: 2
+
+    .. grid-item::
+
+        1. **CHECKOUT** ``local dev``
+        2. **DEL** ``local feature`` branch
+        3. **DEL** ``origin feature`` branch
+
+    .. grid-item::
+
+        | **推荐在每次完成后删除**
+        | 因为我们创建这个分支的目的就是为了开发一个新模块或者修复一个BUG，当开发工作完成后删除该分支，处理别的事情时再新建一个就好了。
+
+
+.. question:: 本来应该在 ``new feature`` 上改，但不小心直接在 ``dev`` 上改了。能不能在不动 ``dev`` 直接放到 ``new feature``
+
+    | Solution：直接切换到  ``new feature``
+    | git中存在工作区和暂存区，这两个区都是被所有本地分支共享的。
+    | 当有内容修改时，修改信息就会放在工作区中，此时如果直接检出一个新的分支，就会把工作区的内容都带过去。
+
+.. question:: 在 ``new feature`` ing 但是临时收到消息要去 fix bug。既不想马上就 commit on ``new feature``， 也不想 把工作区的内容搬到  ``hotfix`` branch. 
+    Solution：
+        1. 在 ``new feature`` **stash & checkout** 暂存 & 切出到 ``hotfix``
+        2. 在 ``hotfix`` 完成任务：pull 》commit 》push 》merge request 》delete 
+        3. checkout ``new feature`` 之后 **stash pop**，暂存区恢复到工作区
+    | 暂存区是独立于所有分支，直接把还没 commit 的提出来放在一边。~感觉像another 工作区，此时无论什么分支都不会保留 stashed data，只有被 pop 之后才会恢复到工作区。
+.. danger:: ``stage`` & ``stash`` !! DIFFERENT
+    - ==Stashing== takes the dirty state of your working directory — that is, your modified tracked files and staged changes — and saves it on a stack of unfinished changes that you can reapply at any time (even on a different branch).
+    - When recording your own work, the contents of modified files in your working tree are temporarily stored to a ==staging area== called the "index" with git add. 
+    
+    `Git中stash和stage的差别 <https://blog.csdn.net/u010037020/article/details/81537809>`_
+
+.. note:: 合并很多个提交到一个提交上再提交
+
+    .. code-block:: bash
+
+        # 假设现在开发完毕 并且已经在feature-many-commits上提交了多次
+        git checkout dev
+        git pull			# dev保持最新的代码
+        git checkout feature-many-commits
+        git rebase dev		# 将feature-many-commits上所有的commit，重新在新的dev的HEAD上commit一遍
+        git checkout dev	# 再次切换到dev上
+        git merge feature-many-commits # 将feature-many-commits上的内容合并到dev上
+        git push	        # 推送即可
+
+    `保姆级教程 | Merge Request 分支合并请求 <https://juejin.cn/post/7028965736022278175>`_
+
+
+    合并分支
+
+
+    只对尚未推送或分享给 **别人** 的本地修改执行变基操作清理历史， 从不对已推送至别处的提交执行变基操作
 
 六、参与开源项目
 ====================

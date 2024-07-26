@@ -24,16 +24,18 @@ Plot
 .. grid:: 2
 
     .. grid-item::
+        :columns: 7
         
         .. code-block:: py
             :caption: scatter plot
 
             import matplotlib.pyplot as plt
-            def plot_with_labels(x, y, classes, filename='tsne.png'):
+            def plot_with_labels(x, y, classes, filename):
                 """
                 :x: 坐标
                 :y: 数字类别, 按1/2/3 
-                :classes: 对应的类别标签  len(classes) = len_of_class
+                :classes: 对应的类别标签  
+                    len(classes) = len_of_class
                 """
 
                 fig, ax = plt.subplots(figsize=(15, 12))
@@ -67,9 +69,10 @@ Plot
                 plt.savefig(filename)
 
     .. grid-item::
+        :columns: 5
 
         .. figure:: ./pics/plot_1.png
-            :scale: 20%
+            :scale: 10%
 
             画的图
 
@@ -92,6 +95,14 @@ Plot
 
 configs
 **********
+
+
+尺寸
+==============================
+
+.. code-block:: py
+
+    plt.rcParams['figure.figsize'] = (W, H)  # 单位是inches
 
 配色方案 ``cmap``
 ==============================

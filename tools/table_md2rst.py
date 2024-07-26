@@ -36,11 +36,10 @@ import re
 
 
 input_ = r"""
-|meth| ``params.query`` | 环境变量 | ``Params.Path Variabes``|
-|加在哪|url 末尾|可以插到url中|可以插到url中|
-|参数需要现跑| ❌ | ✅ | ❌ |
+|注解|参数|返回类型|
+|字典|``Mapping``|``Dict``|
+|集合|``AbstractSet``|``Set``|
 """
-
 
 
 data_list = input_.split('\n')[1:-1]
