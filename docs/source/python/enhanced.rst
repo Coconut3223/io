@@ -356,6 +356,53 @@ os
 
     需要 ``os.path.join()`` 来拼接
 
+- ``os.isdir(dir)`` & ``os.isfile(file)``
+- ``os.path.split()``
+
+路径处理
+--------------------
+
+.. code-block:: pycon
+    :caption: 分开文件和文件夹
+
+    >>> p1 = './a/b/c/'
+    >>> p2 = './a/b/c.txt'
+
+.. grid:: 2
+
+    .. grid-item::
+        .. code-block:: pycon
+            :caption: 分开文件和文件夹
+
+            >>> os.path.split(p1)         
+            ('./a/b/c', '')
+            >>> os.path.split(p2) 
+            ('./a/b', 'c.txt')
+
+    .. grid-item::
+        .. code-block:: pycon
+            :caption: 分开文件和扩展名
+
+            >>> os.path.splitext(p1) 
+            ('./a/b/c/', '')
+            >>> os.path.splitext(p2) 
+            ('./a/b/c', '.txt')
+
+
+
+
+
+sys
+==========
+
+
+.. danger:: python 如何中断程序、停止程序、退出程序？
+
+    - ``sys.exit()``会引发一个异常： ``SystemExit`` ，如果这个异常没有被捕获，那么python解释器将会退出
+
+    .. hint:: Question：sys.exit()是退出当前线程，os._exit()是直接退出程序（相当于程序被kill -9直接杀死），os.kill()用于发signal信号
+
+        `python 如何中断程序、停止程序、退出程序？sys.exit()、os._exit()、os.kill() <https://blog.csdn.net/Dontla/article/details/103344870>`_
 
 进度条
 ====================
@@ -442,7 +489,7 @@ logging
 
             import argparse
             parser = argparse.ArgumentParser(description='manual to this script')
-            parser.add_argument('--gpus', type=str, default = None)
+            parser.add_argument('--gpus', type=str, default = None, help="The number of GPUs")
             parser.add_argument('--batch_size', type=int, default=32)
 
             args = parser.parse_args()
@@ -630,6 +677,8 @@ time
         second_2_standard(11111.33)
         # 03:05:11,329
 
+序列化
+********************
 
 json
 ==========
@@ -655,9 +704,6 @@ json
             with open(json_file, 'w') as fp:
                 json.dump(dict, fp)
 
-
-
-
 .. note:: 写中文
 
     - ``encoding='utf-8'``
@@ -675,6 +721,12 @@ json
 
     with open('./built-in.json', 'w', encoding='utf-8') as f:
         json.dump(res, f, indent=4, ensure_ascii=False)
+
+
+pickle
+==========
+
+
 
 pip 环境
 ******************************
@@ -863,6 +915,147 @@ Type & Typing 类型声明
                     return set(s)
 
 `Python 中 typing 模块和类型注解的使用 <https://cuiqingcai.com/7071.html>`_
+
+
+
+watchdog
+====================
+
+
+.. code-block:: py
+
+    from watchdog.observers import Observer
+    from watchdog.events import PatternMatchingEventHandler
+
+    def on_created(event):
+        print(f'{event.src_path} detected')
+
+    def on_deleted(event):
+        ...
+
+    def watch(my_observer, path):
+
+        patterns = ["*.mp4", "*.wav"]
+        ignore_patterns = None
+        ignore_directories = False
+        case_sensitive = True
+        my_event_handler = PatternMatchingEventHandler(
+            patterns, ignore_patterns, 
+            ignore_directories, case_sensitive)
+        my_event_handler.on_created = on_created
+        my_event_handler.on_deleted = on_deleted
+        my_event_handler.on_modified = on_modified
+        my_event_handler.on_moved = on_moved
+        go_recursively = True
+        my_observer.schedule(my_event_handler, path, recursive=go_recursively)
+        my_observer.start()
+
+
+    if __name__ == "__main__":
+
+        try:
+            my_observer = Observer()
+            watch(my_observer, INPUT_FOLDER)
+
+        except KeyboardInterrupt:
+            my_observer.stop()
+
+
+`How to create a watchdog in Python to look for filesystem changes <https://thepythoncorner.com/posts/2019-01-13-how-to-create-a-watchdog-in-python-to-look-for-filesystem-changes/>`_
+
+并行运算
+********************
+
+
+.. note:: 进程  & 线程 
+
+    ==进程== 是对正在运行中的程序的一个抽象，是系统进行资源分配和调度的基本单位。
+    ==线程 thread== 是操作系统能够进行运算调度的最小单位，其是进程中的一个执行任务（控制单元），负责当前进程中程序的执行
+
+
+
+.. note:: 全局解释器锁（GIL）
+
+    - 影响到 **那些严重依赖CPU的程序**, 不能利用多核CPU的优势
+        .. hint:: Example: 一个 **使用了多个线程的计算密集型程序** 只会在一个单CPU上面运行
+            如果你的程序大部分只会涉及到I/O，比如网络交互，那么使用多线程就很合适， 因为它们大部分时间都在等待。
+
+.. danger:: 对于依赖CPU的程序，你需要弄清楚执行的计算的特点。 例如，优化底层算法要比使用多线程运行快得多。
+    
+
+基于进程的并行计算
+==============================
+
+.. grid:: 2
+
+    .. grid-item::
+        .. code-block:: py
+            
+            from multiprocessing import Pool
+
+            def func(params):
+                ...
+
+            processes_count = 10
+            processes_pool = Pool(processes_count)
+            processes_pool.map(func, params) 
+
+    .. grid-item::
+
+        每个进程同时执行 func, 有10个进程。
+        
+        从理论上讲，这些代码可以将总的执行时间减少 10 倍。
+
+        但是 **不是**。
+
+        原因：
+
+            1. 本地计算机中 CPU 的数量 ``os.cpu_count()`` ，它决定了最大进程数。
+            2. 程序汇总的计算量
+                因为进程之间必须通过进程间通信机制实现通信，这些计算开销，对于比较小的计算任务而言，并行计算通常比 Python 编写的普通程序所执行的串行计算更慢。
+        
+
+numpy 的并行计算
+==============================
+
+其中的大多数处理都是向量化的。 向量化实际上使底层代码可以“并行化”，因为该操作可以一次计算多个数组元素，而不是一次遍历一个数组元素。
+
+
+希望尽可能多地使用底层硬件，以便获得更高的速度。Python 代码的并行化可以实现这一目标。但是，使用标准的 CPython 则无法充分使用底层硬件的计算能力，因为。
+
+
+pip install ray
+==============================
+
+.. grid:: 2
+
+    .. grid-item::
+        .. code-block:: py
+
+            import ray
+
+            @ray.remote
+            def func(params):
+                ...
+            
+            ray.init()  # 启动所有相关的 Ray 进程
+
+    .. grid-item::
+        默认情况下，Ray 为每个 CPU 核创建一个进程。 如果希望在集群上运行 Ray ，则需要传入一个类似于 ``ray.init(address='insertAddressHere')`` 的集群地址。
+
+        用装饰器 ``@ray.remote`` 装饰一个普通的 Python 函数，从而实现创建一个 Ray 任务。这个操作可以在笔记本电脑 CPU 核之间（或 Ray 集群）实现任务调度。    
+
+
+
+
+
+
+
+
+`用 Python 实现并行计算 <https://qiwsir.github.io/2021/09/15/paralellizingcode/>`_
+
+
+
 
 
 Todo

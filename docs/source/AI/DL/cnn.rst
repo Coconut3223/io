@@ -1,7 +1,12 @@
 CNN
-#####
+####################
 
 .. danger:: To maintain spatial struture.
+
+.. danger:: 能够提取出图片边缘特征的网络是卷积层
+    
+    | 卷积运算的目的是 **提取输入的不同特征，使用不同的卷积核。**
+    | 第一层卷积层可能只能提取一些低级的特征如边缘、线条和角等层级，更多层的网路能从低级特征中迭代提取更复杂的特征。
 
 .. note:: summary
     ==Conv==
@@ -36,8 +41,8 @@ CNN
 
     CNN 地卷积层是不需要的，但是如果有全连接层，就一定要相同大小的输入
 
-## Introduction
-
+Introduction
+********************
 **In：** Vision Task，就是 **针对图像这一特殊结构** ，包括图片分类, Object Detection 目标检测，边缘检测, Object Segmentation 目标提取，图片风格迁移， Image Captioning 看图说话, Retrieval 恢复图片…
 
 关于处理的图片对象，有单纯基于 **黑白照片灰度图像(width✖️height)** 的卷积，也有基于 **彩色照片立体RGB(wideth✖️height✖️depth\channel)** 的卷积
@@ -140,7 +145,6 @@ Convolution Layers, Conv
 
 1. 用一个小小的  :math:`F\times F\times D`  shared filter 在 :math:`N\times N\times D`  图像上 slide spatially, 空间意义上地滑动。
 2. 滑动的时候，每一次框定的 **小小对应尺寸**  :math:`F\times F\times D`  块 chunk of the image, Local Receptive Fields，和  :math:`F\times F\times D`  shared filter 做 dot product ==element-wise multiplication== .
-
     .. danger:: ""
         D个 channel，都要分别和输入的D个channel 做卷积，得到D个特征图，然后 **通道融合, sum all the (weights x inputs) of D channels**
 3. 将所有滑动的到的结果按空间顺序重新拼成:  :math:`(N-F+1)\times(N-F+1)\times \red{1}`  tensor
@@ -238,7 +242,6 @@ about Size
 **advantages：**
 
 - Shrinking too volumes spatially
-  
     .. danger:: Shrinking too fast is not good
 
     比如说CNN，CNN是用卷积核和感受野做运算，每一个新产生特征数，也就是 output 的一个小小的数字，囊括的也只是一个小小的感受野的信息。对一个kernel 来说，虽然 output 是由所有的感受野 of input 卷积之后堆叠而成的一个 [L, W]矩阵，也就是这一个 kernel 和所有的感受野做运算的结果堆叠而成。但是 **简单局部特征堆叠不等于全局特征。** 这也是CNN稀疏链接的特点。
@@ -255,7 +258,6 @@ about Stride s：移动的方格
 1. s = 1 （default）
 2. **do not want to capture all the data** or information available so we skip some.
 3. 设置的 stride 要被刚好设置的filter卷积到
-
     .. math:: 
         \red{\text{Output Size }(\cfrac{N-F}{s}+1)\times(\cfrac{N-F}{s}+1) }, \quad\cfrac{N-F}{\text{stride}}\in Z
 
@@ -263,13 +265,20 @@ about Stride s：移动的方格
         :scale: 30%
         :align: center
 
-**drawbacks:**
+.. grid:: 2
 
-- lose data over borders 容易丢失边缘或者是角落上的像素信息，譬如所当 stride=1 的时候，边边就出现一遍，中间的部分会在滑动的时候overlap 到，出现次数就会重复，这也体现了一种设定：图像中间总是比较重要，承载更多信息
+    .. grid-item::
 
-**advantages:**
+        **drawbacks:**
 
-1. 输出的图片会缩小
+        - lose data over borders 容易丢失边缘或者是角落上的像素信息，譬如所当 stride=1 的时候，边边就出现一遍，中间的部分会在滑动的时候overlap 到，出现次数就会重复，这也体现了一种设定：图像中间总是比较重要，承载更多信息
+        
+
+    .. grid-item::
+
+        **advantages:**
+
+        1. 输出的图片会缩小
 
 about Padding
 ---------------------
@@ -545,10 +554,10 @@ Exercise
 code
 **********
 
-[卷积神经网络（浅显易懂）-吴恩达课程学习]: https://zhuanlan.zhihu.com/p/35251749/
+Reference
+********************
 
-[神经网络及CNN中的通道、共享权重、特征映射等的理解_zhu_Lydia的博客-CSDN博客_cnn的通道]:https://blog.csdn.net/zhu_Lydia/article/details/88567648
-
-[Convolutional Neural Network Architecture | CNN Architecture]:https://www.analyticsvidhya.com/blog/2020/10/what-is-the-convolutional-neural-network-architecture/
-
-[Convolutional Neural Network | Deep Learning | Developers Breach]: https://developersbreach.com/convolution-neural-network-deep-learning/
+- `卷积神经网络（浅显易懂）-吴恩达课程学习 <https://zhuanlan.zhihu.com/p/35251749/>`_
+- `神经网络及CNN中的通道、共享权重、特征映射等的理解_zhu_Lydia的博客-CSDN博客_cnn的通道 <https://blog.csdn.net/zhu_Lydia/article/details/88567648>`_
+- `Convolutional Neural Network Architecture | CNN Architecture <https://www.analyticsvidhya.com/blog/2020/10/what-is-the-convolutional-neural-network-architecture/>`_
+- `Convolutional Neural Network | Deep Learning | Developers Breach <https://developersbreach.com/convolution-neural-network-deep-learning/>`_

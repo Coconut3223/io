@@ -1,0 +1,181 @@
+{
+
+	"note_admonitation":{
+		"prefix": "..n",
+		"body":[
+			".. note:: $1",
+			"\t$2",
+			""
+		]
+	},
+	"question_admonitation":{
+		"prefix": "..q",
+		"body":[
+			".. hint:: Question:$1",
+			"\t$2",
+			""
+		]
+	},
+	"example_admonitation":{
+		"prefix": "..e",
+		"body":[
+			".. hint:: Example: $1",
+			"\t$2",
+			""
+		]
+	},
+	"danger_admonitation":{
+		"prefix": "..d",
+		"body":[
+			".. danger:: $1",
+			"\t$2",
+			""
+		]
+	},
+	"grid":{
+		"prefix": "..g",
+		"body":[
+			".. grid:: 2",
+			"",
+			"\t.. grid-item::",
+			"\t\t$1",
+			"",
+			"\t.. grid-item::",
+			"\t\t$2"
+		]
+	},
+	"grid_columns":{
+		"prefix": "..gc",
+		"body":[
+			".. grid:: 2",
+			"",
+			"\t.. grid-item::",
+			"\t\t:columns: $1",
+			"\t\t$2",
+			"",
+			"\t.. grid-item::",
+			"\t\t:columns: $3",
+			"\t\t$4",
+			"",
+			"$5"
+		]
+	},
+	"list-table—23":{
+		"prefix": "..lt23",
+		"body":[
+			".. list-table:: $1",
+			"\t:width: 100%",
+			"\t:widths: 6 47 47",
+			"\t:header-rows: 1",
+			"\t* - $2",
+			"\t  - $3",
+			"\t  - $4",
+			"\t* - $5",
+			"\t  - $6",
+			"\t  - $7",
+			"",
+			"$8"
+		],
+		"description": "List-table: 2rows3columns"
+	},
+	"list-table-34":{
+		"prefix": "..lt34",
+		"body":[
+			".. list-table:: $1",
+			"\t:width: 100%",
+			"\t:widths: 7 31 31 31",
+			"\t:header-rows: 1",
+			"",
+			"\t* - $2",
+			"\t  - $3",
+			"\t  - $4",
+			"\t  - $5",
+			"\t* - $6",
+			"\t  - $7",
+			"\t  - $8",
+			"\t  - $9",
+			"\t* - $6",
+			"\t  - ",
+			"\t  - ",
+			"\t  - ",
+			"",
+			"$0"
+		],
+		"description": "List-table: 3rows4columns"
+	},
+	"link_ref":{
+		"prefix": "..l",
+		"body":[
+			"`$2 <$1>`_",
+			"$3"
+		]
+	},
+	"code":{
+		"prefix": "ic",
+		"body":[
+			"``$1`` $2"
+		]
+	},
+	"code-block":{
+		"prefix": "..c",
+		"body":[
+			".. code-block:: $1",
+			"",
+			"\t$2",
+			"",
+			"$3"
+		]
+	},
+	"code-block_emphasize":{
+		"prefix": "..ce",
+		"body":[
+			".. code-block:: $1",
+			"\t:emphasize-lines: $2",
+			"",
+			"\t$3",
+			"",
+			"$4"
+		]
+	},
+	"figure":{
+		"prefix": "..f",
+		"body":[
+			".. figure:: $1",
+			"\t:scale: $2",
+			"",
+			"\t$3",
+			"",
+			"$4"
+		]
+	},
+	"header1":{
+		"prefix": "#h1",
+		"body":[
+			"##########"
+		]
+	},
+	"header2":{
+		"prefix": "#h2",
+		"body":[
+			"**********"
+		]
+	},
+	"header3":{
+		"prefix": "#h3",
+		"body":[
+			"=========="
+		]
+	},
+	"header4":{
+		"prefix": "#h4",
+		"body":[
+			"----------"
+		]
+	},
+	"header5":{
+		"prefix": "#h5",
+		"body":[
+			"^^^^^^^^^^"
+		]
+	}
+}

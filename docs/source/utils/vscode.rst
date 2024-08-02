@@ -77,3 +77,73 @@ practical use
     - 一般在  ``C:\user\.ssh``  里，隐藏文件夹
     -  ``id_rsa.pub`` 是公钥， ``id_rsa`` 是私钥
     - 如果已经存在会提醒是否 overwrite
+
+Setting
+**********
+
+user snippets
+====================
+
+
+.. grid:: 2
+
+    .. grid-item::
+        :columns: 4
+        
+        .. figure:: ./pics/vscode_snippets.png
+            :scale: 50%
+
+            进入user snippets， 在不同的json上写，可在特定语言文件激活不同的。
+
+        - ``$num`` (``$1``, ``$2``)
+            | ``$`` 后面紧跟数字可指定代码片段触发落入编辑器之后的光标位置，光标位置按照从小到大排序。
+            | 按 ``Tab`` 跳转
+        - ``body`` 支持 ``\t\n``。
+            但不建议用 ``\n`` 因为很难看出代码片段的结构，建议还是直接给单独一行来展示
+
+    .. grid-item::
+        :columns: 6
+
+        .. code-block:: json
+            :caption: example
+
+            {
+
+                "code-block":{  // name
+                    "prefix": "..c", // 触发代码片段的字符
+                    "body":[
+                        ".. code-block:: $1", //触发的代码片段
+                        "",
+                        "\t$2",
+                        "",
+                        "$3"
+                    ]
+                },
+            }
+        
+`VSCode 利用 Snippets 设置超实用的代码块 <https://juejin.cn/post/6844903869424599053>_`
+
+        
+        
+appereance
+====================
+
+
+垂直标尺
+--------------------
+
+.. grid:: 2
+
+    .. grid-item::
+        :columns: 8
+
+        .. figure:: ./pics/vscode_rulers.png
+        
+            效果如图
+
+    .. grid-item::
+        :columns: 4
+        
+        `vscode显示120字符或者80字符提示线或者显示垂直标尺 <https://blog.csdn.net/weixin_42244181/article/details/135632055?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-5-135632055-blog-135571838.235^v43^pc_blog_bottom_relevance_base5&spm=1001.2101.3001.4242.4&utm_relevant_index=8>`_
+
+

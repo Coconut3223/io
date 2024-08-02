@@ -18,8 +18,8 @@ pytorch
 `深度学习(23):numpy与tensor的数据转换、相互赋值 <https://blog.csdn.net/BIT_HXZ/article/details/129714906?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0-129714906-blog-124422603.235^v43^pc_blog_bottom_relevance_base5&spm=1001.2101.3001.4242.1&utm_relevant_index=3>`_
 
 
-Configuration
-******************************
+installation
+********************
 
 pytorch 安装
 ====================
@@ -28,21 +28,18 @@ pytorch 安装
 
 ``任务管理器`` 看 GPU 一般是 NVIDIA 的。
 
-1. [pytorch downlaod]
-
-   - [pytorch V.S.cuda] 查显卡决定pytorch
+1. `pytorch downlaod <https://pytorch.org>`_
+    - [pytorch V.S.cuda] 查显卡决定pytorch
         <kbd>nvidia-smi</kbd>  cmds查看显卡情况
-   - [pytorch V.S.python] 查pytorch 决定python虚拟环境
+    - [pytorch V.S.python] 查pytorch 决定python虚拟环境
         <kbd>conda create -n env_name python=? </kbd>
-   - 查架构
-
-
-.. code-block:: pycon
-    :caption: 查看架构
-	
-    >>> import platfrorm
-    >>> print(platform.uname()[4])
-    arm64
+    - 查架构
+        .. code-block:: pycon
+            :caption: 查看架构
+            
+            >>> import platfrorm
+            >>> print(platform.uname()[4])
+            arm64
 
 .. image::	./pics/torch_download_1.png
     :scale: 30%
@@ -66,29 +63,11 @@ pytorch 安装
     3. 检查显卡驱动版本
     4. 检查更新是否成功
 
-concept
-**********
 
-Autograd
-====================
 
-.. note:: ""
-    Conceptually, autograd ==records a graph== recording all of the operations that created the data as you execute operations, giving you ==a directed acyclic graph whose leaves are the input tensors and roots are the output tensors== . By tracing this graph from roots to leaves, you can automatically compute the gradients using the chain rule.
+Configuration
+******************************
 
-locally disable gradient computation
-==================================================
-
-完整的
-==========
-
-.. note:: 初步检查模型是否有写错
-
-	.. code-block:: py
-
-        model = MyModel()
-        input = torch.ones(batch, input_size)
-        output = model(input)
-        print(output.shape())
 
 cpu & gpu
 ====================
@@ -137,6 +116,18 @@ cpu & gpu
 多gpu
 --------------------
 
+查看cuda占用情况 & kill
+------------------------------
+
+.. code-block:: bash 
+
+    nvidia-smi  # 查看内存
+
+    kill PID  # e.g. kill -9 4019070
+
+
+
+
 1. 选择一个运行
 
 .. grid:: 2
@@ -175,6 +166,33 @@ cpu & gpu
 
 2. 多gpu运行
 
+
+
+concept
+**********
+
+Autograd
+====================
+
+.. note:: ""
+    Conceptually, autograd ==records a graph== recording all of the operations that created the data as you execute operations, giving you ==a directed acyclic graph whose leaves are the input tensors and roots are the output tensors== . By tracing this graph from roots to leaves, you can automatically compute the gradients using the chain rule.
+
+locally disable gradient computation
+==================================================
+
+完整的
+==========
+
+.. note:: 初步检查模型是否有写错
+
+	.. code-block:: py
+
+        model = MyModel()
+        input = torch.ones(batch, input_size)
+        output = model(input)
+        print(output.shape())
+
+
 训练和测试的不同
 ====================
 
@@ -190,7 +208,7 @@ cpu & gpu
     - ``model.eval()``==``module.train(False)`` 写在模型测试前
 
     .. code-block:: py
-	    :emphasize-lines: 2,6
+        :emphasize-lines: 2,6
 
             for i in range(epoch):
                 model.train()
@@ -313,7 +331,7 @@ Datalodar
 
     .. danger:: 如果不設置 ``drop_last = True``，就不要設置 ``data.view(batch_size, feature_size)``
 
-        | 如果 dataset 的長度不能整除掉 batchsize, 最後一個 batch 的 size = ``mod(len(dataset), batchsize)``, 是不定長的。如果設置成 batchsize, tensor的 shape 其實不滿足 :math:`\text{batchsize}\times\text{feature_size}`  
+        | 如果 dataset 的長度不能整除掉 batchsize, 最後一個 batch 的 size = ``mod(len(dataset), batchsize)``, 是不定長的。如果設置成 batchsize, tensor的 shape 其實不滿足 :math:`\text{batchsize}\times\text{feature\_size}`  
         | => ``data.view(-1, feature_size)``
 
 .. code-block:: py
@@ -391,8 +409,8 @@ Datalodar
 
 Data sampler
 --------------------
-`WeightedRandomSampler <https://pytorch.org/docs/stable/data.html#torch.utils.data.WeightedRandomSampler>`_
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+`WeightedRandomSampler <https://pytorch.org/docs/stable/data.html#torch.utils.data.WeightedRandomSampler>`_ 加权随机采样
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **样本不均衡情况下带权重随机采样**
 
@@ -400,9 +418,9 @@ Data sampler
 
 
 - 不需要再传 ``shuffle=True``
-- ``:warning:`` 传进去的权重 seq 是针对每一个样本的权重
-- 权重的和不需要等于 1 → :math:`\sum(\text{weight_of_samples})\neq 1`
-- 权重的设置= **样本数量的倒数** :math:`w_A = \cfrac{1}{\text{size_of_classA}}` 重点是相对比例，所以只要 :math:`s_A * \cfrac{1}{s_A}=s_B*\cfrac{1}{s_B}=1` 就行
+- ``:warning:`` 传进去的权重 seq 是针对每一个样本的权重 **确定好每个类对应的权重，再⼀⼀对应到样本上**
+- 权重的和不需要等于 1 → :math:`\sum(\text{weight\_of\_samples})\neq 1`
+- 权重的设置= **样本数量的倒数** :math:`w_A = \cfrac{1}{\text{size\_of\_classA}}` 重点是相对比例，所以只要 :math:`s_A * \cfrac{1}{s_A}=s_B*\cfrac{1}{s_B}=1` 就行
 
 
 .. hint:: Question: 通过weights设定样本权重，权重越大的样本被选中的概率越大，待选取的样本数目一般小于全部的样本数目。
@@ -412,7 +430,8 @@ Data sampler
     from torch.utils.data import WeightedRandomSampler
 
     weight_of_classes = [0.251, 0.249]  # 每一类的比重
-    weight_of_samples = [weight_of_classes[int(y)] for (x, y) in train_dataset]  
+    weight_of_samples = list(map(lambda y: weight_of_classes[int(y)], train_dataset.targets))
+    # weight_of_samples = [weight_of_classes[int(y)] for (x, y) in train_dataset]  
     # 样本根据所属的类获得生成对应的权重
 
     train_loader = DataLoader(
@@ -420,12 +439,11 @@ Data sampler
         batch_size=BATCH_SIZE,      
         sampler=WeightedRandomSampler(
             weights=weight_of_samples,  # len = len_of_samples
-            num_samples=total_train_samples,   # 一共要抽多少
+            num_samples=total_train_samples,  # 一共要抽多少
             replacement=True,  # 放回采样
         ),
     )
 
-**ref:**
 
 - `torch.utils.data.WeightedRandomSampler样本不均衡情况下带权重随机采样 <https://blog.csdn.net/weixin_41496173/article/details/116501428>`_
 
@@ -1753,6 +1771,6 @@ vgg16
 [Very Deep Convolutional Networks for Large-Scale Image Recognition]: https://arxiv.org/abs/1409.1556
 [【pytorch系列】 with torch.no_grad():用法详解]: https://blog.csdn.net/sazass/article/details/116668755
 
-[pytorch downlaod]: https://pytorch.org
+
 [pytorch V.S.python]: https://github.com/pytorch/text/
 [pytorch V.S.cuda]:https://pytorch.org/get-started/previous-versions/

@@ -274,3 +274,8 @@ suppress_warnings = ["config.cache"]  # https://github.com/sphinx-doc/sphinx/iss
 # pickling environment... WARNING: cannot cache unpickable configuration value: 'html_context' (because it contains a function, class, or module object)
 
 copybutton_exclude = '.linenos, .gp, .go'
+
+copybutton_prompt_text = r">>> |\.\.\. |\$ |In \[\d*\]: | {2,5}\.\.\.: | {5,8}: "
+copybutton_prompt_is_regexp = True
+
+# https://sphinx-copybutton.readthedocs.io/en/latest/use.html

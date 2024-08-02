@@ -3,12 +3,12 @@ Git
 
 configure and initialize a repository, begin and stop tracking files, and stage and commit changes. 
 
+`git 常用命令(含删除文件) <https://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html>`_
+
+
+
 Background
 ********************
-
-https://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html
-
-.. image:: ./gitwork.png
 
 - 合作模式
     - Collocated Contributor Repositories: (Fork and Pull)
@@ -31,7 +31,6 @@ https://www.cnblogs.com/springbarley/archive/2012/11/03/2752984.html
 
 - doc-level锁，
 - row-level锁，后者就是需要提前分配好行数，然后进行比对合并，提高了多人协作水平。如果是同样对一行，那也没辙，那也只能是锁住不给别人用），在锁定期间其他人是不能进行修改的，只能查看。
-
     一旦服务器发生故障或者损坏，就会丢失
 
 git client tool
@@ -44,16 +43,175 @@ git client tool
 - Github Desktop 【
 - sourcetree
 
-mac
-==========
+配置
+********************
 
-zsh
-----------
+``git config`` 配置
+==============================
 
-把如下代码添加至你的  ``~/.zshrc``  文件中，就可以在 **右侧显示分支名称**
+没有  ``--global``  只对当前仓库生效 而不是针对 local 所有仓库
+
+.. grid:: 2
+
+    .. grid-item::
+        :columns: 5
+
+        .. code-block:: bash
+            :caption: 查看 
+
+            $ git config --list
+            user.name= 
+            user.email=
+            ...
+        
+        .. code-block:: bash
+            :caption: 修改 git 配置
+        
+            $ git config -e # edit .config
+
+    .. grid-item::
+        :columns: 7
+
+        .. code-block:: bash
+            :caption: 设置提交代码时的用户信息
+        
+            $ git config --global user.name "yourUserName"
+            $ git config --gloabl user.email "yourEmail"
+
+.. grid:: 2
+
+    .. grid-item::
+        :columns: 7
+
+        .. code-block:: bash
+            :caption: 启动换行符检查
+
+            $ git config --global core.autocrlf true # for windows
+            $ git config --global core.autocrlf input # for unix
+            
+        
+        目的：
+
+        - Windows系统上的签出文件中保留 ``CRLF``
+        - 在Mac和Linux系统上，包括仓库中保留 ``LF``
+
+        | For windows: Git可以在你提交时自动地把行结束符CRLF转换成LF，而在签出代码时把LF转换成CRLF。
+        | For unix: 在提交时把CRLF转换成LF，签出时不转换, 对一个不小心被引入以CRLF为行结束符的文件
+
+        `[git] warning: LF will be replaced by CRLF | fatal: CRLF would be replaced by LF <https://blog.csdn.net/feng88724/article/details/11600375>`_
+        
+
+    .. grid-item::
+        :columns: 5
+        
+        .. note:: ``CRLF`` & ``LF``
+
+            - Carriage Return 回车 ``\r``
+            - Line Feed 换行 ``\n``
+
+            .. table::
+
+                +--------+--------+-----------+
+                |结束一行|``CRLF``|``LF``     |
+                +========+========+===========+
+                |code    |``\r\n``|``\n``     |
+                +--------+--------+-----------+
+                |platform|Windows |Mac & Linux|
+                +--------+--------+-----------+
+
+            不一样的 虽然这是小问题，但它会极大地扰乱跨平台协作。
+            
+SSH: 公钥私钥
+==============================    
+
+通过 HTTP & SSH 去做克隆和提交代码，由于 HTTP 需要每次提交的时候输入邮箱号和密码，所以常用电脑上配置 SSH ，只要配置好了以后，下次提交的时候就方便了。
+
+大多数 Git 服务器都会选择使用 SSH 公钥来进行授权。系统中的每个用户都必须提供一个公钥用于授权，没有的话就要生成一个。
+
+首先你要确认一下本机是否已经有一个公钥。
+
+.. grid:: 2
+
+    .. grid-item::
+
+        在 ``/c/Users/…/.ssh``
+
+        .. code-block:: bash
+            :caption: 确认是否有公钥
+        
+            $ cd ~/.ssh
+            $ ls
+            id_rsa      id_rsa.pub  # 私钥 & 公钥
+        
+        
+
+    .. grid-item::
+        .. code-block:: bash
+            :caption: 创建
+        
+            $ ssh-keygen -t rsa -C "account@domain.com"
+            Creates a new ssh key using the provided email 
+            # Generating public/private rsa key pair.
+            Enter file in which to save the key (/home/you/.ssh/id_rsa):
+            Enter passphrase (empty for no passphrase)
+            # 使用ssh传输文件的时候，你就要输入这个密码
+            Enter same passphrase again:
+
+.. grid:: 2
+
+    .. grid-item::
+        For github
+
+
+
+        ``Setting`` => ``SSH & GPG keys`` => ``New SSH key``
+
+        用记事本打开 ``id_rsa.pub`` 文件，全选其中的内容粘贴到网页的Key中
+
+        .. code-block:: bash
+            :caption: 测试 SSH key
+
+            $ ssh -T git@github.com  
+            #!!! git@github.com 不是邮箱
+
+        - `Git教程 SSH keys配置 <https://blog.csdn.net/qq_36667170/article/details/79094257>`_
+
+    .. grid-item::
+
+        **FOR gitlab**
+
+        
+        1. 确认是否可以 ssh 来做
+            .. figure:: ./pics/ssh_gitlab_1.png
+                :scale: 50%
+
+                只允许 HTTPS
+
+        ``Setting`` => ``SSH keys`` => ``New SSH key``
+
+        用记事本打开 ``id_rsa.pub`` 文件，全选其中的内容粘贴到网页的Key中
+
+        .. danger::  如果一切都ok， 还是不行： access denied
+        
+            .. code-block:: bash
+                :caption: 查看
+
+                ssh -vT git@<domain>
+                # ssh -vT git@gitlab.com
+
+            1. ``ssh: connect to host gitlab.xxx port 22: Connection timed out``  不允许 ssh 连接
+            2. ``debug1: Host 'gitlab.com' is known and matches the ED25519 host key.`` 要用 ED25519 来生成公私钥
+
+        - `GitLab使用教程，看这一篇就够了 <https://www.jianshu.com/p/95991a646f72>`_
+        - `gitlab设置ssh代码提交报错误 Permission denied 的解决方案 <https://www.cnblogs.com/shuen/p/15035196.html>`_
+        - `公司Gitlab，没有域名，设置多SSH（公司和Gitee） <https://blog.csdn.net/Luckly_smile/article/details/120188609>`_
+
+
+terminal 右侧显示分支名称
+==============================
 
 .. code-block:: none
-    :caption: zsh
+    :caption: 把如下代码添加至你的  ``~/.zshrc``  文件中，就可以在 **右侧显示分支名称**
 
     autoload -Uz vcs_info
     precmd_vcs_info() { vcs_info }
@@ -63,7 +221,7 @@ zsh
     # PROMPT=\$vcs_info_msg_0_'%# '
     zstyle ':vcs_info:git:*' formats '%b'
 
-- `在其它环境中使用 Git - Zsh 中的 Git <https://git-scm.com/book/zh/v2/附录-A%3A-在其它环境中使用-Git-Zsh-中的-Git>`_
+`在其它环境中使用 Git - Zsh 中的 Git <https://git-scm.com/book/zh/v2/附录-A%3A-在其它环境中使用-Git-Zsh-中的-Git>`_
 
 工作流程原理
 ********************
@@ -73,17 +231,14 @@ zsh
 
 - 3个本地区域
     - 工作区, **Working Directory**
-
         - 用户工作的地方，放代码文件的地方。
         - 需要往 repository 里放文件，就要先在工作区里放文件。Git 会自动检测这里的文件变化情况。
         - 当 repository 里有很多 branches，工作区会自动是所选 branch 的工作地方。
 
     - 暂存区, **Staging Area** :
-
         - 存放临时的改动, working directory 里有修改的文件需要先  ``git add file_name``  提交到 staging area，然后再 ``git commit -m <message>``  放到 local repository 里，然后就会产生一个版本号文件。
         - 事实上它只是一个文件, 保存即将提交的文件列表信息。
     - Git 目录， **.git directory, Respository**
-
         - 安全存放数据的位置, 这里面有提交到 **所有版本** 的数据。通过这个实现万一远程挂了，怎么在 local 端继续操作
         - HEAD file 指向最新放入仓库的版本
         - heads dir 里是每个分支指向的最新版本
@@ -91,6 +246,10 @@ zsh
 - 1个远程区域
     - 远程库，Remote
         托管代码的服务器，从 local repository 推送文件到远程库需要  ``git push`` , 从远程库拉取文件来更新 repository 需要  ``git pull`` 
+
+
+
+
 
 details
 ********************
@@ -105,29 +264,45 @@ details
 
     - 内容是当前提前信息的
 
+
+.. figure:: ./pics/git_1.png
+
+    红色部分由refs提供, 其余部分全部由objects提供, commit对象（黄色）指向保存文件结构的tree对象（蓝色），后者再指向各个文件对象（灰色） 图/Pro Git on git-scm.com
+
+    
+
+
+
 git command
 ********************
 
 初始化
 ==========
 
-本地新建一个 local init
-------------------------------
 
-``git init`` 
+.. grid:: 2
 
-.. code-block:: sh
+    .. grid-item::
+        :columns: 4
 
-    mkdir local_init
-    cd local_init
-    git init
-    ls
+        .. code-block:: bash
+            :caption: 本地新建一个 local init
+            :emphasize-lines: 3
 
-| 此时就会出现一个 .git 的隐藏 directory，这就是 local repository。
-| 以后所有的 git 操作历史提交记录信息全都在此, 只要这个文件夹还存在, 就可以记住我们所有的 git 操作。
+            $ mkdir local_init
+            $ cd local_init
+            $ git init
+            $ ls
+        
 
-.. image:: ./pics/local_git_init_1.png
-    :scale: 30%
+    .. grid-item::
+        :columns: 8
+
+        .. figure:: ./pics/local_git_init_1.png
+            :scale: 30%
+
+            此时就会出现一个 .git 的隐藏 directory，这就是 local repository。
+            以后所有的 git 操作历史提交记录信息全都在此, 只要这个文件夹还存在, 就可以记住我们所有的 git 操作。
 
 在 local init 新建的 repository 是没有任何的提交文件，所以也没有 default 的 branch 文件。
 
@@ -172,40 +347,48 @@ GUI init
 .. image:: ./pics/gui_create_2.png
     :scale: 30%
 
-git config 配置
+
+
+添加远程连接
 ==============================
 
-- 查看 git 配置  ``git config --list`` 
+.. grid:: 2
 
-    .. code-block:: sh
-
-        $ git config --list
-        # 提交代码时的用户信息 
-        user.name= 
-        user.email=
-        ...
-
-- 设置提交代码时的用户信息
-
-    .. code-block:: sh
+    .. grid-item::
+        :columns: 4
         
-        # 1. usrname
-        git config --global user.name "yourUserName"
+        场景：
 
-        # 2. useremail
-        git config --gloabl user.email "yourEmail"
+        - 本地 init 建库了，没有跟远程分支挂钩
+        - 想推给别的仓库别的分支
 
-        # 3. 没有  ``global``  只对当前仓库生效 
-
-- 修改 git 配置文件
-
-    .. code-block:: sh
+        `git推送代码报错：fatal: The current branch master has no upstream branch. To push the current branch and set the remote as upstream <https://www.cnblogs.com/Amerys/p/14669572.html>`_
         
-        # 1. 针对当前仓库
-        $ git config -e 
 
-        # 2. 针对 local 所有仓库
-        $ git config -e --global 
+    .. grid-item::
+        :columns: 8
+
+        .. code-block:: bash
+            :emphasize-lines: 1,3
+
+            $ git remote add origin [远程分支link]
+            # git remote add origin https://username@xxx.com/xxx.git
+            $ git push --set-upstream origin master
+            # origin = 远程git仓库, 可以换成仓库链接
+            # git push --set-upstream https://username@xxx.com/xxx.git master
+        
+
+
+.. note:: ``git pull origin`` & ``git pull upstream``
+    - ``origin`` 指的是源仓库，一般为git clone的仓库，如xxx/fastjson，是克隆后默认提交和拉取的仓库地址。
+    - ``upstream`` 意指上游仓库，一般是fork 出的上游仓库
+
+
+
+
+
+
+        
 
 日常操作
 ********************
@@ -237,7 +420,6 @@ git config 配置
     ``git commit -m <message>`` 
 
 3. local respository -> remote
-
     ``git push origin <local_branch> : <remote_branch>``
 
     - ``origin``  :
@@ -248,7 +430,6 @@ git config 配置
 ----------------------------------------
 
 - 查看在你上次提交之后是否有对文件进行再次修改
-
     ``git status`` 
 
     - ``nothing to commit``  目前「沒有東西可以提交」
@@ -259,16 +440,13 @@ git config 配置
 - 比较文件在 **暂存区和工作区** 的差异，已经写入暂存区和已经被修改但尚未写入暂存区文件的区别
     ``git diff`` 
 - 查看暂存区的文件
-
     ``git ls-files`` 
-    
-    - 可选参数:
 
+    - 可选参数:
         -  ``-d`` : 显示删除的文件
         -  ``-m`` : 显示被修改过的文件
         -  ``-o`` : 显示没有被 git 跟踪过的文件
 - 查看 **暂存区** 文件中的内容
-
     ``git cat-file -p`` 
     
     - 如果 error， 可以看看  ``git ls-files``  在不在暂存区里
@@ -347,65 +525,86 @@ git config 配置
 
 
 分支操作
---------------------
-
-- 查看分支  ``git branch -a`` 
-- 创建新分支  ``git checkout -b <new_branch>`` 
-
-    .. code-block:: sh
-
-        # 1. 创建分支,注意新分支创建后不会自动切换为当前分支
-        $ git branch <new_branch>
-
-        # 2. 基于当前分支创建一个新分支,并进行切换
-        $ git checkout -b <new_branch>
-
-        # 3. 基于指定分支创建一个新的分支,并进行切换
-        $ git checkout -b <new_branch> <given_brach>
-
-        # 4. 创建远程分支(本地分支push到远程)：
-        $ git push origin <remote_branch>
-
-- 切换分支  ``git checkout`` 
-
-    .. code-block:: sh
-
-        # 1. 切换分支
-        $ git checkout <branch>
-
-        # 2. 切换到上一个分支
-        $ git checkout -
-
-        # 3. 切换 commit version
-        $ git log # 查看版本号
-        $ git checkout <SHA>
+====================
 
 
-    `Git 切换分支 <https://www.freecodecamp.org/chinese/news/git-switch-branch/>`_
-- 删除分支
 
-    .. code-block:: sh
 
-        # 1. local : 只能删除已经参与了合并的分支，对于未有合并的分支是无法删除的
-        $ git branch -d <local_branch>
 
-        # 2. local : 想强制删除一个分支
-        $ git branch -D <local_branch>
 
-        # 3. 删除远程分支
-        $ git push origin :heads/<_remote_branch>
 
-4.3 更新操作
-==================
 
-@TODO
+.. grid:: 2
+
+    .. grid-item::
+
+        查看分支  ``git branch -a`` 
+
+        .. code-block:: bash
+            :caption: 创建新分支
+
+            $ git branch issue1 # new issue1 but no checkout
+            $ git checkout -b issue1  # new & checkout
+            $ git checkout -b issue1 master # 根据指定new &ck
+            $ git push origin feature1 # new remote = push 
+
+        .. code-block:: bash
+            :caption: 删除分支
+
+            # 删 local_branch
+            $ git branch -d dev  # 只能删参与了合并的分支
+            $ git branch -D dev  # 强制删除
+
+            # 删 remote_branch
+            $ git push origin -d dev
+
+            # 删本地的（远程分支已被删）的分支
+            $ git remote prune origin
+
+    .. grid-item::
+
+        .. code-block:: bash
+            :caption: 切换分支 | 版本号
+
+            # 分支
+            $ git checkout dev  # 切换分支 
+            $ git checkout -  # ck 上一个分支
+
+            # commit version
+            $ git log # 查看版本号
+            $ git checkout <SHA>
+
+        .. code-block:: bash
+            :caption: 重命名 rename
+            
+            # 共有的
+            $ git branch -m dev newdev
+
+            # 如果已经推送到远程的话,还要
+            $ git push --delete origin dev # DELETE 
+            $ git push origin newdev
+            $ git branch --set-upstream-to origin/newdev
+
+项目A的deva分支复制到项目B的devb分支   
+----------------------------------------
+
+.. code-block:: bash
+    
+    $ git clone -b master [https://B.git]  # clone B 到本地
+    $ git remote add upstream [https://A.git]  # 加 A 到本地的remote中
+    $ git checkout -b devb  # new B devb
+    $ git pull upstream deva  # pull A deva
+    $ git push origin devb  # push B devb
+
+- `Git 切换分支 <https://www.freecodecamp.org/chinese/news/git-switch-branch/>`_
+- `git常规操作 | 将A项目的某一分支迁移到B项目上 <https://blog.csdn.net/weixin_47978760/article/details/129947996>`_
+
 
 合并操作
 ==========
 
 1. 先切换到要合并的主分支  ``git checkout master`` 
 2. 选择要合并的另外一个 branch
-
     ``git merge <another_branch>``
 
 .. grid:: 2
@@ -438,7 +637,6 @@ git config 配置
     :scale: 30%
 
 1. 查看冲突文件内容
-
     .. code-block:: none
 
         $ vim README.md
@@ -454,17 +652,25 @@ git config 配置
     - 从  ``=======``  开始, 到  ``>>>>>>> branch``  都是 merge 过来的分支的内容。
 
 2. 解决冲突，视情况保留(删除)记录
-
     1. 冲突解决完成之后, 再次提交代码 ``git commit`` 
 
 暂存代码保护现场
 ------------------------------
+
+.. danger:: 在签出前请清理存储库工作树
 
 .. hint:: 项目经理提了一个新的需求, 开发就需要从 master 分支迁出一个新的分支进行功能开发(例如迁出新分支为dev), 如果在开发过程中生产上有紧急 bug 需要修复, 就可以用到  ``git stash``  了。
     这种情况一般是出现在你正在完成一个功能，但是忽然线上发现了一个Bug，必须马上开一个新的分支来修复bug，但是现在的功能没写完不打算提交(commit)，现在怎么办？？
 
 .. note:: 为什么要暂存，而不用直接在自己的 local repository commit
     commit 需要写 message。一般 message 都是写 “完成xx功能，修改xx功能”， 如果这样写但是其实做到一半就会有歧义。如果不这样写，交代自己的工作进度，也行。但是一旦 push 的话就会把该 branch 的所有 commit 都 push 到 shared repository。那么 messages 都 public 了。
+
+.. code-block:: bash
+    :caption: code_flow
+
+    $ git stash （把当前未提交的修改暂存起来，让仓库还原到最后一次提交的状态。）
+    $ git pull （拉取远程仓库的代码，让你现在的代码和远程仓库一致）
+    $ git stash pop （恢复第一步储存起来的代码，也就是恢复当前未提交的修改）
 
 ``git stash``  可以将现在的 **工作区** 全部的修改、新增、删除等操作，全部保存起来。
 
@@ -1695,13 +1901,13 @@ Merge done
         | 因为我们创建这个分支的目的就是为了开发一个新模块或者修复一个BUG，当开发工作完成后删除该分支，处理别的事情时再新建一个就好了。
 
 
-.. question:: 本来应该在 ``new feature`` 上改，但不小心直接在 ``dev`` 上改了。能不能在不动 ``dev`` 直接放到 ``new feature``
+.. hint:: question: 本来应该在 ``new feature`` 上改，但不小心直接在 ``dev`` 上改了。能不能在不动 ``dev`` 直接放到 ``new feature``
 
     | Solution：直接切换到  ``new feature``
     | git中存在工作区和暂存区，这两个区都是被所有本地分支共享的。
     | 当有内容修改时，修改信息就会放在工作区中，此时如果直接检出一个新的分支，就会把工作区的内容都带过去。
 
-.. question:: 在 ``new feature`` ing 但是临时收到消息要去 fix bug。既不想马上就 commit on ``new feature``， 也不想 把工作区的内容搬到  ``hotfix`` branch. 
+.. hint:: question: 在 ``new feature`` ing 但是临时收到消息要去 fix bug。既不想马上就 commit on ``new feature``， 也不想 把工作区的内容搬到  ``hotfix`` branch. 
     Solution：
         1. 在 ``new feature`` **stash & checkout** 暂存 & 切出到 ``hotfix``
         2. 在 ``hotfix`` 完成任务：pull 》commit 》push 》merge request 》delete 
@@ -1810,3 +2016,128 @@ rebase 之后可能会有文件冲突，需要按需解决冲突，将所有冲�
     git push origin feature_your-issueid
 
 然后按页面提示，提交pr
+
+
+Git版本管理及使用规范
+****************************************
+
+Git常用分支包括: ==master== , ==hotfix== , ==release== , ==develop== , ==feature==
+
+
+.. grid:: 2
+
+    .. grid-item::
+
+        - ==master==  ＝ ==production== 主分支
+            | stores the **official release** history
+            | 只能从其他分支合并，不能在这个分支直接修改(no commits)
+            | 理论上 **每次并到** ``master`` 都需要打 ==Tag== 
+            | 除 **项目负责人** 外其他开发人员不得向 ``master`` 分支合并内容。
+        - ==hotfix== for 紧急修 bugs
+            | 在 Production( **已经上线了** ) 发现新的 Bug 时候, **立刻尽快** 去处理发布上线
+            | 从  ``master`` 拉， 直接进行测试及上线, 并回 ``master`` & ``develop``
+        - ==release== for 提测及上线分支 - 预发布的版本
+            | 在 ``develop`` 开发完拉到 ``release`` 去测试，修改 Bug 等
+            | 通过测试后可以正式上线，并回 ``master`` & ``develop``, 然后 **DELETE** 
+            | 同时，其它开发人员可以基于 Develop 分支新建 Feature (记住：一旦打了 Release 分支之后不要从 Develop 分支上合并新的改动到 Release 分支)
+        - ==develop== 主开发分支
+            | 包含所有要发布到下一个 Release 的代码
+            | 每一次 pre-determined release date is approaching 从  ``master`` 拉去 sync, 然后去不断被 merged into。
+        - ==feature== for 开发一个新的功能
+            | 从  ``develop`` 拉
+            | 开发完成稳定后，要再并入 ``develop`` 分支, 然后 **DELETE** 
+
+    .. grid-item::
+        
+        **分支命名** for ``hotfix`` & ``release`` & ``feature``
+
+        .. hint:: Example: ``[branch_type]/[target]_YYMMDD``
+
+            - ``hotfix/providerLose``
+            - ``release/pubMsg_20210701`` 
+
+        **Git代码提交规约**
+        
+        - 用户名为本人姓名，邮箱为公司邮箱或本人邮箱
+        - ``[commit-type]: commit-message`` 
+        - 若一次提交有多个功能修改，则每个功能提交描述作为单独的一行，每行以英文标识符“,”作为行尾结束符。
+
+        .. table::
+
+            +-----------+----------------------+------------------+
+            |commit-type|说明                  |示例              |
+            +===========+======================+==================+
+            |ADD        |                      |ADD:增加文件      |
+            +-----------+----------------------+------------------+
+            |DEL        |                      |DEL:删除文件      |
+            +-----------+----------------------+------------------+
+            |MOD        |修改功能              |MOD:修改功能      |
+            +-----------+----------------------+------------------+
+            |FIX        |                      |FIX:issue2        |
+            +-----------+----------------------+------------------+
+            |PREF       |优化 **perf** ormance |PREF:优化功能     |
+            +-----------+----------------------+------------------+
+            |STYLE      |修改代码格式          |STYLE:修改代码格式|
+            +-----------+----------------------+------------------+
+            |REFACTOR   |重构                  |REFACTOR:重构代码 |
+            +-----------+----------------------+------------------+
+            |DOCS       |文档                  |DOCS:文档         |
+            +-----------+----------------------+------------------+
+
+
+        | ==STYLE== （不影响代码运行的变动）
+        | ==REFACTOR== 既不增加新功能，也不修改bug的代码变动，一般重构需要使用新的独立分支处理）
+    
+.. grid:: 2
+    :margin: 0
+
+    .. grid-item::
+        :columns: 9
+
+        .. figure:: ./pics/git_workflow_1.png
+
+            基于 Vincent Driessen 提出的 Git Flow 流程图
+        
+
+    .. grid-item::
+        :columns: 3
+        :margin: 0
+        
+        从右往左，根据 timeline:
+
+        - 在 0.1 版本上打算进行新的一轮 release (1.0) 。从 ``master(0.1)`` 叉到 ``develop``。
+        - 根据预计设定的 features 从 ``develop`` 上叉不同的 ``feature`` 各自进行开发。
+        - 开发ing, 被通知之前的 0.1 版本有严重问题马上进行修复，从  ``master(0.1)`` 叉到 ``hotfixes`` 来修复，直接测试完就:
+
+          - 并回 ``master(0.2)`` 修复并打 tag
+          - 并回 ``develop``  使得下一轮更新也存在它。（因为中间 ``develop`` 不会再 sync form ``master``
+          - **DELETE** 结束，继续去开发。
+
+
+.. grid:: 2
+
+    .. grid-item::
+        :columns: 7
+
+        .. figure:: ./pics/git_workflow_2.png
+
+        BTW, 本次 features 的 next ver. for next release 也可以从 ``develop`` 那个位置再 pull 去继续开发。
+
+    .. grid-item::
+        :columns: 5
+
+        - 预定的 ``features`` 在一些 commits 之后已经完成，单纯 feature上测试通过就并回 ``develop``
+        - 准备进入 release 阶段。从 ``develop`` 叉到 ``release`` 进行这一轮的测试和上线。
+          一旦开叉到 ``release`` 就只能允许 bugfixes，理论上不允许再加入别的 features，要留待下一轮 next Release
+        - 在 ``release`` 发现 bug 直接在 ``release`` 上 bugfixes, 修完也要并回 ``develop`` 使得下一轮更新也存在它。
+        - 通过 release 测试之后，从 ``release`` 叉到 ``master(1.0)`` 来发布新版本  
+
+- `Git版本管理及使用规范 <https://juejin.cn/post/7254190852762796090>`_
+- `大厂git分支管理规范：gitflow规范指南 <https://www.cnblogs.com/kevin-ying/p/14329768.html>`_
+- `Gitflow workflow <https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow>`_
+
+
+TODO
+**********
+
+`当你git push时，Gitlab上发生了什么？ <https://nanmu.me/zh-cn/posts/2022/what-happens-on-gitlab-when-you-do-git-push/>`_

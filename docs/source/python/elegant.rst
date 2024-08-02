@@ -804,26 +804,32 @@ map
 
 .. note:: 装饰器只是被装饰函数的延伸，核心还是被装饰函数。
 
-    **应该把 wrapper 做的跟原函数一样**
+    .. grid:: 2
+    
+        .. grid-item::
 
-    - ``func.__name__``
-    - ``func.__doc__``
+            **应该把 wrapper 做的跟原函数一样**
 
-    ...
+            - ``func.__name__``
+            - ``func.__doc__``
 
+            ...
+            
+        .. grid-item::
+        
+            .. code-block:: py
 
-.. code-block:: py
+                from functools import wraps
 
-    from functools import wraps
+                @wraps(func)  # 把原函数的属性复制给装饰器函数 
+                def decorate(func):  # 装饰器
+                    print(f'running decorator({func})')
+                    return function  
+                    # 必须返回 **一个可调用对象或者函数**
 
-    @wraps(func)  # 把原函数的属性复制给装饰器函数 
-    def decorate(func):  # 装饰器
-        print(f'running decorator({func})')
-        return function  # 必须返回 **一个可调用对象或者函数**
-
-    @decorate  # 装饰
-    def func():
-        pass
+                @decorate  # 装饰
+                def func():
+                    pass
 
 .. danger:: 等于的是   ``func = decorate(func)``  而不是  ``func() = decorate(func)``
 
@@ -841,26 +847,73 @@ map
 
             func() # 等同于 decorate(func)() 
 
+
+
 .. warning:: 被装饰的函数完全是作为参数传入.
-    | ``decorate(func)`` ，此时没有带 ``()`` , 所以  ``func``  还没被调用。
-    | 在 ``deco1`` 函数体内 带着  ``()``  或者在  ``deco2``  里 被返回 才是被调用运行,  ``deco3``  就是完全没运行
+    ``decorate(func)`` ，此时没有带 ``()`` , 所以  ``func``  还没被调用。
 
-    .. code-block:: py
+    .. grid:: 2
+    
+        .. grid-item::
+            被调用运行
 
-        def deco1(func):
-            res = func() + 1  # 在函数体内被运行
-            return res
+            .. code-block:: py
+                :caption: 在函数体内被运行
 
-        def deco2(func):
-            # func = deco2(func) = func
-            return func  # deco2(func) () = func ()
+                def deco1(func):
+                    res = func() + 1
+                    # 函数体内 带着  ``()``
+                    return res
         
-        def deco3(func):
-            # 没运行 func 运行的是 inner
-            # func = deco3(func) = inner
-            def inner:
-                pass
-            return inner  # deco3(func) () = inner ()
+            .. code-block:: py
+                :caption: 返回运行
+
+                def deco2(func):
+                    # 被返回
+                    return func  
+
+                # func = deco2(func) = func
+                # deco2(func) () = func ()
+    
+        .. grid-item::
+            完全没运行
+
+            .. code-block:: py
+                :caption: 没运行 func 运行的是 inner
+
+                def deco3(func):
+                    def inner:
+                        pass
+                    return inner  
+
+                # func = deco3(func) = inner
+                # deco3(func) () = inner ()
+    
+    .. hint:: Example: 在函数体内被运行
+        
+        .. code-block:: py
+        
+            def square_args(func):
+                def inner(a, b):
+                    return func(a*2, b*2)
+                return inner
+
+            @square_args
+            def multiply(a, b):
+                return a*b
+
+            print(multiply(3, 9)) # 3*2 *9*2 = 108
+
+            """
+            multiply(3, 9) 
+            = square_args(multiply)(3, 9)
+            = inner(multiply)(3, 9)
+            = 函数体内运行 res = func(a*2, b*2)
+            = multiply(3*2, 9*2)
+            """
+                    
+        
+
 
 .. note:: 装饰器可以叠放
 
@@ -876,32 +929,49 @@ map
 .. hint:: 更新策略。
     当商场做营销，不断更新不同的折扣活动，在结算的时候往往需要计算不同策略下的价格，然后进行比较。如果把 所有的活动写进去结算函数，会使结算函数体变长还会在更改的时候需要修改着至关重要的结算函数，使错误的可能增高。所以思路大多都是把分开一个个策略写成函数，然后放进一个全局变量的数组里，for 循环地去 call 数组里的策略。但是在维持数组需要记得相应的函数名，对数组里的元素进行添删，比较麻烦。所以采用装饰器来完成 **“注册”** 这一功能
 
-.. code-block:: py
+    .. code-block:: py
 
-    promos = []
+        promos = []
 
-    def promotion(promo_func):
-        promos.appred(promo_func)  # 只是放进去，不改变 promo_func 本身 
-        return promo_func
+        def promotion(promo_func):
+            promos.appred(promo_func)  # 只是放进去，不改变 promo_func 本身 
+            return promo_func
 
-    @promotion  # 需要就加上 
-    def fidelity(order):
-        ...
-        return discount
+        @promotion  # 需要就加上 
+        def fidelity(order):
+            ...
+            return discount
 
-    # @promotion  # 不需要就注释
-    def large_order(order)
-        ...
-        return discount
+        # @promotion  # 不需要就注释
+        def large_order(order)
+            ...
+            return discount
 
-    der best_promo(order):
-        return max(promo(order) for promo in promos)
+        der best_promo(order):
+            return max(promo(order) for promo in promos)
 
 参数化装饰器
 ^^^^^^^^^^^^^^^^^^^^
 
 1. 被装饰的函数本身需要参数
 2. 装饰器本身也想拥有参数
+
+.. note:: 第一层嵌套 为了用闭包在局部名称空间来传递
+    !# 参考闭包
+
+    .. grid:: 2
+    
+        .. grid-item::
+            闭包 。延伸了作用域的函数，其中包含函数定义体中运用，但不在定义体内定义的 非全局变量。一般出现在嵌套函数里。
+    
+        .. grid-item::
+            .. code-block:: py
+
+                def parent(a, b):
+                    def child():
+                        return a * b
+    
+
 
 .. grid:: 2
 
@@ -1948,7 +2018,9 @@ bytes 字节
 str match
 
 -  ``str.startswith(sub_str)`` 
--  ``str.endswith(sub_str)`` 
+-  ``str.endswith(sub_str)`` & ``str.endswith((sub_str1, sub_str2))``
+
+可以匹配多个
 
 str的 转换
 

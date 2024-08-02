@@ -36,9 +36,9 @@ import re
 
 
 input_ = r"""
-|注解|参数|返回类型|
-|字典|``Mapping``|``Dict``|
-|集合|``AbstractSet``|``Set``|
+|结束一行|``CRLF``|``LF``|
+|code|``\r\n``|``\n``|
+|platform|Windows|Mac & Linux|
 """
 
 

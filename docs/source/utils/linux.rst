@@ -473,10 +473,32 @@ ps命令
 
 语法： ``ps -ef`` ，查看全部进程信息，可以搭配grep做过滤： ``ps -ef | grep xxx`` 
 
-kill命令
-==========
+``kill [-sign] PID``
+====================
 
-.. image:: https://image-set.oss-cn-zhangjiakou.aliyuncs.com/img-out/2022/10/27/20221027221303.png
+.. danger:: 当进程出现了异常状况，不能通过信号15正常退出时，我们就需要通过非常的手段直接终结掉进程。所谓的非常手段就是传递信号 9 给目标进程！
+
+	使用信号 15 是安全的，而信号 9 则是处理异常进程的最后手段，请勿滥用。
+	
+
+.. grid:: 2
+
+	.. grid-item::
+		
+		``kill -9 PID`` 
+		
+		| 强制关闭进程，不会让他的子进程 child processes 继续完成。
+
+	.. grid-item::
+
+		``kill PID`` == ``kill -15 PID`` 
+
+		| 发送信号要求其关闭，但是否关闭看进程自身处理机制。
+		| 按应用程序自己的退出流程完成退出，这样就可以清理并释放资源。比如 vim 程序，如果是正常的退出，就会删除掉临时文件 \*.swp
+
+`linux kill 命令 <https://www.cnblogs.com/sparkdev/p/6659629.html>`_
+
+
 
 nmap命令
 ==========

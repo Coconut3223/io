@@ -1,16 +1,22 @@
 Subword Segmentation
 ##############################
 
+概念
+********************
+
 .. grid:: 2
 
     .. grid-item::
-        :columns: 4
+        :columns: 5
 
-        | ==vocabulary size== 字典的大小
-        | ==step size== 去编码一个句子需要的 tokens数量。the number of tokens required to encode the sentence。 挂钩  decoding efficiency
+        - ==vocabulary size== 字典的大小
+        - ==step size== 去编码一个句子需要的 tokens数量。
+            the number of tokens required to encode the sentence。 挂钩  decoding efficiency
+        
+        only with a small fixed size of vocabulary (**usually 16k to 32k**), the number of required symbols to encode a sentence will not significantly increase, which is an important feature for an efficient decoding.
 
     .. grid-item::
-        :columns: 8
+        :columns: 7
 
         .. hint:: Example
 
@@ -26,7 +32,28 @@ Subword Segmentation
                 |5   |今天/吃/啥/至今/不吃 |3 & 2     |
                 +----+---------------------+----------+
 
-only with a small fixed size of vocabulary (**usually 16k to 32k**), the number of required symbols to encode a sentence will not significantly increase, which is an important feature for an efficient decoding.
+For 中文
+====================
+
+.. hint:: Example
+    .. grid:: 2
+    
+        .. grid-item::
+            中文（繁体）
+
+            英超榜首的利物浦主場將會迎戰般尼茅夫，領隊高普賽前表示，門將艾利臣在足總盃對車路士的比賽中臀部肌肉受傷，今場以及下周中歐聯16強次回合對馬德里體育會的賽事，都肯定無法上陣。
+    
+        .. grid-item::
+            粤语
+
+            英超榜首的利物浦主场将会迎战般尼茅夫，领队高普赛前表示，门将艾利臣在足总杯对车路士的比赛中臀部肌肉受伤，今场以及下周中欧联16强次回合对马德里体育会的赛事，都肯定无法上阵。
+
+- 中文构成：字 》词 》词组 》句子
+    
+
+
+
+
 
 .. danger:: open vocabulary issue
     | NLP 以前是使用 fixed word vocabularies, 训练和推断都很依赖 vocabulary size. 但是 limiting vocabulary size 会新增  ``UNK``  的数量。导致一些场景下（an open vocabulary setting）（翻译、具有高效构词过程）表现不好。
@@ -72,7 +99,9 @@ Subword segmentations with language model
 Byte-Pair-Encoding BPE
 ==============================
 
-[Neural Machine Translation of Rare Words with Subword Units]
+`Neural Machine Translation of Rare Words with Subword Units`_
+
+.. _Neural Machine Translation of Rare Words with Subword Units: https://arxiv.org/pdf/1508.07909.pdf
 
 | 原始是 data compression literature。
 | BPE is a variant of dictionary (substitution) encoder that incrementally finds a set of symbols such that the total number of symbols for encoding the text is minimized.
@@ -91,7 +120,7 @@ Byte-Pair-Encoding BPE
 
 - 基于贪婪原则和确定的符号替代 deterministic symbol replacement  :math:`\implies`  不能根据概率提供多重分割。
 
-[Neural Machine Translation of Rare Words with Subword Units]: https://arxiv.org/pdf/1508.07909.pdf
+
 
 Unigram language model
 ========================================
@@ -114,11 +143,12 @@ Questions
         | /He/l/l/o/ world 7 18085 356 356 137 255
         | H/el/l/o/ /world 320 585 356 137 7 12295
 
-[Subword Regularization: Improving Neural Network Translation Models with Multiple Subword Candidates]
-********************************************************************************************************************************************
+`Subword Regularization：Improving Neural Network Translation Models with Multiple Subword Candidates`_
+************************************************************************************************************************
+.. _Subword Regularization：Improving Neural Network Translation Models with Multiple Subword Candidates: https://arxiv.org/pdf/1804.10959.pdf
 
 .. hint:: Abstract
-    ==Subword units== are an effective way to alleviate the open vocabulary problems in neural machine translation (NMT). While sentences are usually converted into unique subword sequences, ==subword segmentation== is potentially ambiguous and multiple segmentations are possible even with the same vocabulary. **The question addressed in this paper is whether it is possible to harness the segmentation ambiguity as a noise to improve the robustness of NMT. We present a simple regularization method, ==subword regularization==, which trains the model with multiple subword segmentations probabilistically sampled during training.** In addition, for better subword sampling, we propose a new subword segmentation algorithm based on a unigram language model. We experiment with multiple corpora and report consistent improvements especially on low resource and out-of-domain settings.
+    ==Subword units== are an effective way to alleviate the open vocabulary problems in neural machine translation (NMT). While sentences are usually converted into unique subword sequences, ==subword segmentation== is potentially ambiguous and multiple segmentations are possible even with the same vocabulary. **The question addressed in this paper is whether it is possible to harness the segmentation ambiguity as a noise to improve the robustness of NMT. We present a simple regularization method**, ==subword regularization== , **which trains the model with multiple subword segmentations probabilistically sampled during training.** In addition, for better subword sampling, we propose a new subword segmentation algorithm based on a unigram language model. We experiment with multiple corpora and report consistent improvements especially on low resource and out-of-domain settings.
     把子词分割当作噪声进行优化，从而提高鲁棒性。
 
 Subword regularization consists of the following two sub-contributions:
@@ -132,9 +162,9 @@ Subword regularization consists of the following two sub-contributions:
 
 In this paper, we propose a new subword segmentation algorithm based on a unigram language model, which is capable of outputing multiple sub-word segmentations with probabilities. The unigram language model makes an assumption that each subword occurs independently, and consequently, the probability of a subword sequence
 
-[Subword Regularization: Improving Neural Network Translation Models with Multiple Subword Candidates]: https://arxiv.org/pdf/1804.10959.pdf
 
-[Neural Machine Translation of Rare Words with Subword Units]
+
+`Neural Machine Translation of Rare Words with Subword Units`_
 **********************************************************************
 
 .. hint:: Abstract
@@ -197,8 +227,9 @@ Firstly, we initialize the symbol vocabulary with the character vocabulary, and 
 | Each merge operation pro- duces a new symbol which represents a charac- ter n-gram. Frequent character n-grams (or whole words) are eventually merged into a single sym- bol, thus BPE requires no shortlist. The final sym- bol vocabulary size is equal to the size of the initial vocabulary, plus the number of merge operations – the latter is the only hyperparameter of the algorithm.
 | For efficiency, we do not consider pairs that cross word boundaries. The algorithm can thus be run on the dictionary extracted from a text, with each word being weighted by its frequency. A minimal Python implementation is shown in Al-
 
-[Neural Machine Translation with Byte-Level Subwords]
+`Neural Machine Translation with Byte-Level Subwords`_
 **********************************************************************
+.. _Neural Machine Translation with Byte-Level Subwords: https://arxiv.org/abs/1909.03341
 
 .. hint:: Abstract
     | Almost all existing machine translation models are built on top of character-based vocabularies: characters, subwords or words.
@@ -211,7 +242,7 @@ Firstly, we initialize the symbol vocabulary with the character vocabulary, and 
     - byte-level: 高计算成本
     - byte-level subword：需要用 CNN｜RNN 来 contextualize BBPE embedding。
 
-[Neural Machine Translation with Byte-Level Subwords]:https://arxiv.org/abs/1909.03341
+
 
 BBPE
 **********
@@ -244,7 +275,7 @@ Encoding
 
     The design of UTF-8 encoding ensures the uniqueness of this recovery process: for a character UTF-8 encoded with multiple bytes, its trailing bytes will not make a valid UTF-8 encoded character. 
 
-   `搞搞字节，byte的小知识 <https://zhuanlan.zhihu.com/p/449954688>`_
+    `搞搞字节，byte的小知识 <https://zhuanlan.zhihu.com/p/449954688>`_
 
 | BBPE symbols can be partial characters shared by different characters or the combination of complete and partial
 | characters. This arbitrariness may necessitate incorporating
@@ -289,3 +320,25 @@ Inference and Evaluation
 | set beam width to 4 for EnDe and 5 for the other and
 | use the best checkpoint by **validation loss** to generate the predictions.
 | We calculate casesensitive tokenized BLEU (Papineni et al. 2002) as the metrics using **sacreBLEU** (Post 2018).
+
+toolkits
+********************
+
+jieba
+====================
+
+原理：HMM（隐马尔可夫模型）
+
+
+
+For 粤语
+--------------------
+
+结巴分词词库中的词频与词性是基于官话文体的，不能直接用于粤文。
+
+`结巴分词处理粤语 <https://ayaka.shn.hk/yueseg/>`_
+
+hanlp
+====================
+
+HanLP实现的基于CRF分词

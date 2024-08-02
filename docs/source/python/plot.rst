@@ -89,7 +89,9 @@ Plot
                     scatter.legend_elements()[0],
                     classes)
 
-            `Data Viz with Python and R <https://datavizpyr.com/add-legend-to-scatterplot-colored-by-a-variable-with-matplotlib-in-python/>`_
+            - `Data Viz with Python and R <https://datavizpyr.com/add-legend-to-scatterplot-colored-by-a-variable-with-matplotlib-in-python/>`_
+            - `Scatter plots with a legend <https://matplotlib.org/stable/gallery/lines_bars_and_markers/scatter_with_legend.html>`_
+            
 
                 
 

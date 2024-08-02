@@ -921,6 +921,7 @@ query
 -  ``partition by`` 
         可省略，省略就是不指定分组, 但是，这就失去了窗口函数的功能，所以一般不要这么使用
 
+
 .. code-block:: sql
 
     # 1. 【专用窗口函数】不要分组 
@@ -1331,3 +1332,5 @@ delete
 [通俗易懂的学会：SQL窗口函数]: https://www.zhihu.com/tardis/zm/art/92654574?source_id=1003
 [MySQL 編碼挑選與差異比較]: https://khiav223577.github.io/blog/2019/06/30/MySQL-%E7%B7%A8%E7%A2%BC%E6%8C%91%E9%81%B8%E8%88%87%E5%B7%AE%E7%95%B0%E6%AF%94%E8%BC%83/
 [mysql 不同索引的区别和适用情况总结]: https://www.cnblogs.com/DDgougou/p/10286709.html
+
+
