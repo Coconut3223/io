@@ -7,51 +7,62 @@ Welcome to cocobook's documentation!
 ====================================
 
 
-.. toctree::
-   :caption: Content
-   :maxdepth: 2
 
-   AI <AI/index>
-   ML <AI/ML/index>
-   DL <AI/DL/index>
-   CV <CV/index>
-   NLP <NLP/index>
-   python <python/index>
-   SQL <SQL/index>
-   utils <utils/index>
-   frontend <frontend/index>
-   
+.. table::
+
+    +----------+------------------------+--------------+-----------------+-------------+-------------------+-----+-----+
+    |code-block|..c & ..ce              |#h1           |..f              |..g & ..gc   |..n                |ic   |..l  |
+    +==========+========================+==============+=================+=============+===================+=====+=====+
+    |snippet   |``.. code-block::``     |``==========``| ``.. figure::`` |``.. grid::``|``.. note::``      |inner|inner|
+    +          +------------------------+--------------+                 +-------------+-------------------+     +     +
+    |          |with ``emphasize-lines``|(levels same) |                 |with columns |(admonitation same)|code |link |
+    +----------+------------------------+--------------+-----------------+-------------+-------------------+-----+-----+
+
+.. toctree::
+    :caption: Content
+    :maxdepth: 2
+
+    AI <AI/index>
+    ML <AI/ML/index>
+    DL <AI/DL/index>
+    CV <CV/index>
+    NLP <NLP/index>
+    python <python/index>
+    SQL <SQL/index>
+    utils <utils/index>
+    frontend <frontend/index>
+
 
 .. mermaid:: 
 
-   flowchart LR
+    flowchart LR
 
-   B1["`faster_whisper_V3 
-   & 100ms`"]
-   B2["`faster_whisper_V3 
-   & 1000ms`"]
-   B3["`faster_whisper_V3 
-   & 100ms`"]
-   C{"`check 
-   VAD & ASR`"}
-   D{"`check 
-   ASR`"}
-   F["`whisper-small-Cantonese`"]
-   G("`audio`")
-   H("`audio segment 
-   & its ASR`")
-   I("`truth`")
-   J1("`validated audio segment`")
-   J2("`validated audio segment`")
-   K("`ASR`")
+    B1["`faster_whisper_V3 
+    & 100ms`"]
+    B2["`faster_whisper_V3 
+    & 1000ms`"]
+    B3["`faster_whisper_V3 
+    & 100ms`"]
+    C{"`check 
+    VAD & ASR`"}
+    D{"`check 
+    ASR`"}
+    F["`whisper-small-Cantonese`"]
+    G("`audio`")
+    H("`audio segment 
+    & its ASR`")
+    I("`truth`")
+    J1("`validated audio segment`")
+    J2("`validated audio segment`")
+    K("`ASR`")
 
-   G-->B1-->H 
-   G -->B2-->H
-   H-.->C
-   C -. pass .-> J1
-   J2 --> B3 --> K
-   J2 --> F --> K
-   K -.-> D -. pass .-> I
+    G-->B1-->H 
+    G -->B2-->H
+    H-.->C
+    C -. pass .-> J1
+    J2 --> B3 --> K
+    J2 --> F --> K
+    K -.-> D -. pass .-> I
 
 
 

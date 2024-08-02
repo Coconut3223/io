@@ -59,7 +59,7 @@
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=6dbb43f8"></script>
+    <script src="../../_static/copybutton.js?v=9f22d18c"></script>
     <script src="../../_static/translations.js?v=beaddf03"></script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script src="../../_static/js/rtd_search_config.js"></script>
@@ -248,7 +248,7 @@
     <li class="md-nav__item">
     
     
-      <a href="main.html" class="md-nav__link">DL</a>
+      <a href="main.html" class="md-nav__link">Basic Knowledge</a>
       
     
     </li>
@@ -273,6 +273,8 @@
   <ul class="md-nav__list" data-md-scrollfix="">
         <li class="md-nav__item"><a href="#ai-dl-cnn--page-root" class="md-nav__link">CNN</a><nav class="md-nav">
               <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#introduction" class="md-nav__link">Introduction</a>
+        </li>
         <li class="md-nav__item"><a href="#keywords" class="md-nav__link">Keywords</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#shared-weights" class="md-nav__link">Shared Weights，共享权重</a>
@@ -348,6 +350,8 @@
         <li class="md-nav__item"><a href="#exercise" class="md-nav__link">Exercise</a>
         </li>
         <li class="md-nav__item"><a href="#code" class="md-nav__link">code</a>
+        </li>
+        <li class="md-nav__item"><a href="#reference" class="md-nav__link">Reference</a>
         </li></ul>
             </nav>
         </li>
@@ -458,6 +462,8 @@
   <ul class="md-nav__list" data-md-scrollfix="">
         <li class="md-nav__item"><a href="#ai-dl-cnn--page-root" class="md-nav__link">CNN</a><nav class="md-nav">
               <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#introduction" class="md-nav__link">Introduction</a>
+        </li>
         <li class="md-nav__item"><a href="#keywords" class="md-nav__link">Keywords</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#shared-weights" class="md-nav__link">Shared Weights，共享权重</a>
@@ -533,6 +539,8 @@
         <li class="md-nav__item"><a href="#exercise" class="md-nav__link">Exercise</a>
         </li>
         <li class="md-nav__item"><a href="#code" class="md-nav__link">code</a>
+        </li>
+        <li class="md-nav__item"><a href="#reference" class="md-nav__link">Reference</a>
         </li></ul>
             </nav>
         </li>
@@ -549,6 +557,13 @@
 <h1 id="ai-dl-cnn--page-root">CNN<a class="headerlink" href="#ai-dl-cnn--page-root" title="Link to this heading">¶</a></h1>
 <div class="admonition-to-maintain-spatial-struture admonition danger">
 <p class="admonition-title">To maintain spatial struture.</p>
+</div>
+<div class="admonition- admonition danger">
+<p class="admonition-title">能够提取出图片边缘特征的网络是卷积层</p>
+<div class="line-block">
+<div class="line">卷积运算的目的是 <strong>提取输入的不同特征，使用不同的卷积核。</strong></div>
+<div class="line">第一层卷积层可能只能提取一些低级的特征如边缘、线条和角等层级，更多层的网路能从低级特征中迭代提取更复杂的特征。</div>
+</div>
 </div>
 <div class="admonition-summary admonition note">
 <p class="admonition-title">summary</p>
@@ -596,7 +611,8 @@
 <p class="admonition-title">CNN 必须输入相同大小的照片吗？</p>
 <p>CNN 地卷积层是不需要的，但是如果有全连接层，就一定要相同大小的输入</p>
 </div>
-<p>## Introduction</p>
+<section id="introduction">
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
 <p><strong>In：</strong> Vision Task，就是 <strong>针对图像这一特殊结构</strong> ，包括图片分类, Object Detection 目标检测，边缘检测, Object Segmentation 目标提取，图片风格迁移， Image Captioning 看图说话, Retrieval 恢复图片…</p>
 <p>关于处理的图片对象，有单纯基于 <strong>黑白照片灰度图像(width✖️height)</strong> 的卷积，也有基于 <strong>彩色照片立体RGB(wideth✖️height✖️depthchannel)</strong> 的卷积</p>
 <div class="admonition-notes admonition note">
@@ -644,6 +660,7 @@
 <li><p>Feature vector serves as input to the next layer(fully connected layer), where all features are collectively transferred into this network. <span class="defi">Dropout</span> of random nodes occurs during training to reduce overfitting in this layer.</p></li>
 <li><p>Finally, the raw values which are predicted output by the network are converted to probabilistic values with the use of <span class="defi">softmax function</span> .</p></li>
 </ol>
+</section>
 <section id="keywords">
 <h2 id="keywords">Keywords<a class="headerlink" href="#keywords" title="Link to this heading">¶</a></h2>
 <p><span class="defi">共享权重</span> , <span class="defi">局部感知域 &amp; 稀疏连接</span> , <span class="defi">Spatial Information</span></p>
@@ -685,13 +702,13 @@
 <p>完成图像和filter 的卷积就是</p>
 <ol class="arabic">
 <li><p>用一个小小的  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>×</mo><mi>F</mi><mo>×</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">F\times F\times D</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span></span>  shared filter 在 <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>×</mo><mi>N</mi><mo>×</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">N\times N\times D</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span></span>  图像上 slide spatially, 空间意义上地滑动。</p></li>
-<li><p>滑动的时候，每一次框定的 <strong>小小对应尺寸</strong> <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>×</mo><mi>F</mi><mo>×</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">F\times F\times D</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span></span>  块 chunk of the image, Local Receptive Fields，和  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>×</mo><mi>F</mi><mo>×</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">F\times F\times D</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span></span>  shared filter 做 dot product <span class="defi">element-wise multiplication</span> .</p>
-<blockquote>
-<div><div class="admonition-notes admonition danger">
+<li><dl>
+<dt>滑动的时候，每一次框定的 <strong>小小对应尺寸</strong> <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>×</mo><mi>F</mi><mo>×</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">F\times F\times D</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span></span>  块 chunk of the image, Local Receptive Fields，和  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>×</mo><mi>F</mi><mo>×</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">F\times F\times D</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span></span>  shared filter 做 dot product <span class="defi">element-wise multiplication</span> .</dt><dd><div class="admonition-notes admonition danger">
 <p class="admonition-title">notes</p>
 <p>D个 channel，都要分别和输入的D个channel 做卷积，得到D个特征图，然后 <strong>通道融合, sum all the (weights x inputs) of D channels</strong></p>
 </div>
-</div></blockquote>
+</dd>
+</dl>
 </li>
 <li><p>将所有滑动的到的结果按空间顺序重新拼成:  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>N</mi><mo>−</mo><mi>F</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mo stretchy="false">(</mo><mi>N</mi><mo>−</mo><mi>F</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mstyle mathcolor="#df0030"><mn>1</mn></mstyle></mrow><annotation encoding="application/x-tex">(N-F+1)\times(N-F+1)\times \red{1}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord" style="color:#df0030;">1</span></span></span></span></span>  tensor</p></li>
 <li><p>再加上  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>N</mi><mo>−</mo><mi>F</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mo stretchy="false">(</mo><mi>N</mi><mo>−</mo><mi>F</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mstyle mathcolor="#df0030"><mn>1</mn></mstyle></mrow><annotation encoding="application/x-tex">(N-F+1)\times(N-F+1)\times \red{1}</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord" style="color:#df0030;">1</span></span></span></span></span>  shared bias 偏置</p></li>
@@ -723,18 +740,18 @@
 </dl>
 </li>
 </ul>
-<figure class="align-center" id="id1">
+<figure class="align-center" id="id2">
 <a class="reference internal image-reference" href="../../_images/CNN_9.png"><img alt="../../_images/CNN_9.png" src="../../_images/CNN_9.png" style="width: 249.6px; height: 179.4px;"/>
 </a>
 <figcaption>
-<p><span class="caption-text">立体的，e.g: <strong>彩色照片立体RGB图像</strong></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+<p><span class="caption-text">立体的，e.g: <strong>彩色照片立体RGB图像</strong></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id2">
+<figure class="align-center" id="id3">
 <a class="reference internal image-reference" href="../../_images/CNN_10.png"><img alt="../../_images/CNN_10.png" src="../../_images/CNN_10.png" style="width: 257.7px; height: 146.7px;"/>
 </a>
 <figcaption>
-<p><span class="caption-text">立体的，e.g: <strong>彩色照片立体RGB图像</strong></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+<p><span class="caption-text">立体的，e.g: <strong>彩色照片立体RGB图像</strong></span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -782,23 +799,23 @@ D --&gt; F
 </dl>
 </li>
 </ol>
-<figure class="align-center" id="id3">
+<figure class="align-center" id="id4">
 <a class="reference internal image-reference" href="../../_images/CNN_13.png"><img alt="../../_images/CNN_13.png" src="../../_images/CNN_13.png" style="width: 355.8px; height: 162.0px;"/>
 </a>
 <figcaption>
-<p><span class="caption-text">1✖️1 Convolution</span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
+<p><span class="caption-text">1✖️1 Convolution</span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>advantages：</strong></p>
 <ul>
-<li><p>Shrinking too volumes spatially</p>
-<blockquote>
-<div><div class="admonition-shrinking-too-fast-is-not-good admonition danger">
+<li><dl>
+<dt>Shrinking too volumes spatially</dt><dd><div class="admonition-shrinking-too-fast-is-not-good admonition danger">
 <p class="admonition-title">Shrinking too fast is not good</p>
 </div>
 <p>比如说CNN，CNN是用卷积核和感受野做运算，每一个新产生特征数，也就是 output 的一个小小的数字，囊括的也只是一个小小的感受野的信息。对一个kernel 来说，虽然 output 是由所有的感受野 of input 卷积之后堆叠而成的一个 [L, W]矩阵，也就是这一个 kernel 和所有的感受野做运算的结果堆叠而成。但是 <strong>简单局部特征堆叠不等于全局特征。</strong> 这也是CNN稀疏链接的特点。</p>
 <p>所以我们常说CNN对于那种长序列 long sequence input 不太友好，因为对于两个间隔比较远的 pixels 来说，要是想获得他们之间的关系特征，就需要堆叠很多个卷积层，才能获得他们的关系特征。</p>
-</div></blockquote>
+</dd>
+</dl>
 </li>
 </ul>
 <a class="reference internal image-reference" href="../../_images/CNN_25.jpeg"><img alt="../../_images/CNN_25.jpeg" class="align-center" src="../../_images/CNN_25.jpeg" style="width: 544.5px; height: 292.8px;"/>
@@ -809,24 +826,32 @@ D --&gt; F
 <ol class="arabic">
 <li><p>s = 1 （default）</p></li>
 <li><p><strong>do not want to capture all the data</strong> or information available so we skip some.</p></li>
-<li><p>设置的 stride 要被刚好设置的filter卷积到</p>
-<blockquote>
-<div><div class="math">
+<li><dl>
+<dt>设置的 stride 要被刚好设置的filter卷积到</dt><dd><div class="math">
 <span class="katex-display"><span class="katex"><span class="katex-mathml"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="#df0030"><mtext>Output Size </mtext><mo stretchy="false">(</mo><mfrac><mrow><mi>N</mi><mo>−</mo><mi>F</mi></mrow><mi>s</mi></mfrac><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo>×</mo><mo stretchy="false">(</mo><mfrac><mrow><mi>N</mi><mo>−</mo><mi>F</mi></mrow><mi>s</mi></mfrac><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mstyle><mo separator="true">,</mo><mspace width="1em"></mspace><mfrac><mrow><mi>N</mi><mo>−</mo><mi>F</mi></mrow><mtext>stride</mtext></mfrac><mo>∈</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">\red{\text{Output Size }(\cfrac{N-F}{s}+1)\times(\cfrac{N-F}{s}+1) }, \quad\cfrac{N-F}{\text{stride}}\in Z
 
 </annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:2.276em;vertical-align:-0.686em;"></span><span class="mord text" style="color:#df0030;"><span class="mord" style="color:#df0030;">Output Size </span></span><span class="mopen" style="color:#df0030;">(</span><span class="mord" style="color:#df0030;"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="color:#df0030;"><span class="mord mathnormal" style="color:#df0030;">s</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="color:#df0030;border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="color:#df0030;"><span class="mord mathnormal" style="margin-right:0.10903em;color:#df0030;">N</span><span class="mspace" style="color:#df0030;margin-right:0.2222em;"></span><span class="mbin" style="color:#df0030;">−</span><span class="mspace" style="color:#df0030;margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;color:#df0030;">F</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin" style="color:#df0030;">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord" style="color:#df0030;">1</span><span class="mclose" style="color:#df0030;">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin" style="color:#df0030;">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.276em;vertical-align:-0.686em;"></span><span class="mopen" style="color:#df0030;">(</span><span class="mord" style="color:#df0030;"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="color:#df0030;"><span class="mord mathnormal" style="color:#df0030;">s</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="color:#df0030;border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="color:#df0030;"><span class="mord mathnormal" style="margin-right:0.10903em;color:#df0030;">N</span><span class="mspace" style="color:#df0030;margin-right:0.2222em;"></span><span class="mbin" style="color:#df0030;">−</span><span class="mspace" style="color:#df0030;margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;color:#df0030;">F</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin" style="color:#df0030;">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.276em;vertical-align:-0.686em;"></span><span class="mord" style="color:#df0030;">1</span><span class="mclose" style="color:#df0030;">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.59em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">stride</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.74em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span></span></span></span></span></div><a class="reference internal image-reference" href="../../_images/CNN_12.png"><img alt="../../_images/CNN_12.png" class="align-center" src="../../_images/CNN_12.png" style="width: 189.9px; height: 204.0px;"/>
 </a>
-</div></blockquote>
+</dd>
+</dl>
 </li>
 </ol>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
 <p><strong>drawbacks:</strong></p>
 <ul class="simple">
 <li><p>lose data over borders 容易丢失边缘或者是角落上的像素信息，譬如所当 stride=1 的时候，边边就出现一遍，中间的部分会在滑动的时候overlap 到，出现次数就会重复，这也体现了一种设定：图像中间总是比较重要，承载更多信息</p></li>
 </ul>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
 <p><strong>advantages:</strong></p>
 <ol class="arabic simple">
 <li><p>输出的图片会缩小</p></li>
 </ol>
+</div>
+</div>
+</div>
 </section>
 <section id="about-padding">
 <h4 id="about-padding">about Padding<a class="headerlink" href="#about-padding" title="Link to this heading">¶</a></h4>
@@ -878,18 +903,18 @@ D --&gt; F
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
 <div class="sd-col sd-d-flex-column docutils">
-<figure class="align-default" id="id4">
+<figure class="align-default" id="id5">
 <img alt="../../_images/CNN_14.png" src="../../_images/CNN_14.png"/>
 <figcaption>
-<p><span class="caption-text">yellow</span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
+<p><span class="caption-text">yellow</span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </div>
 <div class="sd-col sd-d-flex-column docutils">
-<figure class="align-default" id="id5">
+<figure class="align-default" id="id6">
 <img alt="../../_images/CNN_15.png" src="../../_images/CNN_15.png"/>
 <figcaption>
-<p><span class="caption-text">roll</span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
+<p><span class="caption-text">roll</span><a class="headerlink" href="#id6" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </div>
@@ -1175,10 +1200,15 @@ about the details of this neural networks, Okay</p>
 </section>
 <section id="code">
 <h2 id="code">code<a class="headerlink" href="#code" title="Link to this heading">¶</a></h2>
-<p>[卷积神经网络（浅显易懂）-吴恩达课程学习]: <a class="reference external" href="https://zhuanlan.zhihu.com/p/35251749/">https://zhuanlan.zhihu.com/p/35251749/</a></p>
-<p>[神经网络及CNN中的通道、共享权重、特征映射等的理解_zhu_Lydia的博客-CSDN博客_cnn的通道]:<a class="reference external" href="https://blog.csdn.net/zhu_Lydia/article/details/88567648">https://blog.csdn.net/zhu_Lydia/article/details/88567648</a></p>
-<p>[Convolutional Neural Network Architecture | CNN Architecture]:<a class="reference external" href="https://www.analyticsvidhya.com/blog/2020/10/what-is-the-convolutional-neural-network-architecture/">https://www.analyticsvidhya.com/blog/2020/10/what-is-the-convolutional-neural-network-architecture/</a></p>
-<p>[Convolutional Neural Network | Deep Learning | Developers Breach]: <a class="reference external" href="https://developersbreach.com/convolution-neural-network-deep-learning/">https://developersbreach.com/convolution-neural-network-deep-learning/</a></p>
+</section>
+<section id="reference">
+<h2 id="reference">Reference<a class="headerlink" href="#reference" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://zhuanlan.zhihu.com/p/35251749/">卷积神经网络（浅显易懂）-吴恩达课程学习</a></p></li>
+<li><p><a class="reference external" href="https://blog.csdn.net/zhu_Lydia/article/details/88567648">神经网络及CNN中的通道、共享权重、特征映射等的理解_zhu_Lydia的博客-CSDN博客_cnn的通道</a></p></li>
+<li><p><a class="reference external" href="https://www.analyticsvidhya.com/blog/2020/10/what-is-the-convolutional-neural-network-architecture/">Convolutional Neural Network Architecture | CNN Architecture</a></p></li>
+<li><p><a class="reference external" href="https://developersbreach.com/convolution-neural-network-deep-learning/">Convolutional Neural Network | Deep Learning | Developers Breach</a></p></li>
+</ul>
 </section>
 </section>
 

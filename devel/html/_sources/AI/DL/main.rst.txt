@@ -1,5 +1,5 @@
-DL
-#####
+Basic Knowledge
+####################
 
 Deep learning is part of a broader family of machine learning methods based on **artificial neural networks** with representation learning (表征学习).
 
@@ -11,10 +11,10 @@ Deep learning is part of a broader family of machine learning methods based o
 3. Neural networks can be expressive. 神经网络可以富有表现力。
 
 info
-************
+********************
 
 global features 全局特征 🆚 local features
-=============================================
+============================================================
 
 | ==全局特征== 是指 信息由整块 input 产生
 | 比如说 MLP，第一层的每一个 input 都是全连接的，就是每一个 out put 都是全体 input 的运算，收获的也是全体 input 的信息
@@ -30,6 +30,46 @@ global features 全局特征 🆚 local features
 
 categories of Neural Networks
 ***********************************
+
+.. list-table:: 大类
+    :width: 100%
+    :widths: 7 31 31 31
+    :header-rows: 1
+
+    * - 
+      - 前馈网络 FNN 
+      - 反馈网络
+      - 图网络 GNN 
+    * - 
+      - FC, CNN
+      - RNN, Hopfield网络, 玻尔兹曼机
+      - 
+    * - 
+      - 朝着一个方向传播的，即输入到输出方向
+        没有反向的信息传播 ≠ 误差反向传播
+      - 可以接收自己的反馈信号
+        具有记忆功能
+      - 
+    * - 图示
+      - 有向 无环
+      - 有|无向 有环
+      - 都可以
+    * - 用途
+      - 
+      - 时序数据
+      - 图结构的数据
+
+.. grid:: 3
+
+    .. grid-item::
+        .. image:: ./pics/fnn_1.png
+
+    .. grid-item::
+        .. image:: ./pics/bnn_1.png
+    
+    .. grid-item::
+        .. image:: ./pics/gnn_1.png
+        
 
 .. table::
 
@@ -73,16 +113,12 @@ categories of Neural Networks
     | **Larger** Neural Networks perform better on larger data
     | 增加隐藏层。隐藏层是输入层与输出层中间的网络层，并且可以有多个隐藏层。这增加了网络的深度，丰富了网络的表达能力。
 
-- Ref
-  [A Deep Learning Tutorial: From Perceptrons to Deep Networks]
-  [What is a Neural Network?]
-  [Backpropagation for Dummies]
+Ref
+====================
+- `A Deep Learning Tutorial: From Perceptrons to Deep Networks <https://www.toptal.com/machine-learning/an-introduction-to-deep-learning-from-perceptrons-to-deep-networks>`_
+- `What is a Neural Network? <https://www.tibco.com/reference-center/what-is-a-neural-network>`_
+- `Backpropagation for Dummies <https://medium.com/analytics-vidhya/backpropagation-for-dummies-e069410fa585>`_
 
-[What is a Neural Network?]: https://www.tibco.com/reference-center/what-is-a-neural-network
-
-[Backpropagation for Dummies]: https://medium.com/analytics-vidhya/backpropagation-for-dummies-e069410fa585
-
-[A Deep Learning Tutorial: From Perceptrons to Deep Networks]: https://www.toptal.com/machine-learning/an-introduction-to-deep-learning-from-perceptrons-to-deep-networks
 
 深度学习框架指明了设计方向：以计算图为核心，采用GPU设备加速。
 

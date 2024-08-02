@@ -14,3 +14,4 @@ ML
     logr
     nb
     svm
+    hmm

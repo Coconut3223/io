@@ -445,8 +445,8 @@ bias-variance dilemma, 偏差-方差窘境
         <u>训练不足时</u>：学习器的拟合能力不够强，训练数据的扰动不足以使学习器产生显著变化，此时<b>偏差主导了泛化错误率。模型在训练集上不能获得足够低的误差</b>；
         <u>训练程度充足后</u>：学习器的拟合能力已经非常强，训练数据发生的轻微扰动都会导致学习器发生显著变化，<b>方差主导了泛化错误率，训练误差和测试误差的差距</b>。若训练数据自身的、非全局的特性被学习器学到了，则将发生过拟合
 
-[Understanding the Bias-Variance Tradeoff]
-[Understanding the Bias-Variance Tradeoff]:https://link.zhihu.com/?target=http%3A//scott.fortmann-roe.com/docs/BiasVariance.html
+`Understanding the Bias-Variance Tradeoff <https://link.zhihu.com/?target=http%3A//scott.fortmann-roe.com/docs/BiasVariance.html>`_
+
 
 underfitting 欠拟合
 ====================

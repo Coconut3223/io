@@ -285,31 +285,24 @@ GRU 将 LSTM 的 forget gate & input gate 整合到一个单独的 update gate�
 简单来说，把 reset 的参数都变成 1， update 的参数 都变成0，就是 standard RNN。
 
 Reset Gate
-===============
+====================
 
 决定忘记哪些过去信息
 
 Update Gate
-===============
+==============================
 
 | 把 LSTM 的 forget gate & input gate 融了进来。
 | what information to throw away and what new information to add.
 
 Ref
-*****
+********************
 
-- [如何理解RNN？（理论篇）]
-- [Long short-term memory network-Long short-term memory | LSTM]
-- [Illustrated Guide to LSTM’s and GRU’s: A step by step explanation]
-- [大名鼎鼎的LSTM详解]
-- [图解LSTM实现cell state 和hidden state和output]
-- [Understanding LSTM Networks]
-- [Recurrent Neural Network Tutorial, Part 4 – Implementing a GRU and LSTM RNN with Python and Theano]
+- `如何理解RNN？（理论篇） <https://easyai.tech/blog/rnn-understand/>`_
+- `Long short-term memory network-Long short-term memory | LSTM <https://www.easyai.tech/en/ai-definition/lstm/>`_
+- `Illustrated Guide to LSTM’s and GRU’s: A step by step explanation <https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21>`_
+- `大名鼎鼎的LSTM详解 <https://zhuanlan.zhihu.com/p/518848475>`_
+- `图解LSTM实现cell state 和hidden state和output <https://blog.csdn.net/u010087338/article/details/129805575>`_
+- `Understanding LSTM Networks <http://colah.github.io/posts/2015-08-Understanding-LSTMs/>`_
+- `Recurrent Neural Network Tutorial, Part 4 – Implementing a GRU and LSTM RNN with Python and Theano <https://dennybritz.com/posts/wildml/recurrent-neural-networks-tutorial-part-4/>`_
 
-[如何理解RNN？（理论篇）]:https://easyai.tech/blog/rnn-understand/
-[Long short-term memory network-Long short-term memory | LSTM]:https://www.easyai.tech/en/ai-definition/lstm/
-[Illustrated Guide to LSTM’s and GRU’s: A step by step explanation]:https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21
-[大名鼎鼎的LSTM详解]: https://zhuanlan.zhihu.com/p/518848475
-[图解LSTM实现cell state 和hidden state和output]:https://blog.csdn.net/u010087338/article/details/129805575
-[Understanding LSTM Networks]:http://colah.github.io/posts/2015-08-Understanding-LSTMs/
-[Recurrent Neural Network Tutorial, Part 4 – Implementing a GRU and LSTM RNN with Python and Theano]:https://dennybritz.com/posts/wildml/recurrent-neural-networks-tutorial-part-4/

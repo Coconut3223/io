@@ -177,10 +177,12 @@ data augmentation method in text error correction.
 - 跟随原数据集的划分
 - remove bad cases（太短，单语）
 
-[SEAME: a Mandarin-English  Code-switching Speech Corpus in South-East Asia]: https://www.researchgate.net/publication/221481268_Mandarin-English_code-switching_speech_corpus_in_South-East_Asia_SEAME
 
-[SEAME: a Mandarin-English Code-switching Speech Corpus in South-East Asia]
+
+`SEAME：a Mandarin-English Code-switching Speech Corpus in South-East Asia`_
 ******************************************************************************************
+
+.. _SEAME：a Mandarin-English Code-switching Speech Corpus in South-East Asia: https://www.researchgate.net/publication/221481268_Mandarin-English_code-switching_speech_corpus_in_South-East_Asia_SEAME
 
 Mandarin-English  code-switching
 

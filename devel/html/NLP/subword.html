@@ -59,7 +59,7 @@
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=6dbb43f8"></script>
+    <script src="../_static/copybutton.js?v=9f22d18c"></script>
     <script src="../_static/translations.js?v=beaddf03"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script src="../_static/js/rtd_search_config.js"></script>
@@ -327,6 +327,12 @@
   <ul class="md-nav__list" data-md-scrollfix="">
         <li class="md-nav__item"><a href="#nlp-subword--page-root" class="md-nav__link">Subword Segmentation</a><nav class="md-nav">
               <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id1" class="md-nav__link">概念</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#for" class="md-nav__link">For 中文</a>
+        </li></ul>
+            </nav>
+        </li>
         <li class="md-nav__item"><a href="#subword-segmentations-with-language-model" class="md-nav__link">Subword segmentations with language model</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#byte-pair-encoding-bpe" class="md-nav__link">Byte-Pair-Encoding BPE</a>
@@ -337,11 +343,11 @@
         </li>
         <li class="md-nav__item"><a href="#questions" class="md-nav__link">Questions</a>
         </li>
-        <li class="md-nav__item"><a href="#subword-regularization-improving-neural-network-translation-models-with-multiple-subword-candidates" class="md-nav__link">[Subword Regularization: Improving Neural Network Translation Models with Multiple Subword Candidates]</a>
+        <li class="md-nav__item"><a href="#subword-regularization-improving-neural-network-translation-models-with-multiple-subword-candidates" class="md-nav__link">Subword Regularization：Improving Neural Network Translation Models with Multiple Subword Candidates</a>
         </li>
-        <li class="md-nav__item"><a href="#neural-machine-translation-of-rare-words-with-subword-units" class="md-nav__link">[Neural Machine Translation of Rare Words with Subword Units]</a>
+        <li class="md-nav__item"><a href="#id3" class="md-nav__link">Neural Machine Translation of Rare Words with Subword Units</a>
         </li>
-        <li class="md-nav__item"><a href="#neural-machine-translation-with-byte-level-subwords" class="md-nav__link">[Neural Machine Translation with Byte-Level Subwords]</a>
+        <li class="md-nav__item"><a href="#neural-machine-translation-with-byte-level-subwords" class="md-nav__link">Neural Machine Translation with Byte-Level Subwords</a>
         </li>
         <li class="md-nav__item"><a href="#bbpe" class="md-nav__link">BBPE</a><nav class="md-nav">
               <ul class="md-nav__list">
@@ -350,6 +356,18 @@
         <li class="md-nav__item"><a href="#decoding" class="md-nav__link">decoding</a>
         </li>
         <li class="md-nav__item"><a href="#experiment" class="md-nav__link">Experiment</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#toolkits" class="md-nav__link">toolkits</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#jieba" class="md-nav__link">jieba</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id5" class="md-nav__link">For 粤语</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#hanlp" class="md-nav__link">hanlp</a>
         </li></ul>
             </nav>
         </li></ul>
@@ -434,6 +452,12 @@
   <ul class="md-nav__list" data-md-scrollfix="">
         <li class="md-nav__item"><a href="#nlp-subword--page-root" class="md-nav__link">Subword Segmentation</a><nav class="md-nav">
               <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id1" class="md-nav__link">概念</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#for" class="md-nav__link">For 中文</a>
+        </li></ul>
+            </nav>
+        </li>
         <li class="md-nav__item"><a href="#subword-segmentations-with-language-model" class="md-nav__link">Subword segmentations with language model</a><nav class="md-nav">
               <ul class="md-nav__list">
         <li class="md-nav__item"><a href="#byte-pair-encoding-bpe" class="md-nav__link">Byte-Pair-Encoding BPE</a>
@@ -444,11 +468,11 @@
         </li>
         <li class="md-nav__item"><a href="#questions" class="md-nav__link">Questions</a>
         </li>
-        <li class="md-nav__item"><a href="#subword-regularization-improving-neural-network-translation-models-with-multiple-subword-candidates" class="md-nav__link">[Subword Regularization: Improving Neural Network Translation Models with Multiple Subword Candidates]</a>
+        <li class="md-nav__item"><a href="#subword-regularization-improving-neural-network-translation-models-with-multiple-subword-candidates" class="md-nav__link">Subword Regularization：Improving Neural Network Translation Models with Multiple Subword Candidates</a>
         </li>
-        <li class="md-nav__item"><a href="#neural-machine-translation-of-rare-words-with-subword-units" class="md-nav__link">[Neural Machine Translation of Rare Words with Subword Units]</a>
+        <li class="md-nav__item"><a href="#id3" class="md-nav__link">Neural Machine Translation of Rare Words with Subword Units</a>
         </li>
-        <li class="md-nav__item"><a href="#neural-machine-translation-with-byte-level-subwords" class="md-nav__link">[Neural Machine Translation with Byte-Level Subwords]</a>
+        <li class="md-nav__item"><a href="#neural-machine-translation-with-byte-level-subwords" class="md-nav__link">Neural Machine Translation with Byte-Level Subwords</a>
         </li>
         <li class="md-nav__item"><a href="#bbpe" class="md-nav__link">BBPE</a><nav class="md-nav">
               <ul class="md-nav__list">
@@ -457,6 +481,18 @@
         <li class="md-nav__item"><a href="#decoding" class="md-nav__link">decoding</a>
         </li>
         <li class="md-nav__item"><a href="#experiment" class="md-nav__link">Experiment</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#toolkits" class="md-nav__link">toolkits</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#jieba" class="md-nav__link">jieba</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id5" class="md-nav__link">For 粤语</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#hanlp" class="md-nav__link">hanlp</a>
         </li></ul>
             </nav>
         </li></ul>
@@ -473,15 +509,22 @@
             
   <section id="subword-segmentation">
 <h1 id="nlp-subword--page-root">Subword Segmentation<a class="headerlink" href="#nlp-subword--page-root" title="Link to this heading">¶</a></h1>
+<section id="id1">
+<h2 id="id1">概念<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
-<div class="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4 docutils">
-<div class="line-block">
-<div class="line"><span class="defi">vocabulary size</span> 字典的大小</div>
-<div class="line"><span class="defi">step size</span> 去编码一个句子需要的 tokens数量。the number of tokens required to encode the sentence。 挂钩  decoding efficiency</div>
+<div class="sd-col sd-d-flex-column sd-col-5 sd-col-xs-5 sd-col-sm-5 sd-col-md-5 sd-col-lg-5 docutils">
+<ul class="simple">
+<li><p><span class="defi">vocabulary size</span> 字典的大小</p></li>
+<li><dl class="simple">
+<dt><span class="defi">step size</span> 去编码一个句子需要的 tokens数量。</dt><dd><p>the number of tokens required to encode the sentence。 挂钩  decoding efficiency</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>only with a small fixed size of vocabulary (<strong>usually 16k to 32k</strong>), the number of required symbols to encode a sentence will not significantly increase, which is an important feature for an efficient decoding.</p>
 </div>
-</div>
-<div class="sd-col sd-d-flex-column sd-col-8 sd-col-xs-8 sd-col-sm-8 sd-col-md-8 sd-col-lg-8 docutils">
+<div class="sd-col sd-d-flex-column sd-col-7 sd-col-xs-7 sd-col-sm-7 sd-col-md-7 sd-col-lg-7 docutils">
 <div class="admonition-example admonition hint">
 <p class="admonition-title">Example</p>
 <table>
@@ -510,7 +553,26 @@
 </div>
 </div>
 </div>
-<p>only with a small fixed size of vocabulary (<strong>usually 16k to 32k</strong>), the number of required symbols to encode a sentence will not significantly increase, which is an important feature for an efficient decoding.</p>
+<section id="for">
+<h3 id="for">For 中文<a class="headerlink" href="#for" title="Link to this heading">¶</a></h3>
+<div class="admonition-example admonition hint">
+<p class="admonition-title">Example</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<p>中文（繁体）</p>
+<p>英超榜首的利物浦主場將會迎戰般尼茅夫，領隊高普賽前表示，門將艾利臣在足總盃對車路士的比賽中臀部肌肉受傷，今場以及下周中歐聯16強次回合對馬德里體育會的賽事，都肯定無法上陣。</p>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<p>粤语</p>
+<p>英超榜首的利物浦主场将会迎战般尼茅夫，领队高普赛前表示，门将艾利臣在足总杯对车路士的比赛中臀部肌肉受伤，今场以及下周中欧联16强次回合对马德里体育会的赛事，都肯定无法上阵。</p>
+</div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>中文构成：字 》词 》词组 》句子</p></li>
+</ul>
 <div class="admonition-open-vocabulary-issue admonition danger">
 <p class="admonition-title">open vocabulary issue</p>
 <div class="line-block">
@@ -534,6 +596,8 @@
 </div>
 <p>Strictly speaking, wordpiece model (Schuster and Naka- jima, 2012) is different from BPE. We consider wordpiece as a variant of BPE, as it also uses an incremental vocabulary generation with a different loss function.</p>
 <p>Wordpiece model uses a likelihood instead of frequency.</p>
+</section>
+</section>
 <section id="subword-segmentations-with-language-model">
 <h2 id="subword-segmentations-with-language-model">Subword segmentations with language model<a class="headerlink" href="#subword-segmentations-with-language-model" title="Link to this heading">¶</a></h2>
 <table>
@@ -564,7 +628,7 @@
 </div>
 <section id="byte-pair-encoding-bpe">
 <h3 id="byte-pair-encoding-bpe">Byte-Pair-Encoding BPE<a class="headerlink" href="#byte-pair-encoding-bpe" title="Link to this heading">¶</a></h3>
-<p>[Neural Machine Translation of Rare Words with Subword Units]</p>
+<p><a class="reference external" href="https://arxiv.org/pdf/1508.07909.pdf">Neural Machine Translation of Rare Words with Subword Units</a></p>
 <div class="line-block">
 <div class="line">原始是 data compression literature。</div>
 <div class="line">BPE is a variant of dictionary (substitution) encoder that incrementally finds a set of symbols such that the total number of symbols for encoding the text is minimized.</div>
@@ -583,7 +647,6 @@
 <ul class="simple">
 <li><p>基于贪婪原则和确定的符号替代 deterministic symbol replacement  <span class="math"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\implies</annotation></semantics></math></span><span aria-hidden="true" class="katex-html"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span></span>  不能根据概率提供多重分割。</p></li>
 </ul>
-<p>[Neural Machine Translation of Rare Words with Subword Units]: <a class="reference external" href="https://arxiv.org/pdf/1508.07909.pdf">https://arxiv.org/pdf/1508.07909.pdf</a></p>
 </section>
 <section id="unigram-language-model">
 <h3 id="unigram-language-model">Unigram language model<a class="headerlink" href="#unigram-language-model" title="Link to this heading">¶</a></h3>
@@ -612,10 +675,10 @@
 </div>
 </section>
 <section id="subword-regularization-improving-neural-network-translation-models-with-multiple-subword-candidates">
-<h2 id="subword-regularization-improving-neural-network-translation-models-with-multiple-subword-candidates">[Subword Regularization: Improving Neural Network Translation Models with Multiple Subword Candidates]<a class="headerlink" href="#subword-regularization-improving-neural-network-translation-models-with-multiple-subword-candidates" title="Link to this heading">¶</a></h2>
+<h2 id="subword-regularization-improving-neural-network-translation-models-with-multiple-subword-candidates"><a class="reference external" href="https://arxiv.org/pdf/1804.10959.pdf">Subword Regularization：Improving Neural Network Translation Models with Multiple Subword Candidates</a><a class="headerlink" href="#subword-regularization-improving-neural-network-translation-models-with-multiple-subword-candidates" title="Link to this heading">¶</a></h2>
 <div class="admonition-abstract admonition hint">
 <p class="admonition-title">Abstract</p>
-<p><span class="defi">Subword units</span> are an effective way to alleviate the open vocabulary problems in neural machine translation (NMT). While sentences are usually converted into unique subword sequences, <span class="defi">subword segmentation</span> is potentially ambiguous and multiple segmentations are possible even with the same vocabulary. <strong>The question addressed in this paper is whether it is possible to harness the segmentation ambiguity as a noise to improve the robustness of NMT. We present a simple regularization method, ==subword regularization==, which trains the model with multiple subword segmentations probabilistically sampled during training.</strong> In addition, for better subword sampling, we propose a new subword segmentation algorithm based on a unigram language model. We experiment with multiple corpora and report consistent improvements especially on low resource and out-of-domain settings.
+<p><span class="defi">Subword units</span> are an effective way to alleviate the open vocabulary problems in neural machine translation (NMT). While sentences are usually converted into unique subword sequences, <span class="defi">subword segmentation</span> is potentially ambiguous and multiple segmentations are possible even with the same vocabulary. <strong>The question addressed in this paper is whether it is possible to harness the segmentation ambiguity as a noise to improve the robustness of NMT. We present a simple regularization method</strong>, <span class="defi">subword regularization</span> , <strong>which trains the model with multiple subword segmentations probabilistically sampled during training.</strong> In addition, for better subword sampling, we propose a new subword segmentation algorithm based on a unigram language model. We experiment with multiple corpora and report consistent improvements especially on low resource and out-of-domain settings.
 把子词分割当作噪声进行优化，从而提高鲁棒性。</p>
 </div>
 <p>Subword regularization consists of the following two sub-contributions:</p>
@@ -632,10 +695,9 @@
 <div class="line">NMT is trained using the standard maximum likelihood estimation, i.e., maximizing the log-likelihood L(θ) of a given parallel corpus D =</div>
 </div>
 <p>In this paper, we propose a new subword segmentation algorithm based on a unigram language model, which is capable of outputing multiple sub-word segmentations with probabilities. The unigram language model makes an assumption that each subword occurs independently, and consequently, the probability of a subword sequence</p>
-<p>[Subword Regularization: Improving Neural Network Translation Models with Multiple Subword Candidates]: <a class="reference external" href="https://arxiv.org/pdf/1804.10959.pdf">https://arxiv.org/pdf/1804.10959.pdf</a></p>
 </section>
-<section id="neural-machine-translation-of-rare-words-with-subword-units">
-<h2 id="neural-machine-translation-of-rare-words-with-subword-units">[Neural Machine Translation of Rare Words with Subword Units]<a class="headerlink" href="#neural-machine-translation-of-rare-words-with-subword-units" title="Link to this heading">¶</a></h2>
+<section id="id3">
+<h2 id="id3"><a class="reference external" href="https://arxiv.org/pdf/1508.07909.pdf">Neural Machine Translation of Rare Words with Subword Units</a><a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
 <div class="admonition-abstract admonition hint">
 <p class="admonition-title">Abstract</p>
 <p>Neural machine translation (NMT) models typically operate with a fixed vocabulary, but translation is an open-vocabulary problem. Previous work addresses the translation of out-of-vocabulary words by backing off to a dictionary. In this paper, we introduce a simpler and more effective approach, <strong>making the NMT model capable of open-vocabulary translation by encoding rare and unknown words as sequences of ==subword units==</strong>. This is based on the intuition that various word classes are translatable via smaller units than words, for instance names (via character copying or transliteration ), compounds (via compositional translation), and cognates and loanwords (via phonological and morphological transformations). 這是基於這樣的直覺：各種詞類都可以透過比單字更小的單位進行翻譯，例如名稱（透過字元複製或音譯轉寫）、化合物（透過組合翻譯）以及同源詞和外來詞（透過語音和形態轉換）。<strong>We discuss the suitability of different word segmentation techniques, including simple character n-gram models and a segmentation based on the :defi:`byte pair encoding` compression algorithm</strong>, and empirically show that subword models improve over a back-off dictionary baseline for the WMT 15 translation tasks English→German and English→Russian by up to 1.1 and 1.3 BLEU, respectively.</p>
@@ -695,7 +757,7 @@
 </div>
 </section>
 <section id="neural-machine-translation-with-byte-level-subwords">
-<h2 id="neural-machine-translation-with-byte-level-subwords">[Neural Machine Translation with Byte-Level Subwords]<a class="headerlink" href="#neural-machine-translation-with-byte-level-subwords" title="Link to this heading">¶</a></h2>
+<h2 id="neural-machine-translation-with-byte-level-subwords"><a class="reference external" href="https://arxiv.org/abs/1909.03341">Neural Machine Translation with Byte-Level Subwords</a><a class="headerlink" href="#neural-machine-translation-with-byte-level-subwords" title="Link to this heading">¶</a></h2>
 <div class="admonition-abstract admonition hint">
 <p class="admonition-title">Abstract</p>
 <div class="line-block">
@@ -711,7 +773,6 @@
 <li><p>byte-level subword：需要用 CNN｜RNN 来 contextualize BBPE embedding。</p></li>
 </ul>
 </div>
-<p>[Neural Machine Translation with Byte-Level Subwords]:<a class="reference external" href="https://arxiv.org/abs/1909.03341">https://arxiv.org/abs/1909.03341</a></p>
 </section>
 <section id="bbpe">
 <h2 id="bbpe">BBPE<a class="headerlink" href="#bbpe" title="Link to this heading">¶</a></h2>
@@ -740,14 +801,12 @@
 </ul>
 <div class="admonition-utf-8-encoding admonition note">
 <p class="admonition-title">UTF-8 encoding</p>
-<blockquote>
-<div><div class="line-block">
+<div class="line-block">
 <div class="line">encodes each Unicode character into 1 to 4 bytes</div>
 <div class="line">represent a sentence in any language as a sequence of UTF-8 bytes (248 out of 256 possible bytes).</div>
 </div>
 <img alt="../_images/utf8.jpg" src="../_images/utf8.jpg"/>
 <p>The design of UTF-8 encoding ensures the uniqueness of this recovery process: for a character UTF-8 encoded with multiple bytes, its trailing bytes will not make a valid UTF-8 encoded character.</p>
-</div></blockquote>
 <p><a class="reference external" href="https://zhuanlan.zhihu.com/p/449954688">搞搞字节，byte的小知识</a></p>
 </div>
 <div class="line-block">
@@ -792,6 +851,22 @@ x_{ctx\_emb}=\text{BiGRU}(X_{emb})</annotation></semantics></math></span><span a
 <div class="line">use the best checkpoint by <strong>validation loss</strong> to generate the predictions.</div>
 <div class="line">We calculate casesensitive tokenized BLEU (Papineni et al. 2002) as the metrics using <strong>sacreBLEU</strong> (Post 2018).</div>
 </div>
+</section>
+</section>
+<section id="toolkits">
+<h2 id="toolkits">toolkits<a class="headerlink" href="#toolkits" title="Link to this heading">¶</a></h2>
+<section id="jieba">
+<h3 id="jieba">jieba<a class="headerlink" href="#jieba" title="Link to this heading">¶</a></h3>
+<p>原理：HMM（隐马尔可夫模型）</p>
+<section id="id5">
+<h4 id="id5">For 粤语<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
+<p>结巴分词词库中的词频与词性是基于官话文体的，不能直接用于粤文。</p>
+<p><a class="reference external" href="https://ayaka.shn.hk/yueseg/">结巴分词处理粤语</a></p>
+</section>
+</section>
+<section id="hanlp">
+<h3 id="hanlp">hanlp<a class="headerlink" href="#hanlp" title="Link to this heading">¶</a></h3>
+<p>HanLP实现的基于CRF分词</p>
 </section>
 </section>
 </section>
