@@ -743,6 +743,7 @@ pip 环境
     .. grid-item::
 
         **requirements.txt** --- ``pip``
+        
         .. code-block:: bash
             :caption: 只想生成当前项目依赖的
 

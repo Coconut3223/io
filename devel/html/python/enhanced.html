@@ -50,7 +50,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=83e35b93" />
     <link rel="stylesheet" type="text/css" href="../_static/material.css?v=79c92029" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/katex-math.css?v=91adb8b6" />
     <link rel="stylesheet" type="text/css" href="../_static/css/rtd_sphinx_search.min.css" />
@@ -1450,30 +1450,24 @@ python<span class="w"> </span>script.py<span class="w"> </span>--gpus<span class
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
 <div class="sd-col sd-d-flex-column docutils">
-<p><strong>requirements.txt</strong> — <code class="docutils literal notranslate"><span class="pre">pip</span></code>
-.. code-block:: bash</p>
-<aside class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<span class="docutils literal">/home/runner/work/io/io/docs/source/python/enhanced.rst</span>, line 747)</p>
-<p>Unexpected indentation.</p>
-</aside>
-<blockquote>
-<div><dl class="field-list simple">
-<dt class="field-odd">caption<span class="colon">:</span></dt>
-<dd class="field-odd"><p>只想生成当前项目依赖的</p>
-</dd>
-</dl>
-<p>cd project/root
-pip install pipreqs
-pipreqs . –encoding=utf8 –force
-# 当前目录生成</p>
-<p># 安装
-pip install -r requirements.txt</p>
-</div></blockquote>
+<p><strong>requirements.txt</strong> — <code class="docutils literal notranslate"><span class="pre">pip</span></code></p>
+<div class="literal-block-wrapper docutils container" id="id43">
+<div class="code-block-caption"><span class="caption-text">只想生成当前项目依赖的</span><a class="headerlink" href="#id43" title="Link to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>project/root
+pip<span class="w"> </span>install<span class="w"> </span>pipreqs
+pipreqs<span class="w"> </span>.<span class="w"> </span>--encoding<span class="o">=</span>utf8<span class="w"> </span>--force
+<span class="c1"># 当前目录生成</span>
+
+<span class="c1"># 安装</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+</div>
 </div>
 <div class="sd-col sd-d-flex-column docutils">
 <p><strong>environment.yml</strong>  — <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">create</span></code></p>
-<div class="literal-block-wrapper docutils container" id="id43">
-<div class="code-block-caption"><span class="caption-text">只想生成当前项目依赖的</span><a class="headerlink" href="#id43" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id44">
+<div class="code-block-caption"><span class="caption-text">只想生成当前项目依赖的</span><a class="headerlink" href="#id44" title="Link to this code">¶</a></div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>project/root
 conda<span class="w"> </span>env<span class="w"> </span><span class="nb">export</span><span class="w"> </span>&gt;<span class="w"> </span>environment.yml
 <span class="c1"># 当前目录生成</span>
@@ -1502,8 +1496,8 @@ conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> <
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
 <div class="sd-col sd-d-flex-column docutils">
-<div class="literal-block-wrapper docutils container" id="id44">
-<div class="code-block-caption"><span class="caption-text">Wrong</span><a class="headerlink" href="#id44" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id45">
+<div class="code-block-caption"><span class="caption-text">Wrong</span><a class="headerlink" href="#id45" title="Link to this code">¶</a></div>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">==</span><span class="n">List</span>
@@ -1513,8 +1507,8 @@ conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> <
 </div>
 </div>
 <div class="sd-col sd-d-flex-column docutils">
-<div class="literal-block-wrapper docutils container" id="id45">
-<div class="code-block-caption"><span class="caption-text">True</span><a class="headerlink" href="#id45" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id46">
+<div class="code-block-caption"><span class="caption-text">True</span><a class="headerlink" href="#id46" title="Link to this code">¶</a></div>
 <div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">==</span><span class="nb">list</span>
 <span class="go">True</span>
 </pre></div>
@@ -1534,8 +1528,8 @@ conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> <
 <div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
 <div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
 <div class="sd-col sd-d-flex-column docutils">
-<div class="literal-block-wrapper docutils container" id="id46">
-<div class="code-block-caption"><span class="caption-text">是否是纯中文</span><a class="headerlink" href="#id46" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id47">
+<div class="code-block-caption"><span class="caption-text">是否是纯中文</span><a class="headerlink" href="#id47" title="Link to this code">¶</a></div>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">isChinese</span><span class="p">(</span><span class="n">ch</span><span class="p">):</span>
     <span class="k">return</span> <span class="s1">'</span><span class="se">\u4e00</span><span class="s1">'</span> <span class="o">&lt;=</span> <span class="n">ch</span> <span class="o">&lt;=</span> <span class="s1">'</span><span class="se">\u9fff</span><span class="s1">'</span>
 
@@ -1545,8 +1539,8 @@ conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> <
 </div>
 </div>
 <div class="sd-col sd-d-flex-column docutils">
-<div class="literal-block-wrapper docutils container" id="id47">
-<div class="code-block-caption"><span class="caption-text">是否是纯英文</span><a class="headerlink" href="#id47" title="Link to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id48">
+<div class="code-block-caption"><span class="caption-text">是否是纯英文</span><a class="headerlink" href="#id48" title="Link to this code">¶</a></div>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">isEnglish</span><span class="p">(</span><span class="n">ch</span><span class="p">):</span>
     <span class="k">return</span> <span class="mi">5</span> <span class="o">&lt;=</span> <span class="nb">ord</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">90</span> <span class="ow">or</span> <span class="mi">97</span> <span class="o">&lt;=</span> <span class="nb">ord</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">122</span>
 
@@ -1834,7 +1828,7 @@ conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> <
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>
