@@ -22,6 +22,13 @@
     
     - ``pycon``
     - ``py``
+
+
+**关于希腊字母的快捷打法**
+
+- macOS 有内置输入法，通过拼写就可以
+- windows 内置的拼音输入法， ``uuxl`` 
+    .. image:: ./pics/math_char.png
     
 
 目录

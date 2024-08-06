@@ -36,9 +36,10 @@ import re
 
 
 input_ = r"""
-|结束一行|``CRLF``|``LF``|
-|code|``\r\n``|``\n``|
-|platform|Windows|Mac & Linux|
+||box1|box2|box3|
+|box1|.5|.2|.3|
+|box2|.3|.5|.2|
+|box3|.2|.3|.5|
 """
 
 
