@@ -1,9 +1,10 @@
-
 Audio
 ####################
 
+
 Concept
 **********
+
 
 SampleRate, sr
 ====================
@@ -21,29 +22,26 @@ Basic
         !IPython.display.Audio
 
 
-
-
-
-
 互转
 ==========
 
-opus|aac
+
+opus|aac|mp4
 --------------------
 
 .. code-block:: py
-    :caption: opus|aac -> wav
+    :caption: opus|aac|mp4 => wav|mp3
 
-    import moviepy.editor as mp
-    my_clip = mp.AudioFileClip(r"input_path.opus")
-    my_clip.write_audiofile(r"input_path.mp3")
-
-`opus转mp3 python音频转换 (aac文件同样可行) <https://blog.csdn.net/monopoc/article/details/130643213>`_
+    def to_wav_a(src_path, tgt_path):
+        from moviepy.editor import AudioFileClip
+        
+        audio_clip = AudioFileClip(src_path)
+        audio_clip.write_audiofile(tgt_path)
+        print(f'{tgt_path} is converted successfully')
 
 
 可视化
 **********
-
 
 .. code-block:: py
     :caption: 加载 音频文件
@@ -53,6 +51,7 @@ opus|aac
 
     audio_path = '../T08-violin.wav'
     x , sr = librosa.load(audio_path)
+
 
 waveplot 波形图
 ====================

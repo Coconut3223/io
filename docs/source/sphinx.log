@@ -1,0 +1,356 @@
+ERROR:esbonio.lsp:Traceback (most recent call last):
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\sphinx\config.py", line 509, in eval_config_file
+    exec(code, namespace)  # NoQA: S102
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CODES\io\docs\source\conf.py", line 15, in <module>
+    from sphinxcontrib import katex
+ImportError: cannot import name 'katex' from 'sphinxcontrib' (unknown location)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\sphinx\__init__.py", line 149, in _initialize_sphinx
+    return self.create_sphinx_app(self.user_config)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\sphinx\__init__.py", line 343, in create_sphinx_app
+    app = Sphinx(**self.sphinx_args)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\sphinx\application.py", line 211, in __init__
+    self.config = Config.read(self.confdir, confoverrides or {}, self.tags)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\sphinx\config.py", line 309, in read
+    namespace = eval_config_file(filename, tags)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\sphinx\config.py", line 522, in eval_config_file
+    raise ConfigError(msg % traceback.format_exc()) from exc
+sphinx.errors.ConfigError: There is a programmable error in your configuration file:
+
+Traceback (most recent call last):
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\sphinx\config.py", line 509, in eval_config_file
+    exec(code, namespace)  # NoQA: S102
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CODES\io\docs\source\conf.py", line 15, in <module>
+    from sphinxcontrib import katex
+ImportError: cannot import name 'katex' from 'sphinxcontrib' (unknown location)
+
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\rst\__init__.py:572: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = self.workspace.get_document(uri)
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\rst\__init__.py:750: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = self.workspace.get_document(document.uri)
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\__init__.py:334: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = ls.workspace.get_document(uri)
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\__init__.py:283: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = ls.workspace.get_document(uri)
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\__init__.py:229: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = ls.workspace.get_document(uri)
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\__init__.py:181: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = ls.workspace.get_document(uri)
+
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "140"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "338"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "340"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "511"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "553"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "556"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "574"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "635"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "672"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "677"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "710"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "725"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "737"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "743"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "746"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "764"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "767"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "779"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "841"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "845"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "848"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "851"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "868"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "871"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "877"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "891"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "894"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "902"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "961"
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\__init__.py:268: DeprecationWarning: Language features should be referenced by their class definition, this will become an error in v1.0.
+  feature = ls.get_feature(source)
+
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "1089"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "1231"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "1239"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "1875"
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\rst\__init__.py:572: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = self.workspace.get_document(uri)
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\rst\__init__.py:750: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = self.workspace.get_document(document.uri)
+
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "2023"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "2025"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "2026"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "2022"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "2028"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "2029"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "2031"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "2032"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "2034"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "2035"
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\__init__.py:334: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = ls.workspace.get_document(uri)
+
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "2038"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "2037"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "2040"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "2042"
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\__init__.py:283: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = ls.workspace.get_document(uri)
+
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "2044"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "2049"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "2046"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "2050"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "2051"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "2055"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "2053"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "2056"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "2058"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "2059"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "2061"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "2062"
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\__init__.py:229: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = ls.workspace.get_document(uri)
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\__init__.py:181: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = ls.workspace.get_document(uri)
+
+ERROR:esbonio.lsp:Traceback (most recent call last):
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\sphinx\config.py", line 509, in eval_config_file
+    exec(code, namespace)  # NoQA: S102
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CODES\io\docs\source\conf.py", line 15, in <module>
+    from sphinxcontrib import katex
+ImportError: cannot import name 'katex' from 'sphinxcontrib' (unknown location)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\sphinx\__init__.py", line 149, in _initialize_sphinx
+    return self.create_sphinx_app(self.user_config)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\sphinx\__init__.py", line 343, in create_sphinx_app
+    app = Sphinx(**self.sphinx_args)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\sphinx\application.py", line 211, in __init__
+    self.config = Config.read(self.confdir, confoverrides or {}, self.tags)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\sphinx\config.py", line 309, in read
+    namespace = eval_config_file(filename, tags)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\sphinx\config.py", line 522, in eval_config_file
+    raise ConfigError(msg % traceback.format_exc()) from exc
+sphinx.errors.ConfigError: There is a programmable error in your configuration file:
+
+Traceback (most recent call last):
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\sphinx\config.py", line 509, in eval_config_file
+    exec(code, namespace)  # NoQA: S102
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CODES\io\docs\source\conf.py", line 15, in <module>
+    from sphinxcontrib import katex
+ImportError: cannot import name 'katex' from 'sphinxcontrib' (unknown location)
+
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\rst\__init__.py:572: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = self.workspace.get_document(uri)
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\rst\__init__.py:750: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = self.workspace.get_document(document.uri)
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\__init__.py:334: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = ls.workspace.get_document(uri)
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\__init__.py:229: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = ls.workspace.get_document(uri)
+
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "58"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "69"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "121"
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\__init__.py:181: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = ls.workspace.get_document(uri)
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\__init__.py:283: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = ls.workspace.get_document(uri)
+
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "831"
+ERROR:esbonio.lsp:Traceback (most recent call last):
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\sphinx\config.py", line 509, in eval_config_file
+    exec(code, namespace)  # NoQA: S102
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CODES\io\docs\source\conf.py", line 15, in <module>
+    from sphinxcontrib import katex
+ImportError: cannot import name 'katex' from 'sphinxcontrib' (unknown location)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\sphinx\__init__.py", line 149, in _initialize_sphinx
+    return self.create_sphinx_app(self.user_config)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\sphinx\__init__.py", line 343, in create_sphinx_app
+    app = Sphinx(**self.sphinx_args)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\sphinx\application.py", line 211, in __init__
+    self.config = Config.read(self.confdir, confoverrides or {}, self.tags)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\sphinx\config.py", line 309, in read
+    namespace = eval_config_file(filename, tags)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\sphinx\config.py", line 522, in eval_config_file
+    raise ConfigError(msg % traceback.format_exc()) from exc
+sphinx.errors.ConfigError: There is a programmable error in your configuration file:
+
+Traceback (most recent call last):
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\sphinx\config.py", line 509, in eval_config_file
+    exec(code, namespace)  # NoQA: S102
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CODES\io\docs\source\conf.py", line 15, in <module>
+    from sphinxcontrib import katex
+ImportError: cannot import name 'katex' from 'sphinxcontrib' (unknown location)
+
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\rst\__init__.py:572: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = self.workspace.get_document(uri)
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\rst\__init__.py:750: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = self.workspace.get_document(document.uri)
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\__init__.py:334: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = ls.workspace.get_document(uri)
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\__init__.py:181: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = ls.workspace.get_document(uri)
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\__init__.py:229: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = ls.workspace.get_document(uri)
+
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "56"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "90"
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\__init__.py:283: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = ls.workspace.get_document(uri)
+
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "227"
+ERROR:esbonio.lsp:Traceback (most recent call last):
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\sphinx\config.py", line 509, in eval_config_file
+    exec(code, namespace)  # NoQA: S102
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CODES\io\docs\source\conf.py", line 15, in <module>
+    from sphinxcontrib import katex
+ImportError: cannot import name 'katex' from 'sphinxcontrib' (unknown location)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\sphinx\__init__.py", line 149, in _initialize_sphinx
+    return self.create_sphinx_app(self.user_config)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\sphinx\__init__.py", line 343, in create_sphinx_app
+    app = Sphinx(**self.sphinx_args)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\sphinx\application.py", line 211, in __init__
+    self.config = Config.read(self.confdir, confoverrides or {}, self.tags)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\sphinx\config.py", line 309, in read
+    namespace = eval_config_file(filename, tags)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\sphinx\config.py", line 522, in eval_config_file
+    raise ConfigError(msg % traceback.format_exc()) from exc
+sphinx.errors.ConfigError: There is a programmable error in your configuration file:
+
+Traceback (most recent call last):
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\sphinx\config.py", line 509, in eval_config_file
+    exec(code, namespace)  # NoQA: S102
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CODES\io\docs\source\conf.py", line 15, in <module>
+    from sphinxcontrib import katex
+ImportError: cannot import name 'katex' from 'sphinxcontrib' (unknown location)
+
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\rst\__init__.py:572: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = self.workspace.get_document(uri)
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\rst\__init__.py:750: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = self.workspace.get_document(document.uri)
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\__init__.py:334: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = ls.workspace.get_document(uri)
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\__init__.py:229: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = ls.workspace.get_document(uri)
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\__init__.py:283: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = ls.workspace.get_document(uri)
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\__init__.py:181: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = ls.workspace.get_document(uri)
+
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "679"
+WARNING:pygls.protocol.json_rpc:Cancel notification for unknown message id "700"
+ERROR:esbonio.lsp:Traceback (most recent call last):
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\sphinx\config.py", line 509, in eval_config_file
+    exec(code, namespace)  # NoQA: S102
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CODES\io\docs\source\conf.py", line 15, in <module>
+    from sphinxcontrib import katex
+ImportError: cannot import name 'katex' from 'sphinxcontrib' (unknown location)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\sphinx\__init__.py", line 149, in _initialize_sphinx
+    return self.create_sphinx_app(self.user_config)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\sphinx\__init__.py", line 343, in create_sphinx_app
+    app = Sphinx(**self.sphinx_args)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\sphinx\application.py", line 211, in __init__
+    self.config = Config.read(self.confdir, confoverrides or {}, self.tags)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\sphinx\config.py", line 309, in read
+    namespace = eval_config_file(filename, tags)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\sphinx\config.py", line 522, in eval_config_file
+    raise ConfigError(msg % traceback.format_exc()) from exc
+sphinx.errors.ConfigError: There is a programmable error in your configuration file:
+
+Traceback (most recent call last):
+  File "C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\sphinx\config.py", line 509, in eval_config_file
+    exec(code, namespace)  # NoQA: S102
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CODES\io\docs\source\conf.py", line 15, in <module>
+    from sphinxcontrib import katex
+ImportError: cannot import name 'katex' from 'sphinxcontrib' (unknown location)
+
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\rst\__init__.py:572: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = self.workspace.get_document(uri)
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\rst\__init__.py:750: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = self.workspace.get_document(document.uri)
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\__init__.py:334: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = ls.workspace.get_document(uri)
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\__init__.py:229: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = ls.workspace.get_document(uri)
+
+WARNING:py.warnings:C:\Users\zxouyang\AppData\Local\anaconda3\Lib\site-packages\esbonio\lsp\__init__.py:181: DeprecationWarning: 'workspace.get_document' has been deprecated, use 'workspace.get_text_document' instead
+  doc = ls.workspace.get_document(uri)
+
