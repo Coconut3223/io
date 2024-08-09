@@ -1,9 +1,6 @@
 Scrapy
 ####################
 
-
-
-
 二进制数据
 ********************
 
@@ -19,7 +16,6 @@ Scrapy
 .. code-block:: py
     :caption: str
         str = bytes.decode('UTF-8')
-
 
 .. code-block:: py
     :caption: 写 & 读

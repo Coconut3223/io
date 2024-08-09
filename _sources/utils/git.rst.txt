@@ -46,6 +46,18 @@ git client tool
 配置
 ********************
 
+
+environmen variables
+==============================
+
+add the following paths to PATH:
+
+.. code-block:: none
+
+    C:\Program Files\Git\bin\
+    C:\Program Files\Git\cmd\
+
+
 ``git config`` 配置
 ==============================
 

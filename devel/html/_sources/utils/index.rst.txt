@@ -15,15 +15,6 @@
 
 
 
-
-
-
-`pygments support language codes <https://pygments.org/languages/>`_
-    
-    - ``pycon``
-    - ``py``
-
-
 **关于希腊字母的快捷打法**
 
 - macOS 有内置输入法，通过拼写就可以
@@ -47,4 +38,6 @@
     linux
     mermaid
     browser
+    rst
+    TODO/TODO
     

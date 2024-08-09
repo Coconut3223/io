@@ -467,6 +467,8 @@ logging
 .. grid:: 2
 
     .. grid-item::
+        :columns: 5
+
         ``sys.argv``
 
         .. code-block:: py
@@ -483,6 +485,8 @@ logging
             python script.py 0,1,2 10
 
     .. grid-item::
+        :columns: 7
+        
         ``argparse``
 
         .. code-block:: py
@@ -524,6 +528,10 @@ shell 命令
     import shutil
     import Others
 
+    """
+    如果 target=folder, 文件夹内已经存在对应文件就会报错return
+    如果想要直接替换，target=file_path 直接传文件名 而不是 folder
+    """
     shutil.copy('demo.txt','new_folder')  # 单纯复制过去
     shutil.move('demo.txt','new_folder/demo1.txt')  # 移动并改名
 
@@ -531,6 +539,7 @@ shell 命令
     shutil.rmtree(folder)  # del folder
 
 - `【Python】移动、复制文件到另一个文件夹、删除文件（夹） <https://blog.csdn.net/Asher117/article/details/109083247>`_
+- `Move and replace if same file name already exists? <https://stackoverflow.com/questions/31813504/move-and-replace-if-same-file-name-already-exists>`_
 
 RE
 ==========
